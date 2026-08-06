@@ -1,0 +1,407 @@
+{
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/.claude/launch.json": {
+    "mtime": 1786001185.5164657,
+    "ast_hash": "f3dbdbd504b78d461ceca4be03bb348e",
+    "semantic_hash": "f3dbdbd504b78d461ceca4be03bb348e"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/.commitlintrc.json": {
+    "mtime": 1785999120.6811545,
+    "ast_hash": "a3064c9273b4fadf4f3f584f4656dca6",
+    "semantic_hash": "a3064c9273b4fadf4f3f584f4656dca6"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/astro.config.mjs": {
+    "mtime": 1785999112.7344341,
+    "ast_hash": "10e638cc9b415148d5c2691ca2c9ae66",
+    "semantic_hash": "10e638cc9b415148d5c2691ca2c9ae66"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/package.json": {
+    "mtime": 1785999110.645196,
+    "ast_hash": "0928e0055946b2e8937f30362cddd7c6",
+    "semantic_hash": "0928e0055946b2e8937f30362cddd7c6"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/AdsLanding.astro": {
+    "mtime": 1786005018.5281804,
+    "ast_hash": "4832a0f55c8d5047b38804e65fcd0eda",
+    "semantic_hash": "4832a0f55c8d5047b38804e65fcd0eda"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/Balloons.astro": {
+    "mtime": 1786005018.5283995,
+    "ast_hash": "43e254f7a49f4c8a424ea551d2473816",
+    "semantic_hash": "43e254f7a49f4c8a424ea551d2473816"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/CertificateShowcase.astro": {
+    "mtime": 1786005018.5286856,
+    "ast_hash": "00ae9e3da25266626d2ac7269c7e7acb",
+    "semantic_hash": "00ae9e3da25266626d2ac7269c7e7acb"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/CityLanding.astro": {
+    "mtime": 1786005018.528909,
+    "ast_hash": "23f6818db5a5314762cea9aee19f21d6",
+    "semantic_hash": "23f6818db5a5314762cea9aee19f21d6"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/CourseCard.astro": {
+    "mtime": 1786005018.5291016,
+    "ast_hash": "0bb87819a13faa90e1521bfa6aad2881",
+    "semantic_hash": "0bb87819a13faa90e1521bfa6aad2881"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/CourseCover.astro": {
+    "mtime": 1786005018.5292873,
+    "ast_hash": "5664cb88c24478b0337de814cedba0f7",
+    "semantic_hash": "5664cb88c24478b0337de814cedba0f7"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/CourseLanding.astro": {
+    "mtime": 1786005018.5295534,
+    "ast_hash": "a1254116719e5e1ecc80e3674c5944ca",
+    "semantic_hash": "a1254116719e5e1ecc80e3674c5944ca"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/DiscountChip.astro": {
+    "mtime": 1786005018.5298972,
+    "ast_hash": "c9fa5c362dc672069abaf81b230f0086",
+    "semantic_hash": "c9fa5c362dc672069abaf81b230f0086"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/FaqAccordion.astro": {
+    "mtime": 1786004752.3223836,
+    "ast_hash": "7df7bda553b805127a9e74c2f09f8020",
+    "semantic_hash": "7df7bda553b805127a9e74c2f09f8020"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/Footer.astro": {
+    "mtime": 1786005018.5300608,
+    "ast_hash": "9d53b99b7d895285e59057e8cd68a75b",
+    "semantic_hash": "9d53b99b7d895285e59057e8cd68a75b"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/GeoToast.astro": {
+    "mtime": 1786005018.53031,
+    "ast_hash": "27f87f080f2e740de457c9d774ca4eac",
+    "semantic_hash": "27f87f080f2e740de457c9d774ca4eac"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/Header.astro": {
+    "mtime": 1786005018.530736,
+    "ast_hash": "fb2b4cfd601524f52e8cdf198b7eaa55",
+    "semantic_hash": "fb2b4cfd601524f52e8cdf198b7eaa55"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/LeadForm.astro": {
+    "mtime": 1786005018.5311425,
+    "ast_hash": "b41ad42a7f37b7d51359244743696274",
+    "semantic_hash": "b41ad42a7f37b7d51359244743696274"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/Logo.astro": {
+    "mtime": 1786005018.5312939,
+    "ast_hash": "ff05a91f2de278990fa1943eb347c5ca",
+    "semantic_hash": "ff05a91f2de278990fa1943eb347c5ca"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/Rating.astro": {
+    "mtime": 1786004752.3203263,
+    "ast_hash": "7afbda18542106f0a27a4aff892dcd74",
+    "semantic_hash": "7afbda18542106f0a27a4aff892dcd74"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/SectionHeading.astro": {
+    "mtime": 1786005018.5314267,
+    "ast_hash": "ed81cc040b9505c29b0d8baff94bb114",
+    "semantic_hash": "ed81cc040b9505c29b0d8baff94bb114"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/Seo.astro": {
+    "mtime": 1786004752.3262098,
+    "ast_hash": "6e54e90f5d1259f9a04d4602c891fb0b",
+    "semantic_hash": "6e54e90f5d1259f9a04d4602c891fb0b"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/StickyCta.astro": {
+    "mtime": 1786005018.5315847,
+    "ast_hash": "177e7635599a8185088d83a328be1b16",
+    "semantic_hash": "177e7635599a8185088d83a328be1b16"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/TestimonialCard.astro": {
+    "mtime": 1786005018.5317428,
+    "ast_hash": "0e1807173dc7965a481359389ef2b9a8",
+    "semantic_hash": "0e1807173dc7965a481359389ef2b9a8"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/TrustBar.astro": {
+    "mtime": 1786004752.3266196,
+    "ast_hash": "f9c4fec5093b9b0ee89f8365f2910da7",
+    "semantic_hash": "f9c4fec5093b9b0ee89f8365f2910da7"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/Wave.astro": {
+    "mtime": 1786004752.3194273,
+    "ast_hash": "31f85469c5feca760ee982f18e0954b2",
+    "semantic_hash": "31f85469c5feca760ee982f18e0954b2"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/components/WhatsAppFloat.astro": {
+    "mtime": 1786004752.3212318,
+    "ast_hash": "25db65b001a14e127ff7fa3aeebca93f",
+    "semantic_hash": "25db65b001a14e127ff7fa3aeebca93f"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/content.config.ts": {
+    "mtime": 1786000368.450133,
+    "ast_hash": "fad1530733c6cad2c104eb98379c3678",
+    "semantic_hash": "fad1530733c6cad2c104eb98379c3678"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/content/testimonials.json": {
+    "mtime": 1786000544.9673808,
+    "ast_hash": "0e255f4a26537ba6627d937b9b1e7ed5",
+    "semantic_hash": "0e255f4a26537ba6627d937b9b1e7ed5"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/layouts/BaseLayout.astro": {
+    "mtime": 1786004752.3313646,
+    "ast_hash": "134eb0a5b685e47c82915bb9ac46565c",
+    "semantic_hash": "134eb0a5b685e47c82915bb9ac46565c"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/layouts/LandingLayout.astro": {
+    "mtime": 1786004752.3309555,
+    "ast_hash": "f7df19ae9ef310fb7100b5e4a6767fd2",
+    "semantic_hash": "f7df19ae9ef310fb7100b5e4a6767fd2"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/lib/analytics.ts": {
+    "mtime": 1785999346.5764608,
+    "ast_hash": "ffe857fd5ec0b403f4ac2cb3c62ef478",
+    "semantic_hash": "ffe857fd5ec0b403f4ac2cb3c62ef478"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/lib/categories.ts": {
+    "mtime": 1785999334.5288737,
+    "ast_hash": "0fa92494b64f7736ea5b2b6a0cf21041",
+    "semantic_hash": "0fa92494b64f7736ea5b2b6a0cf21041"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/lib/cities.ts": {
+    "mtime": 1786003136.4919937,
+    "ast_hash": "992c96d924f289af95a7bbf5b3772068",
+    "semantic_hash": "992c96d924f289af95a7bbf5b3772068"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/lib/countries.ts": {
+    "mtime": 1786003136.49216,
+    "ast_hash": "e2dd5d7af0e731228f71404f7281c9dd",
+    "semantic_hash": "e2dd5d7af0e731228f71404f7281c9dd"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/lib/hotmart.ts": {
+    "mtime": 1786000383.4722154,
+    "ast_hash": "7911b355739c8d0829d8a19a2b1d8012",
+    "semantic_hash": "7911b355739c8d0829d8a19a2b1d8012"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/lib/seo.ts": {
+    "mtime": 1786000528.7227447,
+    "ast_hash": "4ff7134935973ca7e27d13171a0926ab",
+    "semantic_hash": "4ff7134935973ca7e27d13171a0926ab"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/lib/site.ts": {
+    "mtime": 1786000376.2680137,
+    "ast_hash": "73cf6f391df082e26589293a81d439c9",
+    "semantic_hash": "73cf6f391df082e26589293a81d439c9"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/lib/sitemap.ts": {
+    "mtime": 1786003136.4923089,
+    "ast_hash": "cb2bbd8db9073a74ae1da191511711e7",
+    "semantic_hash": "cb2bbd8db9073a74ae1da191511711e7"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/404.astro": {
+    "mtime": 1786005018.5326107,
+    "ast_hash": "bd3025a96313fb3b620775682c471cb8",
+    "semantic_hash": "bd3025a96313fb3b620775682c471cb8"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/[country]/[item]/[curso]/index.astro": {
+    "mtime": 1786004752.3376677,
+    "ast_hash": "042b0aadcd3d99cab5b183c4dfa077a7",
+    "semantic_hash": "042b0aadcd3d99cab5b183c4dfa077a7"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/[country]/[item]/index.astro": {
+    "mtime": 1786004752.3373353,
+    "ast_hash": "e96224478d460b32cf49672419a6d273",
+    "semantic_hash": "e96224478d460b32cf49672419a6d273"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/[country]/cursos/[category]/index.astro": {
+    "mtime": 1786005018.5328228,
+    "ast_hash": "c8e1544b21953245fcdd69a246b476e5",
+    "semantic_hash": "c8e1544b21953245fcdd69a246b476e5"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/[country]/cursos/index.astro": {
+    "mtime": 1786004752.3369734,
+    "ast_hash": "4e8d239261dc3e01bb9dc7374925ada2",
+    "semantic_hash": "4e8d239261dc3e01bb9dc7374925ada2"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/[country]/index.astro": {
+    "mtime": 1786005018.5330224,
+    "ast_hash": "5f0a29e1924d01c6cc0e877933d78756",
+    "semantic_hash": "5f0a29e1924d01c6cc0e877933d78756"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/blog/index.astro": {
+    "mtime": 1786005018.5332377,
+    "ast_hash": "1789e08a09fbc41c18f50d4751bd4615",
+    "semantic_hash": "1789e08a09fbc41c18f50d4751bd4615"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/contacto/index.astro": {
+    "mtime": 1786004752.333416,
+    "ast_hash": "2f2de5200c32112ac22c09d29e926692",
+    "semantic_hash": "2f2de5200c32112ac22c09d29e926692"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/index.astro": {
+    "mtime": 1786005018.5334947,
+    "ast_hash": "1c230c21f891bb552d3df17c9963fc01",
+    "semantic_hash": "1c230c21f891bb552d3df17c9963fc01"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/landing/google/[curso]/index.astro": {
+    "mtime": 1786004752.3379626,
+    "ast_hash": "c61fa0a6c511b077e0552dcaf37f7e12",
+    "semantic_hash": "c61fa0a6c511b077e0552dcaf37f7e12"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/landing/meta/[curso]/index.astro": {
+    "mtime": 1786004752.3383543,
+    "ast_hash": "ae2371e51671ab7234664a9638385a93",
+    "semantic_hash": "ae2371e51671ab7234664a9638385a93"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/legal/privacidad/index.astro": {
+    "mtime": 1786004752.3365877,
+    "ast_hash": "60404f5378bd3784063d25b1b78fc6cd",
+    "semantic_hash": "60404f5378bd3784063d25b1b78fc6cd"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/legal/terminos/index.astro": {
+    "mtime": 1786004752.3360639,
+    "ast_hash": "1fab3e115139160e85948323a00c201f",
+    "semantic_hash": "1fab3e115139160e85948323a00c201f"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/nosotros/index.astro": {
+    "mtime": 1786005018.53375,
+    "ast_hash": "d2cadb3ba89dcea195c9694f0405ecc5",
+    "semantic_hash": "d2cadb3ba89dcea195c9694f0405ecc5"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/sitemap-index.xml.ts": {
+    "mtime": 1786001028.265601,
+    "ast_hash": "f290b634e1a3ac82d013069cc567d424",
+    "semantic_hash": "f290b634e1a3ac82d013069cc567d424"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/sitemap/index.astro": {
+    "mtime": 1786004752.333765,
+    "ast_hash": "e826c9905b2bb5dc60f5a250f85a944a",
+    "semantic_hash": "e826c9905b2bb5dc60f5a250f85a944a"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/pages/sitemaps/[name].xml.ts": {
+    "mtime": 1786001133.508742,
+    "ast_hash": "3182613f56c504f9363e36010936c461",
+    "semantic_hash": "3182613f56c504f9363e36010936c461"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/tsconfig.json": {
+    "mtime": 1785999114.796846,
+    "ast_hash": "4da3c44495bb453660321254ba4c27e8",
+    "semantic_hash": "4da3c44495bb453660321254ba4c27e8"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/.github/PULL_REQUEST_TEMPLATE.md": {
+    "mtime": 1786001484.5779755,
+    "ast_hash": "ec635f14f32640043127d70ad7226bd8",
+    "semantic_hash": "ec635f14f32640043127d70ad7226bd8"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/.github/dependabot.yml": {
+    "mtime": 1786001481.0421157,
+    "ast_hash": "7fb9b382cd5c10be8a2cec0a8a35834c",
+    "semantic_hash": "7fb9b382cd5c10be8a2cec0a8a35834c"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/.github/workflows/ci.yml": {
+    "mtime": 1786001471.4003737,
+    "ast_hash": "2b268c094f3ba855ee13749c6ba1ec42",
+    "semantic_hash": "2b268c094f3ba855ee13749c6ba1ec42"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/.github/workflows/deploy-production.yml": {
+    "mtime": 1786001478.9592056,
+    "ast_hash": "506bf739a3cbc072ca12c16cd540ce2f",
+    "semantic_hash": "506bf739a3cbc072ca12c16cd540ce2f"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/.github/workflows/deploy-staging.yml": {
+    "mtime": 1786001474.7001166,
+    "ast_hash": "4fe6827bd87c50fb13950a139fa40ce3",
+    "semantic_hash": "4fe6827bd87c50fb13950a139fa40ce3"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/CHANGELOG.md": {
+    "mtime": 1786001469.7595007,
+    "ast_hash": "1eb6a4bffdb00fce0cbf2b541de184b1",
+    "semantic_hash": "1eb6a4bffdb00fce0cbf2b541de184b1"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/CONTRIBUTING.md": {
+    "mtime": 1786001458.4591615,
+    "ast_hash": "4de45449fa4b52538e0eb502ef0ffe02",
+    "semantic_hash": "4de45449fa4b52538e0eb502ef0ffe02"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/README.md": {
+    "mtime": 1786001451.2912927,
+    "ast_hash": "41aa5ca79ec27aa36844b13fb5499327",
+    "semantic_hash": "41aa5ca79ec27aa36844b13fb5499327"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/docs/DESIGN_SYSTEM.md": {
+    "mtime": 1786002004.0223703,
+    "ast_hash": "49c60f49993da76671340291598704cb",
+    "semantic_hash": "49c60f49993da76671340291598704cb"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/docs/ROADMAP.md": {
+    "mtime": 1786003510.203322,
+    "ast_hash": "ca813768f38b16ea8b307ed8206d86d5",
+    "semantic_hash": "ca813768f38b16ea8b307ed8206d86d5"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/docs/TRACKING.md": {
+    "mtime": 1786001575.0628054,
+    "ast_hash": "b6f5cee708127f37558826facbec5843",
+    "semantic_hash": "b6f5cee708127f37558826facbec5843"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/docs/auditoria/2026-08-06_auditoria-sitio-wordpress.md": {
+    "mtime": 1786001522.352842,
+    "ast_hash": "7fcfcce624b97e3b5ed5545163d484e6",
+    "semantic_hash": "7fcfcce624b97e3b5ed5545163d484e6"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/docs/diseno/2026-08-06_referencias-diseno.md": {
+    "mtime": 1786001522.3607037,
+    "ast_hash": "cda5ca27982f2b8058047f5e7cf2ac2b",
+    "semantic_hash": "cda5ca27982f2b8058047f5e7cf2ac2b"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/docs/plans/2026-08-06_reconstruccion-frontend.md": {
+    "mtime": 1786003510.2035086,
+    "ast_hash": "af66f27c5176539f4e84095795bb9a61",
+    "semantic_hash": "af66f27c5176539f4e84095795bb9a61"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/docs/seo/2026-08-06_estudio-keywords-ubersuggest.md": {
+    "mtime": 1786001522.3556705,
+    "ast_hash": "b21179b0df9c95ac300bb3b3dc19e362",
+    "semantic_hash": "b21179b0df9c95ac300bb3b3dc19e362"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/docs/seo/2026-08-06_proyecto-ubersuggest.md": {
+    "mtime": 1786001522.3587239,
+    "ast_hash": "1cc396dd9b803771d998e4697752c327",
+    "semantic_hash": "1cc396dd9b803771d998e4697752c327"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/public/robots.txt": {
+    "mtime": 1786001033.2426214,
+    "ast_hash": "b2e4b93141f8bee0b18bd80624c075a9",
+    "semantic_hash": "b2e4b93141f8bee0b18bd80624c075a9"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/content/courses/curso-de-bouquets-de-globos.mdx": {
+    "mtime": 1786005018.5319011,
+    "ast_hash": "2d2828bea8154c99046f68396b763bff",
+    "semantic_hash": "2d2828bea8154c99046f68396b763bff"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/content/courses/curso-de-flores-con-globos.mdx": {
+    "mtime": 1786005018.5320694,
+    "ast_hash": "c40693e5bfb1cc2aefe436355ba7cecc",
+    "semantic_hash": "c40693e5bfb1cc2aefe436355ba7cecc"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/content/courses/curso-de-globoflexia.mdx": {
+    "mtime": 1786005018.5322108,
+    "ast_hash": "e4275229598688be5cbafc9a9f2d72fa",
+    "semantic_hash": "e4275229598688be5cbafc9a9f2d72fa"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/src/content/courses/curso-de-globos-burbuja.mdx": {
+    "mtime": 1786005018.5324073,
+    "ast_hash": "b47bbaf0be2117cf360761e60a3e5b38",
+    "semantic_hash": "b47bbaf0be2117cf360761e60a3e5b38"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/public/favicon.svg": {
+    "mtime": 1786000071.6300402,
+    "ast_hash": "0c492abd5079acbb2f5d3a4a6353ca02",
+    "semantic_hash": "0c492abd5079acbb2f5d3a4a6353ca02"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/public/images/cursos/instructor-juan-manuel-marcos.jpg": {
+    "mtime": 1786000247.5416763,
+    "ast_hash": "5050c44e3bc2a846bda0ee14ca262258",
+    "semantic_hash": "5050c44e3bc2a846bda0ee14ca262258"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/public/images/decoracion-guirnalda.jpg": {
+    "mtime": 1786002471.8597727,
+    "ast_hash": "2c72320981d8de5a7f1011b3c5c39c7a",
+    "semantic_hash": "2c72320981d8de5a7f1011b3c5c39c7a"
+  },
+  "/Users/jpmisat/Documents/JP Projects/cursodeblogosonline.com/public/og-default.jpg": {
+    "mtime": 1786002471.8601532,
+    "ast_hash": "4d9ad22335c01e5248e2bdd8a54abbe3",
+    "semantic_hash": "4d9ad22335c01e5248e2bdd8a54abbe3"
+  }
+}
