@@ -1,0 +1,53 @@
+{
+  "name": "cursodeglobosonline-frontend",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "astro check",
+    "deploy": "npm run build && wrangler pages deploy dist/ --project-name=cursodeglobosonline-com",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^7.0.5",
+    "@astrojs/react": "^6.0.2",
+    "@fontsource-variable/fraunces": "^5.2.0",
+    "@fontsource-variable/nunito-sans": "^5.2.0",
+    "@nanostores/persistent": "^1.0.0",
+    "@nanostores/react": "^1.1.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.1.6",
+    "lucide-react": "^0.545.0",
+    "nanostores": "^1.4.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@commitlint/cli": "^21.2.1",
+    "@commitlint/config-conventional": "^21.2.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "husky": "^9.1.7",
+    "typescript": "^5.9.0",
+    "wrangler": "^4.42.0"
+  },
+  "overrides": {
+    "keyv": "<6.0.0",
+    "flat-cache": "<6.1.24",
+    "file-entry-cache": "<11.1.6",
+    "cacheable": "<2.5.1",
+    "cacheable-request": "<13.0.20",
+    "cache-manager": "<7.2.10",
+    "ecto": "<5.0.1",
+    "@cacheable/memory": "<2.2.1",
+    "@cacheable/node-cache": "<3.1.2",
+    "@cacheable/utils": "<2.5.1",
+    "@cacheable/net": "<2.1.1"
+  }
+}
