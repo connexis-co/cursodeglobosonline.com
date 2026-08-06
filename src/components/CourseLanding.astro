@@ -10,6 +10,7 @@ import CourseCard from '@/components/CourseCard.astro';
 import TestimonialCard from '@/components/TestimonialCard.astro';
 import CertificateShowcase from '@/components/CertificateShowcase.astro';
 import FaqAccordion from '@/components/FaqAccordion.astro';
+import HotmartBadge from '@/components/HotmartBadge.astro';
 import StickyCta from '@/components/StickyCta.astro';
 import { formatPrice, type Country, type City } from '@/lib/countries';
 import { getCategory } from '@/lib/categories';
@@ -188,7 +189,7 @@ const trackParams = JSON.stringify({
                   </div>
                   {discountPct && (
                     <span class="rounded-full bg-coral-500 px-4 py-2 text-sm font-extrabold text-white">
-                      🔥 {discountPct}% OFF aplicado en el enlace
+                      {discountPct}% OFF aplicado en el enlace
                     </span>
                   )}
                 </div>
@@ -206,20 +207,21 @@ const trackParams = JSON.stringify({
                 rel="noopener"
                 data-track="begin_checkout"
                 data-track-params={trackParams}
-                class="rounded-full bg-coral-500 px-8 py-4 text-center text-sm font-extrabold tracking-wide text-white uppercase shadow-cta transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600"
+                class="rounded-xl bg-coral-500 px-8 py-4 text-center text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600"
               >
                 {discountPct ? `Inscribirme con ${discountPct}% OFF` : 'Inscribirme ahora'}
               </a>
               <a
                 href="#temario"
-                class="rounded-full border-2 border-crema-300 px-8 py-4 text-center text-sm font-extrabold tracking-wide text-ciruela-600 uppercase transition-colors hover:border-coral-300 hover:text-coral-600"
+                class="rounded-xl border-2 border-crema-300 px-8 py-4 text-center text-sm font-bold text-ciruela-600 transition-colors hover:border-coral-300 hover:text-coral-600"
               >
                 Ver temario
               </a>
             </div>
-            <p class="mt-3.5 text-xs text-ciruela-400">
-              🛡️ 7 días de garantía: si no es lo que esperabas, Hotmart te devuelve el 100%.
-            </p>
+            <div class="mt-3.5 flex flex-wrap items-center gap-x-4 gap-y-1.5">
+              <HotmartBadge />
+              <p class="text-xs text-ciruela-400">7 días de garantía con devolución del 100%.</p>
+            </div>
           </div>
         </div>
 
@@ -440,7 +442,7 @@ const trackParams = JSON.stringify({
           rel="noopener"
           data-track="begin_checkout"
           data-track-params={trackParams}
-          class="inline-block rounded-full bg-coral-500 px-7 py-3.5 text-sm font-extrabold tracking-wide text-white uppercase shadow-cta transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600"
+          class="inline-block rounded-xl bg-coral-500 px-7 py-3.5 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600"
         >
           Quiero mi certificado
         </a>
@@ -471,8 +473,8 @@ const trackParams = JSON.stringify({
   <section class="contenedor py-16">
     <div class="relative overflow-hidden rounded-[2.5rem] bg-ciruela-900 p-8 text-center text-crema-50 sm:p-12">
       <div
-        class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full opacity-30 blur-3xl"
-        style="background: radial-gradient(circle, oklch(0.67 0.185 22 / 0.9), transparent 65%)"
+        class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full opacity-20 blur-3xl"
+        style="background: radial-gradient(circle, oklch(0.62 0.2 14 / 0.9), transparent 65%)"
         aria-hidden="true"
       >
       </div>
@@ -498,7 +500,7 @@ const trackParams = JSON.stringify({
         rel="noopener"
         data-track="begin_checkout"
         data-track-params={trackParams}
-        class="mt-7 inline-block rounded-full bg-coral-500 px-10 py-4 text-sm font-extrabold tracking-wide text-white uppercase shadow-cta transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-600"
+        class="mt-7 inline-block rounded-xl bg-coral-500 px-10 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-600"
       >
         {discountPct ? `Inscribirme con ${discountPct}% OFF` : 'Inscribirme ahora'}
       </a>

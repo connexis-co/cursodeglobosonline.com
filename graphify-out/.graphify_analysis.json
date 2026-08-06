@@ -1,0 +1,546 @@
+{
+  "communities": {
+    "0": [
+      "changelog",
+      "contributing",
+      "contributing_conventional_commits",
+      "contributing_git_flow",
+      "docs_auditoria_2026_08_06_auditoria_sitio_wordpress",
+      "docs_auditoria_2026_08_06_auditoria_sitio_wordpress_black_friday",
+      "docs_auditoria_2026_08_06_auditoria_sitio_wordpress_bug_cta_burbuja",
+      "docs_auditoria_2026_08_06_auditoria_sitio_wordpress_enlaces_hotmart_afiliado",
+      "docs_auditoria_2026_08_06_auditoria_sitio_wordpress_f62444331s",
+      "docs_auditoria_2026_08_06_auditoria_sitio_wordpress_g56852236m",
+      "docs_auditoria_2026_08_06_auditoria_sitio_wordpress_m47265375c",
+      "docs_auditoria_2026_08_06_auditoria_sitio_wordpress_offdiscount_031016",
+      "docs_auditoria_2026_08_06_auditoria_sitio_wordpress_redirecciones_301",
+      "docs_auditoria_2026_08_06_auditoria_sitio_wordpress_sably40",
+      "docs_auditoria_2026_08_06_auditoria_sitio_wordpress_seminarios_online",
+      "docs_auditoria_2026_08_06_auditoria_sitio_wordpress_sitio_wordpress",
+      "docs_auditoria_2026_08_06_auditoria_sitio_wordpress_u68605508w",
+      "docs_design_system",
+      "docs_design_system_fiesta_calibrada",
+      "docs_design_system_fraunces",
+      "docs_design_system_nunito_sans",
+      "docs_design_system_ondas_svg_divisorias",
+      "docs_design_system_paleta_oklch",
+      "docs_design_system_scroll_driven_animations",
+      "docs_diseno_2026_08_06_referencias_diseno",
+      "docs_diseno_2026_08_06_referencias_diseno_aprende_com",
+      "docs_diseno_2026_08_06_referencias_diseno_baloo_thambi_2",
+      "docs_diseno_2026_08_06_referencias_diseno_floating_animation",
+      "docs_diseno_2026_08_06_referencias_diseno_lbdballoons",
+      "docs_diseno_2026_08_06_referencias_diseno_menu_mobile_paneles",
+      "docs_diseno_2026_08_06_referencias_diseno_plantilla_pagina_curso",
+      "docs_diseno_2026_08_06_referencias_diseno_schema_course_jsonld",
+      "docs_diseno_2026_08_06_referencias_diseno_selector_pais_dialog",
+      "docs_plans_2026_08_06_reconstruccion_frontend",
+      "docs_plans_2026_08_06_reconstruccion_frontend_datos_honestos",
+      "docs_plans_2026_08_06_reconstruccion_frontend_emojis_en_titles",
+      "docs_plans_2026_08_06_reconstruccion_frontend_output_estatico",
+      "docs_plans_2026_08_06_reconstruccion_frontend_testimonios_placeholder",
+      "docs_roadmap",
+      "docs_roadmap_backend_laravel_core",
+      "docs_roadmap_capa_hiperlocal_ciudades",
+      "docs_roadmap_cutover_dns",
+      "docs_tracking",
+      "docs_tracking_agents_analytics_reader",
+      "docs_tracking_g_phn6j5mtx6",
+      "docs_tracking_g_wvtb898gph",
+      "docs_tracking_google_search_console",
+      "docs_tracking_gtm_kkp7wl8q",
+      "docs_tracking_meta_pixel",
+      "docs_tracking_taxonomia_eventos_datalayer",
+      "docs_tracking_utm_checkout",
+      "github_dependabot",
+      "github_pull_request_template",
+      "github_workflows_ci",
+      "github_workflows_deploy_production",
+      "github_workflows_deploy_production_release_please",
+      "github_workflows_deploy_staging",
+      "public_robots",
+      "readme",
+      "readme_academiadebelleza",
+      "readme_arquitectura_geo_8_paises",
+      "readme_astro_7",
+      "readme_cloudflare_pages",
+      "readme_cursodeglobosonline_com",
+      "readme_hotmart",
+      "readme_landings_ads_noindex",
+      "readme_sably",
+      "readme_tailwind_css_v4",
+      "src_content_courses_curso_de_bouquets_de_globos",
+      "src_content_courses_curso_de_flores_con_globos",
+      "src_content_courses_curso_de_globoflexia",
+      "src_content_courses_curso_de_globoflexia_juan_manuel_marcos",
+      "src_content_courses_curso_de_globos_burbuja"
+    ],
+    "1": [
+      "astro",
+      "astrojs_mdx",
+      "astrojs_react",
+      "fontsource_variable_fraunces",
+      "fontsource_variable_nunito_sans",
+      "lucide_react",
+      "nanostores",
+      "nanostores_persistent",
+      "nanostores_react",
+      "package_dependencies",
+      "package_dependencies_astro",
+      "package_dependencies_astrojs_mdx",
+      "package_dependencies_astrojs_react",
+      "package_dependencies_fontsource_variable_fraunces",
+      "package_dependencies_fontsource_variable_nunito_sans",
+      "package_dependencies_lucide_react",
+      "package_dependencies_nanostores",
+      "package_dependencies_nanostores_persistent",
+      "package_dependencies_nanostores_react",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "package_dependencies_tailwindcss",
+      "package_dependencies_tailwindcss_vite",
+      "react",
+      "react_dom",
+      "tailwindcss",
+      "tailwindcss_vite"
+    ],
+    "2": [
+      "package",
+      "package_name",
+      "package_overrides",
+      "package_overrides_cache_manager",
+      "package_overrides_cacheable",
+      "package_overrides_cacheable_memory",
+      "package_overrides_cacheable_net",
+      "package_overrides_cacheable_node_cache",
+      "package_overrides_cacheable_request",
+      "package_overrides_cacheable_utils",
+      "package_overrides_ecto",
+      "package_overrides_file_entry_cache",
+      "package_overrides_flat_cache",
+      "package_overrides_keyv",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_check",
+      "package_scripts_deploy",
+      "package_scripts_dev",
+      "package_scripts_lint",
+      "package_scripts_prepare",
+      "package_scripts_preview",
+      "package_type",
+      "package_version"
+    ],
+    "3": [
+      "src_components_footer",
+      "src_components_footer_string",
+      "src_components_header",
+      "src_components_header_closemenu",
+      "src_components_header_header",
+      "src_components_leadform",
+      "src_components_logo",
+      "src_components_stickycta",
+      "src_lib_countries",
+      "src_lib_countries_cities_enabled",
+      "src_lib_countries_countries",
+      "src_lib_countries_country",
+      "src_lib_countries_default_country",
+      "src_lib_countries_formatprice",
+      "src_lib_countries_getcity",
+      "src_lib_countries_getcountry",
+      "src_lib_countries_localprice",
+      "src_pages_country_cursos_category_index",
+      "src_pages_country_cursos_category_index_courses",
+      "src_pages_country_cursos_category_index_getstaticpaths",
+      "src_pages_country_item_curso_index",
+      "src_pages_country_item_curso_index_getstaticpaths",
+      "src_pages_country_item_index",
+      "src_pages_country_item_index_getstaticpaths"
+    ],
+    "4": [
+      "astro_content",
+      "src_components_certificateshowcase",
+      "src_components_coursecard",
+      "src_components_courselanding",
+      "src_components_rating",
+      "src_components_rating_stars",
+      "src_components_testimonialcard",
+      "src_components_testimonialcard_avatar_colors",
+      "src_components_testimonialcard_city",
+      "src_components_testimonialcard_country",
+      "src_components_trustbar",
+      "src_components_wave",
+      "src_lib_seo_countryalternates",
+      "src_lib_seo_faqschema",
+      "src_pages_country_index",
+      "src_pages_country_index_courses",
+      "src_pages_country_index_faqs",
+      "src_pages_country_index_getstaticpaths",
+      "src_pages_country_index_testimonials",
+      "src_pages_index"
+    ],
+    "5": [
+      "src_components_seo",
+      "src_layouts_baselayout",
+      "src_layouts_landinglayout",
+      "src_lib_seo",
+      "src_lib_seo_breadcrumbitem",
+      "src_lib_seo_courseschema",
+      "src_lib_seo_courseschemainput",
+      "src_lib_seo_faqentry",
+      "src_lib_seo_hreflangalternate",
+      "src_lib_seo_organizationschema",
+      "src_lib_site",
+      "src_lib_site_cdn_url",
+      "src_lib_site_ga4_id",
+      "src_lib_site_gtm_id",
+      "src_lib_site_leads_endpoint",
+      "src_lib_site_meta_pixel_id",
+      "src_lib_site_site",
+      "src_pages_404",
+      "src_pages_legal_privacidad_index",
+      "src_pages_legal_terminos_index"
+    ],
+    "6": [
+      "astrojs_check",
+      "commitlint_cli",
+      "commitlint_config_conventional",
+      "husky",
+      "package_devdependencies",
+      "package_devdependencies_astrojs_check",
+      "package_devdependencies_commitlint_cli",
+      "package_devdependencies_commitlint_config_conventional",
+      "package_devdependencies_husky",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_typescript",
+      "package_devdependencies_wrangler",
+      "types_react",
+      "types_react_dom",
+      "typescript",
+      "wrangler"
+    ],
+    "7": [
+      "src_components_balloons",
+      "src_components_balloons_g",
+      "src_components_balloons_paleta",
+      "src_components_citylanding",
+      "src_components_citylanding_citylocal",
+      "src_components_citylanding_courses",
+      "src_components_citylanding_faqs",
+      "src_components_citylanding_testimonials",
+      "src_components_sectionheading",
+      "src_lib_cities",
+      "src_lib_cities_city_local",
+      "src_lib_cities_citylocal",
+      "src_lib_cities_getcitylocal",
+      "src_lib_countries_city",
+      "src_pages_blog_index",
+      "src_pages_blog_index_posts",
+      "src_pages_nosotros_index"
+    ],
+    "8": [
+      "ref",
+      "ref_astro_tsconfigs_strict",
+      "ref_astro_types_d_ts",
+      "ref_dist",
+      "ref_node_modules",
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_baseurl",
+      "tsconfig_compileroptions_jsx",
+      "tsconfig_compileroptions_jsximportsource",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_exclude",
+      "tsconfig_extends",
+      "tsconfig_include"
+    ],
+    "9": [
+      "src_components_adslanding",
+      "src_components_whatsappfloat",
+      "src_components_whatsappfloat_href",
+      "src_lib_hotmart",
+      "src_lib_hotmart_buildhotmarturl",
+      "src_lib_hotmart_buildwhatsappurl",
+      "src_lib_hotmart_hotmarturlparams",
+      "src_pages_contacto_index",
+      "src_pages_contacto_index_country",
+      "src_pages_contacto_index_waurl",
+      "src_pages_landing_google_curso_index",
+      "src_pages_landing_google_curso_index_getstaticpaths",
+      "src_pages_landing_meta_curso_index",
+      "src_pages_landing_meta_curso_index_getstaticpaths"
+    ],
+    "10": [
+      "src_lib_sitemap",
+      "src_lib_sitemap_blogurls",
+      "src_lib_sitemap_categoriasurls",
+      "src_lib_sitemap_cursosurls",
+      "src_lib_sitemap_pagesurls",
+      "src_lib_sitemap_renderurlset",
+      "src_lib_sitemap_sitemap_names",
+      "src_lib_sitemap_u",
+      "src_lib_sitemap_urlentry",
+      "src_pages_sitemap_index_xml",
+      "src_pages_sitemap_index_xml_get",
+      "src_pages_sitemaps_name_xml",
+      "src_pages_sitemaps_name_xml_get",
+      "src_pages_sitemaps_name_xml_getstaticpaths"
+    ],
+    "11": [
+      "src_lib_categories",
+      "src_lib_categories_categories",
+      "src_lib_categories_category",
+      "src_lib_categories_getcategory",
+      "src_lib_categories_subcategory",
+      "src_lib_seo_breadcrumbschema",
+      "src_pages_country_cursos_index",
+      "src_pages_country_cursos_index_activecategories",
+      "src_pages_country_cursos_index_courses",
+      "src_pages_country_cursos_index_getstaticpaths",
+      "src_pages_sitemap_index",
+      "src_pages_sitemap_index_activecategories"
+    ],
+    "12": [
+      "docs_roadmap_cluster_arcos_de_globos",
+      "docs_seo_2026_08_06_estudio_keywords_ubersuggest",
+      "docs_seo_2026_08_06_estudio_keywords_ubersuggest_balloonsbyluzpaz_com",
+      "docs_seo_2026_08_06_estudio_keywords_ubersuggest_como_hacer_arcos_de_globos",
+      "docs_seo_2026_08_06_estudio_keywords_ubersuggest_curso_de_decoracion_con_globos",
+      "docs_seo_2026_08_06_estudio_keywords_ubersuggest_curso_de_globoflexia",
+      "docs_seo_2026_08_06_estudio_keywords_ubersuggest_decoracion_con_globos",
+      "docs_seo_2026_08_06_estudio_keywords_ubersuggest_superglobos_com",
+      "docs_seo_2026_08_06_proyecto_ubersuggest",
+      "docs_seo_2026_08_06_proyecto_ubersuggest_proyecto_78195c4e"
+    ],
+    "13": [
+      "src_components_faqaccordion",
+      "src_components_geotoast",
+      "src_components_geotoast_string",
+      "src_components_geotoast_toast",
+      "src_layouts_baselayout_if",
+      "src_lib_analytics",
+      "src_lib_analytics_eventparams",
+      "src_lib_analytics_meta_map",
+      "src_lib_analytics_trackevent",
+      "src_lib_analytics_window"
+    ],
+    "14": [
+      "commitlintrc",
+      "commitlintrc_extends",
+      "commitlintrc_rules",
+      "commitlintrc_rules_subject_case",
+      "commitlintrc_rules_subject_max_length",
+      "commitlintrc_rules_type_enum",
+      "ref_always",
+      "ref_commitlint_config_conventional",
+      "ref_never"
+    ],
+    "15": [
+      "cursodeglobosonline_brand_identity",
+      "cursodeglobosonline_brand_palette",
+      "cursodeglobosonline_home_showcase",
+      "cursodeglobosonline_social_sharing",
+      "guirnalda_organica_technique",
+      "public_favicon_balloon_icon",
+      "public_images_decoracion_guirnalda_photo",
+      "public_og_default_social_image"
+    ],
+    "16": [
+      "src_content_config",
+      "src_content_config_blog",
+      "src_content_config_categoryslugs",
+      "src_content_config_collections",
+      "src_content_config_courses",
+      "src_content_config_testimonials"
+    ],
+    "17": [
+      "src_components_coursecover",
+      "src_components_coursecover_confeti",
+      "src_components_coursecover_confetti",
+      "src_components_coursecover_garland",
+      "src_components_coursecover_rand"
+    ],
+    "18": [
+      "cursodeglobosonline_course_pages",
+      "globoflexia_discipline",
+      "juan_manuel_marcos_instructor",
+      "public_images_cursos_instructor_juan_manuel_marcos_portrait"
+    ],
+    "19": [
+      "astro_config"
+    ],
+    "20": [
+      "src_components_discountchip"
+    ]
+  },
+  "cohesion": {
+    "0": 0.06887366818873668,
+    "1": 0.07407407407407407,
+    "2": 0.08,
+    "3": 0.16304347826086957,
+    "4": 0.18421052631578946,
+    "5": 0.18947368421052632,
+    "6": 0.11764705882352941,
+    "7": 0.1323529411764706,
+    "8": 0.14285714285714285,
+    "9": 0.17582417582417584,
+    "10": 0.32967032967032966,
+    "11": 0.21212121212121213,
+    "12": 0.3111111111111111,
+    "13": 0.2,
+    "14": 0.25,
+    "15": 0.35714285714285715,
+    "16": 0.3333333333333333,
+    "17": 0.5,
+    "18": 0.5,
+    "19": 1.0,
+    "20": 1.0
+  },
+  "gods": [
+    {
+      "id": "docs_auditoria_2026_08_06_auditoria_sitio_wordpress",
+      "label": "Auditor\u00eda t\u00e9cnica del sitio WordPress vivo",
+      "degree": 26
+    },
+    {
+      "id": "docs_plans_2026_08_06_reconstruccion_frontend",
+      "label": "Plan de reconstrucci\u00f3n frontend",
+      "degree": 22
+    },
+    {
+      "id": "src_lib_countries_countries",
+      "label": "COUNTRIES",
+      "degree": 20
+    },
+    {
+      "id": "changelog",
+      "label": "CHANGELOG (v0.1.0)",
+      "degree": 18
+    },
+    {
+      "id": "readme",
+      "label": "README del repo cursodeglobosonline.com",
+      "degree": 17
+    },
+    {
+      "id": "src_lib_site_site",
+      "label": "SITE",
+      "degree": 16
+    },
+    {
+      "id": "docs_roadmap",
+      "label": "Roadmap del proyecto",
+      "degree": 16
+    },
+    {
+      "id": "package_overrides",
+      "label": "overrides",
+      "degree": 12
+    },
+    {
+      "id": "docs_diseno_2026_08_06_referencias_diseno",
+      "label": "Referencias de dise\u00f1o (LBD, ADB, aprende, sably)",
+      "degree": 11
+    },
+    {
+      "id": "src_content_courses_curso_de_globoflexia",
+      "label": "Curso de Globoflexia",
+      "degree": 10
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Landings de Ads /landing/ (noindex)",
+      "target": "/black-friday/ (landing WordPress)",
+      "source_files": [
+        "README.md",
+        "docs/auditoria/2026-08-06_auditoria-sitio-wordpress.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "Curso de Globoflexia",
+      "target": "M47265375C (checkout Hotmart Globoflexia)",
+      "source_files": [
+        "src/content/courses/curso-de-globoflexia.mdx",
+        "docs/auditoria/2026-08-06_auditoria-sitio-wordpress.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "shares_data_with",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `M47265375C (checkout Hotmart Globoflexia)` unexpectedly reaches hub `Curso de Globoflexia`"
+    },
+    {
+      "source": "Curso de Bouquets de Globos",
+      "target": "G56852236M (checkout Hotmart Bouquets)",
+      "source_files": [
+        "src/content/courses/curso-de-bouquets-de-globos.mdx",
+        "docs/auditoria/2026-08-06_auditoria-sitio-wordpress.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "shares_data_with",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `G56852236M (checkout Hotmart Bouquets)` unexpectedly reaches hub `Curso de Bouquets de Globos`"
+    },
+    {
+      "source": "Curso de Flores con Globos",
+      "target": "U68605508W (checkout Hotmart Flores)",
+      "source_files": [
+        "src/content/courses/curso-de-flores-con-globos.mdx",
+        "docs/auditoria/2026-08-06_auditoria-sitio-wordpress.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "shares_data_with",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `U68605508W (checkout Hotmart Flores)` unexpectedly reaches hub `Curso de Flores con Globos`"
+    },
+    {
+      "source": "Curso de Globos Burbuja",
+      "target": "F62444331S (checkout Hotmart Globos Burbuja)",
+      "source_files": [
+        "src/content/courses/curso-de-globos-burbuja.mdx",
+        "docs/auditoria/2026-08-06_auditoria-sitio-wordpress.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "shares_data_with",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `F62444331S (checkout Hotmart Globos Burbuja)` unexpectedly reaches hub `Curso de Globos Burbuja`"
+    }
+  ],
+  "questions": [
+    {
+      "type": "ambiguous_edge",
+      "question": "What is the exact relationship between `G-PHN6J5MTX6 (GA4 v\u00eda GTM)` and `Proyecto Ubersuggest 78195c4e (cursodeglobosonline.com)`?",
+      "why": "Edge tagged AMBIGUOUS (relation: shares_data_with) - confidence is low."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `Community 1` to `Community 2`?",
+      "why": "High betweenness centrality (0.026) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `devDependencies` connect `Community 6` to `Community 2`?",
+      "why": "High betweenness centrality (0.017) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `Roadmap del proyecto` connect `Community 0` to `Community 12`?",
+      "why": "High betweenness centrality (0.016) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `@commitlint/config-conventional`, `never`, `name` to the rest of the system?",
+      "why": "108 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.06887366818873668 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

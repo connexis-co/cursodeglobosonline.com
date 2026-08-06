@@ -24,15 +24,15 @@ const c = country ?? COUNTRIES.find((x) => x.code === DEFAULT_COUNTRY)!;
 
   <div class="mt-6 grid gap-4 sm:grid-cols-2">
     <label class="block">
-      <span class="mb-1.5 block text-xs font-bold tracking-wide text-ciruela-600 uppercase">Nombre</span>
+      <span class="mb-1.5 block text-xs font-bold text-ciruela-600">Nombre</span>
       <input type="text" name="nombre" required placeholder="¿Cómo te llamas?" class="field" />
     </label>
     <label class="block">
-      <span class="mb-1.5 block text-xs font-bold tracking-wide text-ciruela-600 uppercase">WhatsApp</span>
+      <span class="mb-1.5 block text-xs font-bold text-ciruela-600">WhatsApp</span>
       <input type="tel" name="whatsapp" required placeholder={c.phoneDisplay} class="field" />
     </label>
     <label class="block sm:col-span-2">
-      <span class="mb-1.5 block text-xs font-bold tracking-wide text-ciruela-600 uppercase">Curso de interés</span>
+      <span class="mb-1.5 block text-xs font-bold text-ciruela-600">Curso de interés</span>
       <select name="curso" class="field" required>
         {courses.map((course) => <option value={course.data.title}>{course.data.title}</option>)}
         <option value="Aún no sé">Aún no sé, quiero asesoría</option>
@@ -42,9 +42,9 @@ const c = country ?? COUNTRIES.find((x) => x.code === DEFAULT_COUNTRY)!;
 
   <button
     type="submit"
-    class="mt-6 w-full rounded-full bg-coral-500 px-6 py-4 text-sm font-extrabold tracking-wide text-white uppercase shadow-cta transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600 sm:w-auto"
+    class="mt-6 w-full rounded-xl bg-coral-500 px-6 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600 sm:w-auto"
   >
-    Quiero información 🎈
+    Quiero información
   </button>
   <p class="mt-3 text-[0.7rem] text-ciruela-400">
     Al enviar aceptas nuestra <a href="/legal/privacidad/" class="underline">política de privacidad</a>. Tus datos
@@ -93,7 +93,7 @@ const c = country ?? COUNTRIES.find((x) => x.code === DEFAULT_COUNTRY)!;
   }
   .field:focus {
     border-color: var(--color-coral-400);
-    box-shadow: 0 0 0 3px oklch(0.67 0.185 22 / 0.15);
+    box-shadow: 0 0 0 3px oklch(0.62 0.2 14 / 0.15);
   }
   .field::placeholder {
     color: var(--color-ciruela-300);
