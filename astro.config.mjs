@@ -8,6 +8,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://cursodeglobosonline.com',
   trailingSlash: 'always',
+  // El panel de preview asigna el puerto vía PORT (autoPort); 4321 suele estar
+  // ocupado por otros proyectos del workspace.
+  server: { port: Number(process.env.PORT) || 4321 },
   integrations: [react(), mdx()],
   vite: {
     plugins: [tailwindcss()],

@@ -29,6 +29,8 @@ interface Globo {
   /** Distancia de parallax al scroll (px, positivo = baja). */
   plx?: number;
   rise?: boolean;
+  /** Globo XL sangrante: se oculta en móvil para no tapar el contenido. */
+  xl?: boolean;
 }
 
 /** [base, luz, sombra] — la sombra del borde inferior da el volumen del látex real. */
@@ -61,15 +63,15 @@ const g = (
 const VARIANTS: Record<string, Globo[]> = {
   hero: [
     // XL sangrando fuera de la sección (delays negativos exactos de LBD: 0/-0.3/-0.6/-1)
-    g('coral', 320, { left: '-110px', top: '-70px', plx: 110 }, '0s', '3s', 0.95),
-    g('sol', 250, { right: '-85px', top: '26%', plx: 70 }, '-1s', '3.6s', 0.95),
+    { ...g('coral', 320, { left: '-110px', top: '-70px', plx: 110 }, '0s', '3s', 0.95), xl: true },
+    { ...g('sol', 250, { right: '-85px', top: '26%', plx: 70 }, '-1s', '3.6s', 0.95), xl: true },
     g('aqua', 96, { left: '10%', top: '56%', plx: 140 }, '-0.3s', '3.3s', 0.9),
     g('lila', 62, { right: '17%', top: '66%', plx: 90 }, '-0.6s', '3.8s', 0.8),
     g('dorado', 44, { left: '26%', top: '24%', plx: 55 }, '-1.4s', '4.1s', 0.55),
     g('coral', 36, { right: '31%', top: '15%', plx: 40 }, '-2s', '3.5s', 0.5),
   ],
-  'corner-left': [g('aqua', 230, { left: '-80px', bottom: '-90px', plx: -60 }, '-0.6s', '3.4s', 0.92)],
-  'corner-right': [g('lila', 240, { right: '-85px', top: '-80px', plx: 80 }, '-0.3s', '3.2s', 0.92)],
+  'corner-left': [{ ...g('aqua', 230, { left: '-80px', bottom: '-90px', plx: -60 }, '-0.6s', '3.4s', 0.92), xl: true }],
+  'corner-right': [{ ...g('lila', 240, { right: '-85px', top: '-80px', plx: 80 }, '-0.3s', '3.2s', 0.92), xl: true }],
   rise: [
     { ...g('coral', 34, { left: '8%' }, '0s', '16s', 0.6), rise: true },
     { ...g('aqua', 26, { left: '28%' }, '4s', '19s', 0.5), rise: true },
@@ -93,7 +95,7 @@ let uid = 0;
       }${b.bottom ? `bottom:${b.bottom};` : ''}`;
       return (
         <div
-          class={b.rise ? '' : 'globo-plx'}
+          class:list={[b.rise ? '' : 'globo-plx', b.xl && 'hidden sm:block']}
           style={`position:absolute;${pos}width:${b.size}px;height:${Math.round(b.size * 1.55)}px;${
             b.plx !== undefined ? `--plx:${b.plx}px;` : ''
           }`}

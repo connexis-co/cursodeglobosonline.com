@@ -1,145 +1,258 @@
 ---
+import { getCollection } from 'astro:content';
 import Logo from './Logo.astro';
 import { COUNTRIES, DEFAULT_COUNTRY, type Country } from '@/lib/countries';
 import { CATEGORIES } from '@/lib/categories';
+import { buildWhatsAppUrl } from '@/lib/hotmart';
 
 interface Props {
   country?: Country;
   pathAfterCountry?: string;
+  /** @deprecated El header ahora es siempre sólido claro (patrón Open English/aprende.com). */
   transparent?: boolean;
 }
 
-const { country, pathAfterCountry = '/', transparent = false } = Astro.props;
+const { country, pathAfterCountry = '/' } = Astro.props;
 const cc = country?.code ?? DEFAULT_COUNTRY;
 const base = `/${cc}`;
 const current = country ?? COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
+const waUrl = buildWhatsAppUrl(current.whatsapp, 'Hola 🎈 Quiero información sobre los cursos de decoración con globos.');
+
+const courses = (await getCollection('courses')).sort(
+  (a, b) => Number(b.data.featured) - Number(a.data.featured),
+);
+const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.category === cat.slug));
 ---
 
 <header
   id="site-header"
-  data-transparent={transparent ? 'true' : undefined}
-  class:list={[
-    'fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300',
-    transparent
-      ? 'border-b border-transparent text-crema-50'
-      : 'border-b border-crema-200 bg-crema-50/92 text-ciruela-800 backdrop-blur-md',
-  ]}
+  class="sticky top-0 z-50 border-b border-crema-200 bg-white/95 backdrop-blur-md transition-shadow duration-300"
 >
-  <div class="contenedor flex h-16 items-center justify-between gap-4 lg:h-18">
+  <div class="contenedor flex h-[72px] items-center gap-5">
     <a href={country ? `${base}/` : '/'} class="shrink-0" aria-label="Curso de Globos Online — inicio">
       <Logo />
     </a>
 
-    <nav class="hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
-      <a href={`${base}/cursos/`} class="nav-link">Cursos</a>
-      <details class="nav-dropdown group relative">
-        <summary class="nav-link flex cursor-pointer list-none items-center gap-1">
-          Categorías
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="transition-transform group-open:rotate-180" aria-hidden="true">
+    <!-- Navegación desktop -->
+    <nav class="hidden flex-1 items-center gap-0.5 lg:flex" aria-label="Navegación principal">
+      <!-- Mega menú de Cursos (patrón aprende.com) -->
+      <div class="mega group relative">
+        <button
+          class="nav-link flex items-center gap-1.5"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Cursos
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="transition-transform duration-200 group-hover:rotate-180" aria-hidden="true">
             <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
-        </summary>
+        </button>
+        <!-- puente invisible para no perder el hover -->
         <div
-          class="absolute left-0 top-full mt-2 w-80 rounded-2xl border border-crema-200 bg-crema-50 p-2 text-ciruela-800 shadow-tarjeta"
+          class="invisible absolute left-1/2 top-full z-50 w-[840px] max-w-[calc(100vw-3rem)] -translate-x-1/2 translate-y-2 pt-3 opacity-0 transition-[opacity,transform,visibility] duration-200 ease-suave group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
         >
-          {
-            CATEGORIES.map((cat) => (
-              <a
-                href={`${base}/cursos/${cat.slug}/`}
-                class="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-coral-50"
-              >
-                <span class="text-xl" aria-hidden="true">
-                  {cat.emoji}
-                </span>
-                <span>
-                  <span class="block font-bold">{cat.name}</span>
-                  <span class="mt-0.5 line-clamp-2 block text-xs text-ciruela-500">{cat.short}</span>
-                </span>
-              </a>
-            ))
-          }
+          <div class="overflow-hidden rounded-2xl border border-crema-200 bg-white shadow-[0_24px_64px_-16px_oklch(0.27_0.05_292/0.28)]">
+            <div class="grid lg:grid-cols-[250px_1fr]">
+              <!-- Columna izquierda: categorías + asesoría -->
+              <aside class="flex flex-col justify-between border-r border-crema-200 bg-crema-50 p-5">
+                <div>
+                  <p class="mb-3 text-[0.65rem] font-extrabold tracking-[0.18em] text-ciruela-400 uppercase">
+                    Categorías
+                  </p>
+                  <ul class="space-y-1">
+                    {
+                      activeCategories.map((cat) => (
+                        <li>
+                          <a
+                            href={`${base}/cursos/${cat.slug}/`}
+                            class="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-semibold text-ciruela-700 transition-colors hover:bg-coral-50 hover:text-coral-600"
+                          >
+                            <span aria-hidden="true">{cat.emoji}</span>
+                            {cat.name}
+                          </a>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </div>
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener"
+                  data-track="click_whatsapp"
+                  data-track-params={JSON.stringify({ page_location: 'header_mega' })}
+                  class="mt-5 block rounded-xl border border-crema-300 bg-white p-3.5 transition-colors hover:border-coral-300"
+                >
+                  <span class="block text-xs font-bold text-ciruela-800">¿No sabes cuál elegir?</span>
+                  <span class="mt-0.5 block text-xs text-ciruela-500">Te asesoramos por WhatsApp →</span>
+                </a>
+              </aside>
+
+              <!-- Columna derecha: los cursos -->
+              <div class="p-5">
+                <p class="mb-3 text-[0.65rem] font-extrabold tracking-[0.18em] text-ciruela-400 uppercase">
+                  Nuestros cursos
+                </p>
+                <div class="grid grid-cols-2 gap-2">
+                  {
+                    courses.map((c) => (
+                      <a
+                        href={`${base}/${c.id}/`}
+                        class="group/item flex items-center gap-3 rounded-xl p-2.5 transition-colors hover:bg-crema-50"
+                      >
+                        {c.data.cover && (
+                          <img
+                            src={c.data.cover}
+                            alt=""
+                            class="h-14 w-14 shrink-0 rounded-lg object-cover"
+                            loading="lazy"
+                            width="56"
+                            height="56"
+                          />
+                        )}
+                        <span class="min-w-0">
+                          <span class="flex items-center gap-1.5">
+                            <span class="truncate text-sm font-bold text-ciruela-800 group-hover/item:text-coral-600">
+                              {c.data.title.replace('Curso de ', '')}
+                            </span>
+                            {c.data.discountPct && (
+                              <span class="shrink-0 rounded-full bg-coral-500 px-1.5 py-0.5 text-[0.6rem] font-extrabold text-white">
+                                −{c.data.discountPct}%
+                              </span>
+                            )}
+                          </span>
+                          <span class="block text-xs text-ciruela-400">
+                            {c.data.lessonsCount} videos · Certificado
+                          </span>
+                        </span>
+                      </a>
+                    ))
+                  }
+                </div>
+                <div class="mt-4 flex items-center justify-between border-t border-crema-200 pt-3.5">
+                  <a
+                    href={`${base}/cursos/`}
+                    class="text-sm font-bold text-coral-600 transition-colors hover:text-coral-700"
+                  >
+                    Ver todos los cursos →
+                  </a>
+                  <span class="text-xs text-ciruela-400">Garantía de 7 días · Acceso de por vida</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </details>
+      </div>
+
       <a href="/blog/" class="nav-link">Blog</a>
       <a href="/nosotros/" class="nav-link">Nosotros</a>
     </nav>
 
-    <div class="hidden items-center gap-3 lg:flex">
+    <!-- Cluster derecho desktop -->
+    <div class="hidden items-center gap-2.5 lg:flex">
+      <!-- WhatsApp visible (equivalente al teléfono de Open English) -->
+      <a
+        href={waUrl}
+        target="_blank"
+        rel="noopener"
+        data-track="click_whatsapp"
+        data-track-params={JSON.stringify({ page_location: 'header' })}
+        class="flex items-center gap-2 rounded-xl border border-crema-300 px-3.5 py-2 text-sm font-semibold text-ciruela-700 transition-colors hover:border-[#25d366] hover:text-[#1da851]"
+      >
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" class="text-[#25d366]" aria-hidden="true">
+          <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.3 0-.2 0-.3-.1-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.7-.4Z"></path>
+        </svg>
+        <span class="hidden xl:inline">Escríbenos</span>
+      </a>
+
+      <!-- Selector de país -->
       <details class="nav-dropdown group relative">
         <summary
-          class="flex cursor-pointer list-none items-center gap-1.5 rounded-full border border-current/20 px-3 py-1.5 text-sm font-semibold transition-colors hover:border-current/40"
+          class="flex cursor-pointer list-none items-center gap-1.5 rounded-xl border border-crema-300 px-3 py-2 text-sm font-semibold text-ciruela-700 transition-colors hover:border-crema-300 hover:bg-crema-50"
           aria-label={`País actual: ${current.name}. Cambiar país`}
         >
           <span aria-hidden="true">{current.flag}</span>
-          <span class="uppercase">{current.code}</span>
+          <span class="hidden uppercase xl:inline">{current.code}</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="transition-transform group-open:rotate-180" aria-hidden="true">
             <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </summary>
         <div
-          class="absolute right-0 top-full mt-2 w-60 rounded-2xl border border-crema-200 bg-crema-50 p-2 text-ciruela-800 shadow-tarjeta"
+          class="absolute right-0 top-full z-50 mt-2 w-60 rounded-2xl border border-crema-200 bg-white p-2 shadow-[0_24px_64px_-16px_oklch(0.27_0.05_292/0.28)]"
         >
+          <p class="px-3 pt-1.5 pb-2 text-[0.65rem] font-extrabold tracking-[0.18em] text-ciruela-400 uppercase">
+            Tu país
+          </p>
           {
             COUNTRIES.map((c) => (
               <a
                 href={`/${c.code}${pathAfterCountry}`}
                 data-country-link={c.code}
                 class:list={[
-                  'flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm transition-colors hover:bg-coral-50',
-                  c.code === cc && 'bg-crema-100 font-bold',
+                  'flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm transition-colors hover:bg-crema-50',
+                  c.code === cc ? 'font-bold text-coral-600' : 'text-ciruela-700',
                 ]}
               >
                 <span aria-hidden="true">{c.flag}</span>
                 <span class="flex-1">{c.name}</span>
-                <span class="text-xs text-ciruela-400">{c.currency}</span>
+                {c.code === cc ? (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                ) : (
+                  <span class="text-xs text-ciruela-300">{c.currency}</span>
+                )}
               </a>
             ))
           }
         </div>
       </details>
+
+      <!-- CTA principal -->
       <a
         href={`${base}/cursos/`}
         class="rounded-xl bg-coral-500 px-5 py-2.5 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600"
       >
-        Ver cursos
+        Empezar ahora
       </a>
     </div>
 
+    <!-- Hamburguesa mobile -->
     <button
       id="menu-open"
-      class="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-current/10 lg:hidden"
+      class="ml-auto flex h-11 w-11 items-center justify-center rounded-xl border border-crema-300 text-ciruela-700 transition-colors hover:bg-crema-50 lg:hidden"
       aria-label="Abrir menú"
       aria-haspopup="dialog"
     >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
       </svg>
     </button>
   </div>
 </header>
 
-<!-- Menú mobile full-page (patrón aprende.com, portado del ecosistema Sably) -->
+<!-- Menú mobile full-page (patrón aprende.com) -->
 <dialog
   id="mobile-menu"
   class="m-0 h-dvh max-h-dvh w-full max-w-full bg-crema-50 text-ciruela-800 backdrop:bg-ciruela-900/40"
 >
   <div class="flex h-full flex-col">
-    <div class="contenedor flex h-16 shrink-0 items-center justify-between">
+    <div class="contenedor flex h-[72px] shrink-0 items-center justify-between border-b border-crema-200 bg-white">
       <Logo size={32} />
       <button
         id="menu-close"
-        class="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-crema-200"
+        class="flex h-11 w-11 items-center justify-center rounded-xl border border-crema-300 transition-colors hover:bg-crema-100"
         aria-label="Cerrar menú"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
         </svg>
       </button>
     </div>
 
-    <div class="contenedor flex-1 overflow-y-auto pb-10">
-      <form action={`${base}/cursos/`} method="get" class="menu-item mb-6" style="--i: 0" role="search">
-        <label class="flex items-center gap-3 rounded-2xl border border-crema-300 bg-white px-4 py-3">
+    <div class="contenedor flex-1 overflow-y-auto pt-5 pb-10">
+      <form action={`${base}/cursos/`} method="get" class="menu-item mb-5" style="--i: 0" role="search">
+        <label class="flex items-center gap-3 rounded-xl border border-crema-300 bg-white px-4 py-3">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="shrink-0 text-ciruela-400" aria-hidden="true">
             <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
             <path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
@@ -153,22 +266,55 @@ const current = country ?? COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
         </label>
       </form>
 
-      <nav class="flex flex-col" aria-label="Menú móvil">
-        <a href={`${base}/cursos/`} class="menu-item menu-row" style="--i: 1">📚 Todos los cursos</a>
+      <!-- Cursos con miniatura (mega menú llevado a mobile) -->
+      <p class="menu-item mb-2 text-xs font-extrabold tracking-[0.18em] text-ciruela-400 uppercase" style="--i: 1">
+        Nuestros cursos
+      </p>
+      <div class="menu-item space-y-1.5" style="--i: 2">
         {
-          CATEGORIES.map((cat, i) => (
-            <a href={`${base}/cursos/${cat.slug}/`} class="menu-item menu-row" style={`--i: ${i + 2}`}>
+          courses.map((c) => (
+            <a
+              href={`${base}/${c.id}/`}
+              class="flex items-center gap-3 rounded-xl border border-crema-200 bg-white p-2.5"
+            >
+              {c.data.cover && (
+                <img src={c.data.cover} alt="" class="h-12 w-12 shrink-0 rounded-lg object-cover" loading="lazy" width="48" height="48" />
+              )}
+              <span class="min-w-0 flex-1">
+                <span class="flex items-center gap-1.5">
+                  <span class="truncate text-sm font-bold">{c.data.title.replace('Curso de ', '')}</span>
+                  {c.data.discountPct && (
+                    <span class="shrink-0 rounded-full bg-coral-500 px-1.5 py-0.5 text-[0.6rem] font-extrabold text-white">
+                      −{c.data.discountPct}%
+                    </span>
+                  )}
+                </span>
+                <span class="block text-xs text-ciruela-400">{c.data.lessonsCount} videos · Certificado</span>
+              </span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="shrink-0 text-ciruela-300" aria-hidden="true">
+                <path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          ))
+        }
+      </div>
+
+      <nav class="mt-5 flex flex-col" aria-label="Menú móvil">
+        <a href={`${base}/cursos/`} class="menu-item menu-row" style="--i: 3">Todos los cursos</a>
+        {
+          activeCategories.map((cat, i) => (
+            <a href={`${base}/cursos/${cat.slug}/`} class="menu-item menu-row" style={`--i: ${i + 4}`}>
               {cat.emoji} {cat.name}
             </a>
           ))
         }
-        <a href="/blog/" class="menu-item menu-row" style="--i: 5">📝 Blog</a>
-        <a href="/nosotros/" class="menu-item menu-row" style="--i: 6">👋 Nosotros</a>
-        <a href="/contacto/" class="menu-item menu-row" style="--i: 7">📞 Contacto</a>
+        <a href="/blog/" class="menu-item menu-row" style="--i: 6">Blog</a>
+        <a href="/nosotros/" class="menu-item menu-row" style="--i: 7">Nosotros</a>
+        <a href="/contacto/" class="menu-item menu-row" style="--i: 8">Contacto</a>
       </nav>
 
-      <div class="menu-item mt-6 border-t border-crema-200 pt-6" style="--i: 8">
-        <p class="mb-3 text-xs font-bold tracking-[0.18em] text-ciruela-400 uppercase">🌎 Cambiar país</p>
+      <div class="menu-item mt-6 border-t border-crema-200 pt-6" style="--i: 9">
+        <p class="mb-3 text-xs font-extrabold tracking-[0.18em] text-ciruela-400 uppercase">🌎 Cambiar país</p>
         <div class="grid grid-cols-2 gap-2">
           {
             COUNTRIES.map((c) => (
@@ -190,32 +336,50 @@ const current = country ?? COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
         </div>
       </div>
 
-      <a
-        href={`${base}/cursos/`}
-        class="menu-item mt-8 block rounded-xl bg-coral-500 px-6 py-4 text-center text-sm font-bold text-white shadow-boton"
-        style="--i: 9"
-      >
-        Ver todos los cursos
-      </a>
+      <div class="menu-item mt-7 space-y-2.5" style="--i: 10">
+        <a
+          href={`${base}/cursos/`}
+          class="block rounded-xl bg-coral-500 px-6 py-4 text-center text-sm font-bold text-white shadow-boton"
+        >
+          Empezar ahora
+        </a>
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener"
+          data-track="click_whatsapp"
+          data-track-params={JSON.stringify({ page_location: 'mobile_menu' })}
+          class="flex items-center justify-center gap-2 rounded-xl border border-[#25d366]/40 bg-white px-6 py-4 text-sm font-bold text-[#1da851]"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-[#25d366]" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"></path>
+          </svg>
+          Asesoría por WhatsApp
+        </a>
+      </div>
     </div>
   </div>
 </dialog>
 
 <style>
   .nav-link {
-    padding: 0.5rem 0.75rem;
-    border-radius: 9999px;
-    font-size: 0.9rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 0.65rem;
+    font-size: 0.92rem;
     font-weight: 700;
-    transition: background-color 0.25s ease;
+    color: var(--color-ciruela-700);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
   }
   .nav-link:hover {
-    background-color: color-mix(in oklch, currentColor 10%, transparent);
+    background-color: var(--color-crema-100);
+    color: var(--color-coral-600);
   }
   .menu-row {
     display: block;
-    padding: 0.9rem 0.25rem;
-    font-size: 1.15rem;
+    padding: 0.85rem 0.25rem;
+    font-size: 1.1rem;
     font-weight: 700;
     border-bottom: 1px solid var(--color-crema-200);
   }
@@ -230,15 +394,11 @@ const current = country ?? COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
     transition:
       opacity 0.4s var(--ease-suave),
       transform 0.4s var(--ease-suave);
-    transition-delay: calc(var(--i) * 45ms);
+    transition-delay: calc(var(--i) * 40ms);
   }
-  /* Header transparente → sólido al hacer scroll */
+  /* Sombra sutil al hacer scroll */
   #site-header.is-scrolled {
-    background-color: color-mix(in oklch, var(--color-crema-50) 92%, transparent);
-    border-color: var(--color-crema-200);
-    color: var(--color-ciruela-800);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 2px 20px -8px oklch(0.3 0.05 330 / 0.12);
+    box-shadow: 0 4px 24px -8px oklch(0.27 0.05 292 / 0.14);
   }
 </style>
 
@@ -246,26 +406,21 @@ const current = country ?? COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
   import { trackEvent } from '@/lib/analytics';
 
   const header = document.getElementById('site-header');
-  if (header?.dataset.transparent) {
-    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 32);
-    onScroll();
-    addEventListener('scroll', onScroll, { passive: true });
-  }
+  const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
+  onScroll();
+  addEventListener('scroll', onScroll, { passive: true });
 
   const menu = document.getElementById('mobile-menu') as HTMLDialogElement | null;
   document.getElementById('menu-open')?.addEventListener('click', () => {
     menu?.showModal();
     document.body.style.overflow = 'hidden';
   });
-  const closeMenu = () => {
-    menu?.close();
-  };
-  document.getElementById('menu-close')?.addEventListener('click', closeMenu);
+  document.getElementById('menu-close')?.addEventListener('click', () => menu?.close());
   menu?.addEventListener('close', () => {
     document.body.style.overflow = '';
   });
   menu?.addEventListener('click', (e) => {
-    if (e.target === menu) closeMenu();
+    if (e.target === menu) menu.close();
   });
 
   // Cerrar dropdowns <details> al hacer click fuera
