@@ -26,9 +26,9 @@ academiadebelleza, navegación de países estilo sably.co y menú mobile estilo 
    auditados (+100 certificados, +80 emprendimientos, +50 videos).
 5. **Output estático** (como sably.co), sin adapter SSR: mejor Core Web Vitals y cero costo;
    geo-detección client-side (GeoToast). Edge/SSR queda para Fase 2 si hace falta.
-6. **Ciudades**: `CITIES_ENABLED=false`. Las city landings del sitio viejo (bogota, medellin…)
-   hacen 301 a /co/ por ahora; vuelven en v0.2 con contenido único por ciudad (§6.2 del plan
-   maestro) — hacerlas ahora habría sido contenido duplicado.
+6. **Ciudades**: activadas en la misma v0.1 por pedido de JP (`CITIES_ENABLED=true`):
+   36 hubs + 144 cursos hiperlocales con contenido único por ciudad en `lib/cities.ts`
+   (§6.2). Las URLs geo del sitio viejo redirigen a su ubicación canónica /co/{ciudad}/….
 7. **Home global en `/`** (a diferencia de sably que redirige a /co/): es la pieza de diseño
    LBD y el x-default del hreflang.
 8. **Tracking**: solo GTM (GTM-KKP7WL8Q existente). No se hardcodea GA4 para no repetir el

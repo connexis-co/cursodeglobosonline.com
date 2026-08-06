@@ -11,6 +11,25 @@
 - [x] Landings Meta/Google Ads (noindex) + taxonomía GTM completa
 - [x] Repo + CI/CD (GitHub Actions → Cloudflare Pages) + release-please
 
+## ✅ v0.1.1 — Hiperlocal y salida a producción (2026-08-06)
+
+- [x] **Capa hiperlocal**: 36 hubs `/{cc}/{ciudad}/` + 144 cursos por ciudad con contenido
+  local único (`lib/cities.ts`) y malla de enlaces — 252 páginas totales
+- [x] **Cutover DNS ejecutado**: cursodeglobosonline.com + www sirven el sitio nuevo desde
+  Cloudflare Pages (proyecto `cursodeglobosonline-com`); el WordPress quedó fuera del dominio
+- [x] **GSC**: sitemap-index.xml enviado a `sc-domain:cursodeglobosonline.com` vía API
+  (service account agents-analytics-reader, siteOwner)
+- [x] Imágenes Gemini (og-default.jpg + guirnalda del home) y globos SVG con anatomía LBD
+  (floating 3s, delays negativos, parallax al scroll, XL sangrando de sección)
+- [x] Portadas SVG ilustradas por curso (sin marcas de terceros)
+
+### ⚠️ Pendientes operativos inmediatos
+
+- [ ] Purgar caché de Cloudflare: el robots.txt viejo de WP sigue cacheado (expira ≤4h);
+  el token API no tiene permiso Cache Purge — 1 click en dashboard (Caching → Purge Everything)
+- [ ] Branch protection: GitHub la exige con plan Pro en repos privados (o repo público)
+- [ ] Rotar credenciales compartidas por chat cuando termine la configuración (higiene)
+
 ## 🔜 v0.2.0 — Contenido y conversión
 
 - [ ] **Cutover DNS** del dominio al proyecto de Cloudflare Pages (decisión JP)
