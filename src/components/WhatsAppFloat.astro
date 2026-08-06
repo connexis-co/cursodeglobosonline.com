@@ -1,0 +1,67 @@
+---
+import { COUNTRIES, DEFAULT_COUNTRY, type Country } from '@/lib/countries';
+import { buildWhatsAppUrl } from '@/lib/hotmart';
+
+interface Props {
+  country?: Country;
+  /** Contexto del mensaje, ej. nombre del curso. */
+  context?: string;
+}
+
+const { country, context } = Astro.props;
+const c = country ?? COUNTRIES.find((x) => x.code === DEFAULT_COUNTRY)!;
+const message = context
+  ? `Hola 🎈 Me interesa el ${context} y quiero más información.`
+  : 'Hola 🎈 Quiero información sobre los cursos de decoración con globos.';
+const href = buildWhatsAppUrl(c.whatsapp, message);
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener"
+  aria-label={`Escribir por WhatsApp (${c.phoneDisplay})`}
+  data-track="click_whatsapp"
+  data-track-params={JSON.stringify({ page_location: Astro.url.pathname, course_name: context ?? '' })}
+  class="wa-float fixed right-5 bottom-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25d366] text-white shadow-globo transition-transform duration-300 ease-fiesta hover:scale-110"
+>
+  <span class="wa-onda" aria-hidden="true"></span>
+  <span class="wa-onda wa-onda-2" aria-hidden="true"></span>
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path
+      d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.3 0-.2 0-.3-.1-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.7-.4Z"
+    ></path>
+  </svg>
+</a>
+
+<style>
+  /* Ondas expansivas (patrón LBD Balloons) */
+  .wa-onda {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: #25d366;
+    opacity: 0.5;
+    animation: wa-ondas 1.9s ease-out infinite;
+    pointer-events: none;
+  }
+  .wa-onda-2 {
+    animation-delay: 0.6s;
+  }
+  @keyframes wa-ondas {
+    from {
+      transform: scale(1);
+      opacity: 0.45;
+    }
+    to {
+      transform: scale(2.3);
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wa-onda {
+      animation: none;
+      opacity: 0;
+    }
+  }
+</style>

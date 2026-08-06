@@ -1,0 +1,324 @@
+---
+/**
+ * Portadas ilustradas SVG por curso — dibujadas a mano en la paleta del sitio
+ * (nada de fotos con marcas de terceros ni imágenes de stock/IA).
+ * Cada curso tiene su escena; fallback: guirnalda orgánica generativa.
+ */
+interface Props {
+  slug: string;
+  category: string;
+  title: string;
+  class?: string;
+}
+const { slug, category, title, class: className } = Astro.props;
+
+// Paleta compartida
+const CORAL = 'oklch(0.67 0.185 22)';
+const CORAL_L = 'oklch(0.84 0.1 20)';
+const AQUA = 'oklch(0.78 0.1 193)';
+const AQUA_D = 'oklch(0.6 0.09 200)';
+const SOL = 'oklch(0.84 0.145 85)';
+const LILA = 'oklch(0.74 0.1 303)';
+const DORADO = 'oklch(0.76 0.12 75)';
+const CONFETI = [CORAL, AQUA, SOL, LILA, DORADO];
+
+// Hash determinista para el fallback generativo
+let hash = 0;
+for (const ch of slug) hash = (hash * 31 + ch.charCodeAt(0)) % 9973;
+const rand = (i: number, min: number, max: number) => {
+  const x = Math.abs(Math.sin(hash + i * 12.9898) * 43758.5453) % 1;
+  return min + x * (max - min);
+};
+const garland = Array.from({ length: 16 }, (_, i) => {
+  const t = i / 15;
+  return {
+    cx: 30 + t * 340 + rand(i, -14, 14),
+    cy: 210 - Math.sin(t * Math.PI) * 150 + rand(i + 40, -12, 12),
+    r: rand(i + 80, 11, 27),
+    fill: CONFETI[i % CONFETI.length],
+  };
+}).sort((a, b) => a.r - b.r);
+
+const confetti = (n: number, seed: number) =>
+  Array.from({ length: n }, (_, i) => ({
+    cx: rand(i + seed, 16, 384),
+    cy: rand(i + seed + 100, 14, 210),
+    r: rand(i + seed + 200, 1.6, 3.6),
+    fill: CONFETI[i % CONFETI.length],
+  }));
+
+const scene = ['curso-de-globoflexia', 'curso-de-bouquets-de-globos', 'curso-de-flores-con-globos', 'curso-de-globos-burbuja'].includes(slug)
+  ? slug
+  : 'garland';
+---
+
+<svg
+  viewBox="0 0 400 225"
+  preserveAspectRatio="xMidYMid slice"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label={`Ilustración del ${title}`}
+  class:list={['block h-full w-full', className]}
+>
+  {
+    scene === 'curso-de-globoflexia' && (
+      <>
+        <defs>
+          <radialGradient id={`gf-bg-${slug}`} cx="0.3" cy="0.25" r="1.1">
+            <stop offset="0%" stop-color="oklch(0.93 0.042 20)" />
+            <stop offset="100%" stop-color="oklch(0.82 0.11 20)" />
+          </radialGradient>
+        </defs>
+        <rect width="400" height="225" fill={`url(#gf-bg-${slug})`} />
+        {confetti(9, 300).map((c) => (
+          <circle cx={c.cx} cy={c.cy} r={c.r} fill={c.fill} opacity="0.5" />
+        ))}
+        {/* sombra */}
+        <ellipse cx="250" cy="200" rx="105" ry="12" fill="oklch(0.44 0.14 25)" opacity="0.18" />
+        {/* perrito de globoflexia (capsulas + nudos de torsión) */}
+        <g>
+          {/* cola */}
+          <rect x="176" y="98" width="20" height="46" rx="10" fill={AQUA} transform="rotate(28 186 121)" />
+          {/* patas */}
+          <rect x="206" y="150" width="21" height="48" rx="10.5" fill={AQUA} />
+          <rect x="233" y="150" width="21" height="48" rx="10.5" fill={AQUA} />
+          <rect x="277" y="150" width="21" height="48" rx="10.5" fill={AQUA} />
+          <rect x="304" y="150" width="21" height="48" rx="10.5" fill={AQUA} />
+          {/* cuerpo */}
+          <rect x="196" y="116" width="140" height="40" rx="20" fill={AQUA} />
+          {/* cuello */}
+          <rect x="306" y="76" width="24" height="56" rx="12" fill={AQUA} />
+          {/* cabeza / hocico */}
+          <rect x="298" y="56" width="66" height="28" rx="14" fill={AQUA} />
+          {/* orejas */}
+          <rect x="304" y="16" width="19" height="46" rx="9.5" fill={AQUA} />
+          <rect x="326" y="16" width="19" height="46" rx="9.5" fill={AQUA} />
+          {/* nudos de torsión */}
+          <circle cx="216.5" cy="152" r="4.5" fill={AQUA_D} opacity="0.55" />
+          <circle cx="243.5" cy="152" r="4.5" fill={AQUA_D} opacity="0.55" />
+          <circle cx="287.5" cy="152" r="4.5" fill={AQUA_D} opacity="0.55" />
+          <circle cx="314.5" cy="152" r="4.5" fill={AQUA_D} opacity="0.55" />
+          <circle cx="318" cy="122" r="5" fill={AQUA_D} opacity="0.55" />
+          <circle cx="318" cy="80" r="5" fill={AQUA_D} opacity="0.55" />
+          <circle cx="313.5" cy="60" r="4" fill={AQUA_D} opacity="0.55" />
+          <circle cx="335.5" cy="60" r="4" fill={AQUA_D} opacity="0.55" />
+          <circle cx="194" cy="120" r="4.5" fill={AQUA_D} opacity="0.55" />
+          {/* brillos */}
+          <ellipse cx="236" cy="126" rx="16" ry="7" fill="white" opacity="0.35" transform="rotate(-12 236 126)" />
+          <ellipse cx="316" cy="63" rx="10" ry="4.5" fill="white" opacity="0.4" transform="rotate(-8 316 63)" />
+          <ellipse cx="310" cy="26" rx="4" ry="8" fill="white" opacity="0.35" />
+          {/* ojo y nariz */}
+          <circle cx="342" cy="66" r="3.2" fill="oklch(0.25 0.045 329)" />
+          <circle cx="360" cy="70" r="4.5" fill={AQUA_D} />
+        </g>
+        {/* globo 260 suelto, guiño al material */}
+        <rect x="52" y="150" width="90" height="18" rx="9" fill={SOL} transform="rotate(-18 97 159)" />
+        <ellipse cx="70" cy="152" rx="9" ry="4" fill="white" opacity="0.4" transform="rotate(-18 70 152)" />
+      </>
+    )
+  }
+  {
+    scene === 'curso-de-bouquets-de-globos' && (
+      <>
+        <defs>
+          <linearGradient id={`bq-bg-${slug}`} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="oklch(0.94 0.03 305)" />
+            <stop offset="100%" stop-color="oklch(0.85 0.07 304)" />
+          </linearGradient>
+        </defs>
+        <rect width="400" height="225" fill={`url(#bq-bg-${slug})`} />
+        {confetti(10, 500).map((c) => (
+          <circle cx={c.cx} cy={c.cy} r={c.r} fill={c.fill} opacity="0.45" />
+        ))}
+        {/* cuerdas convergiendo al moño */}
+        {[
+          [150, 96, 'M150 96 Q168 140 202 172'],
+          [205, 62, 'M205 62 Q205 120 203 170'],
+          [258, 92, 'M258 92 Q238 140 206 172'],
+          [168, 128, 'M168 128 Q184 152 202 172'],
+          [244, 130, 'M244 130 Q226 154 206 172'],
+        ].map(([, , dPath]) => (
+          <path d={dPath as string} stroke="oklch(0.51 0.06 332)" stroke-width="1.6" fill="none" opacity="0.6" />
+        ))}
+        {/* racimo de globos */}
+        <circle cx="150" cy="78" r="30" fill={CORAL} />
+        <circle cx="205" cy="52" r="33" fill={SOL} />
+        <circle cx="258" cy="76" r="29" fill={AQUA} />
+        <circle cx="168" cy="118" r="24" fill={DORADO} />
+        <circle cx="244" cy="120" r="25" fill={LILA} />
+        <circle cx="205" cy="94" r="36" fill={CORAL_L} />
+        {[
+          [138, 68, CORAL],
+          [193, 42, SOL],
+          [248, 66, AQUA],
+          [160, 110, DORADO],
+          [236, 112, LILA],
+          [192, 82, CORAL_L],
+        ].map(([cx, cy]) => (
+          <ellipse
+            cx={cx as number}
+            cy={cy as number}
+            rx="8"
+            ry="11"
+            fill="white"
+            opacity="0.35"
+            transform={`rotate(-18 ${cx} ${cy})`}
+          />
+        ))}
+        {/* moño */}
+        <path d="M204 172 l-16 -9 -2 18 Z" fill={DORADO} />
+        <path d="M204 172 l16 -9 2 18 Z" fill={DORADO} />
+        <circle cx="204" cy="172" r="5" fill="oklch(0.58 0.11 70)" />
+        {/* pesita de regalo */}
+        <rect x="186" y="180" width="36" height="28" rx="5" fill={CORAL} />
+        <rect x="201" y="180" width="6" height="28" fill="white" opacity="0.45" />
+        <rect x="186" y="191" width="36" height="5" fill="white" opacity="0.45" />
+      </>
+    )
+  }
+  {
+    scene === 'curso-de-flores-con-globos' && (
+      <>
+        <defs>
+          <linearGradient id={`fl-bg-${slug}`} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="oklch(0.975 0.01 82)" />
+            <stop offset="100%" stop-color="oklch(0.91 0.05 194)" />
+          </linearGradient>
+        </defs>
+        <rect width="400" height="225" fill={`url(#fl-bg-${slug})`} />
+        {confetti(8, 700).map((c) => (
+          <circle cx={c.cx} cy={c.cy} r={c.r} fill={c.fill} opacity="0.45" />
+        ))}
+        {/* tallo y hojas */}
+        <rect x="216" y="118" width="10" height="84" rx="5" fill="oklch(0.62 0.1 165)" />
+        <ellipse cx="196" cy="172" rx="22" ry="10" fill="oklch(0.72 0.11 160)" transform="rotate(-32 196 172)" />
+        <ellipse cx="248" cy="158" rx="22" ry="10" fill="oklch(0.72 0.11 160)" transform="rotate(28 248 158)" />
+        {/* flor principal: 5 pétalos */}
+        {[
+          [221, 56],
+          [180, 86],
+          [196, 134],
+          [246, 134],
+          [262, 86],
+        ].map(([cx, cy]) => (
+          <circle cx={cx as number} cy={cy as number} r="31" fill={CORAL} />
+        ))}
+        {[
+          [210, 47],
+          [169, 78],
+          [186, 126],
+          [236, 126],
+          [252, 78],
+        ].map(([cx, cy]) => (
+          <ellipse cx={cx as number} cy={cy as number} rx="8" ry="11" fill="white" opacity="0.32" transform={`rotate(-18 ${cx} ${cy})`} />
+        ))}
+        <circle cx="221" cy="96" r="25" fill={SOL} />
+        <circle cx="213" cy="88" r="6" fill="white" opacity="0.45" />
+        {/* flor secundaria pequeña */}
+        <rect x="94" y="150" width="7" height="56" rx="3.5" fill="oklch(0.62 0.1 165)" />
+        {[
+          [97, 116],
+          [78, 132],
+          [86, 155],
+          [110, 155],
+          [117, 132],
+        ].map(([cx, cy]) => (
+          <circle cx={cx as number} cy={cy as number} r="14" fill={LILA} />
+        ))}
+        <circle cx="97" cy="138" r="11" fill={DORADO} />
+      </>
+    )
+  }
+  {
+    scene === 'curso-de-globos-burbuja' && (
+      <>
+        <defs>
+          <linearGradient id={`bb-bg-${slug}`} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="oklch(0.35 0.055 330)" />
+            <stop offset="100%" stop-color="oklch(0.52 0.11 302)" />
+          </linearGradient>
+        </defs>
+        <rect width="400" height="225" fill={`url(#bb-bg-${slug})`} />
+        {/* destellos */}
+        {[
+          [60, 40],
+          [340, 30],
+          [88, 178],
+          [352, 150],
+          [140, 24],
+        ].map(([cx, cy]) => (
+          <path
+            d={`M${cx} ${(cy as number) - 6} l1.8 4.2 4.2 1.8 -4.2 1.8 -1.8 4.2 -1.8 -4.2 -4.2 -1.8 4.2 -1.8 Z`}
+            fill="white"
+            opacity="0.6"
+          />
+        ))}
+        {/* globo burbuja transparente */}
+        <circle cx="205" cy="96" r="72" fill="white" opacity="0.1" />
+        <circle cx="205" cy="96" r="72" stroke="white" stroke-opacity="0.55" stroke-width="2.5" fill="none" />
+        <path d="M158 62 Q172 40 198 34" stroke="white" stroke-opacity="0.6" stroke-width="4" fill="none" stroke-linecap="round" />
+        {/* confeti interior (asentado abajo, como el real) */}
+        {[
+          [178, 138, 6, CORAL],
+          [196, 148, 5, SOL],
+          [214, 142, 6.5, AQUA],
+          [232, 148, 4.5, LILA],
+          [186, 152, 4, DORADO],
+          [222, 154, 5, CORAL],
+          [204, 156, 4.5, AQUA],
+          [244, 136, 4, SOL],
+          [166, 146, 4.5, LILA],
+          [190, 120, 3.5, CORAL],
+          [225, 122, 3.5, DORADO],
+          [208, 128, 3, SOL],
+        ].map(([cx, cy, r, fill]) => (
+          <circle cx={cx as number} cy={cy as number} r={r as number} fill={fill as string} opacity="0.95" />
+        ))}
+        {/* nudo y cola de tassels */}
+        <path d="M205 168 l-5 8 h10 Z" fill="white" opacity="0.7" />
+        {[
+          [205, 184, CORAL],
+          [205, 198, SOL],
+          [205, 212, AQUA],
+        ].map(([cx, cy, fill]) => (
+          <path
+            d={`M${cx} ${(cy as number) - 7} l7 7 -7 7 -7 -7 Z`}
+            fill={fill as string}
+            opacity="0.95"
+          />
+        ))}
+        <path d="M205 176 V212" stroke="white" stroke-opacity="0.45" stroke-width="1.6" />
+      </>
+    )
+  }
+  {
+    scene === 'garland' && (
+      <>
+        <defs>
+          <linearGradient id={`cv-bg-${slug}`} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="oklch(0.985 0.008 84)" />
+            <stop offset="100%" stop-color="oklch(0.945 0.02 60)" />
+          </linearGradient>
+        </defs>
+        <rect width="400" height="225" fill={`url(#cv-bg-${slug})`} />
+        {confetti(10, 200).map((c) => (
+          <circle cx={c.cx} cy={c.cy} r={c.r} fill={c.fill} opacity="0.28" />
+        ))}
+        {garland.map((b, i) => (
+          <g>
+            <circle cx={b.cx} cy={b.cy} r={b.r} fill={b.fill} />
+            <ellipse
+              cx={b.cx - b.r * 0.32}
+              cy={b.cy - b.r * 0.38}
+              rx={b.r * 0.28}
+              ry={b.r * 0.38}
+              fill="white"
+              opacity={i % 3 === 0 ? 0.4 : 0.28}
+              transform={`rotate(-18 ${b.cx - b.r * 0.32} ${b.cy - b.r * 0.38})`}
+            />
+          </g>
+        ))}
+      </>
+    )
+  }
+</svg>

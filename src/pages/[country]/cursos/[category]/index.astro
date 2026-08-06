@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import CourseCard from '@/components/CourseCard.astro';
+import { COUNTRIES } from '@/lib/countries';
+import { CATEGORIES } from '@/lib/categories';
+import { countryAlternates, breadcrumbSchema } from '@/lib/seo';
+import { SITE } from '@/lib/site';
+
+export async function getStaticPaths() {
+  const courses = await getCollection('courses');
+  const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.category === cat.slug));
+  return COUNTRIES.flatMap((country) =>
+    activeCategories.map((category) => ({
+      params: { country: country.code, category: category.slug },
+      props: { country, category },
+    })),
+  );
+}
+
+const { country, category } = Astro.props;
+const courses = (await getCollection('courses'))
+  .filter((c) => c.data.category === category.slug)
+  .sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
+---
+
+<BaseLayout
+  title={`Cursos de ${category.name} en ${country.name} 🎈 Online`}
+  description={`${category.short} Cursos online con certificado para ${country.name}.`}
+  {country}
+  pathAfterCountry={`/cursos/${category.slug}/`}
+  alternates={countryAlternates(`/cursos/${category.slug}/`)}
+  schemas={[
+    breadcrumbSchema([
+      { name: 'Inicio', url: `${SITE.url}/${country.code}/` },
+      { name: 'Cursos', url: `${SITE.url}/${country.code}/cursos/` },
+      { name: category.name, url: `${SITE.url}/${country.code}/cursos/${category.slug}/` },
+    ]),
+  ]}
+  pageType="category"
+>
+  <div class="contenedor pt-28 pb-16 lg:pt-32 lg:pb-24">
+    <nav class="mb-6 text-xs text-ciruela-400" aria-label="Miga de pan">
+      <a href={`/${country.code}/`} class="hover:text-coral-600">{country.flag} {country.name}</a>
+      <span aria-hidden="true"> / </span>
+      <a href={`/${country.code}/cursos/`} class="hover:text-coral-600">Cursos</a>
+      <span aria-hidden="true"> / </span>
+      <span class="font-bold text-ciruela-600">{category.name}</span>
+    </nav>
+
+    <SectionHeading
+      eyebrow={`${category.emoji} Categoría`}
+      title={`Cursos de ${category.name.toLowerCase()}`}
+      lead={category.short}
+    />
+
+    <div class="mt-8 flex flex-wrap gap-2">
+      {
+        category.subcategories.map((sub) => (
+          <span class="rounded-full border border-crema-300 bg-white px-3.5 py-1.5 text-xs font-bold text-ciruela-500">
+            {sub.name}
+          </span>
+        ))
+      }
+    </div>
+
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        courses.map((course, i) => (
+          <div class="scroll-reveal" style={`animation-delay:${i * 60}ms`}>
+            <CourseCard {course} {country} />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-12 rounded-3xl border border-crema-200 bg-crema-100 p-8 text-center">
+      <p class="font-display text-xl font-semibold text-ciruela-900">¿No sabes por cuál empezar?</p>
+      <p class="mx-auto mt-2 max-w-md text-sm text-ciruela-500">
+        Cuéntanos qué quieres lograr y te recomendamos el curso ideal según tu experiencia y tu presupuesto.
+      </p>
+      <a
+        href={`/${country.code}/`}
+        class="mt-5 inline-block rounded-full bg-coral-500 px-6 py-3 text-xs font-extrabold tracking-wide text-white uppercase transition-colors hover:bg-coral-600"
+      >
+        Pedir asesoría gratis
+      </a>
+    </div>
+  </div>
+</BaseLayout>

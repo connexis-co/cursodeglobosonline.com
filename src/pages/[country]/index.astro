@@ -1,0 +1,180 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Balloons from '@/components/Balloons.astro';
+import Wave from '@/components/Wave.astro';
+import TrustBar from '@/components/TrustBar.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import CourseCard from '@/components/CourseCard.astro';
+import TestimonialCard from '@/components/TestimonialCard.astro';
+import LeadForm from '@/components/LeadForm.astro';
+import FaqAccordion from '@/components/FaqAccordion.astro';
+import { COUNTRIES } from '@/lib/countries';
+import { countryAlternates, faqSchema, breadcrumbSchema } from '@/lib/seo';
+import { SITE } from '@/lib/site';
+
+export function getStaticPaths() {
+  return COUNTRIES.map((country) => ({ params: { country: country.code }, props: { country } }));
+}
+
+const { country } = Astro.props;
+
+const courses = (await getCollection('courses')).sort(
+  (a, b) => Number(b.data.featured) - Number(a.data.featured),
+);
+const featured = courses.find((c) => c.data.featured) ?? courses[0];
+const allTestimonials = await getCollection('testimonials');
+const testimonials = [
+  ...allTestimonials.filter((t) => t.data.countryCode === country.code),
+  ...allTestimonials.filter((t) => t.data.countryCode !== country.code),
+].slice(0, 3);
+
+const faqs = [
+  {
+    q: `¿Puedo tomar estos cursos desde ${country.name}?`,
+    a: `Sí. Los cursos son 100% online y tenemos estudiantes en ${country.name} y otros 7 países. Solo necesitas internet; el acceso llega a tu correo al instante.`,
+  },
+  {
+    q: `¿Cómo pago desde ${country.name}?`,
+    a: `El pago se procesa en Hotmart con tarjetas y métodos locales disponibles en ${country.name}, y el precio se muestra en ${country.currency} antes de confirmar.`,
+  },
+  {
+    q: `¿El certificado es válido en ${country.name}?`,
+    a: `Sí. Es un certificado de estudios digital con validez internacional y verificación en línea: te sirve para tu portafolio y para generar confianza con clientes en ${country.name}.`,
+  },
+  {
+    q: '¿Cuál curso me conviene para empezar?',
+    a: 'Si buscas animación de fiestas, empieza por Globoflexia (además tiene 50% OFF). Si lo tuyo son los arreglos y detalles, Bouquets. Para decoración de eventos con acabado premium, Flores con Globos o Globos Burbuja.',
+  },
+  {
+    q: '¿Hay garantía?',
+    a: 'Sí, 7 días de garantía de Hotmart con devolución del 100% si el curso no era lo que esperabas.',
+  },
+];
+
+const title = `Curso de Decoración con Globos en ${country.name} 🎈 Online`;
+const description = `Cursos de decoración con globos para ${country.name}: globoflexia, bouquets, flores y globos burbuja. Certificado incluido, pagos en ${country.currency} y acceso de por vida.`;
+---
+
+<BaseLayout
+  {title}
+  {description}
+  {country}
+  pathAfterCountry="/"
+  alternates={countryAlternates('/')}
+  schemas={[
+    faqSchema(faqs),
+    breadcrumbSchema([
+      { name: 'Inicio', url: `${SITE.url}/` },
+      { name: country.name, url: `${SITE.url}/${country.code}/` },
+    ]),
+  ]}
+  pageType="country_home"
+  transparentHeader
+>
+  <section class="relative overflow-hidden bg-ciruela-900 text-crema-50">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div
+        class="absolute -top-32 -left-32 h-[28rem] w-[28rem] rounded-full opacity-35 blur-3xl"
+        style="background: radial-gradient(circle, oklch(0.67 0.185 22 / 0.8), transparent 65%)"
+      >
+      </div>
+      <div
+        class="absolute top-1/3 -right-40 h-[24rem] w-[24rem] rounded-full opacity-30 blur-3xl"
+        style="background: radial-gradient(circle, oklch(0.74 0.1 303 / 0.8), transparent 65%)"
+      >
+      </div>
+    </div>
+    <Balloons variant="hero" />
+    <div class="contenedor relative pt-32 pb-16 text-center sm:pt-36 lg:pt-40 lg:pb-24">
+      <p
+        class="animate-pop-in mx-auto inline-flex items-center gap-2 rounded-full border border-crema-50/20 bg-crema-50/10 px-4 py-1.5 text-xs font-bold tracking-wide backdrop-blur-sm"
+      >
+        {country.flag} Estudiantes activos en {country.name} · precios en {country.currency}
+      </p>
+      <h1 class="animate-fade-slide-up mx-auto mt-6 max-w-3xl text-4xl font-semibold text-balance sm:text-5xl" style="animation-delay: 0.1s">
+        Cursos de decoración con globos en {country.name}
+      </h1>
+      <p class="animate-fade-slide-up mx-auto mt-5 max-w-xl text-base text-crema-100/85 sm:text-lg" style="animation-delay: 0.2s">
+        Aprende globoflexia, bouquets, flores y globos burbuja con certificado de estudios, desde cualquier
+        ciudad de {country.name} y a tu ritmo.
+      </p>
+      <div class="animate-fade-slide-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" style="animation-delay: 0.3s">
+        <a
+          href={`/${country.code}/cursos/`}
+          class="rounded-full bg-coral-500 px-8 py-4 text-sm font-extrabold tracking-wide text-white uppercase shadow-cta transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-600"
+        >
+          Ver los cursos
+        </a>
+        <a
+          href={`/${country.code}/${featured.id}/`}
+          class="rounded-full border-2 border-crema-50/30 px-8 py-4 text-sm font-extrabold tracking-wide uppercase backdrop-blur-sm transition-all duration-300 hover:border-sol-300 hover:text-sol-300"
+        >
+          🔥 Globoflexia 50% OFF
+        </a>
+      </div>
+    </div>
+    <Wave color="var(--color-crema-50)" />
+  </section>
+
+  <TrustBar />
+
+  <section class="contenedor py-16 lg:py-20">
+    <SectionHeading
+      eyebrow={`Cursos disponibles en ${country.name}`}
+      title="Elige tu especialidad"
+      lead={`Todos los cursos incluyen certificado, acceso permanente y checkout en ${country.currency} con métodos de pago de ${country.name}.`}
+    />
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="scroll-reveal sm:col-span-2 lg:col-span-1 lg:row-span-2">
+        <CourseCard course={featured} {country} large />
+      </div>
+      {
+        courses
+          .filter((c) => c.id !== featured.id)
+          .map((course, i) => (
+            <div class="scroll-reveal" style={`animation-delay:${i * 70}ms`}>
+              <CourseCard {course} {country} />
+            </div>
+          ))
+      }
+    </div>
+  </section>
+
+  <section class="bg-crema-100 py-16">
+    <div class="contenedor">
+      <SectionHeading
+        eyebrow="Estudiantes"
+        title={`Lo que cuentan quienes ya empezaron`}
+      />
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          testimonials.map((t, i) => (
+            <div class="scroll-reveal" style={`animation-delay:${i * 60}ms`}>
+              <TestimonialCard testimonial={t} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden py-16 lg:py-20">
+    <Balloons variant="rise" />
+    <div class="contenedor relative grid items-center gap-10 lg:grid-cols-[1fr_1.2fr]">
+      <SectionHeading
+        eyebrow="Asesoría"
+        title="¿Dudas? Te escribimos por WhatsApp"
+        lead={`Cuéntanos qué curso te interesa y te enviamos el temario completo y el precio en ${country.currency}.`}
+      />
+      <LeadForm {courses} {country} />
+    </div>
+  </section>
+
+  <section class="contenedor max-w-4xl pb-16 lg:pb-24">
+    <SectionHeading eyebrow="Preguntas frecuentes" title={`Preguntas frecuentes desde ${country.name}`} align="center" />
+    <div class="mt-10">
+      <FaqAccordion faqs={faqs} />
+    </div>
+  </section>
+</BaseLayout>

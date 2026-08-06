@@ -1,0 +1,296 @@
+---
+/**
+ * Contenido de landing para Ads (§8.2-8.3). variant "meta": interrupción,
+ * copy emocional. variant "google": búsqueda activa, copy directo a datos.
+ */
+import type { CollectionEntry } from 'astro:content';
+import Balloons from './Balloons.astro';
+import CourseCover from './CourseCover.astro';
+import Logo from './Logo.astro';
+import Rating from './Rating.astro';
+import Wave from './Wave.astro';
+import { COUNTRIES, DEFAULT_COUNTRY, formatPrice } from '@/lib/countries';
+import { getCategory } from '@/lib/categories';
+import { buildHotmartUrl } from '@/lib/hotmart';
+import { SITE } from '@/lib/site';
+
+interface Props {
+  course: CollectionEntry<'courses'>;
+  variant: 'meta' | 'google';
+}
+
+const { course, variant } = Astro.props;
+const d = course.data;
+const country = COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
+const category = getCategory(d.category);
+const hasPrice = d.priceUSD !== undefined && d.originalPriceUSD !== undefined;
+const discountPct =
+  d.discountPct ?? (hasPrice ? Math.round((1 - d.priceUSD! / d.originalPriceUSD!) * 100) : undefined);
+
+const checkoutUrl = buildHotmartUrl({
+  baseUrl: d.hotmartUrl,
+  coupon: d.coupon,
+  courseSlug: course.id,
+  countryCode: country.code,
+  variant: `landing-${variant}`,
+});
+
+const isMeta = variant === 'meta';
+const h1 = isMeta
+  ? `Imagina cobrar por decorar las fiestas de tu ciudad`
+  : `${d.title} — ${discountPct ? `${discountPct}% OFF hoy` : 'inscripción abierta'}`;
+const sub = isMeta
+  ? `El ${d.title} te lleva de cero a tus primeros pedidos: ${d.lessonsCount} videos paso a paso, certificado de estudios y acceso para siempre.`
+  : `${d.lessonsCount} videos paso a paso · Certificado de estudios · Acceso de por vida · Garantía de 7 días.`;
+const cta = isMeta ? 'Quiero aprender 🎈' : discountPct ? `Inscribirme con ${discountPct}% OFF` : 'Inscribirme ahora';
+
+const trackParams = JSON.stringify({
+  course_name: d.title,
+  course_category: category.name,
+  price: d.priceUSD ?? '',
+  currency: d.priceUSD !== undefined ? 'USD' : '',
+  placement: `landing_${variant}`,
+});
+
+const incluye = [
+  `${d.lessonsCount} lecciones en video, técnica en cámara`,
+  'Certificado de estudios con validez internacional',
+  'Acceso de por vida, desde celular o computador',
+  'Tareas calificadas y asistencia académica',
+  'Bonos prácticos incluidos',
+  'Garantía de 7 días — devolución del 100%',
+];
+
+const faqs = [
+  {
+    q: '¿Necesito experiencia previa?',
+    a: 'No. El curso empieza desde cero y avanza paso a paso hasta las técnicas más vendidas.',
+  },
+  {
+    q: '¿Cómo accedo al curso?',
+    a: 'Pagas en Hotmart (métodos locales de tu país) y el acceso llega a tu correo al instante.',
+  },
+  {
+    q: '¿El certificado es válido?',
+    a: 'Sí, es un certificado de estudios digital con validez internacional y verificación en línea.',
+  },
+  {
+    q: '¿Y si no me gusta?',
+    a: 'Tienes 7 días de garantía: Hotmart te devuelve el 100% de tu dinero, sin preguntas.',
+  },
+];
+---
+
+<!-- Mini header -->
+<header class="border-b border-crema-200 bg-crema-50">
+  <div class="contenedor flex h-14 items-center justify-between">
+    <Logo size={30} />
+    {
+      discountPct && (
+        <span class="rounded-full bg-coral-500 px-4 py-1.5 text-xs font-extrabold text-white">
+          🔥 {discountPct}% de descuento
+        </span>
+      )
+    }
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-ciruela-900 text-crema-50">
+    <div
+      class="pointer-events-none absolute -top-24 -left-24 h-80 w-80 rounded-full opacity-35 blur-3xl"
+      style="background: radial-gradient(circle, oklch(0.67 0.185 22 / 0.85), transparent 65%)"
+      aria-hidden="true"
+    >
+    </div>
+    <Balloons variant="corner-right" />
+    <div class="contenedor grid items-center gap-10 py-14 lg:grid-cols-[1.1fr_1fr] lg:py-20">
+      <div>
+        <h1 class="text-3xl font-semibold text-balance sm:text-4xl lg:text-5xl">{h1}</h1>
+        <p class="mt-4 max-w-lg text-base text-crema-100/85">{sub}</p>
+        <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+          {d.rating && <Rating rating={d.rating} count={d.ratingCount} />}
+          <span class="text-crema-100/70">🎓 {SITE.stats.students} estudiantes certificados</span>
+        </div>
+        {
+          hasPrice && (
+            <p class="mt-6">
+              <span class="text-sm text-crema-100/60">
+                Antes <s>{formatPrice(d.originalPriceUSD!, country)}</s>
+              </span>
+              <span class="font-display mx-3 text-4xl font-bold text-sol-300">
+                {formatPrice(d.priceUSD!, country)}
+              </span>
+            </p>
+          )
+        }
+        <a
+          href={checkoutUrl}
+          target="_blank"
+          rel="noopener"
+          data-track="begin_checkout"
+          data-track-params={trackParams}
+          class="mt-7 inline-block rounded-full bg-coral-500 px-9 py-4 text-sm font-extrabold tracking-wide text-white uppercase shadow-cta transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-600"
+        >
+          {cta}
+        </a>
+        <p class="mt-3.5 text-xs text-crema-100/60">
+          🛡️ Garantía de 7 días · Pago seguro con Hotmart · Acceso inmediato
+        </p>
+      </div>
+      <div class="relative mx-auto w-full max-w-sm">
+        <div class="rotate-2 overflow-hidden rounded-3xl border-4 border-crema-50/15 shadow-globo">
+          {
+            d.cover ? (
+              <img
+                src={d.cover}
+                alt={`Imagen del ${d.title}`}
+                class="aspect-[4/3] w-full object-cover"
+                width="600"
+                height="450"
+                fetchpriority="high"
+              />
+            ) : (
+              <div class="aspect-[4/3] w-full">
+                <CourseCover slug={course.id} category={d.category} title={d.title} />
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </div>
+    <Wave color="var(--color-crema-50)" />
+  </section>
+
+  <!-- Prueba social rápida -->
+  <section class="contenedor py-10">
+    <div class="grid gap-4 sm:grid-cols-3">
+      {
+        [
+          ['“Con los dos primeros pedidos recuperé la inversión.”', 'Rocío M. · Buenos Aires'],
+          ['“Es el adicional que más se vende en el salón.”', 'Guadalupe R. · Guadalajara'],
+          ['“Ya casi no se me revienta ningún globo.”', 'Karen J. · Bogotá'],
+        ].map(([quote, who]) => (
+          <figure class="rounded-2xl border border-crema-200 bg-white p-5 shadow-tarjeta">
+            <blockquote class="text-sm text-ciruela-600">{quote}</blockquote>
+            <figcaption class="mt-2 text-xs font-bold text-ciruela-400">{who}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Qué incluye -->
+  <section class="contenedor pb-12">
+    <h2 class="font-display text-center text-2xl font-semibold text-ciruela-900 sm:text-3xl">
+      {isMeta ? 'Todo lo que te llevas' : 'Qué incluye tu inscripción'}
+    </h2>
+    <div class="mx-auto mt-8 grid max-w-3xl gap-3 sm:grid-cols-2">
+      {
+        incluye.map((item) => (
+          <div class="flex items-start gap-3 rounded-2xl bg-white p-4 shadow-tarjeta">
+            <span class="text-coral-500" aria-hidden="true">
+              ✓
+            </span>
+            <span class="text-sm font-semibold text-ciruela-700">{item}</span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- CTA intermedio -->
+  <section class="bg-crema-100 py-12">
+    <div class="contenedor text-center">
+      {
+        hasPrice ? (
+          <p class="text-sm text-ciruela-500">
+            Hoy: <s>{formatPrice(d.originalPriceUSD!, country)}</s>
+            <span class="font-display mx-2 text-3xl font-bold text-coral-600">
+              {formatPrice(d.priceUSD!, country)}
+            </span>
+            {discountPct && <span class="font-bold text-coral-600">({discountPct}% OFF)</span>}
+          </p>
+        ) : (
+          <p class="text-sm font-bold text-ciruela-600">Precio en tu moneda, visible antes de pagar.</p>
+        )
+      }
+      <a
+        href={checkoutUrl}
+        target="_blank"
+        rel="noopener"
+        data-track="begin_checkout"
+        data-track-params={trackParams}
+        class="mt-5 inline-block rounded-full bg-coral-500 px-9 py-4 text-sm font-extrabold tracking-wide text-white uppercase shadow-cta transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600"
+      >
+        {cta}
+      </a>
+      <p class="mt-4 text-xs text-ciruela-400">El descuento se aplica automáticamente en el enlace.</p>
+    </div>
+  </section>
+
+  <!-- Garantía -->
+  <section class="contenedor py-12">
+    <div class="mx-auto flex max-w-2xl flex-col items-center gap-4 rounded-3xl border-2 border-dashed border-aqua-500 bg-aqua-100/40 p-8 text-center sm:flex-row sm:text-left">
+      <span class="text-5xl" aria-hidden="true">🛡️</span>
+      <div>
+        <h2 class="font-display text-xl font-semibold text-ciruela-900">7 días de garantía, sin preguntas</h2>
+        <p class="mt-1.5 text-sm text-ciruela-600">
+          Entra al curso, mira las lecciones y decide. Si no es para ti, Hotmart te devuelve el 100% de tu
+          dinero dentro de los primeros 7 días.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ mínimo -->
+  <section class="contenedor max-w-2xl pb-12">
+    <h2 class="font-display text-center text-2xl font-semibold text-ciruela-900">Preguntas rápidas</h2>
+    <div class="mt-6 divide-y divide-crema-200 rounded-3xl border border-crema-200 bg-white shadow-tarjeta">
+      {
+        faqs.map((faq) => (
+          <details class="group px-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-sm font-bold text-ciruela-800 [&::-webkit-details-marker]:hidden">
+              {faq.q}
+              <span class="text-coral-500 transition-transform duration-300 group-open:rotate-45">+</span>
+            </summary>
+            <p class="pb-4 text-sm text-ciruela-500">{faq.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="bg-gradient-to-br from-coral-600 via-coral-500 to-lila-500 py-14 text-center text-white">
+    <div class="contenedor">
+      <h2 class="mx-auto max-w-xl text-3xl font-semibold text-balance">
+        {isMeta ? 'Tu nueva habilidad te está esperando' : 'Última oportunidad: inscríbete ahora'}
+      </h2>
+      <p class="mt-3 text-sm text-white/85">Acceso inmediato tras el pago · Certificado incluido</p>
+      <a
+        href={checkoutUrl}
+        target="_blank"
+        rel="noopener"
+        data-track="begin_checkout"
+        data-track-params={trackParams}
+        class="mt-6 inline-block rounded-full bg-white px-10 py-4 text-sm font-extrabold tracking-wide text-coral-600 uppercase shadow-globo transition-all duration-300 ease-fiesta hover:-translate-y-1"
+      >
+        {cta}
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- Mini footer -->
+<footer class="bg-ciruela-900 py-8 text-center text-xs text-crema-100/60">
+  <div class="contenedor space-y-2">
+    <p>© {new Date().getFullYear()} {SITE.name} · Una filial de Sably</p>
+    <p>
+      <a href="/legal/terminos/" class="underline hover:text-crema-100">Términos</a> ·
+      <a href="/legal/privacidad/" class="underline hover:text-crema-100">Privacidad</a> ·
+      <a href={`mailto:${SITE.email}`} class="underline hover:text-crema-100">{SITE.email}</a>
+    </p>
+  </div>
+</footer>

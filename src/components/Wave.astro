@@ -1,0 +1,20 @@
+---
+/**
+ * Divisor de sección con onda (patrón LBD Balloons).
+ * `color` es el fill de la onda (el color de la sección hacia la que fluye).
+ */
+interface Props {
+  color?: string;
+  flip?: boolean;
+  class?: string;
+}
+const { color = 'var(--color-crema-50)', flip = false, class: className } = Astro.props;
+---
+
+<div class:list={['pointer-events-none -mb-px w-full leading-none', flip && 'rotate-180', className]} aria-hidden="true">
+  <svg viewBox="0 0 1440 72" preserveAspectRatio="none" class="block h-10 w-full sm:h-14 lg:h-[72px]" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M0,36 C180,72 360,6 560,22 C760,38 900,68 1100,52 C1250,40 1360,18 1440,30 L1440,72 L0,72 Z"
+      fill={color}></path>
+  </svg>
+</div>

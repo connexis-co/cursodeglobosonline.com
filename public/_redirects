@@ -1,0 +1,52 @@
+# Migración WordPress → Astro (auditoría 2026-08-06, plan maestro §14)
+# Money pages: conservan la equivalencia 1:1 con el enlace Hotmart intacto.
+
+# Cursos genéricos → Colombia (mercado por defecto)
+/curso-globoflexia/ /co/curso-de-globoflexia/ 301
+/curso-bouquets-globos/ /co/curso-de-bouquets-de-globos/ 301
+/curso-flores-con-globos/ /co/curso-de-flores-con-globos/ 301
+/curso-globos-burbuja/ /co/curso-de-globos-burbuja/ 301
+/black-friday/ /co/curso-de-globoflexia/ 301
+
+# México
+/mexico/curso-de-globoflexia/ /mx/curso-de-globoflexia/ 301
+/mexico/curso-bouquets-globos/ /mx/curso-de-bouquets-de-globos/ 301
+/mexico/curso-flores-con-globos/ /mx/curso-de-flores-con-globos/ 301
+/mexico/curso-globos-burbuja/ /mx/curso-de-globos-burbuja/ 301
+/mexico/ /mx/ 301
+/mexico/* /mx/:splat 301
+
+# Perú
+/peru/curso-de-globoflexia/ /pe/curso-de-globoflexia/ 301
+/peru/curso-bouquets-globos/ /pe/curso-de-bouquets-de-globos/ 301
+/peru/curso-flores-con-globos/ /pe/curso-de-flores-con-globos/ 301
+/peru/curso-globos-burbuja/ /pe/curso-de-globos-burbuja/ 301
+/peru/ /pe/ 301
+/peru/* /pe/:splat 301
+
+# Ciudades Colombia (las city landings vuelven en v0.2 con contenido único)
+/bogota/ /co/ 301
+/medellin/ /co/ 301
+/cali/ /co/ 301
+/barranquilla/ /co/ 301
+/bucaramanga/ /co/ 301
+/bogota/* /co/:splat 301
+/medellin/* /co/:splat 301
+/cali/* /co/:splat 301
+/barranquilla/* /co/:splat 301
+/bucaramanga/* /co/:splat 301
+
+# Restos de WordPress
+/feed/ / 301
+/comments/feed/ / 301
+/xmlrpc.php / 301
+/wp-content/* / 301
+/wp-json/* / 301
+
+# Sitemaps antiguos (Rank Math) → sitemap nuevo
+/sitemap_index.xml /sitemap-index.xml 301
+/sitemap.xml /sitemap-index.xml 301
+/wp-sitemap.xml /sitemap-index.xml 301
+/page-sitemap.xml /sitemap-index.xml 301
+/local-sitemap.xml /sitemap-index.xml 301
+/locations.kml / 301

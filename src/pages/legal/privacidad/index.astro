@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Política de Privacidad — Curso de Globos Online"
+  description="Cómo tratamos tus datos en cursodeglobosonline.com: formularios, WhatsApp, analítica con Google Tag Manager y tus derechos."
+  pageType="legal"
+>
+  <div class="contenedor max-w-3xl pt-28 pb-20 lg:pt-32">
+    <h1 class="text-3xl font-semibold text-ciruela-900 sm:text-4xl">Política de privacidad</h1>
+    <p class="mt-2 text-xs text-ciruela-400">Última actualización: agosto de 2026</p>
+    <div class="mt-8 space-y-6 text-sm leading-relaxed text-ciruela-600">
+      <section>
+        <h2 class="mb-2 font-display text-lg font-semibold text-ciruela-900">1. Qué datos recogemos</h2>
+        <p>
+          Solo los que tú nos das: nombre, número de WhatsApp y curso de interés cuando usas nuestros
+          formularios de contacto o asesoría. No pedimos ni almacenamos datos de pago — el pago ocurre
+          íntegramente en Hotmart bajo sus propias políticas.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-2 font-display text-lg font-semibold text-ciruela-900">2. Para qué los usamos</h2>
+        <p>
+          Para responderte por WhatsApp o correo con la información que pediste. No vendemos ni compartimos
+          tus datos con terceros ajenos al servicio.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-2 font-display text-lg font-semibold text-ciruela-900">3. Analítica y cookies</h2>
+        <p>
+          Usamos Google Tag Manager y Google Analytics 4 para medir de forma agregada cómo se usa el sitio
+          (páginas vistas, clics de inscripción) y mejorar la experiencia. Puedes limitar las cookies desde
+          la configuración de tu navegador.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-2 font-display text-lg font-semibold text-ciruela-900">4. Terceros</h2>
+        <p>
+          Los enlaces de inscripción llevan a Hotmart, y los botones de WhatsApp abren la app de Meta.
+          Cada plataforma trata tus datos según su propia política de privacidad.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-2 font-display text-lg font-semibold text-ciruela-900">5. Tus derechos</h2>
+        <p>
+          Puedes pedir acceso, corrección o eliminación de tus datos escribiendo a
+          <a href={`mailto:${SITE.email}`} class="font-bold text-coral-600 underline">{SITE.email}</a>.
+          Respondemos dentro de los plazos legales aplicables en tu país.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

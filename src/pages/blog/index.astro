@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
+);
+---
+
+<BaseLayout
+  title="Blog de Decoración con Globos 🎈 Guías y Tutoriales"
+  description="Guías de decoración con globos: cómo hacer arcos, qué marcas usar, cuánto cobrar y cómo montar tu negocio de decoración."
+  pageType="blog"
+>
+  <div class="contenedor max-w-4xl pt-28 pb-20 lg:pt-32">
+    <SectionHeading
+      eyebrow="Blog"
+      title="Guías para decoradoras que cobran"
+      lead="Tutoriales, técnicas y consejos de negocio del mundo de los globos."
+    />
+
+    {
+      posts.length > 0 ? (
+        <ul class="mt-10 space-y-6">
+          {posts.map((post) => (
+            <li>
+              <a
+                href={`/blog/${post.id}/`}
+                class="block rounded-3xl border border-crema-200 bg-white p-6 shadow-tarjeta transition-transform duration-300 ease-fiesta hover:-translate-y-1"
+              >
+                <h2 class="font-display text-xl font-semibold text-ciruela-900">{post.data.title}</h2>
+                <p class="mt-2 text-sm text-ciruela-500">{post.data.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div class="mt-10 rounded-3xl border border-crema-200 bg-crema-100 p-10 text-center">
+          <p class="text-4xl" aria-hidden="true">
+            🎈✍️
+          </p>
+          <p class="mt-4 font-display text-xl font-semibold text-ciruela-900">
+            Estamos inflando los primeros artículos
+          </p>
+          <p class="mx-auto mt-2 max-w-md text-sm text-ciruela-500">
+            Muy pronto: cómo hacer arcos de globos sin estructura, qué marcas de globos usar para decorar y
+            cuánto cobrar por un montaje. Mientras tanto, los cursos ya están abiertos.
+          </p>
+          <a
+            href="/co/cursos/"
+            class="mt-6 inline-block rounded-full bg-coral-500 px-6 py-3 text-xs font-extrabold tracking-wide text-white uppercase transition-colors hover:bg-coral-600"
+          >
+            Ver los cursos
+          </a>
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>

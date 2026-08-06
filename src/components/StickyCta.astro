@@ -1,0 +1,57 @@
+---
+import type { Country } from '@/lib/countries';
+import { formatPrice } from '@/lib/countries';
+
+interface Props {
+  country: Country;
+  priceUSD: number;
+  originalPriceUSD: number;
+  hotmartUrl: string;
+  courseName: string;
+  coupon: string;
+}
+
+const { country, priceUSD, originalPriceUSD, hotmartUrl, courseName, coupon } = Astro.props;
+---
+
+<div
+  id="sticky-cta"
+  class="fixed inset-x-0 bottom-0 z-40 translate-y-full border-t border-crema-200 bg-white/95 backdrop-blur-md transition-transform duration-400 ease-suave lg:hidden"
+>
+  <div class="contenedor flex items-center justify-between gap-3 py-3">
+    <div class="leading-tight">
+      <span class="block text-[0.65rem] text-ciruela-400 line-through">{formatPrice(originalPriceUSD, country)}</span>
+      <span class="block text-lg font-extrabold text-coral-600">{formatPrice(priceUSD, country)}</span>
+    </div>
+    <a
+      href={hotmartUrl}
+      target="_blank"
+      rel="noopener"
+      data-track="begin_checkout"
+      data-track-params={JSON.stringify({
+        course_name: courseName,
+        price: priceUSD,
+        currency: country.currency,
+        discount_code: coupon,
+        placement: 'sticky_mobile',
+      })}
+      class="rounded-full bg-coral-500 px-6 py-3 text-xs font-extrabold tracking-wide text-white uppercase shadow-cta"
+    >
+      Inscribirme ahora
+    </a>
+  </div>
+</div>
+
+<script>
+  const bar = document.getElementById('sticky-cta');
+  const hero = document.getElementById('curso-hero');
+  if (bar && hero) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        bar.style.transform = entry.isIntersecting ? 'translateY(100%)' : 'translateY(0)';
+      },
+      { threshold: 0 },
+    );
+    observer.observe(hero);
+  }
+</script>

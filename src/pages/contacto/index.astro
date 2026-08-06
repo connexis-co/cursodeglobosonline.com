@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import LeadForm from '@/components/LeadForm.astro';
+import { COUNTRIES, DEFAULT_COUNTRY } from '@/lib/countries';
+import { buildWhatsAppUrl } from '@/lib/hotmart';
+import { SITE } from '@/lib/site';
+
+const courses = await getCollection('courses');
+const country = COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
+const waUrl = buildWhatsAppUrl(country.whatsapp, 'Hola 🎈 Tengo una pregunta sobre los cursos de globos.');
+---
+
+<BaseLayout
+  title="Contacto — Curso de Globos Online 🎈"
+  description="¿Dudas sobre los cursos de decoración con globos? Escríbenos por WhatsApp o correo y te respondemos con toda la información."
+  pageType="contact"
+>
+  <div class="contenedor grid items-start gap-10 pt-28 pb-20 lg:grid-cols-[1fr_1.2fr] lg:pt-32">
+    <div>
+      <SectionHeading
+        eyebrow="Contacto"
+        title="Hablemos de tu próximo curso"
+        lead="Respondemos dudas sobre temarios, precios en tu moneda, formas de pago y certificados."
+      />
+      <div class="mt-8 space-y-4">
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener"
+          data-track="click_whatsapp"
+          data-track-params={JSON.stringify({ page_location: '/contacto/' })}
+          class="flex items-center gap-4 rounded-2xl border border-crema-200 bg-white p-5 shadow-tarjeta transition-transform duration-300 ease-fiesta hover:-translate-y-1"
+        >
+          <span class="flex h-11 w-11 items-center justify-center rounded-full bg-[#25d366]/15 text-xl">💬</span>
+          <span>
+            <span class="block text-sm font-extrabold text-ciruela-800">WhatsApp</span>
+            <span class="block text-xs text-ciruela-500">{country.phoneDisplay} · respuesta rápida</span>
+          </span>
+        </a>
+        <a
+          href={`mailto:${SITE.email}`}
+          class="flex items-center gap-4 rounded-2xl border border-crema-200 bg-white p-5 shadow-tarjeta transition-transform duration-300 ease-fiesta hover:-translate-y-1"
+        >
+          <span class="flex h-11 w-11 items-center justify-center rounded-full bg-coral-50 text-xl">📧</span>
+          <span>
+            <span class="block text-sm font-extrabold text-ciruela-800">Correo</span>
+            <span class="block text-xs text-ciruela-500">{SITE.email}</span>
+          </span>
+        </a>
+      </div>
+    </div>
+    <LeadForm {courses} {country} />
+  </div>
+</BaseLayout>

@@ -1,0 +1,57 @@
+---
+/**
+ * Chip de cupón textual copiable. Este sitio hoy no usa cupones alfanuméricos
+ * (el descuento va por offDiscount en el enlace); queda listo para cuando
+ * exista un cupón tipo SABLY40 para estos productos.
+ */
+interface Props {
+  code: string;
+  pct: number;
+  courseName?: string;
+  class?: string;
+}
+const { code, pct, courseName = '', class: className } = Astro.props;
+---
+
+<button
+  type="button"
+  class:list={[
+    'discount-chip group inline-flex items-center gap-2.5 rounded-full border-2 border-dashed border-coral-400 bg-coral-50 px-4 py-2 transition-colors hover:bg-coral-100',
+    className,
+  ]}
+  data-code={code}
+  data-track="copy_discount_code"
+  data-track-params={JSON.stringify({ discount_code: code, course_name: courseName })}
+  title="Copiar código de descuento"
+>
+  <span class="text-sm font-bold text-ciruela-700">🔥 {pct}% OFF con</span>
+  <code class="font-mono text-sm font-extrabold tracking-wider text-coral-700">{code}</code>
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" class="text-coral-600" aria-hidden="true">
+    <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2"></rect>
+    <path d="M5 15V5a2 2 0 0 1 2-2h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+  </svg>
+  <span class="chip-feedback sr-only" role="status"></span>
+</button>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.discount-chip').forEach((chip) => {
+    chip.addEventListener('click', async () => {
+      const code = chip.dataset.code ?? '';
+      try {
+        await navigator.clipboard.writeText(code);
+        const feedback = chip.querySelector('.chip-feedback');
+        const label = chip.querySelector('code');
+        if (label && feedback) {
+          const original = label.textContent;
+          label.textContent = '¡Copiado! ✓';
+          feedback.textContent = `Código ${code} copiado`;
+          setTimeout(() => {
+            label.textContent = original;
+          }, 1600);
+        }
+      } catch {
+        /* clipboard no disponible: el código queda visible igualmente */
+      }
+    });
+  });
+</script>

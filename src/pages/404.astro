@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Página no encontrada — Curso de Globos Online"
+  description="La página que buscas no existe o cambió de dirección."
+  pageType="404"
+  noindex
+>
+  <div class="contenedor flex min-h-[70vh] flex-col items-center justify-center pt-28 pb-16 text-center">
+    <p class="text-7xl" aria-hidden="true">🎈💥</p>
+    <h1 class="mt-6 text-4xl font-semibold text-ciruela-900">¡Se nos reventó este globo!</h1>
+    <p class="mx-auto mt-3 max-w-md text-sm text-ciruela-500">
+      La página que buscas no existe o cambió de dirección con el sitio nuevo. Lo bueno: los cursos siguen
+      aquí, inflados y listos.
+    </p>
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <a
+        href="/"
+        class="rounded-full bg-coral-500 px-7 py-3.5 text-sm font-extrabold tracking-wide text-white uppercase shadow-cta transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600"
+      >
+        Ir al inicio
+      </a>
+      <a
+        href="/co/cursos/"
+        class="rounded-full border-2 border-crema-300 px-7 py-3.5 text-sm font-extrabold tracking-wide text-ciruela-600 uppercase transition-colors hover:border-coral-300 hover:text-coral-600"
+      >
+        Ver los cursos
+      </a>
+    </div>
+  </div>
+</BaseLayout>

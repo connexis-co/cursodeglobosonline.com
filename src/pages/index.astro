@@ -1,0 +1,354 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Balloons from '@/components/Balloons.astro';
+import CourseCover from '@/components/CourseCover.astro';
+import Wave from '@/components/Wave.astro';
+import TrustBar from '@/components/TrustBar.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import CourseCard from '@/components/CourseCard.astro';
+import TestimonialCard from '@/components/TestimonialCard.astro';
+import CertificateShowcase from '@/components/CertificateShowcase.astro';
+import LeadForm from '@/components/LeadForm.astro';
+import FaqAccordion from '@/components/FaqAccordion.astro';
+import { countryAlternates, faqSchema } from '@/lib/seo';
+import { SITE } from '@/lib/site';
+
+const courses = (await getCollection('courses')).sort(
+  (a, b) => Number(b.data.featured) - Number(a.data.featured),
+);
+const featured = courses.find((c) => c.data.featured) ?? courses[0];
+const others = courses.filter((c) => c.id !== featured.id);
+const testimonials = (await getCollection('testimonials')).slice(0, 6);
+
+const faqs = [
+  {
+    q: '¿Los cursos son en vivo o grabados?',
+    a: 'Son grabados y ese es su punto fuerte: recibes acceso inmediato al pagar, avanzas a tu ritmo y repites cada técnica las veces que necesites antes de un pedido o un evento.',
+  },
+  {
+    q: '¿Cómo pago desde mi país?',
+    a: 'El pago se procesa en Hotmart, la plataforma de cursos más usada de Latinoamérica. Acepta tarjetas y métodos locales según tu país, y muestra el precio en tu moneda antes de confirmar.',
+  },
+  {
+    q: '¿El certificado tiene validez?',
+    a: 'Al completar cada curso recibes un certificado de estudios con validez internacional, con tareas calificadas durante el curso. Sirve para tu portafolio y para generar confianza con clientes.',
+  },
+  {
+    q: '¿Necesito materiales costosos para empezar?',
+    a: 'No. Con globos de buena calidad y un inflador manual haces tus primeras prácticas. Cada curso indica sus materiales y recomienda marcas; los equipos eléctricos son opcionales.',
+  },
+  {
+    q: '¿Cuánto tiempo tengo para terminar un curso?',
+    a: 'No hay límite. El acceso es permanente: puedes terminarlo en una semana o repasarlo dentro de un año antes de un evento importante.',
+  },
+  {
+    q: '¿Hay garantía si no me gusta?',
+    a: 'Sí. Hotmart ofrece 7 días de garantía: si el curso no era lo que esperabas, pides el reembolso y recuperas el 100% de tu dinero.',
+  },
+  {
+    q: '¿Estos cursos sirven para montar un negocio?',
+    a: 'Sí, están pensados para eso. Además de la técnica, incluyen presupuesto y cotización, bonos de productos vendibles (bouquets, desayuno sorpresa, porta globos) y consejos para conseguir clientes.',
+  },
+  {
+    q: '¿Desde qué países puedo tomarlos?',
+    a: 'Desde cualquiera. Tenemos estudiantes en Colombia, México, Perú, Ecuador, Chile, Argentina, España y Estados Unidos, y el checkout ajusta moneda y métodos de pago a tu país.',
+  },
+];
+---
+
+<BaseLayout
+  title="Curso de Decoración con Globos Online 🎈 Con Certificado"
+  description="Aprende decoración con globos online: globoflexia, bouquets, flores y globos burbuja. Certificado de estudios, acceso de por vida y 50% OFF en el curso estrella."
+  alternates={countryAlternates('/')}
+  schemas={[faqSchema(faqs)]}
+  pageType="home"
+  transparentHeader
+>
+  <!-- 1 · HERO -->
+  <section class="relative overflow-hidden bg-ciruela-900 text-crema-50">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div
+        class="absolute -top-32 -left-32 h-[30rem] w-[30rem] rounded-full opacity-35 blur-3xl"
+        style="background: radial-gradient(circle, oklch(0.67 0.185 22 / 0.8), transparent 65%)"
+      >
+      </div>
+      <div
+        class="absolute top-1/3 -right-40 h-[26rem] w-[26rem] rounded-full opacity-30 blur-3xl"
+        style="background: radial-gradient(circle, oklch(0.74 0.1 303 / 0.8), transparent 65%)"
+      >
+      </div>
+      <div
+        class="absolute bottom-0 left-1/3 h-72 w-72 rounded-full opacity-20 blur-3xl"
+        style="background: radial-gradient(circle, oklch(0.78 0.1 193 / 0.8), transparent 65%)"
+      >
+      </div>
+    </div>
+    <Balloons variant="hero" />
+
+    <div class="contenedor relative pt-32 pb-20 text-center sm:pt-36 lg:pt-44 lg:pb-28">
+      <p
+        class="animate-pop-in mx-auto inline-flex items-center gap-2 rounded-full border border-crema-50/20 bg-crema-50/10 px-4 py-1.5 text-xs font-bold tracking-wide backdrop-blur-sm"
+      >
+        🎈 4 cursos · {SITE.stats.students} estudiantes certificados · {SITE.stats.ventures} emprendimientos
+      </p>
+      <h1
+        class="animate-fade-slide-up mx-auto mt-6 max-w-3xl text-4xl font-semibold text-balance sm:text-5xl lg:text-6xl"
+        style="animation-delay: 0.1s"
+      >
+        Cursos de decoración con globos para <span class="texto-shimmer">vivir de las fiestas</span>
+      </h1>
+      <p
+        class="animate-fade-slide-up mx-auto mt-5 max-w-xl text-base text-crema-100/85 sm:text-lg"
+        style="animation-delay: 0.22s"
+      >
+        Globoflexia, bouquets, flores y globos burbuja: técnica paso a paso, 100% online, con certificado de
+        estudios y acceso para siempre.
+      </p>
+      <div
+        class="animate-fade-slide-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+        style="animation-delay: 0.34s"
+      >
+        <a
+          href="/co/cursos/"
+          class="rounded-full bg-coral-500 px-8 py-4 text-sm font-extrabold tracking-wide text-white uppercase shadow-cta transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-600"
+        >
+          Explorar los cursos
+        </a>
+        <a
+          href={`/co/${featured.id}/`}
+          class="rounded-full border-2 border-crema-50/30 px-8 py-4 text-sm font-extrabold tracking-wide uppercase backdrop-blur-sm transition-all duration-300 hover:border-sol-300 hover:text-sol-300"
+        >
+          🔥 Globoflexia con 50% OFF
+        </a>
+      </div>
+      <p class="animate-fade-slide-up mt-7 text-xs text-crema-100/60" style="animation-delay: 0.45s">
+        Garantía de 7 días · Pago seguro con Hotmart · Aprende desde tu celular
+      </p>
+    </div>
+    <Wave color="var(--color-crema-50)" />
+  </section>
+
+  <!-- 2 · BARRA DE CONFIANZA -->
+  <TrustBar />
+
+  <!-- 3 · CURSOS DESTACADOS (grid asimétrico) -->
+  <section class="contenedor py-16 lg:py-24" id="cursos">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <SectionHeading
+        eyebrow="Catálogo"
+        title="Cuatro cursos, un oficio que se paga solo"
+        lead="Empieza por el que más te llame: todos incluyen certificado, acceso permanente y bonos pensados para vender desde la primera semana."
+      />
+      <a
+        href="/co/cursos/"
+        class="scroll-reveal mb-1 shrink-0 rounded-full border-2 border-coral-500 px-5 py-2.5 text-xs font-extrabold tracking-wide text-coral-600 uppercase transition-colors hover:bg-coral-500 hover:text-white"
+      >
+        Ver todos →
+      </a>
+    </div>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="scroll-reveal sm:col-span-2 lg:col-span-1 lg:row-span-2">
+        <CourseCard course={featured} large />
+      </div>
+      {
+        others.map((course, i) => (
+          <div class="scroll-reveal" style={`animation-delay:${i * 70}ms`}>
+            <CourseCard course={course} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- 4 · MÉTODO / SHOWCASE -->
+  <section class="relative overflow-hidden bg-ciruela-900 text-crema-50">
+    <Wave color="var(--color-crema-50)" flip class="rotate-180" />
+    <div class="contenedor grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
+      <div class="scroll-reveal">
+        <p class="mb-2 text-xs font-extrabold tracking-[0.22em] text-sol-300 uppercase">El método</p>
+        <h2 class="text-3xl font-semibold text-balance sm:text-4xl">
+          De tu primera figura a tu primer evento cobrado
+        </h2>
+        <ul class="mt-8 space-y-5">
+          {
+            [
+              ['🎥', 'La técnica en cámara, sin relleno', 'Ves las manos del instructor en cada amarre y cada retorcido, y lo repites a tu ritmo.'],
+              ['📱', 'Desde el celular o el computador', 'Acceso inmediato al pagar, sin horarios y para siempre. Repasa antes de cada pedido.'],
+              ['🧾', 'Tareas calificadas y asistencia académica', 'No estudias en solitario: entregas prácticas y recibes correcciones mientras avanzas.'],
+              ['💼', 'Bonos que se venden solos', 'Presupuestos, porta globos, bouquets de desayuno sorpresa: productos listos para cobrar.'],
+            ].map(([emoji, title, text]) => (
+              <li class="flex gap-4">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-crema-50/10 text-xl">
+                  {emoji}
+                </span>
+                <span>
+                  <span class="block font-bold">{title}</span>
+                  <span class="mt-0.5 block text-sm text-crema-100/70">{text}</span>
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+        <a
+          href={`/co/${featured.id}/`}
+          class="mt-9 inline-block rounded-full bg-sol-500 px-7 py-3.5 text-sm font-extrabold tracking-wide text-ciruela-900 uppercase transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-sol-300"
+        >
+          Comienza tu primer curso
+        </a>
+      </div>
+      <div class="scroll-reveal-late relative mx-auto w-full max-w-md lg:max-w-none">
+        <div class="rotate-2 overflow-hidden rounded-3xl border-4 border-crema-50/15 shadow-globo">
+          <div class="aspect-[4/3] w-full">
+            <CourseCover slug={featured.id} category={featured.data.category} title={featured.data.title} />
+          </div>
+        </div>
+        <div
+          class="absolute -bottom-5 -left-4 rotate-[-3deg] rounded-2xl bg-crema-50 px-5 py-3 text-ciruela-800 shadow-globo"
+        >
+          <span class="block font-display text-2xl font-semibold text-coral-600">{SITE.stats.supportVideos}</span>
+          <span class="block text-xs font-bold">videos de apoyo</span>
+        </div>
+        <div
+          class="absolute -top-5 -right-3 rotate-3 rounded-2xl bg-sol-300 px-5 py-3 text-ciruela-900 shadow-globo"
+        >
+          <span class="block font-display text-2xl font-semibold">50%</span>
+          <span class="block text-xs font-bold">OFF globoflexia</span>
+        </div>
+      </div>
+    </div>
+    <Wave color="var(--color-crema-50)" />
+  </section>
+
+  <!-- 5 · CÓMO FUNCIONA -->
+  <section class="contenedor py-16 lg:py-24">
+    <SectionHeading
+      eyebrow="Cómo funciona"
+      title="Tres pasos y estás practicando hoy mismo"
+      align="center"
+    />
+    <div class="mt-12 grid gap-6 sm:grid-cols-3">
+      {
+        [
+          ['1', 'Inscríbete en Hotmart', 'Pago seguro con tarjeta o métodos locales de tu país, en tu moneda. El acceso llega a tu correo al instante.'],
+          ['2', 'Aprende a tu ritmo', 'Videos paso a paso desde tu celular o computador, con tareas calificadas y asistencia académica.'],
+          ['3', 'Certifícate y cobra', 'Descarga tu certificado de estudios, arma tu portafolio y empieza a cotizar tus primeros pedidos.'],
+        ].map(([num, title, text], i) => (
+          <div
+            class:list={[
+              'scroll-reveal relative rounded-3xl border border-crema-200 bg-white p-7 shadow-tarjeta',
+              i === 1 && 'sm:translate-y-5 sm:rotate-[0.5deg]',
+              i === 0 && 'sm:rotate-[-0.6deg]',
+              i === 2 && 'sm:rotate-[-0.4deg] sm:translate-y-2',
+            ]}
+            style={`animation-delay:${i * 90}ms`}
+          >
+            <span class="font-display absolute -top-6 left-6 text-6xl font-bold text-coral-200" aria-hidden="true">
+              {num}
+            </span>
+            <h3 class="relative mt-4 text-lg font-extrabold text-ciruela-900">{title}</h3>
+            <p class="relative mt-2 text-sm leading-relaxed text-ciruela-500">{text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- 6 · TESTIMONIOS -->
+  <section class="bg-crema-100 py-16 lg:py-24">
+    <div class="contenedor">
+      <SectionHeading
+        eyebrow="Estudiantes"
+        title="Historias que empezaron con una bolsa de globos"
+        lead="Decoradoras, animadores y emprendedores de 8 países que hoy cobran por lo que aprendieron aquí."
+      />
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          testimonials.map((t, i) => (
+            <div class="scroll-reveal" style={`animation-delay:${i * 60}ms`}>
+              <TestimonialCard testimonial={t} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · CERTIFICADO -->
+  <section class="contenedor grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
+    <CertificateShowcase courseName={featured.data.title} />
+    <div class="scroll-reveal">
+      <SectionHeading
+        eyebrow="Certificado"
+        title="Un certificado que respalda tu trabajo"
+        lead="Al completar el 100% de las lecciones recibes un certificado de estudios digital con validez internacional."
+      />
+      <ul class="mt-7 space-y-3.5 text-sm text-ciruela-600">
+        {
+          [
+            'Incluye tu nombre, el curso completado y la fecha',
+            'Verificable en línea, listo para compartir en redes o imprimir',
+            'Con tareas calificadas y asistencia académica durante el curso',
+            'Súmalo a tu portafolio para cotizar con más confianza',
+          ].map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="mt-0.5 shrink-0 text-coral-500" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.15" />
+                <path d="m8 12.5 2.7 2.7L16.5 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- 8 · LEAD FORM -->
+  <section class="relative overflow-hidden bg-crema-100 py-16 lg:py-24">
+    <Balloons variant="rise" />
+    <div class="contenedor relative grid items-center gap-10 lg:grid-cols-[1fr_1.2fr]">
+      <SectionHeading
+        eyebrow="Asesoría"
+        title="Te ayudamos a elegir tu curso"
+        lead="Cuéntanos qué quieres aprender y te respondemos por WhatsApp con la información completa: temario, precio en tu moneda y cómo inscribirte."
+      />
+      <LeadForm courses={courses} />
+    </div>
+  </section>
+
+  <!-- 9 · FAQ -->
+  <section class="contenedor max-w-4xl py-16 lg:py-24">
+    <SectionHeading eyebrow="Preguntas frecuentes" title="Lo que todos preguntan antes de empezar" align="center" />
+    <div class="mt-10">
+      <FaqAccordion faqs={faqs} />
+    </div>
+  </section>
+
+  <!-- 10 · CTA FINAL -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-coral-600 via-coral-500 to-lila-500 text-white">
+    <Balloons variant="rise" />
+    <div class="contenedor relative py-16 text-center lg:py-24">
+      <h2 class="mx-auto max-w-2xl text-3xl font-semibold text-balance sm:text-4xl">
+        Tu primer montaje cobrado está a un curso de distancia
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-sm text-white/85 sm:text-base">
+        Únete a los {SITE.stats.students} estudiantes certificados que ya convirtieron los globos en ingresos.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a
+          href={`/co/${featured.id}/`}
+          class="rounded-full bg-white px-8 py-4 text-sm font-extrabold tracking-wide text-coral-600 uppercase shadow-globo transition-all duration-300 ease-fiesta hover:-translate-y-1"
+        >
+          Empezar con globoflexia · 50% OFF
+        </a>
+        <a
+          href="/co/cursos/"
+          class="rounded-full border-2 border-white/50 px-8 py-4 text-sm font-extrabold tracking-wide uppercase transition-colors hover:bg-white/10"
+        >
+          Ver todos los cursos
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

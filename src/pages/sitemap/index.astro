@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { COUNTRIES } from '@/lib/countries';
+import { CATEGORIES } from '@/lib/categories';
+
+const courses = await getCollection('courses');
+const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.category === cat.slug));
+---
+
+<BaseLayout
+  title="Mapa del Sitio — Curso de Globos Online 🎈"
+  description="Todas las páginas de cursodeglobosonline.com organizadas por país: cursos, categorías y páginas informativas."
+  pageType="sitemap"
+>
+  <div class="contenedor pt-28 pb-20 lg:pt-32">
+    <SectionHeading eyebrow="Mapa del sitio" title="Todo el sitio, en una página" />
+
+    <div class="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        COUNTRIES.map((country) => (
+          <nav aria-label={`Páginas de ${country.name}`}>
+            <p class="mb-3 font-display text-lg font-semibold text-ciruela-900">
+              {country.flag} {country.name}
+            </p>
+            <ul class="space-y-2 text-sm text-ciruela-600">
+              <li>
+                <a href={`/${country.code}/`} class="hover:text-coral-600">
+                  Inicio {country.name}
+                </a>
+              </li>
+              <li>
+                <a href={`/${country.code}/cursos/`} class="hover:text-coral-600">
+                  Todos los cursos
+                </a>
+              </li>
+              {activeCategories.map((cat) => (
+                <li>
+                  <a href={`/${country.code}/cursos/${cat.slug}/`} class="hover:text-coral-600">
+                    {cat.name}
+                  </a>
+                </li>
+              ))}
+              {courses.map((course) => (
+                <li>
+                  <a href={`/${country.code}/${course.id}/`} class="hover:text-coral-600">
+                    {course.data.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
+    </div>
+
+    <nav class="mt-12 border-t border-crema-200 pt-8" aria-label="Páginas generales">
+      <p class="mb-3 font-display text-lg font-semibold text-ciruela-900">🌐 Páginas generales</p>
+      <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ciruela-600">
+        <li><a href="/" class="hover:text-coral-600">Inicio</a></li>
+        <li><a href="/blog/" class="hover:text-coral-600">Blog</a></li>
+        <li><a href="/nosotros/" class="hover:text-coral-600">Nosotros</a></li>
+        <li><a href="/contacto/" class="hover:text-coral-600">Contacto</a></li>
+        <li><a href="/legal/terminos/" class="hover:text-coral-600">Términos y condiciones</a></li>
+        <li><a href="/legal/privacidad/" class="hover:text-coral-600">Política de privacidad</a></li>
+      </ul>
+    </nav>
+  </div>
+</BaseLayout>

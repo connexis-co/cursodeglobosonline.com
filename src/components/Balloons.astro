@@ -1,0 +1,119 @@
+---
+/**
+ * Globos decorativos animados (CSS puro, patrón lbdballoons.com):
+ *  · animación `floating` (0→25px→0, ~3s ease-in-out) con delays NEGATIVOS
+ *    y duraciones ligeramente distintas → desincronización natural.
+ *  · globos XL que sangran fuera de la sección (como .globo--v1..v9 de LBD,
+ *    que usa imágenes de 536×590 recortadas por el borde).
+ *  · parallax sutil al scroll vía wrapper .globo-plx (animation-timeline nativo).
+ *
+ * variants: "hero" · "rise" · "corner-left" · "corner-right"
+ */
+interface Props {
+  variant?: 'hero' | 'rise' | 'corner-left' | 'corner-right';
+}
+const { variant = 'hero' } = Astro.props;
+
+interface Globo {
+  color: string;
+  light: string;
+  size: number;
+  left?: string;
+  right?: string;
+  top?: string;
+  bottom?: string;
+  delay: string;
+  duration: string;
+  opacity?: number;
+  /** Distancia de parallax al scroll (px, positivo = baja). */
+  plx?: number;
+  rise?: boolean;
+}
+
+const PALETA = {
+  coral: ['oklch(0.67 0.185 22)', 'oklch(0.84 0.1 20)'],
+  aqua: ['oklch(0.78 0.1 193)', 'oklch(0.92 0.045 194)'],
+  sol: ['oklch(0.84 0.145 85)', 'oklch(0.95 0.06 89)'],
+  lila: ['oklch(0.74 0.1 303)', 'oklch(0.9 0.05 304)'],
+  dorado: ['oklch(0.76 0.12 75)', 'oklch(0.9 0.07 79)'],
+} as const;
+
+const g = (
+  tone: keyof typeof PALETA,
+  size: number,
+  pos: Partial<Globo>,
+  delay: string,
+  duration = '3s',
+  opacity = 1,
+): Globo => ({ color: PALETA[tone][0], light: PALETA[tone][1], size, delay, duration, opacity, ...pos });
+
+const VARIANTS: Record<string, Globo[]> = {
+  hero: [
+    // XL sangrando fuera de la sección (delays negativos exactos de LBD: 0/-0.3/-0.6/-1)
+    g('coral', 320, { left: '-110px', top: '-70px', plx: 110 }, '0s', '3s', 0.95),
+    g('sol', 250, { right: '-85px', top: '26%', plx: 70 }, '-1s', '3.6s', 0.95),
+    g('aqua', 96, { left: '10%', top: '56%', plx: 140 }, '-0.3s', '3.3s', 0.9),
+    g('lila', 62, { right: '17%', top: '66%', plx: 90 }, '-0.6s', '3.8s', 0.8),
+    g('dorado', 44, { left: '26%', top: '24%', plx: 55 }, '-1.4s', '4.1s', 0.55),
+    g('coral', 36, { right: '31%', top: '15%', plx: 40 }, '-2s', '3.5s', 0.5),
+  ],
+  'corner-left': [g('aqua', 230, { left: '-80px', bottom: '-90px', plx: -60 }, '-0.6s', '3.4s', 0.92)],
+  'corner-right': [g('lila', 240, { right: '-85px', top: '-80px', plx: 80 }, '-0.3s', '3.2s', 0.92)],
+  rise: [
+    { ...g('coral', 34, { left: '8%' }, '0s', '16s', 0.6), rise: true },
+    { ...g('aqua', 26, { left: '28%' }, '4s', '19s', 0.5), rise: true },
+    { ...g('sol', 30, { left: '52%' }, '8s', '17s', 0.55), rise: true },
+    { ...g('lila', 24, { left: '72%' }, '2s', '20s', 0.45), rise: true },
+    { ...g('coral', 28, { left: '88%' }, '6s', '18s', 0.5), rise: true },
+  ],
+};
+
+const globos = VARIANTS[variant];
+let uid = 0;
+---
+
+<div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+  {
+    globos.map((b) => {
+      uid += 1;
+      const gradId = `bg-${variant}-${uid}-${b.size}`;
+      const pos = `${b.left ? `left:${b.left};` : ''}${b.right ? `right:${b.right};` : ''}${
+        b.top ? `top:${b.top};` : b.rise ? 'top:100%;' : ''
+      }${b.bottom ? `bottom:${b.bottom};` : ''}`;
+      return (
+        <div
+          class={b.rise ? '' : 'globo-plx'}
+          style={`position:absolute;${pos}width:${b.size}px;height:${Math.round(b.size * 1.55)}px;${
+            b.plx !== undefined ? `--plx:${b.plx}px;` : ''
+          }`}
+        >
+          <svg
+            class={b.rise ? 'animate-balloon-rise' : 'animate-floating'}
+            style={`width:100%;height:100%;animation-delay:${b.delay};animation-duration:${b.duration};opacity:${b.opacity ?? 1}`}
+            viewBox="0 0 40 62"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <radialGradient id={gradId} cx="0.34" cy="0.26" r="0.9">
+                <stop offset="0%" stop-color={b.light} />
+                <stop offset="100%" stop-color={b.color} />
+              </radialGradient>
+            </defs>
+            <ellipse cx="20" cy="19" rx="17" ry="19" fill={`url(#${gradId})`} />
+            <ellipse cx="14" cy="11" rx="5" ry="7" fill="white" opacity="0.32" transform="rotate(-16 14 11)" />
+            <path d="M20 38 l-2.6 4 h5.2 Z" fill={b.color} />
+            <path
+              d="M20 42.5 q-4 7 0.5 13 q 3.5 4.5 -1 6.5"
+              stroke={b.color}
+              stroke-opacity="0.5"
+              stroke-width="1.3"
+              fill="none"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      );
+    })
+  }
+</div>

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "t-001",
+    "name": "Karen J.",
+    "citySlug": "bogota",
+    "countryCode": "co",
+    "courseSlug": "curso-de-globoflexia",
+    "category": "decoracion-con-globos",
+    "text": "Empecé haciendo perritos y espadas en el cumpleaños de mi hijo y ahora me contratan para animar fiestas los fines de semana. Lo que más me sirvió fue el video de roturas: ya casi no se me revienta ninguno.",
+    "rating": 5
+  },
+  {
+    "id": "t-002",
+    "name": "Marisol V.",
+    "citySlug": "cdmx",
+    "countryCode": "mx",
+    "courseSlug": "curso-de-bouquets-de-globos",
+    "category": "decoracion-con-globos",
+    "text": "Yo vendía desayunos sorpresa y le sumé el bouquet de globos del bono. El ticket de cada pedido subió y los clientes lo piden solito. El módulo de presupuesto me ordenó los precios.",
+    "rating": 5
+  },
+  {
+    "id": "t-003",
+    "name": "Luz Dary P.",
+    "citySlug": "medellin",
+    "countryCode": "co",
+    "courseSlug": "curso-de-globoflexia",
+    "category": "decoracion-con-globos",
+    "text": "Arranqué sin saber ni hacer el nudo. Hoy tengo mi repertorio de figuras y me llaman de salones infantiles. Me hubiera gustado más contenido de figuras gigantes, pero lo esencial está muy bien explicado.",
+    "rating": 4.5
+  },
+  {
+    "id": "t-004",
+    "name": "Guadalupe R.",
+    "citySlug": "guadalajara",
+    "countryCode": "mx",
+    "courseSlug": "curso-de-globos-burbuja",
+    "category": "decoracion-con-globos",
+    "text": "Trabajo en un salón de fiestas y ahora ofrecemos revelaciones con el globo boy-or-girl y el unicornio. Es el adicional que más se vende, sobre todo en las fotos.",
+    "rating": 5
+  },
+  {
+    "id": "t-005",
+    "name": "Yesenia T.",
+    "citySlug": "lima",
+    "countryCode": "pe",
+    "courseSlug": "curso-de-flores-con-globos",
+    "category": "decoracion-con-globos",
+    "text": "Las flores de distorsión me daban miedo y resultaron mi producto estrella. Los videos se entienden facilito y los repito antes de cada pedido. El Drive de ideas lo uso para cotizar.",
+    "rating": 5
+  },
+  {
+    "id": "t-006",
+    "name": "Camila S.",
+    "citySlug": "santiago",
+    "countryCode": "cl",
+    "courseSlug": "curso-de-globos-burbuja",
+    "category": "decoracion-con-globos",
+    "text": "Partí vendiendo globos burbuja con confeti para graduaciones. El truco del contrapeso me salvó en un evento al aire libre; eso no lo enseña ningún tutorial gratis.",
+    "rating": 5
+  },
+  {
+    "id": "t-007",
+    "name": "Rocío M.",
+    "citySlug": "buenosaires",
+    "countryCode": "ar",
+    "courseSlug": "curso-de-bouquets-de-globos",
+    "category": "decoracion-con-globos",
+    "text": "Arranqué con la plata justa: globos, inflador y cinta. Con los dos primeros bouquets recuperé la inversión. La constancia de estudios me sirvió para cerrar un acuerdo con una florería.",
+    "rating": 4.5
+  },
+  {
+    "id": "t-008",
+    "name": "Vanessa O.",
+    "citySlug": "guayaquil",
+    "countryCode": "ec",
+    "courseSlug": "curso-de-globoflexia",
+    "category": "decoracion-con-globos",
+    "text": "Soy animadora infantil y la globoflexia me cambió el show. Después del módulo de figuras clásicas subí mis videos a Instagram como práctica y me empezaron a escribir para fiestas.",
+    "rating": 5
+  }
+]

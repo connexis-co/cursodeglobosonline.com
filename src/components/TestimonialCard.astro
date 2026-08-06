@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { COUNTRIES } from '@/lib/countries';
+import Rating from './Rating.astro';
+
+interface Props {
+  testimonial: CollectionEntry<'testimonials'>;
+}
+
+const { testimonial } = Astro.props;
+const t = testimonial.data;
+const country = COUNTRIES.find((c) => c.code === t.countryCode);
+const city = country?.cities.find((c) => c.slug === t.citySlug);
+const AVATAR_COLORS = [
+  'oklch(0.67 0.185 22)',
+  'oklch(0.78 0.1 193)',
+  'oklch(0.74 0.1 303)',
+  'oklch(0.62 0.12 70)',
+];
+const color = AVATAR_COLORS[t.id.charCodeAt(t.id.length - 1) % AVATAR_COLORS.length];
+/** Inclinación orgánica determinista (-0.9° / 0° / 0.9°) — se endereza al hover. */
+const tilt = ((t.id.charCodeAt(t.id.length - 1) % 3) - 1) * 0.9;
+---
+
+<figure
+  class="flex h-full flex-col gap-4 rounded-3xl border border-crema-200 bg-white p-6 shadow-tarjeta transition-transform duration-300 ease-suave hover:rotate-0"
+  style={`rotate: ${tilt}deg`}
+>
+  <Rating rating={t.rating} />
+  <blockquote class="flex-1 text-sm leading-relaxed text-ciruela-600">“{t.text}”</blockquote>
+  <figcaption class="flex items-center gap-3">
+    <span
+      class="flex h-11 w-11 items-center justify-center rounded-full font-display text-lg font-semibold text-white"
+      style={`background:${color}`}
+      aria-hidden="true"
+    >
+      {t.name.charAt(0)}
+    </span>
+    <span>
+      <span class="block text-sm font-extrabold text-ciruela-800">{t.name}</span>
+      <span class="block text-xs text-ciruela-400">
+        {city?.name}{country && `, ${country.name}`} {country?.flag}
+      </span>
+    </span>
+  </figcaption>
+</figure>

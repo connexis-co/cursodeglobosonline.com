@@ -1,0 +1,62 @@
+---
+interface Faq {
+  q: string;
+  a: string;
+}
+interface Props {
+  faqs: Faq[];
+  /** Nombre de curso para el evento view_faq. */
+  courseName?: string;
+}
+const { faqs, courseName = '' } = Astro.props;
+---
+
+<div class="faq-list divide-y divide-crema-200 rounded-3xl border border-crema-200 bg-white shadow-tarjeta">
+  {
+    faqs.map((faq) => (
+      <details class="faq-item group px-6" data-question={faq.q} data-course={courseName}>
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left font-bold text-ciruela-800 transition-colors hover:text-coral-600 [&::-webkit-details-marker]:hidden">
+          <span>{faq.q}</span>
+          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-crema-100 text-ciruela-600 transition-transform duration-300 ease-fiesta group-open:rotate-45 group-open:bg-coral-100 group-open:text-coral-600">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+            </svg>
+          </span>
+        </summary>
+        <div class="pb-5 leading-relaxed text-ciruela-500">{faq.a}</div>
+      </details>
+    ))
+  }
+</div>
+
+<style>
+  /* Animación nativa de <details> (interpolate-size, progressive enhancement) */
+  :global(html) {
+    interpolate-size: allow-keywords;
+  }
+  .faq-item::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size 0.35s var(--ease-suave),
+      content-visibility 0.35s allow-discrete;
+  }
+  .faq-item[open]::details-content {
+    block-size: auto;
+  }
+</style>
+
+<script>
+  import { trackEvent } from '@/lib/analytics';
+
+  document.querySelectorAll<HTMLDetailsElement>('.faq-item').forEach((item) => {
+    item.addEventListener('toggle', () => {
+      if (item.open) {
+        trackEvent('view_faq', {
+          faq_question: item.dataset.question ?? '',
+          course_name: item.dataset.course ?? '',
+        });
+      }
+    });
+  });
+</script>

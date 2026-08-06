@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import LandingLayout from '@/layouts/LandingLayout.astro';
+import AdsLanding from '@/components/AdsLanding.astro';
+
+export async function getStaticPaths() {
+  const courses = await getCollection('courses');
+  return courses.map((course) => ({ params: { curso: course.id }, props: { course } }));
+}
+
+const { course } = Astro.props;
+---
+
+<LandingLayout
+  title={`${course.data.title} — Oferta especial`}
+  description={course.data.shortDescription}
+  pageType="landing_meta"
+>
+  <AdsLanding {course} variant="meta" />
+</LandingLayout>
