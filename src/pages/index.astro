@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Balloons from '@/components/Balloons.astro';
-import CourseCover from '@/components/CourseCover.astro';
 import Wave from '@/components/Wave.astro';
 import TrustBar from '@/components/TrustBar.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
@@ -199,9 +198,15 @@ const faqs = [
       </div>
       <div class="scroll-reveal-late relative mx-auto w-full max-w-md lg:max-w-none">
         <div class="rotate-2 overflow-hidden rounded-3xl border-4 border-crema-50/15 shadow-globo">
-          <div class="aspect-[4/3] w-full">
-            <CourseCover slug={featured.id} category={featured.data.category} title={featured.data.title} />
-          </div>
+          <img
+            src="/images/decoracion-guirnalda.jpg"
+            alt="Guirnalda orgánica de globos en tonos coral, crema y dorado decorando un salón de eventos"
+            class="aspect-[4/3] w-full object-cover"
+            loading="lazy"
+            decoding="async"
+            width="1100"
+            height="825"
+          />
         </div>
         <div
           class="absolute -bottom-5 -left-4 rotate-[-3deg] rounded-2xl bg-crema-50 px-5 py-3 text-ciruela-800 shadow-globo"
