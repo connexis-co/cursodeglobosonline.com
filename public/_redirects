@@ -24,17 +24,13 @@
 /peru/ /pe/ 301
 /peru/* /pe/:splat 301
 
-# Ciudades Colombia (las city landings vuelven en v0.2 con contenido único)
-/bogota/ /co/ 301
-/medellin/ /co/ 301
-/cali/ /co/ 301
-/barranquilla/ /co/ 301
-/bucaramanga/ /co/ 301
-/bogota/* /co/:splat 301
-/medellin/* /co/:splat 301
-/cali/* /co/:splat 301
-/barranquilla/* /co/:splat 301
-/bucaramanga/* /co/:splat 301
+# Ciudades Colombia → su nueva ubicación canónica /co/{ciudad}/
+# (/bogota/curso-de-globoflexia/ → /co/bogota/curso-de-globoflexia/ vía splat)
+/bogota/* /co/bogota/:splat 301
+/medellin/* /co/medellin/:splat 301
+/cali/* /co/cali/:splat 301
+/barranquilla/* /co/barranquilla/:splat 301
+/bucaramanga/* /co/bucaramanga/:splat 301
 
 # Restos de WordPress
 /feed/ / 301

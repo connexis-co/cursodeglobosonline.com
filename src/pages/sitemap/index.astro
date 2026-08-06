@@ -49,6 +49,14 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
                   </a>
                 </li>
               ))}
+              <li class="pt-1 text-xs font-bold tracking-wide text-ciruela-400 uppercase">Ciudades</li>
+              {country.cities.map((city) => (
+                <li>
+                  <a href={`/${country.code}/${city.slug}/`} class="text-xs hover:text-coral-600">
+                    Cursos en {city.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
         ))

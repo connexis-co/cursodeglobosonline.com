@@ -176,10 +176,10 @@ export const COUNTRIES: Country[] = [
 export const DEFAULT_COUNTRY = 'co';
 
 /**
- * Las city landings llegan en v0.2 con contenido único por ciudad (§6.2 del
- * plan maestro). Mientras esté en false no se generan rutas ni sitemap de ciudades.
+ * Capa hiperlocal activa (§6.2 del plan maestro): hubs /{cc}/{ciudad}/ y
+ * cursos por ciudad /{cc}/{ciudad}/{curso}/ con contenido único (lib/cities.ts).
  */
-export const CITIES_ENABLED = false;
+export const CITIES_ENABLED = true;
 
 export function getCountry(code: string): Country {
   const country = COUNTRIES.find((c) => c.code === code);

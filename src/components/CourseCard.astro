@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import type { Country } from '@/lib/countries';
+import type { Country, City } from '@/lib/countries';
 import { formatPrice } from '@/lib/countries';
 import { getCategory } from '@/lib/categories';
 import CourseCover from './CourseCover.astro';
@@ -9,14 +9,20 @@ import Rating from './Rating.astro';
 interface Props {
   course: CollectionEntry<'courses'>;
   country?: Country;
+  /** Contexto hiperlocal: enlaza a la versión del curso en la ciudad. */
+  city?: City;
   /** Card grande para grid asimétrico. */
   large?: boolean;
 }
 
-const { course, country, large = false } = Astro.props;
+const { course, country, city, large = false } = Astro.props;
 const d = course.data;
 const category = getCategory(d.category);
-const href = country ? `/${country.code}/${course.id}/` : `/co/${course.id}/`;
+const href = country
+  ? city
+    ? `/${country.code}/${city.slug}/${course.id}/`
+    : `/${country.code}/${course.id}/`
+  : `/co/${course.id}/`;
 const hasPrice = d.priceUSD !== undefined && d.originalPriceUSD !== undefined;
 const discountPct =
   d.discountPct ?? (hasPrice ? Math.round((1 - d.priceUSD! / d.originalPriceUSD!) * 100) : undefined);

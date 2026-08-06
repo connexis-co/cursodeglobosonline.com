@@ -1,0 +1,27 @@
+---
+/**
+ * Curso hiperlocal: /{cc}/{ciudad}/{curso-slug}/ (§6.2 del plan maestro).
+ * Recupera las URLs geo del sitio anterior (/bogota/curso-de-globoflexia/ →
+ * /co/bogota/curso-de-globoflexia/) con contenido local único por ciudad.
+ */
+import { getCollection } from 'astro:content';
+import CourseLanding from '@/components/CourseLanding.astro';
+import { COUNTRIES, CITIES_ENABLED } from '@/lib/countries';
+
+export async function getStaticPaths() {
+  if (!CITIES_ENABLED) return [];
+  const courses = await getCollection('courses');
+  return COUNTRIES.flatMap((country) =>
+    country.cities.flatMap((city) =>
+      courses.map((course) => ({
+        params: { country: country.code, item: city.slug, curso: course.id },
+        props: { country, city, course },
+      })),
+    ),
+  );
+}
+
+const { country, city, course } = Astro.props;
+---
+
+<CourseLanding {country} {city} {course} />

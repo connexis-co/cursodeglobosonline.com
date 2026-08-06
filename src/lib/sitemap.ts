@@ -28,7 +28,6 @@ export function pagesUrls(): UrlEntry[] {
     if (CITIES_ENABLED) {
       for (const city of c.cities) {
         urls.push(u(`/${c.code}/${city.slug}/`, 0.7, 'monthly'));
-        urls.push(u(`/${c.code}/${city.slug}/cursos/`, 0.7, 'monthly'));
       }
     }
   }
@@ -45,11 +44,6 @@ export function categoriasUrls(): UrlEntry[] {
   for (const c of COUNTRIES) {
     for (const cat of CATEGORIES) {
       urls.push(u(`/${c.code}/cursos/${cat.slug}/`, 0.8));
-      if (CITIES_ENABLED) {
-        for (const city of c.cities) {
-          urls.push(u(`/${c.code}/${city.slug}/cursos/${cat.slug}/`, 0.6, 'monthly'));
-        }
-      }
     }
   }
   return urls;

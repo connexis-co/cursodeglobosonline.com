@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Wave from '@/components/Wave.astro';
 import Balloons from '@/components/Balloons.astro';
@@ -11,26 +11,27 @@ import TestimonialCard from '@/components/TestimonialCard.astro';
 import CertificateShowcase from '@/components/CertificateShowcase.astro';
 import FaqAccordion from '@/components/FaqAccordion.astro';
 import StickyCta from '@/components/StickyCta.astro';
-import { COUNTRIES, formatPrice } from '@/lib/countries';
+import { formatPrice, type Country, type City } from '@/lib/countries';
 import { getCategory } from '@/lib/categories';
+import { getCityLocal } from '@/lib/cities';
 import { buildHotmartUrl } from '@/lib/hotmart';
 import { countryAlternates, breadcrumbSchema, courseSchema, faqSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
-export async function getStaticPaths() {
-  const courses = await getCollection('courses');
-  return COUNTRIES.flatMap((country) =>
-    courses.map((course) => ({
-      params: { country: country.code, curso: course.id },
-      props: { country, course },
-    })),
-  );
+interface Props {
+  country: Country;
+  course: CollectionEntry<'courses'>;
+  /** Página hiperlocal: curso a nivel ciudad (§6.2 del plan maestro). */
+  city?: City;
 }
 
-const { country, course } = Astro.props;
+const { country, course, city } = Astro.props;
 const d = course.data;
 const { Content } = await render(course);
 const category = getCategory(d.category);
+const cityLocal = city ? getCityLocal(city.slug) : undefined;
+const placeName = city ? city.name : country.name;
+const basePath = city ? `/${country.code}/${city.slug}` : `/${country.code}`;
 
 const hasPrice = d.priceUSD !== undefined && d.originalPriceUSD !== undefined;
 const discountPct =
@@ -41,25 +42,26 @@ const checkoutUrl = buildHotmartUrl({
   coupon: d.coupon,
   courseSlug: course.id,
   countryCode: country.code,
+  citySlug: city?.slug,
 });
 
 const geoFaqs = [
   {
-    q: `¿Puedo tomar el ${d.title} desde ${country.name}?`,
+    q: `¿Puedo tomar el ${d.title} desde ${placeName}?`,
     a: `Sí. El curso es 100% online: pagas en Hotmart con métodos disponibles en ${country.name}, recibes el acceso al correo de inmediato y estudias desde el celular o el computador.`,
   },
   {
     q: `¿El certificado es válido en ${country.name}?`,
-    a: `Sí. El certificado de estudios es digital, con validez internacional y verificación en línea, útil para tu portafolio y tus clientes en ${country.name}.`,
+    a: `Sí. El certificado de estudios es digital, con validez internacional y verificación en línea, útil para tu portafolio y tus clientes en ${placeName}.`,
   },
   {
     q: `¿En qué moneda pago desde ${country.name}?`,
     a: `Hotmart muestra el precio en ${country.currency} (o USD, según el método) antes de confirmar el pago, con el descuento ya aplicado si el curso lo tiene.`,
   },
 ];
-const allFaqs = [...d.faqs, ...geoFaqs];
+const allFaqs = [...d.faqs, ...geoFaqs, ...(cityLocal?.faqs ?? [])];
 
-const courseUrl = `${SITE.url}/${country.code}/${course.id}/`;
+const courseUrl = `${SITE.url}${basePath}/${course.id}/`;
 const schemas = [
   courseSchema({
     title: d.title,
@@ -76,6 +78,7 @@ const schemas = [
   faqSchema(allFaqs),
   breadcrumbSchema([
     { name: 'Inicio', url: `${SITE.url}/${country.code}/` },
+    ...(city ? [{ name: city.name, url: `${SITE.url}/${country.code}/${city.slug}/` }] : []),
     { name: 'Cursos', url: `${SITE.url}/${country.code}/cursos/` },
     { name: category.name, url: `${SITE.url}/${country.code}/cursos/${category.slug}/` },
     { name: d.title, url: courseUrl },
@@ -94,25 +97,29 @@ const testimonials = [
   ...allTestimonials.filter((t) => t.data.courseSlug !== course.id),
 ].slice(0, 3);
 
-const metaTitle = `${d.metaTitle ?? d.title} | ${country.name}`;
+const metaTitle = `${d.metaTitle ?? d.title} | ${placeName}`;
+const description = city
+  ? `${d.title} para ${city.name}, ${country.name}: ${d.shortDescription}`
+  : d.shortDescription;
 const trackParams = JSON.stringify({
   course_name: d.title,
   course_category: category.name,
   price: d.priceUSD ?? '',
   currency: d.priceUSD !== undefined ? 'USD' : '',
   country: country.code,
+  city: city?.slug ?? '',
   discount_pct: discountPct ?? '',
 });
 ---
 
 <BaseLayout
   title={metaTitle}
-  description={d.shortDescription}
+  {description}
   {country}
   pathAfterCountry={`/${course.id}/`}
-  alternates={countryAlternates(`/${course.id}/`)}
+  alternates={city ? [] : countryAlternates(`/${course.id}/`)}
   {schemas}
-  pageType="course_page"
+  pageType={city ? 'course_city_page' : 'course_page'}
   whatsappContext={d.title}
 >
   <!-- view_course (plan de medición §10) -->
@@ -127,6 +134,16 @@ const trackParams = JSON.stringify({
     <div class="contenedor relative pb-12 lg:pb-16">
       <nav class="mb-8 text-xs text-ciruela-400" aria-label="Miga de pan">
         <a href={`/${country.code}/`} class="hover:text-coral-600">{country.flag} {country.name}</a>
+        {
+          city && (
+            <>
+              <span aria-hidden="true"> / </span>
+              <a href={`/${country.code}/${city.slug}/`} class="hover:text-coral-600">
+                {city.name}
+              </a>
+            </>
+          )
+        }
         <span aria-hidden="true"> / </span>
         <a href={`/${country.code}/cursos/`} class="hover:text-coral-600">Cursos</a>
         <span aria-hidden="true"> / </span>
@@ -141,7 +158,7 @@ const trackParams = JSON.stringify({
             {category.emoji} {category.name} · {d.level}
           </span>
           <h1 class="mt-4 text-3xl font-semibold text-balance text-ciruela-900 sm:text-4xl lg:text-[2.75rem]">
-            {d.title} en {country.name} — 100% online con certificado
+            {d.title} en {placeName} — 100% online con certificado
           </h1>
           <p class="mt-4 max-w-xl text-base leading-relaxed text-ciruela-500">{d.shortDescription}</p>
 
@@ -488,6 +505,42 @@ const trackParams = JSON.stringify({
     </div>
   </section>
 
+  <!-- 15 · CONTEXTO LOCAL (solo páginas de ciudad, §6.2) -->
+  {
+    city && cityLocal && (
+      <section class="contenedor pb-16">
+        <div class="relative overflow-hidden rounded-[2rem] border border-crema-200 bg-crema-100 p-8 sm:p-10">
+          <SectionHeading
+            eyebrow={`${country.flag} ${city.name}`}
+            title={`Aprender decoración con globos en ${city.name}`}
+          />
+          <p class="mt-5 max-w-3xl leading-relaxed text-ciruela-600">{cityLocal.hook}</p>
+          <p class="mt-6 text-xs font-bold tracking-[0.18em] text-ciruela-400 uppercase">
+            Este curso también en otras ciudades
+          </p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {country.cities
+              .filter((c) => c.slug !== city.slug)
+              .map((c) => (
+                <a
+                  href={`/${country.code}/${c.slug}/${course.id}/`}
+                  class="rounded-full border border-crema-300 bg-white px-3.5 py-1.5 text-xs font-bold text-ciruela-600 transition-colors hover:border-coral-300 hover:text-coral-600"
+                >
+                  {c.name}
+                </a>
+              ))}
+            <a
+              href={`/${country.code}/${course.id}/`}
+              class="rounded-full bg-coral-500 px-3.5 py-1.5 text-xs font-extrabold text-white transition-colors hover:bg-coral-600"
+            >
+              Todo {country.name} →
+            </a>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   <!-- 13 · FAQ -->
   <section class="contenedor max-w-4xl pb-16">
     <SectionHeading eyebrow="Preguntas frecuentes" title={`Dudas sobre el ${d.title}`} align="center" />
@@ -500,7 +553,7 @@ const trackParams = JSON.stringify({
   <section class="contenedor pb-20">
     <SectionHeading eyebrow="Sigue aprendiendo" title="También te puede interesar" />
     <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {related.map((c) => <CourseCard course={c} {country} />)}
+      {related.map((c) => <CourseCard course={c} {country} {city} />)}
     </div>
   </section>
 
