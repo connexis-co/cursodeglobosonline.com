@@ -106,17 +106,21 @@ const faqs = [
     >
     </div>
     <Balloons variant="corner-right" />
-    <div class="contenedor grid items-center gap-10 py-14 lg:grid-cols-[1.1fr_1fr] lg:py-20">
-      <div>
+    <!-- Mobile: título → imagen → precio y CTA. Desktop: texto izq., imagen der. -->
+    <div class="contenedor grid items-start gap-x-10 gap-y-6 py-14 lg:grid-cols-[1.1fr_1fr] lg:py-20">
+      <div class="lg:col-start-1 lg:self-center">
         <h1 class="text-3xl font-semibold text-balance sm:text-4xl lg:text-5xl">{h1}</h1>
         <p class="mt-4 max-w-lg text-base text-crema-100/85">{sub}</p>
         <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
           {d.rating && <Rating rating={d.rating} count={d.ratingCount} />}
           <span class="text-crema-100/70">🎓 {SITE.stats.students} estudiantes certificados</span>
         </div>
+      </div>
+
+      <div class="order-last lg:col-start-1">
         {
           hasPrice && (
-            <p class="mt-6">
+            <p>
               <span class="text-sm text-crema-100/60">
                 Antes <s>{formatPrice(d.originalPriceUSD!, country)}</s>
               </span>
@@ -132,7 +136,10 @@ const faqs = [
           rel="noopener"
           data-track="begin_checkout"
           data-track-params={trackParams}
-          class="mt-7 inline-block rounded-xl bg-coral-500 px-9 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-600"
+          class:list={[
+            'inline-block rounded-xl bg-coral-500 px-9 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-600',
+            hasPrice && 'mt-5',
+          ]}
         >
           {cta}
         </a>
@@ -140,7 +147,8 @@ const faqs = [
           Garantía de 7 días · Acceso inmediato · <HotmartBadge tone="dark" />
         </p>
       </div>
-      <div class="relative mx-auto w-full max-w-sm">
+
+      <div class="relative mx-auto w-full max-w-sm lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center">
         <div class="rotate-2 overflow-hidden rounded-3xl border-4 border-crema-50/15 shadow-globo">
           {
             d.cover ? (
