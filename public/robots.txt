@@ -3,3 +3,6 @@ Allow: /
 Disallow: /landing/
 
 Sitemap: https://cursodeglobosonline.com/sitemap-index.xml
+
+# Guía para agentes de IA
+# https://cursodeglobosonline.com/llms.txt

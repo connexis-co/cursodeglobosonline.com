@@ -1,0 +1,13 @@
+{
+  "name": "Curso de Globos Online — Decoración con globos",
+  "short_name": "Curso de Globos",
+  "description": "Cursos online de decoración con globos: globoflexia, bouquets, flores y globos burbuja. Certificado incluido.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#fdf9f4",
+  "theme_color": "#fdf9f4",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
