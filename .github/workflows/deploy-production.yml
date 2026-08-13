@@ -23,10 +23,12 @@ jobs:
       - run: npm run build
         env:
           PUBLIC_GTM_ID: ${{ vars.PUBLIC_GTM_ID }}
+      # continue-on-error: un fallo de release-please no debe bloquear el deploy a producción
       - uses: googleapis/release-please-action@v4
+        continue-on-error: true
         with:
           release-type: node
-          token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to Cloudflare Pages (Production)
         uses: cloudflare/wrangler-action@v3
         with:
