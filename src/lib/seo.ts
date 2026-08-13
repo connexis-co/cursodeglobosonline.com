@@ -48,7 +48,8 @@ export function organizationSchema() {
     '@type': 'Organization',
     name: SITE.name,
     url: SITE.url,
-    logo: `${SITE.url}/favicon.svg`,
+    // PNG 512px: Google exige ≥112x112 y prefiere raster sobre el SVG del favicon.
+    logo: `${SITE.url}/icon-512.png`,
     sameAs: Object.values(SITE.social),
     parentOrganization: {
       '@type': 'Organization',
