@@ -149,7 +149,7 @@ pintados por [`src/components/Icon.astro`](../src/components/Icon.astro):
 
 - **Presentación:** chip `bg-coral-50 text-coral-600 rounded-2xl` (como la barra de datos del curso) o icono suelto de 16 px junto al texto. Sobre fondo oscuro: `text-sol-300` en `bg-crema-50/10`.
 - **Categorías:** `Category.icon` en `src/lib/categories.ts` (`'globo' | 'fiesta' | 'maletin'`). El campo `emoji` se conserva **solo** para el texto prellenado de los mensajes de WhatsApp, donde sí se permite.
-- **Iconos nuevos:** se dibujan a mano en `icons.ts` con las mismas reglas. No se copian de librerías como Lucide o Heroicons. Los logos de marca (WhatsApp, redes, Hotmart) siguen siendo SVG propios de cada componente.
+- **Iconos nuevos:** se dibujan a mano en `icons.ts` con las mismas reglas. No se copian de librerías como Lucide o Heroicons. Los logos de marca de terceros (WhatsApp, redes) siguen siendo SVG propios de cada componente. **Hotmart: nunca su logo ni su color de marca** — sus Términos de uso §5.2 prohíben usar su marca, logotipo o nombre comercial para publicitar un producto o sugerir asociación; solo se menciona en texto neutro para indicar dónde se procesa el pago (`HotmartBadge.astro`).
 
 ## 6. Voz y microcopy
 

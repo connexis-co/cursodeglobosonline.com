@@ -1,8 +1,13 @@
 ---
 /**
- * Sello "Pago seguro con Hotmart" — la llama de Hotmart simplificada + wordmark.
- * Se usa junto a los CTAs de compra para señal de confianza (§3.2 del plan).
+ * Mención factual de la plataforma de pago, junto a los CTA de compra.
+ * Términos de uso de Hotmart §5.2: no se puede usar su marca, logotipo o nombre comercial
+ * para publicitar un producto ni sugerir que Hotmart lo asocia, aprueba o certifica.
+ * Por eso NO se usa su logo ni su color de marca: solo texto neutro que informa dónde
+ * se procesa el pago, con un icono propio de candado.
  */
+import Icon from './Icon.astro';
+
 interface Props {
   /** dark = para fondos oscuros. */
   tone?: 'light' | 'dark';
@@ -13,22 +18,11 @@ const { tone = 'light', class: className } = Astro.props;
 
 <span
   class:list={[
-    'inline-flex items-center gap-1.5 text-xs font-bold',
-    tone === 'dark' ? 'text-crema-100/80' : 'text-ciruela-500',
+    'inline-flex items-center gap-1.5 text-xs font-semibold',
+    tone === 'dark' ? 'text-crema-100/80' : 'text-ciruela-600',
     className,
   ]}
 >
-  <span>Pago seguro con</span>
-  <svg width="14" height="16" viewBox="0 0 24 28" fill="none" aria-hidden="true">
-    <path
-      d="M13.6 0.8c0.5 3.4-0.9 5.6-2.9 7.6C8.8 10.3 6.6 12.1 6.6 15.4a5.4 5.4 0 0 0 10.8 0.2c0-5.6-3.9-7.8-4.7-12.1-1.2 1.5-1.8 2.8-1.7 4.7-2-1.6-2.6-4.6-2-7.4"
-      fill="#f04e23"></path>
-    <path
-      d="M12 27.4a7.4 7.4 0 0 1-7.4-7.4c0-4 2.6-6.2 4.4-8 1.5-1.5 2.7-3 2.9-5.4"
-      stroke="#f04e23"
-      stroke-width="1.6"
-      fill="none"
-      stroke-linecap="round"></path>
-  </svg>
-  <span class="font-extrabold" style="color:#f04e23">Hotmart</span>
+  <Icon name="candado" size={14} class={tone === 'dark' ? 'text-crema-100/80' : 'text-ciruela-500'} />
+  <span>Pago seguro procesado por Hotmart</span>
 </span>

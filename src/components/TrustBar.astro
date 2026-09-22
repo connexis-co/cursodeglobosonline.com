@@ -19,20 +19,17 @@ const items: { icon: IconName; label: string; value: string }[] = [
 
 <div class="border-y border-crema-200 bg-white">
   <div class="contenedor flex flex-col gap-6 py-8 lg:flex-row lg:items-center lg:gap-12">
-    <!-- Sello Hotmart: marca en su color (#f04e23, texto ≥ 20 px bold → AA texto grande) -->
+    <!-- Plataforma de pago: mención factual en texto neutro. Los Términos de Hotmart (§5.2)
+         prohíben usar su logo/marca para publicitar o sugerir asociación ("partner oficial"). -->
     <div
       class="scroll-reveal flex shrink-0 rotate-[-0.6deg] items-center gap-3 self-start rounded-2xl border border-dashed border-crema-300 bg-crema-50 py-2.5 pr-5 pl-3.5 lg:self-auto"
     >
-      <svg width="24" height="28" viewBox="0 0 24 28" fill="none" aria-hidden="true">
-        <path
-          d="M13.6 0.8c0.5 3.4-0.9 5.6-2.9 7.6C8.8 10.3 6.6 12.1 6.6 15.4a5.4 5.4 0 0 0 10.8 0.2c0-5.6-3.9-7.8-4.7-12.1-1.2 1.5-1.8 2.8-1.7 4.7-2-1.6-2.6-4.6-2-7.4"
-          fill="#f04e23"></path>
-      </svg>
+      <Icon name="candado" size={24} class="text-ciruela-600" />
       <span class="leading-tight">
         <span class="block text-[0.65rem] font-extrabold tracking-[0.18em] text-ciruela-500 uppercase">
-          Partner oficial
+          Pago y acceso
         </span>
-        <span class="block text-xl font-extrabold tracking-tight" style="color:#f04e23">Hotmart</span>
+        <span class="block text-base font-extrabold tracking-tight text-ciruela-800">Checkout seguro en Hotmart</span>
       </span>
     </div>
 
