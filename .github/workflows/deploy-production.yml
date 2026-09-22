@@ -35,3 +35,8 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist/ --project-name=cursodeglobosonline-com --branch=main
+      # Avisa a Bing/Yandex/Seznam/Naver/Yep de URLs nuevas o actualizadas (lastmod de los
+      # últimos 2 días). Solo producción: la clave está atada al host cursodeglobosonline.com.
+      - name: IndexNow
+        continue-on-error: true
+        run: node scripts/indexnow.mjs

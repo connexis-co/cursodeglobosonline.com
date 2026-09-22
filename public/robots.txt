@@ -2,7 +2,23 @@ User-agent: *
 Allow: /
 Disallow: /landing/
 
+# Buscadores y asistentes de IA: permitidos a propósito para que puedan citar
+# y recomendar las guías y los cursos (un grupo propio sustituye al de "*",
+# por eso se repite Disallow: /landing/).
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: bingbot
+Allow: /
+Disallow: /landing/
+
 Sitemap: https://cursodeglobosonline.com/sitemap-index.xml
 
-# Guía para agentes de IA
-# https://cursodeglobosonline.com/llms.txt
+# Guía para agentes de IA: https://cursodeglobosonline.com/llms.txt

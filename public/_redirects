@@ -33,7 +33,8 @@
 /bucaramanga/* /co/bucaramanga/:splat 301
 
 # Restos de WordPress
-/feed/ / 301
+/feed/ /blog/rss.xml 301
+/blog/feed/ /blog/rss.xml 301
 /comments/feed/ / 301
 /xmlrpc.php / 301
 /wp-content/* / 301
