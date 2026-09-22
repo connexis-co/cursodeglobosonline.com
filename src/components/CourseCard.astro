@@ -1,31 +1,25 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import type { Country, City } from '@/lib/countries';
+import type { Country } from '@/lib/countries';
 import { formatPrice } from '@/lib/countries';
 import { getCategory } from '@/lib/categories';
+import { coursePricing, usd } from '@/lib/pricing';
 import CourseCover from './CourseCover.astro';
 import Rating from './Rating.astro';
 
 interface Props {
   course: CollectionEntry<'courses'>;
   country?: Country;
-  /** Contexto hiperlocal: enlaza a la versión del curso en la ciudad. */
-  city?: City;
   /** Card grande para grid asimétrico. */
   large?: boolean;
 }
 
-const { course, country, city, large = false } = Astro.props;
+const { course, country, large = false } = Astro.props;
 const d = course.data;
 const category = getCategory(d.category);
-const href = country
-  ? city
-    ? `/${country.code}/${city.slug}/${course.id}/`
-    : `/${country.code}/${course.id}/`
-  : `/co/${course.id}/`;
-const hasPrice = d.priceUSD !== undefined && d.originalPriceUSD !== undefined;
-const discountPct =
-  d.discountPct ?? (hasPrice ? Math.round((1 - d.priceUSD! / d.originalPriceUSD!) * 100) : undefined);
+// Siempre la URL canónica del curso (las curso-ciudad declaran canonical → curso-país).
+const href = `/${country?.code ?? 'co'}/${course.id}/`;
+const { hasPrice, hasDiscount, discountPct } = coursePricing(d);
 ---
 
 <a
@@ -62,8 +56,8 @@ const discountPct =
       {category.emoji} {category.name}
     </span>
     {
-      discountPct && (
-        <span class="absolute top-3 right-3 rounded-full bg-coral-500 px-3 py-1 text-xs font-extrabold text-white">
+      hasDiscount && discountPct && (
+        <span class="absolute top-3 right-3 rounded-full bg-coral-600 px-3 py-1 text-xs font-extrabold text-white">
           −{discountPct}%
         </span>
       )
@@ -84,21 +78,13 @@ const discountPct =
     <div class="mt-auto flex items-baseline gap-2 pt-1.5">
       {
         hasPrice ? (
-          country ? (
-            <>
-              <span class="text-xs text-ciruela-400 line-through">
-                {formatPrice(d.originalPriceUSD!, country)}
-              </span>
-              <span class="text-lg font-extrabold text-coral-600">{formatPrice(d.priceUSD!, country)}</span>
-            </>
-          ) : (
-            <>
-              <span class="text-xs text-ciruela-400 line-through">US$ {d.originalPriceUSD}</span>
-              <span class="text-lg font-extrabold text-coral-600">US$ {d.priceUSD}</span>
-            </>
-          )
+          <>
+            {hasDiscount && <span class="text-xs text-ciruela-500 line-through">{usd(d.originalPriceUSD!)}</span>}
+            <span class="text-lg font-extrabold text-coral-700">{usd(d.priceUSD!)}</span>
+            {country && <span class="text-xs text-ciruela-500">≈ {formatPrice(d.priceUSD!, country)}</span>}
+          </>
         ) : (
-          <span class="text-sm font-extrabold text-aqua-700">Ver curso y precio →</span>
+          <span class="text-sm font-extrabold text-coral-700">Ver temario y precio →</span>
         )
       }
     </div>

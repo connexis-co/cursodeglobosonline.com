@@ -1,7 +1,9 @@
 ---
 /**
- * Sugerencia de país no intrusiva: si el idioma del navegador indica otro
- * mercado y no hay país guardado, propone cambiar. Persiste en localStorage.
+ * Sugerencia de país no intrusiva. Detecta el país por IP con Cloudflare
+ * (/cdn-cgi/trace → loc=XX) y, si falla, por zona horaria. NO usa el idioma del
+ * navegador: "es-ES" es habitual en Latinoamérica y proponía España a colombianos
+ * (auditoría de diseño 2026-09-22). Persiste la elección en localStorage.
  */
 interface Props {
   pathAfterCountry?: string;
@@ -14,17 +16,17 @@ const { pathAfterCountry = '/', currentCode = '' } = Astro.props;
   id="geo-toast"
   data-path={pathAfterCountry}
   data-current={currentCode}
-  class="fixed inset-x-4 bottom-24 z-40 hidden max-w-sm rounded-2xl border border-crema-200 bg-white p-4 shadow-globo sm:left-auto sm:right-5"
+  class="geo-toast fixed inset-x-4 bottom-24 z-40 hidden max-w-sm rounded-2xl border border-crema-200 bg-white p-4 shadow-globo sm:left-auto sm:right-5"
   role="status"
 >
   <p class="text-sm font-semibold text-ciruela-800">
-    ¿Estás en <span id="geo-toast-name"></span>? Te mostramos precios en tu moneda.
+    Parece que estás en <span id="geo-toast-name"></span>. ¿Ver precios en <span id="geo-toast-cur"></span>?
   </p>
   <div class="mt-3 flex gap-2">
     <a
       id="geo-toast-go"
       href="/"
-      class="rounded-full bg-coral-500 px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-coral-600"
+      class="rounded-full bg-coral-600 px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-coral-700"
     >
       Sí, cambiar
     </a>
@@ -41,42 +43,74 @@ const { pathAfterCountry = '/', currentCode = '' } = Astro.props;
   import { trackEvent } from '@/lib/analytics';
 
   const toast = document.getElementById('geo-toast');
-  const NAMES: Record<string, string> = {
-    co: 'Colombia',
-    mx: 'México',
-    pe: 'Perú',
-    ec: 'Ecuador',
-    cl: 'Chile',
-    ar: 'Argentina',
-    es: 'España',
-    us: 'Estados Unidos',
+  const NAMES: Record<string, [string, string]> = {
+    co: ['Colombia', 'COP'],
+    mx: ['México', 'MXN'],
+    pe: ['Perú', 'PEN'],
+    ec: ['Ecuador', 'USD'],
+    cl: ['Chile', 'CLP'],
+    ar: ['Argentina', 'ARS'],
+    es: ['España', 'EUR'],
+    us: ['Estados Unidos', 'USD'],
   };
+  const TZ: Array<[RegExp, string]> = [
+    [/^America\/Bogota$/, 'co'],
+    [/^America\/(Mexico_City|Monterrey|Merida|Cancun|Chihuahua|Hermosillo|Mazatlan|Tijuana|Matamoros|Ojinaga|Bahia_Banderas)$/, 'mx'],
+    [/^America\/Lima$/, 'pe'],
+    [/^(America\/Guayaquil|Pacific\/Galapagos)$/, 'ec'],
+    [/^(America\/Santiago|America\/Punta_Arenas|Pacific\/Easter)$/, 'cl'],
+    [/^America\/Argentina\//, 'ar'],
+    [/^(Europe\/Madrid|Africa\/Ceuta|Atlantic\/Canary)$/, 'es'],
+    [/^America\/(New_York|Chicago|Denver|Los_Angeles|Phoenix|Anchorage|Detroit|Indiana\/.+|Kentucky\/.+|Boise)$|^Pacific\/Honolulu$/, 'us'],
+  ];
 
-  if (toast) {
+  async function detectCountry(): Promise<string> {
+    try {
+      const res = await fetch('/cdn-cgi/trace', { cache: 'no-store' });
+      const loc = (await res.text()).match(/^loc=([A-Z]{2})$/m)?.[1]?.toLowerCase() ?? '';
+      if (loc) return loc in NAMES ? loc : '';
+    } catch {
+      /* sin Cloudflare (dev/preview): cae a la zona horaria */
+    }
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone ?? '';
+    return TZ.find(([re]) => re.test(tz))?.[1] ?? '';
+  }
+
+  async function init(el: HTMLElement) {
     const saved = localStorage.getItem('cdgo-country');
     const dismissed = sessionStorage.getItem('cdgo-geo-dismissed');
-    const current = toast.dataset.current ?? '';
-    const region = (navigator.language.split('-')[1] ?? '').toLowerCase();
-    const detected = region in NAMES ? region : '';
-
-    // Solo sugerir si: hay detección, no coincide con la página, y no se decidió antes.
+    if (dismissed) return;
+    const current = el.dataset.current ?? '';
+    // Quien llega a /{cc}/… desde un buscador ya eligió país en la SERP: no molestar.
+    if (current && /google\.|bing\.|duckduckgo\.|yahoo\./.test(document.referrer)) return;
+    const detected = saved ? '' : await detectCountry();
     const target = saved && saved !== current ? saved : detected && detected !== current ? detected : '';
-    if (target && !dismissed && NAMES[target] && current !== target) {
-      const name = document.getElementById('geo-toast-name');
-      const go = document.getElementById('geo-toast-go') as HTMLAnchorElement | null;
-      if (name) name.textContent = NAMES[target];
-      if (go) {
-        go.href = `/${target}${toast.dataset.path ?? '/'}`;
-        go.addEventListener('click', () => {
-          localStorage.setItem('cdgo-country', target);
-          trackEvent('select_country', { country_from: current || 'none', country_to: target, source: 'geo_toast' });
-        });
-      }
-      document.getElementById('geo-toast-stay')?.addEventListener('click', () => {
-        sessionStorage.setItem('cdgo-geo-dismissed', '1');
-        toast.classList.add('hidden');
+    if (!target || !NAMES[target]) return;
+    const [name, currency] = NAMES[target];
+    document.getElementById('geo-toast-name')!.textContent = name;
+    document.getElementById('geo-toast-cur')!.textContent = currency;
+    const go = document.getElementById('geo-toast-go') as HTMLAnchorElement | null;
+    if (go) {
+      go.href = `/${target}${el.dataset.path ?? '/'}`;
+      go.addEventListener('click', () => {
+        localStorage.setItem('cdgo-country', target);
+        trackEvent('select_country', { country_from: current || 'none', country_to: target, source: 'geo_toast' });
       });
-      setTimeout(() => toast.classList.remove('hidden'), 2200);
     }
+    document.getElementById('geo-toast-stay')?.addEventListener('click', () => {
+      sessionStorage.setItem('cdgo-geo-dismissed', '1');
+      if (current) localStorage.setItem('cdgo-country', current);
+      el.classList.add('hidden');
+    });
+    setTimeout(() => el.classList.remove('hidden'), 2200);
   }
+
+  if (toast) init(toast);
 </script>
+
+<style>
+  /* Con la barra de compra móvil visible, el aviso sube para no taparla. */
+  :global(html.has-sticky-cta) .geo-toast {
+    bottom: 10rem;
+  }
+</style>

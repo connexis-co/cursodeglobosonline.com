@@ -12,6 +12,7 @@ import Rating from './Rating.astro';
 import Wave from './Wave.astro';
 import { COUNTRIES, DEFAULT_COUNTRY, formatPrice } from '@/lib/countries';
 import { getCategory } from '@/lib/categories';
+import { coursePricing, usd } from '@/lib/pricing';
 import { buildHotmartUrl } from '@/lib/hotmart';
 import { SITE } from '@/lib/site';
 
@@ -24,9 +25,7 @@ const { course, variant } = Astro.props;
 const d = course.data;
 const country = COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
 const category = getCategory(d.category);
-const hasPrice = d.priceUSD !== undefined && d.originalPriceUSD !== undefined;
-const discountPct =
-  d.discountPct ?? (hasPrice ? Math.round((1 - d.priceUSD! / d.originalPriceUSD!) * 100) : undefined);
+const { hasPrice, hasDiscount, discountPct } = coursePricing(d);
 
 const checkoutUrl = buildHotmartUrl({
   baseUrl: d.hotmartUrl,
@@ -121,12 +120,13 @@ const faqs = [
         {
           hasPrice && (
             <p>
-              <span class="text-sm text-crema-100/60">
-                Antes <s>{formatPrice(d.originalPriceUSD!, country)}</s>
-              </span>
-              <span class="font-display mx-3 text-4xl font-bold text-sol-300">
-                {formatPrice(d.priceUSD!, country)}
-              </span>
+              {hasDiscount && (
+                <span class="text-sm text-crema-100/70">
+                  Antes <s>{usd(d.originalPriceUSD!)}</s>
+                </span>
+              )}
+              <span class="font-display mx-3 text-4xl font-bold text-sol-300">{usd(d.priceUSD!)}</span>
+              <span class="text-xs text-crema-100/70">≈ {formatPrice(d.priceUSD!, country)}</span>
             </p>
           )
         }
@@ -215,11 +215,10 @@ const faqs = [
       {
         hasPrice ? (
           <p class="text-sm text-ciruela-500">
-            Hoy: <s>{formatPrice(d.originalPriceUSD!, country)}</s>
-            <span class="font-display mx-2 text-3xl font-bold text-coral-600">
-              {formatPrice(d.priceUSD!, country)}
-            </span>
-            {discountPct && <span class="font-bold text-coral-600">({discountPct}% OFF)</span>}
+            Hoy: {hasDiscount && <s>{usd(d.originalPriceUSD!)}</s>}
+            <span class="font-display mx-2 text-3xl font-bold text-coral-700">{usd(d.priceUSD!)}</span>
+            {hasDiscount && discountPct && <span class="font-bold text-coral-700">({discountPct}% OFF)</span>}
+            <span class="block text-xs">≈ {formatPrice(d.priceUSD!, country)} · Hotmart confirma el valor exacto</span>
           </p>
         ) : (
           <p class="text-sm font-bold text-ciruela-600">Precio en tu moneda, visible antes de pagar.</p>

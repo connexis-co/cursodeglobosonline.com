@@ -20,6 +20,10 @@ export async function getStaticPaths() {
 }
 
 const { country, category } = Astro.props;
+// Con una sola categoría activa, esta página duplica el catálogo /{cc}/cursos/ y competía
+// con él y con /{cc}/ (auditoría 2026-09-22): noindex,follow hasta tener ≥ 2 categorías.
+const allCourses = await getCollection('courses');
+const activeCount = new Set(allCourses.map((c) => c.data.category)).size;
 const courses = (await getCollection('courses'))
   .filter((c) => c.data.category === category.slug)
   .sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
@@ -30,6 +34,7 @@ const courses = (await getCollection('courses'))
   description={`${category.short} Cursos online con certificado para ${country.name}.`}
   {country}
   pathAfterCountry={`/cursos/${category.slug}/`}
+  noindex={activeCount < 2}
   alternates={countryAlternates(`/cursos/${category.slug}/`)}
   schemas={[
     breadcrumbSchema([
@@ -49,7 +54,7 @@ const courses = (await getCollection('courses'))
       <span class="font-bold text-ciruela-600">{category.name}</span>
     </nav>
 
-    <SectionHeading
+    <SectionHeading as="h1"
       eyebrow={`${category.emoji} Categoría`}
       title={`Cursos de ${category.name.toLowerCase()}`}
       lead={category.short}

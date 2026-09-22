@@ -23,12 +23,8 @@ const cityLocal = getCityLocal(city.slug);
 const courses = (await getCollection('courses')).sort(
   (a, b) => Number(b.data.featured) - Number(a.data.featured),
 );
-const allTestimonials = await getCollection('testimonials');
-const testimonials = [
-  ...allTestimonials.filter((t) => t.data.citySlug === city.slug),
-  ...allTestimonials.filter((t) => t.data.countryCode === country.code && t.data.citySlug !== city.slug),
-  ...allTestimonials.filter((t) => t.data.countryCode !== country.code),
-].slice(0, 3);
+// Reseñas reales de Hotmart (no existen reseñas por ciudad: no se inventan).
+const testimonials = (await getCollection('testimonials')).slice(0, 3);
 
 const faqs = [
   ...(cityLocal?.faqs ?? []),
@@ -42,8 +38,10 @@ const faqs = [
   },
 ];
 
-const title = `Cursos de Decoración con Globos en ${city.name} 🎈 Online`;
-const description = `Cursos de decoración con globos para ${city.name}, ${country.name}: globoflexia, bouquets, flores y globos burbuja con certificado. 100% online, precios en ${country.currency}.`;
+// Intención de la URL: "curso de decoración con globos en {ciudad}". No nombra los 4
+// cursos en title/meta para no competir con las money pages por "curso de X".
+const title = `Curso de Decoración con Globos en ${city.name}: 100% Online`;
+const description = `¿Buscas curso de decoración con globos en ${city.name}? Estudia online, sin traslados: 4 cursos con certificado y pago en ${country.currency}. Garantía de 7 días.`;
 ---
 
 <BaseLayout
@@ -102,7 +100,7 @@ const description = `Cursos de decoración con globos para ${city.name}, ${count
       {
         courses.map((course, i) => (
           <div class="scroll-reveal" style={`animation-delay:${i * 60}ms`}>
-            <CourseCard {course} {country} {city} />
+            <CourseCard {course} {country} />
           </div>
         ))
       }
@@ -111,7 +109,11 @@ const description = `Cursos de decoración con globos para ${city.name}, ${count
 
   <section class="bg-crema-100 py-14">
     <div class="contenedor">
-      <SectionHeading eyebrow="Estudiantes" title="Lo que cuentan quienes ya empezaron" />
+      <SectionHeading
+        eyebrow="Reseñas reales"
+        title="Lo que escriben las alumnas en Hotmart"
+        lead="Citas textuales de la ficha pública de cada curso en Hotmart, la plataforma donde se compra y se estudia."
+      />
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
           testimonials.map((t, i) => (

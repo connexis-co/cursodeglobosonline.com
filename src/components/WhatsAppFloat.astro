@@ -35,6 +35,15 @@ const href = buildWhatsAppUrl(c.whatsapp, message);
 </a>
 
 <style>
+  /* Con la barra de compra móvil visible, el botón sube para no taparla. */
+  .wa-float {
+    transition:
+      translate 0.4s var(--ease-suave),
+      transform 0.3s var(--ease-fiesta);
+  }
+  :global(html.has-sticky-cta) .wa-float {
+    translate: 0 -4.75rem;
+  }
   /* Ondas expansivas (patrón LBD Balloons) */
   .wa-onda {
     position: absolute;

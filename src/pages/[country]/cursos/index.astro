@@ -20,8 +20,8 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
 ---
 
 <BaseLayout
-  title={`Cursos de Globos en ${country.name} 🎈 Catálogo Completo`}
-  description={`Catálogo de cursos de decoración con globos para ${country.name}: globoflexia, bouquets, flores y globos burbuja. Certificado incluido y precios en ${country.currency}.`}
+  title={`Cursos de Globos Online en ${country.name}: Catálogo y Precios`}
+  description={`Compara los 4 cursos de globos: globoflexia (50% OFF), bouquets, flores y globos burbuja. Temario, número de clases, precio y certificado de cada uno.`}
   {country}
   pathAfterCountry="/cursos/"
   alternates={countryAlternates('/cursos/')}
@@ -40,7 +40,7 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
       <span class="font-bold text-ciruela-600">Cursos</span>
     </nav>
 
-    <SectionHeading
+    <SectionHeading as="h1"
       eyebrow="Catálogo completo"
       title={`Todos los cursos de decoración con globos`}
       lead={`Técnicas paso a paso con certificado de estudios y acceso permanente. Los precios se muestran en ${country.currency} y el pago es seguro con Hotmart.`}

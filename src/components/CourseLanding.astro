@@ -16,6 +16,8 @@ import { formatPrice, type Country, type City } from '@/lib/countries';
 import { getCategory } from '@/lib/categories';
 import { getCityLocal } from '@/lib/cities';
 import { buildHotmartUrl } from '@/lib/hotmart';
+import { coursePricing, usd } from '@/lib/pricing';
+import { postsForCourse, postUrl } from '@/lib/blog';
 import { countryAlternates, breadcrumbSchema, courseSchema, faqSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
@@ -32,11 +34,13 @@ const { Content } = await render(course);
 const category = getCategory(d.category);
 const cityLocal = city ? getCityLocal(city.slug) : undefined;
 const placeName = city ? city.name : country.name;
-const basePath = city ? `/${country.code}/${city.slug}` : `/${country.code}`;
 
-const hasPrice = d.priceUSD !== undefined && d.originalPriceUSD !== undefined;
-const discountPct =
-  d.discountPct ?? (hasPrice ? Math.round((1 - d.priceUSD! / d.originalPriceUSD!) * 100) : undefined);
+const { hasPrice, hasDiscount, discountPct } = coursePricing(d);
+const priceDate = d.priceCheckedAt
+  ? new Intl.DateTimeFormat('es', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(
+      d.priceCheckedAt,
+    )
+  : undefined;
 
 const checkoutUrl = buildHotmartUrl({
   baseUrl: d.hotmartUrl,
@@ -62,26 +66,27 @@ const geoFaqs = [
 ];
 const allFaqs = [...d.faqs, ...geoFaqs, ...(cityLocal?.faqs ?? [])];
 
-const courseUrl = `${SITE.url}${basePath}/${course.id}/`;
+// Anti-canibalización: la página curso-ciudad declara canonical → curso-país, así que
+// el schema y el breadcrumb describen siempre la URL canónica.
+const canonicalPath = `/${country.code}/${course.id}/`;
+const courseUrl = `${SITE.url}${canonicalPath}`;
 const schemas = [
   courseSchema({
     title: d.title,
     description: d.shortDescription,
     url: courseUrl,
-    price: d.priceUSD,
-    priceCurrency: d.priceUSD !== undefined ? 'USD' : undefined,
-    rating: d.rating,
-    ratingCount: d.ratingCount,
-    instructorName: d.instructor?.name,
+    images: d.cover ? [new URL(d.cover, SITE.url).href] : [],
+    level: d.level,
     category: category.name,
-    lessonsCount: d.lessonsCount,
+    learnings: d.learnings,
+    price: d.priceUSD,
+    producer: d.producer,
+    instructor: d.instructor,
   }),
   faqSchema(allFaqs),
   breadcrumbSchema([
-    { name: 'Inicio', url: `${SITE.url}/${country.code}/` },
-    ...(city ? [{ name: city.name, url: `${SITE.url}/${country.code}/${city.slug}/` }] : []),
+    { name: country.name, url: `${SITE.url}/${country.code}/` },
     { name: 'Cursos', url: `${SITE.url}/${country.code}/cursos/` },
-    { name: category.name, url: `${SITE.url}/${country.code}/cursos/${category.slug}/` },
     { name: d.title, url: courseUrl },
   ]),
 ];
@@ -91,17 +96,20 @@ const related = (await getCollection('courses'))
   .sort((a, b) => (a.data.category === d.category ? -1 : 1) - (b.data.category === d.category ? -1 : 1))
   .slice(0, 3);
 
+// Reseñas reales de Hotmart: primero las de este curso, luego las de otros cursos.
 const allTestimonials = await getCollection('testimonials');
 const testimonials = [
-  ...allTestimonials.filter((t) => t.data.courseSlug === course.id && t.data.countryCode === country.code),
-  ...allTestimonials.filter((t) => t.data.courseSlug === course.id && t.data.countryCode !== country.code),
+  ...allTestimonials.filter((t) => t.data.courseSlug === course.id),
   ...allTestimonials.filter((t) => t.data.courseSlug !== course.id),
 ].slice(0, 3);
 
-const metaTitle = `${d.metaTitle ?? d.title} | ${placeName}`;
-const description = city
-  ? `${d.title} para ${city.name}, ${country.name}: ${d.shortDescription}`
-  : d.shortDescription;
+const guides = await postsForCourse(course.id, 3);
+
+// Title ≤ 60 car. (auditoría 2026-09-22): keyword al inicio + gancho real (descuento o nº de clases).
+const offerTag = hasDiscount && discountPct ? `: ${discountPct}% OFF (${usd(d.priceUSD!)})` : ` | ${d.lessonsCount} Clases`;
+let metaTitle = d.metaTitle ?? `${d.title} Online en ${placeName}${offerTag}`;
+if (!d.metaTitle && metaTitle.length > 60) metaTitle = `${d.title} en ${placeName}${offerTag}`;
+const description = (d.metaDescription ?? d.shortDescription).replaceAll('{lugar}', placeName);
 const trackParams = JSON.stringify({
   course_name: d.title,
   course_category: category.name,
@@ -119,6 +127,7 @@ const trackParams = JSON.stringify({
   {country}
   pathAfterCountry={`/${course.id}/`}
   alternates={city ? [] : countryAlternates(`/${course.id}/`)}
+  canonicalPath={city ? canonicalPath : undefined}
   {schemas}
   pageType={city ? 'course_city_page' : 'course_page'}
   whatsappContext={d.title}
@@ -148,8 +157,6 @@ const trackParams = JSON.stringify({
         <span aria-hidden="true"> / </span>
         <a href={`/${country.code}/cursos/`} class="hover:text-coral-600">Cursos</a>
         <span aria-hidden="true"> / </span>
-        <a href={`/${country.code}/cursos/${category.slug}/`} class="hover:text-coral-600">{category.name}</a>
-        <span aria-hidden="true"> / </span>
         <span class="font-bold text-ciruela-600">{d.title}</span>
       </nav>
 
@@ -167,6 +174,23 @@ const trackParams = JSON.stringify({
 
           <div class="mt-5 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm font-semibold text-ciruela-600">
             {d.rating && <Rating rating={d.rating} count={d.ratingCount} />}
+            {
+              d.hotmartRating && d.hotmartProductUrl && (
+                <a
+                  href={d.hotmartProductUrl}
+                  target="_blank"
+                  rel="noopener nofollow"
+                  class="inline-flex items-center gap-1.5 hover:text-coral-600"
+                  title="Valoración pública del curso en Hotmart"
+                >
+                  <Rating rating={d.hotmartRating.value} />
+                  <span class="text-xs font-semibold text-ciruela-500">
+                    {d.hotmartRating.count} {d.hotmartRating.count === 1 ? 'valoración' : 'valoraciones'} en Hotmart
+                  </span>
+                </a>
+              )
+            }
+            {d.hotmartRating && <span class="text-coral-400" aria-hidden="true">·</span>}
             <span>{d.lessonsCount} videos</span>
             <span class="text-coral-400" aria-hidden="true">·</span>
             <span>Certificado de estudios</span>
@@ -209,31 +233,36 @@ const trackParams = JSON.stringify({
         </div>
 
         <div class="lg:col-start-1">
-          <div class="rounded-3xl border border-crema-200 bg-white p-5 shadow-tarjeta sm:p-6">
+          <div data-buy-box class="rounded-3xl border border-crema-200 bg-white p-5 shadow-tarjeta sm:p-6">
             {
               hasPrice ? (
                 <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
                   <div>
-                    <span class="block text-xs text-ciruela-400">
-                      Antes <s>{formatPrice(d.originalPriceUSD!, country)}</s>
-                    </span>
-                    <span class="block font-display text-3xl font-bold text-coral-600">
-                      {formatPrice(d.priceUSD!, country)}
-                    </span>
-                    <span class="block text-[0.65rem] text-ciruela-400">
-                      ≈ US$ {d.priceUSD} · Hotmart confirma el valor exacto en {country.currency}
+                    {hasDiscount && (
+                      <span class="block text-xs text-ciruela-500">
+                        Antes <s>{usd(d.originalPriceUSD!)}</s>
+                      </span>
+                    )}
+                    <span class="block font-display text-3xl font-bold text-coral-600">{usd(d.priceUSD!)}</span>
+                    <span class="block text-xs text-ciruela-500">
+                      ≈ {formatPrice(d.priceUSD!, country)} · Hotmart confirma el valor exacto en {country.currency}
                     </span>
                   </div>
-                  {discountPct && (
-                    <span class="rounded-full bg-coral-500 px-4 py-2 text-sm font-extrabold text-white">
+                  {hasDiscount && discountPct && (
+                    <span class="rounded-full bg-coral-600 px-4 py-2 text-sm font-extrabold text-white">
                       {discountPct}% OFF aplicado en el enlace
+                    </span>
+                  )}
+                  {priceDate && (
+                    <span class="basis-full text-[0.7rem] text-ciruela-400">
+                      Precio verificado en el checkout de Hotmart el {priceDate}. Pago único, sin mensualidades.
                     </span>
                   )}
                 </div>
               ) : (
                 <p class="text-sm font-bold text-ciruela-600">
-                  💳 El precio se muestra en {country.currency} en el checkout seguro de Hotmart, antes de
-                  confirmar el pago.
+                  El precio se muestra en {country.currency} en el checkout seguro de Hotmart, antes de confirmar
+                  el pago.
                 </p>
               )
             }
@@ -460,7 +489,11 @@ const trackParams = JSON.stringify({
   <!-- 11 · TESTIMONIOS -->
   <section class="bg-crema-100 py-14">
     <div class="contenedor">
-      <SectionHeading eyebrow="Estudiantes" title="Quienes ya lo tomaron, cuentan" />
+      <SectionHeading
+        eyebrow="Reseñas reales"
+        title="Lo que escriben las alumnas en Hotmart"
+        lead="Citas textuales de la ficha pública de cada curso en Hotmart, la plataforma donde se compra y se estudia."
+      />
       <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
           testimonials.map((t, i) => (
@@ -488,10 +521,13 @@ const trackParams = JSON.stringify({
       {
         hasPrice && (
           <p class="mt-5">
-            <span class="text-sm text-crema-100/60">
-              Antes <s>{formatPrice(d.originalPriceUSD!, country)}</s>
-            </span>
-            <span class="font-display mx-3 text-4xl font-bold text-sol-300">{formatPrice(d.priceUSD!, country)}</span>
+            {hasDiscount && (
+              <span class="text-sm text-crema-100/70">
+                Antes <s>{usd(d.originalPriceUSD!)}</s>
+              </span>
+            )}
+            <span class="font-display mx-3 text-4xl font-bold text-sol-300">{usd(d.priceUSD!)}</span>
+            <span class="block text-xs text-crema-100/70">≈ {formatPrice(d.priceUSD!, country)}</span>
           </p>
         )
       }
@@ -521,15 +557,15 @@ const trackParams = JSON.stringify({
             title={`Aprender decoración con globos en ${city.name}`}
           />
           <p class="mt-5 max-w-3xl leading-relaxed text-ciruela-600">{cityLocal.hook}</p>
-          <p class="mt-6 text-xs font-bold tracking-[0.18em] text-ciruela-400 uppercase">
-            Este curso también en otras ciudades
+          <p class="mt-6 text-xs font-bold tracking-[0.18em] text-ciruela-500 uppercase">
+            Cursos de decoración con globos en otras ciudades
           </p>
           <div class="mt-3 flex flex-wrap gap-2">
             {country.cities
               .filter((c) => c.slug !== city.slug)
               .map((c) => (
                 <a
-                  href={`/${country.code}/${c.slug}/${course.id}/`}
+                  href={`/${country.code}/${c.slug}/`}
                   class="rounded-full border border-crema-300 bg-white px-3.5 py-1.5 text-xs font-bold text-ciruela-600 transition-colors hover:border-coral-300 hover:text-coral-600"
                 >
                   {c.name}
@@ -537,11 +573,40 @@ const trackParams = JSON.stringify({
               ))}
             <a
               href={`/${country.code}/${course.id}/`}
-              class="rounded-full bg-coral-500 px-3.5 py-1.5 text-xs font-extrabold text-white transition-colors hover:bg-coral-600"
+              class="rounded-full bg-coral-600 px-3.5 py-1.5 text-xs font-extrabold text-white transition-colors hover:bg-coral-700"
             >
-              Todo {country.name} →
+              {d.title} en {country.name} →
             </a>
           </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- 13b · GUÍAS GRATIS DEL BLOG (enlazado interno blog ↔ money page) -->
+  {
+    guides.length > 0 && (
+      <section class="contenedor pb-16" aria-labelledby="guias-titulo">
+        <div class="rounded-[2rem] border border-crema-200 bg-white p-8 shadow-tarjeta sm:p-10">
+          <p class="text-xs font-extrabold tracking-[0.22em] text-coral-600 uppercase">Guías gratis</p>
+          <h2 id="guias-titulo" class="mt-2 text-2xl font-semibold text-ciruela-900 sm:text-3xl">
+            Practica antes de inscribirte
+          </h2>
+          <ul class="mt-6 grid gap-4 sm:grid-cols-3">
+            {guides.map((g) => (
+              <li>
+                <a
+                  href={postUrl(g)}
+                  class="group block h-full rounded-2xl border border-crema-200 bg-crema-50 p-5 transition-colors hover:border-coral-300"
+                >
+                  <span class="block font-display text-lg leading-snug font-semibold text-ciruela-900 group-hover:text-coral-700">
+                    {g.data.title}
+                  </span>
+                  <span class="mt-2 line-clamp-2 block text-sm text-ciruela-500">{g.data.description}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     )
@@ -559,22 +624,19 @@ const trackParams = JSON.stringify({
   <section class="contenedor pb-20">
     <SectionHeading eyebrow="Sigue aprendiendo" title="También te puede interesar" />
     <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {related.map((c) => <CourseCard course={c} {country} {city} />)}
+      {related.map((c) => <CourseCard course={c} {country} />)}
     </div>
   </section>
 
-  {
-    hasPrice && (
-      <StickyCta
-        {country}
-        priceUSD={d.priceUSD!}
-        originalPriceUSD={d.originalPriceUSD!}
-        hotmartUrl={checkoutUrl}
-        courseName={d.title}
-        coupon={d.coupon ?? `offDiscount-${discountPct}`}
-      />
-    )
-  }
+  <StickyCta
+    {country}
+    priceUSD={d.priceUSD}
+    originalPriceUSD={hasDiscount ? d.originalPriceUSD : undefined}
+    discountPct={discountPct}
+    hotmartUrl={checkoutUrl}
+    courseName={d.title}
+    coupon={d.coupon ?? (discountPct ? `offDiscount-${discountPct}` : '')}
+  />
 </BaseLayout>
 
 <style>

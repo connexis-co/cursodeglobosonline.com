@@ -3,7 +3,7 @@ dist/
 .astro/
 
 # dependencies
-node_modules/
+node_modules
 
 # logs
 npm-debug.log*
@@ -26,3 +26,6 @@ pnpm-debug.log*
 .idea/
 *.local
 graphify-out/cache/
+
+# iCloud: carpetas .nosync no se sincronizan (evita node_modules "dataless")
+*.nosync

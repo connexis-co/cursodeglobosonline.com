@@ -6,8 +6,9 @@ import Footer from '@/components/Footer.astro';
 import GeoToast from '@/components/GeoToast.astro';
 import WhatsAppFloat from '@/components/WhatsAppFloat.astro';
 import type { Country } from '@/lib/countries';
+import type { ArticleMeta } from '@/components/Seo.astro';
 import type { HreflangAlternate } from '@/lib/seo';
-import { organizationSchema } from '@/lib/seo';
+import { organizationSchema, websiteSchema } from '@/lib/seo';
 import { GTM_ID, GA4_ID, META_PIXEL_ID } from '@/lib/site';
 
 interface Props {
@@ -23,6 +24,14 @@ interface Props {
   noindex?: boolean;
   /** Header transparente sobre hero con imagen/video (se vuelve sólido al scroll). */
   transparentHeader?: boolean;
+  ogImage?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  ogImageAlt?: string;
+  ogTitle?: string;
+  ogType?: 'website' | 'article';
+  article?: ArticleMeta;
+  canonicalPath?: string;
 }
 
 const {
@@ -36,13 +45,21 @@ const {
   whatsappContext,
   noindex = false,
   transparentHeader = false,
+  ogImage,
+  ogImageWidth,
+  ogImageHeight,
+  ogImageAlt,
+  ogTitle,
+  ogType,
+  article,
+  canonicalPath,
 } = Astro.props;
 
-const allSchemas = [organizationSchema(), ...schemas];
+const allSchemas = [organizationSchema(), websiteSchema(), ...schemas];
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={country?.hreflang ?? 'es'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -52,7 +69,22 @@ const allSchemas = [organizationSchema(), ...schemas];
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#fdf9f4" />
-    <Seo {title} {description} {alternates} schemas={allSchemas} {noindex} />
+    <Seo
+      {title}
+      {description}
+      {alternates}
+      schemas={allSchemas}
+      {noindex}
+      {ogImage}
+      {ogImageWidth}
+      {ogImageHeight}
+      {ogImageAlt}
+      {ogTitle}
+      {ogType}
+      {article}
+      {canonicalPath}
+      hreflang={country?.hreflang}
+    />
     <link rel="sitemap" href="/sitemap-index.xml" />
     {
       GTM_ID && (

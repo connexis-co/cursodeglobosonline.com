@@ -23,11 +23,8 @@ const courses = (await getCollection('courses')).sort(
   (a, b) => Number(b.data.featured) - Number(a.data.featured),
 );
 const featured = courses.find((c) => c.data.featured) ?? courses[0];
-const allTestimonials = await getCollection('testimonials');
-const testimonials = [
-  ...allTestimonials.filter((t) => t.data.countryCode === country.code),
-  ...allTestimonials.filter((t) => t.data.countryCode !== country.code),
-].slice(0, 3);
+// Reseñas reales de Hotmart (las más recientes; ya no hay testimonios por país).
+const testimonials = (await getCollection('testimonials')).slice(0, 3);
 
 const faqs = [
   {
@@ -52,8 +49,9 @@ const faqs = [
   },
 ];
 
-const title = `Curso de Decoración con Globos en ${country.name} 🎈 Online`;
-const description = `Cursos de decoración con globos para ${country.name}: globoflexia, bouquets, flores y globos burbuja. Certificado incluido, pagos en ${country.currency} y acceso de por vida.`;
+// ≤ 60 car. con "Estados Unidos" (el nombre de país más largo).
+const title = `Curso de Decoración con Globos Online en ${country.name}`;
+const description = `Aprende decoración con globos desde cualquier ciudad de ${country.name}: 4 cursos online con certificado, pago en ${country.currency} y garantía de 7 días.`;
 ---
 
 <BaseLayout
@@ -144,8 +142,9 @@ const description = `Cursos de decoración con globos para ${country.name}: glob
   <section class="bg-crema-100 py-16">
     <div class="contenedor">
       <SectionHeading
-        eyebrow="Estudiantes"
-        title={`Lo que cuentan quienes ya empezaron`}
+        eyebrow="Reseñas reales"
+        title="Lo que escriben las alumnas en Hotmart"
+        lead="Citas textuales de la ficha pública de cada curso en Hotmart, la plataforma donde se compra y se estudia."
       />
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {

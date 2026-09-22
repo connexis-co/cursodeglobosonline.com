@@ -2,6 +2,14 @@
 import { SITE } from '@/lib/site';
 import type { HreflangAlternate } from '@/lib/seo';
 
+export interface ArticleMeta {
+  publishedTime: Date;
+  modifiedTime: Date;
+  author: string;
+  section: string;
+  tags: string[];
+}
+
 interface Props {
   title: string;
   description: string;
@@ -9,30 +17,77 @@ interface Props {
   schemas?: object[];
   noindex?: boolean;
   ogImage?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  ogImageAlt?: string;
+  /** og:title distinto del <title> (p. ej. titular pensado para Discover/redes). */
+  ogTitle?: string;
+  ogType?: 'website' | 'article';
+  article?: ArticleMeta;
+  /** Canonical distinto de la URL actual (consolidación de duplicados, p. ej. curso-ciudad → curso-país). */
+  canonicalPath?: string;
+  /** hreflang del país (es-MX → og:locale es_MX). */
+  hreflang?: string;
 }
 
-const { title, description, alternates = [], schemas = [], noindex = false, ogImage = '/og-default.jpg' } = Astro.props;
+const {
+  title,
+  description,
+  alternates = [],
+  schemas = [],
+  noindex = false,
+  ogImage = '/og-default.jpg',
+  ogImageWidth,
+  ogImageHeight,
+  ogImageAlt,
+  ogTitle = title,
+  ogType = 'website',
+  article,
+  canonicalPath,
+  hreflang = 'es-CO',
+} = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const canonical = new URL(canonicalPath ?? Astro.url.pathname, SITE.url).href;
 const ogImageUrl = new URL(ogImage, SITE.url).href;
+// Google Discover exige permitir vistas previas grandes de imagen (>= 1200px).
+// noindex,follow: la página no se indexa pero sus enlaces sí transmiten (catálogo, 404, Ads).
+const robots = noindex
+  ? 'noindex, follow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
-<link rel="canonical" href={canonical} />
-{noindex && <meta name="robots" content="noindex, nofollow" />}
+{!noindex && <link rel="canonical" href={canonical} />}
+<meta name="robots" content={robots} />
 {alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
+<link rel="alternate" type="application/rss+xml" title={`Blog de ${SITE.name}`} href={`${SITE.url}/blog/rss.xml`} />
 
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:site_name" content={SITE.name} />
-<meta property="og:title" content={title} />
+<meta property="og:title" content={ogTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:image" content={ogImageUrl} />
-<meta property="og:locale" content="es_CO" />
+{ogImageWidth && <meta property="og:image:width" content={String(ogImageWidth)} />}
+{ogImageHeight && <meta property="og:image:height" content={String(ogImageHeight)} />}
+{ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
+<meta property="og:locale" content={hreflang.replace('-', '_')} />
+{
+  article && (
+    <>
+      <meta property="article:published_time" content={article.publishedTime.toISOString()} />
+      <meta property="article:modified_time" content={article.modifiedTime.toISOString()} />
+      <meta property="article:author" content={article.author} />
+      <meta property="article:section" content={article.section} />
+      {article.tags.map((tag) => <meta property="article:tag" content={tag} />)}
+    </>
+  )
+}
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={title} />
+<meta name="twitter:title" content={ogTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImageUrl} />
+{ogImageAlt && <meta name="twitter:image:alt" content={ogImageAlt} />}
 
 {schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}

@@ -1,57 +1,86 @@
 ---
+/**
+ * Barra de compra fija en móvil. Aparece cuando la caja de compra del hero
+ * ([data-buy-box]) sale de pantalla. Se muestra en los 4 cursos (con o sin
+ * descuento) y marca <html class="has-sticky-cta"> para que el botón de
+ * WhatsApp y el GeoToast suban y no tapen el CTA.
+ * Fix 2026-09-22: Tailwind v4 oculta con la propiedad `translate`, no con
+ * `transform`; el script anterior nunca la mostraba.
+ */
 import type { Country } from '@/lib/countries';
 import { formatPrice } from '@/lib/countries';
+import { usd } from '@/lib/pricing';
 
 interface Props {
   country: Country;
-  priceUSD: number;
-  originalPriceUSD: number;
+  priceUSD?: number;
+  originalPriceUSD?: number;
+  discountPct?: number;
   hotmartUrl: string;
   courseName: string;
   coupon: string;
 }
 
-const { country, priceUSD, originalPriceUSD, hotmartUrl, courseName, coupon } = Astro.props;
+const { country, priceUSD, originalPriceUSD, discountPct, hotmartUrl, courseName, coupon } = Astro.props;
+const label = discountPct ? `Inscribirme con ${discountPct}% OFF` : 'Inscribirme';
 ---
 
 <div
   id="sticky-cta"
-  class="fixed inset-x-0 bottom-0 z-40 translate-y-full border-t border-crema-200 bg-white/95 backdrop-blur-md transition-transform duration-400 ease-suave lg:hidden"
+  class="fixed inset-x-0 bottom-0 z-40 translate-y-full border-t border-crema-200 bg-white/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md transition-[translate] duration-400 ease-suave lg:hidden"
+  aria-hidden="true"
 >
-  <div class="contenedor flex items-center justify-between gap-3 py-3">
-    <div class="leading-tight">
-      <span class="block text-[0.65rem] text-ciruela-400 line-through">{formatPrice(originalPriceUSD, country)}</span>
-      <span class="block text-lg font-extrabold text-coral-600">{formatPrice(priceUSD, country)}</span>
+  <div class="contenedor flex items-center justify-between gap-3 pt-3">
+    <div class="min-w-0 leading-tight">
+      {
+        priceUSD !== undefined ? (
+          <>
+            {originalPriceUSD !== undefined && (
+              <span class="block text-[0.7rem] text-ciruela-500 line-through">{usd(originalPriceUSD)}</span>
+            )}
+            <span class="block text-lg font-extrabold text-coral-700">
+              {usd(priceUSD)}
+              <span class="ml-1 text-[0.7rem] font-semibold text-ciruela-500">≈ {formatPrice(priceUSD, country)}</span>
+            </span>
+          </>
+        ) : (
+          <span class="block text-xs font-semibold text-ciruela-600">Pago seguro en Hotmart · Garantía 7 días</span>
+        )
+      }
     </div>
     <a
       href={hotmartUrl}
       target="_blank"
       rel="noopener"
+      tabindex="-1"
       data-track="begin_checkout"
       data-track-params={JSON.stringify({
         course_name: courseName,
-        price: priceUSD,
-        currency: country.currency,
+        price: priceUSD ?? '',
+        currency: 'USD',
         discount_code: coupon,
         placement: 'sticky_mobile',
       })}
-      class="rounded-xl bg-coral-500 px-6 py-3 text-xs font-bold text-white shadow-boton"
+      class="flex min-h-11 shrink-0 items-center rounded-xl bg-coral-600 px-5 text-sm font-extrabold text-white shadow-boton hover:bg-coral-700"
     >
-      Inscribirme ahora
+      {label}
     </a>
   </div>
 </div>
 
 <script>
   const bar = document.getElementById('sticky-cta');
-  const hero = document.getElementById('curso-hero');
-  if (bar && hero) {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        bar.style.transform = entry.isIntersecting ? 'translateY(100%)' : 'translateY(0)';
-      },
-      { threshold: 0 },
-    );
-    observer.observe(hero);
+  const box = document.querySelector('[data-buy-box]') ?? document.getElementById('curso-hero');
+  if (bar && box) {
+    const link = bar.querySelector('a');
+    const show = (on: boolean) => {
+      bar.classList.toggle('translate-y-full', !on);
+      bar.classList.toggle('translate-y-0', on);
+      bar.setAttribute('aria-hidden', String(!on));
+      link?.setAttribute('tabindex', on ? '0' : '-1');
+      // Solo en móvil (la barra es lg:hidden): WhatsApp/GeoToast suben para no taparla.
+      document.documentElement.classList.toggle('has-sticky-cta', on && matchMedia('(max-width: 63.99rem)').matches);
+    };
+    new IntersectionObserver(([entry]) => show(!entry.isIntersecting && entry.boundingClientRect.top < 0)).observe(box);
   }
 </script>

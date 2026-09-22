@@ -18,6 +18,7 @@ const courses = (await getCollection('courses')).sort(
 );
 const featured = courses.find((c) => c.data.featured) ?? courses[0];
 const others = courses.filter((c) => c.id !== featured.id);
+// Reseñas reales de Hotmart (sustituyen a los testimonios placeholder del lanzamiento).
 const testimonials = (await getCollection('testimonials')).slice(0, 6);
 
 const faqs = [
@@ -57,8 +58,8 @@ const faqs = [
 ---
 
 <BaseLayout
-  title="Curso de Decoración con Globos Online 🎈 Con Certificado"
-  description="Aprende decoración con globos online: globoflexia, bouquets, flores y globos burbuja. Certificado de estudios, acceso de por vida y 50% OFF en el curso estrella."
+  title="Curso de Decoración con Globos Online con Certificado"
+  description="4 cursos online de decoración con globos: globoflexia, bouquets, flores y globos burbuja. Certificado, acceso de por vida y garantía de 7 días."
   alternates={countryAlternates('/')}
   schemas={[faqSchema(faqs)]}
   pageType="home"
@@ -263,9 +264,9 @@ const faqs = [
   <section class="bg-crema-100 py-16 lg:py-24">
     <div class="contenedor">
       <SectionHeading
-        eyebrow="Estudiantes"
-        title="Historias que empezaron con una bolsa de globos"
-        lead="Decoradoras, animadores y emprendedores de 8 países que hoy cobran por lo que aprendieron aquí."
+        eyebrow="Reseñas reales"
+        title="Lo que escriben las alumnas en Hotmart"
+        lead="Citas textuales de la ficha pública de cada curso en Hotmart, la plataforma donde se compra y se estudia."
       />
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {

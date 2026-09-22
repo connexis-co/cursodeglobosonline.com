@@ -1,0 +1,233 @@
+---
+import { getImage, Picture } from 'astro:assets';
+import { render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FaqAccordion from '@/components/FaqAccordion.astro';
+import CourseCta from '@/components/blog/CourseCta.astro';
+import Callout from '@/components/blog/Callout.astro';
+import Toc from '@/components/blog/Toc.astro';
+import AuthorBox from '@/components/blog/AuthorBox.astro';
+import PostCard from '@/components/blog/PostCard.astro';
+import { getPublishedPosts, relatedPosts, readingMinutes, formatDate, lastModified, type Post } from '@/lib/blog';
+import { getBlogCluster } from '@/lib/blog-clusters';
+import { getAuthor } from '@/lib/authors';
+import { blogPostingSchema, breadcrumbSchema, faqSchema } from '@/lib/seo';
+import { SITE } from '@/lib/site';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post, all: posts } }));
+}
+
+interface Props {
+  post: Post;
+  all: Post[];
+}
+
+const { post, all } = Astro.props;
+const d = post.data;
+const { Content, headings } = await render(post);
+const cluster = getBlogCluster(d.cluster);
+const author = getAuthor(d.author);
+const url = `${SITE.url}/blog/${post.id}/`;
+const modified = lastModified(post);
+const minutes = readingMinutes(post);
+const pillar = d.pillar ? all.find((p) => p.id === d.pillar) : undefined;
+const related = relatedPosts(post, all, 3);
+
+// Discover/Article: imagen >= 1200px en 16:9, 4:3 y 1:1 (Google elige la que mejor encaja).
+const [og169, og43, og11] = await Promise.all([
+  getImage({ src: d.hero, width: 1600, height: 900, fit: 'cover', format: 'jpg', quality: 82 }),
+  getImage({ src: d.hero, width: 1200, height: 900, fit: 'cover', format: 'jpg', quality: 80 }),
+  getImage({ src: d.hero, width: 1200, height: 1200, fit: 'cover', format: 'jpg', quality: 80 }),
+]);
+const abs = (src: string) => new URL(src, SITE.url).href;
+
+const wordCount = (post.body ?? '').split(/\s+/).filter(Boolean).length;
+const schemas = [
+  blogPostingSchema({
+    url,
+    headline: d.title,
+    description: d.description,
+    images: [abs(og169.src), abs(og43.src), abs(og11.src)],
+    datePublished: d.publishedAt,
+    dateModified: modified,
+    author,
+    section: cluster.name,
+    keywords: d.keywords,
+    wordCount,
+  }),
+  breadcrumbSchema([
+    { name: 'Inicio', url: `${SITE.url}/` },
+    { name: 'Blog', url: `${SITE.url}/blog/` },
+    { name: d.title, url },
+  ]),
+  ...(d.faqs.length > 0 ? [faqSchema(d.faqs)] : []),
+];
+
+const trackParams = JSON.stringify({
+  post_slug: post.id,
+  post_cluster: d.cluster,
+  money_page: d.moneyPage,
+  is_pillar: d.isPillar,
+});
+---
+
+<BaseLayout
+  title={d.seoTitle ?? d.title}
+  description={d.description}
+  {schemas}
+  pageType="blog_post"
+  whatsappContext={d.title}
+  ogTitle={d.discoverTitle ?? d.title}
+  ogType="article"
+  ogImage={og169.src}
+  ogImageWidth={1600}
+  ogImageHeight={900}
+  ogImageAlt={d.heroAlt}
+  article={{
+    publishedTime: d.publishedAt,
+    modifiedTime: modified,
+    author: author.name,
+    section: cluster.name,
+    tags: d.keywords.slice(0, 6),
+  }}
+>
+  <script
+    is:inline
+    set:html={`window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:'view_blog_post',page_type:'blog_post'},${trackParams}));`}
+  />
+
+  <div class="contenedor pt-6 pb-20 lg:pt-10">
+    <nav aria-label="Migas de pan" class="text-xs text-ciruela-400">
+      <ol class="flex flex-wrap items-center gap-1.5">
+        <li><a href="/" class="hover:text-coral-600">Inicio</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/blog/" class="hover:text-coral-600">Blog</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href={`/blog/#${cluster.slug}`} class="hover:text-coral-600">{cluster.name}</a></li>
+      </ol>
+    </nav>
+
+    <header class="mt-5 max-w-3xl">
+      <p class="text-xs font-extrabold tracking-[0.2em] text-coral-600 uppercase">
+        {d.isPillar ? `Guía completa · ${cluster.name}` : cluster.name}
+      </p>
+      <h1 class="mt-3 text-[2.1rem] leading-[1.08] font-semibold text-ciruela-900 sm:text-5xl">{d.title}</h1>
+      <p class="mt-4 text-lg leading-relaxed text-ciruela-500">{d.description}</p>
+      <div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ciruela-500">
+        <a href={`/blog/autor/${author.slug}/`} rel="author" class="font-bold text-ciruela-700 hover:text-coral-600">
+          {author.name}
+        </a>
+        <span aria-hidden="true">·</span>
+        {
+          d.updatedAt ? (
+            <span>
+              Actualizado el <time datetime={modified.toISOString()}>{formatDate(modified)}</time>
+            </span>
+          ) : (
+            <span>
+              <time datetime={d.publishedAt.toISOString()}>{formatDate(d.publishedAt)}</time>
+            </span>
+          )
+        }
+        <span aria-hidden="true">·</span>
+        <span>{minutes} min de lectura</span>
+      </div>
+    </header>
+
+    <figure class="mt-8 overflow-hidden rounded-3xl bg-crema-200 shadow-tarjeta">
+      <Picture
+        src={d.hero}
+        alt={d.heroAlt}
+        widths={[480, 800, 1200, 1600]}
+        sizes="(min-width: 1184px) 1120px, calc(100vw - 2.5rem)"
+        formats={['avif', 'webp']}
+        loading="eager"
+        fetchpriority="high"
+        class="aspect-[16/9] w-full object-cover"
+      />
+    </figure>
+
+    <div class="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_17rem] xl:gap-16">
+      <div class="min-w-0">
+        <div class="mb-8 lg:hidden">
+          <Toc {headings} collapsible />
+        </div>
+
+        <div class="articulo">
+          <Content components={{ CourseCta, Callout }} />
+        </div>
+
+        {
+          d.faqs.length > 0 && (
+            <section class="mt-14" aria-labelledby="faq-titulo">
+              <h2 id="faq-titulo" class="mb-6 text-2xl font-semibold text-ciruela-900 sm:text-3xl">
+                Preguntas frecuentes
+              </h2>
+              <FaqAccordion faqs={d.faqs} />
+            </section>
+          )
+        }
+
+        <CourseCta curso={d.moneyPage} />
+
+        {
+          pillar && (
+            <p class="mb-8 rounded-2xl border border-crema-200 bg-white px-5 py-4 text-sm text-ciruela-600">
+              Esta guía es parte de{' '}
+              <a href={`/blog/${pillar.id}/`} class="font-bold text-coral-600 underline-offset-2 hover:underline">
+                {pillar.data.title}
+              </a>
+              , nuestra guía completa sobre {cluster.name.toLowerCase()}.
+            </p>
+          )
+        }
+
+        <AuthorBox {author} />
+      </div>
+
+      <aside class="hidden lg:block" aria-label="Navegación del artículo">
+        <div class="sticky top-28 space-y-8">
+          <Toc {headings} />
+          <CourseCta curso={d.moneyPage} variante="compacta" texto={d.moneyAnchor} />
+        </div>
+      </aside>
+    </div>
+
+    {
+      related.length > 0 && (
+        <section class="mt-20" aria-labelledby="relacionados-titulo">
+          <h2 id="relacionados-titulo" class="text-2xl font-semibold text-ciruela-900 sm:text-3xl">
+            Sigue leyendo
+          </h2>
+          <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {related.map((p) => (
+              <PostCard post={p} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </div>
+</BaseLayout>
+
+<script>
+  // Resalta en el TOC la sección visible (sin librerías).
+  const links = new Map(
+    [...document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]')].map((a) => [a.dataset.tocLink!, a]),
+  );
+  if (links.size > 0 && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          links.forEach((a) => a.removeAttribute('aria-current'));
+          links.get(entry.target.id)?.setAttribute('aria-current', 'true');
+        }
+      },
+      { rootMargin: '-20% 0px -70% 0px' },
+    );
+    document.querySelectorAll('.articulo h2[id]').forEach((h) => io.observe(h));
+  }
+</script>

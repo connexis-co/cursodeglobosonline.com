@@ -1,59 +1,126 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
+import PostCard from '@/components/blog/PostCard.astro';
+import { getPublishedPosts, postUrl } from '@/lib/blog';
+import { BLOG_CLUSTERS } from '@/lib/blog-clusters';
+import { breadcrumbSchema } from '@/lib/seo';
+import { SITE } from '@/lib/site';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
-);
+const posts = await getPublishedPosts();
+const pillars = posts.filter((p) => p.data.isPillar);
+const featured = pillars[0] ?? posts[0];
+const clusters = BLOG_CLUSTERS.map((c) => ({
+  ...c,
+  posts: posts
+    .filter((p) => p.data.cluster === c.slug)
+    .sort((a, b) => Number(b.data.isPillar) - Number(a.data.isPillar)),
+})).filter((c) => c.posts.length > 0);
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Blog de decoración con globos',
+    url: `${SITE.url}/blog/`,
+    inLanguage: 'es',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: posts.map((p, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${SITE.url}${postUrl(p)}`,
+        name: p.data.title,
+      })),
+    },
+  },
+  breadcrumbSchema([
+    { name: 'Inicio', url: `${SITE.url}/` },
+    { name: 'Blog', url: `${SITE.url}/blog/` },
+  ]),
+];
 ---
 
 <BaseLayout
-  title="Blog de Decoración con Globos 🎈 Guías y Tutoriales"
-  description="Guías de decoración con globos: cómo hacer arcos, qué marcas usar, cuánto cobrar y cómo montar tu negocio de decoración."
+  title="Blog de decoración con globos: guías e ideas paso a paso"
+  description="Guías gratis de decoración con globos: arcos, guirnaldas, bouquets, globoflexia, materiales y cuánto cobrar. Paso a paso, con medidas y costos reales."
   pageType="blog"
+  {schemas}
 >
-  <div class="contenedor max-w-4xl pt-10 pb-20 lg:pt-12">
-    <SectionHeading
-      eyebrow="Blog"
-      title="Guías para decoradoras que cobran"
-      lead="Tutoriales, técnicas y consejos de negocio del mundo de los globos."
-    />
+  <div class="contenedor pt-10 pb-20 lg:pt-14">
+    <header class="max-w-3xl">
+      <p class="text-xs font-extrabold tracking-[0.22em] text-coral-600 uppercase">Blog</p>
+      <h1 class="mt-3 text-4xl font-semibold text-ciruela-900 sm:text-5xl">
+        Decoración con globos, explicada por quienes la enseñan
+      </h1>
+      <p class="mt-4 text-lg leading-relaxed text-ciruela-500">
+        Guías paso a paso con medidas, cantidades y costos de referencia: desde tu primer arco hasta cotizar un
+        montaje completo.
+      </p>
+    </header>
 
     {
-      posts.length > 0 ? (
-        <ul class="mt-10 space-y-6">
-          {posts.map((post) => (
-            <li>
-              <a
-                href={`/blog/${post.id}/`}
-                class="block rounded-3xl border border-crema-200 bg-white p-6 shadow-tarjeta transition-transform duration-300 ease-fiesta hover:-translate-y-1"
-              >
-                <h2 class="font-display text-xl font-semibold text-ciruela-900">{post.data.title}</h2>
-                <p class="mt-2 text-sm text-ciruela-500">{post.data.description}</p>
-              </a>
-            </li>
-          ))}
-        </ul>
-      ) : (
+      posts.length === 0 ? (
         <div class="mt-10 rounded-3xl border border-crema-200 bg-crema-100 p-10 text-center">
-          <p class="text-4xl" aria-hidden="true">
-            🎈✍️
-          </p>
-          <p class="mt-4 font-display text-xl font-semibold text-ciruela-900">
-            Estamos inflando los primeros artículos
-          </p>
-          <p class="mx-auto mt-2 max-w-md text-sm text-ciruela-500">
-            Muy pronto: cómo hacer arcos de globos sin estructura, qué marcas de globos usar para decorar y
-            cuánto cobrar por un montaje. Mientras tanto, los cursos ya están abiertos.
-          </p>
+          <p class="font-display text-xl font-semibold text-ciruela-900">Estamos inflando los primeros artículos</p>
           <a
             href="/co/cursos/"
-            class="mt-6 inline-block rounded-xl bg-coral-500 px-6 py-3 text-xs font-bold text-white transition-colors hover:bg-coral-600"
+            class="mt-6 inline-block rounded-xl bg-coral-500 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-coral-600"
           >
             Ver los cursos
           </a>
         </div>
+      ) : (
+        <>
+          <div class="mt-10">
+            <PostCard post={featured} featured eager headingLevel="h2" />
+          </div>
+
+          <nav aria-label="Temas del blog" class="mt-10 flex flex-wrap gap-2">
+            {clusters.map((c) => (
+              <a
+                href={`#${c.slug}`}
+                class="rounded-xl border border-crema-300 bg-white px-4 py-2 text-sm font-semibold text-ciruela-700 transition-colors hover:border-coral-300 hover:text-coral-600"
+              >
+                {c.name} <span class="text-ciruela-400">({c.posts.length})</span>
+              </a>
+            ))}
+          </nav>
+
+          {clusters.map((c) => (
+            <section id={c.slug} class="mt-16 scroll-mt-28" aria-labelledby={`t-${c.slug}`}>
+              <div class="flex flex-col gap-1 border-b border-crema-200 pb-4 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <h2 id={`t-${c.slug}`} class="text-2xl font-semibold text-ciruela-900 sm:text-3xl">
+                    {c.name}
+                  </h2>
+                  <p class="mt-1 text-sm text-ciruela-500">{c.short}</p>
+                </div>
+              </div>
+              <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {c.posts.map((p) => (
+                  <PostCard post={p} />
+                ))}
+              </div>
+            </section>
+          ))}
+
+          <section class="mt-20">
+            <SectionHeading
+              eyebrow="Del blog al oficio"
+              title="¿Quieres aprenderlo con método y certificado?"
+              lead="Los artículos te dan la base. Los cursos te llevan paso a paso, en video, con tareas y certificado de estudios."
+            />
+            <a
+              href="/co/cursos/"
+              data-track="click_blog_cta"
+              data-track-params={JSON.stringify({ course_slug: 'catalogo', placement: 'blog_index' })}
+              class="mt-6 inline-block rounded-xl bg-coral-500 px-6 py-3 text-sm font-bold text-white shadow-boton transition-colors hover:bg-coral-600"
+            >
+              Ver los 4 cursos
+            </a>
+          </section>
+        </>
       )
     }
   </div>
