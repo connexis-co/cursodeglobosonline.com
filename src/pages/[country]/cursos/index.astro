@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import CourseCard from '@/components/CourseCard.astro';
+import Icon from '@/components/Icon.astro';
 import { COUNTRIES } from '@/lib/countries';
 import { CATEGORIES } from '@/lib/categories';
 import { countryAlternates, breadcrumbSchema } from '@/lib/seo';
@@ -34,43 +35,48 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
   pageType="catalog"
 >
   <div class="contenedor pt-10 pb-16 lg:pt-12 lg:pb-24">
-    <nav class="mb-6 text-xs text-ciruela-400" aria-label="Miga de pan">
-      <a href={`/${country.code}/`} class="hover:text-coral-600">{country.flag} {country.name}</a>
+    <nav class="mb-6 text-xs text-ciruela-500" aria-label="Miga de pan">
+      <a href={`/${country.code}/`} class="inline-block py-1 hover:text-coral-600 lg:py-0">{country.flag} {country.name}</a>
       <span aria-hidden="true"> / </span>
       <span class="font-bold text-ciruela-600">Cursos</span>
     </nav>
 
+    <!-- Anti-canibalización: el H1 sigue la intención del <title> (catálogo y precios por país)
+         y no repite el de la home ni el de /{cc}/ («Cursos de decoración con globos…»). -->
     <SectionHeading as="h1"
       eyebrow="Catálogo completo"
-      title={`Todos los cursos de decoración con globos`}
+      title={`Catálogo de cursos de globos en ${country.name}: precios y temarios`}
       lead={`Técnicas paso a paso con certificado de estudios y acceso permanente. Los precios se muestran en ${country.currency} y el pago es seguro con Hotmart.`}
     />
 
     <div class="mt-8 flex flex-wrap gap-2">
-      <span class="rounded-full bg-coral-500 px-4 py-2 text-xs font-extrabold text-white">Todos</span>
+      <span class="rounded-full bg-coral-600 px-4 py-2 text-xs font-extrabold text-white">Todos</span>
       {
         activeCategories.map((cat) => (
           <a
             href={`/${country.code}/cursos/${cat.slug}/`}
-            class="rounded-full border border-crema-300 bg-white px-4 py-2 text-xs font-bold text-ciruela-600 transition-colors hover:border-coral-300 hover:text-coral-600"
+            class="inline-flex items-center gap-1.5 rounded-full border border-crema-300 bg-white py-2 pr-4 pl-3 text-xs font-bold text-ciruela-600 transition-colors hover:border-coral-300 hover:text-coral-600"
           >
-            {cat.emoji} {cat.name}
+            <Icon name={cat.icon} size={15} class="text-coral-600" />
+            {cat.name}
           </a>
         ))
       }
     </div>
 
-    <div id="catalogo" class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- 2 columnas con tarjetas horizontales en lg: con 4 cursos, a 3 columnas quedaba una huérfana. -->
+    <div id="catalogo" class="mt-10 grid gap-6 sm:grid-cols-2">
       {
         courses.map((course, i) => (
           <div class="scroll-reveal curso-item" data-title={course.data.title.toLowerCase()} style={`animation-delay:${i * 60}ms`}>
-            <CourseCard {course} {country} />
+            <CourseCard {course} {country} horizontal class="h-full" />
           </div>
         ))
       }
     </div>
-    <p id="sin-resultados" class="mt-10 hidden text-center text-sm text-ciruela-400">
-      No encontramos cursos con ese nombre. Escríbenos por WhatsApp y te ayudamos a elegir. 🎈
+    <p id="sin-resultados" class="mt-10 hidden items-center justify-center gap-2 text-center text-sm text-ciruela-500">
+      <Icon name="globo" class="text-coral-600" />
+      No encontramos cursos con ese nombre. Escríbenos por WhatsApp y te ayudamos a elegir.
     </p>
   </div>
 
@@ -85,7 +91,7 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
         item.style.display = match ? '' : 'none';
         if (match) visible++;
       });
-      if (visible === 0) document.getElementById('sin-resultados')?.classList.remove('hidden');
+      if (visible === 0) document.getElementById('sin-resultados')?.classList.replace('hidden', 'flex');
     }
   </script>
 </BaseLayout>

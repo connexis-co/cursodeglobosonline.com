@@ -4,6 +4,8 @@
  * (el descuento va por offDiscount en el enlace); queda listo para cuando
  * exista un cupón tipo SABLY40 para estos productos.
  */
+import Icon from './Icon.astro';
+
 interface Props {
   code: string;
   pct: number;
@@ -24,12 +26,16 @@ const { code, pct, courseName = '', class: className } = Astro.props;
   data-track-params={JSON.stringify({ discount_code: code, course_name: courseName })}
   title="Copiar código de descuento"
 >
-  <span class="text-sm font-bold text-ciruela-700">🔥 {pct}% OFF con</span>
+  <span class="inline-flex items-center gap-1.5 text-sm font-bold text-ciruela-700">
+    <Icon name="etiqueta" class="text-coral-600" />
+    {pct}% OFF con
+  </span>
   <code class="font-mono text-sm font-bold tracking-wider text-coral-700">{code}</code>
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" class="text-coral-600" aria-hidden="true">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" class="chip-icon-copy text-coral-600" aria-hidden="true">
     <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2"></rect>
     <path d="M5 15V5a2 2 0 0 1 2-2h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
   </svg>
+  <Icon name="check" size={15} strokeWidth={2.4} class="chip-icon-ok hidden text-coral-600" />
   <span class="chip-feedback sr-only" role="status"></span>
 </button>
 
@@ -41,12 +47,18 @@ const { code, pct, courseName = '', class: className } = Astro.props;
         await navigator.clipboard.writeText(code);
         const feedback = chip.querySelector('.chip-feedback');
         const label = chip.querySelector('code');
+        const iconCopy = chip.querySelector('.chip-icon-copy');
+        const iconOk = chip.querySelector('.chip-icon-ok');
         if (label && feedback) {
           const original = label.textContent;
-          label.textContent = '¡Copiado! ✓';
+          label.textContent = '¡Copiado!';
+          iconCopy?.classList.add('hidden');
+          iconOk?.classList.remove('hidden');
           feedback.textContent = `Código ${code} copiado`;
           setTimeout(() => {
             label.textContent = original;
+            iconCopy?.classList.remove('hidden');
+            iconOk?.classList.add('hidden');
           }, 1600);
         }
       } catch {

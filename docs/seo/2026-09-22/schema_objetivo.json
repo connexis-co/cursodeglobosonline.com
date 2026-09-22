@@ -1,0 +1,755 @@
+{
+  "_leeme": [
+    "Plantillas JSON-LD objetivo para cursodeglobosonline.com (auditoría 2026-09-22). Cada 'jsonld' es un documento válido para <script type=\"application/ld+json\"> (un solo @graph por página).",
+    "Valores entre <...> son marcadores: se rellenan SOLO con datos reales; si no hay dato real, se omite la propiedad (regla anti-humo del proyecto).",
+    "Estado Google (verificado 2026-09-22): Course info retirado (docs eliminadas 2025-09-09); FAQ rich result retirado (aviso 2026-05-08); Course list solo en inglés; review snippet admite Course y Product; product snippet = páginas donde no se compra directamente (afiliados), merchant listing = páginas que venden directamente.",
+    "@id estables: https://cursodeglobosonline.com/#organization y /#website. Organization completo solo en home/nosotros; en el resto, nodo mínimo con el mismo @id.",
+    "Co-tipado [\"Course\",\"Product\"] SOLO cuando la página muestra un precio verificado (hoy únicamente Globoflexia: US$25 con 50% sobre lista US$49.99). Sin precio visible ni reseñas propias reales, Product no es elegible: usar solo Course.",
+    "aggregateRating/review: prohibido con los 8 testimonios placeholder actuales. Solo con reseñas reales, visibles en la misma página y con los mismos valores.",
+    "priceValidUntil: omitido porque no hay fecha de fin verificada del offDiscount; añadirlo solo si Hotmart/productor confirma vigencia."
+  ],
+  "plantillas": {
+    "home_organization_website": {
+      "url": "https://cursodeglobosonline.com/",
+      "notas": [
+        "sameAs de la propia organización se omite hasta tener perfiles propios; los perfiles de Sably van en parentOrganization.sameAs.",
+        "No añadir SearchAction: Google retiró el sitelinks search box (2024-10)."
+      ],
+      "jsonld": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://cursodeglobosonline.com/#organization",
+            "name": "Curso de Globos Online",
+            "url": "https://cursodeglobosonline.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://cursodeglobosonline.com/#logo",
+              "url": "https://cursodeglobosonline.com/icon-512.png",
+              "contentUrl": "https://cursodeglobosonline.com/icon-512.png",
+              "width": 512,
+              "height": 512,
+              "caption": "Curso de Globos Online"
+            },
+            "image": {
+              "@id": "https://cursodeglobosonline.com/#logo"
+            },
+            "description": "Cursos online de decoración con globos: globoflexia, bouquets, flores y globos burbuja. Certificado de estudios incluido y acceso de por vida.",
+            "email": "contacto@cursodeglobosonline.com",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "contacto@cursodeglobosonline.com",
+              "telephone": "+57 311 457 4788",
+              "availableLanguage": [
+                "es"
+              ]
+            },
+            "parentOrganization": {
+              "@type": "Organization",
+              "@id": "https://sably.co/#organization",
+              "name": "Sably",
+              "url": "https://sably.co",
+              "sameAs": [
+                "https://instagram.com/sably.co",
+                "https://tiktok.com/@sably.co",
+                "https://facebook.com/sably.co",
+                "https://youtube.com/@sably-co"
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://cursodeglobosonline.com/#website",
+            "url": "https://cursodeglobosonline.com/",
+            "name": "Curso de Globos Online",
+            "alternateName": [
+              "cursodeglobosonline.com"
+            ],
+            "inLanguage": "es",
+            "publisher": {
+              "@id": "https://cursodeglobosonline.com/#organization"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://cursodeglobosonline.com/#webpage",
+            "url": "https://cursodeglobosonline.com/",
+            "name": "Curso de Decoración con Globos Online | 4 Cursos con Certificado",
+            "isPartOf": {
+              "@id": "https://cursodeglobosonline.com/#website"
+            },
+            "about": {
+              "@id": "https://cursodeglobosonline.com/#organization"
+            },
+            "inLanguage": "es",
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://cursodeglobosonline.com/og-default.jpg",
+              "width": 1200,
+              "height": 685
+            }
+          }
+        ]
+      }
+    },
+    "curso_pais_con_precio_verificado": {
+      "url": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+      "notas": [
+        "Aplicar a /{cc}/curso-de-globoflexia/ (8 países). price/priceCurrency deben coincidir con el precio visible (la página muestra ≈ US$ 25).",
+        "Eliminar numberOfCredits (hoy se usa para el nº de lecciones; significa créditos académicos).",
+        "image: añadir versiones ≥1200 px (16:9, 4:3, 1:1) cuando existan; hoy la portada es 900×900.",
+        "provider/brand/seller = productor real en Hotmart: 'MasterClasses.La®' (checkout pay.hotmart.com, autor 'MasterClasses.La Seminarios.Online Mauricio Duque Zuluaga'; fuente research/hotmart_datos.json y captura hotmart/pay_globoflexia_M47265375C_offDiscount_031016.png, 2026-09-22). El sitio es afiliado: aparece como publisher de la página, no como proveedor.",
+        "Precio: checkout Hotmart = US$25 con cupón 031016 (50%) sobre lista US$49.99 (no US$50). En COP el checkout mostró 84.479 COP (lista 168.959 COP) desde Colombia; la página muestra $100.000 COP por la tasa estática usdRate=4000.",
+        "instructor: Hotmart no nombra instructor (solo el productor). Mantener 'Juan Manuel Marcos' solo si JP confirma la fuente; si no, eliminar el nodo instructor."
+      ],
+      "jsonld": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://cursodeglobosonline.com/co/curso-de-globoflexia/#webpage",
+            "url": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+            "name": "Curso de Globoflexia Online en Colombia: 50% OFF (US$25)",
+            "isPartOf": {
+              "@id": "https://cursodeglobosonline.com/#website"
+            },
+            "inLanguage": "es",
+            "breadcrumb": {
+              "@id": "https://cursodeglobosonline.com/co/curso-de-globoflexia/#breadcrumb"
+            },
+            "mainEntity": {
+              "@id": "https://cursodeglobosonline.com/co/curso-de-globoflexia/#course"
+            },
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://cursodeglobosonline.com/images/cursos/cover-globoflexia.jpg",
+              "width": 900,
+              "height": 900
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://cursodeglobosonline.com/co/curso-de-globoflexia/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Colombia",
+                "item": "https://cursodeglobosonline.com/co/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Cursos",
+                "item": "https://cursodeglobosonline.com/co/cursos/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Curso de Globoflexia",
+                "item": "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+              }
+            ]
+          },
+          {
+            "@type": [
+              "Course",
+              "Product"
+            ],
+            "@id": "https://cursodeglobosonline.com/co/curso-de-globoflexia/#course",
+            "name": "Curso de Globoflexia",
+            "url": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+            "description": "Aprende a hacer figuras con globos desde cero en 23 videos paso a paso, con certificado de estudios y acceso de por vida.",
+            "image": [
+              "https://cursodeglobosonline.com/images/cursos/cover-globoflexia.jpg"
+            ],
+            "inLanguage": "es",
+            "educationalLevel": "Principiante",
+            "provider": {
+              "@id": "https://cursodeglobosonline.com/#producer-masterclasses-la"
+            },
+            "brand": {
+              "@id": "https://cursodeglobosonline.com/#producer-masterclasses-la"
+            },
+            "instructor": {
+              "@type": "Person",
+              "@id": "https://cursodeglobosonline.com/#person-juan-manuel-marcos",
+              "name": "Juan Manuel Marcos",
+              "jobTitle": "Globoflexista profesional",
+              "image": "https://cursodeglobosonline.com/images/cursos/instructor-juan-manuel-marcos.jpg"
+            },
+            "teaches": [
+              "Nudos y retorcidos base de globoflexia",
+              "Figuras clásicas de animación (perritos, flores, espadas)",
+              "Figuras avanzadas (palmera con mono, pantera rosa, gato)",
+              "Prevención de roturas: elección de globo y presión",
+              "Uso de porta globos e hinchador eléctrico"
+            ],
+            "educationalCredentialAwarded": {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Certificado de estudios",
+              "credentialCategory": "certificate"
+            },
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "inLanguage": "es",
+              "instructor": {
+                "@id": "https://cursodeglobosonline.com/#person-juan-manuel-marcos"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+              "price": "25.00",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "category": "Paid",
+              "seller": {
+                "@id": "https://cursodeglobosonline.com/#producer-masterclasses-la"
+              }
+            },
+            "publisher": {
+              "@id": "https://cursodeglobosonline.com/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://cursodeglobosonline.com/#organization",
+            "name": "Curso de Globos Online",
+            "url": "https://cursodeglobosonline.com/",
+            "logo": "https://cursodeglobosonline.com/icon-512.png"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://cursodeglobosonline.com/#website",
+            "url": "https://cursodeglobosonline.com/",
+            "name": "Curso de Globos Online",
+            "inLanguage": "es",
+            "publisher": {
+              "@id": "https://cursodeglobosonline.com/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://cursodeglobosonline.com/#producer-masterclasses-la",
+            "name": "MasterClasses.La"
+          }
+        ]
+      }
+    },
+    "curso_pais_sin_precio_visible": {
+      "url": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/",
+      "notas": [
+        "Bouquets (US$49.99), Flores (US$79.99) y Burbuja (US$49.99) tienen precio de lista en el checkout de Hotmart (research/hotmart_datos.json, 2026-09-22), pero la página NO lo muestra. Mientras no sea visible: solo Course (sin offers). Cuando se muestre el precio en la página, usar la plantilla co-tipada ['Course','Product'] con offers.price igual al visible.",
+        "provider: productor MasterClasses.La (ver plantilla anterior)."
+      ],
+      "jsonld": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/#webpage",
+            "url": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/",
+            "name": "Curso de Flores con Globos Online en Colombia | 31 Clases",
+            "isPartOf": {
+              "@id": "https://cursodeglobosonline.com/#website"
+            },
+            "inLanguage": "es",
+            "breadcrumb": {
+              "@id": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/#breadcrumb"
+            },
+            "mainEntity": {
+              "@id": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/#course"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Colombia",
+                "item": "https://cursodeglobosonline.com/co/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Cursos",
+                "item": "https://cursodeglobosonline.com/co/cursos/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Curso de Flores con Globos",
+                "item": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/"
+              }
+            ]
+          },
+          {
+            "@type": "Course",
+            "@id": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/#course",
+            "name": "Curso de Flores con Globos",
+            "url": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/",
+            "description": "Aprende más de 15 flores con globos, de la flor de 5 pétalos a la orquídea, con estructuras, centros de mesa y bono de 150 ideas.",
+            "image": [
+              "https://cursodeglobosonline.com/images/cursos/cover-flores.jpg"
+            ],
+            "inLanguage": "es",
+            "educationalLevel": "Todos los niveles",
+            "provider": {
+              "@id": "https://cursodeglobosonline.com/#producer-masterclasses-la"
+            },
+            "educationalCredentialAwarded": {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Certificado de estudios",
+              "credentialCategory": "certificate"
+            },
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "inLanguage": "es"
+            },
+            "publisher": {
+              "@id": "https://cursodeglobosonline.com/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://cursodeglobosonline.com/#organization",
+            "name": "Curso de Globos Online",
+            "url": "https://cursodeglobosonline.com/",
+            "logo": "https://cursodeglobosonline.com/icon-512.png"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://cursodeglobosonline.com/#website",
+            "url": "https://cursodeglobosonline.com/",
+            "name": "Curso de Globos Online",
+            "inLanguage": "es",
+            "publisher": {
+              "@id": "https://cursodeglobosonline.com/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://cursodeglobosonline.com/#producer-masterclasses-la",
+            "name": "MasterClasses.La"
+          }
+        ]
+      }
+    },
+    "fragmento_resenas_reales_condicional": {
+      "notas": [
+        "Fusionar dentro del nodo Course/Product SOLO si las reseñas son reales y visibles. No usar en Organization/LocalBusiness (autoservidas).",
+        "Las valoraciones de Hotmart (p. ej. Burbuja 4.0/20, Bouquets 4.4/5) NO se pueden marcar: Google prohíbe agregar reseñas de otros sitios ('Don't aggregate reviews or ratings from other websites')."
+      ],
+      "jsonld_fragment": {
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "<promedio real visible>",
+          "ratingCount": "<número real de valoraciones visibles>",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "<nombre real tal como aparece en la página>"
+            },
+            "datePublished": "<AAAA-MM-DD real>",
+            "reviewBody": "<texto real visible>",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "<1-5 real>",
+              "bestRating": "5"
+            }
+          }
+        ]
+      }
+    },
+    "articulo_blog_blogposting": {
+      "url": "https://cursodeglobosonline.com/blog/como-hacer-arcos-de-globos/",
+      "notas": [
+        "image: 3 relaciones de aspecto, ancho ≥1200 px (Discover), la misma imagen que og:image.",
+        "author: Person real con página de autor (ProfilePage). Si el autor es colectivo, usar Organization y no inventar una persona.",
+        "dateModified solo cambia con ediciones sustanciales."
+      ],
+      "jsonld": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://cursodeglobosonline.com/blog/como-hacer-arcos-de-globos/",
+            "url": "https://cursodeglobosonline.com/blog/como-hacer-arcos-de-globos/",
+            "name": "<seoTitle del artículo>",
+            "isPartOf": {
+              "@id": "https://cursodeglobosonline.com/#website"
+            },
+            "inLanguage": "es",
+            "breadcrumb": {
+              "@id": "https://cursodeglobosonline.com/blog/como-hacer-arcos-de-globos/#breadcrumb"
+            },
+            "primaryImageOfPage": {
+              "@id": "https://cursodeglobosonline.com/blog/como-hacer-arcos-de-globos/#primaryimage"
+            }
+          },
+          {
+            "@type": "ImageObject",
+            "@id": "https://cursodeglobosonline.com/blog/como-hacer-arcos-de-globos/#primaryimage",
+            "url": "https://cursodeglobosonline.com/_astro/<hero>-1600x900.jpg",
+            "contentUrl": "https://cursodeglobosonline.com/_astro/<hero>-1600x900.jpg",
+            "width": 1600,
+            "height": 900,
+            "caption": "<heroAlt>"
+          },
+          {
+            "@type": "BlogPosting",
+            "@id": "https://cursodeglobosonline.com/blog/como-hacer-arcos-de-globos/#article",
+            "mainEntityOfPage": {
+              "@id": "https://cursodeglobosonline.com/blog/como-hacer-arcos-de-globos/"
+            },
+            "isPartOf": {
+              "@id": "https://cursodeglobosonline.com/#website"
+            },
+            "headline": "<H1 del artículo, ≤110 caracteres, sin clickbait>",
+            "description": "<meta description>",
+            "image": [
+              "https://cursodeglobosonline.com/_astro/<hero>-1600x900.jpg",
+              "https://cursodeglobosonline.com/_astro/<hero>-1600x1200.jpg",
+              "https://cursodeglobosonline.com/_astro/<hero>-1200x1200.jpg"
+            ],
+            "datePublished": "<ISO 8601 con zona, p. ej. 2026-09-25T09:00:00-05:00>",
+            "dateModified": "<ISO 8601 real de la última edición sustancial>",
+            "author": [
+              {
+                "@id": "https://cursodeglobosonline.com/blog/autor/equipo-editorial/#person"
+              }
+            ],
+            "publisher": {
+              "@id": "https://cursodeglobosonline.com/#organization"
+            },
+            "inLanguage": "es",
+            "articleSection": "<cluster>",
+            "keywords": [
+              "<primaryKeyword>",
+              "<kw2>",
+              "<kw3>"
+            ],
+            "wordCount": "<conteo real>",
+            "about": [
+              {
+                "@type": "Thing",
+                "name": "<tema principal, p. ej. arcos de globos>"
+              }
+            ],
+            "mentions": [
+              {
+                "@id": "https://cursodeglobosonline.com/co/curso-de-globoflexia/#course"
+              }
+            ]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://cursodeglobosonline.com/blog/autor/equipo-editorial/#person",
+            "name": "<nombre real del autor o 'Equipo editorial de Curso de Globos Online' como Organization>",
+            "url": "https://cursodeglobosonline.com/blog/autor/equipo-editorial/",
+            "jobTitle": "<cargo real>",
+            "worksFor": {
+              "@id": "https://cursodeglobosonline.com/#organization"
+            },
+            "sameAs": [
+              "<perfil real del autor, si existe>"
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://cursodeglobosonline.com/blog/como-hacer-arcos-de-globos/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://cursodeglobosonline.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://cursodeglobosonline.com/blog/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "<título corto>",
+                "item": "https://cursodeglobosonline.com/blog/como-hacer-arcos-de-globos/"
+              }
+            ]
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://cursodeglobosonline.com/#organization",
+            "name": "Curso de Globos Online",
+            "url": "https://cursodeglobosonline.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://cursodeglobosonline.com/icon-512.png",
+              "width": 512,
+              "height": 512
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://cursodeglobosonline.com/#website",
+            "url": "https://cursodeglobosonline.com/",
+            "name": "Curso de Globos Online",
+            "inLanguage": "es",
+            "publisher": {
+              "@id": "https://cursodeglobosonline.com/#organization"
+            }
+          }
+        ]
+      }
+    },
+    "pagina_autor_profilepage": {
+      "url": "https://cursodeglobosonline.com/blog/autor/equipo-editorial/",
+      "jsonld": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "ProfilePage",
+            "@id": "https://cursodeglobosonline.com/blog/autor/equipo-editorial/",
+            "url": "https://cursodeglobosonline.com/blog/autor/equipo-editorial/",
+            "name": "<Nombre del autor> — Autor en Curso de Globos Online",
+            "isPartOf": {
+              "@id": "https://cursodeglobosonline.com/#website"
+            },
+            "inLanguage": "es",
+            "mainEntity": {
+              "@id": "https://cursodeglobosonline.com/blog/autor/equipo-editorial/#person"
+            }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://cursodeglobosonline.com/blog/autor/equipo-editorial/#person",
+            "name": "<nombre real>",
+            "url": "https://cursodeglobosonline.com/blog/autor/equipo-editorial/",
+            "description": "<bio real, experiencia verificable>",
+            "image": "<foto real>",
+            "worksFor": {
+              "@id": "https://cursodeglobosonline.com/#organization"
+            },
+            "knowsAbout": [
+              "decoración con globos",
+              "globoflexia"
+            ],
+            "sameAs": [
+              "<perfiles reales>"
+            ]
+          }
+        ]
+      }
+    },
+    "ciudad_hub": {
+      "url": "https://cursodeglobosonline.com/co/bogota/",
+      "notas": [
+        "NO usar LocalBusiness: no hay sede física en la ciudad (sería marcado engañoso).",
+        "Los ListItem apuntan a la URL canónica del curso país (las URL curso-ciudad canonicalizan al curso país)."
+      ],
+      "jsonld": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "CollectionPage",
+            "@id": "https://cursodeglobosonline.com/co/bogota/#webpage",
+            "url": "https://cursodeglobosonline.com/co/bogota/",
+            "name": "Curso de Decoración con Globos en Bogotá: 100% Online",
+            "isPartOf": {
+              "@id": "https://cursodeglobosonline.com/#website"
+            },
+            "inLanguage": "es",
+            "breadcrumb": {
+              "@id": "https://cursodeglobosonline.com/co/bogota/#breadcrumb"
+            },
+            "about": {
+              "@type": "City",
+              "name": "Bogotá",
+              "containedInPlace": {
+                "@type": "Country",
+                "name": "Colombia"
+              }
+            },
+            "mainEntity": {
+              "@id": "https://cursodeglobosonline.com/co/bogota/#cursos"
+            }
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://cursodeglobosonline.com/co/bogota/#cursos",
+            "name": "Cursos de decoración con globos disponibles online en Bogotá",
+            "numberOfItems": 4,
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "url": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+                "name": "Curso de Globoflexia"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "url": "https://cursodeglobosonline.com/co/curso-de-bouquets-de-globos/",
+                "name": "Curso de Bouquets de Globos"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "url": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/",
+                "name": "Curso de Flores con Globos"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "url": "https://cursodeglobosonline.com/co/curso-de-globos-burbuja/",
+                "name": "Curso de Globos Burbuja"
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://cursodeglobosonline.com/co/bogota/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Colombia",
+                "item": "https://cursodeglobosonline.com/co/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Bogotá",
+                "item": "https://cursodeglobosonline.com/co/bogota/"
+              }
+            ]
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://cursodeglobosonline.com/#organization",
+            "name": "Curso de Globos Online",
+            "url": "https://cursodeglobosonline.com/",
+            "logo": "https://cursodeglobosonline.com/icon-512.png"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://cursodeglobosonline.com/#website",
+            "url": "https://cursodeglobosonline.com/",
+            "name": "Curso de Globos Online",
+            "inLanguage": "es",
+            "publisher": {
+              "@id": "https://cursodeglobosonline.com/#organization"
+            }
+          }
+        ]
+      }
+    },
+    "catalogo_pais": {
+      "url": "https://cursodeglobosonline.com/co/cursos/",
+      "notas": [
+        "ItemList sin rich result en español (Course list solo en inglés): valor semántico únicamente."
+      ],
+      "jsonld": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "CollectionPage",
+            "@id": "https://cursodeglobosonline.com/co/cursos/#webpage",
+            "url": "https://cursodeglobosonline.com/co/cursos/",
+            "name": "Cursos de Globos Online en Colombia: Catálogo y Precios",
+            "isPartOf": {
+              "@id": "https://cursodeglobosonline.com/#website"
+            },
+            "inLanguage": "es",
+            "breadcrumb": {
+              "@id": "https://cursodeglobosonline.com/co/cursos/#breadcrumb"
+            },
+            "mainEntity": {
+              "@id": "https://cursodeglobosonline.com/co/cursos/#cursos"
+            }
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://cursodeglobosonline.com/co/cursos/#cursos",
+            "numberOfItems": 4,
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "url": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+                "name": "Curso de Globoflexia"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "url": "https://cursodeglobosonline.com/co/curso-de-bouquets-de-globos/",
+                "name": "Curso de Bouquets de Globos"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "url": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/",
+                "name": "Curso de Flores con Globos"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "url": "https://cursodeglobosonline.com/co/curso-de-globos-burbuja/",
+                "name": "Curso de Globos Burbuja"
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://cursodeglobosonline.com/co/cursos/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Colombia",
+                "item": "https://cursodeglobosonline.com/co/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Cursos",
+                "item": "https://cursodeglobosonline.com/co/cursos/"
+              }
+            ]
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://cursodeglobosonline.com/#organization",
+            "name": "Curso de Globos Online",
+            "url": "https://cursodeglobosonline.com/",
+            "logo": "https://cursodeglobosonline.com/icon-512.png"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://cursodeglobosonline.com/#website",
+            "url": "https://cursodeglobosonline.com/",
+            "name": "Curso de Globos Online",
+            "inLanguage": "es",
+            "publisher": {
+              "@id": "https://cursodeglobosonline.com/#organization"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

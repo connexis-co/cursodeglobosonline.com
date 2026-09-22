@@ -1,56 +1,53 @@
 ---
+/**
+ * Barra de confianza. Sin fila de 6 círculos iguales (plantilla): el respaldo de Hotmart va como
+ * sello propio, con su marca y una rotación orgánica, y las demás garantías como una lista
+ * tipográfica con iconos de trazo (`Icon.astro`) que fluye en lugar de encajar en una cuadrícula.
+ */
+import Icon from './Icon.astro';
+import type { IconName } from '@/lib/icons';
 import { SITE } from '@/lib/site';
 
-const items = [
-  {
-    icon: 'M13.3 2.6c.3 2.8-.8 4.6-2.4 6.2-1.5 1.5-3.2 3-3.2 5.7a6.3 6.3 0 0 0 12.6.2c0-4.6-3.2-6.4-3.9-9.9-1 1.2-1.5 2.3-1.4 3.9-1.6-1.3-2.1-3.8-1.7-6.1Z',
-    label: 'Partner oficial',
-    value: 'Hotmart',
-  },
-  {
-    icon: 'M12 3 4 6.5v5c0 4.5 3.4 8.2 8 9.5 4.6-1.3 8-5 8-9.5v-5L12 3Zm-1.2 12.6-3-3 1.4-1.4 1.6 1.6 4-4 1.4 1.4-5.4 5.4Z',
-    label: 'Certificado',
-    value: 'digital verificable',
-  },
-  {
-    icon: 'M12 4a8 8 0 1 0 8 8h-2a6 6 0 1 1-6-6V4Zm1 4h-2v5l4.2 2.5 1-1.7-3.2-1.9V8Z',
-    label: 'Acceso',
-    value: 'de por vida',
-  },
-  {
-    icon: 'M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3Zm0 16.2c-1.3 0-2.7-.4-3.8-1l-.3-.2-2.7.7.7-2.6-.2-.3A7.2 7.2 0 1 1 12 19.2Z',
-    label: 'Soporte',
-    value: 'por WhatsApp',
-  },
-  {
-    icon: 'M12 2 3 7v6c0 5 3.8 9 9 9s9-4 9-9V7l-9-5Zm-1 13.5-3.5-3.5 1.4-1.4 2.1 2.1 4.6-4.6 1.4 1.4-6 6Z',
-    label: 'Garantía',
-    value: '7 días',
-  },
-  {
-    icon: 'M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3.3 0-8 1.7-8 5v3h16v-3c0-3.3-4.7-5-8-5Z',
-    label: `${SITE.stats.students} certificados`,
-    value: `${SITE.stats.ventures} emprendimientos`,
-  },
+const items: { icon: IconName; label: string; value: string }[] = [
+  { icon: 'birrete', label: 'Certificado', value: 'digital verificable' },
+  { icon: 'infinito', label: 'Acceso', value: 'de por vida' },
+  { icon: 'chat', label: 'Soporte', value: 'por WhatsApp' },
+  { icon: 'escudo', label: 'Garantía', value: '7 días' },
+  { icon: 'maletin', label: `${SITE.stats.students} certificados`, value: `${SITE.stats.ventures} emprendimientos` },
 ];
 ---
 
 <div class="border-y border-crema-200 bg-white">
-  <div class="contenedor grid grid-cols-2 gap-x-4 gap-y-6 py-8 sm:grid-cols-3 lg:grid-cols-6">
-    {
-      items.map((item, i) => (
-        <div class="scroll-reveal flex items-center gap-3" style={`animation-delay:${i * 60}ms`}>
-          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-coral-50 text-coral-600">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d={item.icon} />
-            </svg>
-          </span>
-          <span class="leading-tight">
-            <span class="block text-sm font-extrabold text-ciruela-800">{item.label}</span>
-            <span class="block text-xs text-ciruela-500">{item.value}</span>
-          </span>
-        </div>
-      ))
-    }
+  <div class="contenedor flex flex-col gap-6 py-8 lg:flex-row lg:items-center lg:gap-12">
+    <!-- Sello Hotmart: marca en su color (#f04e23, texto ≥ 20 px bold → AA texto grande) -->
+    <div
+      class="scroll-reveal flex shrink-0 rotate-[-0.6deg] items-center gap-3 self-start rounded-2xl border border-dashed border-crema-300 bg-crema-50 py-2.5 pr-5 pl-3.5 lg:self-auto"
+    >
+      <svg width="24" height="28" viewBox="0 0 24 28" fill="none" aria-hidden="true">
+        <path
+          d="M13.6 0.8c0.5 3.4-0.9 5.6-2.9 7.6C8.8 10.3 6.6 12.1 6.6 15.4a5.4 5.4 0 0 0 10.8 0.2c0-5.6-3.9-7.8-4.7-12.1-1.2 1.5-1.8 2.8-1.7 4.7-2-1.6-2.6-4.6-2-7.4"
+          fill="#f04e23"></path>
+      </svg>
+      <span class="leading-tight">
+        <span class="block text-[0.65rem] font-extrabold tracking-[0.18em] text-ciruela-500 uppercase">
+          Partner oficial
+        </span>
+        <span class="block text-xl font-extrabold tracking-tight" style="color:#f04e23">Hotmart</span>
+      </span>
+    </div>
+
+    <ul class="scroll-reveal grid grid-cols-2 gap-x-4 gap-y-5 sm:flex sm:flex-wrap sm:gap-x-9 lg:flex-1 lg:justify-between lg:gap-x-6">
+      {
+        items.map((item, i) => (
+          <li class:list={['flex items-center gap-2.5', i === items.length - 1 && 'col-span-2 sm:col-span-1']}>
+            <Icon name={item.icon} size={22} class="text-coral-600" />
+            <span class="leading-tight">
+              <span class="block text-sm font-extrabold text-ciruela-800">{item.label}</span>
+              <span class="block text-xs text-ciruela-500">{item.value}</span>
+            </span>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </div>

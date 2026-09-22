@@ -46,7 +46,7 @@ const courses = (await getCollection('courses'))
   pageType="category"
 >
   <div class="contenedor pt-10 pb-16 lg:pt-12 lg:pb-24">
-    <nav class="mb-6 text-xs text-ciruela-400" aria-label="Miga de pan">
+    <nav class="mb-6 text-xs text-ciruela-500" aria-label="Miga de pan">
       <a href={`/${country.code}/`} class="hover:text-coral-600">{country.flag} {country.name}</a>
       <span aria-hidden="true"> / </span>
       <a href={`/${country.code}/cursos/`} class="hover:text-coral-600">Cursos</a>
@@ -55,7 +55,7 @@ const courses = (await getCollection('courses'))
     </nav>
 
     <SectionHeading as="h1"
-      eyebrow={`${category.emoji} Categoría`}
+      eyebrow="Categoría"
       title={`Cursos de ${category.name.toLowerCase()}`}
       lead={category.short}
     />
@@ -70,11 +70,12 @@ const courses = (await getCollection('courses'))
       }
     </div>
 
-    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- Igual que el catálogo: 2 columnas con tarjetas horizontales en lg (sin tarjeta huérfana). -->
+    <div class="mt-10 grid gap-6 sm:grid-cols-2">
       {
         courses.map((course, i) => (
           <div class="scroll-reveal" style={`animation-delay:${i * 60}ms`}>
-            <CourseCard {course} {country} />
+            <CourseCard {course} {country} horizontal class="h-full" />
           </div>
         ))
       }
@@ -87,7 +88,7 @@ const courses = (await getCollection('courses'))
       </p>
       <a
         href={`/${country.code}/`}
-        class="mt-5 inline-block rounded-xl bg-coral-500 px-6 py-3 text-xs font-bold text-white transition-colors hover:bg-coral-600"
+        class="mt-5 inline-block rounded-xl bg-coral-600 px-6 py-3 text-xs font-bold text-white transition-colors hover:bg-coral-700"
       >
         Pedir asesoría gratis
       </a>

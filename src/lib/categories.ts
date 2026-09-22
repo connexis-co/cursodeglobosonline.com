@@ -1,3 +1,8 @@
+import type { IconName } from './icons';
+
+/** Icono SVG propio de cada categoría (ver `Icon.astro`). */
+export type CategoryIcon = Extract<IconName, 'globo' | 'fiesta' | 'maletin'>;
+
 export interface Subcategory {
   slug: string;
   name: string;
@@ -6,7 +11,10 @@ export interface Subcategory {
 export interface Category {
   slug: string;
   name: string;
+  /** Solo para texto prellenado de WhatsApp; en la interfaz se usa `icon`. */
   emoji: string;
+  /** Icono de la interfaz (header, footer, chips): nunca el emoji. */
+  icon: CategoryIcon;
   /** Descripción corta para cards y meta descriptions. */
   short: string;
   subcategories: Subcategory[];
@@ -18,6 +26,7 @@ export const CATEGORIES: Category[] = [
     slug: 'decoracion-con-globos',
     name: 'Decoración con Globos',
     emoji: '🎈',
+    icon: 'globo',
     short:
       'Arcos, guirnaldas orgánicas, columnas, figuras y globoflexia: las técnicas que separan un arreglo casero de un montaje profesional.',
     subcategories: [
@@ -33,6 +42,7 @@ export const CATEGORIES: Category[] = [
     slug: 'eventos',
     name: 'Eventos',
     emoji: '🎉',
+    icon: 'fiesta',
     short:
       'Montajes completos para bodas, baby showers, cumpleaños, quinces y eventos corporativos, de la cotización al desmontaje.',
     subcategories: [
@@ -48,6 +58,7 @@ export const CATEGORIES: Category[] = [
     slug: 'emprendimiento',
     name: 'Emprendimiento en Decoración',
     emoji: '💼',
+    icon: 'maletin',
     short:
       'Monta tu negocio de decoración: cotiza por montaje, consigue clientes con Instagram y crea alianzas que te llenen la agenda.',
     subcategories: [

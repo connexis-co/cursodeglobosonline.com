@@ -124,7 +124,9 @@ const testimonials = defineCollection({
  * Google Discover: hero >= 1600px de ancho (el build genera 1200px+ para og/schema).
  */
 const blog = defineCollection({
-  loader: glob({ pattern: '**/*.mdx', base: './src/content/blog' }),
+  // Los archivos con prefijo `_` (pruebas, plantillas) no se publican: el loader `glob`
+  // de Astro 7 no los ignora por defecto, así que se excluyen de forma explícita.
+  loader: glob({ pattern: ['**/*.mdx', '!**/_*.mdx'], base: './src/content/blog' }),
   schema: ({ image }) =>
     z.object({
       /** H1 visible. */

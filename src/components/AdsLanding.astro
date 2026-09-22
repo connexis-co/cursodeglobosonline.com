@@ -3,12 +3,14 @@
  * Contenido de landing para Ads (§8.2-8.3). variant "meta": interrupción,
  * copy emocional. variant "google": búsqueda activa, copy directo a datos.
  */
-import type { CollectionEntry } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import Balloons from './Balloons.astro';
 import CourseCover from './CourseCover.astro';
 import HotmartBadge from './HotmartBadge.astro';
+import Icon from './Icon.astro';
 import Logo from './Logo.astro';
 import Rating from './Rating.astro';
+import TestimonialCard from './TestimonialCard.astro';
 import Wave from './Wave.astro';
 import { COUNTRIES, DEFAULT_COUNTRY, formatPrice } from '@/lib/countries';
 import { getCategory } from '@/lib/categories';
@@ -42,7 +44,14 @@ const h1 = isMeta
 const sub = isMeta
   ? `El ${d.title} te lleva de cero a tus primeros pedidos: ${d.lessonsCount} videos paso a paso, certificado de estudios y acceso para siempre.`
   : `${d.lessonsCount} videos paso a paso · Certificado de estudios · Acceso de por vida · Garantía de 7 días.`;
-const cta = isMeta ? 'Quiero aprender 🎈' : discountPct ? `Inscribirme con ${discountPct}% OFF` : 'Inscribirme ahora';
+// Meta: CTA concreto con la técnica («Quiero aprender globoflexia»), sin emoji como icono.
+// Todo en minúscula: los títulos llevan mayúscula a mitad («Bouquets de Globos»).
+const skill = d.title.replace(/^Curso de /i, '');
+const cta = isMeta
+  ? `Quiero aprender ${skill.toLowerCase()}`
+  : discountPct
+    ? `Inscribirme con ${discountPct}% OFF`
+    : 'Inscribirme ahora';
 
 const trackParams = JSON.stringify({
   course_name: d.title,
@@ -60,6 +69,23 @@ const incluye = [
   'Bonos prácticos incluidos',
   'Garantía de 7 días — devolución del 100%',
 ];
+
+// Reseñas REALES de Hotmart (testimonials.json): primero las de este curso y luego las de
+// otros cursos (el chip de cada tarjeta dice cuál). Nada de citas inventadas en tráfico pagado.
+const allTestimonials = await getCollection('testimonials');
+// Relleno alternando cursos (una reseña de cada uno antes de repetir), para que un curso
+// sin reseñas propias no muestre tres del mismo curso ajeno.
+const seen = new Map<string, number>();
+const others = allTestimonials
+  .filter((t) => t.data.courseSlug !== course.id)
+  .map((t) => {
+    const rank = seen.get(t.data.courseSlug) ?? 0;
+    seen.set(t.data.courseSlug, rank + 1);
+    return { t, rank };
+  })
+  .sort((a, b) => a.rank - b.rank)
+  .map(({ t }) => t);
+const testimonials = [...allTestimonials.filter((t) => t.data.courseSlug === course.id), ...others].slice(0, 3);
 
 const faqs = [
   {
@@ -87,7 +113,7 @@ const faqs = [
     <Logo size={30} />
     {
       discountPct && (
-        <span class="rounded-full bg-coral-500 px-4 py-1.5 text-xs font-extrabold text-white">
+        <span class="rounded-full bg-coral-600 px-4 py-1.5 text-xs font-extrabold text-white">
           {discountPct}% de descuento
         </span>
       )
@@ -98,12 +124,6 @@ const faqs = [
 <main>
   <!-- Hero -->
   <section class="relative overflow-hidden bg-ciruela-900 text-crema-50">
-    <div
-      class="pointer-events-none absolute -top-24 -left-24 h-80 w-80 rounded-full opacity-25 blur-3xl"
-      style="background: radial-gradient(circle, oklch(0.62 0.2 14 / 0.85), transparent 65%)"
-      aria-hidden="true"
-    >
-    </div>
     <Balloons variant="corner-right" />
     <!-- Mobile: título → imagen → precio y CTA. Desktop: texto izq., imagen der. -->
     <div class="contenedor grid items-start gap-x-10 gap-y-6 py-14 lg:grid-cols-[1.1fr_1fr] lg:py-20">
@@ -112,7 +132,9 @@ const faqs = [
         <p class="mt-4 max-w-lg text-base text-crema-100/85">{sub}</p>
         <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
           {d.rating && <Rating rating={d.rating} count={d.ratingCount} />}
-          <span class="text-crema-100/70">🎓 {SITE.stats.students} estudiantes certificados</span>
+          <span class="inline-flex items-center gap-1.5 text-crema-100/75">
+            <Icon name="birrete" class="text-sol-300" />{SITE.stats.students} estudiantes certificados
+          </span>
         </div>
       </div>
 
@@ -137,31 +159,34 @@ const faqs = [
           data-track="begin_checkout"
           data-track-params={trackParams}
           class:list={[
-            'inline-block rounded-xl bg-coral-500 px-9 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-600',
+            'inline-block rounded-xl bg-coral-600 px-9 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-700',
             hasPrice && 'mt-5',
           ]}
         >
           {cta}
         </a>
-        <p class="mt-3.5 text-xs text-crema-100/60">
-          Garantía de 7 días · Acceso inmediato · <HotmartBadge tone="dark" />
+        <p class="mt-3.5 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm font-semibold text-crema-100/80">
+          <span class="inline-flex items-center gap-1.5">
+            <Icon name="escudo" class="text-sol-300" />Garantía de 7 días · Acceso inmediato
+          </span>
+          <HotmartBadge tone="dark" />
         </p>
       </div>
 
       <div class="relative mx-auto w-full max-w-sm lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center">
-        <div class="rotate-2 overflow-hidden rounded-3xl border-4 border-crema-50/15 shadow-globo">
+        <div class="overflow-hidden rounded-3xl border-4 border-crema-50/15 shadow-globo sm:rotate-2">
           {
             d.cover ? (
               <img
                 src={d.cover}
                 alt={`Imagen del ${d.title}`}
-                class="aspect-[4/3] w-full object-cover"
+                class="aspect-[16/10] w-full object-cover sm:aspect-[4/3]"
                 width="600"
                 height="450"
                 fetchpriority="high"
               />
             ) : (
-              <div class="aspect-[4/3] w-full">
+              <div class="aspect-[16/10] w-full sm:aspect-[4/3]">
                 <CourseCover slug={course.id} category={d.category} title={d.title} />
               </div>
             )
@@ -172,21 +197,13 @@ const faqs = [
     <Wave color="var(--color-crema-50)" />
   </section>
 
-  <!-- Prueba social rápida -->
-  <section class="contenedor py-10">
-    <div class="grid gap-4 sm:grid-cols-3">
-      {
-        [
-          ['“Con los dos primeros pedidos recuperé la inversión.”', 'Rocío M. · Buenos Aires'],
-          ['“Es el adicional que más se vende en el salón.”', 'Guadalupe R. · Guadalajara'],
-          ['“Ya casi no se me revienta ningún globo.”', 'Karen J. · Bogotá'],
-        ].map(([quote, who]) => (
-          <figure class="rounded-2xl border border-crema-200 bg-white p-5 shadow-tarjeta">
-            <blockquote class="text-sm text-ciruela-600">{quote}</blockquote>
-            <figcaption class="mt-2 text-xs font-bold text-ciruela-400">{who}</figcaption>
-          </figure>
-        ))
-      }
+  <!-- Prueba social rápida: reseñas reales citadas de la ficha pública de Hotmart -->
+  <section class="contenedor py-10" aria-labelledby="resenas-titulo">
+    <h2 id="resenas-titulo" class="text-xs font-extrabold tracking-[0.18em] text-coral-600 uppercase">
+      Reseñas reales de alumnas en Hotmart
+    </h2>
+    <div class="mt-4 grid gap-5 md:grid-cols-3">
+      {testimonials.map((t) => <TestimonialCard testimonial={t} />)}
     </div>
   </section>
 
@@ -199,9 +216,7 @@ const faqs = [
       {
         incluye.map((item) => (
           <div class="flex items-start gap-3 rounded-2xl bg-white p-4 shadow-tarjeta">
-            <span class="text-coral-500" aria-hidden="true">
-              ✓
-            </span>
+            <Icon name="check" size={18} class="mt-px text-coral-600" />
             <span class="text-sm font-semibold text-ciruela-700">{item}</span>
           </div>
         ))
@@ -230,18 +245,20 @@ const faqs = [
         rel="noopener"
         data-track="begin_checkout"
         data-track-params={trackParams}
-        class="mt-5 inline-block rounded-xl bg-coral-500 px-9 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600"
+        class="mt-5 inline-block rounded-xl bg-coral-600 px-9 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-700"
       >
         {cta}
       </a>
-      <p class="mt-4 text-xs text-ciruela-400">El descuento se aplica automáticamente en el enlace.</p>
+      <p class="mt-4 text-xs text-ciruela-500">El descuento se aplica automáticamente en el enlace.</p>
     </div>
   </section>
 
   <!-- Garantía -->
   <section class="contenedor py-12">
     <div class="mx-auto flex max-w-2xl flex-col items-center gap-4 rounded-3xl border-2 border-dashed border-aqua-500 bg-aqua-100/40 p-8 text-center sm:flex-row sm:text-left">
-      <span class="text-5xl" aria-hidden="true">🛡️</span>
+      <span class="flex h-16 w-16 shrink-0 rotate-[-4deg] items-center justify-center rounded-2xl bg-white text-aqua-700 shadow-tarjeta">
+        <Icon name="escudo" size={34} strokeWidth={1.6} />
+      </span>
       <div>
         <h2 class="font-display text-xl font-semibold text-ciruela-900">7 días de garantía, sin preguntas</h2>
         <p class="mt-1.5 text-sm text-ciruela-600">
@@ -261,7 +278,7 @@ const faqs = [
           <details class="group px-6">
             <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-sm font-bold text-ciruela-800 [&::-webkit-details-marker]:hidden">
               {faq.q}
-              <span class="text-coral-500 transition-transform duration-300 group-open:rotate-45">+</span>
+              <span class="text-coral-600 transition-transform duration-300 group-open:rotate-45">+</span>
             </summary>
             <p class="pb-4 text-sm text-ciruela-500">{faq.a}</p>
           </details>
@@ -271,19 +288,20 @@ const faqs = [
   </section>
 
   <!-- CTA final -->
-  <section class="bg-gradient-to-br from-coral-600 via-coral-500 to-lila-500 py-14 text-center text-white">
-    <div class="contenedor">
+  <section class="relative overflow-hidden bg-coral-700 py-14 text-center text-white">
+    <Balloons variant="rise" />
+    <div class="contenedor relative">
       <h2 class="mx-auto max-w-xl text-3xl font-semibold text-balance">
         {isMeta ? 'Tu nueva habilidad te está esperando' : 'Última oportunidad: inscríbete ahora'}
       </h2>
-      <p class="mt-3 text-sm text-white/85">Acceso inmediato tras el pago · Certificado incluido</p>
+      <p class="mt-3 text-sm text-white/90">Acceso inmediato tras el pago · Certificado incluido</p>
       <a
         href={checkoutUrl}
         target="_blank"
         rel="noopener"
         data-track="begin_checkout"
         data-track-params={trackParams}
-        class="mt-6 inline-block rounded-xl bg-white px-10 py-4 text-sm font-bold text-coral-600 shadow-globo transition-all duration-300 ease-fiesta hover:-translate-y-1"
+        class="mt-6 inline-block rounded-xl bg-white px-10 py-4 text-sm font-bold text-coral-700 shadow-globo transition-all duration-300 ease-fiesta hover:-translate-y-1"
       >
         {cta}
       </a>

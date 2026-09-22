@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import Balloons from '@/components/Balloons.astro';
+import Icon from '@/components/Icon.astro';
 import { SITE } from '@/lib/site';
 ---
 
@@ -42,10 +43,13 @@ import { SITE } from '@/lib/site';
   <section class="relative overflow-hidden bg-crema-100 py-14">
     <Balloons variant="rise" />
     <div class="contenedor relative text-center">
-      <p class="font-display text-2xl font-semibold text-ciruela-900">¿Empezamos? 🎈</p>
+      <p class="flex items-center justify-center gap-2 font-display text-2xl font-semibold text-ciruela-900">
+        ¿Empezamos?
+        <Icon name="globo" size={26} class="rotate-[8deg] text-coral-600" />
+      </p>
       <a
         href="/co/cursos/"
-        class="mt-5 inline-block rounded-xl bg-coral-500 px-8 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600"
+        class="mt-5 inline-block rounded-xl bg-coral-600 px-8 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-700"
       >
         Ver los cursos
       </a>

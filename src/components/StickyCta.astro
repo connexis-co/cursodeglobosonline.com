@@ -38,9 +38,9 @@ const label = discountPct ? `Inscribirme con ${discountPct}% OFF` : 'Inscribirme
             {originalPriceUSD !== undefined && (
               <span class="block text-[0.7rem] text-ciruela-500 line-through">{usd(originalPriceUSD)}</span>
             )}
-            <span class="block text-lg font-extrabold text-coral-700">
-              {usd(priceUSD)}
-              <span class="ml-1 text-[0.7rem] font-semibold text-ciruela-500">≈ {formatPrice(priceUSD, country)}</span>
+            <span class="block text-lg font-extrabold text-coral-700">{usd(priceUSD)}</span>
+            <span class="block text-[0.7rem] font-semibold whitespace-nowrap text-ciruela-500">
+              ≈ {formatPrice(priceUSD, country)}
             </span>
           </>
         ) : (

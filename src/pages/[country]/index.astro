@@ -9,7 +9,11 @@ import CourseCard from '@/components/CourseCard.astro';
 import TestimonialCard from '@/components/TestimonialCard.astro';
 import LeadForm from '@/components/LeadForm.astro';
 import FaqAccordion from '@/components/FaqAccordion.astro';
+import Icon from '@/components/Icon.astro';
+import PostCard from '@/components/blog/PostCard.astro';
+import { getPublishedPosts } from '@/lib/blog';
 import { COUNTRIES } from '@/lib/countries';
+import { buildWhatsAppUrl } from '@/lib/hotmart';
 import { countryAlternates, faqSchema, breadcrumbSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
@@ -23,8 +27,16 @@ const courses = (await getCollection('courses')).sort(
   (a, b) => Number(b.data.featured) - Number(a.data.featured),
 );
 const featured = courses.find((c) => c.data.featured) ?? courses[0];
+const others = courses.filter((c) => c.id !== featured.id);
 // Reseñas reales de Hotmart (las más recientes; ya no hay testimonios por país).
 const testimonials = (await getCollection('testimonials')).slice(0, 3);
+// Las 3 guías más recientes del blog (enlazado interno país → blog); solo si hay publicadas.
+const guias = (await getPublishedPosts()).slice(0, 3);
+// Tarjeta de asesoría que llena la celda libre del grid de cursos (fila 2, col. 3 en lg).
+const waAsesoria = buildWhatsAppUrl(
+  country.whatsapp,
+  `Hola 🎈 Escribo desde ${country.name} y no sé qué curso de globos elegir. ¿Me ayudan a escoger?`,
+);
 
 const faqs = [
   {
@@ -70,19 +82,8 @@ const description = `Aprende decoración con globos desde cualquier ciudad de ${
   pageType="country_home"
   transparentHeader
 >
+  <!-- Sin «glows» blur-3xl (P1-7): la fiesta la ponen los globos y la onda. -->
   <section class="relative overflow-hidden bg-ciruela-900 text-crema-50">
-    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-      <div
-        class="absolute -top-32 -left-32 h-[28rem] w-[28rem] rounded-full opacity-25 blur-3xl"
-        style="background: radial-gradient(circle, oklch(0.62 0.2 14 / 0.8), transparent 65%)"
-      >
-      </div>
-      <div
-        class="absolute top-1/3 -right-40 h-[24rem] w-[24rem] rounded-full opacity-20 blur-3xl"
-        style="background: radial-gradient(circle, oklch(0.74 0.1 303 / 0.8), transparent 65%)"
-      >
-      </div>
-    </div>
     <Balloons variant="hero" />
     <div class="contenedor relative pt-14 pb-16 text-center sm:pt-16 lg:pt-20 lg:pb-24">
       <p
@@ -100,7 +101,7 @@ const description = `Aprende decoración con globos desde cualquier ciudad de ${
       <div class="animate-fade-slide-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" style="animation-delay: 0.3s">
         <a
           href={`/${country.code}/cursos/`}
-          class="rounded-xl bg-coral-500 px-8 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-600"
+          class="rounded-xl bg-coral-600 px-8 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-700"
         >
           Ver los cursos
         </a>
@@ -123,19 +124,61 @@ const description = `Aprende decoración con globos desde cualquier ciudad de ${
       title="Elige tu especialidad"
       lead={`Todos los cursos incluyen certificado, acceso permanente y checkout en ${country.currency} con métodos de pago de ${country.name}.`}
     />
+    <!-- Con 4 cursos: destacada (2 filas) + 3 tarjetas + asesoría = grid lleno en lg (3 col.)
+         y en sm (2 col.). Todas las tarjetas llevan h-full para igualar alturas por fila. -->
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <div class="scroll-reveal sm:col-span-2 lg:col-span-1 lg:row-span-2">
-        <CourseCard course={featured} {country} large />
+        <CourseCard course={featured} {country} large class="h-full" />
       </div>
       {
-        courses
-          .filter((c) => c.id !== featured.id)
-          .map((course, i) => (
-            <div class="scroll-reveal" style={`animation-delay:${i * 70}ms`}>
-              <CourseCard {course} {country} />
-            </div>
-          ))
+        others.map((course, i) => (
+          <div class="scroll-reveal" style={`animation-delay:${i * 70}ms`}>
+            <CourseCard {course} {country} class="h-full" />
+          </div>
+        ))
       }
+      <div class="scroll-reveal" style={`animation-delay:${others.length * 70}ms`}>
+        <div
+          class="flex h-full flex-col rounded-3xl border-2 border-dashed border-coral-200 bg-coral-50 p-6 transition-transform duration-300 ease-suave hover:rotate-0 sm:rotate-[-0.6deg]"
+        >
+          <p class="text-[0.7rem] font-extrabold tracking-[0.18em] text-coral-700 uppercase">Asesoría gratis</p>
+          <h3 class="mt-2 font-display text-xl font-semibold text-ciruela-900">¿No sabes cuál elegir?</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ciruela-600">
+            Te asesoramos por WhatsApp, con el precio en {country.currency}, según lo que quieras hacer:
+          </p>
+          <ul class="mt-3 space-y-2 text-sm text-ciruela-700">
+            <li class="flex gap-2">
+              <Icon name="globo" size={15} class="mt-0.5 text-coral-600" />
+              <span>Animación de fiestas: <strong class="font-extrabold">Globoflexia</strong></span>
+            </li>
+            <li class="flex gap-2">
+              <Icon name="globo" size={15} class="mt-0.5 text-coral-600" />
+              <span>Arreglos y detalles: <strong class="font-extrabold">Bouquets</strong></span>
+            </li>
+            <li class="flex gap-2">
+              <Icon name="globo" size={15} class="mt-0.5 text-coral-600" />
+              <span>Eventos premium: <strong class="font-extrabold">Flores o Globos Burbuja</strong></span>
+            </li>
+          </ul>
+          <div class="mt-auto pt-5">
+            <a
+              href={waAsesoria}
+              target="_blank"
+              rel="noopener"
+              data-track="click_whatsapp"
+              data-track-params={JSON.stringify({ page_location: Astro.url.pathname, placement: 'grid_asesoria' })}
+              class="inline-flex min-h-11 items-center gap-2 rounded-xl bg-ciruela-900 px-5 text-sm font-bold text-crema-50 transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-ciruela-700"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="shrink-0 text-[#25d366]" aria-hidden="true">
+                <path
+                  d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.3 0-.2 0-.3-.1-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.7-.4Z"
+                ></path>
+              </svg>
+              Escríbenos por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -146,10 +189,16 @@ const description = `Aprende decoración con globos desde cualquier ciudad de ${
         title="Lo que escriben las alumnas en Hotmart"
         lead="Citas textuales de la ficha pública de cada curso en Hotmart, la plataforma donde se compra y se estudia."
       />
-      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Móvil: carrusel con scroll-snap en lugar de tarjetas apiladas. Desde sm, grid. -->
+      <p class="mt-6 inline-flex items-center gap-1 text-xs font-bold text-ciruela-500 sm:hidden">
+        Desliza para ver las {testimonials.length} reseñas <Icon name="flecha" size={14} />
+      </p>
+      <div
+        class="scroll-reveal -mx-5 mt-3 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 py-3 [scrollbar-width:none] sm:mx-0 sm:mt-10 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:p-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden [&>*]:w-[85%] [&>*]:shrink-0 [&>*]:snap-start sm:[&>*]:w-auto"
+      >
         {
-          testimonials.map((t, i) => (
-            <div class="scroll-reveal" style={`animation-delay:${i * 60}ms`}>
+          testimonials.map((t) => (
+            <div>
               <TestimonialCard testimonial={t} />
             </div>
           ))
@@ -176,4 +225,46 @@ const description = `Aprende decoración con globos desde cualquier ciudad de ${
       <FaqAccordion faqs={faqs} />
     </div>
   </section>
+
+  <!-- Guías gratis del blog (solo si hay artículos publicados). Con 3 guías: carrusel snap-x
+       hasta lg (a 2 columnas quedaría una huérfana) y grid de 3 en lg. -->
+  {
+    guias.length > 0 && (
+      <section class="bg-crema-100 py-16 lg:py-24">
+        <div class="contenedor">
+          <div class="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading
+              eyebrow="Guías gratis del blog"
+              title="Practica gratis mientras eliges tu curso"
+              lead="Artículos paso a paso con medidas, cantidades y costos de referencia. Cada guía te dice qué curso lo enseña completo, en video y con certificado."
+            />
+            <a
+              href="/blog/"
+              class="scroll-reveal mb-1 inline-flex shrink-0 items-center gap-1.5 rounded-xl border-2 border-coral-600 px-5 py-2.5 text-xs font-bold text-coral-600 transition-colors hover:bg-coral-600 hover:text-white"
+            >
+              Ver todas las guías
+              <Icon name="flecha" size={14} />
+            </a>
+          </div>
+          {guias.length === 1 ? (
+            <div class="scroll-reveal mt-10">
+              <PostCard post={guias[0]} featured />
+            </div>
+          ) : guias.length === 2 ? (
+            <div class="scroll-reveal mt-10 grid gap-6 sm:grid-cols-2">
+              {guias.map((p) => (
+                <PostCard post={p} />
+              ))}
+            </div>
+          ) : (
+            <div class="scroll-reveal -mx-5 mt-7 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 py-3 [scrollbar-width:none] sm:-mx-8 sm:scroll-px-8 sm:px-8 lg:mx-0 lg:mt-10 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:p-0 [&::-webkit-scrollbar]:hidden [&>*]:w-[85%] [&>*]:shrink-0 [&>*]:snap-start sm:[&>*]:w-[46%] lg:[&>*]:w-auto">
+              {guias.map((p) => (
+                <PostCard post={p} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    )
+  }
 </BaseLayout>
