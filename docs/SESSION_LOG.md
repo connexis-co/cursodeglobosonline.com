@@ -1,4 +1,70 @@
-# Bitácora de sesión — 2026-08-06 (Claude Code)
+# Bitácora de sesiones — cursodeglobosonline.com
+
+> La sesión más reciente va primero. Punto de entrada para retomar el proyecto.
+
+---
+
+# Sesión 2026-09-22 — SEO, blog para Discover, marca y anti-canibalización
+
+## 0. TL;DR
+
+| Ítem | Estado |
+|---|---|
+| Rama | `feat/seo-discover-blog` (worktree `~/dev/cursodeglobosonline.com`, fuera de iCloud) |
+| Blog | 28 artículos (6 pilares) con foto hero propia, listos para publicar |
+| Canibalización | Curso-ciudad → `canonical` al curso-país; categoría única `noindex` |
+| Precios | Verificados en el checkout de Hotmart el 22-09-2026 (US$25 / 49,99 / 79,99 / 49,99) |
+| Marca | Isologo «La G retorcida» en SVG + iconografía propia; mención de Hotmart conforme a su §5.2 |
+| Indexación | IndexNow en el deploy, Bing Webmaster API, ads.txt, llms.txt y llms-full.txt |
+
+## 1. Qué pidió JP (en orden) y qué se hizo
+
+1. **Auditoría y SEO general** → auditoría técnica y on-page completa (`docs/seo/2026-09-22/informe_auditoria_seo.md`).
+2. **Blog fuerte para Google Discover** → mapa temático con Google Ads Keyword Planner (8 países),
+   DataForSEO y Ubersuggest + GSC; 28 artículos escritos por agentes con guía editorial anti-IA,
+   revisión adversarial (SEO/canibalización + verificación de datos) y fotos hero con Nano Banana Pro
+   juzgadas por un revisor escéptico.
+3. **Estrellas, precio y disponibilidad en los datos estructurados** → `Course` + `Product` con
+   `Offer`; **sin** `aggregateRating`, porque las valoraciones son de Hotmart (terceros) y Google
+   prohíbe agregar reseñas de otros sitios. Las reseñas reales se muestran visibles con su fuente.
+4. **Títulos y metas con AIDA** → reescritos ≤ 60 / ≤ 160 caracteres, únicos por país, con precio
+   y descuento solo donde son reales.
+5. **Auditoría de diseño y logo** → 17 hallazgos aplicados; isologo nuevo elegido por un panel de
+   3 jueces entre 3 conceptos.
+6. **«Se posicionan las páginas de ciudad y no las de curso»** → confirmado con GSC y corregido
+   (canonical, enlaces internos a la URL canónica, intención por tipo de página).
+7. **IndexNow/Bing, ads.txt y llms.txt** → hechos; guía para pedir indexación manual en GSC con
+   Claude Cowork (`docs/seo/cowork-indexacion-manual-gsc.md`).
+8. **Logo de Hotmart** → NO se usa: sus Términos de uso §5.2 prohíben usar su marca o logotipo
+   para publicitar un producto; se dejó una mención factual en texto y una nota de marca.
+
+## 2. Decisiones que NO deben revertirse sin hablar con JP
+
+- **Sin `aggregateRating` con datos de Hotmart** (riesgo de acción manual por marcado engañoso).
+- **Nada de imitar el logo de Hotmart** ni decir «partner oficial»: el sitio es afiliado.
+- **Curso-ciudad canónico al curso-país**: revertirlo devuelve la canibalización medida en GSC.
+- **Precios en USD como principal**, con el equivalente local marcado como aproximado.
+- **Reseñas reales citadas de Hotmart** en lugar de testimonios inventados.
+
+## 3. Entorno (importante)
+
+- El disco del Mac está al 99 % y iCloud desaloja archivos de `~/Documents` («dataless»), lo que
+  cuelga git, los hooks y los builds. Por eso:
+  - `node_modules` → `node_modules.nosync` (symlink) en la carpeta de Documentos;
+  - el repositorio git vive en `~/.git-dirs/cursodeglobosonline.com.git` (la carpeta tiene un
+    archivo `.git` con `gitdir:`);
+  - **el trabajo activo se hace en el worktree `~/dev/cursodeglobosonline.com`**.
+- Liberar espacio en el disco es el arreglo de fondo.
+
+## 4. Dónde está todo
+
+- Estudio y auditorías: `docs/seo/2026-09-22/` · plan: `docs/plans/2026-09-22_seo-blog-discover.md`
+- Mapa temático y guías de redacción/imágenes: en el scratchpad de la sesión (copia en `docs/seo/`)
+- Kit de marca: `public/brand/` · sistema de diseño: `docs/DESIGN_SYSTEM.md`
+
+---
+
+# Sesión 2026-08-06 — reconstrucción del frontend
 
 > Hilo real de la conversación con JP, decisiones tomadas y estado exacto al cierre.
 > **Punto de entrada para retomar el proyecto desde otra sesión.** Lee también

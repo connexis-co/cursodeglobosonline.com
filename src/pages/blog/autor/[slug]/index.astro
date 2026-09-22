@@ -42,7 +42,7 @@ const schemas = [
 ---
 
 <BaseLayout
-  title={`${author.name} | Blog de ${SITE.name}`}
+  title={author.type === 'Organization' ? `Equipo editorial | ${SITE.name}` : `${author.name} | ${SITE.name}`}
   description={author.bio.slice(0, 155)}
   pageType="author"
   {schemas}

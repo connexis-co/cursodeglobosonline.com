@@ -102,11 +102,52 @@ https://cursodeglobosonline.com/ec/curso-de-flores-con-globos/
 https://cursodeglobosonline.com/ec/curso-de-bouquets-de-globos/
 ```
 
-### Días 5 en adelante — artículos del blog
-Ver la sección "Artículos del blog" al final (se generan con el lanzamiento del blog; primero
-los pilares, luego los satélites de mayor volumen).
+### Día 5 — blog: índice y pilares
+```
+https://cursodeglobosonline.com/blog/
+https://cursodeglobosonline.com/blog/decoracion-con-globos/
+https://cursodeglobosonline.com/blog/tipos-y-tamanos-de-globos/
+https://cursodeglobosonline.com/blog/bouquet-de-globos/
+https://cursodeglobosonline.com/blog/arco-de-globos/
+https://cursodeglobosonline.com/blog/globoflexia/
+https://cursodeglobosonline.com/blog/cuanto-cobrar-por-decoracion-con-globos/
+https://cursodeglobosonline.com/blog/rss.xml
+https://cursodeglobosonline.com/llms.txt
+```
 
-<!-- BLOG_URLS -->
+### Día 6 — blog: artículos (prioridad 1-16)
+```
+https://cursodeglobosonline.com/blog/decoracion-con-globos-halloween/
+https://cursodeglobosonline.com/blog/decoracion-con-globos-para-primera-comunion/
+https://cursodeglobosonline.com/blog/decoracion-con-globos-para-graduacion/
+https://cursodeglobosonline.com/blog/decoracion-navidena-con-globos/
+https://cursodeglobosonline.com/blog/decoracion-con-globos-virgen-de-guadalupe/
+https://cursodeglobosonline.com/blog/decoracion-con-globos-para-boda/
+https://cursodeglobosonline.com/blog/decoracion-con-globos-para-mujer/
+https://cursodeglobosonline.com/blog/decoracion-con-globos-para-hombre/
+https://cursodeglobosonline.com/blog/flores-con-globos/
+https://cursodeglobosonline.com/blog/guirnalda-de-globos/
+```
+
+### Día 7 — blog: artículos (prioridad 17-26)
+```
+https://cursodeglobosonline.com/blog/decoracion-para-ano-nuevo-con-globos/
+https://cursodeglobosonline.com/blog/como-inflar-globos/
+https://cursodeglobosonline.com/blog/cuanto-dura-un-globo-con-helio/
+https://cursodeglobosonline.com/blog/centros-de-mesa-con-globos/
+https://cursodeglobosonline.com/blog/decoracion-con-cortinas-y-globos/
+https://cursodeglobosonline.com/blog/globos-burbuja-decorados/
+https://cursodeglobosonline.com/blog/como-decorar-con-globos-en-la-pared/
+https://cursodeglobosonline.com/blog/decoracion-con-globos-rosa-y-dorado/
+https://cursodeglobosonline.com/blog/figuras-con-globos/
+https://cursodeglobosonline.com/blog/como-inflar-globos-largos/
+```
+
+### Día 8 — blog: artículos (prioridad 27-28)
+```
+https://cursodeglobosonline.com/blog/columnas-de-globos/
+https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/
+```
 
 ---
 

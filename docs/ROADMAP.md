@@ -30,7 +30,32 @@
 - [ ] Branch protection: GitHub la exige con plan Pro en repos privados (o repo público)
 - [ ] Rotar credenciales compartidas por chat cuando termine la configuración (higiene)
 
-## 🔜 v0.2.0 — Contenido y conversión
+## ✅ v0.2.0 — Contenido, Discover y anti-canibalización (2026-09-22)
+
+- [x] Estudio de keywords con Google Ads Keyword Planner (8 países, 14.922 ideas), DataForSEO
+  (dificultad, intención y SERP reales) y Ubersuggest; mapa temático con 6 clusters
+- [x] Blog: 28 artículos (6 pilares) con foto hero propia, revisión SEO y verificación de datos
+- [x] Infraestructura Discover: BlogPosting, autor, RSS, imágenes ≥1200 px, max-image-preview
+- [x] Anti-canibalización curso-ciudad → canonical al curso-país; categoría única noindex
+- [x] Precios reales de los 4 cursos y schema Course+Product con Offer
+- [x] Reseñas reales de Hotmart en lugar de testimonios placeholder (sitio y landings de Ads)
+- [x] Logo nuevo en SVG (isologo «La G retorcida») e iconografía propia sin emojis
+- [x] Auditoría de diseño aplicada (contraste AA, mega menú, 404, barra de compra móvil)
+- [x] IndexNow + Bing Webmaster + ads.txt + llms.txt/llms-full.txt + robots para IA
+
+### ⚠️ Pendientes de JP (fuera del repo)
+
+- [ ] **Liberar espacio en disco**: al 99 %, iCloud desaloja archivos del proyecto y cuelga git y
+  los builds. El trabajo activo vive en `~/dev/cursodeglobosonline.com` (worktree fuera de iCloud)
+- [ ] Rotar las credenciales compartidas por chat (Cloudflare, Gemini, OpenAI, DataForSEO, Bing,
+  Google Ads developer token, service account) — están en el historial de la conversación
+- [ ] Añadir cursodeglobosonline.com en AdSense › Sitios para que `ads.txt` sirva de algo
+- [ ] Revisar en Cloudflare que «Block AI bots» no bloquee a OAI-SearchBot/PerplexityBot
+- [ ] Consolidar GA4 en GTM (hoy el contenedor dispara dos propiedades) y publicar los triggers
+- [ ] Solicitar indexación manual de las URLs clave en GSC (guía en docs/seo/cowork-indexacion-manual-gsc.md)
+- [ ] Reseñas propias del sitio (formulario) para poder publicar estrellas con `aggregateRating`
+
+## 🔜 v0.3.0 — Contenido y conversión (pendiente de v0.2)
 
 - [ ] **Cutover DNS** del dominio al proyecto de Cloudflare Pages (decisión JP)
 - [ ] Verificar propiedad en GSC y enviar sitemap-index.xml
