@@ -24,7 +24,7 @@ jobs:
         env:
           PUBLIC_GTM_ID: ${{ vars.PUBLIC_GTM_ID }}
       # continue-on-error: un fallo de release-please no debe bloquear el deploy a producción
-      - uses: googleapis/release-please-action@v4
+      - uses: googleapis/release-please-action@v5
         continue-on-error: true
         with:
           release-type: node
