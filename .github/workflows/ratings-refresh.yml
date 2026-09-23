@@ -7,6 +7,11 @@ on:
   schedule:
     - cron: '23 10 * * *' # 05:23 en Colombia
   workflow_dispatch:
+    inputs:
+      force:
+        description: 'Recompilar y desplegar aunque los votos no hayan cambiado'
+        type: boolean
+        default: false
 
 concurrency:
   group: deploy-production
@@ -29,7 +34,7 @@ jobs:
 
   deploy:
     needs: check
-    if: needs.check.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
+    if: needs.check.outputs.changed == 'true' || inputs.force
     runs-on: ubuntu-latest
     environment: production
     steps:
