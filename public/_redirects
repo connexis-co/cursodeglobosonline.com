@@ -47,3 +47,7 @@
 /page-sitemap.xml /sitemap-index.xml 301
 /local-sitemap.xml /sitemap-index.xml 301
 /locations.kml / 301
+
+# Categorías sin cursos propios (daban 404 en GSC): sus temas viven en el blog
+/:country/cursos/eventos/ /blog/#ideas-por-ocasion 301
+/:country/cursos/emprendimiento/ /blog/#negocio 301
