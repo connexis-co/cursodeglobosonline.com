@@ -55,6 +55,25 @@
 | Discover no garantiza tráfico | Métrica de seguimiento; base = contenido útil + imagen grande. |
 | iCloud desaloja archivos del proyecto (disco al 98 %) | `node_modules` → `node_modules.nosync`, git en `~/.git-dirs/` y trabajo activo en el worktree `~/dev/cursodeglobosonline.com` (fuera de iCloud). |
 
-## 4. Resultado
+## 4. Resultado (2026-09-22)
 
-(Se completa al cerrar la sesión.)
+**Entregado en el PR #18 (`feat/seo-discover-blog`):**
+
+- Estudio de keywords: 14.922 ideas de Keyword Planner en 8 países, validadas con DataForSEO
+  (US$1,12 de coste) y Ubersuggest; mapa temático final revisado por 3 críticos adversariales.
+- Blog: 28 artículos (6 pilares, 22 satélites) con foto hero propia. La verificación de datos
+  encontró citas inventadas o mal atribuidas y cifras contradictorias en 8 artículos; se
+  corrigieron y se auditaron las 46 fuentes externas (todas existen). También hubo falsos
+  positivos de los críticos (dominios «inexistentes» que sí resuelven): se comprobó cada uno.
+- Anti-canibalización, precios reales, schema Course+Product, reseñas reales, logo nuevo,
+  auditoría de diseño aplicada, IndexNow/Bing, ads.txt, llms.txt y llms-full.txt.
+- Build: 281 páginas, `astro check` sin errores, verificador propio sin enlaces rotos.
+
+**Lecciones:**
+
+- Los agentes en paralelo se bloquearon repetidamente con el disco al 99-100 %: en este Mac
+  conviene trabajar en tandas pequeñas o en el hilo principal hasta liberar espacio.
+- La verificación de datos es imprescindible: el primer borrador de los artículos traía fuentes
+  inventadas con apariencia creíble (CDC, fichas de distribuidores).
+
+**Pendiente (fuera del repo, de JP):** ver `docs/ROADMAP.md` › «Pendientes de JP».

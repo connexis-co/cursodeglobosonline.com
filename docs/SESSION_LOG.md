@@ -11,7 +11,7 @@
 | Ítem | Estado |
 |---|---|
 | Rama | `feat/seo-discover-blog` (worktree `~/dev/cursodeglobosonline.com`, fuera de iCloud) |
-| Blog | 28 artículos (6 pilares) con foto hero propia, listos para publicar |
+| Blog | 28 artículos (6 pilares) con foto hero propia y datos verificados — PR #18 |
 | Canibalización | Curso-ciudad → `canonical` al curso-país; categoría única `noindex` |
 | Precios | Verificados en el checkout de Hotmart el 22-09-2026 (US$25 / 49,99 / 79,99 / 49,99) |
 | Marca | Isologo «La G retorcida» en SVG + iconografía propia; mención de Hotmart conforme a su §5.2 |
