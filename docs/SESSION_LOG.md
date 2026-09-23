@@ -21,6 +21,11 @@ califique cada curso, como el plugin kk Star Ratings de WordPress. Plan y result
   recompila cada día si cambiaron los votos y avisa por IndexNow.
 - **Pruebas:** `npm run test:ratings` (28 comprobaciones) corre en CI contra una D1 local; también
   pasó en un preview real de Cloudflare.
+- **Revisión de Copilot** en el PR #20: 4 hallazgos, todos corregidos antes del merge (ver el plan).
+- **Seguridad:** Astro 7.1.6 → 7.3.4 y `npm audit fix` (PR #21). Había una vulnerabilidad crítica
+  de ejecución remota de código en la optimización AVIF (GHSA-26w7-cxv4-gfx2). Queda con 0
+  vulnerabilidades y un `dist/` equivalente (solo cambian las comillas de pulgadas y ya no se
+  copian 28 JPG sin usar).
 - **Entorno:** wrangler está autenticado en este Mac (OAuth, permisos D1 y Pages), así que no hace
   falta pegar tokens. El disco quedó en 97 % (27 GB libres). El scratchpad temporal se borró y con
   él el `secrets.env` de la sesión anterior: las credenciales ya no están en disco.

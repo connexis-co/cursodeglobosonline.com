@@ -3,6 +3,9 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -26,7 +29,7 @@
     "@nanostores/persistent": "^1.0.0",
     "@nanostores/react": "^1.1.0",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.1.6",
+    "astro": "^7.3.4",
     "lucide-react": "^0.545.0",
     "nanostores": "^1.4.2",
     "react": "^19.2.8",
