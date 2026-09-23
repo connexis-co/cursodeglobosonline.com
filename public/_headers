@@ -12,3 +12,7 @@
 
 /favicon.svg
   Cache-Control: public, max-age=604800
+
+/ratings-snapshot.json
+  Cache-Control: no-cache
+  X-Robots-Tag: noindex

@@ -1,0 +1,3 @@
+# Secretos locales para `wrangler pages dev` (copiar a .dev.vars).
+# En Cloudflare: npx wrangler pages secret put RATING_SALT --project-name cursodeglobosonline-com
+RATING_SALT=cualquier-cadena-larga-solo-para-local

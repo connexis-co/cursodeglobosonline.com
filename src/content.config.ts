@@ -49,14 +49,9 @@ const courses = defineCollection({
     /** Día en que se verificó el precio en pay.hotmart.com (se muestra y alimenta el schema). */
     priceCheckedAt: z.coerce.date().optional(),
     /**
-     * Reseñas PROPIAS del sitio (primera parte). Hoy no existen: no rellenar con datos
-     * de Hotmart ni placeholders — Google prohíbe agregar reseñas de otros sitios.
-     */
-    rating: z.number().min(1).max(5).optional(),
-    ratingCount: z.number().int().positive().optional(),
-    /**
      * Valoración pública del producto EN HOTMART (dato de terceros): se muestra visible
-     * con enlace a la fuente, NUNCA como aggregateRating en el JSON-LD.
+     * con enlace a la fuente, NUNCA como aggregateRating en el JSON-LD. Las estrellas del
+     * schema salen de los votos propios del sitio (src/lib/ratings.ts, D1).
      */
     hotmartRating: z
       .object({

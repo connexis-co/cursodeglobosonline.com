@@ -198,3 +198,13 @@ El blog comparte los tokens del sitio. Sus piezas propias:
 | `CourseCta.astro` | MDX y final del artículo | Caja de conversión que enlaza a la **money page** del curso (nunca directo a Hotmart), con `data-track="click_blog_cta"`. Variante `normal` (tarjeta con portada) y `compacta` (franja `bg-coral-50`). Botón `bg-coral-600 hover:bg-coral-700`. |
 | `Toc.astro` | aside desktop / `details` móvil | Índice de h2 (solo si hay 3 o más). En desktop marca la sección activa con `aria-current` y borde coral. |
 | `AuthorBox.astro` | final del artículo | Firma con foto o iniciales en `ciruela-900` y bio. |
+
+## 9. Calificaciones con estrellas
+
+| Pieza | Dónde | Qué es |
+|---|---|---|
+| `StarRating.astro` | hero de la ficha y bloque `#calificar` bajo las reseñas | Voto de 1 a 5 al estilo kk Star Ratings. Estrellas `sol` con trazo `oklch(0.62 0.12 70)` y relleno fraccionario de la media. Vista previa en `oklch(0.8 0.16 62)` al pasar el cursor o enfocar, con el nombre de la nota (Malo → Excelente) en `coral-700`. Tu voto lleva un punto `coral-600` bajo la estrella. Tamaños `md` (24 px) y `lg` (36 px), botones de al menos 32 px. |
+| `Rating.astro` | tarjetas, landings de Ads, línea de Hotmart | Solo lectura, con relleno fraccionario (4,4 → cuatro llenas y el 40 % de la quinta) y la media en formato español («4,4»). `tone="dark"` para fondos ciruela. |
+
+Regla: las estrellas del sitio (votos propios) y la valoración de Hotmart nunca se mezclan. Hotmart
+va siempre etiquetada («N valoraciones en Hotmart») y enlazada a su ficha.

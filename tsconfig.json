@@ -8,7 +8,9 @@
     "dist",
     "node_modules",
     "node_modules.nosync",
-    "**/*.nosync"
+    "**/*.nosync",
+    "functions",
+    "worker-configuration.d.ts"
   ],
   "compilerOptions": {
     "baseUrl": ".",

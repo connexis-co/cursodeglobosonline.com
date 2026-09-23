@@ -3,7 +3,8 @@
  * Los IDs se inyectan en BaseLayout según PUBLIC_GTM_ID / PUBLIC_GA4_ID /
  * PUBLIC_META_PIXEL_ID. Taxonomía de eventos del plan maestro §10:
  * view_course, begin_checkout, generate_lead, click_whatsapp, view_certificate,
- * view_faq, copy_discount_code, select_country, scroll_depth.
+ * view_faq, copy_discount_code, select_country, scroll_depth, rate_course (voto de
+ * estrellas: course_slug, rating, previous_rating).
  */
 type EventParams = Record<string, string | number | boolean | undefined>;
 

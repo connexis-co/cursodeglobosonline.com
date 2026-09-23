@@ -1,0 +1,56 @@
+name: Refresh ratings
+
+# Las estrellas (HTML + aggregateRating del JSON-LD) se fijan en el build. Cada día se compara
+# /api/ratings (votos en vivo, D1) con /ratings-snapshot.json (lo publicado) y, si cambiaron,
+# se recompila y se despliega para que Google vea las cifras nuevas.
+on:
+  schedule:
+    - cron: '23 10 * * *' # 05:23 en Colombia
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.diff.outputs.changed }}
+    steps:
+      - id: diff
+        run: |
+          pick='.courses | map_values({average, count})'
+          live=$(curl -fsS --retry 3 https://cursodeglobosonline.com/api/ratings | jq -cS "$pick")
+          built=$(curl -fsS --retry 3 https://cursodeglobosonline.com/ratings-snapshot.json | jq -cS "$pick")
+          echo "live:  $live"
+          echo "built: $built"
+          if [ "$live" = "$built" ]; then echo "changed=false" >> "$GITHUB_OUTPUT"; else echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+
+  deploy:
+    needs: check
+    if: needs.check.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+        env:
+          PUBLIC_GTM_ID: ${{ vars.PUBLIC_GTM_ID }}
+      - name: Deploy to Cloudflare Pages (Production)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist/ --project-name=cursodeglobosonline-com --branch=main
+      # Fichas de curso canónicas (las que llevan el aggregateRating) → Bing, Yandex y compañía.
+      - name: IndexNow
+        continue-on-error: true
+        run: node scripts/indexnow.mjs $(grep -hoE 'https://cursodeglobosonline\.com/[a-z]{2}/curso-de-[a-z-]+/' dist/sitemaps/*.xml | sort -u)

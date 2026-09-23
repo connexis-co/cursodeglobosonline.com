@@ -15,6 +15,8 @@ import Wave from './Wave.astro';
 import { COUNTRIES, DEFAULT_COUNTRY, formatPrice } from '@/lib/countries';
 import { getCategory } from '@/lib/categories';
 import { coursePricing, usd } from '@/lib/pricing';
+import { getCourseRating } from '@/lib/ratings';
+import { MIN_VOTES_FOR_SCHEMA } from '@/lib/ratings-config';
 import { buildHotmartUrl } from '@/lib/hotmart';
 import { SITE } from '@/lib/site';
 
@@ -28,6 +30,7 @@ const d = course.data;
 const country = COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
 const category = getCategory(d.category);
 const { hasPrice, hasDiscount, discountPct } = coursePricing(d);
+const siteRating = await getCourseRating(course.id);
 
 const checkoutUrl = buildHotmartUrl({
   baseUrl: d.hotmartUrl,
@@ -131,7 +134,9 @@ const faqs = [
         <h1 class="text-3xl font-semibold text-balance sm:text-4xl lg:text-5xl">{h1}</h1>
         <p class="mt-4 max-w-lg text-base text-crema-100/85">{sub}</p>
         <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-          {d.rating && <Rating rating={d.rating} count={d.ratingCount} />}
+          {siteRating.count >= MIN_VOTES_FOR_SCHEMA && (
+            <Rating rating={siteRating.average} count={siteRating.count} tone="dark" />
+          )}
           <span class="inline-flex items-center gap-1.5 text-crema-100/75">
             <Icon name="birrete" class="text-sol-300" />{SITE.stats.students} estudiantes certificados
           </span>

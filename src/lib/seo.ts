@@ -1,4 +1,5 @@
 import { COUNTRIES } from './countries';
+import { MIN_VOTES_FOR_SCHEMA, type CourseRating } from './ratings-config';
 import { SITE } from './site';
 import type { Author } from './authors';
 import { authorUrl } from './authors';
@@ -100,6 +101,8 @@ interface CourseSchemaInput {
   /** Productor real en Hotmart (el sitio es afiliado: publisher, no provider). */
   producer?: string;
   instructor?: { name: string; title: string; photo?: string };
+  /** Votos propios del sitio (D1, widget de estrellas), visibles en la página. */
+  rating?: CourseRating;
 }
 
 const slug = (s: string) =>
@@ -112,9 +115,10 @@ const slug = (s: string) =>
 /**
  * Curso co-tipado ["Course","Product"] cuando hay precio visible → product snippet
  * (precio y disponibilidad en la SERP; es el formato vigente para páginas de afiliado:
- * Course info fue retirado por Google en 2025). SIN aggregateRating: las valoraciones
- * de Hotmart son de un tercero y Google prohíbe agregarlas ("Don't aggregate reviews or
- * ratings from other websites"). Se añadirá cuando existan reseñas propias del sitio.
+ * Course info fue retirado por Google en 2025). `aggregateRating` sale SOLO de los votos
+ * propios del sitio (widget de estrellas → D1), visibles en la misma página; nunca de la
+ * valoración de Hotmart, que es de un tercero ("Don't aggregate reviews or ratings from
+ * other websites").
  */
 export function courseSchema(c: CourseSchemaInput) {
   const producerNode = c.producer
@@ -164,6 +168,15 @@ export function courseSchema(c: CourseSchemaInput) {
       category: 'Paid',
       url: c.url,
       ...(c.producer ? { seller: producerNode } : {}),
+    };
+  }
+  if (c.rating && c.rating.count >= MIN_VOTES_FOR_SCHEMA) {
+    schema.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: Math.round(c.rating.average * 10) / 10,
+      ratingCount: c.rating.count,
+      bestRating: 5,
+      worstRating: 1,
     };
   }
   return schema;

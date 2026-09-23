@@ -5,12 +5,12 @@ import { SITE } from '@/lib/site';
 
 <BaseLayout
   title="Política de Privacidad — Curso de Globos Online"
-  description="Cómo tratamos tus datos en cursodeglobosonline.com: formularios, WhatsApp, analítica con Google Tag Manager y tus derechos."
+  description="Cómo tratamos tus datos en cursodeglobosonline.com: formularios, WhatsApp, calificaciones con estrellas, analítica con Google Tag Manager y tus derechos."
   pageType="legal"
 >
   <div class="contenedor max-w-3xl pt-10 pb-20 lg:pt-12">
     <h1 class="text-3xl font-semibold text-ciruela-900 sm:text-4xl">Política de privacidad</h1>
-    <p class="mt-2 text-xs text-ciruela-400">Última actualización: agosto de 2026</p>
+    <p class="mt-2 text-xs text-ciruela-400">Última actualización: septiembre de 2026</p>
     <div class="mt-8 space-y-6 text-sm leading-relaxed text-ciruela-600">
       <section>
         <h2 class="mb-2 font-display text-lg font-semibold text-ciruela-900">1. Qué datos recogemos</h2>
@@ -28,7 +28,17 @@ import { SITE } from '@/lib/site';
         </p>
       </section>
       <section>
-        <h2 class="mb-2 font-display text-lg font-semibold text-ciruela-900">3. Analítica y cookies</h2>
+        <h2 class="mb-2 font-display text-lg font-semibold text-ciruela-900">3. Calificaciones con estrellas</h2>
+        <p>
+          Si calificas un curso guardamos tu nota (de 1 a 5), el curso y el país desde el que te conectas. Para
+          evitar votos duplicados usamos dos identificadores seudónimos: un código aleatorio que se guarda en tu
+          navegador (localStorage) y una huella cifrada de tu dirección IP, calculada con una clave secreta. La IP
+          no se guarda. Estos datos solo sirven para mostrar la valoración de cada curso; no se usan para
+          publicidad ni se comparten. Puedes cambiar tu voto cuando quieras o borrar el código desde tu navegador.
+        </p>
+      </section>
+      <section>
+        <h2 class="mb-2 font-display text-lg font-semibold text-ciruela-900">4. Analítica y cookies</h2>
         <p>
           Usamos Google Tag Manager y Google Analytics 4 para medir de forma agregada cómo se usa el sitio
           (páginas vistas, clics de inscripción) y mejorar la experiencia. Puedes limitar las cookies desde
@@ -36,14 +46,14 @@ import { SITE } from '@/lib/site';
         </p>
       </section>
       <section>
-        <h2 class="mb-2 font-display text-lg font-semibold text-ciruela-900">4. Terceros</h2>
+        <h2 class="mb-2 font-display text-lg font-semibold text-ciruela-900">5. Terceros</h2>
         <p>
           Los enlaces de inscripción llevan a Hotmart, y los botones de WhatsApp abren la app de Meta.
           Cada plataforma trata tus datos según su propia política de privacidad.
         </p>
       </section>
       <section>
-        <h2 class="mb-2 font-display text-lg font-semibold text-ciruela-900">5. Tus derechos</h2>
+        <h2 class="mb-2 font-display text-lg font-semibold text-ciruela-900">6. Tus derechos</h2>
         <p>
           Puedes pedir acceso, corrección o eliminación de tus datos escribiendo a
           <a href={`mailto:${SITE.email}`} class="font-bold text-coral-600 underline">{SITE.email}</a>.

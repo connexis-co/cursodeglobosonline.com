@@ -1,0 +1,15 @@
+{
+  // Pages Functions: runtime de Workers (tipos generados con `npm run cf-typegen`), sin DOM.
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2023"],
+    "types": [],
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
+  },
+  "include": ["./**/*.ts", "../worker-configuration.d.ts"]
+}
