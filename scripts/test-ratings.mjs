@@ -52,6 +52,7 @@ check('POST de otro origen → 403', (await post({}, { Origin: 'https://ejemplo.
 check('POST sin JSON → 415', (await post('course=x', { 'Content-Type': 'text/plain' })).status === 415);
 check('POST con JSON roto → 400', (await post('{"course":')).status === 400);
 check('POST demasiado grande → 413', (await post({ pad: 'x'.repeat(600) })).status === 413);
+check('el límite es en bytes (300 «ñ» = 600 B) → 413', (await post({ pad: 'ñ'.repeat(300) })).status === 413);
 check('curso inexistente → 400', (await vote(randomUUID(), 5, 'curso-de-nada')).status === 400);
 for (const bad of [0, 6, 4.5, '5', null]) {
   check(`nota ${JSON.stringify(bad)} → 400`, (await vote(randomUUID(), bad)).status === 400);

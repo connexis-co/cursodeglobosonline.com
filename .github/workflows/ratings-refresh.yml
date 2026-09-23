@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       changed: ${{ steps.diff.outputs.changed }}
+      live: ${{ steps.diff.outputs.live }}
     steps:
       - id: diff
         run: |
@@ -30,6 +31,7 @@ jobs:
           built=$(curl -fsS --retry 3 https://cursodeglobosonline.com/ratings-snapshot.json | jq -cS "$pick")
           echo "live:  $live"
           echo "built: $built"
+          echo "live=$live" >> "$GITHUB_OUTPUT"
           if [ "$live" = "$built" ]; then echo "changed=false" >> "$GITHUB_OUTPUT"; else echo "changed=true" >> "$GITHUB_OUTPUT"; fi
 
   deploy:
@@ -49,6 +51,21 @@ jobs:
       - run: npm run build
         env:
           PUBLIC_GTM_ID: ${{ vars.PUBLIC_GTM_ID }}
+          # Sin datos de la API ni del snapshot, el build falla en vez de publicar sin estrellas.
+          RATINGS_REQUIRED: '1'
+      # Los votos solo suben (se pueden cambiar, no borrar): si el build trae menos que los
+      # leídos en `check` (p. ej. cayó al snapshot viejo), no se despliega.
+      - name: Verificar que el build trae los votos en vivo
+        env:
+          LIVE: ${{ needs.check.outputs.live }}
+        run: |
+          node -e '
+            const live = JSON.parse(process.env.LIVE);
+            const built = JSON.parse(require("fs").readFileSync("dist/ratings-snapshot.json", "utf8")).courses;
+            const behind = Object.entries(live).filter(([course, r]) => (built[course]?.count ?? 0) < r.count);
+            if (behind.length) { console.error("El build trae menos votos que la API:", behind); process.exit(1); }
+            console.log("OK", JSON.stringify(built));
+          '
       - name: Deploy to Cloudflare Pages (Production)
         uses: cloudflare/wrangler-action@v3
         with:

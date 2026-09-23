@@ -18,6 +18,8 @@ jobs:
       - run: npm run build
         env:
           PUBLIC_GTM_ID: ${{ vars.PUBLIC_GTM_ID }}
+          # El preview vota contra la D1 de preview: no mezclar sus estrellas con las de producción.
+          RATINGS_API_URL: 'off'
       - name: Deploy to Cloudflare Pages (Staging)
         uses: cloudflare/wrangler-action@v3
         with:

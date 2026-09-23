@@ -226,6 +226,8 @@ const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9
   }
 
   const widgets = [...document.querySelectorAll<HTMLElement>('[data-star-rating]')];
+  /** Cursos votados en esta visita: la respuesta del POST manda sobre el GET de refresco. */
+  const votedNow = new Set<string>();
   const forCourse = (course: string) => widgets.filter((w) => w.dataset.course === course);
   const starOf = (target: EventTarget | null) =>
     target instanceof Element ? target.closest<HTMLButtonElement>('.sr-star') : null;
@@ -299,6 +301,7 @@ const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9
         const data = parseCourseRating(await res.json());
         if (!data) throw new Error('respuesta inválida');
         saveVote(course, value);
+        votedNow.add(course);
         group.forEach((w) => paint(w, data, value));
         message = previous ? `Actualizamos tu voto a ${value} ★. ¡Gracias!` : `¡Gracias! Guardamos tu voto de ${value} ★.`;
         trackEvent('rate_course', { course_slug: course, rating: value, previous_rating: previous ?? 0 });
@@ -350,6 +353,7 @@ const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9
         const votes = myVotes();
         for (const w of widgets) {
           const course = w.dataset.course ?? '';
+          if (votedNow.has(course)) continue;
           const r = parseCourseRating(payload.courses[course]);
           if (r) paint(w, r, votes[course]);
         }

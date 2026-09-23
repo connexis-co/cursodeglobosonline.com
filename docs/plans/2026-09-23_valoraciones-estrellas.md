@@ -62,6 +62,19 @@ Google.
 - Migración aplicada en las D1 de producción y de preview. Secreto `RATING_SALT` configurado en
   los dos entornos.
 
+**Revisión de Copilot (PR #20), 4 hallazgos corregidos:**
+
+1. *Crítico:* un fallo pasajero de la API durante la recompilación diaria habría publicado un
+   build sin estrellas. Ahora el build cae al snapshot publicado; con `RATINGS_REQUIRED=1`
+   (workflow diario) falla si no hay datos, y antes del deploy se comprueba que el build trae al
+   menos los votos leídos en vivo (los votos nunca bajan).
+2. El límite del cuerpo contaba caracteres UTF-16: ahora cuenta bytes (`Content-Length` y
+   `arrayBuffer`), con prueba de 300 «ñ».
+3. El GET de refresco podía pisar un voto recién guardado: los cursos votados en la visita ya
+   no se repintan con ese GET.
+4. Los builds de staging leían los votos de producción mientras su widget usa la D1 de preview:
+   staging compila con `RATINGS_API_URL=off`.
+
 **Pendiente de JP:** conseguir los primeros votos reales (p. ej. pedir a alumnas y contactos de
 WhatsApp que califiquen el curso que tomaron). Si se conserva la base de datos del WordPress
 anterior con kk Star Ratings (`wp_postmeta`: `_kksr_casts`, `_kksr_ratings`), se pueden importar

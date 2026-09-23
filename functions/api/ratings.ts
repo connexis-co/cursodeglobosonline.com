@@ -121,11 +121,15 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env, waitUnti
     return json({ error: 'unsupported_media_type' }, 415);
   }
 
-  const raw = await request.text();
-  if (raw.length > MAX_BODY_BYTES) return json({ error: 'payload_too_large' }, 413);
+  // En bytes, no en caracteres: «ñ» ocupa 2 bytes y un emoji 4.
+  if (Number(request.headers.get('Content-Length') ?? 0) > MAX_BODY_BYTES) {
+    return json({ error: 'payload_too_large' }, 413);
+  }
+  const bytes = await request.arrayBuffer();
+  if (bytes.byteLength > MAX_BODY_BYTES) return json({ error: 'payload_too_large' }, 413);
   let body: Record<string, unknown>;
   try {
-    const parsed: unknown = JSON.parse(raw);
+    const parsed: unknown = JSON.parse(new TextDecoder().decode(bytes));
     if (!parsed || typeof parsed !== 'object') throw new Error('not an object');
     body = parsed as Record<string, unknown>;
   } catch {
