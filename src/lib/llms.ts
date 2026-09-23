@@ -3,6 +3,8 @@ import { COUNTRIES } from './countries';
 import { BLOG_CLUSTERS } from './blog-clusters';
 import { getPublishedPosts, type Post } from './blog';
 import { coursePricing, usd } from './pricing';
+import { getCourseRating } from './ratings';
+import { MIN_VOTES_FOR_SCHEMA, formatAverage, votesLabel } from './ratings-config';
 import { SITE } from './site';
 
 /**
@@ -22,6 +24,13 @@ export function coursePriceLine(c: Course): string {
     ? `${usd(d.priceUSD!)} (${discountPct}% de descuento sobre ${usd(d.originalPriceUSD!)})`
     : usd(d.priceUSD!);
   return `Precio: ${base}, pago único${d.priceCheckedAt ? `, verificado en el checkout de Hotmart el ${fmtDate(d.priceCheckedAt)}` : ''}.`;
+}
+
+/** Votos propios del sitio (widget de estrellas); vacío si aún no hay suficientes. */
+export async function courseRatingLine(c: Course): Promise<string> {
+  const r = await getCourseRating(c.id);
+  if (r.count < MIN_VOTES_FOR_SCHEMA) return '';
+  return `Valoración de visitantes de ${SITE.name}: ${formatAverage(r.average)}/5 (${votesLabel(r.count)}).`;
 }
 
 export async function loadLlmsData() {

@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { SITE } from '@/lib/site';
-import { CHOOSER, SITE_FACTS, coursePriceLine, loadLlmsData, mdxToPlain } from '@/lib/llms';
+import { CHOOSER, SITE_FACTS, coursePriceLine, courseRatingLine, loadLlmsData, mdxToPlain } from '@/lib/llms';
 
 /**
  * llms-full.txt — contexto completo para asistentes de IA: temario de cada curso,
@@ -8,13 +8,14 @@ import { CHOOSER, SITE_FACTS, coursePriceLine, loadLlmsData, mdxToPlain } from '
  */
 export const GET: APIRoute = async () => {
   const { courses, posts } = await loadLlmsData();
-  const courseBlocks = courses.map((c) => {
+  const ratingLines = await Promise.all(courses.map(courseRatingLine));
+  const courseBlocks = courses.map((c, i) => {
     const d = c.data;
     return `## ${d.title}
 URL: ${SITE.url}/co/${c.id}/
 ${d.shortDescription}
 - ${d.lessonsCount} videos · nivel: ${d.level} · certificado de estudios · acceso de por vida · garantía de 7 días (Hotmart)
-- ${coursePriceLine(c)}
+- ${coursePriceLine(c)}${ratingLines[i] ? `\n- ${ratingLines[i]}` : ''}
 
 Qué aprenderás:
 ${d.learnings.map((l) => `- ${l}`).join('\n')}

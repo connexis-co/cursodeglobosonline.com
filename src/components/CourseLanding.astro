@@ -13,12 +13,14 @@ import FaqAccordion from '@/components/FaqAccordion.astro';
 import HotmartBadge from '@/components/HotmartBadge.astro';
 import Icon from '@/components/Icon.astro';
 import StickyCta from '@/components/StickyCta.astro';
+import StarRating from '@/components/StarRating.astro';
 import { formatPrice, type Country, type City } from '@/lib/countries';
 import { getCategory } from '@/lib/categories';
 import { getCityLocal } from '@/lib/cities';
 import { buildHotmartUrl } from '@/lib/hotmart';
 import { coursePricing, usd } from '@/lib/pricing';
 import { postsForCourse, postUrl } from '@/lib/blog';
+import { getCourseRating } from '@/lib/ratings';
 import { countryAlternates, breadcrumbSchema, courseSchema, faqSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
@@ -67,6 +69,9 @@ const geoFaqs = [
 ];
 const allFaqs = [...d.faqs, ...geoFaqs, ...(cityLocal?.faqs ?? [])];
 
+// Votos propios del sitio (D1): los mismos números en el widget y en el aggregateRating.
+const siteRating = await getCourseRating(course.id);
+
 // Anti-canibalización: la página curso-ciudad declara canonical → curso-país, así que
 // el schema y el breadcrumb describen siempre la URL canónica.
 const canonicalPath = `/${country.code}/${course.id}/`;
@@ -83,6 +88,7 @@ const schemas = [
     price: d.priceUSD,
     producer: d.producer,
     instructor: d.instructor,
+    rating: siteRating,
   }),
   faqSchema(allFaqs),
   breadcrumbSchema([
@@ -195,8 +201,9 @@ const sealEdge = (() => {
           </h1>
           <p class="mt-4 max-w-xl text-base leading-relaxed text-ciruela-500">{d.shortDescription}</p>
 
-          <div class="mt-5 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm font-semibold text-ciruela-600">
-            {d.rating && <Rating rating={d.rating} count={d.ratingCount} />}
+          <StarRating course={course.id} courseTitle={d.title} rating={siteRating} class="mt-4" />
+
+          <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm font-semibold text-ciruela-600">
             {
               d.hotmartRating && d.hotmartProductUrl && (
                 <a
@@ -611,6 +618,24 @@ const sealEdge = (() => {
             </div>
           ))
         }
+      </div>
+      <div
+        id="calificar"
+        class="mx-auto mt-10 max-w-2xl scroll-mt-28 rounded-3xl border border-crema-200 bg-white px-6 py-8 text-center shadow-tarjeta sm:px-10"
+      >
+        <h3 class="font-display text-xl font-semibold text-ciruela-900 sm:text-2xl">¿Tomaste el {d.title}? Califícalo</h3>
+        <p class="mx-auto mt-2 max-w-md text-sm text-ciruela-500">
+          Tu voto de 1 a 5 estrellas ayuda a otras personas a elegir. Es anónimo y puedes cambiarlo cuando quieras.
+        </p>
+        <StarRating
+          course={course.id}
+          courseTitle={d.title}
+          rating={siteRating}
+          size="lg"
+          center
+          prompt="Elige de 1 a 5 estrellas"
+          class="mt-5"
+        />
       </div>
     </div>
   </section>

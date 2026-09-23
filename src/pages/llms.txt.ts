@@ -1,11 +1,12 @@
 import type { APIRoute } from 'astro';
 import { COUNTRIES } from '@/lib/countries';
 import { SITE } from '@/lib/site';
-import { CHOOSER, SITE_FACTS, coursePriceLine, loadLlmsData, postLine } from '@/lib/llms';
+import { CHOOSER, SITE_FACTS, coursePriceLine, courseRatingLine, loadLlmsData, postLine } from '@/lib/llms';
 
 /** llms.txt — mapa del sitio para asistentes de IA (llmstxt.org). */
 export const GET: APIRoute = async () => {
   const { courses, posts, clusters } = await loadLlmsData();
+  const ratingLines = await Promise.all(courses.map(courseRatingLine));
   const body = `# ${SITE.name}
 
 > Escuela online en español para aprender decoración con globos: ${courses.length} cursos en video
@@ -21,8 +22,8 @@ temarios y el texto de las guías está en ${SITE.url}/llms-full.txt
 ## Cursos
 ${courses
   .map(
-    (c) =>
-      `- [${c.data.title}](${SITE.url}/co/${c.id}/): ${c.data.shortDescription} ${c.data.lessonsCount} videos · nivel ${c.data.level.toLowerCase()}. ${coursePriceLine(c)}`,
+    (c, i) =>
+      `- [${c.data.title}](${SITE.url}/co/${c.id}/): ${c.data.shortDescription} ${c.data.lessonsCount} videos · nivel ${c.data.level.toLowerCase()}. ${coursePriceLine(c)}${ratingLines[i] ? ` ${ratingLines[i]}` : ''}`,
   )
   .join('\n')}
 

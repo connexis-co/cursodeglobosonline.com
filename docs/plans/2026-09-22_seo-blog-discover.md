@@ -32,6 +32,8 @@
    páginas de afiliado. **Sin `aggregateRating`:** las valoraciones reales existen pero son de Hotmart
    (tercero) y Google prohíbe "aggregate reviews or ratings from other websites"; se muestran visibles
    con enlace a la fuente. Las estrellas en la SERP llegarán cuando el sitio recoja reseñas propias.
+   **Actualizado 2026-09-23:** el sitio ya recoge votos propios y publica `aggregateRating` con ellos
+   (ver `2026-09-23_valoraciones-estrellas.md`).
 4. **Honestidad de datos:** precios del checkout de Hotmart con fecha (US$25/49,99/79,99/49,99);
    los testimonios placeholder (8 en el sitio + 3 en las landings de Ads) se sustituyen por reseñas
    reales citadas de Hotmart.

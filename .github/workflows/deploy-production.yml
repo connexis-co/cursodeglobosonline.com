@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
 
+# Un solo deploy a producción a la vez (este y ratings-refresh.yml comparten el grupo).
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest

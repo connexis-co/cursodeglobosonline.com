@@ -4,6 +4,29 @@
 
 ---
 
+# Sesión 2026-09-23 — Estrellas propias (estilo kk Star Ratings) y `aggregateRating`
+
+JP pidió estrellas obligatorias con su dato estructurado y un mecanismo para que la gente
+califique cada curso, como el plugin kk Star Ratings de WordPress. Plan y resultado:
+`docs/plans/2026-09-23_valoraciones-estrellas.md`.
+
+- **Widget** `StarRating.astro` en el hero de cada ficha y en un bloque «¿Tomaste el curso?
+  Califícalo» bajo las reseñas: voto con un clic, cambio de voto y sincronía entre instancias.
+- **API** `functions/api/ratings.ts` (Pages Function) + **D1** `cursodeglobosonline-ratings`
+  (`…-preview` para previews), configurada en `wrangler.jsonc`. Migraciones en `migrations/`
+  (`npm run db:migrate`). Secreto `RATING_SALT` en los dos entornos del proyecto de Pages.
+- **Schema:** `aggregateRating` en el `Course`+`Product` desde el primer voto real, con el mismo
+  dato que se ve en la página. Hotmart sigue aparte, visible y fuera del schema.
+- **Build y refresco:** el build lee `/api/ratings` de producción; `ratings-refresh.yml`
+  recompila cada día si cambiaron los votos y avisa por IndexNow.
+- **Pruebas:** `npm run test:ratings` (28 comprobaciones) corre en CI contra una D1 local; también
+  pasó en un preview real de Cloudflare.
+- **Entorno:** wrangler está autenticado en este Mac (OAuth, permisos D1 y Pages), así que no hace
+  falta pegar tokens. El disco quedó en 97 % (27 GB libres). El scratchpad temporal se borró y con
+  él el `secrets.env` de la sesión anterior: las credenciales ya no están en disco.
+
+---
+
 # Sesión 2026-09-22 — SEO, blog para Discover, marca y anti-canibalización
 
 ## 0. TL;DR
@@ -40,7 +63,8 @@
 
 ## 2. Decisiones que NO deben revertirse sin hablar con JP
 
-- **Sin `aggregateRating` con datos de Hotmart** (riesgo de acción manual por marcado engañoso).
+- **`aggregateRating` solo con votos propios del sitio** (widget de estrellas → D1); nunca con
+  datos de Hotmart (riesgo de acción manual por marcado engañoso).
 - **Nada de imitar el logo de Hotmart** ni decir «partner oficial»: el sitio es afiliado.
 - **Curso-ciudad canónico al curso-país**: revertirlo devuelve la canibalización medida en GSC.
 - **Precios en USD como principal**, con el equivalente local marcado como aproximado.

@@ -53,7 +53,9 @@
 - [ ] Revisar en Cloudflare que «Block AI bots» no bloquee a OAI-SearchBot/PerplexityBot
 - [ ] Consolidar GA4 en GTM (hoy el contenedor dispara dos propiedades) y publicar los triggers
 - [ ] Solicitar indexación manual de las URLs clave en GSC (guía en docs/seo/cowork-indexacion-manual-gsc.md)
-- [ ] Reseñas propias del sitio (formulario) para poder publicar estrellas con `aggregateRating`
+- [x] Estrellas propias del sitio con `aggregateRating` (widget + D1, 2026-09-23)
+- [ ] Conseguir los primeros votos reales (alumnas, contactos de WhatsApp); si existe la base del
+  WordPress con kk Star Ratings, valorar importar esos votos históricos
 
 ## 🔜 v0.3.0 — Contenido y conversión (pendiente de v0.2)
 
