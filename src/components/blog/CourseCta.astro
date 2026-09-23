@@ -1,0 +1,91 @@
+---
+/**
+ * Caja de conversión dentro de un artículo (disponible en MDX sin import:
+ * `<CourseCta curso="curso-de-globoflexia" />`). Enlaza a la money page del
+ * curso — nunca directo a Hotmart — para no saltarse la página que convierte
+ * y medir el paso blog → curso (evento click_blog_cta).
+ */
+import { getEntry } from 'astro:content';
+import { coursePricing, usd } from '@/lib/pricing';
+
+interface Props {
+  curso: string;
+  /** Frase propia del artículo; si falta se usa la descripción del curso. */
+  texto?: string;
+  variante?: 'normal' | 'compacta';
+}
+
+const { curso, texto, variante = 'normal' } = Astro.props;
+const isCatalog = curso === 'catalogo';
+const course = isCatalog ? undefined : await getEntry('courses', curso);
+if (!isCatalog && !course) throw new Error(`CourseCta: curso desconocido "${curso}"`);
+
+const d = course?.data;
+const href = isCatalog ? '/co/cursos/' : `/co/${curso}/`;
+const title = d?.title ?? 'Cursos online de decoración con globos';
+const body =
+  texto ??
+  d?.shortDescription ??
+  'Globoflexia, bouquets, flores y globos burbuja: cuatro cursos con certificado, a tu ritmo y con acceso de por vida.';
+const pricing = d ? coursePricing(d) : undefined;
+const hasPrice = pricing?.hasPrice ?? false;
+const hasDiscount = pricing?.hasDiscount ?? false;
+const trackParams = JSON.stringify({ course_slug: curso, placement: variante });
+---
+
+{
+  variante === 'compacta' ? (
+    <aside class="not-prose my-8 flex flex-col gap-3 rounded-2xl border border-coral-100 bg-coral-50 p-5 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-[0.95rem] leading-snug text-ciruela-700">
+        <strong class="text-ciruela-900">{title}:</strong> {body}
+      </p>
+      <a
+        href={href}
+        data-track="click_blog_cta"
+        data-track-params={trackParams}
+        class="shrink-0 rounded-xl bg-coral-600 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-coral-700"
+      >
+        Ver el curso
+      </a>
+    </aside>
+  ) : (
+    <aside class="not-prose my-10 overflow-hidden rounded-3xl border border-crema-200 bg-white shadow-tarjeta sm:flex">
+      {d?.cover && (
+        <img
+          src={d.cover}
+          alt={`Portada del ${d.title}`}
+          width="600"
+          height="600"
+          loading="lazy"
+          decoding="async"
+          class="aspect-[16/9] w-full object-cover sm:aspect-auto sm:w-56"
+        />
+      )}
+      <div class="flex flex-1 flex-col gap-3 p-6">
+        <p class="text-[0.7rem] font-extrabold tracking-[0.18em] text-coral-600 uppercase">
+          {isCatalog ? 'Aprende con método' : 'Curso online con certificado'}
+        </p>
+        <p class="font-display text-xl font-semibold text-ciruela-900">{title}</p>
+        <p class="text-sm leading-relaxed text-ciruela-500">{body}</p>
+        <div class="mt-1 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <a
+            href={href}
+            data-track="click_blog_cta"
+            data-track-params={trackParams}
+            class="rounded-xl bg-coral-600 px-5 py-3 text-sm font-bold text-white shadow-boton transition-colors hover:bg-coral-700"
+          >
+            {isCatalog ? 'Ver los cursos' : hasPrice ? `Ver el curso · ${usd(d!.priceUSD!)}` : 'Ver temario y precio'}
+          </a>
+          <span class="text-xs text-ciruela-500">
+            {hasDiscount && (
+              <>
+                Antes <s>{usd(d!.originalPriceUSD!)}</s> ·{' '}
+              </>
+            )}
+            Acceso de por vida · Garantía de 7 días en Hotmart
+          </span>
+        </div>
+      </div>
+    </aside>
+  )
+}

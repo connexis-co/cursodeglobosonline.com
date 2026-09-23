@@ -24,5 +24,6 @@ const stars = [1, 2, 3, 4, 5];
     }
   </span>
   <span class="text-sm font-bold">{rating.toFixed(1)}</span>
-  {count && <span class="text-xs text-ciruela-400">({count})</span>}
+  {/* ciruela-500: AA también sobre crema-100 (ciruela-400 da 4.45:1 ahí). `count > 0` evita pintar un «0». */}
+  {count != null && count > 0 && <span class="text-xs text-ciruela-500">({count})</span>}
 </span>

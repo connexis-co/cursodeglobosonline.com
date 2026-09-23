@@ -1,0 +1,48 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+  /** En móvil se muestra plegable. */
+  collapsible?: boolean;
+}
+const { headings, collapsible = false } = Astro.props;
+const items = headings.filter((h) => h.depth === 2);
+---
+
+{
+  items.length >= 3 &&
+    (collapsible ? (
+      <details class="toc rounded-2xl border border-crema-200 bg-white px-5 py-4 shadow-tarjeta">
+        <summary class="cursor-pointer list-none text-sm font-extrabold text-ciruela-800 [&::-webkit-details-marker]:hidden">
+          En esta guía ({items.length} secciones)
+        </summary>
+        <ol class="mt-3 space-y-2 border-t border-crema-200 pt-3 text-sm">
+          {items.map((h) => (
+            <li>
+              <a href={`#${h.slug}`} class="text-ciruela-600 hover:text-coral-600">
+                {h.text}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </details>
+    ) : (
+      <nav aria-label="Contenido del artículo" class="toc">
+        <p class="mb-3 text-[0.7rem] font-extrabold tracking-[0.18em] text-ciruela-400 uppercase">En esta guía</p>
+        <ol class="space-y-2 border-l-2 border-crema-200 text-sm">
+          {items.map((h) => (
+            <li>
+              <a
+                href={`#${h.slug}`}
+                data-toc-link={h.slug}
+                class="-ml-0.5 block border-l-2 border-transparent pl-3.5 leading-snug text-ciruela-500 transition-colors hover:text-coral-600 aria-[current=true]:border-coral-500 aria-[current=true]:font-bold aria-[current=true]:text-ciruela-900"
+              >
+                {h.text}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    ))
+}

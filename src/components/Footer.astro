@@ -1,5 +1,7 @@
 ---
+import { getCollection } from 'astro:content';
 import Logo from './Logo.astro';
+import Icon from './Icon.astro';
 import { COUNTRIES, DEFAULT_COUNTRY, type Country } from '@/lib/countries';
 import { CATEGORIES } from '@/lib/categories';
 import { SITE } from '@/lib/site';
@@ -10,6 +12,29 @@ interface Props {
 
 const { country } = Astro.props;
 const base = `/${country?.code ?? DEFAULT_COUNTRY}`;
+
+// Solo categorías con cursos (las vacías no tienen página → evitaba 404 internos).
+// Los temas sin curso propio (eventos, emprendimiento) viven en el blog.
+const courses = await getCollection('courses');
+const topicLinks = CATEGORIES.map((cat) =>
+  courses.some((c) => c.data.category === cat.slug)
+    ? { href: `${base}/cursos/${cat.slug}/`, label: cat.name, icon: cat.icon }
+    : {
+        href: cat.slug === 'eventos' ? '/blog/#ideas-por-ocasion' : '/blog/#negocio',
+        label: cat.name,
+        icon: cat.icon,
+      },
+);
+
+/** Enlace de columna: ≥ 31 px de alto táctil (auditoría P2-2) sin romper el ritmo del texto. */
+const linkCls = 'inline-block py-1.5 transition-colors hover:text-coral-200';
+
+const socialLabels: Record<string, string> = {
+  instagram: 'Instagram',
+  tiktok: 'TikTok',
+  facebook: 'Facebook',
+  youtube: 'YouTube',
+};
 
 const socialIcons: Record<string, string> = {
   instagram:
@@ -27,7 +52,7 @@ const socialIcons: Record<string, string> = {
   <div class="contenedor grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
     <div>
       <div class="text-crema-50">
-        <Logo />
+        <Logo tone="dark" />
       </div>
       <p class="mt-4 max-w-xs text-sm leading-relaxed text-crema-100/70">
         {SITE.tagline} Cursos 100% online con certificado, para aprender a tu ritmo y montar tu negocio de
@@ -44,17 +69,17 @@ const socialIcons: Record<string, string> = {
           <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
       </a>
-      <div class="mt-5 flex gap-2.5">
+      <div class="mt-5 flex gap-2">
         {
           Object.entries(SITE.social).map(([name, url]) => (
             <a
               href={url}
               rel="noopener"
               target="_blank"
-              aria-label={name}
-              class="flex h-9 w-9 items-center justify-center rounded-full bg-crema-100/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-coral-500"
+              aria-label={socialLabels[name] ?? name}
+              class="flex h-11 w-11 items-center justify-center rounded-full bg-crema-100/10 transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600"
             >
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d={socialIcons[name]} />
               </svg>
             </a>
@@ -65,19 +90,24 @@ const socialIcons: Record<string, string> = {
 
     <nav aria-label="Categorías">
       <p class="mb-4 text-xs font-bold tracking-[0.18em] text-crema-100/50 uppercase">Categorías</p>
-      <ul class="space-y-2.5 text-sm">
+      <ul class="space-y-1 text-sm">
         {
-          CATEGORIES.map((cat) => (
+          topicLinks.map((link) => (
             <li>
-              <a href={`${base}/cursos/${cat.slug}/`} class="transition-colors hover:text-coral-200">
-                {cat.emoji} {cat.name}
+              <a href={link.href} class="inline-flex items-center gap-2 py-1.5 transition-colors hover:text-coral-200">
+                <Icon name={link.icon} size={17} class="text-sol-300" />
+                {link.label}
               </a>
             </li>
           ))
         }
         <li>
-          <a href={`${base}/cursos/`} class="font-semibold text-coral-200 transition-colors hover:text-coral-100">
-            Ver todos los cursos →
+          <a
+            href={`${base}/cursos/`}
+            class="group/todos inline-flex items-center gap-1.5 py-1.5 font-semibold text-coral-200 transition-colors hover:text-coral-100"
+          >
+            Ver todos los cursos
+            <Icon name="flecha" size={15} class="transition-transform duration-300 ease-fiesta group-hover/todos:translate-x-1" />
           </a>
         </li>
       </ul>
@@ -85,11 +115,11 @@ const socialIcons: Record<string, string> = {
 
     <nav aria-label="Países">
       <p class="mb-4 text-xs font-bold tracking-[0.18em] text-crema-100/50 uppercase">Países</p>
-      <ul class="grid grid-cols-2 gap-x-3 gap-y-2.5 text-sm">
+      <ul class="grid grid-cols-2 gap-x-3 gap-y-1 text-sm">
         {
           COUNTRIES.map((c) => (
             <li>
-              <a href={`/${c.code}/`} data-country-link={c.code} class="transition-colors hover:text-coral-200">
+              <a href={`/${c.code}/`} data-country-link={c.code} class={linkCls}>
                 {c.flag} {c.name}
               </a>
             </li>
@@ -100,13 +130,13 @@ const socialIcons: Record<string, string> = {
 
     <nav aria-label="Institucional">
       <p class="mb-4 text-xs font-bold tracking-[0.18em] text-crema-100/50 uppercase">Institucional</p>
-      <ul class="space-y-2.5 text-sm">
-        <li><a href="/nosotros/" class="transition-colors hover:text-coral-200">Nosotros</a></li>
-        <li><a href="/blog/" class="transition-colors hover:text-coral-200">Blog</a></li>
-        <li><a href="/contacto/" class="transition-colors hover:text-coral-200">Contacto</a></li>
-        <li><a href="/sitemap/" class="transition-colors hover:text-coral-200">Mapa del sitio</a></li>
-        <li><a href="/legal/terminos/" class="transition-colors hover:text-coral-200">Términos y condiciones</a></li>
-        <li><a href="/legal/privacidad/" class="transition-colors hover:text-coral-200">Política de privacidad</a></li>
+      <ul class="space-y-1 text-sm">
+        <li><a href="/nosotros/" class={linkCls}>Nosotros</a></li>
+        <li><a href="/blog/" class={linkCls}>Blog</a></li>
+        <li><a href="/contacto/" class={linkCls}>Contacto</a></li>
+        <li><a href="/sitemap/" class={linkCls}>Mapa del sitio</a></li>
+        <li><a href="/legal/terminos/" class={linkCls}>Términos y condiciones</a></li>
+        <li><a href="/legal/privacidad/" class={linkCls}>Política de privacidad</a></li>
       </ul>
     </nav>
   </div>
@@ -116,16 +146,12 @@ const socialIcons: Record<string, string> = {
       <p>© {new Date().getFullYear()} {SITE.name} · Una filial de Sably</p>
       <p class="flex flex-wrap items-center gap-x-2">
         <span>Certificado incluido ·</span>
-        <span class="inline-flex items-center gap-1.5">
-          Los cursos se imparten a través de
-          <svg width="12" height="14" viewBox="0 0 24 28" fill="none" aria-hidden="true">
-            <path
-              d="M13.6 0.8c0.5 3.4-0.9 5.6-2.9 7.6C8.8 10.3 6.6 12.1 6.6 15.4a5.4 5.4 0 0 0 10.8 0.2c0-5.6-3.9-7.8-4.7-12.1-1.2 1.5-1.8 2.8-1.7 4.7-2-1.6-2.6-4.6-2-7.4"
-              fill="#f04e23"></path>
-          </svg>
-          <span class="font-extrabold" style="color:#f04e23">Hotmart</span>
-        </span>
+        <span>Pago y acceso a los cursos a través de la plataforma Hotmart</span>
       </p>
     </div>
+    <p class="contenedor pb-6 text-[0.7rem] leading-relaxed text-crema-100/60">
+      Hotmart® es una marca registrada de su titular (Launch Pad Tecnologia). Se menciona solo para indicar dónde
+      se procesan el pago y el acceso a los cursos; este sitio no está patrocinado ni avalado por Hotmart.
+    </p>
   </div>
 </footer>

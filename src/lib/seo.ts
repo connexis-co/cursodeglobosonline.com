@@ -1,5 +1,11 @@
 import { COUNTRIES } from './countries';
 import { SITE } from './site';
+import type { Author } from './authors';
+import { authorUrl } from './authors';
+
+/** @id estables para enlazar nodos JSON-LD entre sí (un grafo coherente por página). */
+export const ORG_ID = `${SITE.url}/#organization`;
+export const WEBSITE_ID = `${SITE.url}/#website`;
 
 export interface HreflangAlternate {
   hreflang: string;
@@ -46,15 +52,19 @@ export function organizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': ORG_ID,
     name: SITE.name,
-    url: SITE.url,
+    url: `${SITE.url}/`,
+    description: SITE.description,
+    email: SITE.email,
     // PNG 512px: Google exige ≥112x112 y prefiere raster sobre el SVG del favicon.
-    logo: `${SITE.url}/icon-512.png`,
-    sameAs: Object.values(SITE.social),
+    logo: { '@type': 'ImageObject', url: `${SITE.url}/icon-512.png`, width: 512, height: 512 },
+    // Aún no hay perfiles sociales propios: los de Sably van en la organización matriz.
     parentOrganization: {
       '@type': 'Organization',
       name: SITE.parent.name,
       url: SITE.parent.url,
+      sameAs: Object.values(SITE.social),
     },
   };
 }
@@ -79,61 +89,140 @@ export function faqSchema(faqs: FaqEntry[]) {
 interface CourseSchemaInput {
   title: string;
   description: string;
+  /** URL CANÓNICA del curso (en páginas curso-ciudad, la del curso-país). */
   url: string;
-  /** Solo si el precio es real y verificado. */
-  price?: number;
-  priceCurrency?: string;
-  /** Solo si existen reseñas reales. */
-  rating?: number;
-  ratingCount?: number;
-  instructorName?: string;
+  images: string[];
+  level: string;
   category: string;
-  lessonsCount: number;
+  learnings: string[];
+  /** Solo si el precio es real, verificado y VISIBLE en la página. */
+  price?: number;
+  /** Productor real en Hotmart (el sitio es afiliado: publisher, no provider). */
+  producer?: string;
+  instructor?: { name: string; title: string; photo?: string };
 }
 
+const slug = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+
+/**
+ * Curso co-tipado ["Course","Product"] cuando hay precio visible → product snippet
+ * (precio y disponibilidad en la SERP; es el formato vigente para páginas de afiliado:
+ * Course info fue retirado por Google en 2025). SIN aggregateRating: las valoraciones
+ * de Hotmart son de un tercero y Google prohíbe agregarlas ("Don't aggregate reviews or
+ * ratings from other websites"). Se añadirá cuando existan reseñas propias del sitio.
+ */
 export function courseSchema(c: CourseSchemaInput) {
+  const producerNode = c.producer
+    ? { '@type': 'Organization', '@id': `${SITE.url}/#producer-${slug(c.producer)}`, name: c.producer }
+    : { '@id': ORG_ID };
+  const hasPrice = c.price !== undefined;
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': 'Course',
+    '@type': hasPrice ? ['Course', 'Product'] : 'Course',
+    '@id': `${c.url}#course`,
     name: c.title,
     description: c.description,
     url: c.url,
-    provider: {
-      '@type': 'Organization',
-      name: SITE.name,
-      url: SITE.url,
-    },
+    image: c.images,
+    inLanguage: 'es',
+    educationalLevel: c.level,
     about: c.category,
-    educationalCredentialAwarded: 'Certificado de estudios',
-    numberOfCredits: c.lessonsCount,
+    teaches: c.learnings,
+    provider: producerNode,
+    publisher: { '@id': ORG_ID },
+    educationalCredentialAwarded: {
+      '@type': 'EducationalOccupationalCredential',
+      name: 'Certificado de estudios',
+      credentialCategory: 'certificate',
+    },
     hasCourseInstance: {
       '@type': 'CourseInstance',
-      courseMode: 'Online',
-      location: { '@type': 'VirtualLocation', url: c.url },
+      courseMode: 'online',
+      inLanguage: 'es',
     },
-    inLanguage: 'es',
-    availableLanguage: ['es'],
   };
-  if (c.instructorName) {
-    schema.instructor = { '@type': 'Person', name: c.instructorName };
-  }
-  if (c.rating !== undefined && c.ratingCount !== undefined) {
-    schema.aggregateRating = {
-      '@type': 'AggregateRating',
-      ratingValue: c.rating,
-      ratingCount: c.ratingCount,
-      bestRating: 5,
+  if (c.instructor) {
+    schema.instructor = {
+      '@type': 'Person',
+      name: c.instructor.name,
+      jobTitle: c.instructor.title,
+      ...(c.instructor.photo ? { image: new URL(c.instructor.photo, SITE.url).href } : {}),
     };
   }
-  if (c.price !== undefined && c.priceCurrency) {
+  if (hasPrice) {
+    schema.brand = { '@type': 'Brand', name: c.producer ?? SITE.name };
     schema.offers = {
       '@type': 'Offer',
-      price: c.price,
-      priceCurrency: c.priceCurrency,
+      price: c.price!.toFixed(2),
+      priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
       category: 'Paid',
       url: c.url,
+      ...(c.producer ? { seller: producerNode } : {}),
     };
   }
   return schema;
+}
+
+export function websiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': WEBSITE_ID,
+    name: SITE.name,
+    url: `${SITE.url}/`,
+    inLanguage: 'es',
+    publisher: { '@id': ORG_ID },
+  };
+}
+
+interface BlogPostingInput {
+  url: string;
+  headline: string;
+  description: string;
+  /** URLs absolutas de la imagen principal en 16:9, 4:3 y 1:1 (>= 1200px, Discover). */
+  images: string[];
+  datePublished: Date;
+  dateModified: Date;
+  author: Author;
+  section: string;
+  keywords: string[];
+  wordCount?: number;
+}
+
+export function blogPostingSchema(p: BlogPostingInput) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${p.url}#article`,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': p.url },
+    headline: p.headline.slice(0, 110),
+    description: p.description,
+    image: p.images,
+    datePublished: p.datePublished.toISOString(),
+    dateModified: p.dateModified.toISOString(),
+    author: {
+      '@type': p.author.type,
+      name: p.author.name,
+      url: authorUrl(p.author.slug),
+      ...(p.author.jobTitle ? { jobTitle: p.author.jobTitle } : {}),
+    },
+    publisher: {
+      '@type': 'Organization',
+      '@id': ORG_ID,
+      name: SITE.name,
+      url: SITE.url,
+      logo: { '@type': 'ImageObject', url: `${SITE.url}/icon-512.png`, width: 512, height: 512 },
+    },
+    articleSection: p.section,
+    keywords: p.keywords.join(', '),
+    inLanguage: 'es',
+    isPartOf: { '@id': WEBSITE_ID },
+    ...(p.wordCount ? { wordCount: p.wordCount } : {}),
+  };
 }

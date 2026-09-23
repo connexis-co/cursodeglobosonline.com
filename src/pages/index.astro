@@ -10,6 +10,12 @@ import TestimonialCard from '@/components/TestimonialCard.astro';
 import CertificateShowcase from '@/components/CertificateShowcase.astro';
 import LeadForm from '@/components/LeadForm.astro';
 import FaqAccordion from '@/components/FaqAccordion.astro';
+import Icon from '@/components/Icon.astro';
+import PostCard from '@/components/blog/PostCard.astro';
+import { getPublishedPosts } from '@/lib/blog';
+import { COUNTRIES, DEFAULT_COUNTRY } from '@/lib/countries';
+import { buildWhatsAppUrl } from '@/lib/hotmart';
+import type { IconName } from '@/lib/icons';
 import { countryAlternates, faqSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
@@ -18,7 +24,25 @@ const courses = (await getCollection('courses')).sort(
 );
 const featured = courses.find((c) => c.data.featured) ?? courses[0];
 const others = courses.filter((c) => c.id !== featured.id);
+// Reseñas reales de Hotmart (sustituyen a los testimonios placeholder del lanzamiento).
 const testimonials = (await getCollection('testimonials')).slice(0, 6);
+// Las 3 guías más recientes del blog: enlazado interno home → blog (clusters informacionales).
+// La sección solo se pinta si hay artículos publicados.
+const guias = (await getPublishedPosts()).slice(0, 3);
+
+// Tarjeta de asesoría que llena la celda libre del grid de cursos (fila 2, col. 3 en lg).
+const defaultCountry = COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
+const waAsesoria = buildWhatsAppUrl(
+  defaultCountry.whatsapp,
+  'Hola 🎈 No sé qué curso de globos elegir. ¿Me ayudan a escoger?',
+);
+
+const metodo: { icon: IconName; title: string; text: string }[] = [
+  { icon: 'play', title: 'La técnica en cámara, sin relleno', text: 'Ves las manos del instructor en cada amarre y cada retorcido, y lo repites a tu ritmo.' },
+  { icon: 'dispositivo', title: 'Desde el celular o el computador', text: 'Acceso inmediato al pagar, sin horarios y para siempre. Repasa antes de cada pedido.' },
+  { icon: 'tareas', title: 'Tareas calificadas y asistencia académica', text: 'No estudias en solitario: entregas prácticas y recibes correcciones mientras avanzas.' },
+  { icon: 'regalo', title: 'Bonos que se venden solos', text: 'Presupuestos, porta globos, bouquets de desayuno sorpresa: productos listos para cobrar.' },
+];
 
 const faqs = [
   {
@@ -57,32 +81,16 @@ const faqs = [
 ---
 
 <BaseLayout
-  title="Curso de Decoración con Globos Online 🎈 Con Certificado"
-  description="Aprende decoración con globos online: globoflexia, bouquets, flores y globos burbuja. Certificado de estudios, acceso de por vida y 50% OFF en el curso estrella."
+  title="Curso de Decoración con Globos Online con Certificado"
+  description="4 cursos online de decoración con globos: globoflexia, bouquets, flores y globos burbuja. Certificado, acceso de por vida y garantía de 7 días."
   alternates={countryAlternates('/')}
   schemas={[faqSchema(faqs)]}
   pageType="home"
   transparentHeader
 >
   <!-- 1 · HERO -->
+  <!-- Sin «glows» blur-3xl (P1-7): la fiesta la ponen los globos y la onda. -->
   <section class="relative overflow-hidden bg-ciruela-900 text-crema-50">
-    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-      <div
-        class="absolute -top-32 -left-32 h-[30rem] w-[30rem] rounded-full opacity-25 blur-3xl"
-        style="background: radial-gradient(circle, oklch(0.62 0.2 14 / 0.8), transparent 65%)"
-      >
-      </div>
-      <div
-        class="absolute top-1/3 -right-40 h-[26rem] w-[26rem] rounded-full opacity-20 blur-3xl"
-        style="background: radial-gradient(circle, oklch(0.74 0.1 303 / 0.8), transparent 65%)"
-      >
-      </div>
-      <div
-        class="absolute bottom-0 left-1/3 h-72 w-72 rounded-full opacity-20 blur-3xl"
-        style="background: radial-gradient(circle, oklch(0.78 0.1 193 / 0.8), transparent 65%)"
-      >
-      </div>
-    </div>
     <Balloons variant="hero" />
 
     <div class="contenedor relative pt-14 pb-20 text-center sm:pt-16 lg:pt-20 lg:pb-28">
@@ -110,15 +118,18 @@ const faqs = [
       >
         <a
           href="/co/cursos/"
-          class="rounded-xl bg-coral-500 px-8 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-600"
+          class="rounded-xl bg-coral-600 px-8 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-700"
         >
           Explorar los cursos
         </a>
         <a
           href={`/co/${featured.id}/`}
-          class="rounded-xl border-2 border-crema-50/30 px-8 py-4 text-sm font-bold backdrop-blur-sm transition-all duration-300 hover:border-sol-300 hover:text-sol-300"
+          class="inline-flex items-center justify-center gap-2.5 rounded-xl border-2 border-crema-50/30 px-5 py-4 text-sm font-bold whitespace-nowrap backdrop-blur-sm transition-all duration-300 hover:border-sol-300 hover:text-sol-300 min-[360px]:px-8"
         >
-          🔥 Globoflexia con 50% OFF
+          <span class="flex h-6 w-6 items-center justify-center rounded-full bg-sol-300 text-ciruela-900">
+            <Icon name="etiqueta" size={14} />
+          </span>
+          Globoflexia con 50% OFF
         </a>
       </div>
       <p class="animate-fade-slide-up mt-7 text-xs text-crema-100/60" style="animation-delay: 0.45s">
@@ -141,22 +152,66 @@ const faqs = [
       />
       <a
         href="/co/cursos/"
-        class="scroll-reveal mb-1 shrink-0 rounded-xl border-2 border-coral-500 px-5 py-2.5 text-xs font-bold text-coral-600 transition-colors hover:bg-coral-500 hover:text-white"
+        class="scroll-reveal mb-1 inline-flex shrink-0 items-center gap-1 rounded-xl border-2 border-coral-600 px-5 py-2.5 text-xs font-bold text-coral-600 transition-colors hover:bg-coral-600 hover:text-white"
       >
-        Ver todos →
+        Ver todos <Icon name="flecha" size={14} />
       </a>
     </div>
+    <!-- Con 4 cursos: destacada (2 filas) + 3 tarjetas + asesoría = grid lleno en lg (3 col.)
+         y en sm (2 col.). Todas las tarjetas llevan h-full para igualar alturas por fila. -->
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <div class="scroll-reveal sm:col-span-2 lg:col-span-1 lg:row-span-2">
-        <CourseCard course={featured} large />
+        <CourseCard course={featured} large class="h-full" />
       </div>
       {
         others.map((course, i) => (
           <div class="scroll-reveal" style={`animation-delay:${i * 70}ms`}>
-            <CourseCard course={course} />
+            <CourseCard course={course} class="h-full" />
           </div>
         ))
       }
+      <div class="scroll-reveal" style={`animation-delay:${others.length * 70}ms`}>
+        <div
+          class="flex h-full flex-col rounded-3xl border-2 border-dashed border-coral-200 bg-coral-50 p-6 transition-transform duration-300 ease-suave hover:rotate-0 sm:rotate-[-0.6deg]"
+        >
+          <p class="text-[0.7rem] font-extrabold tracking-[0.18em] text-coral-700 uppercase">Asesoría gratis</p>
+          <h3 class="mt-2 font-display text-xl font-semibold text-ciruela-900">¿No sabes cuál elegir?</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ciruela-600">
+            Te asesoramos por WhatsApp según lo que quieras hacer:
+          </p>
+          <ul class="mt-3 space-y-2 text-sm text-ciruela-700">
+            <li class="flex gap-2">
+              <Icon name="globo" size={15} class="mt-0.5 text-coral-600" />
+              <span>Animación de fiestas: <strong class="font-extrabold">Globoflexia</strong></span>
+            </li>
+            <li class="flex gap-2">
+              <Icon name="globo" size={15} class="mt-0.5 text-coral-600" />
+              <span>Arreglos y detalles: <strong class="font-extrabold">Bouquets</strong></span>
+            </li>
+            <li class="flex gap-2">
+              <Icon name="globo" size={15} class="mt-0.5 text-coral-600" />
+              <span>Eventos premium: <strong class="font-extrabold">Flores o Globos Burbuja</strong></span>
+            </li>
+          </ul>
+          <div class="mt-auto pt-5">
+            <a
+              href={waAsesoria}
+              target="_blank"
+              rel="noopener"
+              data-track="click_whatsapp"
+              data-track-params={JSON.stringify({ page_location: Astro.url.pathname, placement: 'grid_asesoria' })}
+              class="inline-flex min-h-11 items-center gap-2 rounded-xl bg-ciruela-900 px-5 text-sm font-bold text-crema-50 transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-ciruela-700"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="shrink-0 text-[#25d366]" aria-hidden="true">
+                <path
+                  d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.3 0-.2 0-.3-.1-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.7-.4Z"
+                ></path>
+              </svg>
+              Escríbenos por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -169,17 +224,16 @@ const faqs = [
         <h2 class="text-3xl font-semibold text-balance sm:text-4xl">
           De tu primera figura a tu primer evento cobrado
         </h2>
-        <ul class="mt-8 space-y-5">
+        <!-- Iconos SVG propios (sin emojis) ensartados en un hilo discontinuo, como globos en su
+             cuerda: evita la fila de cuadrados iguales de plantilla (P1-6). -->
+        <ul
+          class="relative mt-8 space-y-5 before:absolute before:top-4 before:bottom-4 before:left-[21px] before:border-l-2 before:border-dashed before:border-crema-50/15"
+        >
           {
-            [
-              ['🎥', 'La técnica en cámara, sin relleno', 'Ves las manos del instructor en cada amarre y cada retorcido, y lo repites a tu ritmo.'],
-              ['📱', 'Desde el celular o el computador', 'Acceso inmediato al pagar, sin horarios y para siempre. Repasa antes de cada pedido.'],
-              ['🧾', 'Tareas calificadas y asistencia académica', 'No estudias en solitario: entregas prácticas y recibes correcciones mientras avanzas.'],
-              ['💼', 'Bonos que se venden solos', 'Presupuestos, porta globos, bouquets de desayuno sorpresa: productos listos para cobrar.'],
-            ].map(([emoji, title, text]) => (
-              <li class="flex gap-4">
-                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-crema-50/10 text-xl">
-                  {emoji}
+            metodo.map(({ icon, title, text }) => (
+              <li class="relative flex gap-4">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ciruela-800 text-sol-300 ring-1 ring-crema-50/15">
+                  <Icon name={icon} size={20} />
                 </span>
                 <span>
                   <span class="block font-bold">{title}</span>
@@ -193,7 +247,7 @@ const faqs = [
           href={`/co/${featured.id}/`}
           class="mt-9 inline-block rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-ciruela-900 transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-sol-300"
         >
-          Comienza tu primer curso
+          Ver el curso de globoflexia
         </a>
       </div>
       <div class="scroll-reveal-late relative mx-auto w-full max-w-md lg:max-w-none">
@@ -263,14 +317,20 @@ const faqs = [
   <section class="bg-crema-100 py-16 lg:py-24">
     <div class="contenedor">
       <SectionHeading
-        eyebrow="Estudiantes"
-        title="Historias que empezaron con una bolsa de globos"
-        lead="Decoradoras, animadores y emprendedores de 8 países que hoy cobran por lo que aprendieron aquí."
+        eyebrow="Reseñas reales"
+        title="Lo que escriben las alumnas en Hotmart"
+        lead="Citas textuales de la ficha pública de cada curso en Hotmart, la plataforma donde se compra y se estudia."
       />
-      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Móvil: carrusel con scroll-snap (antes 6 tarjetas apiladas ≈ 1.500 px). Desde sm, grid. -->
+      <p class="mt-6 inline-flex items-center gap-1 text-xs font-bold text-ciruela-500 sm:hidden">
+        Desliza para ver las {testimonials.length} reseñas <Icon name="flecha" size={14} />
+      </p>
+      <div
+        class="scroll-reveal -mx-5 mt-3 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 py-3 [scrollbar-width:none] sm:mx-0 sm:mt-10 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:p-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden [&>*]:w-[85%] [&>*]:shrink-0 [&>*]:snap-start sm:[&>*]:w-auto"
+      >
         {
-          testimonials.map((t, i) => (
-            <div class="scroll-reveal" style={`animation-delay:${i * 60}ms`}>
+          testimonials.map((t) => (
+            <div>
               <TestimonialCard testimonial={t} />
             </div>
           ))
@@ -330,30 +390,75 @@ const faqs = [
     </div>
   </section>
 
-  <!-- 10 · CTA FINAL -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-coral-600 via-coral-500 to-lila-500 text-white">
+  <!-- 10 · GUÍAS GRATIS DEL BLOG (solo si hay artículos publicados). Con 3 guías: carrusel
+       snap-x hasta lg (a 2 columnas quedaría una huérfana) y grid de 3 en lg. -->
+  {
+    guias.length > 0 && (
+      <section class="bg-crema-100 py-16 lg:py-24">
+        <div class="contenedor">
+          <div class="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading
+              eyebrow="Guías gratis del blog"
+              title="Practica gratis mientras eliges tu curso"
+              lead="Artículos paso a paso con medidas, cantidades y costos de referencia. Cada guía te dice qué curso lo enseña completo, en video y con certificado."
+            />
+            <a
+              href="/blog/"
+              class="scroll-reveal mb-1 inline-flex shrink-0 items-center gap-1.5 rounded-xl border-2 border-coral-600 px-5 py-2.5 text-xs font-bold text-coral-600 transition-colors hover:bg-coral-600 hover:text-white"
+            >
+              Ver todas las guías
+              <Icon name="flecha" size={14} />
+            </a>
+          </div>
+          {guias.length === 1 ? (
+            <div class="scroll-reveal mt-10">
+              <PostCard post={guias[0]} featured />
+            </div>
+          ) : guias.length === 2 ? (
+            <div class="scroll-reveal mt-10 grid gap-6 sm:grid-cols-2">
+              {guias.map((p) => (
+                <PostCard post={p} />
+              ))}
+            </div>
+          ) : (
+            <div class="scroll-reveal -mx-5 mt-7 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 py-3 [scrollbar-width:none] sm:-mx-8 sm:scroll-px-8 sm:px-8 lg:mx-0 lg:mt-10 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:p-0 [&::-webkit-scrollbar]:hidden [&>*]:w-[85%] [&>*]:shrink-0 [&>*]:snap-start sm:[&>*]:w-[46%] lg:[&>*]:w-auto">
+              {guias.map((p) => (
+                <PostCard post={p} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- 11 · CTA FINAL: fondo tinta sólido (antes degradado coral→lila, 2.4:1 en el extremo lila).
+       Un paso más claro que el footer (ciruela-900) y con onda hacia él, para que no se fundan. -->
+  <section class="relative overflow-hidden bg-ciruela-800 text-crema-50">
+    <Wave color={guias.length > 0 ? 'var(--color-crema-100)' : 'var(--color-crema-50)'} flip />
     <Balloons variant="rise" />
-    <div class="contenedor relative py-16 text-center lg:py-24">
+    <div class="contenedor relative py-14 text-center lg:py-20">
       <h2 class="mx-auto max-w-2xl text-3xl font-semibold text-balance sm:text-4xl">
         Tu primer montaje cobrado está a un curso de distancia
       </h2>
-      <p class="mx-auto mt-4 max-w-xl text-sm text-white/85 sm:text-base">
+      <p class="mx-auto mt-4 max-w-xl text-sm text-crema-100/80 sm:text-base">
         Únete a los {SITE.stats.students} estudiantes certificados que ya convirtieron los globos en ingresos.
       </p>
       <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <a
           href={`/co/${featured.id}/`}
-          class="rounded-xl bg-white px-8 py-4 text-sm font-bold text-coral-600 shadow-globo transition-all duration-300 ease-fiesta hover:-translate-y-1"
+          class="rounded-xl bg-coral-600 px-8 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-700"
         >
           Empezar con Globoflexia (50% OFF)
         </a>
         <a
           href="/co/cursos/"
-          class="rounded-xl border-2 border-white/50 px-8 py-4 text-sm font-bold transition-colors hover:bg-white/10"
+          class="rounded-xl border-2 border-crema-50/40 px-8 py-4 text-sm font-bold text-crema-50 transition-colors hover:border-sol-300 hover:text-sol-300"
         >
           Ver todos los cursos
         </a>
       </div>
     </div>
+    <Wave color="var(--color-ciruela-900)" />
   </section>
 </BaseLayout>

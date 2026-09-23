@@ -1,0 +1,26 @@
+---
+/**
+ * Nota destacada en MDX (sin import): `<Callout tipo="consejo" titulo="Truco de taller">…</Callout>`.
+ * Tipos: consejo (aqua), ojo (frambuesa, errores comunes), dato (sol, cifras y medidas).
+ */
+interface Props {
+  tipo?: 'consejo' | 'ojo' | 'dato';
+  titulo?: string;
+}
+const { tipo = 'consejo', titulo } = Astro.props;
+// Etiqueta siempre en tinta (contraste AA a 12px); el color del tipo vive en el borde.
+const styles = {
+  consejo: { box: 'border-aqua-500 bg-aqua-100/60', label: 'text-ciruela-800', name: 'Consejo' },
+  ojo: { box: 'border-coral-400 bg-coral-50', label: 'text-ciruela-800', name: 'Ojo' },
+  dato: { box: 'border-sol-500 bg-sol-100/70', label: 'text-ciruela-800', name: 'Dato útil' },
+}[tipo];
+---
+
+<aside class:list={['callout not-prose my-7 rounded-2xl border-l-4 px-5 py-4', styles.box]}>
+  <p class:list={['mb-1 text-xs font-extrabold tracking-[0.16em] uppercase', styles.label]}>
+    {titulo ?? styles.name}
+  </p>
+  <div class="text-[0.97rem] leading-relaxed text-ciruela-700 [&_p+p]:mt-2 [&_strong]:text-ciruela-900">
+    <slot />
+  </div>
+</aside>

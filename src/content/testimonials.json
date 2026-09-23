@@ -1,82 +1,92 @@
 [
   {
-    "id": "t-001",
-    "name": "Karen J.",
-    "citySlug": "bogota",
-    "countryCode": "co",
-    "courseSlug": "curso-de-globoflexia",
-    "category": "decoracion-con-globos",
-    "text": "Empecé haciendo perritos y espadas en el cumpleaños de mi hijo y ahora me contratan para animar fiestas los fines de semana. Lo que más me sirvió fue el video de roturas: ya casi no se me revienta ninguno.",
-    "rating": 5
-  },
-  {
-    "id": "t-002",
-    "name": "Marisol V.",
-    "citySlug": "cdmx",
-    "countryCode": "mx",
+    "id": "hm-bouquets-de-globos-2023-06-08-ana",
+    "name": "Ana",
     "courseSlug": "curso-de-bouquets-de-globos",
-    "category": "decoracion-con-globos",
-    "text": "Yo vendía desayunos sorpresa y le sumé el bouquet de globos del bono. El ticket de cada pedido subió y los clientes lo piden solito. El módulo de presupuesto me ordenó los precios.",
-    "rating": 5
+    "text": "A Sido muy bonita experiencia ya que te explican paso a paso todos los detalles para realizar un adorno ,me gustó mucho ,",
+    "rating": 5,
+    "date": "2023-06-08",
+    "source": "Hotmart",
+    "sourceUrl": "https://hotmart.com/es/marketplace/productos/bouquet-de-globos-para-eventos-y-fiestas/G56852236M"
   },
   {
-    "id": "t-003",
-    "name": "Luz Dary P.",
-    "citySlug": "medellin",
-    "countryCode": "co",
-    "courseSlug": "curso-de-globoflexia",
-    "category": "decoracion-con-globos",
-    "text": "Arranqué sin saber ni hacer el nudo. Hoy tengo mi repertorio de figuras y me llaman de salones infantiles. Me hubiera gustado más contenido de figuras gigantes, pero lo esencial está muy bien explicado.",
-    "rating": 4.5
-  },
-  {
-    "id": "t-004",
-    "name": "Guadalupe R.",
-    "citySlug": "guadalajara",
-    "countryCode": "mx",
-    "courseSlug": "curso-de-globos-burbuja",
-    "category": "decoracion-con-globos",
-    "text": "Trabajo en un salón de fiestas y ahora ofrecemos revelaciones con el globo boy-or-girl y el unicornio. Es el adicional que más se vende, sobre todo en las fotos.",
-    "rating": 5
-  },
-  {
-    "id": "t-005",
-    "name": "Yesenia T.",
-    "citySlug": "lima",
-    "countryCode": "pe",
-    "courseSlug": "curso-de-flores-con-globos",
-    "category": "decoracion-con-globos",
-    "text": "Las flores de distorsión me daban miedo y resultaron mi producto estrella. Los videos se entienden facilito y los repito antes de cada pedido. El Drive de ideas lo uso para cotizar.",
-    "rating": 5
-  },
-  {
-    "id": "t-006",
-    "name": "Camila S.",
-    "citySlug": "santiago",
-    "countryCode": "cl",
-    "courseSlug": "curso-de-globos-burbuja",
-    "category": "decoracion-con-globos",
-    "text": "Partí vendiendo globos burbuja con confeti para graduaciones. El truco del contrapeso me salvó en un evento al aire libre; eso no lo enseña ningún tutorial gratis.",
-    "rating": 5
-  },
-  {
-    "id": "t-007",
-    "name": "Rocío M.",
-    "citySlug": "buenosaires",
-    "countryCode": "ar",
+    "id": "hm-bouquets-de-globos-2022-05-24-jemima",
+    "name": "Jemima",
     "courseSlug": "curso-de-bouquets-de-globos",
-    "category": "decoracion-con-globos",
-    "text": "Arranqué con la plata justa: globos, inflador y cinta. Con los dos primeros bouquets recuperé la inversión. La constancia de estudios me sirvió para cerrar un acuerdo con una florería.",
-    "rating": 4.5
+    "text": "Me gusta lo claro al momento de hablar, al dar la explicación, Muestra claramente como hacer el trabajo y como ir ensamblando, y también como evitar errores, para, no perder material. Yo le doy a esta clase 4.5 Me gustaría que la introducción no estuviera tan larga, no abarcará tantos episodios. Y poder darle un episodio completo a la técnica de distorsión. Gracias por aclarar todos las dudas, que",
+    "rating": 4,
+    "date": "2022-05-24",
+    "source": "Hotmart",
+    "sourceUrl": "https://hotmart.com/es/marketplace/productos/bouquet-de-globos-para-eventos-y-fiestas/G56852236M"
   },
   {
-    "id": "t-008",
-    "name": "Vanessa O.",
-    "citySlug": "guayaquil",
-    "countryCode": "ec",
+    "id": "hm-globos-burbuja-2022-05-08-yaira",
+    "name": "Yaira",
+    "courseSlug": "curso-de-globos-burbuja",
+    "text": "es el primer curso que tomo que esta muy bien explicado paso a paso, lo que invertir no fue en vano. gracias por darnos esta oportunidad de aprender desde la distancia.",
+    "rating": 5,
+    "date": "2022-05-08",
+    "source": "Hotmart",
+    "sourceUrl": "https://hotmart.com/es/marketplace/productos/decoracion-de-globos-burbuja/F62444331S"
+  },
+  {
+    "id": "hm-globos-burbuja-2022-04-28-laura",
+    "name": "Laura",
+    "courseSlug": "curso-de-globos-burbuja",
+    "text": "Me encanto , tenía mis dudas y todas fueron aclaradas , más aprendí nuevas técnicas lo recomiendo 100%.",
+    "rating": 5,
+    "date": "2022-04-28",
+    "source": "Hotmart",
+    "sourceUrl": "https://hotmart.com/es/marketplace/productos/decoracion-de-globos-burbuja/F62444331S"
+  },
+  {
+    "id": "hm-globos-burbuja-2022-04-13-leslie",
+    "name": "Leslie",
+    "courseSlug": "curso-de-globos-burbuja",
+    "text": "Una experiencia muy buena aprendi muchísimas y me encanto 💖 lo recomiendo 👍😉",
+    "rating": 5,
+    "date": "2022-04-13",
+    "source": "Hotmart",
+    "sourceUrl": "https://hotmart.com/es/marketplace/productos/decoracion-de-globos-burbuja/F62444331S"
+  },
+  {
+    "id": "hm-globoflexia-2022-04-10-gloria",
+    "name": "Gloria",
     "courseSlug": "curso-de-globoflexia",
-    "category": "decoracion-con-globos",
-    "text": "Soy animadora infantil y la globoflexia me cambió el show. Después del módulo de figuras clásicas subí mis videos a Instagram como práctica y me empezaron a escribir para fiestas.",
-    "rating": 5
+    "text": "Me encanto el metodo utilizado. No sabia nada hacerca de esta tecnica y me gusto mucho como explica paso a paso,",
+    "rating": 5,
+    "date": "2022-04-10",
+    "source": "Hotmart",
+    "sourceUrl": "https://hotmart.com/es/marketplace/productos/globoflexia-figuras-con-globos/M47265375C"
+  },
+  {
+    "id": "hm-globos-burbuja-2022-03-11-lorena",
+    "name": "Lorena",
+    "courseSlug": "curso-de-globos-burbuja",
+    "text": "Me encanto Como comentario Falta un poco detalles de lo que debemos saber del Helio gracias",
+    "rating": 5,
+    "date": "2022-03-11",
+    "source": "Hotmart",
+    "sourceUrl": "https://hotmart.com/es/marketplace/productos/decoracion-de-globos-burbuja/F62444331S"
+  },
+  {
+    "id": "hm-globos-burbuja-2022-03-07-jamnia",
+    "name": "Jamnia",
+    "courseSlug": "curso-de-globos-burbuja",
+    "text": "Me encanto las explicaciones y ejemplos muy claros, no da lugar a ninguna duda, solo tengo una consulta este curso otorga diploma?",
+    "rating": 5,
+    "date": "2022-03-07",
+    "source": "Hotmart",
+    "sourceUrl": "https://hotmart.com/es/marketplace/productos/decoracion-de-globos-burbuja/F62444331S"
+  },
+  {
+    "id": "hm-bouquets-de-globos-2021-08-03-diana",
+    "name": "Diana",
+    "courseSlug": "curso-de-bouquets-de-globos",
+    "text": "muchas gracias por compartir sus conocimientos con migo estoy muy feliz ya que aprendí nuevas técnicas y como perfeccionar mis diseños",
+    "rating": 5,
+    "date": "2021-08-03",
+    "source": "Hotmart",
+    "sourceUrl": "https://hotmart.com/es/marketplace/productos/bouquet-de-globos-para-eventos-y-fiestas/G56852236M"
   }
 ]

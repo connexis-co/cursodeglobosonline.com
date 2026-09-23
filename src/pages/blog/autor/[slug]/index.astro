@@ -1,0 +1,67 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PostCard from '@/components/blog/PostCard.astro';
+import { AUTHORS, authorUrl, type Author } from '@/lib/authors';
+import { getPublishedPosts } from '@/lib/blog';
+import { breadcrumbSchema, ORG_ID } from '@/lib/seo';
+import { SITE } from '@/lib/site';
+
+export function getStaticPaths() {
+  return Object.values(AUTHORS).map((author) => ({ params: { slug: author.slug }, props: { author } }));
+}
+
+interface Props {
+  author: Author;
+}
+const { author } = Astro.props;
+const posts = (await getPublishedPosts()).filter((p) => p.data.author === author.slug);
+const url = authorUrl(author.slug);
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    url,
+    inLanguage: 'es',
+    mainEntity: {
+      '@type': author.type,
+      name: author.name,
+      url,
+      description: author.bio,
+      ...(author.type === 'Organization' ? { parentOrganization: { '@id': ORG_ID } } : {}),
+      ...(author.jobTitle ? { jobTitle: author.jobTitle } : {}),
+      ...(author.sameAs ? { sameAs: author.sameAs } : {}),
+    },
+  },
+  breadcrumbSchema([
+    { name: 'Inicio', url: `${SITE.url}/` },
+    { name: 'Blog', url: `${SITE.url}/blog/` },
+    { name: author.name, url },
+  ]),
+];
+---
+
+<BaseLayout
+  title={author.type === 'Organization' ? `Equipo editorial | ${SITE.name}` : `${author.name} | ${SITE.name}`}
+  description={author.bio.slice(0, 155)}
+  pageType="author"
+  {schemas}
+>
+  <div class="contenedor pt-10 pb-20 lg:pt-14">
+    <header class="max-w-3xl">
+      <p class="text-xs font-extrabold tracking-[0.22em] text-coral-600 uppercase">Autor</p>
+      <h1 class="mt-3 text-4xl font-semibold text-ciruela-900 sm:text-5xl">{author.name}</h1>
+      <p class="mt-4 text-lg leading-relaxed text-ciruela-500">{author.bio}</p>
+      <p class="mt-4 text-sm text-ciruela-500">
+        Cómo trabajamos: cada guía cita medidas y costos de referencia, se revisa contra el temario de los cursos y
+        se actualiza cuando cambian técnicas, materiales o precios. ¿Ves algo que corregir? Escríbenos a
+        <a href={`mailto:${SITE.email}`} class="font-bold text-coral-600">{SITE.email}</a>.
+      </p>
+    </header>
+
+    <h2 class="mt-14 text-2xl font-semibold text-ciruela-900">Guías publicadas ({posts.length})</h2>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {posts.map((p) => <PostCard post={p} />)}
+    </div>
+  </div>
+</BaseLayout>

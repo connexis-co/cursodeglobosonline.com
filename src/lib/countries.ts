@@ -30,7 +30,7 @@ export const COUNTRIES: Country[] = [
     hreflang: 'es-CO',
     currency: 'COP',
     currencySymbol: '$',
-    usdRate: 4000,
+    usdRate: 3380,
     priceRound: 1000,
     whatsapp: '573114574788',
     phoneDisplay: '+57 311 457 4788',
@@ -50,7 +50,7 @@ export const COUNTRIES: Country[] = [
     hreflang: 'es-MX',
     currency: 'MXN',
     currencySymbol: '$',
-    usdRate: 18,
+    usdRate: 18.3,
     priceRound: 10,
     whatsapp: '573114574788',
     phoneDisplay: '+57 311 457 4788',
@@ -69,7 +69,7 @@ export const COUNTRIES: Country[] = [
     hreflang: 'es-PE',
     currency: 'PEN',
     currencySymbol: 'S/',
-    usdRate: 3.7,
+    usdRate: 3.6,
     priceRound: 1,
     whatsapp: '573114574788',
     phoneDisplay: '+57 311 457 4788',
@@ -104,7 +104,7 @@ export const COUNTRIES: Country[] = [
     hreflang: 'es-CL',
     currency: 'CLP',
     currencySymbol: '$',
-    usdRate: 950,
+    usdRate: 1020,
     priceRound: 1000,
     whatsapp: '573114574788',
     phoneDisplay: '+57 311 457 4788',
@@ -121,7 +121,7 @@ export const COUNTRIES: Country[] = [
     hreflang: 'es-AR',
     currency: 'ARS',
     currencySymbol: '$',
-    usdRate: 1400,
+    usdRate: 1615,
     priceRound: 1000,
     whatsapp: '573114574788',
     phoneDisplay: '+57 311 457 4788',
@@ -139,7 +139,7 @@ export const COUNTRIES: Country[] = [
     hreflang: 'es-ES',
     currency: 'EUR',
     currencySymbol: '€',
-    usdRate: 0.92,
+    usdRate: 0.93,
     priceRound: 1,
     whatsapp: '573114574788',
     phoneDisplay: '+57 311 457 4788',
@@ -193,7 +193,12 @@ export function getCity(country: Country, citySlug: string): City {
   return city;
 }
 
-/** Convierte un precio base USD a moneda local con redondeo comercial. */
+/**
+ * Convierte un precio base USD a moneda local con redondeo comercial.
+ * `usdRate` = tasa de mercado × ~1,065 (tipo de cambio + spread que aplica el checkout
+ * de Hotmart; medido el 2026-09-22 en CO: US$25 → 84.479 COP). Es APROXIMADO: el valor
+ * exacto lo confirma Hotmart según el país y el medio de pago. Revisar cada trimestre.
+ */
 export function localPrice(priceUSD: number, country: Country): number {
   const raw = priceUSD * country.usdRate;
   return Math.round(raw / country.priceRound) * country.priceRound;

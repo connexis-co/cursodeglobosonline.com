@@ -20,6 +20,10 @@ export async function getStaticPaths() {
 }
 
 const { country, category } = Astro.props;
+// Con una sola categoría activa, esta página duplica el catálogo /{cc}/cursos/ y competía
+// con él y con /{cc}/ (auditoría 2026-09-22): noindex,follow hasta tener ≥ 2 categorías.
+const allCourses = await getCollection('courses');
+const activeCount = new Set(allCourses.map((c) => c.data.category)).size;
 const courses = (await getCollection('courses'))
   .filter((c) => c.data.category === category.slug)
   .sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
@@ -30,6 +34,7 @@ const courses = (await getCollection('courses'))
   description={`${category.short} Cursos online con certificado para ${country.name}.`}
   {country}
   pathAfterCountry={`/cursos/${category.slug}/`}
+  noindex={activeCount < 2}
   alternates={countryAlternates(`/cursos/${category.slug}/`)}
   schemas={[
     breadcrumbSchema([
@@ -41,7 +46,7 @@ const courses = (await getCollection('courses'))
   pageType="category"
 >
   <div class="contenedor pt-10 pb-16 lg:pt-12 lg:pb-24">
-    <nav class="mb-6 text-xs text-ciruela-400" aria-label="Miga de pan">
+    <nav class="mb-6 text-xs text-ciruela-500" aria-label="Miga de pan">
       <a href={`/${country.code}/`} class="hover:text-coral-600">{country.flag} {country.name}</a>
       <span aria-hidden="true"> / </span>
       <a href={`/${country.code}/cursos/`} class="hover:text-coral-600">Cursos</a>
@@ -49,8 +54,8 @@ const courses = (await getCollection('courses'))
       <span class="font-bold text-ciruela-600">{category.name}</span>
     </nav>
 
-    <SectionHeading
-      eyebrow={`${category.emoji} Categoría`}
+    <SectionHeading as="h1"
+      eyebrow="Categoría"
       title={`Cursos de ${category.name.toLowerCase()}`}
       lead={category.short}
     />
@@ -65,11 +70,12 @@ const courses = (await getCollection('courses'))
       }
     </div>
 
-    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- Igual que el catálogo: 2 columnas con tarjetas horizontales en lg (sin tarjeta huérfana). -->
+    <div class="mt-10 grid gap-6 sm:grid-cols-2">
       {
         courses.map((course, i) => (
           <div class="scroll-reveal" style={`animation-delay:${i * 60}ms`}>
-            <CourseCard {course} {country} />
+            <CourseCard {course} {country} horizontal class="h-full" />
           </div>
         ))
       }
@@ -82,7 +88,7 @@ const courses = (await getCollection('courses'))
       </p>
       <a
         href={`/${country.code}/`}
-        class="mt-5 inline-block rounded-xl bg-coral-500 px-6 py-3 text-xs font-bold text-white transition-colors hover:bg-coral-600"
+        class="mt-5 inline-block rounded-xl bg-coral-600 px-6 py-3 text-xs font-bold text-white transition-colors hover:bg-coral-700"
       >
         Pedir asesoría gratis
       </a>

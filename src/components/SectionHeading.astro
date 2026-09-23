@@ -5,8 +5,10 @@ interface Props {
   lead?: string;
   align?: 'left' | 'center';
   class?: string;
+  /** Nivel del titular: `h1` en páginas cuyo encabezado principal es este bloque. */
+  as?: 'h1' | 'h2';
 }
-const { eyebrow, title, lead, align = 'left', class: className } = Astro.props;
+const { eyebrow, title, lead, align = 'left', class: className, as: Tag = 'h2' } = Astro.props;
 ---
 
 <div class:list={['scroll-reveal max-w-2xl', align === 'center' && 'mx-auto text-center', className]}>
@@ -15,6 +17,6 @@ const { eyebrow, title, lead, align = 'left', class: className } = Astro.props;
       <p class="mb-2 text-xs font-extrabold tracking-[0.22em] text-coral-600">{eyebrow}</p>
     )
   }
-  <h2 class="text-3xl font-semibold text-ciruela-900 sm:text-4xl">{title}</h2>
+  <Tag class="text-3xl font-semibold text-ciruela-900 sm:text-4xl">{title}</Tag>
   {lead && <p class="mt-4 text-base leading-relaxed text-ciruela-500 sm:text-lg">{lead}</p>}
 </div>

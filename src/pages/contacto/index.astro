@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import LeadForm from '@/components/LeadForm.astro';
+import Icon from '@/components/Icon.astro';
 import { COUNTRIES, DEFAULT_COUNTRY } from '@/lib/countries';
 import { buildWhatsAppUrl } from '@/lib/hotmart';
 import { SITE } from '@/lib/site';
@@ -13,13 +14,13 @@ const waUrl = buildWhatsAppUrl(country.whatsapp, 'Hola 🎈 Tengo una pregunta s
 ---
 
 <BaseLayout
-  title="Contacto — Curso de Globos Online 🎈"
+  title="Contacto | Curso de Globos Online"
   description="¿Dudas sobre los cursos de decoración con globos? Escríbenos por WhatsApp o correo y te respondemos con toda la información."
   pageType="contact"
 >
   <div class="contenedor grid items-start gap-10 pt-10 pb-20 lg:grid-cols-[1fr_1.2fr] lg:pt-12">
     <div>
-      <SectionHeading
+      <SectionHeading as="h1"
         eyebrow="Contacto"
         title="Hablemos de tu próximo curso"
         lead="Respondemos dudas sobre temarios, precios en tu moneda, formas de pago y certificados."
@@ -33,7 +34,11 @@ const waUrl = buildWhatsAppUrl(country.whatsapp, 'Hola 🎈 Tengo una pregunta s
           data-track-params={JSON.stringify({ page_location: '/contacto/' })}
           class="flex items-center gap-4 rounded-2xl border border-crema-200 bg-white p-5 shadow-tarjeta transition-transform duration-300 ease-fiesta hover:-translate-y-1"
         >
-          <span class="flex h-11 w-11 items-center justify-center rounded-full bg-[#25d366]/15 text-xl">💬</span>
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#25d366]/15 text-[#1da851]">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.3 0-.2 0-.3-.1-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.7-.4Z"></path>
+            </svg>
+          </span>
           <span>
             <span class="block text-sm font-extrabold text-ciruela-800">WhatsApp</span>
             <span class="block text-xs text-ciruela-500">{country.phoneDisplay} · respuesta rápida</span>
@@ -43,7 +48,9 @@ const waUrl = buildWhatsAppUrl(country.whatsapp, 'Hola 🎈 Tengo una pregunta s
           href={`mailto:${SITE.email}`}
           class="flex items-center gap-4 rounded-2xl border border-crema-200 bg-white p-5 shadow-tarjeta transition-transform duration-300 ease-fiesta hover:-translate-y-1"
         >
-          <span class="flex h-11 w-11 items-center justify-center rounded-full bg-coral-50 text-xl">📧</span>
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-coral-50 text-coral-600">
+            <Icon name="correo" size={22} />
+          </span>
           <span>
             <span class="block text-sm font-extrabold text-ciruela-800">Correo</span>
             <span class="block text-xs text-ciruela-500">{SITE.email}</span>

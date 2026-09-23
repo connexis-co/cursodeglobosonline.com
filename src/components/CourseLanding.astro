@@ -11,11 +11,14 @@ import TestimonialCard from '@/components/TestimonialCard.astro';
 import CertificateShowcase from '@/components/CertificateShowcase.astro';
 import FaqAccordion from '@/components/FaqAccordion.astro';
 import HotmartBadge from '@/components/HotmartBadge.astro';
+import Icon from '@/components/Icon.astro';
 import StickyCta from '@/components/StickyCta.astro';
 import { formatPrice, type Country, type City } from '@/lib/countries';
 import { getCategory } from '@/lib/categories';
 import { getCityLocal } from '@/lib/cities';
 import { buildHotmartUrl } from '@/lib/hotmart';
+import { coursePricing, usd } from '@/lib/pricing';
+import { postsForCourse, postUrl } from '@/lib/blog';
 import { countryAlternates, breadcrumbSchema, courseSchema, faqSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
@@ -32,11 +35,13 @@ const { Content } = await render(course);
 const category = getCategory(d.category);
 const cityLocal = city ? getCityLocal(city.slug) : undefined;
 const placeName = city ? city.name : country.name;
-const basePath = city ? `/${country.code}/${city.slug}` : `/${country.code}`;
 
-const hasPrice = d.priceUSD !== undefined && d.originalPriceUSD !== undefined;
-const discountPct =
-  d.discountPct ?? (hasPrice ? Math.round((1 - d.priceUSD! / d.originalPriceUSD!) * 100) : undefined);
+const { hasPrice, hasDiscount, discountPct } = coursePricing(d);
+const priceDate = d.priceCheckedAt
+  ? new Intl.DateTimeFormat('es', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(
+      d.priceCheckedAt,
+    )
+  : undefined;
 
 const checkoutUrl = buildHotmartUrl({
   baseUrl: d.hotmartUrl,
@@ -62,26 +67,27 @@ const geoFaqs = [
 ];
 const allFaqs = [...d.faqs, ...geoFaqs, ...(cityLocal?.faqs ?? [])];
 
-const courseUrl = `${SITE.url}${basePath}/${course.id}/`;
+// Anti-canibalización: la página curso-ciudad declara canonical → curso-país, así que
+// el schema y el breadcrumb describen siempre la URL canónica.
+const canonicalPath = `/${country.code}/${course.id}/`;
+const courseUrl = `${SITE.url}${canonicalPath}`;
 const schemas = [
   courseSchema({
     title: d.title,
     description: d.shortDescription,
     url: courseUrl,
-    price: d.priceUSD,
-    priceCurrency: d.priceUSD !== undefined ? 'USD' : undefined,
-    rating: d.rating,
-    ratingCount: d.ratingCount,
-    instructorName: d.instructor?.name,
+    images: d.cover ? [new URL(d.cover, SITE.url).href] : [],
+    level: d.level,
     category: category.name,
-    lessonsCount: d.lessonsCount,
+    learnings: d.learnings,
+    price: d.priceUSD,
+    producer: d.producer,
+    instructor: d.instructor,
   }),
   faqSchema(allFaqs),
   breadcrumbSchema([
-    { name: 'Inicio', url: `${SITE.url}/${country.code}/` },
-    ...(city ? [{ name: city.name, url: `${SITE.url}/${country.code}/${city.slug}/` }] : []),
+    { name: country.name, url: `${SITE.url}/${country.code}/` },
     { name: 'Cursos', url: `${SITE.url}/${country.code}/cursos/` },
-    { name: category.name, url: `${SITE.url}/${country.code}/cursos/${category.slug}/` },
     { name: d.title, url: courseUrl },
   ]),
 ];
@@ -91,18 +97,21 @@ const related = (await getCollection('courses'))
   .sort((a, b) => (a.data.category === d.category ? -1 : 1) - (b.data.category === d.category ? -1 : 1))
   .slice(0, 3);
 
+// Reseñas reales de Hotmart: primero las de este curso, luego las de otros cursos.
 const allTestimonials = await getCollection('testimonials');
 const testimonials = [
-  ...allTestimonials.filter((t) => t.data.courseSlug === course.id && t.data.countryCode === country.code),
-  ...allTestimonials.filter((t) => t.data.courseSlug === course.id && t.data.countryCode !== country.code),
+  ...allTestimonials.filter((t) => t.data.courseSlug === course.id),
   ...allTestimonials.filter((t) => t.data.courseSlug !== course.id),
 ].slice(0, 3);
 
-const metaTitle = `${d.metaTitle ?? d.title} | ${placeName}`;
-const description = city
-  ? `${d.title} para ${city.name}, ${country.name}: ${d.shortDescription}`
-  : d.shortDescription;
-const trackParams = JSON.stringify({
+const guides = await postsForCourse(course.id, 3);
+
+// Title ≤ 60 car. (auditoría 2026-09-22): keyword al inicio + gancho real (descuento o nº de clases).
+const offerTag = hasDiscount && discountPct ? `: ${discountPct}% OFF (${usd(d.priceUSD!)})` : ` | ${d.lessonsCount} Clases`;
+let metaTitle = d.metaTitle ?? `${d.title} Online en ${placeName}${offerTag}`;
+if (!d.metaTitle && metaTitle.length > 60) metaTitle = `${d.title} en ${placeName}${offerTag}`;
+const description = (d.metaDescription ?? d.shortDescription).replaceAll('{lugar}', placeName);
+const trackBase = {
   course_name: d.title,
   course_category: category.name,
   price: d.priceUSD ?? '',
@@ -110,7 +119,28 @@ const trackParams = JSON.stringify({
   country: country.code,
   city: city?.slug ?? '',
   discount_pct: discountPct ?? '',
-});
+};
+const trackParams = JSON.stringify(trackBase);
+/** begin_checkout con la posición del botón (auditoría P2-8: comparar clics por ubicación). */
+const ctaTrack = (placement: 'hero' | 'aside_desktop' | 'certificate' | 'closing') =>
+  JSON.stringify({ ...trackBase, placement });
+const ctaLabel = discountPct ? `Inscribirme con ${discountPct}% OFF` : 'Inscribirme ahora';
+
+// Viñetas de "¿Este curso es para ti?": mini globo (anatomía de Balloons.astro) en colores
+// y giros alternos, para que la lista no parezca de plantilla.
+const BULLET_TONES = ['text-coral-500', 'text-aqua-500', 'text-sol-500', 'text-lila-500'];
+const BULLET_TILT = [-8, 6, -3, 9];
+
+// Sello de garantía: roseta festoneada (22 ondas) generada, no dibujada a ojo.
+const SEAL_WAVES = 22;
+const sealEdge = (() => {
+  const [cx, cy, r, crest] = [60, 58, 44, 50.5];
+  const pt = (a: number, rad: number) => `${(cx + rad * Math.cos(a)).toFixed(2)} ${(cy + rad * Math.sin(a)).toFixed(2)}`;
+  const step = (Math.PI * 2) / SEAL_WAVES;
+  let path = `M${pt(0, r)}`;
+  for (let i = 0; i < SEAL_WAVES; i++) path += ` Q${pt((i + 0.5) * step, crest)} ${pt((i + 1) * step, r)}`;
+  return `${path}Z`;
+})();
 ---
 
 <BaseLayout
@@ -119,6 +149,7 @@ const trackParams = JSON.stringify({
   {country}
   pathAfterCountry={`/${course.id}/`}
   alternates={city ? [] : countryAlternates(`/${course.id}/`)}
+  canonicalPath={city ? canonicalPath : undefined}
   {schemas}
   pageType={city ? 'course_city_page' : 'course_page'}
   whatsappContext={d.title}
@@ -133,22 +164,20 @@ const trackParams = JSON.stringify({
   <section id="curso-hero" class="relative overflow-hidden bg-crema-100 pt-6 lg:pt-8">
     <Balloons variant="corner-left" />
     <div class="contenedor relative pb-12 lg:pb-16">
-      <nav class="mb-8 text-xs text-ciruela-400" aria-label="Miga de pan">
-        <a href={`/${country.code}/`} class="hover:text-coral-600">{country.flag} {country.name}</a>
+      <nav class="mb-4 text-xs text-ciruela-500 lg:mb-8" aria-label="Miga de pan">
+        <a href={`/${country.code}/`} class="inline-block py-1 hover:text-coral-600 lg:py-0">{country.flag} {country.name}</a>
         {
           city && (
             <>
               <span aria-hidden="true"> / </span>
-              <a href={`/${country.code}/${city.slug}/`} class="hover:text-coral-600">
+              <a href={`/${country.code}/${city.slug}/`} class="inline-block py-1 hover:text-coral-600 lg:py-0">
                 {city.name}
               </a>
             </>
           )
         }
         <span aria-hidden="true"> / </span>
-        <a href={`/${country.code}/cursos/`} class="hover:text-coral-600">Cursos</a>
-        <span aria-hidden="true"> / </span>
-        <a href={`/${country.code}/cursos/${category.slug}/`} class="hover:text-coral-600">{category.name}</a>
+        <a href={`/${country.code}/cursos/`} class="inline-block py-1 hover:text-coral-600 lg:py-0">Cursos</a>
         <span aria-hidden="true"> / </span>
         <span class="font-bold text-ciruela-600">{d.title}</span>
       </nav>
@@ -158,7 +187,8 @@ const trackParams = JSON.stringify({
       <div class="grid items-start gap-x-10 gap-y-6 lg:grid-cols-[1.15fr_1fr]">
         <div class="lg:col-start-1">
           <span class="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-xs font-extrabold text-ciruela-700 shadow-tarjeta">
-            {category.emoji} {category.name} · {d.level}
+            <Icon name={category.icon} class="text-coral-600" />
+            {category.name} · {d.level}
           </span>
           <h1 class="mt-4 text-3xl font-semibold text-balance text-ciruela-900 sm:text-4xl lg:text-[2.75rem]">
             {d.title} en {placeName} — 100% online con certificado
@@ -167,6 +197,23 @@ const trackParams = JSON.stringify({
 
           <div class="mt-5 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm font-semibold text-ciruela-600">
             {d.rating && <Rating rating={d.rating} count={d.ratingCount} />}
+            {
+              d.hotmartRating && d.hotmartProductUrl && (
+                <a
+                  href={d.hotmartProductUrl}
+                  target="_blank"
+                  rel="noopener nofollow"
+                  class="inline-flex items-center gap-1.5 hover:text-coral-600"
+                  title="Valoración pública del curso en Hotmart"
+                >
+                  <Rating rating={d.hotmartRating.value} />
+                  <span class="text-xs font-semibold text-ciruela-500">
+                    {d.hotmartRating.count} {d.hotmartRating.count === 1 ? 'valoración' : 'valoraciones'} en Hotmart
+                  </span>
+                </a>
+              )
+            }
+            {d.hotmartRating && <span class="text-coral-400" aria-hidden="true">·</span>}
             <span>{d.lessonsCount} videos</span>
             <span class="text-coral-400" aria-hidden="true">·</span>
             <span>Certificado de estudios</span>
@@ -175,27 +222,28 @@ const trackParams = JSON.stringify({
           </div>
         </div>
 
+        <!-- Móvil: 16/10 y sin giro para que la caja de compra suba en el primer viewport (P1-1). -->
         <div class="relative mx-auto w-full max-w-md lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center">
-          <div class="rotate-2 overflow-hidden rounded-3xl border-4 border-white shadow-globo">
+          <div class="overflow-hidden rounded-3xl border-4 border-white shadow-globo sm:rotate-2">
             {
               d.cover ? (
                 <img
                   src={d.cover}
                   alt={`Imagen del ${d.title}`}
-                  class="aspect-[4/3] w-full object-cover"
+                  class="aspect-[16/10] w-full object-cover sm:aspect-[4/3]"
                   width="600"
                   height="450"
                   fetchpriority="high"
                 />
               ) : (
-                <div class="aspect-[4/3] w-full">
+                <div class="aspect-[16/10] w-full sm:aspect-[4/3]">
                   <CourseCover slug={course.id} category={d.category} title={d.title} />
                 </div>
               )
             }
           </div>
           <svg
-            class="animate-balloon-float absolute -top-8 -left-6 h-24 w-16"
+            class="animate-balloon-float absolute -top-8 -left-6 hidden h-24 w-16 sm:block"
             style="animation-duration: 5.5s"
             viewBox="0 0 40 62"
             fill="none"
@@ -209,31 +257,39 @@ const trackParams = JSON.stringify({
         </div>
 
         <div class="lg:col-start-1">
-          <div class="rounded-3xl border border-crema-200 bg-white p-5 shadow-tarjeta sm:p-6">
+          <div data-buy-box class="rounded-3xl border border-crema-200 bg-white p-5 shadow-tarjeta sm:p-6">
             {
               hasPrice ? (
                 <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
                   <div>
-                    <span class="block text-xs text-ciruela-400">
-                      Antes <s>{formatPrice(d.originalPriceUSD!, country)}</s>
-                    </span>
-                    <span class="block font-display text-3xl font-bold text-coral-600">
-                      {formatPrice(d.priceUSD!, country)}
-                    </span>
-                    <span class="block text-[0.65rem] text-ciruela-400">
-                      ≈ US$ {d.priceUSD} · Hotmart confirma el valor exacto en {country.currency}
+                    {hasDiscount && (
+                      <span class="block text-xs text-ciruela-500">
+                        Antes <s>{usd(d.originalPriceUSD!)}</s>
+                      </span>
+                    )}
+                    <span class="block font-display text-3xl font-bold text-coral-600">{usd(d.priceUSD!)}</span>
+                    <span class="block text-xs text-ciruela-500">
+                      ≈ {formatPrice(d.priceUSD!, country)} · Hotmart confirma el valor exacto en {country.currency}
                     </span>
                   </div>
-                  {discountPct && (
-                    <span class="rounded-full bg-coral-500 px-4 py-2 text-sm font-extrabold text-white">
+                  {hasDiscount && discountPct && (
+                    <span class="rounded-full bg-coral-600 px-4 py-2 text-sm font-extrabold text-white">
                       {discountPct}% OFF aplicado en el enlace
+                    </span>
+                  )}
+                  {priceDate && (
+                    <span class="basis-full text-[0.7rem] text-ciruela-400">
+                      Precio verificado en el checkout de Hotmart el {priceDate}. Pago único, sin mensualidades.
                     </span>
                   )}
                 </div>
               ) : (
-                <p class="text-sm font-bold text-ciruela-600">
-                  💳 El precio se muestra en {country.currency} en el checkout seguro de Hotmart, antes de
-                  confirmar el pago.
+                <p class="flex items-start gap-2.5 text-sm font-bold text-ciruela-600">
+                  <Icon name="tarjeta" size={20} class="text-coral-600" />
+                  <span>
+                    El precio se muestra en {country.currency} en el checkout seguro de Hotmart, antes de confirmar
+                    el pago.
+                  </span>
                 </p>
               )
             }
@@ -243,10 +299,10 @@ const trackParams = JSON.stringify({
                 target="_blank"
                 rel="noopener"
                 data-track="begin_checkout"
-                data-track-params={trackParams}
-                class="rounded-xl bg-coral-500 px-8 py-4 text-center text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600"
+                data-track-params={ctaTrack('hero')}
+                class="rounded-xl bg-coral-600 px-8 py-4 text-center text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-700"
               >
-                {discountPct ? `Inscribirme con ${discountPct}% OFF` : 'Inscribirme ahora'}
+                {ctaLabel}
               </a>
               <a
                 href="#temario"
@@ -257,7 +313,10 @@ const trackParams = JSON.stringify({
             </div>
             <div class="mt-3.5 flex flex-wrap items-center gap-x-4 gap-y-1.5">
               <HotmartBadge />
-              <p class="text-xs text-ciruela-400">7 días de garantía con devolución del 100%.</p>
+              <p class="inline-flex items-center gap-1.5 text-sm font-semibold text-ciruela-600">
+                <Icon name="escudo" class="text-aqua-700" />
+                7 días de garantía con devolución del 100%.
+              </p>
             </div>
           </div>
         </div>
@@ -294,23 +353,38 @@ const trackParams = JSON.stringify({
     </div>
   </section>
 
-  <!-- 4 · DESCRIPCIÓN (cuerpo MDX) -->
-  <section class="contenedor grid gap-12 py-10 lg:grid-cols-[1.5fr_1fr]">
-    <article class="prosa scroll-reveal">
+  <!-- 4-6 · DESCRIPCIÓN + RESULTADOS + TEMARIO en un solo carril (P1-2). En desktop el aside
+       ocupa las 3 filas, así la compra compacta sigue al lector hasta el final del temario. En
+       móvil el orden no cambia: prosa → aside → resultados (banda a sangre) → temario. -->
+  <div class="contenedor grid gap-12 pt-10 pb-14 lg:grid-cols-[1.5fr_1fr] lg:gap-y-14">
+    <!-- 4 · DESCRIPCIÓN (cuerpo MDX) -->
+    <article class="prosa scroll-reveal lg:col-start-1 lg:row-start-1">
       <Content />
     </article>
 
-    <aside class="space-y-6">
+    <aside class="space-y-6 lg:col-start-2 lg:row-span-3 lg:row-start-1">
       <!-- 9 · PARA QUIÉN ES -->
       <div class="scroll-reveal rounded-3xl border border-crema-200 bg-white p-6 shadow-tarjeta">
         <h2 class="font-display text-xl font-semibold text-ciruela-900">¿Este curso es para ti?</h2>
         <ul class="mt-4 space-y-3 text-sm text-ciruela-600">
           {
-            d.audience.map((item) => (
+            d.audience.map((item, i) => (
               <li class="flex items-start gap-2.5">
-                <span class="mt-0.5 text-coral-500" aria-hidden="true">
-                  🎈
-                </span>
+                <svg
+                  class:list={['mt-0.5 h-[1.15rem] w-3 shrink-0', BULLET_TONES[i % BULLET_TONES.length]]}
+                  style={`rotate: ${BULLET_TILT[i % BULLET_TILT.length]}deg`}
+                  viewBox="0 0 40 62"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M20 1.5C30.5 1.5 38.5 10 38.5 21c0 9.5-7 18.5-15 21.7l-3.5.9-3.5-.9C8.5 39.5 1.5 30.5 1.5 21 1.5 10 9.5 1.5 20 1.5Z"
+                    fill="currentColor"
+                  />
+                  <ellipse cx="13.5" cy="13" rx="6" ry="9.5" fill="white" opacity="0.38" transform="rotate(-20 13.5 13)" />
+                  <path d="M20 43c-2.6 1.6-3.6 3.2-3 4.8h6c.6-1.6-.4-3.2-3-4.8Z" fill="currentColor" />
+                  <path d="M20 48.5q-4 7 .5 12" stroke="currentColor" stroke-opacity="0.55" stroke-width="2.6" stroke-linecap="round" />
+                </svg>
                 {item}
               </li>
             ))
@@ -321,17 +395,75 @@ const trackParams = JSON.stringify({
       <div class="scroll-reveal rounded-3xl border border-crema-200 bg-crema-100 p-6">
         <h2 class="font-display text-xl font-semibold text-ciruela-900">Requisitos</h2>
         <ul class="mt-4 space-y-2.5 text-sm text-ciruela-600">
-          <li>✓ Cero experiencia previa: se empieza desde el kit básico</li>
-          <li>✓ Conexión a internet (celular o computador)</li>
-          <li>✓ Globos de buena calidad y ganas de practicar</li>
+          <li class="flex items-start gap-2">
+            <Icon name="check" class="mt-0.5 text-aqua-700" />Cero experiencia previa: se empieza desde el kit básico
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="check" class="mt-0.5 text-aqua-700" />Conexión a internet (celular o computador)
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="check" class="mt-0.5 text-aqua-700" />Globos de buena calidad y ganas de practicar
+          </li>
         </ul>
       </div>
-    </aside>
-  </section>
 
-  <!-- 5 · QUÉ APRENDERÁS -->
-  <section class="bg-crema-100 py-14">
-    <div class="contenedor">
+      <!-- 8b · COMPRA COMPACTA (solo desktop · P1-2): va al final del aside para que, al fijarse,
+           no se deslicen tarjetas por debajo; queda fija durante resultados y temario. En móvil la
+           cubre StickyCta; sin data-buy-box para que StickyCta siga observando la caja del hero. -->
+      <div class="hidden rounded-3xl border border-crema-200 bg-white p-6 shadow-globo lg:sticky lg:top-24 lg:block">
+        <p class="font-display text-lg leading-snug font-semibold text-ciruela-900">{d.title}</p>
+        {
+          hasPrice ? (
+            <div class="mt-3">
+              <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                <span class="font-display text-3xl font-bold text-coral-600">{usd(d.priceUSD!)}</span>
+                {hasDiscount && <s class="text-sm text-ciruela-500">{usd(d.originalPriceUSD!)}</s>}
+                {hasDiscount && discountPct && (
+                  <span class="rounded-full bg-coral-600 px-2.5 py-0.5 text-xs font-extrabold text-white">
+                    −{discountPct}%
+                  </span>
+                )}
+              </div>
+              <p class="mt-1 text-xs text-ciruela-500">
+                ≈ {formatPrice(d.priceUSD!, country)} · Hotmart confirma el valor exacto
+              </p>
+            </div>
+          ) : (
+            <p class="mt-3 flex items-start gap-2 text-sm font-bold text-ciruela-600">
+              <Icon name="tarjeta" size={18} class="mt-px text-coral-600" />
+              <span>Precio en {country.currency}, visible en el checkout de Hotmart antes de pagar.</span>
+            </p>
+          )
+        }
+        <a
+          href={checkoutUrl}
+          target="_blank"
+          rel="noopener"
+          data-track="begin_checkout"
+          data-track-params={ctaTrack('aside_desktop')}
+          class="mt-5 block rounded-xl bg-coral-600 px-6 py-3.5 text-center text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-700"
+        >
+          {ctaLabel}
+        </a>
+        <ul class="mt-4 space-y-2 text-xs font-semibold text-ciruela-600">
+          <li class="flex items-center gap-2">
+            <Icon name="escudo" class="text-aqua-700" />7 días de garantía con devolución del 100%
+          </li>
+          <li class="flex items-center gap-2">
+            <Icon name="play" class="text-coral-600" />{d.lessonsCount} videos · acceso de por vida
+          </li>
+          <li class="flex items-center gap-2">
+            <Icon name="birrete" class="text-coral-600" />Certificado de estudios
+          </li>
+        </ul>
+        <HotmartBadge class="mt-4" />
+      </div>
+    </aside>
+
+    <!-- 5 · QUÉ APRENDERÁS -->
+    <section
+      class="-mx-5 bg-crema-100 px-5 py-14 sm:-mx-8 sm:px-8 lg:col-start-1 lg:row-start-2 lg:mx-0 lg:rounded-3xl lg:px-10 lg:py-10"
+    >
       <SectionHeading eyebrow="Resultados" title="Lo que sabrás hacer al terminar" />
       <div class="mt-8 grid gap-4 sm:grid-cols-2">
         {
@@ -346,52 +478,52 @@ const trackParams = JSON.stringify({
           ))
         }
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 6 · TEMARIO -->
-  <section id="temario" class="contenedor scroll-mt-24 py-14">
-    <SectionHeading
-      eyebrow="Temario"
-      title={`${d.lessonsCount} lecciones, módulo por módulo`}
-      lead="Los primeros módulos aparecen abiertos para que veas exactamente qué contiene el curso."
-    />
-    <div class="mt-8 space-y-4">
-      {
-        d.modules.map((mod, i) => (
-          <details
-            class="temario-item group rounded-3xl border border-crema-200 bg-white shadow-tarjeta"
-            open={i < 2}
-          >
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-6 [&::-webkit-details-marker]:hidden">
-              <span class="flex items-center gap-4">
-                <span class="font-display flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-coral-50 text-lg font-bold text-coral-600">
-                  {i + 1}
+    <!-- 6 · TEMARIO -->
+    <section id="temario" class="scroll-mt-24 lg:col-start-1 lg:row-start-3">
+      <SectionHeading
+        eyebrow="Temario"
+        title={`${d.lessonsCount} lecciones, módulo por módulo`}
+        lead="Los primeros módulos aparecen abiertos para que veas exactamente qué contiene el curso."
+      />
+      <div class="mt-8 space-y-4">
+        {
+          d.modules.map((mod, i) => (
+            <details
+              class="temario-item group rounded-3xl border border-crema-200 bg-white shadow-tarjeta"
+              open={i < 2}
+            >
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-6 [&::-webkit-details-marker]:hidden">
+                <span class="flex items-center gap-4">
+                  <span class="font-display flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-coral-50 text-lg font-bold text-coral-600">
+                    {i + 1}
+                  </span>
+                  <span class="font-bold text-ciruela-800">{mod.title}</span>
                 </span>
-                <span class="font-bold text-ciruela-800">{mod.title}</span>
-              </span>
-              <span class="flex items-center gap-3 text-xs text-ciruela-400">
-                <span class="hidden sm:inline">{mod.lessons.length} lecciones</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="transition-transform duration-300 group-open:rotate-180" aria-hidden="true">
-                  <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </span>
-            </summary>
-            <ul class="space-y-2.5 px-6 pb-6 sm:pl-20">
-              {mod.lessons.map((lesson) => (
-                <li class="flex items-center gap-2.5 text-sm text-ciruela-600">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="shrink-0 text-coral-400" aria-hidden="true">
-                    <path d="M8 5v14l11-7L8 5Z" />
+                <span class="flex items-center gap-3 text-xs text-ciruela-400">
+                  <span class="hidden sm:inline">{mod.lessons.length} lecciones</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="transition-transform duration-300 group-open:rotate-180" aria-hidden="true">
+                    <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
-                  {lesson}
-                </li>
-              ))}
-            </ul>
-          </details>
-        ))
-      }
-    </div>
-  </section>
+                </span>
+              </summary>
+              <ul class="space-y-2.5 px-6 pb-6 sm:pl-20">
+                {mod.lessons.map((lesson) => (
+                  <li class="flex items-center gap-2.5 text-sm text-ciruela-600">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="shrink-0 text-coral-400" aria-hidden="true">
+                      <path d="M8 5v14l11-7L8 5Z" />
+                    </svg>
+                    {lesson}
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+  </div>
 
   <!-- 7 · INSTRUCTOR -->
   {
@@ -435,9 +567,15 @@ const trackParams = JSON.stringify({
         lead="Completa el 100% de las lecciones y descarga tu certificado de estudios con validez internacional."
       />
       <ul class="mt-6 space-y-3 text-sm text-ciruela-600">
-        <li>✓ Digital, verificable y listo para compartir</li>
-        <li>✓ Con tareas calificadas durante el curso</li>
-        <li>✓ Respaldado por la plataforma Hotmart</li>
+        <li class="flex items-start gap-2">
+          <Icon name="check" class="mt-0.5 text-coral-600" />Digital, verificable y listo para compartir
+        </li>
+        <li class="flex items-start gap-2">
+          <Icon name="check" class="mt-0.5 text-coral-600" />Con tareas calificadas durante el curso
+        </li>
+        <li class="flex items-start gap-2">
+          <Icon name="check" class="mt-0.5 text-coral-600" />Respaldado por la plataforma Hotmart
+        </li>
       </ul>
       <div class="mt-6" data-track="view_certificate" data-track-params={JSON.stringify({ course_name: d.title })}>
         <a
@@ -445,8 +583,8 @@ const trackParams = JSON.stringify({
           target="_blank"
           rel="noopener"
           data-track="begin_checkout"
-          data-track-params={trackParams}
-          class="inline-block rounded-xl bg-coral-500 px-7 py-3.5 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-600"
+          data-track-params={ctaTrack('certificate')}
+          class="inline-block rounded-xl bg-coral-600 px-7 py-3.5 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-coral-700"
         >
           Quiero mi certificado
         </a>
@@ -460,7 +598,11 @@ const trackParams = JSON.stringify({
   <!-- 11 · TESTIMONIOS -->
   <section class="bg-crema-100 py-14">
     <div class="contenedor">
-      <SectionHeading eyebrow="Estudiantes" title="Quienes ya lo tomaron, cuentan" />
+      <SectionHeading
+        eyebrow="Reseñas reales"
+        title="Lo que escriben las alumnas en Hotmart"
+        lead="Citas textuales de la ficha pública de cada curso en Hotmart, la plataforma donde se compra y se estudia."
+      />
       <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
           testimonials.map((t, i) => (
@@ -475,39 +617,75 @@ const trackParams = JSON.stringify({
 
   <!-- 12 · GARANTÍA + PRICING FINAL -->
   <section class="contenedor py-16">
-    <div class="relative overflow-hidden rounded-[2.5rem] bg-ciruela-900 p-8 text-center text-crema-50 sm:p-12">
-      <div
-        class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full opacity-20 blur-3xl"
-        style="background: radial-gradient(circle, oklch(0.62 0.2 14 / 0.9), transparent 65%)"
-        aria-hidden="true"
-      >
-      </div>
-      <h2 class="mx-auto max-w-xl text-3xl font-semibold text-balance">
-        {discountPct ? `Inscríbete hoy con el ${discountPct}% de descuento` : 'Inscríbete hoy y empieza en minutos'}
-      </h2>
-      {
-        hasPrice && (
-          <p class="mt-5">
-            <span class="text-sm text-crema-100/60">
-              Antes <s>{formatPrice(d.originalPriceUSD!, country)}</s>
-            </span>
-            <span class="font-display mx-3 text-4xl font-bold text-sol-300">{formatPrice(d.priceUSD!, country)}</span>
+    <div class="rounded-[2.5rem] bg-ciruela-900 p-8 text-crema-50 sm:p-12">
+      <div class="grid items-center gap-10 lg:grid-cols-[minmax(0,34rem)_15rem] lg:justify-center lg:gap-20">
+        <div class="text-center lg:text-left">
+          <h2 class="mx-auto max-w-xl text-3xl font-semibold text-balance lg:mx-0">
+            {discountPct ? `Inscríbete hoy con el ${discountPct}% de descuento` : 'Inscríbete hoy y empieza en minutos'}
+          </h2>
+          {
+            hasPrice && (
+              <p class="mt-5">
+                {hasDiscount && (
+                  <span class="text-sm text-crema-100/70">
+                    Antes <s>{usd(d.originalPriceUSD!)}</s>
+                  </span>
+                )}
+                <span class="font-display mx-3 text-4xl font-bold text-sol-300 lg:first:ml-0">{usd(d.priceUSD!)}</span>
+                <span class="block text-xs text-crema-100/70">≈ {formatPrice(d.priceUSD!, country)}</span>
+              </p>
+            )
+          }
+          <p class="mx-auto mt-4 max-w-md text-sm text-crema-100/75 lg:mx-0">
+            <Icon name="escudo" class="mr-1 inline-block align-[-3px] text-sol-300" />
+            7 días de garantía sin preguntas · Pago seguro con Hotmart · Acceso inmediato tras el pago
           </p>
-        )
-      }
-      <p class="mx-auto mt-4 max-w-md text-sm text-crema-100/75">
-        🛡️ 7 días de garantía sin preguntas · Pago seguro con Hotmart · Acceso inmediato tras el pago
-      </p>
-      <a
-        href={checkoutUrl}
-        target="_blank"
-        rel="noopener"
-        data-track="begin_checkout"
-        data-track-params={trackParams}
-        class="mt-7 inline-block rounded-xl bg-coral-500 px-10 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-600"
-      >
-        {discountPct ? `Inscribirme con ${discountPct}% OFF` : 'Inscribirme ahora'}
-      </a>
+          <a
+            href={checkoutUrl}
+            target="_blank"
+            rel="noopener"
+            data-track="begin_checkout"
+            data-track-params={ctaTrack('closing')}
+            class="mt-7 inline-block rounded-xl bg-coral-600 px-10 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-700"
+          >
+            {ctaLabel}
+          </a>
+        </div>
+
+        <!-- Sello de garantía propio: roseta dorada + cintas coral (misma lógica del sello del
+             certificado), con el brillo satinado de los globos. -->
+        <figure class="mx-auto flex max-w-[15rem] flex-col items-center text-center">
+          <svg
+            class="h-auto w-32 -rotate-6 transition-[rotate] duration-500 ease-fiesta hover:-rotate-1 sm:w-36 lg:w-40"
+            viewBox="0 0 120 150"
+            role="img"
+            aria-label="Sello: 7 días de garantía con devolución del 100%"
+          >
+            <path d="M44 84 58 90 48 146 41 137 32 142Z" class="fill-coral-600" />
+            <path d="M76 84 62 90 72 146 79 137 88 142Z" class="fill-coral-700" />
+            <path d={sealEdge} class="fill-dorado-500 stroke-dorado-700" stroke-width="0.8" />
+            <circle cx="60" cy="58" r="37" class="fill-dorado-300 stroke-dorado-700" stroke-width="0.8" />
+            <circle
+              cx="60"
+              cy="58"
+              r="33"
+              fill="none"
+              class="stroke-dorado-700"
+              stroke-width="1"
+              stroke-dasharray="1.6 2.6"
+              stroke-linecap="round"
+            />
+            <ellipse cx="45" cy="40" rx="8" ry="14" fill="white" opacity="0.28" transform="rotate(-35 45 40)" />
+            <text x="60" y="42" text-anchor="middle" class="fill-ciruela-900 font-sans" font-size="8" font-weight="800" letter-spacing="1">GARANTÍA</text>
+            <text x="60" y="71" text-anchor="middle" class="fill-ciruela-900 font-display" font-size="31" font-weight="700">7</text>
+            <text x="60" y="82" text-anchor="middle" class="fill-ciruela-900 font-sans" font-size="8" font-weight="800" letter-spacing="1">DÍAS</text>
+          </svg>
+          <figcaption class="mt-4 text-sm leading-relaxed text-crema-100/80">
+            Entra al curso, mira las lecciones y decide. Si no es para ti, Hotmart te devuelve el 100% de tu
+            dinero dentro de los primeros 7 días.
+          </figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -521,27 +699,75 @@ const trackParams = JSON.stringify({
             title={`Aprender decoración con globos en ${city.name}`}
           />
           <p class="mt-5 max-w-3xl leading-relaxed text-ciruela-600">{cityLocal.hook}</p>
-          <p class="mt-6 text-xs font-bold tracking-[0.18em] text-ciruela-400 uppercase">
-            Este curso también en otras ciudades
+          <p class="mt-6 text-xs font-bold tracking-[0.18em] text-ciruela-500 uppercase">
+            Cursos de decoración con globos en otras ciudades
           </p>
           <div class="mt-3 flex flex-wrap gap-2">
             {country.cities
               .filter((c) => c.slug !== city.slug)
               .map((c) => (
                 <a
-                  href={`/${country.code}/${c.slug}/${course.id}/`}
-                  class="rounded-full border border-crema-300 bg-white px-3.5 py-1.5 text-xs font-bold text-ciruela-600 transition-colors hover:border-coral-300 hover:text-coral-600"
+                  href={`/${country.code}/${c.slug}/`}
+                  class="rounded-full border border-crema-300 bg-white px-3.5 py-2.5 text-xs font-bold text-ciruela-600 transition-colors hover:border-coral-300 hover:text-coral-600"
                 >
                   {c.name}
                 </a>
               ))}
             <a
               href={`/${country.code}/${course.id}/`}
-              class="rounded-full bg-coral-500 px-3.5 py-1.5 text-xs font-extrabold text-white transition-colors hover:bg-coral-600"
+              class="inline-flex items-center gap-1 rounded-full bg-coral-600 px-3.5 py-2.5 text-xs font-extrabold text-white transition-colors hover:bg-coral-700"
             >
-              Todo {country.name} →
+              {d.title} en {country.name} <Icon name="flecha" size={14} />
             </a>
           </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- 13b · GUÍAS GRATIS DEL BLOG (enlazado interno blog ↔ money page) -->
+  {
+    guides.length > 0 && (
+      <section class="contenedor pb-16" aria-labelledby="guias-titulo">
+        <div class="rounded-[2rem] border border-crema-200 bg-white p-8 shadow-tarjeta sm:p-10">
+          <p class="text-xs font-extrabold tracking-[0.22em] text-coral-600 uppercase">Guías gratis</p>
+          <h2 id="guias-titulo" class="mt-2 text-2xl font-semibold text-ciruela-900 sm:text-3xl">
+            Practica antes de inscribirte
+          </h2>
+          <!-- Columnas según el número de guías: con 1 o 2 no quedan huecos vacíos en desktop. -->
+          <ul
+            class:list={[
+              'mt-6 grid gap-4',
+              guides.length === 2 && 'sm:grid-cols-2',
+              guides.length >= 3 && 'sm:grid-cols-3',
+            ]}
+          >
+            {guides.map((g) => (
+              <li>
+                <a
+                  href={postUrl(g)}
+                  class:list={[
+                    'group block h-full rounded-2xl border border-crema-200 bg-crema-50 p-5 transition-colors hover:border-coral-300',
+                    guides.length === 1 && 'sm:flex sm:items-center sm:gap-6',
+                  ]}
+                >
+                  <span class={guides.length === 1 ? 'block sm:flex-1' : 'block'}>
+                    <span class="block font-display text-lg leading-snug font-semibold text-ciruela-900 group-hover:text-coral-700">
+                      {g.data.title}
+                    </span>
+                    <span class="mt-2 line-clamp-2 block text-sm text-ciruela-500">{g.data.description}</span>
+                  </span>
+                  {guides.length === 1 && (
+                    <Icon
+                      name="flecha"
+                      size={20}
+                      class="hidden text-coral-600 transition-transform duration-300 group-hover:translate-x-1 sm:block"
+                    />
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     )
@@ -559,22 +785,19 @@ const trackParams = JSON.stringify({
   <section class="contenedor pb-20">
     <SectionHeading eyebrow="Sigue aprendiendo" title="También te puede interesar" />
     <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {related.map((c) => <CourseCard course={c} {country} {city} />)}
+      {related.map((c) => <CourseCard course={c} {country} />)}
     </div>
   </section>
 
-  {
-    hasPrice && (
-      <StickyCta
-        {country}
-        priceUSD={d.priceUSD!}
-        originalPriceUSD={d.originalPriceUSD!}
-        hotmartUrl={checkoutUrl}
-        courseName={d.title}
-        coupon={d.coupon ?? `offDiscount-${discountPct}`}
-      />
-    )
-  }
+  <StickyCta
+    {country}
+    priceUSD={d.priceUSD}
+    originalPriceUSD={hasDiscount ? d.originalPriceUSD : undefined}
+    discountPct={discountPct}
+    hotmartUrl={checkoutUrl}
+    courseName={d.title}
+    coupon={d.coupon ?? (discountPct ? `offDiscount-${discountPct}` : '')}
+  />
 </BaseLayout>
 
 <style>

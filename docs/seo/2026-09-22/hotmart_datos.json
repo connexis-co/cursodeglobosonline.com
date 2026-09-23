@@ -1,0 +1,591 @@
+{
+  "_meta": {
+    "generado": "2026-09-22",
+    "metodo": "Solo lectura. curl (GET) de hotlinks, checkout pay.hotmart.com (payload Nuxt SSR __NUXT_DATA__), ficha marketplace hotmart.com (__NEXT_DATA__) y API publica de evaluaciones api-ask.hotmart.com; verificacion visual en navegador y capturas con Chrome headless (perfil temporal). Sin login, sin compras, sin formularios.",
+    "geolocalizacion": "El checkout se geolocaliza por IP: todas las consultas salieron desde Colombia (countryIsoCode=CO), por eso la moneda mostrada es COP. Los parametros ?country=MX / ?countryIsoCode=MX / ?checkoutCountry=MX / ?country=US no cambian la moneda; no se uso el selector 'Cambiar pais' del checkout (es parte del formulario de compra). MXN: no verificado.",
+    "tipo_de_cambio_checkout": {
+      "USD_COP": 3203.64,
+      "spread_COP_pct": 5.5,
+      "fuente": "pay.hotmart.com payload: data.exchangeRate + products[0].spreads"
+    },
+    "productor_hotmart": {
+      "nombre_publico": "MasterClasses.La®",
+      "perfil_slug": "masterclasses-la",
+      "hotmarter_desde": 2019,
+      "autor_en_checkout": "MasterClasses.La Seminarios.Online Mauricio Duque Zuluaga",
+      "bio": "Master Classes Latinoamérica es una empresa desarrolladora de cursos virtuales en video.",
+      "fuente": "hotmart.com/es/marketplace/productos/*  (__NEXT_DATA__ profile.product.hotmarter) y pay.hotmart.com (products[0].authorName)"
+    },
+    "regla_google_review_snippet": {
+      "cita": "Don't aggregate reviews or ratings from other websites.",
+      "fuente": "https://developers.google.com/search/docs/appearance/structured-data/review-snippet",
+      "implicacion": "Las calificaciones de Hotmart son de un tercero; marcarlas como aggregateRating en cursodeglobosonline.com contradice esta pauta aunque el dato sea real."
+    },
+    "evidencias_dir": "/private/tmp/claude-501/-Users-jpmisat-Documents-JP-Projects-cursodeblogosonline-com/8080017c-226d-4828-841f-2e6ceb9c7d64/scratchpad/research/hotmart",
+    "nota_privacidad": "Se redacto la IP del visitante en los HTML guardados del marketplace; se omitio el email del productor presente en el payload del checkout."
+  },
+  "curso-de-globoflexia": {
+    "hotmart_product_name": "GloboFlexia Figuras con Globos",
+    "hotmart_product_id": 1272003,
+    "producer_code": "M47265375C",
+    "offer_key": "c3ecmfdu",
+    "price_usd": 25,
+    "original_price_usd": 49.99,
+    "currency_shown": "COP",
+    "price_local_shown": {
+      "con_cupon": "84.479 COP",
+      "sin_cupon": "168.959 COP",
+      "cuotas": "12 cuotas de 7039 COP (tarjeta)",
+      "efectivo_payload": "84450 COP"
+    },
+    "rating_value": 5.0,
+    "rating_count": 1,
+    "rating_distribution": {
+      "5": 1
+    },
+    "students": null,
+    "students_reason": "No publico: la ficha no muestra alumnos (hotmarter.showStudents=false). El payload interno trae totalUsers=0, pero no se muestra al publico, no esta documentado y no debe usarse.",
+    "reviews": [
+      {
+        "author": "Gloria",
+        "rating": 5,
+        "text": "Me encanto el metodo utilizado.  No sabia nada hacerca de esta tecnica y me gusto mucho como explica paso a paso,",
+        "date": "2022-04-10",
+        "date_utc": "2022-04-10T21:56:45.850Z",
+        "reviewer_ucode": 50507634
+      }
+    ],
+    "producer": "MasterClasses.La®",
+    "instructor_name": null,
+    "instructor_reason": "Las paginas publicas de Hotmart (checkout y marketplace) solo muestran al productor MasterClasses.La® (autor en checkout: 'MasterClasses.La Seminarios.Online Mauricio Duque Zuluaga'); no nombran instructor.",
+    "workload_hours": null,
+    "workload_reason": "dataSheet.duration vacio en la ficha del marketplace; Hotmart no publica carga horaria.",
+    "certificate": true,
+    "warranty_days": 7,
+    "language": "ES",
+    "published_on_hotmart": "2021-02-05T20:32:50.811",
+    "hotlink_chain": [
+      "https://hotm.art/curso-globoflexia-crashing?offDiscount=031016",
+      "https://go.hotmart.com/X76953266Q?ap=7766&offDiscount=031016",
+      "https://pay.hotmart.com/M47265375C?ref=X76953266Q&offDiscount=031016"
+    ],
+    "hotlink_status": "VIVO: 302 -> 302 -> 200 (GET). Nota: HEAD a go.hotmart.com responde 401; con GET redirige bien.",
+    "sources": [
+      {
+        "tipo": "redirect_chain",
+        "url": "https://hotm.art/curso-globoflexia-crashing?offDiscount=031016",
+        "valor": "https://go.hotmart.com/X76953266Q?ap=7766&offDiscount=031016 -> https://pay.hotmart.com/M47265375C?ref=X76953266Q&offDiscount=031016",
+        "fecha_utc": "2026-09-22T11:00:40Z",
+        "evidencia": "redirects.txt, redirects_get.txt"
+      },
+      {
+        "tipo": "checkout",
+        "url": "https://pay.hotmart.com/M47265375C?offDiscount=031016",
+        "valor": "84.479 COP mostrado (CO); USD base 49.99",
+        "fecha_utc": "2026-09-22T11:00:48Z",
+        "evidencia": [
+          "pay_M47265375C_offDiscount_031016.html",
+          "pay_M47265375C_offDiscount_031016.nuxt.json",
+          "pay_globoflexia_M47265375C_offDiscount_031016.png",
+          "pay_globoflexia_M47265375C.png"
+        ]
+      },
+      {
+        "tipo": "marketplace",
+        "url": "https://hotmart.com/es/marketplace/productos/globoflexia-figuras-con-globos/M47265375C",
+        "valor": "5.0 (1 evaluaciones)",
+        "fecha_utc": "2026-09-22T11:02:33Z",
+        "evidencia": [
+          "mkt_M47265375C.html",
+          "mkt_M47265375C.pageProps.json",
+          "mkt_globoflexia_M47265375C.png"
+        ]
+      },
+      {
+        "tipo": "api_evaluaciones",
+        "url": "https://api-ask.hotmart.com/api/v1/survey/product/1272003/rating",
+        "valor": "average=5.0 totalAnswers=1",
+        "fecha_utc": "2026-09-22T11:03:09Z",
+        "evidencia": "api_rating_1272003.json"
+      },
+      {
+        "tipo": "api_reseñas",
+        "url": "https://api-ask.hotmart.com/api/v1/survey/product/1272003/answers?page_size=50&offset=1&evaluation=ALL&sort_by_answers=true",
+        "valor": "1 reseñas",
+        "fecha_utc": "2026-09-22T11:10:32Z",
+        "evidencia": "api_answers_1272003_all.json"
+      }
+    ],
+    "price_note": "Con ?offDiscount=031016 el checkout aplica 'cupón 031016' 50%: metodo PAYPAL cobra 25 USD (FULL_PRICE 49.99 USD - COUPON 24.99). Sin cupon: 49.99 USD. OJO: el sitio publica originalPriceUSD=50; el valor exacto de Hotmart es 49.99.",
+    "price_usd_source": "pay.hotmart.com payload: products[0].exchange[0].baseValue=49.99 USD (CONVERT_TO_SHOPPERS_COUNTRY) y paymentMethods[PAYPAL].amount=25 USD",
+    "rating_last_update": "2023-02-26T16:31:57.834Z",
+    "rating_visible_on_hotmart": true,
+    "reviews_note": "Todas las evaluaciones publicas devueltas por la API (sin filtrar). Nombres tal como los publica Hotmart (solo nombre de pila). text=null cuando la evaluacion es solo estrellas.",
+    "contenido_hotmart": "La descripcion del marketplace lista 18 tematicas; no expone numero de videos (el sitio dice 23, no verificable en Hotmart publico)."
+  },
+  "curso-de-bouquets-de-globos": {
+    "hotmart_product_name": "Bouquet de Globos para Eventos y Fiestas",
+    "hotmart_product_id": 1574989,
+    "producer_code": "G56852236M",
+    "offer_key": "mgqjly47",
+    "price_usd": 49.99,
+    "original_price_usd": null,
+    "currency_shown": "COP",
+    "price_local_shown": {
+      "precio": "168.959 COP",
+      "efectivo_payload": "168950 COP"
+    },
+    "rating_value": 4.4,
+    "rating_count": 5,
+    "rating_distribution": {
+      "5": 2,
+      "4": 3
+    },
+    "students": null,
+    "students_reason": "No publico: la ficha no muestra alumnos (hotmarter.showStudents=false). El payload interno trae totalUsers=0, pero no se muestra al publico, no esta documentado y no debe usarse.",
+    "reviews": [
+      {
+        "author": "Kenia",
+        "rating": 4,
+        "text": null,
+        "date": "2024-01-16",
+        "date_utc": "2024-01-16T03:31:25.884Z",
+        "reviewer_ucode": 35953186
+      },
+      {
+        "author": "Ana",
+        "rating": 5,
+        "text": "A Sido muy bonita experiencia ya que te explican paso a paso todos los detalles para realizar un adorno ,me gustó mucho ,",
+        "date": "2023-06-08",
+        "date_utc": "2023-06-08T16:07:37.809Z",
+        "reviewer_ucode": 68101045
+      },
+      {
+        "author": "Jemima",
+        "rating": 4,
+        "text": null,
+        "date": "2023-02-23",
+        "date_utc": "2023-02-23T06:21:33.011Z",
+        "reviewer_ucode": 53388796
+      },
+      {
+        "author": "Jemima",
+        "rating": 4,
+        "text": "Me gusta lo claro al momento de hablar, al dar la explicación,  \nMuestra claramente como hacer el trabajo y como ir ensamblando, y también como evitar errores,  para, no perder material. \nYo le doy a esta clase 4.5\nMe gustaría que la introducción  no estuviera tan larga,  no abarcará  tantos episodios. \nY poder darle un episodio completo a la técnica de distorsión. \nGracias por aclarar todos las dudas, que tenía.",
+        "date": "2022-05-24",
+        "date_utc": "2022-05-24T21:47:13.969Z",
+        "reviewer_ucode": 53388796
+      },
+      {
+        "author": "Diana",
+        "rating": 5,
+        "text": "muchas gracias por compartir sus conocimientos con migo estoy muy feliz ya que aprendí nuevas técnicas y como perfeccionar mis diseños",
+        "date": "2021-08-03",
+        "date_utc": "2021-08-03T16:30:54.008Z",
+        "reviewer_ucode": 42200164
+      }
+    ],
+    "producer": "MasterClasses.La®",
+    "instructor_name": null,
+    "instructor_reason": "Las paginas publicas de Hotmart (checkout y marketplace) solo muestran al productor MasterClasses.La® (autor en checkout: 'MasterClasses.La Seminarios.Online Mauricio Duque Zuluaga'); no nombran instructor.",
+    "workload_hours": null,
+    "workload_reason": "dataSheet.duration vacio en la ficha del marketplace; Hotmart no publica carga horaria.",
+    "certificate": true,
+    "warranty_days": 7,
+    "language": "ES",
+    "published_on_hotmart": "2021-07-14T14:18:06.024",
+    "hotlink_chain": [
+      "https://hotm.art/curso-bouquet-globos-crashing",
+      "https://go.hotmart.com/Y76953276W?ap=e8ab",
+      "https://pay.hotmart.com/G56852236M?ref=Y76953276W"
+    ],
+    "hotlink_status": "VIVO: 302 -> 302 -> 200 (GET). Nota: HEAD a go.hotmart.com responde 401; con GET redirige bien.",
+    "sources": [
+      {
+        "tipo": "redirect_chain",
+        "url": "https://hotm.art/curso-bouquet-globos-crashing",
+        "valor": "https://go.hotmart.com/Y76953276W?ap=e8ab -> https://pay.hotmart.com/G56852236M?ref=Y76953276W",
+        "fecha_utc": "2026-09-22T11:00:40Z",
+        "evidencia": "redirects.txt, redirects_get.txt"
+      },
+      {
+        "tipo": "checkout",
+        "url": "https://pay.hotmart.com/G56852236M",
+        "valor": "168.959 COP mostrado (CO); USD base 49.99",
+        "fecha_utc": "2026-09-22T11:00:48Z",
+        "evidencia": [
+          "pay_G56852236M.html",
+          "pay_G56852236M.nuxt.json",
+          "pay_bouquets_G56852236M.png"
+        ]
+      },
+      {
+        "tipo": "marketplace",
+        "url": "https://hotmart.com/es/marketplace/productos/bouquet-de-globos-para-eventos-y-fiestas/G56852236M",
+        "valor": "4.4 (5 evaluaciones)",
+        "fecha_utc": "2026-09-22T11:02:33Z",
+        "evidencia": [
+          "mkt_G56852236M.html",
+          "mkt_G56852236M.pageProps.json",
+          "mkt_bouquets_G56852236M.png"
+        ]
+      },
+      {
+        "tipo": "api_evaluaciones",
+        "url": "https://api-ask.hotmart.com/api/v1/survey/product/1574989/rating",
+        "valor": "average=4.4 totalAnswers=5",
+        "fecha_utc": "2026-09-22T11:03:09Z",
+        "evidencia": "api_rating_1574989.json"
+      },
+      {
+        "tipo": "api_reseñas",
+        "url": "https://api-ask.hotmart.com/api/v1/survey/product/1574989/answers?page_size=50&offset=1&evaluation=ALL&sort_by_answers=true",
+        "valor": "5 reseñas",
+        "fecha_utc": "2026-09-22T11:10:33Z",
+        "evidencia": "api_answers_1574989_all.json"
+      }
+    ],
+    "price_note": "Precio de lista sin descuento (no hay cupon en el enlace de afiliado). original_price_usd=null porque no existe precio tachado.",
+    "price_usd_source": "pay.hotmart.com payload: products[0].exchange[0].baseValue=49.99 USD (CONVERT_TO_SHOPPERS_COUNTRY) y paymentMethods[PAYPAL].amount=49.99 USD",
+    "rating_last_update": "2024-01-16T03:45:13.204Z",
+    "rating_visible_on_hotmart": true,
+    "reviews_note": "Todas las evaluaciones publicas devueltas por la API (sin filtrar). Nombres tal como los publica Hotmart (solo nombre de pila). text=null cuando la evaluacion es solo estrellas.",
+    "contenido_hotmart": "La descripcion del marketplace lista VIDEO 1..VIDEO 17 (coincide con lessonsCount=17 del sitio)."
+  },
+  "curso-de-flores-con-globos": {
+    "hotmart_product_name": "Flores de Globos",
+    "hotmart_product_id": 1999831,
+    "producer_code": "U68605508W",
+    "offer_key": "wjnn0zeu",
+    "price_usd": 79.99,
+    "original_price_usd": null,
+    "currency_shown": "COP",
+    "price_local_shown": {
+      "precio": "270.354 COP",
+      "efectivo_payload": "270350 COP"
+    },
+    "rating_value": null,
+    "rating_count": null,
+    "rating_distribution": null,
+    "students": null,
+    "students_reason": "No publico: la ficha no muestra alumnos (hotmarter.showStudents=false). El payload interno trae totalUsers=100, pero no se muestra al publico, no esta documentado y no debe usarse.",
+    "reviews": [],
+    "producer": "MasterClasses.La®",
+    "instructor_name": null,
+    "instructor_reason": "Las paginas publicas de Hotmart (checkout y marketplace) solo muestran al productor MasterClasses.La® (autor en checkout: 'MasterClasses.La Seminarios.Online Mauricio Duque Zuluaga'); no nombran instructor.",
+    "workload_hours": null,
+    "workload_reason": "dataSheet.duration vacio en la ficha del marketplace; Hotmart no publica carga horaria.",
+    "certificate": true,
+    "warranty_days": 7,
+    "language": "ES",
+    "published_on_hotmart": "2022-04-27T13:24:51.91",
+    "hotlink_chain": [
+      "https://hotm.art/curso-flores-con-globos-crashing",
+      "https://go.hotmart.com/T76953268Y?ap=3983",
+      "https://pay.hotmart.com/U68605508W?ref=T76953268Y"
+    ],
+    "hotlink_status": "VIVO: 302 -> 302 -> 200 (GET). Nota: HEAD a go.hotmart.com responde 401; con GET redirige bien.",
+    "sources": [
+      {
+        "tipo": "redirect_chain",
+        "url": "https://hotm.art/curso-flores-con-globos-crashing",
+        "valor": "https://go.hotmart.com/T76953268Y?ap=3983 -> https://pay.hotmart.com/U68605508W?ref=T76953268Y",
+        "fecha_utc": "2026-09-22T11:00:40Z",
+        "evidencia": "redirects.txt, redirects_get.txt"
+      },
+      {
+        "tipo": "checkout",
+        "url": "https://pay.hotmart.com/U68605508W",
+        "valor": "270.354 COP mostrado (CO); USD base 79.99",
+        "fecha_utc": "2026-09-22T11:00:48Z",
+        "evidencia": [
+          "pay_U68605508W.html",
+          "pay_U68605508W.nuxt.json",
+          "pay_flores_U68605508W.png"
+        ]
+      },
+      {
+        "tipo": "marketplace",
+        "url": "https://hotmart.com/es/marketplace/productos/flores-de-globos/U68605508W",
+        "valor": "sin evaluaciones",
+        "fecha_utc": "2026-09-22T11:02:33Z",
+        "evidencia": [
+          "mkt_U68605508W.html",
+          "mkt_U68605508W.pageProps.json",
+          "mkt_flores_U68605508W.png"
+        ]
+      },
+      {
+        "tipo": "api_evaluaciones",
+        "url": "https://api-ask.hotmart.com/api/v1/survey/product/1999831/rating",
+        "valor": "HTTP 204",
+        "fecha_utc": "2026-09-22T11:03:25Z",
+        "evidencia": "api_rating_1999831.json"
+      },
+      {
+        "tipo": "api_reseñas",
+        "url": "https://api-ask.hotmart.com/api/v1/survey/product/1999831/answers?page_size=50&offset=1&evaluation=ALL&sort_by_answers=true",
+        "valor": "HTTP 204",
+        "fecha_utc": "2026-09-22T11:10:33Z",
+        "evidencia": null
+      }
+    ],
+    "price_note": "Precio de lista sin descuento (no hay cupon en el enlace de afiliado). original_price_usd=null porque no existe precio tachado.",
+    "price_usd_source": "pay.hotmart.com payload: products[0].exchange[0].baseValue=79.99 USD (CONVERT_TO_SHOPPERS_COUNTRY) y paymentMethods[PAYPAL].amount=79.99 USD",
+    "rating_reason": "Sin evaluaciones: api-ask.hotmart.com/.../rating y /answers responden HTTP 204 (sin contenido) y la ficha del marketplace no muestra estrellas ni seccion 'Evaluaciones'.",
+    "rating_visible_on_hotmart": false,
+    "contenido_hotmart": "productSummary: 5 modulos; 28 lecciones numeradas de video + 4 materiales de bono + 1 video respuesta + 1 certificado (el sitio dice lessonsCount=31)."
+  },
+  "curso-de-globos-burbuja": {
+    "hotmart_product_name": "Decoración de Globos Burbuja",
+    "hotmart_product_id": 1778060,
+    "producer_code": "F62444331S",
+    "offer_key": "l10w7kvg",
+    "price_usd": 49.99,
+    "original_price_usd": null,
+    "currency_shown": "COP",
+    "price_local_shown": {
+      "precio": "168.959 COP",
+      "efectivo_payload": "168950 COP"
+    },
+    "rating_value": 4.0,
+    "rating_count": 20,
+    "rating_distribution": {
+      "5": 12,
+      "4": 3,
+      "3": 1,
+      "2": 1,
+      "1": 3
+    },
+    "students": null,
+    "students_reason": "No publico: la ficha no muestra alumnos (hotmarter.showStudents=false). El payload interno trae totalUsers=2100, pero no se muestra al publico, no esta documentado y no debe usarse.",
+    "reviews": [
+      {
+        "author": "Lenits",
+        "rating": 5,
+        "text": "Excelente",
+        "date": "2023-04-26",
+        "date_utc": "2023-04-26T04:31:26.946Z",
+        "reviewer_ucode": 44781366
+      },
+      {
+        "author": "Jemima",
+        "rating": 4,
+        "text": null,
+        "date": "2023-02-23",
+        "date_utc": "2023-02-23T06:24:50.775Z",
+        "reviewer_ucode": 53388796
+      },
+      {
+        "author": "Alejandra",
+        "rating": 2,
+        "text": "No me gusto, no explica bien, los videos no están bien editados, hace cosas tan sencillas no tiene un plus, toda la info que da la encuentras en YouTube",
+        "date": "2023-02-19",
+        "date_utc": "2023-02-19T05:40:45.349Z",
+        "reviewer_ucode": 45807301
+      },
+      {
+        "author": "Karim",
+        "rating": 4,
+        "text": null,
+        "date": "2023-01-20",
+        "date_utc": "2023-01-20T01:46:01.657Z",
+        "reviewer_ucode": 54335046
+      },
+      {
+        "author": "Gladys",
+        "rating": 5,
+        "text": null,
+        "date": "2022-11-04",
+        "date_utc": "2022-11-04T22:52:43.096Z",
+        "reviewer_ucode": 49631666
+      },
+      {
+        "author": "Gabriela",
+        "rating": 4,
+        "text": "Aún no lo he practicado déjame hacerlo y ya veremos pero se me hace práctico solo que hago una preguntas y no son contestadas",
+        "date": "2022-06-15",
+        "date_utc": "2022-06-15T18:52:37.276Z",
+        "reviewer_ucode": 34007486
+      },
+      {
+        "author": "Araceli",
+        "rating": 5,
+        "text": "me gustaría q me enviara correo cuando tengan  cursos nuevos  o que cursos tienen",
+        "date": "2022-06-14",
+        "date_utc": "2022-06-14T17:23:27.792Z",
+        "reviewer_ucode": 39597607
+      },
+      {
+        "author": "Wanda",
+        "rating": 5,
+        "text": null,
+        "date": "2022-05-14",
+        "date_utc": "2022-05-14T02:52:58.544Z",
+        "reviewer_ucode": 52253311
+      },
+      {
+        "author": "Yaira",
+        "rating": 5,
+        "text": "es el primer curso que tomo que esta muy bien explicado paso a paso, lo que invertir no fue en vano. gracias por darnos esta oportunidad de aprender desde la distancia.",
+        "date": "2022-05-08",
+        "date_utc": "2022-05-08T03:20:06.509Z",
+        "reviewer_ucode": 52739428
+      },
+      {
+        "author": "Garcia",
+        "rating": 3,
+        "text": null,
+        "date": "2022-05-06",
+        "date_utc": "2022-05-06T22:14:05.796Z",
+        "reviewer_ucode": 52393118
+      },
+      {
+        "author": "Betsabeth",
+        "rating": 1,
+        "text": "Aburrido, es como para niños, no tiene ningún tipo de didáctica, de interacción, de espontaneidad, no hizo ningún ejemplo sin helio. En fin no me gusto",
+        "date": "2022-05-05",
+        "date_utc": "2022-05-05T11:57:31.882Z",
+        "reviewer_ucode": 37325113
+      },
+      {
+        "author": "Laura",
+        "rating": 5,
+        "text": "Me encanto , tenía mis dudas y todas fueron aclaradas , más aprendí nuevas técnicas lo recomiendo 100%.",
+        "date": "2022-04-28",
+        "date_utc": "2022-04-28T18:45:51.112Z",
+        "reviewer_ucode": 52431904
+      },
+      {
+        "author": "Ramos",
+        "rating": 1,
+        "text": "La plataforma me dio problemas para continuar el curso, muchas veces ni me abría teniendo internet perfecto en casa.\nEste curso es con diferencia el peor que hice:\n- en cada video lo que más hacía era cortar papeles para hacer los flecos, vale que lo haya enfocado en un video, pero en todos igual\n-la decoración en globos burbuja, bajo lo que entiendo fue solo introducir pintura para hacer el efecto marmol...\n- el trato a los globos igual que su inflado y decoración, no me parece el correcto, dejando los cuellos de los globos a la vista, o haciendo nudos totalmente innecesarios\n-en otros videos como el arreglo para desvelar el sexo de un bebé, me pareció horrible, normalmente se hace con un globo negro dentro de un bubble, aquí no hubo ningún tipo de esfuerzo en que quedase estético ni curioso\nVeo muchísimo fallos, de verdad, estaba esperando a poder ver un video que fuese útil, pero es que ni el primero, si no hubiese visto todo el curso, pediría la devolución del dinero, pero cómo lo vi entero esperando a que esto cambiase, pues ahora me lo trago. Pero bajo mi punto de vista, el peor curso que hice en mi vida!",
+        "date": "2022-04-20",
+        "date_utc": "2022-04-20T15:37:41.190Z",
+        "reviewer_ucode": 51832021
+      },
+      {
+        "author": "Arline",
+        "rating": 5,
+        "text": "GOOD",
+        "date": "2022-04-18",
+        "date_utc": "2022-04-18T21:15:19.697Z",
+        "reviewer_ucode": 51033788
+      },
+      {
+        "author": "Leslie",
+        "rating": 5,
+        "text": "Una experiencia muy buena aprendi muchísimas y me encanto 💖 lo recomiendo 👍😉",
+        "date": "2022-04-13",
+        "date_utc": "2022-04-13T14:48:11.298Z",
+        "reviewer_ucode": 50495517
+      },
+      {
+        "author": "YOLANDA",
+        "rating": 5,
+        "text": null,
+        "date": "2022-04-05",
+        "date_utc": "2022-04-05T21:23:16.366Z",
+        "reviewer_ucode": 51315489
+      },
+      {
+        "author": "Jessica",
+        "rating": 1,
+        "text": "Por falta de tiempo no he podido abrir el correo y hoy q lo hago para acceder al curso de globos burbuja No puedo abrir el contenido y me sale una NOTA que hay un error que me comunique con soporte.. será que pueden ayudarme con ese problema o simplemente perdí mi dinero",
+        "date": "2022-03-19",
+        "date_utc": "2022-03-19T17:56:02.272Z",
+        "reviewer_ucode": 49492246
+      },
+      {
+        "author": "Lorena",
+        "rating": 5,
+        "text": "Me encanto \nComo comentario Falta un poco detalles de lo que debemos saber del Helio gracias",
+        "date": "2022-03-11",
+        "date_utc": "2022-03-11T20:10:57.430Z",
+        "reviewer_ucode": 31710109
+      },
+      {
+        "author": "Jamnia",
+        "rating": 5,
+        "text": "Me encanto las explicaciones y ejemplos muy claros, no da lugar a ninguna duda, solo tengo una consulta este curso otorga diploma?",
+        "date": "2022-03-07",
+        "date_utc": "2022-03-07T22:47:38.263Z",
+        "reviewer_ucode": 49644709
+      },
+      {
+        "author": "Javiera",
+        "rating": 5,
+        "text": null,
+        "date": "2022-02-24",
+        "date_utc": "2022-02-24T02:06:56.724Z",
+        "reviewer_ucode": 50066016
+      }
+    ],
+    "producer": "MasterClasses.La®",
+    "instructor_name": null,
+    "instructor_reason": "Las paginas publicas de Hotmart (checkout y marketplace) solo muestran al productor MasterClasses.La® (autor en checkout: 'MasterClasses.La Seminarios.Online Mauricio Duque Zuluaga'); no nombran instructor.",
+    "workload_hours": null,
+    "workload_reason": "dataSheet.duration vacio en la ficha del marketplace; Hotmart no publica carga horaria.",
+    "certificate": true,
+    "warranty_days": 7,
+    "language": "ES",
+    "published_on_hotmart": "2021-12-27T18:47:49.505",
+    "hotlink_chain": [
+      "https://hotm.art/curso-globo-burbuja-crashing",
+      "https://go.hotmart.com/D76953272A?ap=e031",
+      "https://pay.hotmart.com/F62444331S?ref=D76953272A"
+    ],
+    "hotlink_status": "VIVO: 302 -> 302 -> 200 (GET). Nota: HEAD a go.hotmart.com responde 401; con GET redirige bien.",
+    "sources": [
+      {
+        "tipo": "redirect_chain",
+        "url": "https://hotm.art/curso-globo-burbuja-crashing",
+        "valor": "https://go.hotmart.com/D76953272A?ap=e031 -> https://pay.hotmart.com/F62444331S?ref=D76953272A",
+        "fecha_utc": "2026-09-22T11:00:40Z",
+        "evidencia": "redirects.txt, redirects_get.txt"
+      },
+      {
+        "tipo": "checkout",
+        "url": "https://pay.hotmart.com/F62444331S",
+        "valor": "168.959 COP mostrado (CO); USD base 49.99",
+        "fecha_utc": "2026-09-22T11:00:48Z",
+        "evidencia": [
+          "pay_F62444331S.html",
+          "pay_F62444331S.nuxt.json",
+          "pay_burbuja_F62444331S.png"
+        ]
+      },
+      {
+        "tipo": "marketplace",
+        "url": "https://hotmart.com/es/marketplace/productos/decoracion-de-globos-burbuja/F62444331S",
+        "valor": "4.0 (20 evaluaciones)",
+        "fecha_utc": "2026-09-22T11:02:33Z",
+        "evidencia": [
+          "mkt_F62444331S.html",
+          "mkt_F62444331S.pageProps.json",
+          "mkt_burbuja_F62444331S.png"
+        ]
+      },
+      {
+        "tipo": "api_evaluaciones",
+        "url": "https://api-ask.hotmart.com/api/v1/survey/product/1778060/rating",
+        "valor": "average=4.0 totalAnswers=20",
+        "fecha_utc": "2026-09-22T11:03:41Z",
+        "evidencia": "api_rating_1778060.json"
+      },
+      {
+        "tipo": "api_reseñas",
+        "url": "https://api-ask.hotmart.com/api/v1/survey/product/1778060/answers?page_size=50&offset=1&evaluation=ALL&sort_by_answers=true",
+        "valor": "20 reseñas",
+        "fecha_utc": "2026-09-22T11:04:03Z",
+        "evidencia": "api_answers_1778060_all.json"
+      }
+    ],
+    "price_note": "Precio de lista sin descuento (no hay cupon en el enlace de afiliado). original_price_usd=null porque no existe precio tachado.",
+    "price_usd_source": "pay.hotmart.com payload: products[0].exchange[0].baseValue=49.99 USD (CONVERT_TO_SHOPPERS_COUNTRY) y paymentMethods[PAYPAL].amount=49.99 USD",
+    "rating_last_update": "2023-04-26T04:45:24.740Z",
+    "rating_visible_on_hotmart": true,
+    "reviews_note": "Todas las evaluaciones publicas devueltas por la API (sin filtrar). Nombres tal como los publica Hotmart (solo nombre de pila). text=null cuando la evaluacion es solo estrellas.",
+    "contenido_hotmart": "productSummary: 10 modulos con 19 items (incluye bonos, despedida y video respuestas; el sitio dice lessonsCount=18)."
+  }
+}

@@ -1,122 +1,166 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import type { Country, City } from '@/lib/countries';
+import type { Country } from '@/lib/countries';
 import { formatPrice } from '@/lib/countries';
 import { getCategory } from '@/lib/categories';
+import { coursePricing, usd } from '@/lib/pricing';
 import CourseCover from './CourseCover.astro';
+import Icon from './Icon.astro';
 import Rating from './Rating.astro';
 
 interface Props {
   course: CollectionEntry<'courses'>;
   country?: Country;
-  /** Contexto hiperlocal: enlaza a la versión del curso en la ciudad. */
-  city?: City;
-  /** Card grande para grid asimétrico. */
+  /**
+   * Card grande para el grid asimétrico (ocupa 2 filas en lg). En lg la imagen crece para
+   * llenar la altura de las 2 filas: la tarjeta necesita `class="h-full"` para estirarse.
+   * En tablet (md → lg) ocupa las 2 columnas en horizontal (imagen al 45 %) para no
+   * empujar los otros cursos ~600 px hacia abajo.
+   */
   large?: boolean;
+  /** En lg, imagen a la izquierda (45 %) y texto a la derecha: catálogo a 2 columnas. */
+  horizontal?: boolean;
+  /** Clases extra para el `<a>` raíz (p. ej. `h-full` para llenar la celda del grid). */
+  class?: string;
 }
 
-const { course, country, city, large = false } = Astro.props;
+const { course, country, large = false, horizontal = false, class: className } = Astro.props;
 const d = course.data;
 const category = getCategory(d.category);
-const href = country
-  ? city
-    ? `/${country.code}/${city.slug}/${course.id}/`
-    : `/${country.code}/${course.id}/`
-  : `/co/${course.id}/`;
-const hasPrice = d.priceUSD !== undefined && d.originalPriceUSD !== undefined;
-const discountPct =
-  d.discountPct ?? (hasPrice ? Math.round((1 - d.priceUSD! / d.originalPriceUSD!) * 100) : undefined);
+// Siempre la URL canónica del curso (las curso-ciudad declaran canonical → curso-país).
+const href = `/${country?.code ?? 'co'}/${course.id}/`;
+const { hasPrice, hasDiscount, discountPct } = coursePricing(d);
+
+// La imagen de las variantes `large` (desde md) y `horizontal` (desde lg) deja de tener
+// proporción fija: crece con la tarjeta y la foto la cubre en posición absoluta (sin huecos).
+const mediaClass = large
+  ? 'aspect-square sm:aspect-[16/10] md:aspect-auto md:min-h-64 md:w-[45%] md:shrink-0 lg:min-h-72 lg:w-auto lg:flex-1'
+  : horizontal
+    ? 'aspect-[16/9] lg:aspect-auto lg:min-h-56 lg:w-[45%] lg:shrink-0'
+    : 'aspect-[16/9]';
+const imgClass = [
+  'h-full w-full object-cover transition-transform duration-700 ease-suave group-hover:scale-105',
+  large && 'md:absolute md:inset-0',
+  horizontal && !large && 'lg:absolute lg:inset-0',
+]
+  .filter(Boolean)
+  .join(' ');
 ---
 
 <a
   href={href}
   class:list={[
     'course-card group relative flex flex-col overflow-hidden rounded-3xl border border-crema-200 bg-white shadow-tarjeta',
-    large && 'lg:row-span-2',
+    horizontal && 'lg:flex-row',
+    large && 'md:flex-row lg:flex-col',
+    className,
   ]}
 >
-  <div class:list={['relative overflow-hidden', large ? 'aspect-square sm:aspect-[16/10] lg:aspect-square' : 'aspect-[16/9]']}>
+  <div class:list={['relative overflow-hidden', mediaClass]}>
     {
       d.cover ? (
         <img
           src={d.cover}
           alt={`Imagen del ${d.title}`}
-          class="h-full w-full object-cover transition-transform duration-700 ease-suave group-hover:scale-105"
+          class={imgClass}
           loading="lazy"
           decoding="async"
           width="600"
           height="600"
         />
       ) : (
-        <CourseCover
-          slug={course.id}
-          category={d.category}
-          title={d.title}
-          class="transition-transform duration-700 ease-suave group-hover:scale-105"
-        />
+        <CourseCover slug={course.id} category={d.category} title={d.title} class={imgClass} />
       )
     }
     <span
-      class="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-extrabold text-ciruela-700 backdrop-blur-sm"
+      class="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 py-1 pr-3 pl-2.5 text-xs font-extrabold text-ciruela-700 backdrop-blur-sm"
     >
-      {category.emoji} {category.name}
+      <Icon name={category.icon} size={14} class="text-coral-600" />
+      {category.name}
     </span>
     {
-      discountPct && (
-        <span class="absolute top-3 right-3 rounded-full bg-coral-500 px-3 py-1 text-xs font-extrabold text-white">
+      hasDiscount && discountPct && (
+        <span
+          class:list={[
+            'absolute top-3 right-3 rounded-full bg-coral-600 px-3 py-1 text-xs font-extrabold text-white',
+            // En horizontal la imagen mide ~245 px en lg: abajo, para no chocar con el chip de categoría.
+            horizontal && 'lg:top-auto lg:bottom-3',
+          ]}
+        >
           −{discountPct}%
         </span>
       )
     }
   </div>
 
-  <div class="flex flex-1 flex-col gap-2.5 p-5">
-    <h3 class:list={['font-display font-semibold text-ciruela-900', large ? 'text-2xl' : 'text-lg']}>
+  <div
+    class:list={[
+      'flex flex-1 flex-col gap-2.5 p-5',
+      large && 'md:justify-center md:p-6 lg:flex-none lg:justify-normal lg:p-5',
+      horizontal && 'lg:justify-center lg:p-6',
+    ]}
+  >
+    <h3 class:list={['font-display font-semibold text-ciruela-900', large ? 'text-2xl' : horizontal ? 'text-lg lg:text-xl' : 'text-lg']}>
       {d.title}
     </h3>
-    {large && <p class="line-clamp-2 text-sm text-ciruela-500">{d.shortDescription}</p>}
+    {
+      (large || horizontal) && (
+        <p class:list={['line-clamp-2 text-sm text-ciruela-500', horizontal && !large && 'max-lg:hidden']}>
+          {d.shortDescription}
+        </p>
+      )
+    }
     <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ciruela-500">
-      <span>📹 {d.lessonsCount} videos</span>
+      <span class="inline-flex items-center gap-1">
+        <Icon name="play" size={15} class="text-coral-600" />
+        {d.lessonsCount} videos
+      </span>
       <span>· {d.level}</span>
-      <span>· 🎓 Certificado</span>
+      <!-- Sin «·» delante: el birrete ya separa y, si la línea se parte (tarjeta horizontal),
+           no queda un punto huérfano al inicio. -->
+      <span class="inline-flex items-center gap-1">
+        <Icon name="birrete" size={15} class="text-coral-600" />
+        Certificado
+      </span>
       {d.rating && <Rating rating={d.rating} count={d.ratingCount} />}
     </div>
-    <div class="mt-auto flex items-baseline gap-2 pt-1.5">
+    <div
+      class:list={[
+        'flex items-baseline gap-2 pt-1.5',
+        horizontal ? 'mt-auto lg:mt-2' : large ? 'mt-auto md:mt-2 lg:mt-auto' : 'mt-auto',
+      ]}
+    >
       {
         hasPrice ? (
-          country ? (
-            <>
-              <span class="text-xs text-ciruela-400 line-through">
-                {formatPrice(d.originalPriceUSD!, country)}
-              </span>
-              <span class="text-lg font-extrabold text-coral-600">{formatPrice(d.priceUSD!, country)}</span>
-            </>
-          ) : (
-            <>
-              <span class="text-xs text-ciruela-400 line-through">US$ {d.originalPriceUSD}</span>
-              <span class="text-lg font-extrabold text-coral-600">US$ {d.priceUSD}</span>
-            </>
-          )
+          <>
+            {hasDiscount && <span class="text-xs text-ciruela-500 line-through">{usd(d.originalPriceUSD!)}</span>}
+            <span class="text-lg font-extrabold text-coral-700">{usd(d.priceUSD!)}</span>
+            {country && <span class="text-xs text-ciruela-500">≈ {formatPrice(d.priceUSD!, country)}</span>}
+          </>
         ) : (
-          <span class="text-sm font-extrabold text-aqua-700">Ver curso y precio →</span>
+          <span class="inline-flex items-center gap-1 text-sm font-extrabold text-coral-700">
+            Ver temario y precio <Icon name="flecha" size={14} />
+          </span>
         )
       }
     </div>
   </div>
-
-  <span
-    class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-suave group-hover:translate-x-full"
-    aria-hidden="true"></span>
 </a>
 
 <style>
+  /* Hover propio del sistema: sube con rebote (ease-fiesta) y gana la sombra `globo`.
+     Sin barrido brillante (auditoría 2026-09-22, P1-7: efecto de plantilla). */
   .course-card {
     transition:
-      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      transform 0.4s var(--ease-fiesta),
       box-shadow 0.4s ease;
   }
   .course-card:hover {
     transform: translateY(-8px) scale(1.015);
     box-shadow: var(--shadow-globo);
+  }
+  .course-card:focus-visible {
+    outline: 3px solid var(--color-coral-400);
+    outline-offset: 3px;
   }
 </style>
