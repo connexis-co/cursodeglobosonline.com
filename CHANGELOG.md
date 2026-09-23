@@ -4,6 +4,40 @@ Los cambios notables de este proyecto se documentan aquí. Formato basado en
 [Keep a Changelog](https://keepachangelog.com/es/) y [SemVer](https://semver.org/lang/es/).
 Generación automática con release-please a partir de Conventional Commits.
 
+## [0.2.0](https://github.com/connexis-co/cursodeglobosonline.com/compare/v0.1.0...v0.2.0) (2026-09-23)
+
+
+### Features
+
+* **blog:** 28 guías cluster con foto hero propia y datos verificados ([31ba5f0](https://github.com/connexis-co/cursodeglobosonline.com/commit/31ba5f041fe2b77263efd5012805b7c05bf44ab1))
+* **curso:** imagen antes del cuadro de precio en mobile ([00508e6](https://github.com/connexis-co/cursodeglobosonline.com/commit/00508e6b97077134efbcac82e713bcb1e9bce921))
+* **cursos:** estrellas propias con voto estilo kk Star Ratings y aggregateRating ([53a5e3d](https://github.com/connexis-co/cursodeglobosonline.com/commit/53a5e3d46b23387f857a67c196bc80412d2cc96d))
+* **cursos:** estrellas propias con voto estilo kk Star Ratings y aggregateRating ([2177050](https://github.com/connexis-co/cursodeglobosonline.com/commit/21770508d6dfa039097293a0fded08ca5ab5675c))
+* **design:** globos estilo LBD, portadas SVG propias e imágenes Gemini ([1f22017](https://github.com/connexis-co/cursodeglobosonline.com/commit/1f220172d803cbd42c35bcd8bf293e2e99bb1a76))
+* **design:** sobriedad sably, portadas Gemini fotorrealistas y badge Hotmart ([de7f882](https://github.com/connexis-co/cursodeglobosonline.com/commit/de7f882bc5985d0f6d0cdfe885ee6af764a94044))
+* **geo:** capa hiperlocal de ciudades con contenido local único ([064d226](https://github.com/connexis-co/cursodeglobosonline.com/commit/064d22636e3355e684e2bb669c3f08a91eced9e0))
+* **header:** header claro tipo plataforma con mega menú de cursos ([3aeab39](https://github.com/connexis-co/cursodeglobosonline.com/commit/3aeab3956a885ec6ce5d59d6d7005e7032b67aff))
+* **marca:** endoso "by sably" en el logo del header ([58ebbd4](https://github.com/connexis-co/cursodeglobosonline.com/commit/58ebbd4dedab066490a3e8c6ba5f9f3091b7bab6))
+* **marca:** endoso "by sably" en el logo del header ([8228852](https://github.com/connexis-co/cursodeglobosonline.com/commit/8228852384433a6ccc3afd6c0eded9caa8221f0d))
+* **marca:** isologo «La G retorcida» en SVG con endoso by Sably ([0bf90cc](https://github.com/connexis-co/cursodeglobosonline.com/commit/0bf90cc507b410071b91e0a8725f3347cce64a9b))
+* **seo:** blog para Discover, anti-canibalización y precios verificados ([82f9f9b](https://github.com/connexis-co/cursodeglobosonline.com/commit/82f9f9be6a92abcb68d27e6b6909ecbbe92e2c0d))
+* **seo:** blog para Discover, anti-canibalización, precios reales, logo y auditoría de diseño ([3baa970](https://github.com/connexis-co/cursodeglobosonline.com/commit/3baa970b77d768a2983be0b15facbcb5d3841cec))
+* **seo:** iconos PWA + manifest + llms.txt + logo raster en schema ([c8f1ebd](https://github.com/connexis-co/cursodeglobosonline.com/commit/c8f1ebd4821be6013ec0fb61c8ae881e238188e9))
+* **seo:** iconos PWA + manifest + llms.txt + logo raster en schema ([fadaa70](https://github.com/connexis-co/cursodeglobosonline.com/commit/fadaa70675e756ea3c2d0851a42da7833e8011f5))
+* **ui:** auditoría de diseño — contraste AA, iconos SVG, mega menú y conversión ([8ba925a](https://github.com/connexis-co/cursodeglobosonline.com/commit/8ba925a55ffc110c51c9a6e7d2ff9492d56dabde))
+
+
+### Bug Fixes
+
+* **ci:** release-please no debe bloquear el deploy a producción ([9aeee8c](https://github.com/connexis-co/cursodeglobosonline.com/commit/9aeee8cd50ed71aa29676f5f1465f0cca46276af))
+* **ci:** release-please no debe bloquear el deploy a producción ([6c5f2a3](https://github.com/connexis-co/cursodeglobosonline.com/commit/6c5f2a3db4b99d3fa70b3ccc1610931f1b5e6755))
+* **deps:** Astro 7.3.4 y parches de seguridad (npm audit fix) ([f846950](https://github.com/connexis-co/cursodeglobosonline.com/commit/f8469508134ac26daa3dbab6a05d46499452d440))
+* **deps:** Astro 7.3.4 y parches de seguridad (npm audit fix) ([18036b1](https://github.com/connexis-co/cursodeglobosonline.com/commit/18036b17f59d34162a6090d6673a5a934d572c64))
+* **marca:** mención de Hotmart conforme a sus Términos de uso (§5.2) ([3425f13](https://github.com/connexis-co/cursodeglobosonline.com/commit/3425f13f87627ef76f1e2172ed4aefd0abcf1b96))
+* **ratings:** hallazgos de la revisión de Copilot ([61cfce4](https://github.com/connexis-co/cursodeglobosonline.com/commit/61cfce437cbe9e4f9c1d273ec785868464bb91d8))
+* **seo:** redirige las categorías vacías a su sección del blog ([3c81e60](https://github.com/connexis-co/cursodeglobosonline.com/commit/3c81e60f2eacd110486851c3247e520e092bdb83))
+* **seo:** redirige las categorías vacías a su sección del blog ([904cc1b](https://github.com/connexis-co/cursodeglobosonline.com/commit/904cc1be0d34a938aeafa4dfd4feab0aee00e515))
+
 ## [0.2.0] - 2026-09-22
 
 ### Added
