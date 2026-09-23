@@ -22,7 +22,8 @@ Google.
    `/api/ratings`: las demás páginas no pasan por ningún Worker.
 3. **SEO en el build:** `src/lib/ratings.ts` lee `/api/ratings` de producción al compilar. El
    HTML visible y el `aggregateRating` usan el mismo dato, y el widget lo refresca en vivo.
-   Si la API falla, se compila sin estrellas en vez de romper el deploy.
+   Si la API falla se usa el último `/ratings-snapshot.json` publicado; si tampoco hay, se
+   compila sin estrellas en vez de romper el deploy (salvo con `RATINGS_REQUIRED=1`).
 4. **Recompilación diaria** (`ratings-refresh.yml`): compara `/api/ratings` con
    `/ratings-snapshot.json` y solo despliega si cambiaron. Después avisa por IndexNow de las
    32 fichas canónicas.
@@ -51,7 +52,7 @@ Google.
 
 ## 4. Resultado (2026-09-23)
 
-- API probada con `scripts/test-ratings.mjs` (27 comprobaciones) en local (D1 local) y en un
+- API probada con `scripts/test-ratings.mjs` (28 comprobaciones) en local (D1 local) y en un
   preview real de Cloudflare (D1 de preview, secreto y caché de borde): todo OK. La prueba corre
   en cada PR (`ci.yml`) sin credenciales.
 - Con votos, el build publica `aggregateRating`. Ejemplo local: 3 votos → `ratingValue` 3.7 y

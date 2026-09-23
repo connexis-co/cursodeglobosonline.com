@@ -19,7 +19,7 @@ califique cada curso, como el plugin kk Star Ratings de WordPress. Plan y result
   dato que se ve en la página. Hotmart sigue aparte, visible y fuera del schema.
 - **Build y refresco:** el build lee `/api/ratings` de producción; `ratings-refresh.yml`
   recompila cada día si cambiaron los votos y avisa por IndexNow.
-- **Pruebas:** `npm run test:ratings` (27 comprobaciones) corre en CI contra una D1 local; también
+- **Pruebas:** `npm run test:ratings` (28 comprobaciones) corre en CI contra una D1 local; también
   pasó en un preview real de Cloudflare.
 - **Entorno:** wrangler está autenticado en este Mac (OAuth, permisos D1 y Pages), así que no hace
   falta pegar tokens. El disco quedó en 97 % (27 GB libres). El scratchpad temporal se borró y con
