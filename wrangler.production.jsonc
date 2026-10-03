@@ -1,0 +1,63 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "globos-emdash-production",
+  "main": "./src/worker-production.ts",
+  "account_id": "6e36c2fb07c21f30ed3c0d6e824884bc",
+  "compatibility_date": "2026-10-02",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "routes": [
+    {
+      "pattern": "cursodeglobosonline.com/*",
+      "zone_id": "887ff3793749dccf03657c0c08697aae"
+    },
+    {
+      "pattern": "www.cursodeglobosonline.com/*",
+      "zone_id": "887ff3793749dccf03657c0c08697aae"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "globos-emdash-production",
+      "database_id": "555eda5c-bab2-4ff5-bdc4-4417c14de4d3"
+    },
+    {
+      "binding": "RATINGS_DB",
+      "database_name": "cursodeglobosonline-ratings",
+      "database_id": "5c4f6bae-6301-43de-9b1b-16ac873a87ce",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "globos-emdash-production-media"
+    }
+  ],
+  "vars": {
+    "GLOBOS_ENVIRONMENT": "production",
+    "EMDASH_SITE_URL": "https://cursodeglobosonline.com"
+  },
+  "triggers": {
+    "crons": [
+      "* * * * *"
+    ]
+  },
+  "observability": {
+    "enabled": true
+  },
+  "kv_namespaces": [
+    {
+      "binding": "SESSION",
+      "id": "909e08c406e84feeac6264af9a1fda84"
+    }
+  ]
+}

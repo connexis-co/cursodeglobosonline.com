@@ -1,6 +1,7 @@
 import {hydrateRelations} from './cms/hydrate';
 import type { CollectionEntry as LegacyEntry } from 'astro:content';
 import { getEmDashCollection, getEmDashEntry } from 'emdash';
+import {getRequestContext} from 'emdash/request-context';
 import type { Country, City } from './countries';
 import type { Category } from './categories';
 import type { CityLocal } from './cities';
@@ -9,7 +10,14 @@ import type { BlogCluster } from './blog-clusters';
 export type RichBlock=Record<string,unknown> & {_type:string};
 export type CollectionEntry<C extends 'courses'|'blog'|'testimonials'>=LegacyEntry<C>&{richBody:RichBlock[];data:LegacyEntry<C>['data']&{video?:string};contentRef:{collection:string;id:string;slug:string}};
 export interface Row {id:string;data:unknown}
-export async function readAll(collection:string):Promise<Row[]> {
+// Reuse reads only within this request: publishing remains visible on the next request.
+const collectionReads=new WeakMap<object,Map<string,Promise<Row[]>>>();
+export function readAll(collection:string):Promise<Row[]> {
+ const context=getRequestContext();if(!context)return queryAll(collection);
+ let reads=collectionReads.get(context);if(!reads){reads=new Map();collectionReads.set(context,reads);}
+ let result=reads.get(collection);if(!result){result=queryAll(collection);reads.set(collection,result);}return result;
+}
+async function queryAll(collection:string):Promise<Row[]> {
  const rows:Row[]=[];let cursor:string|undefined;const seen=new Set<string>();
  do {const result=await getEmDashCollection(collection,{locale:'es',status:'published',limit:100,cursor});if(result.error)throw result.error;rows.push(...result.entries);if(!result.hasMore)break;if(!result.nextCursor||seen.has(result.nextCursor))throw Error('Invalid CMS pagination');cursor=result.nextCursor;seen.add(cursor);}while(true);
  // Bound D1 relation reads: a blog index can contain hundreds of entries.

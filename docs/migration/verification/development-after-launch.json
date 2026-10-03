@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-03T08:19:44.372Z",
+  "results": [
+    {
+      "path": "/nosotros/",
+      "status": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "canonical": "https://dev.cursodeglobosonline.com/nosotros/",
+      "formatted": true
+    },
+    {
+      "path": "/es/",
+      "status": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "canonical": "https://dev.cursodeglobosonline.com/es/"
+    },
+    {
+      "path": "/_emdash/admin",
+      "status": 200,
+      "noindex": "noindex, nofollow, noarchive"
+    }
+  ]
+}

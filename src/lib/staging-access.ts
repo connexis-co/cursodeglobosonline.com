@@ -6,7 +6,7 @@ const PREVIEW_HEADER = 'X-Globos-Preview-Token';
 const BASIC_USER = 'sably';
 const encoder = new TextEncoder();
 
-async function matchesSecret(value: string, expected: string): Promise<boolean> {
+export async function matchesSecret(value: string, expected: string): Promise<boolean> {
   const [actualDigest, expectedDigest] = await Promise.all([
     crypto.subtle.digest('SHA-256', encoder.encode(value)),
     crypto.subtle.digest('SHA-256', encoder.encode(expected)),
@@ -20,7 +20,7 @@ async function matchesSecret(value: string, expected: string): Promise<boolean> 
   return difference === 0;
 }
 
-function basicCredentials(request: Request): string | null {
+export function basicCredentials(request: Request): string | null {
   const match = /^Basic\s+(\S+)$/i.exec(request.headers.get('Authorization') ?? '');
   if (!match) return null;
   try {

@@ -1,5 +1,7 @@
 # Search Console y preparación SEO de EmDash — 3 de octubre de 2026
 
+> Informe previo al corte, conservado como línea base. EmDash ya está publicado y el sitemap público se reenvió. El estado vigente y las comprobaciones posteriores están en [el informe del lanzamiento](2026-10-03-launch.md). Las secciones que describen desarrollo o pasos previos reflejan el momento de esta auditoría.
+
 El sitio ya aparece en Google. De las **119 URLs del sitemap actual**, la inspección de Google confirma **118 indexadas** y una rastreada, actualmente sin indexar. La prioridad es conseguir más clics y visitas comerciales, y conservar las URLs y señales existentes durante el cambio de CMS.
 
 ## Datos y alcance

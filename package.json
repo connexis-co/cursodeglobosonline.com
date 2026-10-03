@@ -19,7 +19,9 @@
     "deploy:dev": "npm run build && node scripts/deploy-emdash.mjs",
     "content:seed": "node --import tsx scripts/migrate-content.ts",
     "test:migration": "node --import tsx --test tests/*.test.ts",
-    "db:migrate:dev": "wrangler d1 migrations apply globos-ratings-dev --remote"
+    "db:migrate:dev": "wrangler d1 migrations apply globos-ratings-dev --remote",
+    "build:prod": "GLOBOS_BUILD_ENV=production astro build",
+    "deploy:prod": "npm run build:prod && node scripts/deploy-production.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "14.3.3",

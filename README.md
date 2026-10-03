@@ -1,99 +1,44 @@
-> **Migración EmDash en desarrollo:** consulta [la guía de ambientes, contenido y operación](docs/migration/README.md). Las instrucciones anteriores de Cloudflare Pages que siguen abajo describen la producción previa.
+# Curso de Globos Online · EmDash
 
-# 🎈 cursodeglobosonline.com
+Sitio Astro 7 con EmDash 1.1 y tema propio `globos-classic`. Los contenidos publicados en el CMS se sirven mediante SSR y no requieren recompilar.
 
-> Plataforma de cursos online de decoración con globos — Filial de [Sably](https://sably.co)
+| Entorno | Sitio | Administración |
+| --- | --- | --- |
+| Producción | https://cursodeglobosonline.com | https://cursodeglobosonline.com/_emdash/admin |
+| Desarrollo privado | https://dev.cursodeglobosonline.com | https://dev.cursodeglobosonline.com/_emdash/admin |
 
-[![Deploy](https://img.shields.io/badge/deploy-Cloudflare%20Pages-orange)](https://cursodeglobosonline.com)
-[![Version](https://img.shields.io/github/v/release/connexis-co/cursodeglobosonline.com)](https://github.com/connexis-co/cursodeglobosonline.com/releases)
+Usuario administrador solicitado: `sably`. Las contraseñas se almacenan como secretos de Cloudflare, nunca en Git. Las bases de contenido, archivos y sesiones de ambos entornos son independientes. Publicar en desarrollo no modifica producción.
 
-## Stack
+## Trabajo local y despliegue
 
-- **Framework**: [Astro 7](https://astro.build) (output estático, islands-ready)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com) vía `@tailwindcss/vite`
-- **Tipografía**: Fraunces Variable (display) + Nunito Sans Variable (texto)
-- **Deploy**: [Cloudflare Pages](https://pages.cloudflare.com)
-- **Analytics**: Google Tag Manager (`GTM-KKP7WL8Q`) + GA4 vía GTM
-- **Checkout**: Hotmart (enlaces `hotm.art` con hotlink de afiliado preservado)
+Usar Node 24 y `npm ci`.
 
-## Inicio rápido
-
-```bash
-git clone git@github.com:connexis-co/cursodeglobosonline.com.git
-cd cursodeglobosonline.com
-npm install
-cp .env.example .env   # completar PUBLIC_GTM_ID=GTM-KKP7WL8Q
+```sh
 npm run dev
+npm run test:migration
+npm run check
+npm run deploy:dev
+# Solo para publicar código validado en el dominio principal:
+npm run deploy:prod
 ```
 
-## Scripts
+`npm run build` y `npm run deploy` corresponden a desarrollo. `build:prod` selecciona explícitamente `wrangler.production.jsonc`; cada desplegador valida los recursos de destino. Desplegar código **nunca** ejecuta el seed ni importa de nuevo el contenido.
 
-| Script | Descripción |
-|---|---|
-| `npm run dev` | Servidor de desarrollo (localhost:4321) |
-| `npm run build` | Build de producción (`dist/`) |
-| `npm run preview` | Preview del build |
-| `npm run check` / `lint` | `astro check` (TypeScript + validaciones) |
-| `npm run deploy` | Build + deploy manual a Cloudflare Pages |
+## Contenido y módulos
 
-## Estructura
+- 4 cursos y 28 artículos, relacionados con autores, temas, países, ciudades y categorías.
+- Páginas, menús y SEO nativo editables en el panel; revisiones pendientes separadas de lo publicado.
+- WhatsApp configurable; 11 campañas de promociones en borrador hasta verificar ofertas y fechas.
+- Comentarios moderados y estrellas reales de cursos y artículos.
+- Brevo preparado con `contacto@sably.co`; falta configurar su API key y probar la entrega.
+- El formulario de contacto abre WhatsApp. La bandeja de contactos sigue pendiente; no se afirma que los guarde.
 
-```
-src/
-├── components/     # Componentes Astro (Header, CourseCard, FaqAccordion…)
-├── content/        # Cursos (MDX con datos REALES de la auditoría) + testimonios
-├── layouts/        # BaseLayout (GTM, SEO, schemas) + LandingLayout (Ads, noindex)
-├── lib/            # countries, categories, hotmart, seo, sitemap, analytics, site
-├── pages/          # Rutas: /, /{cc}/, /{cc}/{curso}/, /{cc}/cursos/{categoria}/,
-│   └── landing/    # /landing/meta|google/{curso}/ (noindex, para Ads)
-└── styles/         # global.css — sistema de diseño (paleta OKLCH, animaciones)
-```
+## Documentación
 
-## Arquitectura de URLs
+- [Operación y mapa de contenido](docs/migration/README.md)
+- [Lanzamiento, recursos y reversión](docs/migration/PRODUCTION.md)
+- [Auditoría SEO y limitación de Ahrefs](docs/seo/2026-10-03-launch.md)
+- [Datos de Search Console](docs/seo/2026-10-03-search-console.md)
+- [Plugins y pendientes](docs/migration/PLUGINS.md)
 
-- `/{cc}/` — home por país (co, mx, pe, ec, cl, ar, es, us) con hreflang completo
-- `/{cc}/{curso-slug}/` — página de curso (slug siempre `curso-de-*`)
-- `/{cc}/cursos/` y `/{cc}/cursos/{categoria}/` — catálogo y categorías
-- `/landing/meta|google/{curso}/` — landings de Ads (noindex)
-- Redirecciones 301 del sitio WordPress anterior en [public/_redirects](public/_redirects)
-
-## Reglas de datos (importante)
-
-- **Enlaces Hotmart**: son los REALES del sitio anterior (`hotm.art/*-crashing`), conservan el
-  hotlink de afiliado. No cambiar el host ni el slug.
-- **Descuento**: Globoflexia usa `?offDiscount=031016` (50% real, $50→$25 USD). No hay cupones
-  alfanuméricos para estos productos hoy.
-- **Sin números inventados**: precio/rating/estudiantes solo se publican si el dato es real
-  (frontmatter opcional). Social proof del sitio: +100 certificados, +80 emprendimientos (auditados).
-
-## Despliegue
-
-- **Staging**: push a `develop` → deploy automático (rama develop en Cloudflare Pages)
-- **Producción**: push a `main` → deploy automático + release-please
-- **Manual**: `npm run deploy` (requiere `CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID` en el entorno)
-
-## Variables de entorno
-
-| Variable | Descripción |
-|---|---|
-| `PUBLIC_GTM_ID` | Contenedor GTM (existente: `GTM-KKP7WL8Q`) |
-| `PUBLIC_GA4_ID` | GA4 directo (dejar vacío: se mide vía GTM para no duplicar) |
-| `PUBLIC_META_PIXEL_ID` | Meta Pixel (pendiente de crear) |
-| `PUBLIC_HOTMART_AFFILIATE` | Afiliado extra (los hotm.art ya llevan hotlink) |
-
-## Convenciones
-
-Conventional Commits (commitlint + husky) · Git Flow (`main`/`develop`/`feature/*`) ·
-SemVer · Changelog automático con release-please. Ver [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Ecosistema Sably
-
-| Sitio | Propósito |
-|---|---|
-| [sably.co](https://sably.co) | Hub principal |
-| **cursodeglobosonline.com** | Filial: decoración y globos (este repo) |
-| [academiadebelleza.edu.co](https://academiadebelleza.edu.co) | Filial: belleza |
-
-## Licencia
-
-Privado — © Connexis / Sably
+Las instrucciones de la implementación estática anterior se conservan únicamente como referencia en [LEGACY_README.md](docs/migration/LEGACY_README.md).

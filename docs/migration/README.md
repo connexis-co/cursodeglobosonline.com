@@ -6,13 +6,13 @@ La migración conserva el frontend Astro como tema `globos-classic` y convierte 
 
 | Ambiente | Dirección | Contenido y operación |
 | --- | --- | --- |
-| Producción actual | https://cursodeglobosonline.com | Continúa en Cloudflare Pages con su contenido y su base de votos existentes. Esta migración no lo despliega ni escribe allí. |
+| Producción actual | https://cursodeglobosonline.com | EmDash en el Worker `globos-emdash-production`, con D1, R2 y sesiones separados. Ver [operación de producción](PRODUCTION.md). |
 | Desarrollo | https://dev.cursodeglobosonline.com | Worker `globos-emdash-dev`, D1 de contenido propio, D1 de votos propia, R2 propio y KV de sesiones propio. |
 | Administrador de desarrollo | https://dev.cursodeglobosonline.com/_emdash/admin | Usuario `sably`; la contraseña solicitada está almacenada como secreto de Cloudflare. |
 
-El acceso de desarrollo usa HTTP Basic y el proveedor de autenticación externa soportado por EmDash. Verifica las credenciales en cada solicitud y proporciona una identidad administrativa exclusiva de este entorno. `sably@dev.cursodeglobosonline.com` es un identificador interno, no un buzón configurado. No se habilitó el bypass de desarrollo de EmDash. Su comprobación CSRF y sus permisos siguen activos. Este acceso compartido debe reemplazarse por cuentas individuales antes de una eventual producción del CMS.
+El acceso de desarrollo usa HTTP Basic y el proveedor de autenticación externa soportado por EmDash. Verifica las credenciales en cada solicitud y proporciona una identidad administrativa exclusiva de este entorno. `sably@dev.cursodeglobosonline.com` es un identificador interno, no un buzón configurado. No se habilitó el bypass de desarrollo de EmDash. Su comprobación CSRF y sus permisos siguen activos. Producción usa otra identidad administrativa y secretos propios; el acceso con usuario `sably` queda limitado al panel y las API privadas. Si se añaden editores, crear identidades individuales.
 
-El Worker protege también los archivos estáticos, las imágenes y las API. Las respuestas tienen `X-Robots-Tag: noindex, nofollow, noarchive` y `Cache-Control: private, no-store`; `workers.dev` y las URLs de preview están deshabilitadas. No se mantiene ninguna excepción pública para la importación de imágenes.
+El Worker de desarrollo protege también los archivos estáticos, las imágenes y las API. Sus respuestas tienen `X-Robots-Tag: noindex, nofollow, noarchive` y `Cache-Control: private, no-store`; `workers.dev` y las URLs de preview están deshabilitadas. No se mantiene ninguna excepción pública para la importación de imágenes.
 
 ## Mapa editorial
 
@@ -78,7 +78,7 @@ npm run build
 node scripts/deploy-emdash.mjs
 ```
 
-El despliegue valida el dominio, Worker, bases, bucket, namespace y protección de archivos contra una lista explícita de recursos de desarrollo. No hay comando de publicación a producción en esta rama. Las instrucciones antiguas de despliegue están archivadas en `legacy-workflows/`.
+El despliegue valida el dominio, Worker, bases, bucket, namespace y protección de archivos contra una lista explícita de recursos de desarrollo. Producción dispone de `npm run deploy:prod` y un validador separado de recursos. Las instrucciones antiguas de despliegue están archivadas en `legacy-workflows/`.
 
 Solo para una instalación de desarrollo nueva, en este orden:
 
@@ -120,18 +120,20 @@ La revisión de la tienda y decisiones están en [PLUGINS.md](PLUGINS.md). Se re
 
 Se ejecutaron 20 pruebas automatizadas y comprobaciones contra el entorno real. Se verificaron 34 páginas con 35 URLs de imágenes: todas responden correctamente con acceso autorizado y rechazan el acceso anónimo. La revisión final de esta ampliación pasó 25 rutas, 10 comprobaciones de integridad y 9 de comentarios. La hidratación de relaciones limita las consultas simultáneas a D1 y reutiliza resultados resueltos durante cada solicitud. Los resultados reproducibles están en `verification/`: rutas HTTP, paridad de artículos con el sitemap de producción, importación de medios, ciclo editorial, SEO, promociones y votos. Las páginas de prueba se envían a la papelera recuperable; sus votos temporales se eliminan de la base exclusiva de pruebas.
 
-El navegador integrado devolvió `ERR_BLOCKED_BY_CLIENT` al abrir el dominio. Por ello no se certifica una comparación visual en navegador de escritorio/móvil; se verificaron HTML, rutas, archivos, metadatos, APIs y cambios de publicación reales.
+La primera revisión del desarrollo privado quedó limitada por `ERR_BLOCKED_BY_CLIENT`. Después del lanzamiento se revisó visualmente Nosotros en el navegador público: párrafos, enlaces, navegación y CTA. Se comprobó el menú móvil y la ausencia de desbordamiento horizontal a 390 px; la captura móvil no estuvo disponible. No se presenta como una revisión visual completa de todas las plantillas.
 
-`npm audit` reporta once entradas de severidad alta derivadas de **un mismo aviso** en `http-cache-semantics@4.2.0` (`GHSA-ch52-4w7c-c8xp`). El registro no ofrecía versión corregida al verificarlo. En el Astro instalado se importa desde el procesador de imágenes remotas de build; no se ha afirmado que eso elimine todo riesgo. Se conserva el entorno privado y queda registrado para la revisión previa a producción, sin forzar un downgrade incompatible de Astro.
+`npm audit` reporta once entradas de severidad alta derivadas de **un mismo aviso** en `http-cache-semantics@4.2.0` (`GHSA-ch52-4w7c-c8xp`). El registro no ofrecía versión corregida al verificarlo. En el Astro instalado se importa desde el procesador de imágenes remotas de build; no se ha afirmado que eso elimine todo riesgo. El aviso sigue pendiente de una versión corregida y revisión de alcance; no se forzó un downgrade incompatible de Astro. La publicación no equivale a resolver esa dependencia.
 
-## Paso posterior a producción
+## Lanzamiento a producción — 2026-10-03
 
-La producción actual sigue siendo la fuente editorial vigente hasta el corte. Antes de migrarla se debe comparar de nuevo el contenido que haya cambiado, exportar una copia de seguridad, crear recursos y autenticación de producción independientes, importar contenido y votos reales, comprobar URLs/canónicas/medios/redirecciones, definir variantes optimizadas de las imágenes (desarrollo enlaza directamente los originales del CMS sin usar /_image) y realizar la revisión visual. Una base editada en producción no debe reemplazarse por un volcado de desarrollo. El cambio de dominio principal requiere la decisión de lanzamiento del usuario; no se hizo en esta tarea.
+El usuario autorizó el lanzamiento. Se confirmó que el origen editorial `f846950` no había cambiado, se respaldaron los datos y se importó el paquete nativo verificado a recursos independientes de producción. Se preservaron los votos reales y sus identidades. El dominio principal ya sirve EmDash; desarrollo permanece privado. No volver a importar el seed ni reemplazar la base viva desde desarrollo.
+
+Las 25 pruebas automatizadas pasan y Astro comprueba 150 archivos sin errores ni warnings (100 hints). El rastreo público final verifica 120 URLs y 33 imágenes sin incidencias en las comprobaciones de HTTP, canónicas, H1, descripción, títulos únicos, noindex, referencias a desarrollo y formato JSON-LD. Google aceptó el sitemap (204, pendiente de procesamiento) e IndexNow aceptó las 120 URLs (200). Estos acuses no garantizan indexación. Ver [PRODUCTION.md](PRODUCTION.md) para recursos, reversión, comprobaciones y pendientes.
 
 ## Revisión del menú, estrellas y Search Console — 2026-10-03
 
 El encabezado aplica sus estilos a los enlaces del menú nativo del CMS. Los artículos tienen votación propia y las tarjetas muestran su promedio real o «Aún sin votos». `0002_blog_votes.sql` guarda votos por ID estable del artículo, separados de los cursos. Aplicarla antes de desplegar esta versión en cualquier entorno nuevo; las pruebas de desarrollo eliminaron sus votos temporales.
 
-El plugin local `globos-seo` conserva el tipo y perfil del autor en un único BlogPosting. Los sitemaps respetan publicación, noindex y canonical del CMS; las páginas fijas ya no se incluyen si dejan de estar publicadas y se añadió el perfil editorial. El SEO nativo sigue siendo editable. Se verificaron 23 pruebas automatizadas, 10 comprobaciones del ciclo editorial, 10 de votos del blog y la regresión de votos de cursos, además de 25 rutas HTTP. La revisión visual sigue pendiente por el bloqueo del navegador integrado.
+El plugin local `globos-seo` conserva el tipo y perfil del autor en un único BlogPosting. Los sitemaps respetan publicación, noindex y canonical del CMS; las páginas fijas ya no se incluyen si dejan de estar publicadas y se añadió el perfil editorial. El SEO nativo sigue siendo editable. Se verificaron 23 pruebas automatizadas, 10 comprobaciones del ciclo editorial, 10 de votos del blog y la regresión de votos de cursos, además de 25 rutas HTTP. La primera revisión visual estuvo bloqueada en desarrollo; el estado público comprobado se describe arriba.
 
-La [auditoría de GSC](../seo/2026-10-03-search-console.md) cubre las 119 URLs del sitemap público y cinco muestras adicionales. Google confirma 118/119 indexadas; el principal margen de mejora es CTR y consultas comerciales. El manifiesto `verification/seo-title-experiment.json` contiene dos ajustes de metadatos aplicados solo en desarrollo. En el corte deben reconciliarse con producción, sin volver a importar un seed ni publicar revisiones pendientes. No se enviaron solicitudes de indexación ni el sitemap privado.
+La [auditoría de GSC](../seo/2026-10-03-search-console.md) cubre las 119 URLs del sitemap público y cinco muestras adicionales. Google confirma 118/119 indexadas; el principal margen de mejora es CTR y consultas comerciales. El manifiesto `verification/seo-title-experiment.json` contiene dos ajustes de metadatos aplicados inicialmente en desarrollo y trasladados con el paquete verificado al CMS de producción. El resultado del lanzamiento y del envío del sitemap público se documenta en [PRODUCTION.md](PRODUCTION.md). Nunca enviar el sitemap privado.

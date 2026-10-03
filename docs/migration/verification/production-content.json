@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-10-03T07:59:48.267Z",
+  "counts": {
+    "courses": {
+      "total": 4,
+      "published": 4
+    },
+    "blog": {
+      "total": 28,
+      "published": 28
+    },
+    "countries": {
+      "total": 8,
+      "published": 8
+    },
+    "cities": {
+      "total": 36,
+      "published": 36
+    },
+    "categories": {
+      "total": 3,
+      "published": 3
+    },
+    "clusters": {
+      "total": 6,
+      "published": 6
+    },
+    "authors": {
+      "total": 1,
+      "published": 1
+    },
+    "testimonials": {
+      "total": 9,
+      "published": 9
+    },
+    "pages": {
+      "total": 5,
+      "published": 5
+    },
+    "videos": {
+      "total": 0,
+      "published": 0
+    },
+    "graphics": {
+      "total": 0,
+      "published": 0
+    },
+    "promotions": {
+      "total": 11,
+      "published": 0
+    },
+    "producers": {
+      "total": 1,
+      "published": 1
+    },
+    "subcategories": {
+      "total": 16,
+      "published": 16
+    }
+  },
+  "whatsappConfigured": true,
+  "brevoSender": "contacto@sably.co",
+  "brevoApiKeyConfigured": false,
+  "commentsModeration": "all"
+}

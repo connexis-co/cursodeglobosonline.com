@@ -1,0 +1,93 @@
+{
+  "checkedAt": "2026-10-03T08:16:58.994Z",
+  "results": [
+    {
+      "path": "/_emdash/admin",
+      "status": 401,
+      "expected": 401,
+      "location": null,
+      "authenticated": false
+    },
+    {
+      "path": "/_emdash/api/content/blog",
+      "status": 401,
+      "expected": 401,
+      "location": null,
+      "authenticated": false
+    },
+    {
+      "path": "/%5Femdash/api/content/blog",
+      "status": 401,
+      "expected": 401,
+      "location": null,
+      "authenticated": false
+    },
+    {
+      "path": "/_emdash/api/comments/blog/01M3ZTNW3GZG2RA77W4QC07SNQ",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "authenticated": false
+    },
+    {
+      "path": "/_emdash/api/comments/blog/01M3ZTNW3GZG2RA77W4QC07SNQ",
+      "status": 403,
+      "expected": 403,
+      "location": null,
+      "authenticated": false
+    },
+    {
+      "path": "/api/blog-ratings",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "authenticated": false
+    },
+    {
+      "path": "/api/ratings",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "authenticated": false
+    },
+    {
+      "path": "/no-existe-verificacion-launch/",
+      "status": 404,
+      "expected": 404,
+      "location": null,
+      "authenticated": false
+    },
+    {
+      "path": "/curso-globoflexia/",
+      "status": 301,
+      "expected": 301,
+      "location": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+      "authenticated": false
+    },
+    {
+      "path": "/_emdash/admin",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "authenticated": true
+    },
+    {
+      "url": "https://www.cursodeglobosonline.com/nosotros/",
+      "status": 301,
+      "location": "https://cursodeglobosonline.com/nosotros/",
+      "xrobots": null
+    },
+    {
+      "url": "http://cursodeglobosonline.com/nosotros/",
+      "status": 301,
+      "location": "https://cursodeglobosonline.com/nosotros/",
+      "xrobots": null
+    },
+    {
+      "url": "https://dev.cursodeglobosonline.com/",
+      "status": 401,
+      "location": null,
+      "xrobots": "noindex, nofollow, noarchive"
+    }
+  ]
+}

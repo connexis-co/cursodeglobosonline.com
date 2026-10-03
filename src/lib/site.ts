@@ -1,6 +1,6 @@
 export const SITE = {
   name: 'Curso de Globos Online',
-  url: import.meta.env.SITE_URL || 'https://dev.cursodeglobosonline.com',
+  url: import.meta.env.SITE_URL || import.meta.env.SITE || 'https://dev.cursodeglobosonline.com',
   tagline: 'Aprende decoración con globos. Convierte cada fiesta en tu negocio.',
   description:
     'Cursos online de decoración con globos: globoflexia, bouquets, flores y globos burbuja. Certificado de estudios incluido y acceso de por vida.',
