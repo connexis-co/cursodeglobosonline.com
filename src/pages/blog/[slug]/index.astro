@@ -8,6 +8,7 @@ import CourseCta from '@/components/blog/CourseCta.astro';
 import Callout from '@/components/blog/Callout.astro';
 import Toc from '@/components/blog/Toc.astro';
 import AuthorBox from '@/components/blog/AuthorBox.astro';
+import BlogComments from '@/themes/globos-classic/components/blog/BlogComments.astro';
 import PostCard from '@/components/blog/PostCard.astro';
 import { getPublishedPosts, relatedPosts, readingMinutes, formatDate, lastModified, type Post } from '@/lib/blog';
 import { getBlogCluster } from '@/lib/emdash-content';
@@ -180,6 +181,7 @@ const trackParams = JSON.stringify({
         }
 
         <AuthorBox {author} />
+        <BlogComments contentId={post.contentRef.id} />
       </div>
 
       <aside class="hidden lg:block" aria-label="Navegación del artículo">

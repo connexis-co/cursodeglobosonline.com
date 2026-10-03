@@ -1,4 +1,5 @@
 ---
+import RichBody from '@/components/RichBody.astro';
 import { getDocument } from '@/lib/emdash-content';
 const page=await getDocument('pages','inicio');if(!page)return Astro.rewrite('/404');Astro.locals.cmsContent=page;
 const copy=page.data;
@@ -426,4 +427,5 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
     </div>
     <Wave color="var(--color-ciruela-900)" />
   </section>
+{page.richBody.length>0&&<section class="contenedor articulo py-12"><RichBody value={page.richBody}/></section>}
 </BaseLayout>

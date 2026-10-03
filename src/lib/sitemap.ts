@@ -1,5 +1,4 @@
 import { getCollection } from '@/lib/emdash-content';
-import { getImage } from 'astro:assets';
 import { CITIES_ENABLED } from './countries';
 import { getCountries, getCategories, listDocuments } from './emdash-content';
 
@@ -87,11 +86,10 @@ export async function blogUrls(): Promise<UrlEntry[]> {
   if (posts.length === 0) return [];
   const entries = await Promise.all(
     posts.map(async (p) => {
-      const img = await getImage({ src: p.data.hero, width: 1600, height: 900, fit: 'cover', format: 'jpg', quality: 82 });
       return {
         ...u(`/blog/${p.id}/`, p.data.isPillar ? 0.8 : 0.7, 'monthly'),
         lastmod: p.data.updatedAt ?? p.data.publishedAt,
-        image: { loc: new URL(img.src,SITE.url).href, title: p.data.heroAlt },
+        image: { loc: new URL(p.data.hero.src,SITE.url).href, title: p.data.heroAlt },
       } satisfies UrlEntry;
     }),
   );

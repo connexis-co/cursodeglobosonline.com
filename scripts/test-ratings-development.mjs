@@ -7,7 +7,7 @@ const source=await api('/_emdash/api/content/courses/curso-de-globoflexia?locale
 await writeFile('/tmp/globos-rating-test-cleanup.sql',`DELETE FROM course_votes WHERE course = '${slug}';\n`);
 async function vote(voter,rating,extra={}){const r=await fetch(origin+'/api/ratings',{method:'POST',headers:{...headers,'Content-Type':'application/json',...extra},body:JSON.stringify({course:slug,rating,voter})});return{status:r.status,data:await r.json()};}
 try{
- await api('/_emdash/api/content/courses',json('POST',{slug,locale:'es',status:'draft',data:{...source.item.data,title:'Curso temporal de prueba de votos'}}));created=true;
+ await api('/_emdash/api/content/courses',json('POST',{slug,locale:'es',status:'draft',data:{...source.item.data,title:'Curso temporal de prueba de votos'},references:Object.fromEntries(Object.entries(source.item.references).map(([key,value])=>[key,value.children.map(c=>c.id)]))}));created=true;
  const voter=randomUUID();assert.equal((await vote(voter,5)).status,400);
  let entry=await api(base+'?locale=es');await api(base+'/publish?locale=es',json('POST',{_rev:entry._rev}));
  assert.equal((await vote(voter,5,{origin:'https://unrelated.invalid'})).status,403);assert.equal((await vote(voter,9)).status,400);

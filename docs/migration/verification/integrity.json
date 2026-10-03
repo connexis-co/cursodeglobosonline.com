@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-03T04:07:16.758Z",
+  "results": [
+    "Existing courses have native subcategory and producer relations",
+    "A course without required relations cannot be published",
+    "Nonexistent related IDs are rejected",
+    "A course with valid dependencies publishes",
+    "A subcategory used by published courses cannot be unpublished",
+    "A native menu reference renders in desktop and mobile without a build",
+    "Menu edits are reflected without a build",
+    "A page linked by a menu cannot be unpublished",
+    "A reference to the wrong collection is rejected",
+    "Eleven scoped calendar campaigns remain drafts until offer verification"
+  ]
+}

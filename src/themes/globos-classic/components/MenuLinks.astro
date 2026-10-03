@@ -1,0 +1,8 @@
+---
+import type {MenuItem} from 'emdash';
+interface Props{items:MenuItem[];linkClass?:string;mobile?:boolean}
+const {items,linkClass='nav-link',mobile=false}=Astro.props;
+---
+{items.map(item=><div class:list={['cms-menu-item',{'relative':!mobile}]}>
+ {item.children.length?<details class="group"><summary class={linkClass}>{item.label}</summary><div class:list={['cms-menu-children',mobile?'pl-4':'absolute left-0 z-50 min-w-56 rounded-xl bg-white p-3 text-ciruela-900 shadow-xl']}><a href={item.url} class={linkClass} target={item.target} rel={item.target==='_blank'?'noopener noreferrer':undefined}>{item.label}</a><Astro.self items={item.children} {linkClass} {mobile}/></div></details>:<a href={item.url} class={linkClass} target={item.target} title={item.titleAttr} rel={item.target==='_blank'?'noopener noreferrer':undefined}>{item.label}</a>}
+ </div>)}

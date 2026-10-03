@@ -22,10 +22,11 @@ El Worker protege también los archivos estáticos, las imágenes y las API. Las
 | Artículos | 28 | Texto enriquecido, tablas, listas, enlaces, imágenes, autor, tema, pilar, artículos relacionados, FAQ y fechas editoriales. |
 | Páginas | 5 | Inicio, contacto, nosotros, privacidad y términos; encabezados, metadatos y contenido editorial. Las nuevas páginas se sirven en `/paginas/{slug}/`. |
 | Países / ciudades | 8 / 36 | Moneda, tasa de referencia, contactos regionales y contexto local. Conservan las rutas actuales. |
-| Categorías / temas | 3 / 6 | Organización del catálogo y del blog. |
+| Categorías / subcategorías / temas | 3 / 16 / 6 | Catálogos relacionados. La categoría del curso se deriva de su subcategoría. |
+| Productores | 1 | MasterClasses.La; relación seleccionable en los cursos. |
 | Autores / testimonios | 1 / 9 | Identidad editorial y testimonios con fuente. |
 | Videoteca / gráficos | Vacías, listas para publicar | Videos con portada y transcripción; gráficos con texto alternativo, crédito y licencia. Rutas `/videos/` y `/recursos/`. |
-| Promociones | Sin campañas comerciales inventadas | Inicio, fin exclusivo, prioridad, curso, país, clave de campaña, cupón y enlace Hotmart. |
+| Promociones | 11 campañas en borrador | Inicio, fin exclusivo, prioridad, curso, país, clave de campaña, cupón y enlace Hotmart. |
 | WhatsApp | Plugin nativo | Número de respaldo por país, reglas por curso/categoría/país/ruta, prioridad, periodos, horario, visibilidad, posición y mensaje. |
 
 El administrador agrupa las colecciones en **Contenido editorial**, **Cursos y ventas** y **Mercados**. Los artículos y cursos usan la fecha original como columna editorial. El idioma de creación predeterminado es español.
@@ -34,10 +35,28 @@ Las colecciones editoriales soportan borradores, revisiones, programación y SEO
 
 La portada conserva sus secciones y composición actuales. Sus textos principales, FAQ y método se editan en `Páginas → inicio`; los cursos, testimonios y artículos destacados vienen de sus colecciones. Los rótulos de interfaz, ilustraciones SVG, distribución de secciones y estilos pertenecen al tema y se cambian mediante código. No se presenta el CMS como un constructor visual ilimitado.
 
+## Relaciones, edición y menús
+
+Hay 14 colecciones y 117 entradas en el seed, más 11 campañas creadas mediante la API de desarrollo. Los cursos seleccionan subcategoría y productor; cada subcategoría selecciona categoría. Los artículos enlazan autor, tema, curso o catálogo, pilar y relacionados. Ciudades, testimonios, videos y promociones usan referencias nativas a sus dependencias. Los campos de texto anteriores se retiraron después de migrar los valores.
+
+`globos-integrity` rechaza publicaciones o programaciones con dependencias ausentes/no publicadas, precios incoherentes y ofertas sin verificar. Impide retirar entradas utilizadas por contenido publicado o menús, y protege las cinco páginas esenciales. EmDash valida identidad, colección y cardinalidad de referencias. Los borradores siguen admitiendo trabajo incompleto.
+
+El menú `primary` controla orden, etiquetas, destinos y submenús en escritorio/móvil. El menú `footer` controla enlaces institucionales; categorías y países siguen viniendo de sus colecciones. Se probaron enlaces nativos a páginas, edición inmediata y bloqueo al retirar una página enlazada. Las páginas nuevas usan `/paginas/{slug}/`; las cinco páginas originales conservan sus rutas. Inicio y contacto también muestran el cuerpo enriquecido cuando se agrega.
+
+Antes de modificar el CMS existente, el script guardó un respaldo privado mediante API en `.data/editorial-before.json` y `.data/editorial-schema-before.json`, fuera de Git. El export SQL de D1 no se completó por las tablas virtuales FTS5; no se presenta como un respaldo SQL disponible. `upgrade-development.mjs` es una migración puntual con ese snapshot, no un sincronizador editorial recurrente.
+
+## Comentarios del blog
+
+El blog usa comentarios nativos de EmDash, vinculados al ID estable del artículo. Todos requieren aprobación, incluidos los enviados por usuarios del CMS. Se moderan en **Comentarios** del administrador; no hay un servicio externo ni base paralela. El componente `BlogComments.astro` conserva Fraunces/Nunito Sans, crema, ciruela y coral del sitio; incluye estados vacíos, formulario en español, respuestas, foco visible, mensajes de error y adaptación móvil.
+
+La lectura se renderiza en servidor y muestra solo comentarios aprobados; los correos e IP no se incluyen en su proyección pública. El texto se escapa; se usan el honeypot, validación y límite de envíos nativos. Se comprobaron respuestas entre artículos, spam, retirada, privacidad y limpieza de las pruebas. Turnstile no se configuró. El helper nativo de SSR tiene un límite de 500 comentarios por artículo; si el volumen lo exige, se debe añadir paginación sobre la API nativa.
+
 ## Separación del código
 
 - `src/themes/globos-classic/`: componentes, layouts, estilos y definición del tema. Permite rediseñar la presentación conservando las colecciones.
 - `src/pages/`: controladores de rutas; consultan contenido publicado del CMS.
+- `src/lib/cms/`: relaciones, hidratación y menús.
+- `src/plugins/globos-integrity/`: políticas de publicación y dependencias.
 - `src/lib/emdash-content.ts`: adaptación del esquema CMS a la plantilla y resolución de medios.
 - `src/plugins/globos-whatsapp/`: modelo, validación, página administrativa y render del botón. Adaptado del trabajo coordinado con Sably.
 - `src/plugins/globos-promotions/`: campañas del sitio y banner. No depende de las tablas operativas privadas de Sably.
@@ -68,6 +87,10 @@ npm run content:seed
 node scripts/push-dev-secrets.mjs
 npm run deploy:dev
 node scripts/setup-development.mjs
+node scripts/cms/link-bootstrap-references.mjs
+node scripts/cms/configure-comments.mjs
+node scripts/cms/configure-calendar-menus.mjs
+node scripts/cms/configure-brevo.mjs
 node scripts/import-development-media.mjs
 node scripts/test-media-development.mjs
 node scripts/configure-development-admin.mjs
@@ -83,15 +106,23 @@ El workflow manual `Deploy EmDash development` requiere que el repositorio tenga
 
 Se comprobó con Sably el contrato del plugin WhatsApp. Se corrigió un permiso indispensable en EmDash 1.1.0: `hooks.page-fragments:register`. Sin él, la configuración se guardaba pero el botón no aparecía. Hay un solo botón flotante y respeta la barra móvil de inscripción.
 
-Las campañas publicadas seleccionan un banner por prioridad y respetan país, curso, exclusiones y periodo. Si tienen `url_key`, solo se activan con `?promo=...`. El enlace permite exclusivamente HTTPS y hosts Hotmart conocidos, conserva la atribución y añade el cupón `offDiscount` cuando se configura. La promoción gobierna su propio banner/enlace; los precios y CTA de la ficha conservan la información verificada del curso. No se calculan precios comerciales a partir de porcentajes sin confirmar el checkout.
+El calendario precargado viene de las 11 campañas internas de Sably. Se conservaron fechas originales, incluidas las pasadas, y se asignaron países y cursos pertinentes mediante relaciones. Todas están en borrador con `offer_verified=false`: los porcentajes/cupones de referencia no se aplican automáticamente. El panel **Calendario de promociones** filtra por mes y permite abrir cada campaña para verificarla.
+
+Las campañas publicadas y verificadas seleccionan un banner por prioridad y respetan país, curso, exclusiones y periodo. Si tienen `url_key`, solo se activan con `?promo=...`. El enlace permite exclusivamente HTTPS y hosts Hotmart conocidos, conserva la atribución y añade el cupón `offDiscount` cuando se configura. La promoción gobierna su propio banner/enlace; los precios y CTA de la ficha conservan la información verificada del curso. No se calculan precios comerciales a partir de porcentajes sin confirmar el checkout.
+
+## Correo y plugins
+
+SMTP nativo `emdash-smtp@0.4.0` está instalado, con Brevo como proveedor y `contacto@sably.co` como remitente y Reply-To. Falta introducir la clave en su panel y validar el remitente en Brevo antes de probar entrega. No se enviaron correos. Se fijó Nodemailer 10.0.13 en el transporte transitivo para retirar los avisos de su versión anterior; no se certifican transportes SMTP TCP/sendmail en Workers.
+
+La revisión de la tienda y decisiones están en [PLUGINS.md](PLUGINS.md). Se recomienda evaluar Publish Check para control editorial SEO y Forms para una bandeja de contactos. No se instalaron esos dos plugins. **El formulario de captación actual sigue abriendo WhatsApp y no guarda contactos**; los comentarios sí se guardan en su módulo nativo, separado de los leads.
 
 ## Verificación y límites
 
-Se ejecutaron 17 pruebas automatizadas y comprobaciones contra el entorno real. Se verificaron 34 páginas con 35 URLs de imágenes: todas responden correctamente con acceso autorizado y rechazan el acceso anónimo. Los resultados reproducibles están en `verification/`: rutas HTTP, paridad de artículos con el sitemap de producción, importación de medios, ciclo editorial, SEO, promociones y votos. Las páginas de prueba se envían a la papelera recuperable; sus votos temporales se eliminan de la base exclusiva de pruebas.
+Se ejecutaron 20 pruebas automatizadas y comprobaciones contra el entorno real. Se verificaron 34 páginas con 35 URLs de imágenes: todas responden correctamente con acceso autorizado y rechazan el acceso anónimo. La revisión final de esta ampliación pasó 25 rutas, 10 comprobaciones de integridad y 9 de comentarios. La hidratación de relaciones limita las consultas simultáneas a D1 y reutiliza resultados resueltos durante cada solicitud. Los resultados reproducibles están en `verification/`: rutas HTTP, paridad de artículos con el sitemap de producción, importación de medios, ciclo editorial, SEO, promociones y votos. Las páginas de prueba se envían a la papelera recuperable; sus votos temporales se eliminan de la base exclusiva de pruebas.
 
 El navegador integrado devolvió `ERR_BLOCKED_BY_CLIENT` al abrir el dominio. Por ello no se certifica una comparación visual en navegador de escritorio/móvil; se verificaron HTML, rutas, archivos, metadatos, APIs y cambios de publicación reales.
 
-`npm audit` reporta ocho entradas de severidad alta derivadas de **un mismo aviso** en `http-cache-semantics@4.2.0` (`GHSA-ch52-4w7c-c8xp`). El registro no ofrecía versión corregida al verificarlo. En el Astro instalado se importa desde el procesador de imágenes remotas de build; no se ha afirmado que eso elimine todo riesgo. Se conserva el entorno privado y queda registrado para la revisión previa a producción, sin forzar un downgrade incompatible de Astro.
+`npm audit` reporta once entradas de severidad alta derivadas de **un mismo aviso** en `http-cache-semantics@4.2.0` (`GHSA-ch52-4w7c-c8xp`). El registro no ofrecía versión corregida al verificarlo. En el Astro instalado se importa desde el procesador de imágenes remotas de build; no se ha afirmado que eso elimine todo riesgo. Se conserva el entorno privado y queda registrado para la revisión previa a producción, sin forzar un downgrade incompatible de Astro.
 
 ## Paso posterior a producción
 

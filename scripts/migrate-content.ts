@@ -7,6 +7,7 @@ import ts from 'typescript';
 import { markdownToPortableText } from 'emdash/client';
 import { validateSeed, type SeedFile, type SeedField } from 'emdash/seed';
 import { migrateBody } from './portable-migration';
+import { upgradeEditorialSeed } from './cms/editorial-schema';
 const archive=JSON.parse(await readFile('scripts/migration-source/legacy-site.json','utf8')) as {sources:Record<string,string>};
 const sources=archive.sources;
 type Data=Record<string,unknown>;
@@ -109,6 +110,7 @@ for(const [collection,entries] of Object.entries(content))for(const entry of ent
 }
 await mkdir('docs/migration',{recursive:true});await writeFile('docs/migration/media-sources.json',JSON.stringify(mediaReferences,null,2)+'\n');
 for(const [index,c] of collections.entries()){c.group=['courses','promotions','testimonials'].includes(c.slug)?'Cursos y ventas':['countries','cities'].includes(c.slug)?'Mercados':'Contenido editorial';c.sortOrder=index;c.admin={quickCreate:!['countries','cities','categories','clusters','authors'].includes(c.slug)};if(['blog','courses'].includes(c.slug))c.dateField='original_published_at';}
+upgradeEditorialSeed(seed);
 const result=validateSeed(seed);if(!result.valid)throw Error(result.errors.join('\n'));
 await writeFile('emdash.seed.json',JSON.stringify(seed,null,2)+'\n');
 await mkdir('docs/migration',{recursive:true});await writeFile('docs/migration/inventory.json',JSON.stringify({sourceCommit:'f846950',counts:Object.fromEntries(Object.entries(content).map(([k,v])=>[k,v.length])),media:mediaManifest},null,2)+'\n');

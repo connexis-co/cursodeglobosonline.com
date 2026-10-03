@@ -1,0 +1,9 @@
+{
+  "high": 11,
+  "critical": 0,
+  "advisories": [
+    "GHSA-ch52-4w7c-c8xp"
+  ],
+  "nodemailer": "10.0.13",
+  "patchedVersionAvailableForRemainingAdvisory": false
+}

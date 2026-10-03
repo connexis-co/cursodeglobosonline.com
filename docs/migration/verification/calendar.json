@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-03T04:04:41.515Z",
+  "created": [],
+  "configured": [
+    "bf-2026",
+    "navidad-2026",
+    "buen-fin-mx-2026",
+    "amor-amistad-co-2026",
+    "regreso-clases-2026",
+    "cyber-cl-pe-2026",
+    "ano-nuevo-2027",
+    "dia-madre-2027",
+    "hot-sale-2027",
+    "ads-25",
+    "ads-50"
+  ],
+  "published": 0,
+  "source": "Sably / src/plugins/sably-operations/calendar-seed.sql"
+}

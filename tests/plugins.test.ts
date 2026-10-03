@@ -12,7 +12,7 @@ test('WhatsApp disabled, excluded paths, and outside business hours render no bu
 test('WhatsApp refuses injected styles, broken dates and invalid phone numbers',()=>{
  for(const changes of [{color:'red;'}, {number:'abc'},{timezone:'invalid'},{startTime:'25:99',endTime:'10:00'}])assert.throws(()=>validateSettings({...DEFAULT_SETTINGS,...changes}));
 });
-const promo:Promotion={id:'test',headline:'Oferta',startsAt:'2026-10-02T00:00:00Z',endsAt:'2026-10-03T00:00:00Z',priority:1,countries:['co'],courses:['curso-de-globoflexia'],excludedCourses:[],urlKey:'',coupon:'ABC',checkoutUrl:'https://pay.hotmart.com/X?ref=affiliate',buttonLabel:'Ver',discountPct:10,theme:'brand'};
+const promo:Promotion={offerVerified:true,id:'test',headline:'Oferta',startsAt:'2026-10-02T00:00:00Z',endsAt:'2026-10-03T00:00:00Z',priority:1,countries:['co'],courses:['curso-de-globoflexia'],excludedCourses:[],urlKey:'',coupon:'ABC',checkoutUrl:'https://pay.hotmart.com/X?ref=affiliate',buttonLabel:'Ver',discountPct:10,theme:'brand'};
 const pc={country:'co',course:'curso-de-globoflexia',key:''};
 test('promotions honor country, exclusions and exclusive end times',()=>{
  assert.equal(resolvePromotion([promo],pc,Date.parse(promo.startsAt))?.id,'test');assert.equal(resolvePromotion([promo],pc,Date.parse(promo.endsAt)),undefined);

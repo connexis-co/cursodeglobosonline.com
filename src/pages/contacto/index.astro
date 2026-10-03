@@ -1,4 +1,5 @@
 ---
+import RichBody from '@/components/RichBody.astro';
 import { getDocument } from '@/lib/emdash-content';
 const page=await getDocument('pages','contacto');if(!page)return Astro.rewrite('/404');Astro.locals.cmsContent=page;
 const copy=page.data;
@@ -30,6 +31,7 @@ const waUrl = buildWhatsAppUrl(country.whatsapp, 'Hola 🎈 Tengo una pregunta s
         title={copy.heading}
         lead={copy.lead}
       />
+      {page.richBody.length>0&&<div class="articulo mt-6"><RichBody value={page.richBody}/></div>}
       <div class="mt-8 space-y-4">
         <a
           href={waUrl}

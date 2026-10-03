@@ -33,6 +33,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.4",
     "emdash": "1.1.0",
+    "emdash-smtp": "0.4.0",
     "github-slugger": "2.0.0",
     "lucide-react": "^0.545.0",
     "nanostores": "^1.4.2",
@@ -67,7 +68,10 @@
     "@cacheable/memory": "<2.2.1",
     "@cacheable/node-cache": "<3.1.2",
     "@cacheable/utils": "<2.5.1",
-    "@cacheable/net": "<2.1.1"
+    "@cacheable/net": "<2.1.1",
+    "emdash-smtp-node-transports": {
+      "nodemailer": "10.0.13"
+    }
   },
   "emdash": {
     "seed": "emdash.seed.json"

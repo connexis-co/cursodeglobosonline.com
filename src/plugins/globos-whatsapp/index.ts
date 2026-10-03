@@ -12,7 +12,10 @@ export function createPlugin() {
     routes: {
       config: { methods:['GET'], permission:'settings:manage', request:{body:'none'}, handler:async ctx => ({config:await ctx.kv.get<WhatsAppSettings>('config') ?? DEFAULT_SETTINGS}) },
       save: { methods:['POST'],permission:'settings:manage',request:{body:'json',maxBytes:65536},handler:async ctx => {
-        const config = validateSettings(ctx.input); await ctx.kv.set('config',config); return {config};
+        const config = validateSettings(ctx.input);
+        const {getCourses,getCategories,getCountries}=await import('@/lib/emdash-content');const [courses,categories,countries]=await Promise.all([getCourses(),getCategories(),getCountries()]);
+        for(const rule of config.rules)for(const [values,allowed] of [[rule.courses,courses.map(c=>c.id)],[rule.categories,categories.map(c=>c.slug)],[rule.countries,countries.map(c=>c.code)]])if(values.some(v=>!allowed.includes(v)))throw Error('Una regla contiene un curso, categoría o país que ya no existe. Actualiza su selección.');
+        await ctx.kv.set('config',config); return {config};
       } },
       choices: { methods:['GET'],permission:'settings:manage',request:{body:'none'},handler:async () => {
         const {getCourses,getCategories,getCountries}=await import('@/lib/emdash-content');

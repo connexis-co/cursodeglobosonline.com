@@ -1,4 +1,6 @@
 ---
+import {navigation} from "@/lib/cms/navigation";
+import MenuLinks from "./MenuLinks.astro";
 import { getCategories } from '@/lib/emdash-content';
 const CATEGORIES = await getCategories();
 import { getCountries } from '@/lib/emdash-content';
@@ -20,6 +22,7 @@ interface Props {
 const { country, pathAfterCountry = '/' } = Astro.props;
 const cc = country?.code ?? DEFAULT_COUNTRY;
 const base = `/${cc}`;
+const primaryMenu=await navigation("primary",cc);
 const current = country ?? COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
 const waUrl = buildWhatsAppUrl(current.whatsapp, 'Hola 🎈 Quiero información sobre los cursos de decoración con globos.');
 
@@ -42,6 +45,7 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
     <nav class="hidden flex-1 items-center gap-0.5 self-stretch lg:flex" aria-label="Navegación principal">
       <!-- Mega menú de Cursos (patrón aprende.com). `.mega` ocupa todo el alto del header
            para que el cursor no pierda el hover al bajar del botón al panel. -->
+      {primaryMenu.map(item=>item.url===`${base}/cursos/`&&!item.children.length ? (
       <div class="mega group relative flex items-center self-stretch">
         <button
           id="mega-cursos-btn"
@@ -49,7 +53,7 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
           aria-expanded="false"
           aria-controls="mega-cursos"
         >
-          Cursos
+          {item.label}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="transition-transform duration-200 group-focus-within:rotate-180 group-hover:rotate-180" aria-hidden="true">
             <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
@@ -156,8 +160,7 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
         </div>
       </div>
 
-      <a href="/blog/" class="nav-link">Blog</a>
-      <a href="/nosotros/" class="nav-link">Nosotros</a>
+      ) : <MenuLinks items={[item]} />)}
     </nav>
 
     <!-- Cluster derecho desktop -->
@@ -320,22 +323,7 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
       </div>
 
       <nav class="mt-5 flex flex-col" aria-label="Menú móvil">
-        <a href={`${base}/cursos/`} class="menu-item menu-row" style="--i: 3">Todos los cursos</a>
-        {
-          activeCategories.map((cat, i) => (
-            <a
-              href={`${base}/cursos/${cat.slug}/`}
-              class="menu-item menu-row"
-              style={`--i: ${i + 4}`}
-            >
-              <Icon name={cat.icon} size={20} class="text-coral-600" />
-              {cat.name}
-            </a>
-          ))
-        }
-        <a href="/blog/" class="menu-item menu-row" style="--i: 6">Blog</a>
-        <a href="/nosotros/" class="menu-item menu-row" style="--i: 7">Nosotros</a>
-        <a href="/contacto/" class="menu-item menu-row" style="--i: 8">Contacto</a>
+        <MenuLinks items={primaryMenu} linkClass="menu-item menu-row" mobile />
       </nav>
 
       <div class="menu-item mt-6 border-t border-crema-200 pt-6" style="--i: 9">
