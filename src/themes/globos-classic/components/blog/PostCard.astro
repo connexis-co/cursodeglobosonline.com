@@ -1,4 +1,5 @@
 ---
+import BlogRating from './BlogRating.astro';
 import type { Post } from '@/lib/blog';
 import { formatDate, lastModified, postUrl, readingMinutes } from '@/lib/blog';
 import { getBlogCluster } from '@/lib/emdash-content';
@@ -52,7 +53,8 @@ const Heading = headingLevel;
     <p class:list={['text-sm leading-relaxed text-ciruela-500', featured ? 'line-clamp-3' : 'line-clamp-2']}>
       {d.description}
     </p>
-    <p class="mt-auto pt-1 text-xs text-ciruela-400">
+    <div class="mt-auto pt-1"><BlogRating contentId={post.contentRef.id}/></div>
+    <p class="text-xs text-ciruela-400">
       <time datetime={lastModified(post).toISOString()}>{formatDate(lastModified(post))}</time>
       · {readingMinutes(post)} min de lectura
     </p>

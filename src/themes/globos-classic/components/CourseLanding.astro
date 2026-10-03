@@ -203,7 +203,7 @@ const sealEdge = (() => {
           </h1>
           <p class="mt-4 max-w-xl text-base leading-relaxed text-ciruela-500">{d.shortDescription}</p>
 
-          <StarRating course={course.id} courseTitle={d.title} rating={siteRating} class="mt-4" />
+          <StarRating contentId={course.id} contentTitle={d.title} rating={siteRating} class="mt-4" />
 
           <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm font-semibold text-ciruela-600">
             {
@@ -630,8 +630,8 @@ const sealEdge = (() => {
           Tu voto de 1 a 5 estrellas ayuda a otras personas a elegir. Es anónimo y puedes cambiarlo cuando quieras.
         </p>
         <StarRating
-          course={course.id}
-          courseTitle={d.title}
+          contentId={course.id}
+          contentTitle={d.title}
           rating={siteRating}
           size="lg"
           center

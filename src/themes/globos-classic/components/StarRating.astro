@@ -1,15 +1,16 @@
 ---
 /**
- * Calificar un curso con estrellas (1-5), estilo kk Star Ratings. El HTML sale del build con
- * los agregados de ese momento —los mismos del `aggregateRating` del JSON-LD— y el script los
- * refresca desde /api/ratings y registra el voto. Sin JS queda de solo lectura. Si hay varias
+ * Calificar un curso o artículo con estrellas (1-5), estilo kk Star Ratings. El HTML se renderiza en servidor con
+ * los agregados de ese momento; solo cursos elegibles usan aggregateRating en JSON-LD.
+ * El script refresca desde la API correspondiente y registra el voto. Sin JS queda de solo lectura. Si hay varias
  * instancias del mismo curso en la página, se mantienen sincronizadas.
  */
 import { STAR_LABELS, formatAverage, starFill, votesLabel, type CourseRating } from '@/lib/ratings-config';
 
 interface Props {
-  course: string;
-  courseTitle: string;
+  contentId: string;
+  contentTitle: string;
+  kind?: 'courses' | 'blog';
   rating: CourseRating;
   size?: 'md' | 'lg';
   /** Invitación bajo las estrellas; al pasar el cursor se reemplaza por el nombre de la nota. */
@@ -20,8 +21,9 @@ interface Props {
 }
 
 const {
-  course,
-  courseTitle,
+  contentId,
+  contentTitle,
+  kind = 'courses',
   rating,
   size = 'md',
   prompt = 'Califícalo: elige de 1 a 5 estrellas',
@@ -34,12 +36,13 @@ const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9
 <div
   class:list={['star-rating flex flex-col gap-1', `star-rating--${size}`, center && 'items-center text-center', className]}
   data-star-rating
-  data-course={course}
+  data-content-id={contentId}
+  data-rating-kind={kind}
   data-count={rating.count}
   data-prompt={prompt}
 >
   <div class:list={['flex flex-wrap items-center gap-x-2 gap-y-1', center && 'justify-center']}>
-    <div class="sr-stars" role="group" aria-label={`Califica el ${courseTitle}`}>
+    <div class="sr-stars" role="group" aria-label={`Califica: ${contentTitle}`}>
       {
         STAR_LABELS.map((label, i) => (
           <button
@@ -175,6 +178,9 @@ const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9
   import { trackEvent } from '@/lib/analytics';
   import {
     STAR_LABELS,
+    ratingApiPath,
+    ratingStorageKey,
+    type RatingKind,
     formatAverage,
     parseCourseRating,
     starFill,
@@ -182,7 +188,6 @@ const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9
     type CourseRating,
   } from '@/lib/ratings-config';
 
-  const API = '/api/ratings';
   const VOTER_KEY = 'cgo:rating-voter';
   const VOTES_KEY = 'cgo:rating-votes';
 
@@ -228,7 +233,9 @@ const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9
   const widgets = [...document.querySelectorAll<HTMLElement>('[data-star-rating]')];
   /** Cursos votados en esta visita: la respuesta del POST manda sobre el GET de refresco. */
   const votedNow = new Set<string>();
-  const forCourse = (course: string) => widgets.filter((w) => w.dataset.course === course);
+  const kindOf = (w: HTMLElement): RatingKind => w.dataset.ratingKind === 'blog' ? 'blog' : 'courses';
+  const keyOf = (w: HTMLElement) => ratingStorageKey(kindOf(w), w.dataset.contentId ?? '');
+  const forContent = (key: string) => widgets.filter((w) => keyOf(w) === key);
   const starOf = (target: EventTarget | null) =>
     target instanceof Element ? target.closest<HTMLButtonElement>('.sr-star') : null;
 
@@ -261,6 +268,21 @@ const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9
       strong.className = 'font-extrabold text-ciruela-900';
       strong.textContent = formatAverage(r.average);
       summary.replaceChildren(strong, ` de 5 · ${votesLabel(r.count)}`);
+    } else if(summary) summary.textContent='Aún sin votos';
+    if(kindOf(w)==='blog'){
+      for(const item of document.querySelectorAll<HTMLElement>('[data-blog-rating]')){
+        if(item.dataset.blogRating!==w.dataset.contentId)continue;
+        item.dataset.count=String(r.count);
+        const image=item.querySelector<HTMLElement>('[data-rating-image]');
+        const fill=item.querySelector<HTMLElement>('[data-rating-fill]');
+        const value=item.querySelector<HTMLElement>('[data-rating-value]');
+        const count=item.querySelector<HTMLElement>('[data-rating-count]');
+        image?.setAttribute('aria-label',r.count?`Calificación ${formatAverage(r.average)} de 5`:'Aún sin votos');
+        const size=Number(image?.dataset.starSize??15),whole=Math.floor(r.average);
+        if(fill)fill.style.width=`${Math.min(size*5+8,whole*(size+2)+(r.average-whole)*size)}px`;
+        if(value)value.textContent=r.count?formatAverage(r.average):'Aún sin votos';
+        if(count){count.textContent=`(${r.count})`;count.hidden=r.count===0;}
+      }
     }
     w.dataset.hintDefault = defaultHint(w, r.count, mine);
     if (w.dataset.preview === undefined) setHint(w, w.dataset.hintDefault);
@@ -282,20 +304,24 @@ const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9
     if (status) status.textContent = message;
   }
 
-  async function vote(course: string, value: number) {
-    const group = forCourse(course);
+  async function vote(widget: HTMLElement, value: number) {
+    const contentId = widget.dataset.contentId ?? '';
+    const kind = kindOf(widget);
+    const course = keyOf(widget);
+    const group = forContent(course);
     if (group.some((w) => w.getAttribute('aria-busy') === 'true')) return;
     const previous = myVotes()[course];
     group.forEach((w) => w.setAttribute('aria-busy', 'true'));
     let message: string;
     try {
-      const res = await fetch(API, {
+      const res = await fetch(ratingApiPath(kind), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ course, rating: value, voter: voterId() }),
+        body: JSON.stringify({ [kind === 'blog' ? 'post' : 'course']: contentId, rating: value, voter: voterId() }),
+        signal: AbortSignal.timeout(15000),
       });
       if (res.status === 429) {
-        message = 'Desde tu conexión ya votaron varias personas por este curso.';
+        message = 'Desde tu conexión ya votaron varias personas por este contenido.';
       } else {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = parseCourseRating(await res.json());
@@ -304,7 +330,7 @@ const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9
         votedNow.add(course);
         group.forEach((w) => paint(w, data, value));
         message = previous ? `Actualizamos tu voto a ${value} ★. ¡Gracias!` : `¡Gracias! Guardamos tu voto de ${value} ★.`;
-        trackEvent('rate_course', { course_slug: course, rating: value, previous_rating: previous ?? 0 });
+        trackEvent(kind === 'blog' ? 'rate_blog_post' : 'rate_course', { [kind === 'blog' ? 'post_id' : 'course_slug']: contentId, rating: value, previous_rating: previous ?? 0 });
       }
     } catch {
       message = 'No pudimos guardar tu voto. Intenta de nuevo en un momento.';
@@ -317,7 +343,7 @@ const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9
 
   const stored = myVotes();
   for (const w of widgets) {
-    const course = w.dataset.course ?? '';
+    const course = keyOf(w);
     const stars = w.querySelector<HTMLElement>('.sr-stars');
     if (!stars) continue;
     for (const b of stars.querySelectorAll<HTMLButtonElement>('.sr-star')) b.disabled = false;
@@ -340,26 +366,24 @@ const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9
     });
     stars.addEventListener('click', (e) => {
       const b = starOf(e.target);
-      if (b && !b.disabled) void vote(course, Number(b.dataset.value));
+      if (b && !b.disabled) void vote(w, Number(b.dataset.value));
     });
   }
 
-  // Refresco en vivo: el HTML trae los agregados del último build.
-  if (widgets.length > 0) {
-    fetch(API, { headers: { accept: 'application/json' } })
-      .then((r) => (r.ok ? (r.json() as Promise<{ courses?: Record<string, unknown> }>) : null))
+  // One refresh per content type; course and article votes never share keys.
+  for (const kind of new Set(widgets.map(kindOf))) {
+    fetch(ratingApiPath(kind), { headers: { accept: 'application/json' }, signal: AbortSignal.timeout(15000) })
+      .then((r) => r.ok ? r.json() as Promise<{ courses?: Record<string, unknown>; posts?: Record<string, unknown> }> : null)
       .then((payload) => {
-        if (!payload?.courses) return;
+        const ratings = kind === 'blog' ? payload?.posts : payload?.courses;
+        if (!ratings) return;
         const votes = myVotes();
-        for (const w of widgets) {
-          const course = w.dataset.course ?? '';
-          if (votedNow.has(course)) continue;
-          const r = parseCourseRating(payload.courses[course]);
-          if (r) paint(w, r, votes[course]);
+        for (const w of widgets.filter(w => kindOf(w) === kind)) {
+          const key = keyOf(w);
+          if (votedNow.has(key)) continue;
+          const rating = parseCourseRating(ratings[w.dataset.contentId ?? '']);
+          if (rating) paint(w, rating, votes[key]);
         }
-      })
-      .catch(() => {
-        /* sin red o sin API: se quedan los datos del build */
-      });
+      }).catch(() => { /* Preserve the server-rendered values if the refresh fails. */ });
   }
 </script>

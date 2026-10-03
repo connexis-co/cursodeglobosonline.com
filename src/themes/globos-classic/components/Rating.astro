@@ -27,7 +27,9 @@ const filled = Math.min(width, whole * (size + GAP) + (rating - whole) * size);
     class="relative inline-block shrink-0"
     style={`width:${width}px;height:${size}px`}
     role="img"
-    aria-label={`Calificación ${formatAverage(rating)} de 5`}
+    data-rating-image
+    data-star-size={size}
+    aria-label={count === 0 ? 'Aún sin votos' : `Calificación ${formatAverage(rating)} de 5`}
   >
     {
       [false, true].map((full) => (
@@ -35,6 +37,7 @@ const filled = Math.min(width, whole * (size + GAP) + (rating - whole) * size);
           class="absolute inset-y-0 left-0 flex overflow-hidden"
           style={`gap:${GAP}px;width:${full ? filled.toFixed(1) : width}px`}
           aria-hidden="true"
+          data-rating-fill={full||undefined}
         >
           {[1, 2, 3, 4, 5].map(() => (
             <svg class="shrink-0" style="max-width:none" width={size} height={size} viewBox="0 0 24 24">
@@ -50,11 +53,11 @@ const filled = Math.min(width, whole * (size + GAP) + (rating - whole) * size);
       ))
     }
   </span>
-  <span class="text-sm font-bold">{formatAverage(rating)}</span>
+  <span class="text-sm font-bold" data-rating-value>{count === 0 ? 'Aún sin votos' : formatAverage(rating)}</span>
   {/* ciruela-500: AA también sobre crema-100 (ciruela-400 da 4.45:1 ahí). `count > 0` evita pintar un «0». */}
   {
-    count != null && count > 0 && (
-      <span class:list={['text-xs', tone === 'dark' ? 'text-crema-100/75' : 'text-ciruela-500']}>({count})</span>
+    count != null && (
+      <span data-rating-count hidden={count===0} class:list={['text-xs', tone === 'dark' ? 'text-crema-100/75' : 'text-ciruela-500']}>({count})</span>
     )
   }
 </span>

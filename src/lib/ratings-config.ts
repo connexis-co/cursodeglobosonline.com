@@ -4,7 +4,7 @@
  * script del widget: sin imports de Astro ni de Node.
  */
 
-/** Cursos que se pueden calificar. Un curso nuevo en src/content/courses/ debe añadirse aquí. */
+/** Cursos históricos para la respuesta vacía; el CMS valida también los cursos nuevos. */
 export const RATEABLE_COURSES = [
   'curso-de-globoflexia',
   'curso-de-bouquets-de-globos',
@@ -66,7 +66,7 @@ export const votesLabel = (count: number): string => `${count} ${count === 1 ? '
 export function parseCourseRating(value: unknown): CourseRating | undefined {
   if (!value || typeof value !== 'object') return undefined;
   const { average, count, distribution } = value as Record<string, unknown>;
-  if (typeof average !== 'number' || typeof count !== 'number') return undefined;
+  if (typeof average !== 'number' || !Number.isFinite(average) || typeof count !== 'number') return undefined;
   if (!Number.isInteger(count) || count < 0 || average < 0 || average > 5) return undefined;
   if (count > 0 && average < 1) return undefined;
   if (!Array.isArray(distribution) || distribution.length !== 5) return undefined;
@@ -74,3 +74,10 @@ export function parseCourseRating(value: unknown): CourseRating | undefined {
   if (distribution.reduce((a: number, b: number) => a + b, 0) !== count) return undefined;
   return { average, count, distribution: distribution as CourseRating['distribution'] };
 }
+
+/** Blog ratings use immutable CMS IDs, so changing the article slug preserves its votes. */
+export type RatingKind = 'courses' | 'blog';
+export const isRateablePost = (value: unknown): value is string =>
+  typeof value === 'string' && /^[0-7][0-9A-HJKMNP-TV-Z]{25}$/.test(value);
+export const ratingApiPath = (kind: RatingKind) => kind === 'blog' ? '/api/blog-ratings' : '/api/ratings';
+export const ratingStorageKey = (kind: RatingKind, id: string) => kind === 'blog' ? `blog:${id}` : id;

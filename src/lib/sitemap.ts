@@ -1,13 +1,14 @@
 import { getCollection } from '@/lib/emdash-content';
 import { CITIES_ENABLED } from './countries';
-import { getCountries, getCategories, listDocuments } from './emdash-content';
+import { getCountries, getCategories, listDocuments, getDocument, getAuthors } from './emdash-content';
+import { isSitemapEligible } from './sitemap-policy';
 
 import { SITE } from './site';
 
 /**
  * Sitemaps segmentados (plan maestro §15): un archivo por país para los cursos
- * + pages/categorias/blog. Las prioridades orientan el crawl budget de un
- * dominio en reconstrucción. Las landing de Ads (noindex) NO entran aquí.
+ * + pages/categorias/blog. Google ignora priority/changefreq; no controlan
+ * el crawl budget. Las landing de Ads (noindex) NO entran aquí.
  */
 export interface UrlEntry {
   loc: string;
@@ -27,7 +28,7 @@ const u = (path: string, priority: number, changefreq: 'weekly' | 'monthly' = 'w
 
 export async function pagesUrls(): Promise<UrlEntry[]> {
  const COUNTRIES=await getCountries();
-  const urls: UrlEntry[] = [u('/', 1.0)];
+  const urls: UrlEntry[] = [];
   for (const c of COUNTRIES) {
     urls.push(u(`/${c.code}/`, 1.0));
     urls.push(u(`/${c.code}/cursos/`, 1.0));
@@ -37,13 +38,21 @@ export async function pagesUrls(): Promise<UrlEntry[]> {
       }
     }
   }
-  urls.push(u('/nosotros/', 0.5, 'monthly'));
-  urls.push(u('/contacto/', 0.5, 'monthly'));
-  urls.push(u('/legal/terminos/', 0.3, 'monthly'));
-  urls.push(u('/legal/privacidad/', 0.3, 'monthly'));
   urls.push(u('/sitemap/', 0.3, 'monthly'));
-  for(const [collection,prefix] of [['videos','videos'],['graphics','recursos']] as const){const entries=await listDocuments(collection);if(entries.length)urls.push(u(`/${prefix}/`,0.6));for(const e of entries)urls.push(u(`/${prefix}/${e.id}/`,0.6));}
-  for(const e of await listDocuments('pages'))if(!['inicio','contacto','nosotros','privacidad','terminos'].includes(e.id))urls.push(u(`/paginas/${e.id}/`,0.5));
+  for(const [collection,prefix] of [['videos','videos'],['graphics','recursos']] as const){
+    const entries=await listDocuments(collection);
+    if(entries.length)urls.push(u(`/${prefix}/`,0.6));
+    for(const e of entries){
+      const document=await getDocument(collection,e.id),path=`/${prefix}/${e.id}/`;
+      if(document&&isSitemapEligible(document.data.seo,path,SITE.url))urls.push(u(path,0.6));
+    }
+  }
+  const fixed:Record<string,string>={inicio:'/',contacto:'/contacto/',nosotros:'/nosotros/',privacidad:'/legal/privacidad/',terminos:'/legal/terminos/'};
+  for(const e of await listDocuments('pages')){
+    const document=await getDocument('pages',e.id),path=fixed[e.id]??`/paginas/${e.id}/`;
+    if(document&&isSitemapEligible(document.data.seo,path,SITE.url))urls.push(u(path,path==='/'?1:0.5));
+  }
+  for(const author of await getAuthors())urls.push(u(`/blog/autor/${author.slug}/`,0.4,'monthly'));
   return urls;
 }
 
@@ -74,13 +83,14 @@ const COUNTRIES=await getCountries();const CATEGORIES=await getCategories();
   // canonical → /{cc}/{curso}/ para no canibalizar a la money page (GSC 2026-09-22:
   // hubs de ciudad y URLs viejas acaparaban "curso de globos burbuja/globoflexia").
   for (const course of courses) {
-    urls.push(u(`/${country.code}/${course.id}/`, 1.0));
+    const path=`/${country.code}/${course.id}/`;
+    if(isSitemapEligible((course.data as {seo?:unknown}).seo,path,SITE.url))urls.push(u(path, 1.0));
   }
   return urls;
 }
 
 export async function blogUrls(): Promise<UrlEntry[]> {
-  const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  const posts = (await getCollection('blog', ({ data, id }) => !data.draft&&isSitemapEligible((data as {seo?:unknown}).seo,`/blog/${id}/`,SITE.url))).sort(
     (a, b) => (b.data.updatedAt ?? b.data.publishedAt).getTime() - (a.data.updatedAt ?? a.data.publishedAt).getTime(),
   );
   if (posts.length === 0) return [];
@@ -104,9 +114,9 @@ export function renderUrlset(urls: UrlEntry[]): string {
     .map((x) => {
       const lastmod = x.lastmod ? `<lastmod>${x.lastmod.toISOString().slice(0, 10)}</lastmod>` : '';
       const image = x.image
-        ? `<image:image><image:loc>${x.image.loc}</image:loc><image:title>${xmlEsc(x.image.title)}</image:title></image:image>`
+        ? `<image:image><image:loc>${xmlEsc(x.image.loc)}</image:loc><image:title>${xmlEsc(x.image.title)}</image:title></image:image>`
         : '';
-      return `<url><loc>${x.loc}</loc>${lastmod}<changefreq>${x.changefreq}</changefreq><priority>${x.priority.toFixed(1)}</priority>${image}</url>`;
+      return `<url><loc>${xmlEsc(x.loc)}</loc>${lastmod}<changefreq>${x.changefreq}</changefreq><priority>${x.priority.toFixed(1)}</priority>${image}</url>`;
     })
     .join('');
   return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${body}</urlset>`;

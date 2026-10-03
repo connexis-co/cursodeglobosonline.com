@@ -378,7 +378,10 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
 </dialog>
 
 <style>
-  .nav-link {
+  #site-header :global(.nav-link) {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
     padding: 0.55rem 0.85rem;
     border-radius: 0.65rem;
     font-size: 0.92rem;
@@ -388,11 +391,11 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
       background-color 0.2s ease,
       color 0.2s ease;
   }
-  .nav-link:hover {
+  #site-header :global(.nav-link:hover) {
     background-color: var(--color-crema-100);
     color: var(--color-coral-600);
   }
-  .menu-row {
+  #mobile-menu :global(.menu-row) {
     display: flex;
     align-items: center;
     gap: 0.625rem;
@@ -402,17 +405,17 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
     border-bottom: 1px solid var(--color-crema-200);
   }
   /* Entrada escalonada de los items al abrir el menú */
-  #mobile-menu .menu-item {
+  #mobile-menu :global(.menu-item) {
     opacity: 0;
     transform: translateY(14px);
   }
-  #mobile-menu[open] .menu-item {
+  #mobile-menu[open] :global(.menu-item) {
     opacity: 1;
     transform: translateY(0);
     transition:
       opacity 0.4s var(--ease-suave),
       transform 0.4s var(--ease-suave);
-    transition-delay: calc(var(--i) * 40ms);
+    transition-delay: calc(var(--i, 0) * 40ms);
   }
   /* Mega menú cerrado con Escape o con el teclado: gana a group-hover/focus-within
      (estilo sin capa > utilidades de Tailwind en @layer). */

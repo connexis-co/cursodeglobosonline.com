@@ -127,3 +127,11 @@ El navegador integrado devolvió `ERR_BLOCKED_BY_CLIENT` al abrir el dominio. Po
 ## Paso posterior a producción
 
 La producción actual sigue siendo la fuente editorial vigente hasta el corte. Antes de migrarla se debe comparar de nuevo el contenido que haya cambiado, exportar una copia de seguridad, crear recursos y autenticación de producción independientes, importar contenido y votos reales, comprobar URLs/canónicas/medios/redirecciones, definir variantes optimizadas de las imágenes (desarrollo enlaza directamente los originales del CMS sin usar /_image) y realizar la revisión visual. Una base editada en producción no debe reemplazarse por un volcado de desarrollo. El cambio de dominio principal requiere la decisión de lanzamiento del usuario; no se hizo en esta tarea.
+
+## Revisión del menú, estrellas y Search Console — 2026-10-03
+
+El encabezado aplica sus estilos a los enlaces del menú nativo del CMS. Los artículos tienen votación propia y las tarjetas muestran su promedio real o «Aún sin votos». `0002_blog_votes.sql` guarda votos por ID estable del artículo, separados de los cursos. Aplicarla antes de desplegar esta versión en cualquier entorno nuevo; las pruebas de desarrollo eliminaron sus votos temporales.
+
+El plugin local `globos-seo` conserva el tipo y perfil del autor en un único BlogPosting. Los sitemaps respetan publicación, noindex y canonical del CMS; las páginas fijas ya no se incluyen si dejan de estar publicadas y se añadió el perfil editorial. El SEO nativo sigue siendo editable. Se verificaron 23 pruebas automatizadas, 10 comprobaciones del ciclo editorial, 10 de votos del blog y la regresión de votos de cursos, además de 25 rutas HTTP. La revisión visual sigue pendiente por el bloqueo del navegador integrado.
+
+La [auditoría de GSC](../seo/2026-10-03-search-console.md) cubre las 119 URLs del sitemap público y cinco muestras adicionales. Google confirma 118/119 indexadas; el principal margen de mejora es CTR y consultas comerciales. El manifiesto `verification/seo-title-experiment.json` contiene dos ajustes de metadatos aplicados solo en desarrollo. En el corte deben reconciliarse con producción, sin volver a importar un seed ni publicar revisiones pendientes. No se enviaron solicitudes de indexación ni el sitemap privado.

@@ -1,0 +1,10 @@
+---
+import {getBlogRating} from '@/lib/ratings';
+import Rating from '../Rating.astro';
+interface Props {contentId: string}
+const {contentId}=Astro.props;
+const rating=await getBlogRating(contentId);
+---
+<div data-blog-rating={contentId} data-count={rating.count} class="text-ciruela-700">
+  <Rating rating={rating.average} count={rating.count} size={15}/>
+</div>

@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-03T06:26:45.474Z",
+  "checks": [
+    "Stable CMS ID used for article votes",
+    "Draft cannot receive votes",
+    "Cross-origin voting denied",
+    "Rating range validated",
+    "Published article accepts votes",
+    "Changing a vote keeps count",
+    "Fourth distinct browser per IP rate limited",
+    "GET summary agrees with stored votes",
+    "Article renders same aggregate on server",
+    "Course votes stay separate"
+  ]
+}

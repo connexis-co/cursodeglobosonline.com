@@ -1,0 +1,1154 @@
+{
+  "period": {
+    "startDate": "2026-09-03",
+    "endDate": "2026-09-30",
+    "type": "web",
+    "dataState": "final",
+    "rowLimit": 20
+  },
+  "checkedAt": "2026-10-03T06:32:40.603538+00:00",
+  "pages": {
+    "tipos-y-tamanos-de-globos": {
+      "rows": [
+        {
+          "keys": [
+            "medidas de los globos"
+          ],
+          "clicks": 1,
+          "impressions": 5,
+          "ctr": 0.2,
+          "position": 7
+        },
+        {
+          "keys": [
+            "a cuánto equivale 12 pulgadas"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 9
+        },
+        {
+          "keys": [
+            "como se llama los globos largos"
+          ],
+          "clicks": 0,
+          "impressions": 14,
+          "ctr": 0,
+          "position": 7.642857142857143
+        },
+        {
+          "keys": [
+            "como se llaman los globos"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 9
+        },
+        {
+          "keys": [
+            "cuales son los globos mas grandes"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 8
+        },
+        {
+          "keys": [
+            "cuantas pulgadas tiene un globo normal"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 9
+        },
+        {
+          "keys": [
+            "cuanto mide un globo de 10 pulgadas"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 6.8
+        },
+        {
+          "keys": [
+            "cuanto mide un globo de 12 pulgadas"
+          ],
+          "clicks": 0,
+          "impressions": 7,
+          "ctr": 0,
+          "position": 5.285714285714286
+        },
+        {
+          "keys": [
+            "cuanto mide un globo de 18 pulgadas"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 7
+        },
+        {
+          "keys": [
+            "cuanto mide un globo de 18 pulgadas en cm"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 9.666666666666666
+        },
+        {
+          "keys": [
+            "cuanto mide un globo de 9 pulgadas"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 8
+        },
+        {
+          "keys": [
+            "cuanto mide un globo del número 9 sin inflar"
+          ],
+          "clicks": 0,
+          "impressions": 10,
+          "ctr": 0,
+          "position": 7.6
+        },
+        {
+          "keys": [
+            "cuanto mide un globo normal"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 9.5
+        },
+        {
+          "keys": [
+            "cómo se llaman los globos"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 5.5
+        },
+        {
+          "keys": [
+            "de cuantas pulgadas es un globo normal"
+          ],
+          "clicks": 0,
+          "impressions": 6,
+          "ctr": 0,
+          "position": 8.666666666666668
+        },
+        {
+          "keys": [
+            "de que tamaño son los globos normales"
+          ],
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 5
+        },
+        {
+          "keys": [
+            "diametro de un globo"
+          ],
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 3.5
+        },
+        {
+          "keys": [
+            "diferencia entre globo 260 y 270"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 10.5
+        },
+        {
+          "keys": [
+            "esquema de globos"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 2
+        },
+        {
+          "keys": [
+            "globo 10 pulgadas"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 2
+        }
+      ],
+      "responseAggregationType": "byPage"
+    },
+    "arco-de-globos": {
+      "rows": [
+        {
+          "keys": [
+            "arco de globos cuantos globos se necesitan"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 8.5
+        },
+        {
+          "keys": [
+            "arco en globos sencillo"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "keys": [
+            "como hacer un arco de globos"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 2
+        },
+        {
+          "keys": [
+            "como hacer un arco de globos sencillo paso a paso con cinta"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 8
+        },
+        {
+          "keys": [
+            "con cuantos globos se hace un arco"
+          ],
+          "clicks": 0,
+          "impressions": 16,
+          "ctr": 0,
+          "position": 8.5625
+        },
+        {
+          "keys": [
+            "con cuántos globos se hace un arco"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 1
+        },
+        {
+          "keys": [
+            "cuantos globos entran en un arco"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 9.4
+        },
+        {
+          "keys": [
+            "cuantos globos lleva un arco"
+          ],
+          "clicks": 0,
+          "impressions": 6,
+          "ctr": 0,
+          "position": 10.166666666666666
+        },
+        {
+          "keys": [
+            "cuantos globos lleva un arco de 2 metros"
+          ],
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "keys": [
+            "cuantos globos necesito para hacer medio arco"
+          ],
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 9.5
+        },
+        {
+          "keys": [
+            "cuantos globos necesito para hacer un arco"
+          ],
+          "clicks": 0,
+          "impressions": 14,
+          "ctr": 0,
+          "position": 9
+        },
+        {
+          "keys": [
+            "cuantos globos necesito para hacer un arco de 2 metros"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 11
+        },
+        {
+          "keys": [
+            "cuantos globos necesito para un arco"
+          ],
+          "clicks": 0,
+          "impressions": 8,
+          "ctr": 0,
+          "position": 8.375
+        },
+        {
+          "keys": [
+            "cuantos globos necesito para un arco de 2 metros"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 11
+        },
+        {
+          "keys": [
+            "cuantos globos se lleva un arco"
+          ],
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 8.5
+        },
+        {
+          "keys": [
+            "cuantos globos se necesitan para hacer medio arco"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 5.666666666666667
+        },
+        {
+          "keys": [
+            "cuantos globos se necesitan para hacer un arco"
+          ],
+          "clicks": 0,
+          "impressions": 61,
+          "ctr": 0,
+          "position": 9.295081967213115
+        },
+        {
+          "keys": [
+            "cuantos globos se necesitan para hacer un arco de 1 metro"
+          ],
+          "clicks": 0,
+          "impressions": 10,
+          "ctr": 0,
+          "position": 8.6
+        },
+        {
+          "keys": [
+            "cuantos globos se necesitan para hacer un arco de 2 metros"
+          ],
+          "clicks": 0,
+          "impressions": 11,
+          "ctr": 0,
+          "position": 9.636363636363637
+        },
+        {
+          "keys": [
+            "cuantos globos se necesitan para hacer un arco de 3 metros"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 9.666666666666666
+        }
+      ],
+      "responseAggregationType": "byPage"
+    },
+    "cuanto-dura-un-globo-con-helio": {
+      "rows": [
+        {
+          "keys": [
+            "cuantas horas dura un globo con helio"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 4
+        },
+        {
+          "keys": [
+            "cuanto aguanta un globo de helio"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 9
+        },
+        {
+          "keys": [
+            "cuanto dura el globo con helio"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 9.5
+        },
+        {
+          "keys": [
+            "cuanto dura el helio"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 11
+        },
+        {
+          "keys": [
+            "cuanto dura el helio en un globo"
+          ],
+          "clicks": 0,
+          "impressions": 27,
+          "ctr": 0,
+          "position": 8.518518518518519
+        },
+        {
+          "keys": [
+            "cuanto dura el helio en un globo normal"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 9.2
+        },
+        {
+          "keys": [
+            "cuanto dura globo helio"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 9
+        },
+        {
+          "keys": [
+            "cuanto dura inflado un globo burbuja"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "keys": [
+            "cuanto dura inflado un globo con helio"
+          ],
+          "clicks": 0,
+          "impressions": 8,
+          "ctr": 0,
+          "position": 7.75
+        },
+        {
+          "keys": [
+            "cuanto dura los globos con helio"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 8.333333333333332
+        },
+        {
+          "keys": [
+            "cuanto dura un globo con helio"
+          ],
+          "clicks": 0,
+          "impressions": 37,
+          "ctr": 0,
+          "position": 9.45945945945946
+        },
+        {
+          "keys": [
+            "cuanto dura un globo con helio inflado"
+          ],
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "keys": [
+            "cuanto dura un globo de helio"
+          ],
+          "clicks": 0,
+          "impressions": 18,
+          "ctr": 0,
+          "position": 7.444444444444445
+        },
+        {
+          "keys": [
+            "cuanto dura un globo de helio inflado"
+          ],
+          "clicks": 0,
+          "impressions": 9,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "keys": [
+            "cuanto dura un globo de latex con helio"
+          ],
+          "clicks": 0,
+          "impressions": 10,
+          "ctr": 0,
+          "position": 9.9
+        },
+        {
+          "keys": [
+            "cuanto dura un globo inflado con aire"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "keys": [
+            "cuanto dura un globo inflado con helio"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 11
+        },
+        {
+          "keys": [
+            "cuanto duran inflados los globos de helio"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "keys": [
+            "cuanto duran los globos con helio"
+          ],
+          "clicks": 0,
+          "impressions": 9,
+          "ctr": 0,
+          "position": 10.333333333333334
+        },
+        {
+          "keys": [
+            "cuanto duran los globos con helio inflados"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 10
+        }
+      ],
+      "responseAggregationType": "byPage"
+    },
+    "como-inflar-globos-largos": {
+      "rows": [
+        {
+          "keys": [
+            "como inflar un globo largo con la boca"
+          ],
+          "clicks": 1,
+          "impressions": 8,
+          "ctr": 0.125,
+          "position": 8.125
+        },
+        {
+          "keys": [
+            "como inflar bombas largas"
+          ],
+          "clicks": 0,
+          "impressions": 8,
+          "ctr": 0,
+          "position": 5.875
+        },
+        {
+          "keys": [
+            "como inflar bombas largas con inflador eléctrico"
+          ],
+          "clicks": 0,
+          "impressions": 6,
+          "ctr": 0,
+          "position": 4.833333333333334
+        },
+        {
+          "keys": [
+            "como inflar globo largo"
+          ],
+          "clicks": 0,
+          "impressions": 10,
+          "ctr": 0,
+          "position": 6.9
+        },
+        {
+          "keys": [
+            "como inflar globo largo con la boca"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 9
+        },
+        {
+          "keys": [
+            "como inflar globos 260 con inflador eléctrico"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 7
+        },
+        {
+          "keys": [
+            "como inflar globos largos"
+          ],
+          "clicks": 0,
+          "impressions": 57,
+          "ctr": 0,
+          "position": 9.035087719298245
+        },
+        {
+          "keys": [
+            "como inflar globos largos con inflador"
+          ],
+          "clicks": 0,
+          "impressions": 31,
+          "ctr": 0,
+          "position": 7.806451612903226
+        },
+        {
+          "keys": [
+            "como inflar globos largos con inflador eléctrico"
+          ],
+          "clicks": 0,
+          "impressions": 34,
+          "ctr": 0,
+          "position": 6.882352941176471
+        },
+        {
+          "keys": [
+            "como inflar globos largos con maquina"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 9
+        },
+        {
+          "keys": [
+            "como inflar globos largos fácilmente con la boca"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 8
+        },
+        {
+          "keys": [
+            "como inflar globos pencil"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "keys": [
+            "como inflar globos pencil con inflador"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 8.6
+        },
+        {
+          "keys": [
+            "como inflar los globos largos"
+          ],
+          "clicks": 0,
+          "impressions": 12,
+          "ctr": 0,
+          "position": 8.083333333333332
+        },
+        {
+          "keys": [
+            "como inflar un globo largo"
+          ],
+          "clicks": 0,
+          "impressions": 46,
+          "ctr": 0,
+          "position": 8.41304347826087
+        },
+        {
+          "keys": [
+            "como inflar un globo largo con maquina"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 8
+        },
+        {
+          "keys": [
+            "como inflar un globo largo sin inflador"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 9.666666666666666
+        },
+        {
+          "keys": [
+            "como inflar una bomba larga sin inflador"
+          ],
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 8.5
+        },
+        {
+          "keys": [
+            "como puedo inflar un globo largo"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 7.8
+        },
+        {
+          "keys": [
+            "como se infla los globos largos"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 6
+        }
+      ],
+      "responseAggregationType": "byPage"
+    },
+    "como-inflar-un-globo-burbuja": {
+      "rows": [
+        {
+          "keys": [
+            "como amarrar un globo burbuja para que no se desinfle"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 7.2
+        },
+        {
+          "keys": [
+            "como cerrar un globo burbuja"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 2.5
+        },
+        {
+          "keys": [
+            "como inflar el globo burbuja"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "keys": [
+            "como inflar globo burbuja"
+          ],
+          "clicks": 0,
+          "impressions": 12,
+          "ctr": 0,
+          "position": 7.166666666666667
+        },
+        {
+          "keys": [
+            "como inflar globo burbuja con globo dentro"
+          ],
+          "clicks": 0,
+          "impressions": 18,
+          "ctr": 0,
+          "position": 7.888888888888889
+        },
+        {
+          "keys": [
+            "como inflar globo transparente"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 7.666666666666667
+        },
+        {
+          "keys": [
+            "como inflar globos burbuja"
+          ],
+          "clicks": 0,
+          "impressions": 10,
+          "ctr": 0,
+          "position": 7.5
+        },
+        {
+          "keys": [
+            "como inflar globos burbuja sin inflador"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 6
+        },
+        {
+          "keys": [
+            "como inflar globos burbujas"
+          ],
+          "clicks": 0,
+          "impressions": 5,
+          "ctr": 0,
+          "position": 6.6
+        },
+        {
+          "keys": [
+            "como inflar globos con confeti"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "keys": [
+            "como inflar globos transparentes"
+          ],
+          "clicks": 0,
+          "impressions": 8,
+          "ctr": 0,
+          "position": 7.25
+        },
+        {
+          "keys": [
+            "como inflar globos transparentes con confeti"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 9
+        },
+        {
+          "keys": [
+            "como inflar los globos burbuja"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 7.5
+        },
+        {
+          "keys": [
+            "como inflar los globos transparentes"
+          ],
+          "clicks": 0,
+          "impressions": 10,
+          "ctr": 0,
+          "position": 8.4
+        },
+        {
+          "keys": [
+            "como inflar un globo burbuja"
+          ],
+          "clicks": 0,
+          "impressions": 35,
+          "ctr": 0,
+          "position": 7.142857142857143
+        },
+        {
+          "keys": [
+            "como inflar un globo burbuja con confeti"
+          ],
+          "clicks": 0,
+          "impressions": 10,
+          "ctr": 0,
+          "position": 8.2
+        },
+        {
+          "keys": [
+            "como inflar un globo burbuja pequeño"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 11
+        },
+        {
+          "keys": [
+            "como inflar un globo burbuja sin inflador"
+          ],
+          "clicks": 0,
+          "impressions": 13,
+          "ctr": 0,
+          "position": 7.3076923076923075
+        },
+        {
+          "keys": [
+            "como inflar un globo burbuja sin que se deforme"
+          ],
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 7
+        },
+        {
+          "keys": [
+            "como inflar un globo de confeti"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 8.5
+        }
+      ],
+      "responseAggregationType": "byPage"
+    }
+  },
+  "device": {
+    "rows": [
+      {
+        "keys": [
+          "MOBILE"
+        ],
+        "clicks": 206,
+        "impressions": 10439,
+        "ctr": 0.019733690966567678,
+        "position": 7.690774978446211
+      },
+      {
+        "keys": [
+          "DESKTOP"
+        ],
+        "clicks": 53,
+        "impressions": 2012,
+        "ctr": 0.026341948310139165,
+        "position": 12.153081510934394
+      },
+      {
+        "keys": [
+          "TABLET"
+        ],
+        "clicks": 2,
+        "impressions": 58,
+        "ctr": 0.034482758620689655,
+        "position": 6.913793103448276
+      }
+    ],
+    "responseAggregationType": "byProperty"
+  },
+  "country": {
+    "rows": [
+      {
+        "keys": [
+          "col"
+        ],
+        "clicks": 149,
+        "impressions": 4130,
+        "ctr": 0.03607748184019371,
+        "position": 7.592978208232446
+      },
+      {
+        "keys": [
+          "esp"
+        ],
+        "clicks": 36,
+        "impressions": 1007,
+        "ctr": 0.03574975173783516,
+        "position": 9.867924528301886
+      },
+      {
+        "keys": [
+          "per"
+        ],
+        "clicks": 22,
+        "impressions": 991,
+        "ctr": 0.022199798183652877,
+        "position": 8.647830474268416
+      },
+      {
+        "keys": [
+          "mex"
+        ],
+        "clicks": 14,
+        "impressions": 2406,
+        "ctr": 0.005818786367414797,
+        "position": 8.577722360764755
+      },
+      {
+        "keys": [
+          "arg"
+        ],
+        "clicks": 13,
+        "impressions": 933,
+        "ctr": 0.013933547695605574,
+        "position": 8.483386923901392
+      },
+      {
+        "keys": [
+          "chl"
+        ],
+        "clicks": 9,
+        "impressions": 591,
+        "ctr": 0.015228426395939087,
+        "position": 9.199661590524535
+      },
+      {
+        "keys": [
+          "usa"
+        ],
+        "clicks": 4,
+        "impressions": 494,
+        "ctr": 0.008097165991902834,
+        "position": 11.854251012145749
+      },
+      {
+        "keys": [
+          "ecu"
+        ],
+        "clicks": 3,
+        "impressions": 356,
+        "ctr": 0.008426966292134831,
+        "position": 8.438202247191011
+      },
+      {
+        "keys": [
+          "ven"
+        ],
+        "clicks": 3,
+        "impressions": 449,
+        "ctr": 0.0066815144766146995,
+        "position": 7.503340757238307
+      },
+      {
+        "keys": [
+          "cri"
+        ],
+        "clicks": 2,
+        "impressions": 126,
+        "ctr": 0.015873015873015872,
+        "position": 6.603174603174603
+      },
+      {
+        "keys": [
+          "ita"
+        ],
+        "clicks": 2,
+        "impressions": 17,
+        "ctr": 0.11764705882352941,
+        "position": 4.8235294117647065
+      },
+      {
+        "keys": [
+          "can"
+        ],
+        "clicks": 1,
+        "impressions": 18,
+        "ctr": 0.05555555555555555,
+        "position": 7.055555555555555
+      },
+      {
+        "keys": [
+          "irl"
+        ],
+        "clicks": 1,
+        "impressions": 2,
+        "ctr": 0.5,
+        "position": 7.5
+      },
+      {
+        "keys": [
+          "pry"
+        ],
+        "clicks": 1,
+        "impressions": 77,
+        "ctr": 0.012987012987012988,
+        "position": 8.571428571428571
+      },
+      {
+        "keys": [
+          "slv"
+        ],
+        "clicks": 1,
+        "impressions": 104,
+        "ctr": 0.009615384615384616,
+        "position": 7.259615384615385
+      },
+      {
+        "keys": [
+          "abw"
+        ],
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 7.333333333333333
+      },
+      {
+        "keys": [
+          "and"
+        ],
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 7.5
+      },
+      {
+        "keys": [
+          "aus"
+        ],
+        "clicks": 0,
+        "impressions": 6,
+        "ctr": 0,
+        "position": 6.833333333333333
+      },
+      {
+        "keys": [
+          "bel"
+        ],
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 8.333333333333332
+      },
+      {
+        "keys": [
+          "bgd"
+        ],
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 7
+      }
+    ],
+    "responseAggregationType": "byProperty"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "environment": "development",
+  "productionApplied": false,
+  "changes": [
+    {
+      "slug": "tipos-y-tamanos-de-globos",
+      "before": {
+        "title": null,
+        "description": null,
+        "image": null,
+        "canonical": null,
+        "noIndex": false
+      },
+      "after": {
+        "title": "Tamaños de globos: tabla en cm, pulgadas y números",
+        "description": "Consulta la tabla de tamaños de globos en cm y pulgadas. Compara números, materiales y medidas para elegir globos de arcos, bouquets y figuras.",
+        "image": null,
+        "canonical": null,
+        "noIndex": false
+      },
+      "checkedAt": "2026-10-03T06:38:36.457Z"
+    },
+    {
+      "slug": "como-inflar-globos-largos",
+      "before": {
+        "title": null,
+        "description": null,
+        "image": null,
+        "canonical": null,
+        "noIndex": false
+      },
+      "after": {
+        "title": "Cómo inflar globos largos con inflador, paso a paso",
+        "description": "Infla globos largos 260 con inflador manual o eléctrico: qué boquilla usar, cuánta cola dejar y cómo hacer el nudo sin reventarlos. Guía paso a paso.",
+        "image": null,
+        "canonical": null,
+        "noIndex": false
+      },
+      "checkedAt": "2026-10-03T06:38:42.059Z"
+    }
+  ]
+}

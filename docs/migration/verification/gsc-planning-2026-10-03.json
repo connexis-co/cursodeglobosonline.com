@@ -1,0 +1,4627 @@
+{
+  "siteUrl": "sc-domain:cursodeglobosonline.com",
+  "requestedRange": {
+    "startDate": "2026-09-03",
+    "endDate": "2026-09-30"
+  },
+  "effectiveRange": {
+    "startDate": "2026-09-03",
+    "endDate": "2026-09-30"
+  },
+  "comparisonRange": {
+    "startDate": "2026-08-06",
+    "endDate": "2026-09-02"
+  },
+  "access": {
+    "mode": "free_trial_full",
+    "comparisonAllowed": true,
+    "maxDataDays": null,
+    "trialStartedAt": null,
+    "trialEndsAt": null
+  },
+  "filters": {},
+  "totals": {
+    "clicks": 261,
+    "impressions": 12509,
+    "ctr": 0.02086497721640419,
+    "position": 8.404908465904548
+  },
+  "previousTotals": {
+    "clicks": 173,
+    "impressions": 2755,
+    "ctr": 0.06279491833030854,
+    "position": 15.584029038112522
+  },
+  "changes": {
+    "clicks": 88,
+    "impressions": 9754,
+    "ctr": -0.04192994111390434,
+    "position": 7.1791205722079745
+  },
+  "topQueries": [
+    {
+      "query": "curso de globos",
+      "clicks": 9,
+      "impressions": 160,
+      "ctr": 0.05625,
+      "position": 23.18125
+    },
+    {
+      "query": "cursos de decoración para fiestas y eventos",
+      "clicks": 4,
+      "impressions": 41,
+      "ctr": 0.0975609756097561,
+      "position": 3.658536585365854
+    },
+    {
+      "query": "cursos de decoración para fiestas y eventos en barranquilla",
+      "clicks": 4,
+      "impressions": 10,
+      "ctr": 0.4,
+      "position": 2.4
+    },
+    {
+      "query": "curso de decoracion con globos",
+      "clicks": 3,
+      "impressions": 94,
+      "ctr": 0.031914893617021274,
+      "position": 24.71276595744681
+    },
+    {
+      "query": "curso de globoflexia",
+      "clicks": 3,
+      "impressions": 81,
+      "ctr": 0.037037037037037035,
+      "position": 17.296296296296298
+    },
+    {
+      "query": "curso de globos y decoración",
+      "clicks": 3,
+      "impressions": 13,
+      "ctr": 0.23076923076923078,
+      "position": 3.3846153846153846
+    },
+    {
+      "query": "curso decoracion con globos",
+      "clicks": 2,
+      "impressions": 17,
+      "ctr": 0.11764705882352941,
+      "position": 16.235294117647058
+    },
+    {
+      "query": "cursos decoracion con globos",
+      "clicks": 2,
+      "impressions": 18,
+      "ctr": 0.1111111111111111,
+      "position": 7.111111111111111
+    },
+    {
+      "query": "como inflar un globo largo con la boca",
+      "clicks": 1,
+      "impressions": 8,
+      "ctr": 0.125,
+      "position": 8.125
+    },
+    {
+      "query": "como se inflan globos con helio",
+      "clicks": 1,
+      "impressions": 4,
+      "ctr": 0.25,
+      "position": 8.5
+    },
+    {
+      "query": "curso de decoracion",
+      "clicks": 1,
+      "impressions": 4,
+      "ctr": 0.25,
+      "position": 1.75
+    },
+    {
+      "query": "curso de decoracion globos",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 21
+    },
+    {
+      "query": "curso de decoración con globos",
+      "clicks": 1,
+      "impressions": 22,
+      "ctr": 0.045454545454545456,
+      "position": 4.863636363636363
+    },
+    {
+      "query": "curso de decoración de eventos con globos",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 1.5
+    },
+    {
+      "query": "curso de decoración de eventos sena",
+      "clicks": 1,
+      "impressions": 9,
+      "ctr": 0.1111111111111111,
+      "position": 7.666666666666667
+    },
+    {
+      "query": "curso de decoración de fiestas presencial barranquilla",
+      "clicks": 1,
+      "impressions": 6,
+      "ctr": 0.16666666666666666,
+      "position": 3.8333333333333335
+    },
+    {
+      "query": "curso de decoración de globos",
+      "clicks": 1,
+      "impressions": 5,
+      "ctr": 0.2,
+      "position": 12
+    },
+    {
+      "query": "curso de globos burbuja",
+      "clicks": 1,
+      "impressions": 19,
+      "ctr": 0.05263157894736842,
+      "position": 12.947368421052632
+    },
+    {
+      "query": "curso de globos online",
+      "clicks": 1,
+      "impressions": 5,
+      "ctr": 0.2,
+      "position": 11.4
+    },
+    {
+      "query": "curso de globos y decoracion",
+      "clicks": 1,
+      "impressions": 8,
+      "ctr": 0.125,
+      "position": 44.375
+    },
+    {
+      "query": "curso decoracion de fiestas",
+      "clicks": 1,
+      "impressions": 3,
+      "ctr": 0.3333333333333333,
+      "position": 3.6666666666666665
+    },
+    {
+      "query": "curso decoracion de globos",
+      "clicks": 1,
+      "impressions": 61,
+      "ctr": 0.01639344262295082,
+      "position": 35.63934426229508
+    },
+    {
+      "query": "curso decoración con globos",
+      "clicks": 1,
+      "impressions": 12,
+      "ctr": 0.08333333333333333,
+      "position": 4
+    },
+    {
+      "query": "curso globos",
+      "clicks": 1,
+      "impressions": 13,
+      "ctr": 0.07692307692307693,
+      "position": 7.538461538461538
+    },
+    {
+      "query": "curso globos burbuja",
+      "clicks": 1,
+      "impressions": 5,
+      "ctr": 0.2,
+      "position": 3.2
+    }
+  ],
+  "topPages": [
+    {
+      "page": "https://cursodeglobosonline.com/co/medellin/",
+      "clicks": 38,
+      "impressions": 498,
+      "ctr": 0.07630522088353414,
+      "position": 8.283132530120483
+    },
+    {
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 37,
+      "impressions": 441,
+      "ctr": 0.08390022675736962,
+      "position": 11.160997732426305
+    },
+    {
+      "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+      "clicks": 18,
+      "impressions": 265,
+      "ctr": 0.06792452830188679,
+      "position": 21.513207547169813
+    },
+    {
+      "page": "https://cursodeglobosonline.com/co/cali/",
+      "clicks": 17,
+      "impressions": 319,
+      "ctr": 0.05329153605015674,
+      "position": 17.595611285266457
+    },
+    {
+      "page": "https://cursodeglobosonline.com/es/madrid/",
+      "clicks": 13,
+      "impressions": 201,
+      "ctr": 0.06467661691542288,
+      "position": 19.870646766169155
+    },
+    {
+      "page": "https://cursodeglobosonline.com/co/bogota/",
+      "clicks": 12,
+      "impressions": 209,
+      "ctr": 0.05741626794258373,
+      "position": 31.942583732057415
+    },
+    {
+      "page": "https://cursodeglobosonline.com/co/",
+      "clicks": 11,
+      "impressions": 183,
+      "ctr": 0.060109289617486336,
+      "position": 18.75409836065574
+    },
+    {
+      "page": "https://cursodeglobosonline.com/",
+      "clicks": 6,
+      "impressions": 135,
+      "ctr": 0.044444444444444446,
+      "position": 16.82962962962963
+    },
+    {
+      "page": "https://cursodeglobosonline.com/ar/rosario/",
+      "clicks": 6,
+      "impressions": 76,
+      "ctr": 0.07894736842105263,
+      "position": 13.93421052631579
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/tipos-y-tamanos-de-globos/",
+      "clicks": 6,
+      "impressions": 1717,
+      "ctr": 0.0034944670937682005,
+      "position": 7.232382061735585
+    },
+    {
+      "page": "https://cursodeglobosonline.com/es/barcelona/",
+      "clicks": 5,
+      "impressions": 16,
+      "ctr": 0.3125,
+      "position": 5.625
+    },
+    {
+      "page": "https://cursodeglobosonline.com/peru/",
+      "clicks": 5,
+      "impressions": 115,
+      "ctr": 0.043478260869565216,
+      "position": 16.73913043478261
+    },
+    {
+      "page": "https://cursodeglobosonline.com/ar/mendoza/",
+      "clicks": 4,
+      "impressions": 21,
+      "ctr": 0.19047619047619047,
+      "position": 5.714285714285714
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/arco-de-globos/",
+      "clicks": 4,
+      "impressions": 1105,
+      "ctr": 0.0036199095022624436,
+      "position": 7.944796380090498
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-rosa-y-dorado/",
+      "clicks": 4,
+      "impressions": 475,
+      "ctr": 0.008421052631578947,
+      "position": 7.147368421052631
+    },
+    {
+      "page": "https://cursodeglobosonline.com/cl/santiago/",
+      "clicks": 4,
+      "impressions": 139,
+      "ctr": 0.02877697841726619,
+      "position": 16.093525179856115
+    },
+    {
+      "page": "https://cursodeglobosonline.com/es/sevilla/",
+      "clicks": 4,
+      "impressions": 10,
+      "ctr": 0.4,
+      "position": 4.4
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 3,
+      "impressions": 779,
+      "ctr": 0.0038510911424903724,
+      "position": 7.7522464698331195
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/cuanto-cobrar-por-decoracion-con-globos/",
+      "clicks": 3,
+      "impressions": 338,
+      "ctr": 0.008875739644970414,
+      "position": 5.724852071005917
+    },
+    {
+      "page": "https://cursodeglobosonline.com/ec/",
+      "clicks": 3,
+      "impressions": 54,
+      "ctr": 0.05555555555555555,
+      "position": 15.25925925925926
+    },
+    {
+      "page": "https://cursodeglobosonline.com/mx/curso-de-globoflexia/",
+      "clicks": 3,
+      "impressions": 261,
+      "ctr": 0.011494252873563218,
+      "position": 14.360153256704981
+    },
+    {
+      "page": "https://cursodeglobosonline.com/mx/puebla/",
+      "clicks": 3,
+      "impressions": 45,
+      "ctr": 0.06666666666666667,
+      "position": 6.488888888888889
+    },
+    {
+      "page": "https://cursodeglobosonline.com/pe/arequipa/",
+      "clicks": 3,
+      "impressions": 10,
+      "ctr": 0.3,
+      "position": 5.1
+    },
+    {
+      "page": "https://cursodeglobosonline.com/pe/curso-de-globos-burbuja/",
+      "clicks": 3,
+      "impressions": 28,
+      "ctr": 0.10714285714285714,
+      "position": 37.67857142857143
+    },
+    {
+      "page": "https://cursodeglobosonline.com/ar/",
+      "clicks": 2,
+      "impressions": 43,
+      "ctr": 0.046511627906976744,
+      "position": 12.372093023255815
+    }
+  ],
+  "queryPageRelationships": [
+    {
+      "query": "curso de globos",
+      "page": "https://cursodeglobosonline.com/co/",
+      "clicks": 4,
+      "impressions": 35,
+      "ctr": 0.11428571428571428,
+      "position": 20.457142857142856
+    },
+    {
+      "query": "cursos de decoración para fiestas y eventos en barranquilla",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 4,
+      "impressions": 10,
+      "ctr": 0.4,
+      "position": 2.4
+    },
+    {
+      "query": "cursos de decoración para fiestas y eventos",
+      "page": "https://cursodeglobosonline.com/co/medellin/",
+      "clicks": 3,
+      "impressions": 20,
+      "ctr": 0.15,
+      "position": 3.1
+    },
+    {
+      "query": "curso de decoracion con globos",
+      "page": "https://cursodeglobosonline.com/es/madrid/",
+      "clicks": 2,
+      "impressions": 18,
+      "ctr": 0.1111111111111111,
+      "position": 36
+    },
+    {
+      "query": "curso de globoflexia",
+      "page": "https://cursodeglobosonline.com/co/bogota/",
+      "clicks": 2,
+      "impressions": 19,
+      "ctr": 0.10526315789473684,
+      "position": 40.26315789473684
+    },
+    {
+      "query": "como inflar un globo largo con la boca",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 1,
+      "impressions": 8,
+      "ctr": 0.125,
+      "position": 8.125
+    },
+    {
+      "query": "como se inflan globos con helio",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 1,
+      "impressions": 4,
+      "ctr": 0.25,
+      "position": 8.5
+    },
+    {
+      "query": "curso de decoracion",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 1,
+      "impressions": 3,
+      "ctr": 0.3333333333333333,
+      "position": 1
+    },
+    {
+      "query": "curso de decoracion con globos",
+      "page": "https://cursodeglobosonline.com/ar/rosario/",
+      "clicks": 1,
+      "impressions": 6,
+      "ctr": 0.16666666666666666,
+      "position": 19.166666666666668
+    },
+    {
+      "query": "curso de decoracion globos",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 1
+    },
+    {
+      "query": "curso de decoración con globos",
+      "page": "https://cursodeglobosonline.com/co/cali/",
+      "clicks": 1,
+      "impressions": 4,
+      "ctr": 0.25,
+      "position": 3.5
+    },
+    {
+      "query": "curso de decoración de eventos con globos",
+      "page": "https://cursodeglobosonline.com/es/madrid/",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 1
+    },
+    {
+      "query": "curso de decoración de eventos sena",
+      "page": "https://cursodeglobosonline.com/",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 6
+    },
+    {
+      "query": "curso de decoración de fiestas presencial barranquilla",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 1,
+      "impressions": 6,
+      "ctr": 0.16666666666666666,
+      "position": 3.8333333333333335
+    },
+    {
+      "query": "curso de decoración de globos",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 1
+    },
+    {
+      "query": "curso de globoflexia",
+      "page": "https://cursodeglobosonline.com/mx/curso-de-globoflexia/",
+      "clicks": 1,
+      "impressions": 23,
+      "ctr": 0.043478260869565216,
+      "position": 19.217391304347824
+    },
+    {
+      "query": "curso de globos",
+      "page": "https://cursodeglobosonline.com/cl/santiago/",
+      "clicks": 1,
+      "impressions": 10,
+      "ctr": 0.1,
+      "position": 22.8
+    },
+    {
+      "query": "curso de globos",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 1,
+      "impressions": 29,
+      "ctr": 0.034482758620689655,
+      "position": 13.862068965517242
+    },
+    {
+      "query": "curso de globos",
+      "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+      "clicks": 1,
+      "impressions": 14,
+      "ctr": 0.07142857142857142,
+      "position": 60
+    },
+    {
+      "query": "curso de globos",
+      "page": "https://cursodeglobosonline.com/co/cali/",
+      "clicks": 1,
+      "impressions": 14,
+      "ctr": 0.07142857142857142,
+      "position": 67.07142857142857
+    },
+    {
+      "query": "curso de globos",
+      "page": "https://cursodeglobosonline.com/co/medellin/",
+      "clicks": 1,
+      "impressions": 17,
+      "ctr": 0.058823529411764705,
+      "position": 27.235294117647058
+    },
+    {
+      "query": "curso de globos burbuja",
+      "page": "https://cursodeglobosonline.com/co/bogota/",
+      "clicks": 1,
+      "impressions": 7,
+      "ctr": 0.14285714285714285,
+      "position": 43.714285714285715
+    },
+    {
+      "query": "curso de globos online",
+      "page": "https://cursodeglobosonline.com/co/",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 1
+    },
+    {
+      "query": "curso de globos y decoracion",
+      "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 3
+    },
+    {
+      "query": "curso de globos y decoración",
+      "page": "https://cursodeglobosonline.com/cl/santiago/",
+      "clicks": 1,
+      "impressions": 4,
+      "ctr": 0.25,
+      "position": 5.25
+    },
+    {
+      "query": "curso de globos y decoración",
+      "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 1
+    },
+    {
+      "query": "curso de globos y decoración",
+      "page": "https://cursodeglobosonline.com/co/medellin/",
+      "clicks": 1,
+      "impressions": 3,
+      "ctr": 0.3333333333333333,
+      "position": 1
+    },
+    {
+      "query": "curso decoracion con globos",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 1,
+      "impressions": 3,
+      "ctr": 0.3333333333333333,
+      "position": 1
+    },
+    {
+      "query": "curso decoracion con globos",
+      "page": "https://cursodeglobosonline.com/es/madrid/",
+      "clicks": 1,
+      "impressions": 4,
+      "ctr": 0.25,
+      "position": 31.75
+    },
+    {
+      "query": "curso decoracion de fiestas",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 1
+    },
+    {
+      "query": "curso decoracion de globos",
+      "page": "https://cursodeglobosonline.com/peru/",
+      "clicks": 1,
+      "impressions": 8,
+      "ctr": 0.125,
+      "position": 31.25
+    },
+    {
+      "query": "curso decoración con globos",
+      "page": "https://cursodeglobosonline.com/co/medellin/",
+      "clicks": 1,
+      "impressions": 5,
+      "ctr": 0.2,
+      "position": 1.4
+    },
+    {
+      "query": "curso globos",
+      "page": "https://cursodeglobosonline.com/cl/santiago/",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 9.5
+    },
+    {
+      "query": "curso globos burbuja",
+      "page": "https://cursodeglobosonline.com/co/bogota/",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 1.5
+    },
+    {
+      "query": "curso globos para fiestas y eventos",
+      "page": "https://cursodeglobosonline.com/co/medellin/",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 2
+    },
+    {
+      "query": "cursos de decoracion con globos",
+      "page": "https://cursodeglobosonline.com/co/cali/",
+      "clicks": 1,
+      "impressions": 7,
+      "ctr": 0.14285714285714285,
+      "position": 40.857142857142854
+    },
+    {
+      "query": "cursos de decoración con globos virtual",
+      "page": "https://cursodeglobosonline.com/co/",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 2
+    },
+    {
+      "query": "cursos de decoración de globos",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 2.5
+    },
+    {
+      "query": "cursos de decoración para fiestas y eventos",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 1,
+      "impressions": 3,
+      "ctr": 0.3333333333333333,
+      "position": 2
+    },
+    {
+      "query": "cursos de globoflexia en bogotá presencial",
+      "page": "https://cursodeglobosonline.com/co/bogota/",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 20.5
+    },
+    {
+      "query": "cursos de globos",
+      "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 1.5
+    },
+    {
+      "query": "cursos de globos en el sena",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 1,
+      "impressions": 4,
+      "ctr": 0.25,
+      "position": 9.25
+    },
+    {
+      "query": "cursos de globos y decoración",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 1
+    },
+    {
+      "query": "cursos decoracion con globos",
+      "page": "https://cursodeglobosonline.com/co/bogota/",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 9
+    },
+    {
+      "query": "cursos decoracion con globos",
+      "page": "https://cursodeglobosonline.com/co/medellin/",
+      "clicks": 1,
+      "impressions": 4,
+      "ctr": 0.25,
+      "position": 2.75
+    },
+    {
+      "query": "cursos globos",
+      "page": "https://cursodeglobosonline.com/co/",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 5
+    },
+    {
+      "query": "en chile",
+      "page": "https://cursodeglobosonline.com/cl/curso-de-globos-burbuja/",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 2
+    },
+    {
+      "query": "globoflexia que es",
+      "page": "https://cursodeglobosonline.com/blog/globoflexia/",
+      "clicks": 1,
+      "impressions": 153,
+      "ctr": 0.006535947712418301,
+      "position": 8.398692810457517
+    },
+    {
+      "query": "medidas de los globos",
+      "page": "https://cursodeglobosonline.com/blog/tipos-y-tamanos-de-globos/",
+      "clicks": 1,
+      "impressions": 5,
+      "ctr": 0.2,
+      "position": 7
+    },
+    {
+      "query": "que es globoflexia",
+      "page": "https://cursodeglobosonline.com/blog/globoflexia/",
+      "clicks": 1,
+      "impressions": 91,
+      "ctr": 0.01098901098901099,
+      "position": 8.23076923076923
+    },
+    {
+      "query": "taller de decoración de globos",
+      "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 1
+    },
+    {
+      "query": "taller globoflexia",
+      "page": "https://cursodeglobosonline.com/pe/curso-de-globoflexia/",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 3
+    },
+    {
+      "query": "uno virtual",
+      "page": "https://cursodeglobosonline.com/co/",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 2
+    },
+    {
+      "query": "y línea",
+      "page": "https://cursodeglobosonline.com/mx/",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 2
+    },
+    {
+      "query": "$2000 mxn",
+      "page": "https://cursodeglobosonline.com/mx/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "query": "a cuánto equivale 12 pulgadas",
+      "page": "https://cursodeglobosonline.com/blog/tipos-y-tamanos-de-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "query": "academia de globos",
+      "page": "https://cursodeglobosonline.com/co/medellin/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "query": "adornos con globos para la virgen de guadalupe",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-virgen-de-guadalupe/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "query": "adornos para la virgen de guadalupe con globos",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-virgen-de-guadalupe/",
+      "clicks": 0,
+      "impressions": 11,
+      "ctr": 0,
+      "position": 7.545454545454546
+    },
+    {
+      "query": "ambas",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-hombre/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "query": "ambos",
+      "page": "https://cursodeglobosonline.com/es/cursos/decoracion-con-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "query": "aprender a decorar con globos",
+      "page": "https://cursodeglobosonline.com/cali/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "query": "aprender globoflexia",
+      "page": "https://cursodeglobosonline.com/blog/globoflexia/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 19
+    },
+    {
+      "query": "aprender globoflexia",
+      "page": "https://cursodeglobosonline.com/es/curso-de-globoflexia/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 44
+    },
+    {
+      "query": "arco de globos con cortina",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-cortinas-y-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "arco de globos con cortinas",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-cortinas-y-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "query": "arco de globos cuantos globos se necesitan",
+      "page": "https://cursodeglobosonline.com/blog/arco-de-globos/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8.5
+    },
+    {
+      "query": "arco de globos para la virgen de guadalupe",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-virgen-de-guadalupe/",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 5.25
+    },
+    {
+      "query": "arco decoracion con globos para la virgen de guadalupe",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-virgen-de-guadalupe/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "query": "arco en globos sencillo",
+      "page": "https://cursodeglobosonline.com/blog/arco-de-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "query": "arcos de globos para la virgen de guadalupe",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-virgen-de-guadalupe/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "query": "arreglo de cumpleaños para hombre sencillo",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-hombre/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4.5
+    },
+    {
+      "query": "arreglos de globos para graduación sencillos",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-graduacion/",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 9.5
+    },
+    {
+      "query": "arreglos para bodas envigado",
+      "page": "https://cursodeglobosonline.com/co/medellin/curso-de-flores-con-globos/",
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 39.5
+    },
+    {
+      "query": "bombas rosadas y doradas",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-rosa-y-dorado/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "query": "bouquet de globos para hombre sencillo",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-hombre/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "query": "bucaramanga",
+      "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "query": "centro de mesa barato",
+      "page": "https://cursodeglobosonline.com/blog/centros-de-mesa-con-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 31
+    },
+    {
+      "query": "centro de mesa para 50 años hombre con globos",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-hombre/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "centros de mesa comunion caseros",
+      "page": "https://cursodeglobosonline.com/blog/centros-de-mesa-con-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 21
+    },
+    {
+      "query": "cinta para pegar globos en el techo",
+      "page": "https://cursodeglobosonline.com/blog/como-decorar-con-globos-en-la-pared/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "query": "clase de globos",
+      "page": "https://cursodeglobosonline.com/co/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "query": "clase de globos",
+      "page": "https://cursodeglobosonline.com/co/cali/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "clases de decoracion con globos",
+      "page": "https://cursodeglobosonline.com/peru/",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 34.833333333333336
+    },
+    {
+      "query": "clases de decoracion con globos",
+      "page": "https://cursodeglobosonline.com/us/cursos/decoracion-con-globos/",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 42.857142857142854
+    },
+    {
+      "query": "clases de decoracion de eventos",
+      "page": "https://cursodeglobosonline.com/us/losangeles/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "clases de decoracion de fiestas",
+      "page": "https://cursodeglobosonline.com/cali/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 84
+    },
+    {
+      "query": "clases de decoracion de fiestas",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 41
+    },
+    {
+      "query": "clases de decoracion de fiestas",
+      "page": "https://cursodeglobosonline.com/co/bogota/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 89
+    },
+    {
+      "query": "clases de decoracion de fiestas",
+      "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 59
+    },
+    {
+      "query": "clases de decoracion de fiestas",
+      "page": "https://cursodeglobosonline.com/co/cali/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "query": "clases de decoracion de fiestas",
+      "page": "https://cursodeglobosonline.com/co/medellin/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 26
+    },
+    {
+      "query": "clases de decoracion de globos",
+      "page": "https://cursodeglobosonline.com/us/cursos/decoracion-con-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 49
+    },
+    {
+      "query": "clases de decoración de globos cerca de mi",
+      "page": "https://cursodeglobosonline.com/us/losangeles/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "query": "clases de globoflexia",
+      "page": "https://cursodeglobosonline.com/mx/curso-de-globoflexia/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 12
+    },
+    {
+      "query": "clases de globoflexia",
+      "page": "https://cursodeglobosonline.com/pe/curso-de-globoflexia/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "clases de globos",
+      "page": "https://cursodeglobosonline.com/cali/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "clases de globos",
+      "page": "https://cursodeglobosonline.com/co/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 10.333333333333334
+    },
+    {
+      "query": "clases de globos",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "query": "clases de globos",
+      "page": "https://cursodeglobosonline.com/co/bogota/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 9.333333333333334
+    },
+    {
+      "query": "clases de globos",
+      "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "query": "clases de globos",
+      "page": "https://cursodeglobosonline.com/co/cali/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 10.666666666666666
+    },
+    {
+      "query": "clases de globos",
+      "page": "https://cursodeglobosonline.com/co/medellin/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4.5
+    },
+    {
+      "query": "clases de globos",
+      "page": "https://cursodeglobosonline.com/peru/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9.5
+    },
+    {
+      "query": "clases de globos para decorar",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4.5
+    },
+    {
+      "query": "clases de globos para decorar",
+      "page": "https://cursodeglobosonline.com/co/cali/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "query": "clases de globos para fiestas",
+      "page": "https://cursodeglobosonline.com/co/barranquilla/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 50
+    },
+    {
+      "query": "clases de globos para fiestas",
+      "page": "https://cursodeglobosonline.com/co/bogota/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 69
+    },
+    {
+      "query": "clases de globos para fiestas",
+      "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 34
+    },
+    {
+      "query": "clases de globos para fiestas",
+      "page": "https://cursodeglobosonline.com/co/cali/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 58
+    },
+    {
+      "query": "colores para capillas de la virgen de guadalupe",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-virgen-de-guadalupe/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 7.333333333333333
+    },
+    {
+      "query": "columnas de globos",
+      "page": "https://cursodeglobosonline.com/blog/columnas-de-globos/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 21.333333333333332
+    },
+    {
+      "query": "columnas de globos para comunion",
+      "page": "https://cursodeglobosonline.com/blog/columnas-de-globos/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9.5
+    },
+    {
+      "query": "combinacion de globos para hombre",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-hombre/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 7.5
+    },
+    {
+      "query": "combinaciones de globos para hombre",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-hombre/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 5.666666666666667
+    },
+    {
+      "query": "combinación de globos para hombres",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-hombre/",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 7.166666666666667
+    },
+    {
+      "query": "combinación de globos para mujer",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-mujer/",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "query": "como adornar una virgen para el 12 de diciembre",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-virgen-de-guadalupe/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "como amarrar un globo burbuja para que no se desinfle",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 7.2
+    },
+    {
+      "query": "como cerrar un globo burbuja",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 2.5
+    },
+    {
+      "query": "como cotizar una decoracion con globos",
+      "page": "https://cursodeglobosonline.com/blog/cuanto-cobrar-por-decoracion-con-globos/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "como decorar con globos",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 12
+    },
+    {
+      "query": "como decorar con globos en la pared",
+      "page": "https://cursodeglobosonline.com/blog/como-decorar-con-globos-en-la-pared/",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 9.5
+    },
+    {
+      "query": "como decorar con globos en la pared sencillos",
+      "page": "https://cursodeglobosonline.com/blog/como-decorar-con-globos-en-la-pared/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "query": "como decorar con globos en la pared sencillos para hombre",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-hombre/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "como decorar con globos en la pared sencillos para niños",
+      "page": "https://cursodeglobosonline.com/blog/como-decorar-con-globos-en-la-pared/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8.5
+    },
+    {
+      "query": "como decorar un globo",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "como hacer decoración con globos",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "query": "como hacer flores con globos 260",
+      "page": "https://cursodeglobosonline.com/blog/flores-con-globos/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 13
+    },
+    {
+      "query": "como hacer flores con globos redondos",
+      "page": "https://cursodeglobosonline.com/blog/flores-con-globos/",
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 6.3478260869565215
+    },
+    {
+      "query": "como hacer un arco de globos",
+      "page": "https://cursodeglobosonline.com/blog/arco-de-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "query": "como hacer un arco de globos sencillo paso a paso con cinta",
+      "page": "https://cursodeglobosonline.com/blog/arco-de-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "query": "como hacer una espada de globo",
+      "page": "https://cursodeglobosonline.com/blog/figuras-con-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 28
+    },
+    {
+      "query": "como hacer una guirnalda de globos con base",
+      "page": "https://cursodeglobosonline.com/blog/guirnalda-de-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "query": "como hinchar globos de helio",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "query": "como hinchar globos de numeros",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "query": "como inflar bombas largas",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 5.875
+    },
+    {
+      "query": "como inflar bombas largas con inflador eléctrico",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 4.833333333333334
+    },
+    {
+      "query": "como inflar bombas metalizadas",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "como inflar el globo burbuja",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "query": "como inflar globo burbuja",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 7.166666666666667
+    },
+    {
+      "query": "como inflar globo burbuja con globo dentro",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 18,
+      "ctr": 0,
+      "position": 7.888888888888889
+    },
+    {
+      "query": "como inflar globo largo",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 6.9
+    },
+    {
+      "query": "como inflar globo largo con la boca",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "query": "como inflar globo transparente",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 7.666666666666667
+    },
+    {
+      "query": "como inflar globos 260 con inflador eléctrico",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "como inflar globos burbuja",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 7.5
+    },
+    {
+      "query": "como inflar globos burbuja sin inflador",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "query": "como inflar globos burbujas",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 6.6
+    },
+    {
+      "query": "como inflar globos con confeti",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "como inflar globos con helio",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 26.5
+    },
+    {
+      "query": "como inflar globos con helio en casa",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 8.857142857142858
+    },
+    {
+      "query": "como inflar globos con inflador manual",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "query": "como inflar globos con la boca",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "query": "como inflar globos de helio",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 37
+    },
+    {
+      "query": "como inflar globos de helio con la boca",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 6.5
+    },
+    {
+      "query": "como inflar globos de helio en casa",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 9.555555555555555
+    },
+    {
+      "query": "como inflar globos de látex con pajita",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "query": "como inflar globos de numeros",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "query": "como inflar globos de numeros con la boca",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 7.428571428571429
+    },
+    {
+      "query": "como inflar globos largos",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 57,
+      "ctr": 0,
+      "position": 9.035087719298245
+    },
+    {
+      "query": "como inflar globos largos con inflador",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 31,
+      "ctr": 0,
+      "position": 7.806451612903226
+    },
+    {
+      "query": "como inflar globos largos con inflador eléctrico",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 34,
+      "ctr": 0,
+      "position": 6.882352941176471
+    },
+    {
+      "query": "como inflar globos largos con maquina",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "query": "como inflar globos largos fácilmente con la boca",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "query": "como inflar globos metalizados con la boca",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "query": "como inflar globos metalizados con pajita",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "query": "como inflar globos pencil",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "como inflar globos pencil con inflador",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 8.6
+    },
+    {
+      "query": "como inflar globos transparentes",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 7.25
+    },
+    {
+      "query": "como inflar globos transparentes con confeti",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "query": "como inflar los globos burbuja",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 7.5
+    },
+    {
+      "query": "como inflar los globos de numeros",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "como inflar los globos largos",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 8.083333333333332
+    },
+    {
+      "query": "como inflar los globos transparentes",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 8.4
+    },
+    {
+      "query": "como inflar un globo burbuja",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 35,
+      "ctr": 0,
+      "position": 7.142857142857143
+    },
+    {
+      "query": "como inflar un globo burbuja con confeti",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 8.2
+    },
+    {
+      "query": "como inflar un globo burbuja pequeño",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "query": "como inflar un globo burbuja sin inflador",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 7.3076923076923075
+    },
+    {
+      "query": "como inflar un globo burbuja sin que se deforme",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "como inflar un globo con la boca",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 5.5
+    },
+    {
+      "query": "como inflar un globo de confeti",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8.5
+    },
+    {
+      "query": "como inflar un globo de helio",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "como inflar un globo de numero",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "query": "como inflar un globo de numero con la boca",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "como inflar un globo dentro de un globo burbuja",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "como inflar un globo largo",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 46,
+      "ctr": 0,
+      "position": 8.41304347826087
+    },
+    {
+      "query": "como inflar un globo largo con maquina",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "query": "como inflar un globo largo sin inflador",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 9.666666666666666
+    },
+    {
+      "query": "como inflar un globo salchicha",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 54.5
+    },
+    {
+      "query": "como inflar un globo transparente",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 6.833333333333333
+    },
+    {
+      "query": "como inflar una bomba larga sin inflador",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 8.5
+    },
+    {
+      "query": "como meter globos dentro de un globo burbuja",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "como meter globos en un globo burbuja",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "como pegar globos en el techo sin dañar la pared",
+      "page": "https://cursodeglobosonline.com/blog/como-decorar-con-globos-en-la-pared/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "como pegar globos en la pared sin dañar la pintura",
+      "page": "https://cursodeglobosonline.com/blog/como-decorar-con-globos-en-la-pared/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "como personalizar globos en casa",
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "query": "como puedo inflar un globo largo",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 7.8
+    },
+    {
+      "query": "como se infla el globo burbuja",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 6.75
+    },
+    {
+      "query": "como se infla globo burbuja",
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 8
+    }
+  ],
+  "risingKeywords": [
+    {
+      "query": "globoflexia que es",
+      "current": {
+        "query": "globoflexia que es",
+        "clicks": 1,
+        "impressions": 153,
+        "ctr": 0.006535947712418301,
+        "position": 8.398692810457517
+      },
+      "previous": null,
+      "clicksChange": 1,
+      "impressionsChange": 153,
+      "positionChange": 0
+    },
+    {
+      "query": "que es globoflexia",
+      "current": {
+        "query": "que es globoflexia",
+        "clicks": 1,
+        "impressions": 91,
+        "ctr": 0.01098901098901099,
+        "position": 8.23076923076923
+      },
+      "previous": null,
+      "clicksChange": 1,
+      "impressionsChange": 91,
+      "positionChange": 0
+    },
+    {
+      "query": "como hacer flores con globos redondos",
+      "current": {
+        "query": "como hacer flores con globos redondos",
+        "clicks": 0,
+        "impressions": 23,
+        "ctr": 0,
+        "position": 6.3478260869565215
+      },
+      "previous": null,
+      "clicksChange": 0,
+      "impressionsChange": 23,
+      "positionChange": 0
+    },
+    {
+      "query": "curso de globoflexia",
+      "current": {
+        "query": "curso de globoflexia",
+        "clicks": 3,
+        "impressions": 81,
+        "ctr": 0.037037037037037035,
+        "position": 17.296296296296298
+      },
+      "previous": {
+        "query": "curso de globoflexia",
+        "clicks": 5,
+        "impressions": 64,
+        "ctr": 0.078125,
+        "position": 33.359375
+      },
+      "clicksChange": -2,
+      "impressionsChange": 17,
+      "positionChange": 16.063078703703702
+    },
+    {
+      "query": "cursos de decoración para fiestas y eventos",
+      "current": {
+        "query": "cursos de decoración para fiestas y eventos",
+        "clicks": 4,
+        "impressions": 41,
+        "ctr": 0.0975609756097561,
+        "position": 3.658536585365854
+      },
+      "previous": {
+        "query": "cursos de decoración para fiestas y eventos",
+        "clicks": 7,
+        "impressions": 25,
+        "ctr": 0.28,
+        "position": 6.16
+      },
+      "clicksChange": -3,
+      "impressionsChange": 16,
+      "positionChange": 2.5014634146341463
+    },
+    {
+      "query": "cursos de globos",
+      "current": {
+        "query": "cursos de globos",
+        "clicks": 1,
+        "impressions": 36,
+        "ctr": 0.027777777777777776,
+        "position": 9.75
+      },
+      "previous": {
+        "query": "cursos de globos",
+        "clicks": 0,
+        "impressions": 20,
+        "ctr": 0,
+        "position": 18.7
+      },
+      "clicksChange": 1,
+      "impressionsChange": 16,
+      "positionChange": 8.95
+    },
+    {
+      "query": "arreglos para bodas envigado",
+      "current": {
+        "query": "arreglos para bodas envigado",
+        "clicks": 0,
+        "impressions": 14,
+        "ctr": 0,
+        "position": 39.5
+      },
+      "previous": null,
+      "clicksChange": 0,
+      "impressionsChange": 14,
+      "positionChange": 0
+    },
+    {
+      "query": "adornos para la virgen de guadalupe con globos",
+      "current": {
+        "query": "adornos para la virgen de guadalupe con globos",
+        "clicks": 0,
+        "impressions": 11,
+        "ctr": 0,
+        "position": 7.545454545454546
+      },
+      "previous": null,
+      "clicksChange": 0,
+      "impressionsChange": 11,
+      "positionChange": 0
+    },
+    {
+      "query": "arreglos de globos para graduación sencillos",
+      "current": {
+        "query": "arreglos de globos para graduación sencillos",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr": 0,
+        "position": 9.5
+      },
+      "previous": null,
+      "clicksChange": 0,
+      "impressionsChange": 10,
+      "positionChange": 0
+    },
+    {
+      "query": "clases de globos",
+      "current": {
+        "query": "clases de globos",
+        "clicks": 0,
+        "impressions": 19,
+        "ctr": 0,
+        "position": 7.421052631578948
+      },
+      "previous": {
+        "query": "clases de globos",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr": 0,
+        "position": 6.2
+      },
+      "clicksChange": 0,
+      "impressionsChange": 9,
+      "positionChange": -1.2210526315789476
+    },
+    {
+      "query": "curso decoracion con globos",
+      "current": {
+        "query": "curso decoracion con globos",
+        "clicks": 2,
+        "impressions": 17,
+        "ctr": 0.11764705882352941,
+        "position": 16.235294117647058
+      },
+      "previous": {
+        "query": "curso decoracion con globos",
+        "clicks": 0,
+        "impressions": 9,
+        "ctr": 0,
+        "position": 42.44444444444444
+      },
+      "clicksChange": 2,
+      "impressionsChange": 8,
+      "positionChange": 26.209150326797385
+    },
+    {
+      "query": "como inflar un globo largo con la boca",
+      "current": {
+        "query": "como inflar un globo largo con la boca",
+        "clicks": 1,
+        "impressions": 8,
+        "ctr": 0.125,
+        "position": 8.125
+      },
+      "previous": null,
+      "clicksChange": 1,
+      "impressionsChange": 8,
+      "positionChange": 0
+    },
+    {
+      "query": "curso globos",
+      "current": {
+        "query": "curso globos",
+        "clicks": 1,
+        "impressions": 13,
+        "ctr": 0.07692307692307693,
+        "position": 7.538461538461538
+      },
+      "previous": {
+        "query": "curso globos",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 7.2
+      },
+      "clicksChange": 1,
+      "impressionsChange": 8,
+      "positionChange": -0.33846153846153815
+    },
+    {
+      "query": "curso de decoración de eventos sena",
+      "current": {
+        "query": "curso de decoración de eventos sena",
+        "clicks": 1,
+        "impressions": 9,
+        "ctr": 0.1111111111111111,
+        "position": 7.666666666666667
+      },
+      "previous": {
+        "query": "curso de decoración de eventos sena",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 9
+      },
+      "clicksChange": 1,
+      "impressionsChange": 7,
+      "positionChange": 1.333333333333333
+    },
+    {
+      "query": "curso globos para fiestas y eventos",
+      "current": {
+        "query": "curso globos para fiestas y eventos",
+        "clicks": 1,
+        "impressions": 8,
+        "ctr": 0.125,
+        "position": 3.5
+      },
+      "previous": {
+        "query": "curso globos para fiestas y eventos",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 1
+      },
+      "clicksChange": 1,
+      "impressionsChange": 7,
+      "positionChange": -2.5
+    },
+    {
+      "query": "curso de globos y decoración",
+      "current": {
+        "query": "curso de globos y decoración",
+        "clicks": 3,
+        "impressions": 13,
+        "ctr": 0.23076923076923078,
+        "position": 3.3846153846153846
+      },
+      "previous": {
+        "query": "curso de globos y decoración",
+        "clicks": 1,
+        "impressions": 7,
+        "ctr": 0.14285714285714285,
+        "position": 5.571428571428571
+      },
+      "clicksChange": 2,
+      "impressionsChange": 6,
+      "positionChange": 2.1868131868131866
+    },
+    {
+      "query": "clases de decoracion de fiestas",
+      "current": {
+        "query": "clases de decoracion de fiestas",
+        "clicks": 0,
+        "impressions": 6,
+        "ctr": 0,
+        "position": 37
+      },
+      "previous": null,
+      "clicksChange": 0,
+      "impressionsChange": 6,
+      "positionChange": 0
+    },
+    {
+      "query": "combinación de globos para hombres",
+      "current": {
+        "query": "combinación de globos para hombres",
+        "clicks": 0,
+        "impressions": 6,
+        "ctr": 0,
+        "position": 7.166666666666667
+      },
+      "previous": null,
+      "clicksChange": 0,
+      "impressionsChange": 6,
+      "positionChange": 0
+    },
+    {
+      "query": "combinación de globos para mujer",
+      "current": {
+        "query": "combinación de globos para mujer",
+        "clicks": 0,
+        "impressions": 6,
+        "ctr": 0,
+        "position": 6
+      },
+      "previous": null,
+      "clicksChange": 0,
+      "impressionsChange": 6,
+      "positionChange": 0
+    },
+    {
+      "query": "medidas de los globos",
+      "current": {
+        "query": "medidas de los globos",
+        "clicks": 1,
+        "impressions": 5,
+        "ctr": 0.2,
+        "position": 7
+      },
+      "previous": null,
+      "clicksChange": 1,
+      "impressionsChange": 5,
+      "positionChange": 0
+    },
+    {
+      "query": "como amarrar un globo burbuja para que no se desinfle",
+      "current": {
+        "query": "como amarrar un globo burbuja para que no se desinfle",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 7.2
+      },
+      "previous": null,
+      "clicksChange": 0,
+      "impressionsChange": 5,
+      "positionChange": 0
+    },
+    {
+      "query": "como se inflan globos con helio",
+      "current": {
+        "query": "como se inflan globos con helio",
+        "clicks": 1,
+        "impressions": 4,
+        "ctr": 0.25,
+        "position": 8.5
+      },
+      "previous": null,
+      "clicksChange": 1,
+      "impressionsChange": 4,
+      "positionChange": 0
+    },
+    {
+      "query": "curso de decoración con globos",
+      "current": {
+        "query": "curso de decoración con globos",
+        "clicks": 1,
+        "impressions": 22,
+        "ctr": 0.045454545454545456,
+        "position": 4.863636363636363
+      },
+      "previous": {
+        "query": "curso de decoración con globos",
+        "clicks": 2,
+        "impressions": 18,
+        "ctr": 0.1111111111111111,
+        "position": 8.833333333333332
+      },
+      "clicksChange": -1,
+      "impressionsChange": 4,
+      "positionChange": 3.969696969696969
+    },
+    {
+      "query": "arco de globos para la virgen de guadalupe",
+      "current": {
+        "query": "arco de globos para la virgen de guadalupe",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 5.25
+      },
+      "previous": null,
+      "clicksChange": 0,
+      "impressionsChange": 4,
+      "positionChange": 0
+    },
+    {
+      "query": "como decorar con globos en la pared",
+      "current": {
+        "query": "como decorar con globos en la pared",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 9.5
+      },
+      "previous": null,
+      "clicksChange": 0,
+      "impressionsChange": 4,
+      "positionChange": 0
+    }
+  ],
+  "fallingKeywords": [
+    {
+      "query": "cursos de globoflexia",
+      "current": null,
+      "previous": {
+        "query": "cursos de globoflexia",
+        "clicks": 0,
+        "impressions": 26,
+        "ctr": 0,
+        "position": 19.923076923076923
+      },
+      "clicksChange": 0,
+      "impressionsChange": -26,
+      "positionChange": 0
+    },
+    {
+      "query": "curso de decoración de fiestas",
+      "current": null,
+      "previous": {
+        "query": "curso de decoración de fiestas",
+        "clicks": 0,
+        "impressions": 24,
+        "ctr": 0,
+        "position": 23.25
+      },
+      "clicksChange": 0,
+      "impressionsChange": -24,
+      "positionChange": 0
+    },
+    {
+      "query": "cursos de globoflexia en cdmx",
+      "current": null,
+      "previous": {
+        "query": "cursos de globoflexia en cdmx",
+        "clicks": 0,
+        "impressions": 22,
+        "ctr": 0,
+        "position": 19.5
+      },
+      "clicksChange": 0,
+      "impressionsChange": -22,
+      "positionChange": 0
+    },
+    {
+      "query": "curso de decoracion de eventos",
+      "current": null,
+      "previous": {
+        "query": "curso de decoracion de eventos",
+        "clicks": 0,
+        "impressions": 17,
+        "ctr": 0,
+        "position": 32.64705882352941
+      },
+      "clicksChange": 0,
+      "impressionsChange": -17,
+      "positionChange": 0
+    },
+    {
+      "query": "cursos de globoflexia en puebla",
+      "current": null,
+      "previous": {
+        "query": "cursos de globoflexia en puebla",
+        "clicks": 1,
+        "impressions": 13,
+        "ctr": 0.07692307692307693,
+        "position": 9.307692307692308
+      },
+      "clicksChange": -1,
+      "impressionsChange": -13,
+      "positionChange": 0
+    },
+    {
+      "query": "curso de decoracion con globos",
+      "current": {
+        "query": "curso de decoracion con globos",
+        "clicks": 3,
+        "impressions": 94,
+        "ctr": 0.031914893617021274,
+        "position": 24.71276595744681
+      },
+      "previous": {
+        "query": "curso de decoracion con globos",
+        "clicks": 1,
+        "impressions": 106,
+        "ctr": 0.009433962264150943,
+        "position": 44.18867924528302
+      },
+      "clicksChange": 2,
+      "impressionsChange": -12,
+      "positionChange": 19.47591328783621
+    },
+    {
+      "query": "curso decoracion de globos",
+      "current": {
+        "query": "curso decoracion de globos",
+        "clicks": 1,
+        "impressions": 61,
+        "ctr": 0.01639344262295082,
+        "position": 35.63934426229508
+      },
+      "previous": {
+        "query": "curso decoracion de globos",
+        "clicks": 1,
+        "impressions": 73,
+        "ctr": 0.0136986301369863,
+        "position": 40.32876712328767
+      },
+      "clicksChange": 0,
+      "impressionsChange": -12,
+      "positionChange": 4.689422860992586
+    },
+    {
+      "query": "cursos de decoracion de fiestas",
+      "current": null,
+      "previous": {
+        "query": "cursos de decoracion de fiestas",
+        "clicks": 0,
+        "impressions": 12,
+        "ctr": 0,
+        "position": 31.666666666666668
+      },
+      "clicksChange": 0,
+      "impressionsChange": -12,
+      "positionChange": 0
+    },
+    {
+      "query": "cursos de decoracion con globos",
+      "current": {
+        "query": "cursos de decoracion con globos",
+        "clicks": 1,
+        "impressions": 74,
+        "ctr": 0.013513513513513514,
+        "position": 28.06756756756757
+      },
+      "previous": {
+        "query": "cursos de decoracion con globos",
+        "clicks": 1,
+        "impressions": 85,
+        "ctr": 0.011764705882352941,
+        "position": 34.247058823529414
+      },
+      "clicksChange": 0,
+      "impressionsChange": -11,
+      "positionChange": 6.179491255961846
+    },
+    {
+      "query": "curso de globos cerca de mi",
+      "current": null,
+      "previous": {
+        "query": "curso de globos cerca de mi",
+        "clicks": 2,
+        "impressions": 11,
+        "ctr": 0.18181818181818182,
+        "position": 23.09090909090909
+      },
+      "clicksChange": -2,
+      "impressionsChange": -11,
+      "positionChange": 0
+    },
+    {
+      "query": "curso de globos en el sena",
+      "current": null,
+      "previous": {
+        "query": "curso de globos en el sena",
+        "clicks": 1,
+        "impressions": 11,
+        "ctr": 0.09090909090909091,
+        "position": 15.272727272727273
+      },
+      "clicksChange": -1,
+      "impressionsChange": -11,
+      "positionChange": 0
+    },
+    {
+      "query": "curso de decoración de fiestas presencial barranquilla",
+      "current": {
+        "query": "curso de decoración de fiestas presencial barranquilla",
+        "clicks": 1,
+        "impressions": 6,
+        "ctr": 0.16666666666666666,
+        "position": 3.8333333333333335
+      },
+      "previous": {
+        "query": "curso de decoración de fiestas presencial barranquilla",
+        "clicks": 0,
+        "impressions": 15,
+        "ctr": 0,
+        "position": 6
+      },
+      "clicksChange": 1,
+      "impressionsChange": -9,
+      "positionChange": 2.1666666666666665
+    },
+    {
+      "query": "curso de decoracion de fiestas",
+      "current": null,
+      "previous": {
+        "query": "curso de decoracion de fiestas",
+        "clicks": 2,
+        "impressions": 9,
+        "ctr": 0.2222222222222222,
+        "position": 3.7777777777777777
+      },
+      "clicksChange": -2,
+      "impressionsChange": -9,
+      "positionChange": 0
+    },
+    {
+      "query": "curso de globos para fiestas",
+      "current": null,
+      "previous": {
+        "query": "curso de globos para fiestas",
+        "clicks": 0,
+        "impressions": 9,
+        "ctr": 0,
+        "position": 48.22222222222222
+      },
+      "clicksChange": 0,
+      "impressionsChange": -9,
+      "positionChange": 0
+    },
+    {
+      "query": "curso de globos",
+      "current": {
+        "query": "curso de globos",
+        "clicks": 9,
+        "impressions": 160,
+        "ctr": 0.05625,
+        "position": 23.18125
+      },
+      "previous": {
+        "query": "curso de globos",
+        "clicks": 5,
+        "impressions": 168,
+        "ctr": 0.02976190476190476,
+        "position": 27.613095238095237
+      },
+      "clicksChange": 4,
+      "impressionsChange": -8,
+      "positionChange": 4.431845238095239
+    },
+    {
+      "query": "curso de globos burbuja",
+      "current": {
+        "query": "curso de globos burbuja",
+        "clicks": 1,
+        "impressions": 19,
+        "ctr": 0.05263157894736842,
+        "position": 12.947368421052632
+      },
+      "previous": {
+        "query": "curso de globos burbuja",
+        "clicks": 1,
+        "impressions": 27,
+        "ctr": 0.037037037037037035,
+        "position": 33.407407407407405
+      },
+      "clicksChange": 0,
+      "impressionsChange": -8,
+      "positionChange": 20.460038986354775
+    },
+    {
+      "query": "clases de decoracion con globos",
+      "current": {
+        "query": "clases de decoracion con globos",
+        "clicks": 0,
+        "impressions": 13,
+        "ctr": 0,
+        "position": 39.15384615384615
+      },
+      "previous": {
+        "query": "clases de decoracion con globos",
+        "clicks": 0,
+        "impressions": 21,
+        "ctr": 0,
+        "position": 40.476190476190474
+      },
+      "clicksChange": 0,
+      "impressionsChange": -8,
+      "positionChange": 1.3223443223443212
+    },
+    {
+      "query": "cursos de globos cerca de mi",
+      "current": null,
+      "previous": {
+        "query": "cursos de globos cerca de mi",
+        "clicks": 1,
+        "impressions": 8,
+        "ctr": 0.125,
+        "position": 8.375
+      },
+      "clicksChange": -1,
+      "impressionsChange": -8,
+      "positionChange": 0
+    },
+    {
+      "query": "curso de globos gratis",
+      "current": null,
+      "previous": {
+        "query": "curso de globos gratis",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr": 0,
+        "position": 30.125
+      },
+      "clicksChange": 0,
+      "impressionsChange": -8,
+      "positionChange": 0
+    },
+    {
+      "query": "cursos de decoración para fiestas y eventos en barranquilla",
+      "current": {
+        "query": "cursos de decoración para fiestas y eventos en barranquilla",
+        "clicks": 4,
+        "impressions": 10,
+        "ctr": 0.4,
+        "position": 2.4
+      },
+      "previous": {
+        "query": "cursos de decoración para fiestas y eventos en barranquilla",
+        "clicks": 3,
+        "impressions": 17,
+        "ctr": 0.17647058823529413,
+        "position": 4.647058823529411
+      },
+      "clicksChange": 1,
+      "impressionsChange": -7,
+      "positionChange": 2.2470588235294113
+    },
+    {
+      "query": "curso globoflexia",
+      "current": null,
+      "previous": {
+        "query": "curso globoflexia",
+        "clicks": 1,
+        "impressions": 7,
+        "ctr": 0.14285714285714285,
+        "position": 9.857142857142858
+      },
+      "clicksChange": -1,
+      "impressionsChange": -7,
+      "positionChange": 0
+    },
+    {
+      "query": "cursos de globos cdmx",
+      "current": null,
+      "previous": {
+        "query": "cursos de globos cdmx",
+        "clicks": 0,
+        "impressions": 7,
+        "ctr": 0,
+        "position": 25.428571428571427
+      },
+      "clicksChange": 0,
+      "impressionsChange": -7,
+      "positionChange": 0
+    },
+    {
+      "query": "cursos de globos en el sena",
+      "current": {
+        "query": "cursos de globos en el sena",
+        "clicks": 1,
+        "impressions": 4,
+        "ctr": 0.25,
+        "position": 9.25
+      },
+      "previous": {
+        "query": "cursos de globos en el sena",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr": 0,
+        "position": 9.9
+      },
+      "clicksChange": 1,
+      "impressionsChange": -6,
+      "positionChange": 0.6500000000000004
+    },
+    {
+      "query": "curso de globologia online",
+      "current": null,
+      "previous": {
+        "query": "curso de globologia online",
+        "clicks": 0,
+        "impressions": 6,
+        "ctr": 0,
+        "position": 6.666666666666667
+      },
+      "clicksChange": 0,
+      "impressionsChange": -6,
+      "positionChange": 0
+    },
+    {
+      "query": "curso de globos decoracion",
+      "current": null,
+      "previous": {
+        "query": "curso de globos decoracion",
+        "clicks": 0,
+        "impressions": 6,
+        "ctr": 0,
+        "position": 10.333333333333334
+      },
+      "clicksChange": 0,
+      "impressionsChange": -6,
+      "positionChange": 0
+    }
+  ],
+  "strikingDistanceKeywords": [
+    {
+      "query": "globoflexia que es",
+      "clicks": 1,
+      "impressions": 153,
+      "ctr": 0.006535947712418301,
+      "position": 8.398692810457517
+    },
+    {
+      "query": "que es globoflexia",
+      "clicks": 1,
+      "impressions": 91,
+      "ctr": 0.01098901098901099,
+      "position": 8.23076923076923
+    },
+    {
+      "query": "curso de globoflexia",
+      "clicks": 3,
+      "impressions": 81,
+      "ctr": 0.037037037037037035,
+      "position": 17.296296296296298
+    },
+    {
+      "query": "cursos de globos",
+      "clicks": 1,
+      "impressions": 36,
+      "ctr": 0.027777777777777776,
+      "position": 9.75
+    },
+    {
+      "query": "como hacer flores con globos redondos",
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 6.3478260869565215
+    },
+    {
+      "query": "curso de globos burbuja",
+      "clicks": 1,
+      "impressions": 19,
+      "ctr": 0.05263157894736842,
+      "position": 12.947368421052632
+    },
+    {
+      "query": "clases de globos",
+      "clicks": 0,
+      "impressions": 19,
+      "ctr": 0,
+      "position": 7.421052631578948
+    },
+    {
+      "query": "cursos decoracion con globos",
+      "clicks": 2,
+      "impressions": 18,
+      "ctr": 0.1111111111111111,
+      "position": 7.111111111111111
+    },
+    {
+      "query": "curso decoracion con globos",
+      "clicks": 2,
+      "impressions": 17,
+      "ctr": 0.11764705882352941,
+      "position": 16.235294117647058
+    },
+    {
+      "query": "curso globos",
+      "clicks": 1,
+      "impressions": 13,
+      "ctr": 0.07692307692307693,
+      "position": 7.538461538461538
+    },
+    {
+      "query": "adornos para la virgen de guadalupe con globos",
+      "clicks": 0,
+      "impressions": 11,
+      "ctr": 0,
+      "position": 7.545454545454546
+    },
+    {
+      "query": "arreglos de globos para graduación sencillos",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 9.5
+    },
+    {
+      "query": "curso de decoración de eventos sena",
+      "clicks": 1,
+      "impressions": 9,
+      "ctr": 0.1111111111111111,
+      "position": 7.666666666666667
+    },
+    {
+      "query": "como inflar un globo largo con la boca",
+      "clicks": 1,
+      "impressions": 8,
+      "ctr": 0.125,
+      "position": 8.125
+    },
+    {
+      "query": "cursos de globos y decoración",
+      "clicks": 1,
+      "impressions": 7,
+      "ctr": 0.14285714285714285,
+      "position": 5.714285714285714
+    },
+    {
+      "query": "combinación de globos para hombres",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 7.166666666666667
+    },
+    {
+      "query": "combinación de globos para mujer",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "query": "curso de decoración de globos",
+      "clicks": 1,
+      "impressions": 5,
+      "ctr": 0.2,
+      "position": 12
+    },
+    {
+      "query": "curso de globos online",
+      "clicks": 1,
+      "impressions": 5,
+      "ctr": 0.2,
+      "position": 11.4
+    },
+    {
+      "query": "medidas de los globos",
+      "clicks": 1,
+      "impressions": 5,
+      "ctr": 0.2,
+      "position": 7
+    },
+    {
+      "query": "como amarrar un globo burbuja para que no se desinfle",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 7.2
+    },
+    {
+      "query": "como se inflan globos con helio",
+      "clicks": 1,
+      "impressions": 4,
+      "ctr": 0.25,
+      "position": 8.5
+    },
+    {
+      "query": "cursos de globos en el sena",
+      "clicks": 1,
+      "impressions": 4,
+      "ctr": 0.25,
+      "position": 9.25
+    },
+    {
+      "query": "cursos globos",
+      "clicks": 1,
+      "impressions": 4,
+      "ctr": 0.25,
+      "position": 10.25
+    },
+    {
+      "query": "arco de globos para la virgen de guadalupe",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 5.25
+    }
+  ],
+  "lowCtrPages": [
+    {
+      "page": "https://cursodeglobosonline.com/blog/tipos-y-tamanos-de-globos/",
+      "clicks": 6,
+      "impressions": 1717,
+      "ctr": 0.0034944670937682005,
+      "position": 7.232382061735585,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/arco-de-globos/",
+      "clicks": 4,
+      "impressions": 1105,
+      "ctr": 0.0036199095022624436,
+      "position": 7.944796380090498,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/cuanto-dura-un-globo-con-helio/",
+      "clicks": 0,
+      "impressions": 915,
+      "ctr": 0,
+      "position": 8.452459016393442,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+      "clicks": 3,
+      "impressions": 779,
+      "ctr": 0.0038510911424903724,
+      "position": 7.7522464698331195,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-un-globo-burbuja/",
+      "clicks": 1,
+      "impressions": 720,
+      "ctr": 0.001388888888888889,
+      "position": 7.594444444444444,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/globoflexia/",
+      "clicks": 2,
+      "impressions": 645,
+      "ctr": 0.0031007751937984496,
+      "position": 7.831007751937984,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-rosa-y-dorado/",
+      "clicks": 4,
+      "impressions": 475,
+      "ctr": 0.008421052631578947,
+      "position": 7.147368421052631,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/cuanto-cobrar-por-decoracion-con-globos/",
+      "clicks": 3,
+      "impressions": 338,
+      "ctr": 0.008875739644970414,
+      "position": 5.724852071005917,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-hombre/",
+      "clicks": 1,
+      "impressions": 331,
+      "ctr": 0.0030211480362537764,
+      "position": 7.389728096676738,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+      "clicks": 2,
+      "impressions": 314,
+      "ctr": 0.006369426751592357,
+      "position": 9.45859872611465,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-cortinas-y-globos/",
+      "clicks": 0,
+      "impressions": 208,
+      "ctr": 0,
+      "position": 7.259615384615385,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/columnas-de-globos/",
+      "clicks": 1,
+      "impressions": 199,
+      "ctr": 0.005025125628140704,
+      "position": 7.130653266331659,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-virgen-de-guadalupe/",
+      "clicks": 0,
+      "impressions": 180,
+      "ctr": 0,
+      "position": 7.044444444444444,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/guirnalda-de-globos/",
+      "clicks": 0,
+      "impressions": 131,
+      "ctr": 0,
+      "position": 7.572519083969466,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/como-decorar-con-globos-en-la-pared/",
+      "clicks": 0,
+      "impressions": 130,
+      "ctr": 0,
+      "position": 7.730769230769231,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-mujer/",
+      "clicks": 1,
+      "impressions": 119,
+      "ctr": 0.008403361344537815,
+      "position": 7.445378151260504,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos/",
+      "clicks": 1,
+      "impressions": 114,
+      "ctr": 0.008771929824561403,
+      "position": 11.06140350877193,
+      "expectedCtr": 0.015
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-primera-comunion/",
+      "clicks": 1,
+      "impressions": 99,
+      "ctr": 0.010101010101010102,
+      "position": 8.202020202020202,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-boda/",
+      "clicks": 0,
+      "impressions": 95,
+      "ctr": 0,
+      "position": 7.431578947368421,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/flores-con-globos/",
+      "clicks": 0,
+      "impressions": 94,
+      "ctr": 0,
+      "position": 7.180851063829787,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/bouquet-de-globos/",
+      "clicks": 0,
+      "impressions": 91,
+      "ctr": 0,
+      "position": 6.747252747252747,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-graduacion/",
+      "clicks": 0,
+      "impressions": 51,
+      "ctr": 0,
+      "position": 8.03921568627451,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/co/bucaramanga/curso-de-globoflexia/",
+      "clicks": 0,
+      "impressions": 50,
+      "ctr": 0,
+      "position": 19.14,
+      "expectedCtr": 0.015
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/centros-de-mesa-con-globos/",
+      "clicks": 0,
+      "impressions": 49,
+      "ctr": 0,
+      "position": 8.448979591836736,
+      "expectedCtr": 0.03
+    },
+    {
+      "page": "https://cursodeglobosonline.com/blog/globos-burbuja-decorados/",
+      "clicks": 0,
+      "impressions": 47,
+      "ctr": 0,
+      "position": 9.97872340425532,
+      "expectedCtr": 0.03
+    }
+  ],
+  "cannibalizationCandidates": [
+    {
+      "query": "curso de globos",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/co/",
+          "clicks": 4,
+          "impressions": 35,
+          "position": 20.457142857142856
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 1,
+          "impressions": 29,
+          "position": 13.862068965517242
+        },
+        {
+          "page": "https://cursodeglobosonline.com/mx/curso-de-globoflexia/",
+          "clicks": 0,
+          "impressions": 28,
+          "position": 17.857142857142858
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 1,
+          "impressions": 17,
+          "position": 27.235294117647058
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bogota/",
+          "clicks": 0,
+          "impressions": 16,
+          "position": 84.6875
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "clicks": 1,
+          "impressions": 14,
+          "position": 60
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 1,
+          "impressions": 14,
+          "position": 67.07142857142857
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cl/santiago/",
+          "clicks": 1,
+          "impressions": 10,
+          "position": 22.8
+        },
+        {
+          "page": "https://cursodeglobosonline.com/mx/",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 48.77777777777778
+        },
+        {
+          "page": "https://cursodeglobosonline.com/us/",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 38.77777777777778
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cursos/",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 96.375
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cl/",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 44.285714285714285
+        },
+        {
+          "page": "https://cursodeglobosonline.com/pe/",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 28.285714285714285
+        },
+        {
+          "page": "https://cursodeglobosonline.com/peru/",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 41.57142857142857
+        },
+        {
+          "page": "https://cursodeglobosonline.com/us/cursos/",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 72.14285714285714
+        },
+        {
+          "page": "https://cursodeglobosonline.com/us/cursos/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 76.85714285714286
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ar/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 39.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cali/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 48.666666666666664
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ec/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 32.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/madrid/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 44.166666666666664
+        },
+        {
+          "page": "https://cursodeglobosonline.com/pe/curso-de-globoflexia/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 75.66666666666667
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ar/rosario/",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 45.6
+        },
+        {
+          "page": "https://cursodeglobosonline.com/medellin/",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 62
+        },
+        {
+          "page": "https://cursodeglobosonline.com/us/losangeles/",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 45.8
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 68
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/cursos/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 81.25
+        },
+        {
+          "page": "https://cursodeglobosonline.com/pe/curso-de-globos-burbuja/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 79.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/curso-de-globoflexia/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 11.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/curso-de-bouquets-de-globos/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 57.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/peru/curso-globos-burbuja/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 52.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ar/cursos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 33
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cl/curso-de-bouquets-de-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 71
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 100
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cursos/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 99
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/bilbao/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 64
+        },
+        {
+          "page": "https://cursodeglobosonline.com/us/curso-de-flores-con-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 73
+        }
+      ]
+    },
+    {
+      "query": "curso de globoflexia",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/mx/curso-de-globoflexia/",
+          "clicks": 1,
+          "impressions": 23,
+          "position": 19.217391304347824
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bogota/",
+          "clicks": 2,
+          "impressions": 19,
+          "position": 40.26315789473684
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 17,
+          "position": 11.235294117647058
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "clicks": 0,
+          "impressions": 15,
+          "position": 46.8
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/",
+          "clicks": 0,
+          "impressions": 13,
+          "position": 39.84615384615385
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 13,
+          "position": 33.92307692307692
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+          "clicks": 0,
+          "impressions": 11,
+          "position": 68.9090909090909
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/curso-de-globoflexia/",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 58.2
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cl/santiago/",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 41.44444444444444
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 81.55555555555556
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cursos/",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 84.33333333333333
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cursos/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 82.88888888888889
+        },
+        {
+          "page": "https://cursodeglobosonline.com/",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 36.42857142857143
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cl/",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 34.714285714285715
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cali/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 65.16666666666667
+        },
+        {
+          "page": "https://cursodeglobosonline.com/mx/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 56.666666666666664
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/curso-de-globoflexia/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 52.25
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ar/cursos/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 35.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/curso-de-globoflexia/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 52
+        },
+        {
+          "page": "https://cursodeglobosonline.com/medellin/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 65
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ar/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 37
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ar/rosario/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 4
+        }
+      ]
+    },
+    {
+      "query": "curso de decoracion con globos",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 21,
+          "position": 16.095238095238095
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/madrid/",
+          "clicks": 2,
+          "impressions": 18,
+          "position": 36
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cl/santiago/",
+          "clicks": 0,
+          "impressions": 16,
+          "position": 29.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 14,
+          "position": 27.214285714285715
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 0,
+          "impressions": 12,
+          "position": 64.83333333333334
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bogota/",
+          "clicks": 0,
+          "impressions": 11,
+          "position": 69.54545454545455
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "clicks": 0,
+          "impressions": 11,
+          "position": 65.54545454545455
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cl/",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 56.111111111111114
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 50.875
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 72
+        },
+        {
+          "page": "https://cursodeglobosonline.com/us/cursos/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 48.857142857142854
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ar/rosario/",
+          "clicks": 1,
+          "impressions": 6,
+          "position": 19.166666666666668
+        },
+        {
+          "page": "https://cursodeglobosonline.com/",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 65.2
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cali/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 68.25
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cursos/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 98
+        },
+        {
+          "page": "https://cursodeglobosonline.com/pe/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 56.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/peru/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 26.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/curso-de-globoflexia/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 100
+        },
+        {
+          "page": "https://cursodeglobosonline.com/medellin/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 35
+        },
+        {
+          "page": "https://cursodeglobosonline.com/pe/curso-de-globos-burbuja/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 70.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/peru/curso-globos-burbuja/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 71
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ar/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 39
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ec/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 37
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/valencia/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 77
+        }
+      ]
+    },
+    {
+      "query": "curso decoracion de globos",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/mx/curso-de-globoflexia/",
+          "clicks": 0,
+          "impressions": 14,
+          "position": 28.928571428571427
+        },
+        {
+          "page": "https://cursodeglobosonline.com/peru/",
+          "clicks": 1,
+          "impressions": 8,
+          "position": 31.25
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 62.875
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ec/",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 35.42857142857143
+        },
+        {
+          "page": "https://cursodeglobosonline.com/pe/",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 58.142857142857146
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cl/santiago/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 46.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 24.833333333333332
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 69.33333333333333
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/madrid/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 80
+        },
+        {
+          "page": "https://cursodeglobosonline.com/us/cursos/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 54.166666666666664
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cl/",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 49.2
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bogota/",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 95.4
+        },
+        {
+          "page": "https://cursodeglobosonline.com/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 58.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 57
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cursos/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 88.25
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 13.75
+        },
+        {
+          "page": "https://cursodeglobosonline.com/pe/curso-de-globoflexia/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 76.75
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 84.33333333333333
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/valencia/",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 64.33333333333334
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ar/rosario/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 41.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cali/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 81.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/medellin/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 45
+        },
+        {
+          "page": "https://cursodeglobosonline.com/pe/curso-de-globos-burbuja/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 76
+        },
+        {
+          "page": "https://cursodeglobosonline.com/peru/curso-globos-burbuja/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 72
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ar/cursos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 40
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/bilbao/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 81
+        }
+      ]
+    },
+    {
+      "query": "curso de globos burbuja",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/mx/curso-de-globos-burbuja/",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 16.3
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bogota/",
+          "clicks": 1,
+          "impressions": 7,
+          "position": 43.714285714285715
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 17
+        },
+        {
+          "page": "https://cursodeglobosonline.com/mx/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 52.833333333333336
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 82
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 41
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/curso-de-globos-burbuja/",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 15
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cursos/",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 82.8
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 64.4
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 84
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cursos/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 85
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/curso-de-globoflexia/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 88
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cali/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 96
+        },
+        {
+          "page": "https://cursodeglobosonline.com/peru/curso-globos-burbuja/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 9
+        }
+      ]
+    },
+    {
+      "query": "curso de decoracion de eventos",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 28,
+          "position": 26.678571428571427
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 51.666666666666664
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 58.714285714285715
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 49.833333333333336
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cali/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 90.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/medellin/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 89.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bogota/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 99
+        }
+      ]
+    },
+    {
+      "query": "curso de decoración con globos",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 1,
+          "impressions": 4,
+          "position": 3.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 15
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bogota/",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 39.333333333333336
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/madrid/",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 4
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 18
+        },
+        {
+          "page": "https://cursodeglobosonline.com/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 77
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cali/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cursos/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 94
+        },
+        {
+          "page": "https://cursodeglobosonline.com/medellin/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 11
+        },
+        {
+          "page": "https://cursodeglobosonline.com/peru/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 11
+        }
+      ]
+    },
+    {
+      "query": "curso de globos cerca de mi",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/us/",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 35.111111111111114
+        },
+        {
+          "page": "https://cursodeglobosonline.com/us/losangeles/",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 20.333333333333332
+        },
+        {
+          "page": "https://cursodeglobosonline.com/us/cursos/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 34.625
+        }
+      ]
+    },
+    {
+      "query": "curso de decoración de fiestas",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 19,
+          "position": 14.631578947368421
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/madrid/",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 19.666666666666668
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/valencia/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 59
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 1
+        }
+      ]
+    },
+    {
+      "query": "cursos de decoración para fiestas y eventos",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 3,
+          "impressions": 20,
+          "position": 3.1
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 1,
+          "impressions": 3,
+          "position": 2
+        }
+      ]
+    },
+    {
+      "query": "clases de globos",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/co/",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 10.333333333333334
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bogota/",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 9.333333333333334
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 3
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 10.666666666666666
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 3
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 4.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/peru/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 9.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cali/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 7
+        }
+      ]
+    },
+    {
+      "query": "curso decoracion con globos",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/cl/santiago/",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 13.4
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/madrid/",
+          "clicks": 1,
+          "impressions": 4,
+          "position": 31.75
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 1,
+          "impressions": 3,
+          "position": 1
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 6
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cl/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 66
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 57
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/valencia/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/peru/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 21
+        }
+      ]
+    },
+    {
+      "query": "curso de globos en el sena",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 13.11111111111111
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 34.5
+        }
+      ]
+    },
+    {
+      "query": "como se llama los globos largos",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/blog/tipos-y-tamanos-de-globos/",
+          "clicks": 0,
+          "impressions": 14,
+          "position": 7.642857142857143
+        },
+        {
+          "page": "https://cursodeglobosonline.com/blog/globoflexia/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 9
+        }
+      ]
+    },
+    {
+      "query": "curso de decoracion de fiestas",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 11,
+          "position": 1.6363636363636362
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 3
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 1
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/madrid/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 48
+        }
+      ]
+    },
+    {
+      "query": "curso de globos y decoración",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/cl/santiago/",
+          "clicks": 1,
+          "impressions": 4,
+          "position": 5.25
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 1,
+          "impressions": 3,
+          "position": 1
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cali/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 3
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 1
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 1
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bogota/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 10
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/madrid/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 2
+        }
+      ]
+    },
+    {
+      "query": "clases de decoracion con globos",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/us/cursos/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 42.857142857142854
+        },
+        {
+          "page": "https://cursodeglobosonline.com/peru/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 34.833333333333336
+        }
+      ]
+    },
+    {
+      "query": "curso de globos y decoracion",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/es/madrid/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 62.333333333333336
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/valencia/",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 46.666666666666664
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 3
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/bilbao/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 49
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/cursos/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 88
+        }
+      ]
+    },
+    {
+      "query": "curso decoracion globos",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/cl/santiago/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 6.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/madrid/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 15.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 3
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 2
+        },
+        {
+          "page": "https://cursodeglobosonline.com/ec/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 1
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 95
+        },
+        {
+          "page": "https://cursodeglobosonline.com/es/cursos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 79
+        },
+        {
+          "page": "https://cursodeglobosonline.com/medellin/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 2
+        }
+      ]
+    },
+    {
+      "query": "curso de decoración de eventos sena",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/cali/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 7.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 9
+        },
+        {
+          "page": "https://cursodeglobosonline.com/",
+          "clicks": 1,
+          "impressions": 2,
+          "position": 6
+        }
+      ]
+    },
+    {
+      "query": "clases de decoracion de fiestas",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 6
+        },
+        {
+          "page": "https://cursodeglobosonline.com/cali/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 84
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 41
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bogota/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 89
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 59
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 26
+        }
+      ]
+    },
+    {
+      "query": "cuantos globos lleva un arco",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/blog/arco-de-globos/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 10.166666666666666
+        },
+        {
+          "page": "https://cursodeglobosonline.com/blog/columnas-de-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 8
+        }
+      ]
+    },
+    {
+      "query": "curso de decoración",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 1.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 1.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 8
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 12
+        }
+      ]
+    },
+    {
+      "query": "curso de globos para fiestas",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/mx/curso-de-globoflexia/",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 44.6
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 3
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 2
+        }
+      ]
+    },
+    {
+      "query": "curso decoracion de eventos",
+      "pages": [
+        {
+          "page": "https://cursodeglobosonline.com/co/medellin/",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 9.333333333333334
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/cali/",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 1.5
+        },
+        {
+          "page": "https://cursodeglobosonline.com/blog/arco-de-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 3
+        },
+        {
+          "page": "https://cursodeglobosonline.com/co/barranquilla/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 1
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Search Console data is finalized with an approximately three-day delay.",
+    "Rankings and opportunities are derived from the returned top rows, not a stored analytics copy."
+  ]
+}

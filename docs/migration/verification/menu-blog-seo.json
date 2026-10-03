@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-03T06:40:05.947Z",
+  "checks": [
+    "Blog cards show honest empty ratings",
+    "Desktop menu CSS reaches CMS links with padding",
+    "Mobile menu rows retain styles",
+    "Article voting widget present",
+    "Read-only article summary can refresh after voting",
+    "Exactly one BlogPosting with Organization author and profile URL",
+    "No fabricated BlogPosting aggregateRating",
+    "Anonymous development remains private"
+  ],
+  "visualReview": "Browser blocked opening dev with ERR_BLOCKED_BY_CLIENT; HTML/CSS/API verified."
+}
