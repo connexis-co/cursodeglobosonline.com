@@ -1,9 +1,10 @@
 ---
+import { getClusters } from '@/lib/emdash-content';
+const BLOG_CLUSTERS = await getClusters();
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import PostCard from '@/components/blog/PostCard.astro';
 import { getPublishedPosts, postUrl } from '@/lib/blog';
-import { BLOG_CLUSTERS } from '@/lib/blog-clusters';
 import { breadcrumbSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 

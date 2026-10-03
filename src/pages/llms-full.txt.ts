@@ -1,12 +1,13 @@
 import type { APIRoute } from 'astro';
 import { SITE } from '@/lib/site';
-import { CHOOSER, SITE_FACTS, coursePriceLine, courseRatingLine, loadLlmsData, mdxToPlain } from '@/lib/llms';
+import { CHOOSER, siteFacts, coursePriceLine, courseRatingLine, loadLlmsData, mdxToPlain } from '@/lib/llms';
 
 /**
  * llms-full.txt — contexto completo para asistentes de IA: temario de cada curso,
  * FAQs y el texto de todas las guías del blog (sin componentes JSX).
  */
 export const GET: APIRoute = async () => {
+ const facts=await siteFacts();
   const { courses, posts } = await loadLlmsData();
   const ratingLines = await Promise.all(courses.map(courseRatingLine));
   const courseBlocks = courses.map((c, i) => {
@@ -44,7 +45,7 @@ ${p.data.faqs.length ? `\nPreguntas frecuentes:\n${p.data.faqs.map((f) => `- ${f
 > cursos y el texto completo de las guías del blog para que asistentes de IA respondan con datos
 > exactos y enlacen la fuente. Índice resumido: ${SITE.url}/llms.txt
 
-${SITE_FACTS.map((f) => `- ${f}`).join('\n')}
+${facts.map((f) => `- ${f}`).join('\n')}
 
 ## Qué curso elegir
 ${CHOOSER.map((l) => `- ${l}`).join('\n')}

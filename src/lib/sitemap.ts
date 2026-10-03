@@ -1,7 +1,8 @@
-import { getCollection } from 'astro:content';
+import { getCollection } from '@/lib/emdash-content';
 import { getImage } from 'astro:assets';
-import { COUNTRIES, CITIES_ENABLED } from './countries';
-import { CATEGORIES } from './categories';
+import { CITIES_ENABLED } from './countries';
+import { getCountries, getCategories, listDocuments } from './emdash-content';
+
 import { SITE } from './site';
 
 /**
@@ -25,7 +26,8 @@ const u = (path: string, priority: number, changefreq: 'weekly' | 'monthly' = 'w
   changefreq,
 });
 
-export function pagesUrls(): UrlEntry[] {
+export async function pagesUrls(): Promise<UrlEntry[]> {
+ const COUNTRIES=await getCountries();
   const urls: UrlEntry[] = [u('/', 1.0)];
   for (const c of COUNTRIES) {
     urls.push(u(`/${c.code}/`, 1.0));
@@ -41,10 +43,13 @@ export function pagesUrls(): UrlEntry[] {
   urls.push(u('/legal/terminos/', 0.3, 'monthly'));
   urls.push(u('/legal/privacidad/', 0.3, 'monthly'));
   urls.push(u('/sitemap/', 0.3, 'monthly'));
+  for(const [collection,prefix] of [['videos','videos'],['graphics','recursos']] as const){const entries=await listDocuments(collection);if(entries.length)urls.push(u(`/${prefix}/`,0.6));for(const e of entries)urls.push(u(`/${prefix}/${e.id}/`,0.6));}
+  for(const e of await listDocuments('pages'))if(!['inicio','contacto','nosotros','privacidad','terminos'].includes(e.id))urls.push(u(`/paginas/${e.id}/`,0.5));
   return urls;
 }
 
 export async function categoriasUrls(): Promise<UrlEntry[]> {
+const COUNTRIES=await getCountries();const CATEGORIES=await getCategories();
   // Solo categorías con cursos: las vacías no generan página (evita los 404
   // de /eventos/ y /emprendimiento/ que GSC reportó en el sitemap).
   const courses = await getCollection('courses');
@@ -61,6 +66,7 @@ export async function categoriasUrls(): Promise<UrlEntry[]> {
 }
 
 export async function cursosUrls(countryCode: string): Promise<UrlEntry[]> {
+const COUNTRIES=await getCountries();const CATEGORIES=await getCategories();
   const courses = await getCollection('courses');
   const country = COUNTRIES.find((c) => c.code === countryCode);
   if (!country) return [];
@@ -85,7 +91,7 @@ export async function blogUrls(): Promise<UrlEntry[]> {
       return {
         ...u(`/blog/${p.id}/`, p.data.isPillar ? 0.8 : 0.7, 'monthly'),
         lastmod: p.data.updatedAt ?? p.data.publishedAt,
-        image: { loc: `${SITE.url}${img.src}`, title: p.data.heroAlt },
+        image: { loc: new URL(img.src,SITE.url).href, title: p.data.heroAlt },
       } satisfies UrlEntry;
     }),
   );
@@ -108,4 +114,4 @@ export function renderUrlset(urls: UrlEntry[]): string {
   return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${body}</urlset>`;
 }
 
-export const SITEMAP_NAMES = ['pages', 'categorias', 'blog', ...COUNTRIES.map((c) => `cursos-${c.code}`)];
+export async function sitemapNames(){return ['pages','categorias','blog',...(await getCountries()).map(c=>`cursos-${c.code}`)];}

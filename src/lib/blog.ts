@@ -1,4 +1,4 @@
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, type CollectionEntry } from '@/lib/emdash-content';
 
 export type Post = CollectionEntry<'blog'>;
 

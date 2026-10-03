@@ -1,19 +1,20 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCategories } from '@/lib/emdash-content';
+const CATEGORIES = await getCategories();
+import { getCountries } from '@/lib/emdash-content';
+const COUNTRIES = await getCountries();
+import { getCollection } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import CourseCard from '@/components/CourseCard.astro';
 import Icon from '@/components/Icon.astro';
-import { COUNTRIES } from '@/lib/countries';
-import { CATEGORIES } from '@/lib/categories';
 import { countryAlternates, breadcrumbSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
-export function getStaticPaths() {
-  return COUNTRIES.map((country) => ({ params: { country: country.code }, props: { country } }));
-}
 
-const { country } = Astro.props;
+
+const country=COUNTRIES.find(c=>c.code===Astro.params.country);
+if(!country)return Astro.rewrite('/404');
 const courses = (await getCollection('courses')).sort(
   (a, b) => Number(b.data.featured) - Number(a.data.featured),
 );
@@ -25,7 +26,7 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
   description={`Compara los 4 cursos de globos: globoflexia (50% OFF), bouquets, flores y globos burbuja. Temario, número de clases, precio y certificado de cada uno.`}
   {country}
   pathAfterCountry="/cursos/"
-  alternates={countryAlternates('/cursos/')}
+  alternates={await countryAlternates('/cursos/')}
   schemas={[
     breadcrumbSchema([
       { name: 'Inicio', url: `${SITE.url}/${country.code}/` },

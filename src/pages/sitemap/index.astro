@@ -1,10 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCategories } from '@/lib/emdash-content';
+const CATEGORIES = await getCategories();
+import { getCountries } from '@/lib/emdash-content';
+const COUNTRIES = await getCountries();
+import { getCollection } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import Icon from '@/components/Icon.astro';
-import { COUNTRIES } from '@/lib/countries';
-import { CATEGORIES } from '@/lib/categories';
 
 const courses = await getCollection('courses');
 const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.category === cat.slug));

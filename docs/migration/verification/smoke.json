@@ -1,0 +1,263 @@
+{
+  "checkedAt": "2026-10-03T03:24:23.856Z",
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Curso de Decoración con Globos Online con Certificado",
+      "bytes": 201953,
+      "whatsapp": 1,
+      "canonical": "https://dev.cursodeglobosonline.com/"
+    },
+    {
+      "path": "/co/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Curso de Decoración con Globos Online en Colombia",
+      "bytes": 160899,
+      "whatsapp": 1,
+      "canonical": "https://dev.cursodeglobosonline.com/co/"
+    },
+    {
+      "path": "/co/cursos/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Cursos de Globos Online en Colombia: Catálogo y Precios",
+      "bytes": 100283,
+      "whatsapp": 1,
+      "canonical": "https://dev.cursodeglobosonline.com/co/cursos/"
+    },
+    {
+      "path": "/co/bogota/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Curso de Decoración con Globos en Bogotá: 100% Online",
+      "bytes": 125710,
+      "whatsapp": 1,
+      "canonical": "https://dev.cursodeglobosonline.com/co/bogota/"
+    },
+    {
+      "path": "/co/bogota/curso-de-globoflexia/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Curso de Globoflexia Online en Bogotá: 50% OFF (US$25)",
+      "bytes": 203664,
+      "whatsapp": 1,
+      "canonical": "https://dev.cursodeglobosonline.com/co/curso-de-globoflexia/"
+    },
+    {
+      "path": "/landing/meta/curso-de-globoflexia/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Curso de Globoflexia — Oferta especial",
+      "bytes": 52681,
+      "whatsapp": 1
+    },
+    {
+      "path": "/landing/google/curso-de-globoflexia/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Curso de Globoflexia — Inscripción con descuento",
+      "bytes": 52657,
+      "whatsapp": 1
+    },
+    {
+      "path": "/blog/flores-con-globos/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Cómo hacer flores con globos: redondos, largos y distorsión",
+      "bytes": 128577,
+      "whatsapp": 1,
+      "canonical": "https://dev.cursodeglobosonline.com/blog/flores-con-globos/"
+    },
+    {
+      "path": "/co/curso-de-globoflexia/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Curso de Globoflexia Online en Colombia: 50% OFF (US$25)",
+      "bytes": 198404,
+      "whatsapp": 1,
+      "canonical": "https://dev.cursodeglobosonline.com/co/curso-de-globoflexia/"
+    },
+    {
+      "path": "/mx/curso-de-globos-burbuja/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Curso de Globos Burbuja Online en México | 18 Clases",
+      "bytes": 192542,
+      "whatsapp": 1,
+      "canonical": "https://dev.cursodeglobosonline.com/mx/curso-de-globos-burbuja/"
+    },
+    {
+      "path": "/blog/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "bytes": 140793,
+      "whatsapp": 1,
+      "canonical": "https://dev.cursodeglobosonline.com/blog/"
+    },
+    {
+      "path": "/blog/decoracion-con-globos-para-hombre/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Decoración con globos para hombre: ideas para su cumpleaños",
+      "bytes": 123751,
+      "whatsapp": 1,
+      "canonical": "https://dev.cursodeglobosonline.com/blog/decoracion-con-globos-para-hombre/"
+    },
+    {
+      "path": "/nosotros/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Quiénes somos | Curso de Globos Online (Sably)",
+      "bytes": 81863,
+      "whatsapp": 1,
+      "canonical": "https://dev.cursodeglobosonline.com/nosotros/"
+    },
+    {
+      "path": "/contacto/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Contacto | Curso de Globos Online",
+      "bytes": 86469,
+      "whatsapp": 1,
+      "canonical": "https://dev.cursodeglobosonline.com/contacto/"
+    },
+    {
+      "path": "/legal/privacidad/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Política de Privacidad — Curso de Globos Online",
+      "bytes": 82499,
+      "whatsapp": 1,
+      "canonical": "https://dev.cursodeglobosonline.com/legal/privacidad/"
+    },
+    {
+      "path": "/videos/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Videoteca | Curso de Globos Online",
+      "bytes": 79994,
+      "whatsapp": 1
+    },
+    {
+      "path": "/recursos/",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Recursos visuales | Curso de Globos Online",
+      "bytes": 80060,
+      "whatsapp": 1
+    },
+    {
+      "path": "/no-existe-prueba/",
+      "status": 404,
+      "expected": 404,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Página no encontrada — Curso de Globos Online",
+      "bytes": 101754,
+      "whatsapp": 1
+    },
+    {
+      "path": "/sitemap-index.xml",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "bytes": 1167,
+      "whatsapp": 0
+    },
+    {
+      "path": "/sitemaps/blog.xml",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "bytes": 15055,
+      "whatsapp": 0
+    },
+    {
+      "path": "/blog/rss.xml",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "Blog de Curso de Globos Online",
+      "bytes": 28236,
+      "whatsapp": 0
+    },
+    {
+      "path": "/llms.txt",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "bytes": 13175,
+      "whatsapp": 0
+    },
+    {
+      "path": "/api/ratings",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "bytes": 366,
+      "whatsapp": 0
+    },
+    {
+      "path": "/_emdash/admin",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "title": "EmDash Admin",
+      "bytes": 271636,
+      "whatsapp": 0
+    },
+    {
+      "path": "/_emdash/api/plugins/globos-whatsapp/config",
+      "status": 200,
+      "expected": 200,
+      "noindex": "noindex, nofollow, noarchive",
+      "private": "private, no-store",
+      "bytes": 391,
+      "whatsapp": 0
+    }
+  ]
+}

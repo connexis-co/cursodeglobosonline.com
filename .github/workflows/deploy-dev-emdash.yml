@@ -1,0 +1,26 @@
+name: Deploy EmDash development
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: globos-emdash-dev
+  cancel-in-progress: false
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run test:migration
+      - run: npm run check
+      - run: npm run build
+      - run: node scripts/deploy-emdash.mjs
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+# CMS setup/import is intentionally absent: code deployment never reseeds editorial data.

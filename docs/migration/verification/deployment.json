@@ -1,0 +1,10 @@
+{
+  "domain": "dev.cursodeglobosonline.com",
+  "worker": "globos-emdash-dev",
+  "version": "8e373197-c8b7-4d8f-8aef-4fcf0e5b1452",
+  "nodeBuild": "24.21.0",
+  "automatedTests": 17,
+  "typecheckErrors": 0,
+  "productionDeployed": false,
+  "browserVisualReview": "blocked: ERR_BLOCKED_BY_CLIENT"
+}

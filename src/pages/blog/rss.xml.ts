@@ -1,15 +1,14 @@
 import type { APIRoute } from 'astro';
-import { getImage } from 'astro:assets';
 import { getPublishedPosts, lastModified } from '@/lib/blog';
-import { getBlogCluster } from '@/lib/blog-clusters';
-import { getAuthor } from '@/lib/authors';
+import { getBlogCluster } from '@/lib/emdash-content';
+import { getAuthor } from '@/lib/emdash-content';
 import { SITE } from '@/lib/site';
 
 /**
  * Feed RSS 2.0 del blog para lectores, agregadores y Bing (SubmitFeed).
  * Ojo: Google retiró "Seguir" en Discover (2025-11-19); Discover se gana con
  * imagen grande (>=1200px, max-image-preview:large) y contenido útil, no con el feed.
- * Imagen 1600px por ítem (media:content).
+ * Imagen original publicada en el CMS por ítem (media:content).
  */
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -20,17 +19,16 @@ export const GET: APIRoute = async () => {
     posts.map(async (post) => {
       const d = post.data;
       const url = `${SITE.url}/blog/${post.id}/`;
-      const img = await getImage({ src: d.hero, width: 1600, height: 900, fit: 'cover', format: 'jpg', quality: 82 });
-      const imgUrl = new URL(img.src, SITE.url).href;
+      const imgUrl = new URL(d.hero.src, SITE.url).href;
       return `<item>
 <title>${esc(d.discoverTitle ?? d.title)}</title>
 <link>${url}</link>
 <guid isPermaLink="true">${url}</guid>
 <pubDate>${d.publishedAt.toUTCString()}</pubDate>
-<dc:creator>${esc(getAuthor(d.author).name)}</dc:creator>
-<category>${esc(getBlogCluster(d.cluster).name)}</category>
+<dc:creator>${esc((await getAuthor(d.author)).name)}</dc:creator>
+<category>${esc((await getBlogCluster(d.cluster)).name)}</category>
 <description>${esc(d.description)}</description>
-<media:content url="${imgUrl}" medium="image" type="image/jpeg" width="1600" height="900"><media:description>${esc(d.heroAlt)}</media:description></media:content>
+<media:content url="${esc(imgUrl)}" medium="image" width="${d.hero.width}" height="${d.hero.height}"><media:description>${esc(d.heroAlt)}</media:description></media:content>
 </item>`;
     }),
   );

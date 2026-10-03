@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-10-03T03:03:55.032Z",
+  "checks": [
+    "Authenticated WhatsApp configuration API",
+    "One contextual WhatsApp button",
+    "Promotion hidden without campaign key",
+    "Promotion visible with matching course and country",
+    "Promotion excluded from another country"
+  ]
+}

@@ -1,3 +1,5 @@
+> **Migración EmDash en desarrollo:** consulta [la guía de ambientes, contenido y operación](docs/migration/README.md). Las instrucciones anteriores de Cloudflare Pages que siguen abajo describen la producción previa.
+
 # 🎈 cursodeglobosonline.com
 
 > Plataforma de cursos online de decoración con globos — Filial de [Sably](https://sably.co)

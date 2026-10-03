@@ -1,6 +1,7 @@
 ---
-import { getImage, Picture } from 'astro:assets';
-import { render } from 'astro:content';
+import { getEntry } from '@/lib/emdash-content';
+import RichBody from '@/themes/globos-classic/components/RichBody.astro';
+import { richHeadings } from '@/lib/rich-text';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import FaqAccordion from '@/components/FaqAccordion.astro';
 import CourseCta from '@/components/blog/CourseCta.astro';
@@ -9,38 +10,33 @@ import Toc from '@/components/blog/Toc.astro';
 import AuthorBox from '@/components/blog/AuthorBox.astro';
 import PostCard from '@/components/blog/PostCard.astro';
 import { getPublishedPosts, relatedPosts, readingMinutes, formatDate, lastModified, type Post } from '@/lib/blog';
-import { getBlogCluster } from '@/lib/blog-clusters';
-import { getAuthor } from '@/lib/authors';
+import { getBlogCluster } from '@/lib/emdash-content';
+import { getAuthor } from '@/lib/emdash-content';
 import { blogPostingSchema, breadcrumbSchema, faqSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
-export async function getStaticPaths() {
-  const posts = await getPublishedPosts();
-  return posts.map((post) => ({ params: { slug: post.id }, props: { post, all: posts } }));
-}
+
 
 interface Props {
   post: Post;
   all: Post[];
 }
 
-const { post, all } = Astro.props;
+const post=await getEntry('blog',Astro.params.slug!);
+if(!post)return Astro.rewrite('/404');
+const all=await getPublishedPosts();
+Astro.locals.cmsContent=post as unknown as App.Locals["cmsContent"];
 const d = post.data;
-const { Content, headings } = await render(post);
-const cluster = getBlogCluster(d.cluster);
-const author = getAuthor(d.author);
+const headings = richHeadings(post.richBody);
+const cluster = await getBlogCluster(d.cluster);
+const author = await getAuthor(d.author);
 const url = `${SITE.url}/blog/${post.id}/`;
 const modified = lastModified(post);
 const minutes = readingMinutes(post);
 const pillar = d.pillar ? all.find((p) => p.id === d.pillar) : undefined;
 const related = relatedPosts(post, all, 3);
 
-// Discover/Article: imagen >= 1200px en 16:9, 4:3 y 1:1 (Google elige la que mejor encaja).
-const [og169, og43, og11] = await Promise.all([
-  getImage({ src: d.hero, width: 1600, height: 900, fit: 'cover', format: 'jpg', quality: 82 }),
-  getImage({ src: d.hero, width: 1200, height: 900, fit: 'cover', format: 'jpg', quality: 80 }),
-  getImage({ src: d.hero, width: 1200, height: 1200, fit: 'cover', format: 'jpg', quality: 80 }),
-]);
+// El CMS sirve el original: las variantes requieren un servicio de imágenes configurado.
 const abs = (src: string) => new URL(src, SITE.url).href;
 
 const wordCount = (post.body ?? '').split(/\s+/).filter(Boolean).length;
@@ -49,7 +45,7 @@ const schemas = [
     url,
     headline: d.title,
     description: d.description,
-    images: [abs(og169.src), abs(og43.src), abs(og11.src)],
+    images: [abs(d.hero.src)],
     datePublished: d.publishedAt,
     dateModified: modified,
     author,
@@ -81,9 +77,9 @@ const trackParams = JSON.stringify({
   whatsappContext={d.title}
   ogTitle={d.discoverTitle ?? d.title}
   ogType="article"
-  ogImage={og169.src}
-  ogImageWidth={1600}
-  ogImageHeight={900}
+  ogImage={d.hero.src}
+  ogImageWidth={d.hero.width}
+  ogImageHeight={d.hero.height}
   ogImageAlt={d.heroAlt}
   article={{
     publishedTime: d.publishedAt,
@@ -137,12 +133,11 @@ const trackParams = JSON.stringify({
     </header>
 
     <figure class="mt-8 overflow-hidden rounded-3xl bg-crema-200 shadow-tarjeta">
-      <Picture
-        src={d.hero}
+      <img
+        src={d.hero.src}
+        width={d.hero.width}
+        height={d.hero.height}
         alt={d.heroAlt}
-        widths={[480, 800, 1200, 1600]}
-        sizes="(min-width: 1184px) 1120px, calc(100vw - 2.5rem)"
-        formats={['avif', 'webp']}
         loading="eager"
         fetchpriority="high"
         class="aspect-[16/9] w-full object-cover"
@@ -156,7 +151,7 @@ const trackParams = JSON.stringify({
         </div>
 
         <div class="articulo">
-          <Content components={{ CourseCta, Callout }} />
+          <RichBody value={post.richBody} />
         </div>
 
         {

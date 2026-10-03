@@ -1,0 +1,16 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import RichBody from './RichBody.astro';
+import type { Document } from '@/lib/emdash-content';
+interface Props { page:Document }
+const {page}=Astro.props;const d=page.data;Astro.locals.cmsContent=page;
+---
+<BaseLayout title={d.title} description={d.description??''} pageType="page">
+ <div class="contenedor max-w-3xl pt-10 pb-20 lg:pt-12">
+  <SectionHeading as="h1" eyebrow={d.eyebrow} title={d.heading||d.title} lead={d.lead} />
+  {d.updatedLabel&&<p class="mt-2 text-xs text-ciruela-400">{d.updatedLabel}</p>}
+  <div class="prose-blog mt-8"><RichBody value={page.richBody}/></div>
+  {d.ctaUrl&&<a href={d.ctaUrl} class="mt-8 inline-block rounded-xl bg-coral-600 px-8 py-4 font-bold text-white">{d.ctaLabel}</a>}
+ </div>
+</BaseLayout>

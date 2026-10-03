@@ -1,4 +1,4 @@
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from '@/lib/emdash-content';
 
 type CourseData = CollectionEntry<'courses'>['data'];
 

@@ -1,0 +1,5 @@
+---
+const {node}=Astro.props;
+const Tag=/^h[1-6]$/.test(node.style)?node.style:'h2';
+---
+<Tag id={node.anchor}><slot /></Tag>

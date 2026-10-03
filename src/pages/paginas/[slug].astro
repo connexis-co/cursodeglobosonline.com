@@ -1,0 +1,6 @@
+---
+import {getDocument} from '@/lib/emdash-content';
+import EditorialPage from '@/themes/globos-classic/components/EditorialPage.astro';
+const page=await getDocument('pages',Astro.params.slug!);if(!page)return Astro.rewrite('/404');
+---
+<EditorialPage {page} />

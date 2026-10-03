@@ -1,25 +1,20 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCategories } from '@/lib/emdash-content';
+const CATEGORIES = await getCategories();
+import { getCountries } from '@/lib/emdash-content';
+const COUNTRIES = await getCountries();
+import { getCollection } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import CourseCard from '@/components/CourseCard.astro';
-import { COUNTRIES } from '@/lib/countries';
-import { CATEGORIES } from '@/lib/categories';
 import { countryAlternates, breadcrumbSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
-export async function getStaticPaths() {
-  const courses = await getCollection('courses');
-  const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.category === cat.slug));
-  return COUNTRIES.flatMap((country) =>
-    activeCategories.map((category) => ({
-      params: { country: country.code, category: category.slug },
-      props: { country, category },
-    })),
-  );
-}
 
-const { country, category } = Astro.props;
+
+const country=COUNTRIES.find(c=>c.code===Astro.params.country);
+const category=CATEGORIES.find(c=>c.slug===Astro.params.category);
+if(!country||!category)return Astro.rewrite('/404');
 // Con una sola categoría activa, esta página duplica el catálogo /{cc}/cursos/ y competía
 // con él y con /{cc}/ (auditoría 2026-09-22): noindex,follow hasta tener ≥ 2 categorías.
 const allCourses = await getCollection('courses');
@@ -35,7 +30,7 @@ const courses = (await getCollection('courses'))
   {country}
   pathAfterCountry={`/cursos/${category.slug}/`}
   noindex={activeCount < 2}
-  alternates={countryAlternates(`/cursos/${category.slug}/`)}
+  alternates={await countryAlternates(`/cursos/${category.slug}/`)}
   schemas={[
     breadcrumbSchema([
       { name: 'Inicio', url: `${SITE.url}/${country.code}/` },

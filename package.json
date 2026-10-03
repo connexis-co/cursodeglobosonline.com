@@ -1,50 +1,60 @@
 {
-  "name": "cursodeglobosonline-frontend",
+  "name": "cursodeglobosonline-emdash",
   "type": "module",
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=22.12.0"
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
   },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "lint": "astro check && tsc -p functions",
-    "deploy": "npm run build && wrangler pages deploy dist/ --project-name=cursodeglobosonline-com",
+    "lint": "astro check",
+    "deploy": "node scripts/deploy-emdash.mjs",
     "cf-typegen": "wrangler types",
-    "dev:pages": "wrangler pages dev dist --port 8788",
-    "db:migrate": "wrangler d1 migrations apply cursodeglobosonline-ratings --remote",
-    "db:migrate:preview": "wrangler d1 migrations apply cursodeglobosonline-ratings-preview --remote --env preview",
-    "db:migrate:local": "wrangler d1 migrations apply cursodeglobosonline-ratings --local",
     "test:ratings": "node scripts/test-ratings.mjs",
-    "prepare": "husky"
+    "prepare": "husky",
+    "deploy:dev": "npm run build && node scripts/deploy-emdash.mjs",
+    "content:seed": "node --import tsx scripts/migrate-content.ts",
+    "test:migration": "node --import tsx --test tests/*.test.ts",
+    "db:migrate:dev": "wrangler d1 migrations apply globos-ratings-dev --remote"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "14.3.3",
     "@astrojs/mdx": "^7.0.5",
     "@astrojs/react": "^6.0.2",
+    "@emdash-cms/cloudflare": "1.1.0",
     "@fontsource-variable/fraunces": "^5.2.0",
     "@fontsource-variable/nunito-sans": "^5.2.0",
     "@nanostores/persistent": "^1.0.0",
     "@nanostores/react": "^1.1.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.4",
+    "emdash": "1.1.0",
+    "github-slugger": "2.0.0",
     "lucide-react": "^0.545.0",
     "nanostores": "^1.4.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.3",
+    "yaml": "2.9.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@cloudflare/workers-types": "5.20261002.1",
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "husky": "^9.1.7",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "tsx": "4.23.15",
     "typescript": "^5.9.0",
-    "wrangler": "^4.136.3"
+    "unified": "^11.0.5",
+    "wrangler": "4.147.0"
   },
   "overrides": {
     "keyv": "<6.0.0",
@@ -58,5 +68,8 @@
     "@cacheable/node-cache": "<3.1.2",
     "@cacheable/utils": "<2.5.1",
     "@cacheable/net": "<2.1.1"
+  },
+  "emdash": {
+    "seed": "emdash.seed.json"
   }
 }

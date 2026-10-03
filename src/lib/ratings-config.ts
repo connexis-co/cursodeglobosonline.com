@@ -12,10 +12,10 @@ export const RATEABLE_COURSES = [
   'curso-de-globos-burbuja',
 ] as const;
 
-export type RateableCourse = (typeof RATEABLE_COURSES)[number];
+export type RateableCourse = string;
 
 export const isRateableCourse = (value: unknown): value is RateableCourse =>
-  typeof value === 'string' && (RATEABLE_COURSES as readonly string[]).includes(value);
+  typeof value === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value) && value.length <= 200;
 
 export interface CourseRating {
   /** Media con 2 decimales (0 si no hay votos). */

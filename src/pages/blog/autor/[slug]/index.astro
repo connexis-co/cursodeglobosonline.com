@@ -1,19 +1,19 @@
 ---
+import { getAuthors } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PostCard from '@/components/blog/PostCard.astro';
-import { AUTHORS, authorUrl, type Author } from '@/lib/authors';
+import { authorUrl, type Author } from '@/lib/authors';
 import { getPublishedPosts } from '@/lib/blog';
 import { breadcrumbSchema, ORG_ID } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
-export function getStaticPaths() {
-  return Object.values(AUTHORS).map((author) => ({ params: { slug: author.slug }, props: { author } }));
-}
+
 
 interface Props {
   author: Author;
 }
-const { author } = Astro.props;
+const author=(await getAuthors()).find(a=>a.slug===Astro.params.slug);
+if(!author)return Astro.rewrite('/404');
 const posts = (await getPublishedPosts()).filter((p) => p.data.author === author.slug);
 const url = authorUrl(author.slug);
 

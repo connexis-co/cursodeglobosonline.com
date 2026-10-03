@@ -1,10 +1,12 @@
 import type { APIRoute } from 'astro';
-import { COUNTRIES } from '@/lib/countries';
+import { getCountries } from '@/lib/emdash-content';
 import { SITE } from '@/lib/site';
-import { CHOOSER, SITE_FACTS, coursePriceLine, courseRatingLine, loadLlmsData, postLine } from '@/lib/llms';
+import { CHOOSER, siteFacts, coursePriceLine, courseRatingLine, loadLlmsData, postLine } from '@/lib/llms';
 
 /** llms.txt — mapa del sitio para asistentes de IA (llmstxt.org). */
 export const GET: APIRoute = async () => {
+ const facts=await siteFacts();
+ const COUNTRIES=await getCountries();
   const { courses, posts, clusters } = await loadLlmsData();
   const ratingLines = await Promise.all(courses.map(courseRatingLine));
   const body = `# ${SITE.name}
@@ -14,7 +16,7 @@ export const GET: APIRoute = async () => {
 > por vida y garantía de 7 días de Hotmart, más un blog con ${posts.length} guías gratuitas paso a paso
 > (arcos, guirnaldas, centros de mesa, figuras, materiales, ideas por ocasión y cómo cobrar).
 
-${SITE_FACTS.map((f) => `- ${f}`).join('\n')}
+${facts.map((f) => `- ${f}`).join('\n')}
 
 Las URLs canónicas de los cursos son /{país}/{curso}/ (ej. /co/, /mx/, /es/). La versión completa con
 temarios y el texto de las guías está en ${SITE.url}/llms-full.txt

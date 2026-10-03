@@ -1,6 +1,6 @@
-import { getCollection, type CollectionEntry } from 'astro:content';
-import { COUNTRIES } from './countries';
-import { BLOG_CLUSTERS } from './blog-clusters';
+import { getCollection, type CollectionEntry } from '@/lib/emdash-content';
+import { getCountries, getClusters } from './emdash-content';
+
 import { getPublishedPosts, type Post } from './blog';
 import { coursePricing, usd } from './pricing';
 import { getCourseRating } from './ratings';
@@ -36,7 +36,7 @@ export async function courseRatingLine(c: Course): Promise<string> {
 export async function loadLlmsData() {
   const courses = (await getCollection('courses')).sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
   const posts = await getPublishedPosts();
-  const clusters = BLOG_CLUSTERS.map((c) => ({
+  const clusters = (await getClusters()).map((c) => ({
     ...c,
     posts: posts
       .filter((p) => p.data.cluster === c.slug)
@@ -52,15 +52,15 @@ export const CHOOSER = [
   'Quieres productos personalizados de alto margen (confeti, plumas, vinilo, unicornio) → Curso de Globos Burbuja.',
 ];
 
-export const SITE_FACTS = [
+export async function siteFacts(){const COUNTRIES=await getCountries();return [
   'Idioma: español. Modalidad: 100% online, en video, a tu ritmo, desde celular o computador.',
   'Compra y acceso: a través de Hotmart (plataforma de pago segura); el acceso llega al correo al instante.',
   'Garantía: 7 días de Hotmart con devolución del 100% del pago.',
   'Certificado de estudios al terminar; acceso de por vida.',
   `Mercados atendidos: ${COUNTRIES.map((c) => c.name).join(', ')} (precio convertido a moneda local en el checkout).`,
   `Parte del ecosistema Sably (${SITE.parent.url}). Productor de los cursos en Hotmart: MasterClasses.La.`,
-  `Contacto: ${SITE.email} · WhatsApp ${COUNTRIES[0].phoneDisplay}.`,
-];
+  `Contacto: ${SITE.email} · WhatsApp ${COUNTRIES.find(c=>c.code==='co')?.phoneDisplay??''}.`,
+];}
 
 export function postLine(p: Post): string {
   return `- [${p.data.title}](${SITE.url}/blog/${p.id}/): ${p.data.description}`;

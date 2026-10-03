@@ -1,5 +1,7 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCountries } from '@/lib/emdash-content';
+const COUNTRIES = await getCountries();
+import { getCollection } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Balloons from '@/components/Balloons.astro';
 import Wave from '@/components/Wave.astro';
@@ -12,22 +14,20 @@ import FaqAccordion from '@/components/FaqAccordion.astro';
 import Icon from '@/components/Icon.astro';
 import PostCard from '@/components/blog/PostCard.astro';
 import { getPublishedPosts } from '@/lib/blog';
-import { COUNTRIES } from '@/lib/countries';
 import { buildWhatsAppUrl } from '@/lib/hotmart';
 import { countryAlternates, faqSchema, breadcrumbSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
-export function getStaticPaths() {
-  return COUNTRIES.map((country) => ({ params: { country: country.code }, props: { country } }));
-}
 
-const { country } = Astro.props;
+
+const country=COUNTRIES.find(c=>c.code===Astro.params.country);
+if(!country)return Astro.rewrite('/404');
 
 const courses = (await getCollection('courses')).sort(
   (a, b) => Number(b.data.featured) - Number(a.data.featured),
 );
 const featured = courses.find((c) => c.data.featured) ?? courses[0];
-const others = courses.filter((c) => c.id !== featured.id);
+const others = courses.filter((c) => c.id !== featured?.id);
 // Reseñas reales de Hotmart (las más recientes; ya no hay testimonios por país).
 const testimonials = (await getCollection('testimonials')).slice(0, 3);
 // Las 3 guías más recientes del blog (enlazado interno país → blog); solo si hay publicadas.
@@ -71,7 +71,7 @@ const description = `Aprende decoración con globos desde cualquier ciudad de ${
   {description}
   {country}
   pathAfterCountry="/"
-  alternates={countryAlternates('/')}
+  alternates={await countryAlternates('/')}
   schemas={[
     faqSchema(faqs),
     breadcrumbSchema([
@@ -106,7 +106,7 @@ const description = `Aprende decoración con globos desde cualquier ciudad de ${
           Ver los cursos
         </a>
         <a
-          href={`/${country.code}/${featured.id}/`}
+          href={featured?`/${country.code}/${featured.id}/`:`/${country.code}/cursos/`}
           class="rounded-xl border-2 border-crema-50/30 px-8 py-4 text-sm font-bold backdrop-blur-sm transition-all duration-300 hover:border-sol-300 hover:text-sol-300"
         >
           Globoflexia con 50% OFF
@@ -128,7 +128,7 @@ const description = `Aprende decoración con globos desde cualquier ciudad de ${
          y en sm (2 col.). Todas las tarjetas llevan h-full para igualar alturas por fila. -->
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <div class="scroll-reveal sm:col-span-2 lg:col-span-1 lg:row-span-2">
-        <CourseCard course={featured} {country} large class="h-full" />
+        {featured&&<CourseCard course={featured} {country} large class="h-full" />}
       </div>
       {
         others.map((course, i) => (

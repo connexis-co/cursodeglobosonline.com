@@ -1,0 +1,148 @@
+{
+  "sourceCommit": "f846950",
+  "counts": {
+    "blog": 28,
+    "courses": 4,
+    "countries": 8,
+    "cities": 36,
+    "categories": 3,
+    "clusters": 6,
+    "authors": 1,
+    "testimonials": 9,
+    "pages": 5
+  },
+  "media": [
+    {
+      "source": "src/assets/blog/decoracion-con-globos-para-hombre.jpg",
+      "target": "/migration-media/34cfa2e5ae79-decoracion-con-globos-para-hombre.jpg"
+    },
+    {
+      "source": "src/assets/blog/como-inflar-globos-largos.jpg",
+      "target": "/migration-media/8c56c6f98638-como-inflar-globos-largos.jpg"
+    },
+    {
+      "source": "src/assets/blog/globos-burbuja-decorados.jpg",
+      "target": "/migration-media/c1469d343c6c-globos-burbuja-decorados.jpg"
+    },
+    {
+      "source": "src/assets/blog/cuanto-cobrar-por-decoracion-con-globos.jpg",
+      "target": "/migration-media/19d84606a69c-cuanto-cobrar-por-decoracion-con-globos.jpg"
+    },
+    {
+      "source": "src/assets/blog/decoracion-para-ano-nuevo-con-globos.jpg",
+      "target": "/migration-media/39e36fd47dd3-decoracion-para-ano-nuevo-con-globos.jpg"
+    },
+    {
+      "source": "src/assets/blog/guirnalda-de-globos.jpg",
+      "target": "/migration-media/54e984c9921c-guirnalda-de-globos.jpg"
+    },
+    {
+      "source": "src/assets/blog/globoflexia.jpg",
+      "target": "/migration-media/21bf149b5dc4-globoflexia.jpg"
+    },
+    {
+      "source": "src/assets/blog/decoracion-con-cortinas-y-globos.jpg",
+      "target": "/migration-media/7c0a3a4e64de-decoracion-con-cortinas-y-globos.jpg"
+    },
+    {
+      "source": "src/assets/blog/centros-de-mesa-con-globos.jpg",
+      "target": "/migration-media/8f649e8ede3c-centros-de-mesa-con-globos.jpg"
+    },
+    {
+      "source": "src/assets/blog/decoracion-con-globos-rosa-y-dorado.jpg",
+      "target": "/migration-media/23ca67d11f96-decoracion-con-globos-rosa-y-dorado.jpg"
+    },
+    {
+      "source": "src/assets/blog/como-inflar-un-globo-burbuja.jpg",
+      "target": "/migration-media/6a27dad5cf18-como-inflar-un-globo-burbuja.jpg"
+    },
+    {
+      "source": "src/assets/blog/decoracion-con-globos-para-mujer.jpg",
+      "target": "/migration-media/d9a78d478140-decoracion-con-globos-para-mujer.jpg"
+    },
+    {
+      "source": "src/assets/blog/arco-de-globos.jpg",
+      "target": "/migration-media/bc901ef253db-arco-de-globos.jpg"
+    },
+    {
+      "source": "src/assets/blog/decoracion-con-globos-halloween.jpg",
+      "target": "/migration-media/220ecb657330-decoracion-con-globos-halloween.jpg"
+    },
+    {
+      "source": "src/assets/blog/tipos-y-tamanos-de-globos.jpg",
+      "target": "/migration-media/58d828e881bc-tipos-y-tamanos-de-globos.jpg"
+    },
+    {
+      "source": "src/assets/blog/decoracion-con-globos.jpg",
+      "target": "/migration-media/6efcf6dbe4f3-decoracion-con-globos.jpg"
+    },
+    {
+      "source": "src/assets/blog/como-decorar-con-globos-en-la-pared.jpg",
+      "target": "/migration-media/af586cda14a5-como-decorar-con-globos-en-la-pared.jpg"
+    },
+    {
+      "source": "src/assets/blog/decoracion-con-globos-para-primera-comunion.jpg",
+      "target": "/migration-media/6d0d4eb53559-decoracion-con-globos-para-primera-comunion.jpg"
+    },
+    {
+      "source": "src/assets/blog/decoracion-con-globos-para-graduacion.jpg",
+      "target": "/migration-media/a449701fadbe-decoracion-con-globos-para-graduacion.jpg"
+    },
+    {
+      "source": "src/assets/blog/como-inflar-globos.jpg",
+      "target": "/migration-media/44ec533039a7-como-inflar-globos.jpg"
+    },
+    {
+      "source": "src/assets/blog/decoracion-con-globos-virgen-de-guadalupe.jpg",
+      "target": "/migration-media/20060e17ac00-decoracion-con-globos-virgen-de-guadalupe.jpg"
+    },
+    {
+      "source": "src/assets/blog/decoracion-navidena-con-globos.jpg",
+      "target": "/migration-media/009a59edfd4f-decoracion-navidena-con-globos.jpg"
+    },
+    {
+      "source": "src/assets/blog/decoracion-con-globos-para-boda.jpg",
+      "target": "/migration-media/4372f7d528fb-decoracion-con-globos-para-boda.jpg"
+    },
+    {
+      "source": "src/assets/blog/bouquet-de-globos.jpg",
+      "target": "/migration-media/21ccfc616257-bouquet-de-globos.jpg"
+    },
+    {
+      "source": "src/assets/blog/cuanto-dura-un-globo-con-helio.jpg",
+      "target": "/migration-media/d14c92afb0ff-cuanto-dura-un-globo-con-helio.jpg"
+    },
+    {
+      "source": "src/assets/blog/figuras-con-globos.jpg",
+      "target": "/migration-media/c5d8d0bb67e7-figuras-con-globos.jpg"
+    },
+    {
+      "source": "src/assets/blog/columnas-de-globos.jpg",
+      "target": "/migration-media/d3470fc83d8f-columnas-de-globos.jpg"
+    },
+    {
+      "source": "src/assets/blog/flores-con-globos.jpg",
+      "target": "/migration-media/663da58d489f-flores-con-globos.jpg"
+    },
+    {
+      "source": "public/images/cursos/cover-burbuja.jpg",
+      "target": "/migration-media/08b2b60a0f4d-cover-burbuja.jpg"
+    },
+    {
+      "source": "public/images/cursos/cover-bouquets.jpg",
+      "target": "/migration-media/cea5f97705e5-cover-bouquets.jpg"
+    },
+    {
+      "source": "public/images/cursos/instructor-juan-manuel-marcos.jpg",
+      "target": "/migration-media/7248cfa1f979-instructor-juan-manuel-marcos.jpg"
+    },
+    {
+      "source": "public/images/cursos/cover-globoflexia.jpg",
+      "target": "/migration-media/c07588adce1a-cover-globoflexia.jpg"
+    },
+    {
+      "source": "public/images/cursos/cover-flores.jpg",
+      "target": "/migration-media/bd47bc306611-cover-flores.jpg"
+    }
+  ]
+}
