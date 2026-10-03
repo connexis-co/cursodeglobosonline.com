@@ -27,6 +27,14 @@ test('portable rich text preserves link marks, bullet lists and tables',()=>{
 test('the seed does not rename Portable Text reserved keys',()=>{
  const body=seed.content.blog.flatMap((e:any)=>e.data.body);assert.ok(body.some((b:any)=>b.markDefs?.length));assert.ok(body.some((b:any)=>b.listItem));assert.ok(!JSON.stringify(body).includes('mark_defs'));
 });
+test('GFM cells omit delimiters and preserve emphasis, links and escaped pipes',()=>{
+ const table=migrateBody('| **Nombre** | Enlace |\n| --- | --- |\n| A \\| B | [Ver](https://example.com) |')[0] as any;
+ const texts=table.rows.map((row:any)=>row.cells.map((cell:any)=>cell.content.map((s:any)=>s.text??'').join('')));
+ assert.deepEqual(texts,[['Nombre','Enlace'],['A | B','Ver']]);
+ assert.equal(table.rows[0].cells[0].isHeader,true);
+ assert.ok(table.rows[0].cells[0].content[0].marks.includes('strong'));
+ assert.equal(table.rows[1].cells[1].markDefs[0].href,'https://example.com');
+});
 test('source archive, importer and seed contain no development passwords or tokens',()=>{
  for(const file of ['emdash.seed.json','scripts/migration-source/legacy-site.json','wrangler.jsonc'])assert.ok(!/GLOBOS_DEV_PASSWORD\s*[=:]\s*[^\s"}]+/.test(readFileSync(file,'utf8')));
 });

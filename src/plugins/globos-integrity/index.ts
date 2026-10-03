@@ -2,6 +2,7 @@ import {definePlugin,ContentRepository,type ContentPolicyEvent} from 'emdash';
 import {getDb} from 'emdash/runtime';
 import {RELATIONS} from '@/lib/cms/relations';
 import {editorialError,FIXED_PAGE_PATHS} from './model';
+import {duplicateKeyword} from './blog-seo';
 async function selectedGroups(collection:string,content:Record<string,unknown>){
  const db=await getDb();const group=String(content.translationGroup??content.id);
  const fields=await db.selectFrom('_emdash_fields as f').innerJoin('_emdash_collections as c','c.id','f.collection_id').select(['f.slug','f.validation']).where('c.slug','=',collection).where('f.type','=','reference').execute();
@@ -13,6 +14,15 @@ async function policy(event:ContentPolicyEvent){
  const d=(event.content.data??{}) as Record<string,unknown>;
  if(event.collection==='pages'){const original=await new ContentRepository(await getDb()).findById('pages',String(event.content.id));if(original?.slug&&FIXED_PAGE_PATHS[original.slug]&&original.slug!==event.content.slug)return{cancel:true as const,reason:'Esta página tiene una ruta fija del tema. Conserva su slug y edita su contenido.'};}
  const fail=editorialError(event.collection,String(event.content.slug??''),d);if(fail)return{cancel:true as const,reason:fail};
+ if(event.collection==='blog'){
+  const repository=new ContentRepository(await getDb());let cursor:string|undefined;
+  do{
+   const batch=await repository.findMany('blog',{where:{locale:String(event.content.locale??'es')},limit:100,cursor});
+   const match=batch.items.find(item=>item.id!==event.content.id&&['published','scheduled'].includes(item.status)&&duplicateKeyword(d,item.data as Record<string,unknown>));
+   if(match)return{cancel:true as const,reason:`La búsqueda principal ya está asignada a /blog/${match.slug}/. Actualiza esa guía o define una intención distinta.`};
+   cursor=batch.nextCursor;
+  }while(cursor);
+ }
  const definitions=RELATIONS[event.collection];if(!definitions)return;
  const groups=await selectedGroups(event.collection,event.content);const repo=new ContentRepository(await getDb());
  for(const [field,definition] of Object.entries(definitions)){

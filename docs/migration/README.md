@@ -33,6 +33,8 @@ El administrador agrupa las colecciones en **Contenido editorial**, **Cursos y v
 
 Las colecciones editoriales soportan borradores, revisiones, programación y SEO. La videoteca empieza vacía: no se agregaron videos ajenos ni contenido ficticio. Las nuevas entradas publicadas aparecen en los listados y sitemaps correspondientes.
 
+El blog exige una búsqueda principal al publicar. `globos-integrity` rechaza coincidencias exactas normalizadas con otro artículo publicado o programado del mismo idioma, las búsquedas que empiezan por «curso(s)» y los H1 dentro del cuerpo. Esto previene errores editoriales evidentes; no sustituye la revisión semántica ni el análisis de canibalización en Search Console. Los borradores admiten trabajo incompleto.
+
 La portada conserva sus secciones y composición actuales. Sus textos principales, FAQ y método se editan en `Páginas → inicio`; los cursos, testimonios y artículos destacados vienen de sus colecciones. Los rótulos de interfaz, ilustraciones SVG, distribución de secciones y estilos pertenecen al tema y se cambian mediante código. No se presenta el CMS como un constructor visual ilimitado.
 
 ## Relaciones, edición y menús

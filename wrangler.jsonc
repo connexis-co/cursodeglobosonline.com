@@ -54,6 +54,10 @@
     {
       "binding": "SESSION",
       "id": "8c8b74fc3dbd4e37823b5f8ad10a90b1"
+    },
+    {
+      "binding": "CACHE",
+      "id": "f68a42cb471343d19c33c72465c59695"
     }
   ]
 }

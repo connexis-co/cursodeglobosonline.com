@@ -1,0 +1,112 @@
+{
+  "source": "Ubersuggest PageSpeed audit, forced mobile runs on 2026-10-03",
+  "before": {
+    "done": true,
+    "report": {
+      "MOBILE": {
+        "status": "ok",
+        "field_data": {
+          "Cumulative Layout Shift": "FAST",
+          "First Contentful Paint": "FAST",
+          "Largest Contentful Paint": "FAST"
+        },
+        "lab_metrics": {
+          "Cumulative Layout Shift": "0.001",
+          "First Contentful Paint": "2.0 s",
+          "Time to Interactive": "11.7 s",
+          "Largest Contentful Paint": "7.7 s",
+          "Total Blocking Time": "359 ms",
+          "Speed Index": "11.5 s"
+        },
+        "opportunities": [
+          {
+            "opportunity": "Redirects",
+            "estimated_savings": "630 ms",
+            "size_reduction_kb": null
+          },
+          {
+            "opportunity": "Unused Javascript",
+            "estimated_savings": "1.6 s",
+            "size_reduction_kb": 391
+          }
+        ]
+      }
+    }
+  },
+  "after": {
+    "done": true,
+    "report": {
+      "MOBILE": {
+        "status": "ok",
+        "field_data": {
+          "Cumulative Layout Shift": "FAST",
+          "First Contentful Paint": "FAST",
+          "Largest Contentful Paint": "FAST"
+        },
+        "lab_metrics": {
+          "Cumulative Layout Shift": "0.008",
+          "Total Blocking Time": "298 ms",
+          "Largest Contentful Paint": "11.7 s",
+          "Speed Index": "15.6 s",
+          "Time to Interactive": "11.8 s",
+          "First Contentful Paint": "2.7 s"
+        },
+        "opportunities": [
+          {
+            "opportunity": "Redirects",
+            "estimated_savings": "630 ms",
+            "size_reduction_kb": null
+          },
+          {
+            "opportunity": "Unused Javascript",
+            "estimated_savings": "2.3 s",
+            "size_reduction_kb": 391
+          }
+        ]
+      }
+    }
+  },
+  "httpSamples": [
+    {
+      "path": "/",
+      "seconds": [
+        6.585,
+        3.453,
+        1.114,
+        0.748
+      ],
+      "warmMedianSeconds": 1.114
+    },
+    {
+      "path": "/co/",
+      "seconds": [
+        0.852,
+        0.954,
+        1.797,
+        0.694
+      ],
+      "warmMedianSeconds": 0.954
+    },
+    {
+      "path": "/blog/",
+      "seconds": [
+        0.624,
+        0.708,
+        0.844,
+        0.697
+      ],
+      "warmMedianSeconds": 0.708
+    },
+    {
+      "path": "/blog/perrito-con-globo/",
+      "seconds": [
+        0.728,
+        0.715,
+        0.768,
+        0.727
+      ],
+      "warmMedianSeconds": 0.727
+    }
+  ],
+  "limitation": "HTTP response samples are not CWV. Mobile lab LCP remains poor; field categories lack INP/sample detail."
+}

@@ -18,7 +18,9 @@ export function migrateBody(source:string):Record<string,unknown>[] {
   if(node.type==='paragraph'){const raw=cleaned.slice(node.position!.start.offset!,node.position!.end.offset!);replacements.push({start:node.position!.start.offset!,end:node.position!.end.offset!,text:raw.replace(/(?<!  )\n/g,' ')});}
   if(node.type!=='table')continue;
   const raw={_type:'table',_key:`t${tableKey++}`,hasHeaderRow:true,rows:node.children.map((row,ri)=>({_type:'tableRow',_key:`r${tableKey++}`,cells:row.children.map((cell,ci)=>{
-   const md=cleaned.slice(cell.position!.start.offset!,cell.position!.end.offset!);const block=markdownToPortableText(md)[0] as any;
+   // GFM cell positions include separator pipes. Inline children delimit the actual content.
+   const first=cell.children[0],last=cell.children.at(-1);
+   const md=first&&last?cleaned.slice(first.position!.start.offset!,last.position!.end.offset!).replace(/\\\|/g,'|'):'';const block=markdownToPortableText(md)[0] as any;
    return {_type:'tableCell',_key:`c${tableKey++}`,content:block?.children??[{_type:'span',_key:`s${tableKey++}`,text:'',marks:[]}],markDefs:block?.markDefs??[],isHeader:ri===0,...(node.align?.[ci]?{textAlign:node.align[ci]}:{})};
   })}))};
   const normalized=normalizePortableTextTable(raw,{path:'migration',createKey:()=>`t${tableKey++}`});if(!normalized.ok)throw Error('Table migration failed: '+normalized.reason);

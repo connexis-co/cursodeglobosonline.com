@@ -10,7 +10,7 @@ import type { BlogCluster } from './blog-clusters';
 export type RichBlock=Record<string,unknown> & {_type:string};
 export type CollectionEntry<C extends 'courses'|'blog'|'testimonials'>=LegacyEntry<C>&{richBody:RichBlock[];data:LegacyEntry<C>['data']&{video?:string};contentRef:{collection:string;id:string;slug:string}};
 export interface Row {id:string;data:unknown}
-// Reuse reads only within this request: publishing remains visible on the next request.
+// Deduplicate within this request; EmDash also handles the configured native KV object cache.
 const collectionReads=new WeakMap<object,Map<string,Promise<Row[]>>>();
 export function readAll(collection:string):Promise<Row[]> {
  const context=getRequestContext();if(!context)return queryAll(collection);

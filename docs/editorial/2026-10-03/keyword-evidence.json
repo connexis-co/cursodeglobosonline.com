@@ -1,0 +1,139 @@
+{
+  "checkedAt": "2026-10-03",
+  "provider": "Ubersuggest",
+  "market": "Colombia",
+  "language": "Spanish",
+  "note": "Estimated volumes; monthly series end in 2025-11 and 2026-01. Not current measured traffic.",
+  "keywords": [
+    {
+      "keyword": "perro globoflexia",
+      "search_volume": 70,
+      "cpc": 0,
+      "seo_difficulty": 19,
+      "paid_difficulty": 1,
+      "competition": 0.01,
+      "search_intent": null,
+      "language": "Spanish",
+      "location": "Colombia",
+      "monthly_searches": [
+        {
+          "period": "202411",
+          "search_volume": 140
+        },
+        {
+          "period": "202412",
+          "search_volume": 90
+        },
+        {
+          "period": "202501",
+          "search_volume": 70
+        },
+        {
+          "period": "202502",
+          "search_volume": 50
+        },
+        {
+          "period": "202503",
+          "search_volume": 50
+        },
+        {
+          "period": "202504",
+          "search_volume": 70
+        },
+        {
+          "period": "202505",
+          "search_volume": 50
+        },
+        {
+          "period": "202506",
+          "search_volume": 90
+        },
+        {
+          "period": "202507",
+          "search_volume": 70
+        },
+        {
+          "period": "202508",
+          "search_volume": 90
+        },
+        {
+          "period": "202509",
+          "search_volume": 50
+        },
+        {
+          "period": "202510",
+          "search_volume": 90
+        },
+        {
+          "period": "202511",
+          "search_volume": 70
+        }
+      ]
+    },
+    {
+      "keyword": "globos con confeti",
+      "search_volume": 40,
+      "cpc": 0,
+      "seo_difficulty": 29,
+      "paid_difficulty": 52,
+      "competition": 0.52,
+      "search_intent": null,
+      "language": "Spanish",
+      "location": "Colombia",
+      "monthly_searches": [
+        {
+          "period": "202501",
+          "search_volume": 30
+        },
+        {
+          "period": "202502",
+          "search_volume": 40
+        },
+        {
+          "period": "202503",
+          "search_volume": 40
+        },
+        {
+          "period": "202504",
+          "search_volume": 40
+        },
+        {
+          "period": "202505",
+          "search_volume": 40
+        },
+        {
+          "period": "202506",
+          "search_volume": 50
+        },
+        {
+          "period": "202507",
+          "search_volume": 40
+        },
+        {
+          "period": "202508",
+          "search_volume": 50
+        },
+        {
+          "period": "202509",
+          "search_volume": 50
+        },
+        {
+          "period": "202510",
+          "search_volume": 50
+        },
+        {
+          "period": "202511",
+          "search_volume": 40
+        },
+        {
+          "period": "202512",
+          "search_volume": 20
+        },
+        {
+          "period": "202601",
+          "search_volume": 40
+        }
+      ]
+    }
+  ]
+}

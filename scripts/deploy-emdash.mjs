@@ -6,7 +6,8 @@ export function assertDevelopment(config){
  const expected={DB:'46f1b9d1-c426-46a7-8aa4-016bebd05595',RATINGS_DB:'59e66256-9615-4fa7-b8e2-09b92005da27'};
  if(config.d1_databases?.length!==2||config.d1_databases.some(d=>expected[d.binding]!==d.database_id))throw Error('Unexpected database binding.');
  if(config.r2_buckets?.length!==1||config.r2_buckets[0].bucket_name!=='globos-emdash-dev-media')throw Error('Unexpected media bucket.');
- if(config.kv_namespaces?.length!==1||config.kv_namespaces[0].id!=='8c8b74fc3dbd4e37823b5f8ad10a90b1')throw Error('Unexpected session namespace.');
+ const namespaces={SESSION:'8c8b74fc3dbd4e37823b5f8ad10a90b1',CACHE:'f68a42cb471343d19c33c72465c59695'};
+ if(config.kv_namespaces?.length!==2||new Set(config.kv_namespaces.map(k=>k.binding)).size!==2||config.kv_namespaces.some(k=>namespaces[k.binding]!==k.id))throw Error('Unexpected session/cache namespace.');
  if(config.workers_dev!==false||config.preview_urls!==false||config.assets?.run_worker_first!==true)throw Error('Development access protection is required.');
 }
 if(import.meta.url===new URL(process.argv[1],'file://').href){

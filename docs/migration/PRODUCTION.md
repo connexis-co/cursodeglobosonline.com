@@ -10,6 +10,7 @@ Autorización de lanzamiento del 3 de octubre de 2026: «arregla la pagina de no
 | CMS D1 | globos-emdash-production | globos-emdash-dev |
 | Archivos R2 | globos-emdash-production-media | globos-emdash-dev-media |
 | Sesiones KV | 909e08c406e84feeac6264af9a1fda84 | 8c8b74fc3dbd4e37823b5f8ad10a90b1 |
+| Caché de contenido KV | 4744a90cdd1c4a7fbc5a0d486a9261ac | f68a42cb471343d19c33c72465c59695 |
 | Votos D1 | cursodeglobosonline-ratings (existente) | globos-ratings-dev |
 
 Los identificadores restantes están en los archivos Wrangler. Los secretos no están en Git. Usuario solicitado `sably`; el proveedor externo de EmDash comprueba las credenciales y conserva los permisos y CSRF nativos. En producción se protegen el administrador y sus API. Las páginas, archivos publicados y comentarios públicos del blog permanecen accesibles. Las URLs privadas de workers.dev exigen autenticación y no permiten indexación.
@@ -33,7 +34,7 @@ Las nuevas estrellas del blog usan `/api/blog-ratings` en EmDash y la tabla inde
 3. `npm run deploy:prod` compila con el dominio público y valida todos los recursos de producción antes de desplegar.
 4. Comprobar las rutas afectadas. Para un cambio de estructura, ejecutar `PYTHONPATH=/tmp/globos-seo-python python3 scripts/audit-public-launch.py` con requests y beautifulsoup4 disponibles.
 
-Nunca ejecutar el seed o una importación de desarrollo sobre producción después del lanzamiento. Las ediciones editoriales se hacen en el panel correspondiente. Las consultas reutilizadas se limitan a una petición, sin una caché nueva que retrase lo publicado.
+Nunca ejecutar el seed o una importación de desarrollo sobre producción después del lanzamiento. Las ediciones editoriales se hacen en el panel correspondiente. Desde la revisión SEO del 3 de octubre se utiliza también la caché nativa de objetos de EmDash en KV, con espacios separados por ambiente, TTL de 60 segundos y revalidación de 1 segundo. EmDash invalida contenidos y referencias al editar; la propagación eventual de KV puede retrasar su visibilidad pública alrededor de un minuto. Vista previa y modo de edición omiten esa caché. No se cachean páginas HTML completas, comentarios ni votos con este mecanismo.
 
 ## Reversión
 
@@ -56,3 +57,7 @@ El despliegue Pages anterior `83b5b6e2-8995-4164-bcf6-0f0719f19247` permanece di
 - Revisión visual de Nosotros en escritorio; interacción del menú móvil y geometría sin desbordamiento a 390 px. No se completó una captura visual móvil.
 - [Search Console](verification/sitemap-submission.json): sitemap público enviado el 3 de octubre a las 08:18 UTC; respuesta 204 y `isPending: true`. No se solicitó Cambio de dirección ni se usó Indexing API.
 - [IndexNow](verification/indexnow-submission.json): 120 URLs enviadas y aceptadas con HTTP 200. Ni este acuse ni el sitemap garantizan indexación.
+
+## Revisión SEO posterior del 3 de octubre
+
+Producción `3035ccd3-3b4e-4100-82f6-d7fb9fe9cf2d`; desarrollo `552b86f5-cb2d-47e6-97e6-6006c89991ad`. Se añadieron dos artículos nativos (30 publicados en total), controles de intención editorial y la caché KV descrita arriba; se repararon las tablas de 25 artículos sin reseed. Rastreo posterior: 122 URLs de sitemap, 35 imágenes y 130 páginas del grafo; 28 pruebas aprobadas. El rendimiento visual móvil sigue pendiente. Ver [informe de seguimiento](../seo/2026-10-03-followup.md) y sus recibos antes de utilizar las cifras históricas del lanzamiento como estado actual.

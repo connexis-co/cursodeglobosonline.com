@@ -42,5 +42,5 @@ for p in pages:
 issues.extend(m['url'] for m in media if m.get('status')!=200 or not (m.get('type')or'').startswith('image/'))
 duplicateTitles=[t for t,n in collections.Counter(p.get('title') for p in pages).items() if n>1]
 report={'checkedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'origin':ORIGIN,'urls':len(urls),'images':len(images),'issues':issues,'duplicateTitles':duplicateTitles,'pages':pages,'media':media}
-out=pathlib.Path('docs/migration/verification/launch-'+('public' if ORIGIN==PUBLIC else 'preview')+'.json');out.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+out=pathlib.Path(os.environ.get('GLOBOS_AUDIT_OUTPUT','docs/migration/verification/launch-'+('public' if ORIGIN==PUBLIC else 'preview')+'.json'));out.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps({k:v for k,v in report.items() if k not in ['pages','media']},ensure_ascii=False));raise SystemExit(1 if issues or duplicateTitles else 0)

@@ -1,6 +1,8 @@
+import {blogSeoError} from './blog-seo';
 export const FIXED_PAGE_PATHS:Record<string,string>={inicio:'/',nosotros:'/nosotros/',contacto:'/contacto/',privacidad:'/legal/privacidad/',terminos:'/legal/terminos/'};
 export const pagePath=(slug:string)=>FIXED_PAGE_PATHS[slug]??`/paginas/${slug}/`;
 export function editorialError(collection:string,slug:string,d:Record<string,unknown>):string|undefined{
+ if(collection==='blog'){const error=blogSeoError(d);if(error)return error;}
  if(collection==='pages'&&d.path!==pagePath(slug))return `La ruta de esta página debe ser ${pagePath(slug)}. Cambia el slug para crear otra página.`;
  for(const key of ['cta_url','hotmart_url','checkout_url'])if(d[key]){try{const u=new URL(String(d[key]),'https://example.com');if(!['https:','http:'].includes(u.protocol))return 'El enlace no es seguro.';if(key!=='cta_url'&&(u.protocol!=='https:'||!['hotm.art','go.hotmart.com','pay.hotmart.com','hotmart.com'].includes(u.hostname)))return 'El checkout debe ser HTTPS de Hotmart.';}catch{return 'El enlace no es válido.';}}
  if(collection==='courses'){

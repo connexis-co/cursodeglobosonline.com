@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-03T09:25:57.340314+00:00",
+  "productionVersion": "3035ccd3-3b4e-4100-82f6-d7fb9fe9cf2d",
+  "developmentVersion": "552b86f5-cb2d-47e6-97e6-6006c89991ad",
+  "tests": {
+    "passed": 28,
+    "failed": 0
+  },
+  "astroCheck": {
+    "files": 154,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 99
+  },
+  "privatePolicyTest": {
+    "duplicatePrimaryKeywordPublishStatus": 422,
+    "draftTrashedAfterTest": true
+  },
+  "publication": {
+    "environment": "production",
+    "published": true,
+    "checkedAt": "2026-10-03T09:15:00.482Z",
+    "articles": [
+      {
+        "slug": "perrito-con-globo",
+        "id": "01M40GPE3P3P19B28D8QXKHDPV",
+        "status": "published",
+        "url": "https://cursodeglobosonline.com/blog/perrito-con-globo/"
+      },
+      {
+        "slug": "globos-con-confeti",
+        "id": "01M40GPKKGA4EEBTKH2V5WTJNF",
+        "status": "published",
+        "url": "https://cursodeglobosonline.com/blog/globos-con-confeti/"
+      }
+    ]
+  },
+  "indexNow": {
+    "urlCount": 122,
+    "httpStatus": 200
+  },
+  "visualReview": [
+    "Public dog article: title, author, original image, menu spacing, ratings and comments",
+    "Public confetti article: clean native tables and links"
+  ],
+  "remaining": "Mobile lab LCP is not resolved. Search-engine indexing is not guaranteed."
+}

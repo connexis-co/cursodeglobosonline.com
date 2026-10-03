@@ -1,0 +1,183 @@
+{
+  "checkedAt": "2026-10-03",
+  "period": {
+    "startDate": "2026-09-03",
+    "endDate": "2026-09-30"
+  },
+  "comparisonPeriod": {
+    "startDate": "2026-08-06",
+    "endDate": "2026-09-02"
+  },
+  "totals": {
+    "clicks": 261,
+    "impressions": 12509,
+    "ctr": 0.02086497721640419,
+    "position": 8.404908465904548
+  },
+  "previousTotals": {
+    "clicks": 173,
+    "impressions": 2755,
+    "ctr": 0.06279491833030854,
+    "position": 15.584029038112522
+  },
+  "queryPageRows": 963,
+  "segmentedRows": 1900,
+  "dailyOverlapRows": 397,
+  "blogOverlapQueries": [
+    {
+      "query": "como se llama los globos largos",
+      "pages": [
+        {
+          "url": "https://cursodeglobosonline.com/blog/globoflexia/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 9
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/tipos-y-tamanos-de-globos/",
+          "clicks": 0,
+          "impressions": 14,
+          "position": 7.642857142857143
+        }
+      ]
+    },
+    {
+      "query": "cuantos globos lleva un arco",
+      "pages": [
+        {
+          "url": "https://cursodeglobosonline.com/blog/arco-de-globos/",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 10.166666666666666
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/columnas-de-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 8
+        }
+      ]
+    },
+    {
+      "query": "cuantos globos necesito para hacer medio arco",
+      "pages": [
+        {
+          "url": "https://cursodeglobosonline.com/blog/arco-de-globos/",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 9.5
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/guirnalda-de-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 5
+        }
+      ]
+    },
+    {
+      "query": "decoración con globos colgados",
+      "pages": [
+        {
+          "url": "https://cursodeglobosonline.com/blog/como-decorar-con-globos-en-la-pared/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 33
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/decoracion-con-cortinas-y-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 48
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 23
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/decoracion-navidena-con-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 78
+        }
+      ]
+    },
+    {
+      "query": "figuras con globos largos",
+      "pages": [
+        {
+          "url": "https://cursodeglobosonline.com/blog/decoracion-con-globos-halloween/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 48
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/figuras-con-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 14
+        }
+      ]
+    },
+    {
+      "query": "inflado de globos",
+      "pages": [
+        {
+          "url": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 26
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 13
+        }
+      ]
+    },
+    {
+      "query": "inflar un globo",
+      "pages": [
+        {
+          "url": "https://cursodeglobosonline.com/blog/como-inflar-globos-largos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 24
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/como-inflar-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 50
+        }
+      ]
+    },
+    {
+      "query": "mini bouquet de globos para hombre",
+      "pages": [
+        {
+          "url": "https://cursodeglobosonline.com/blog/bouquet-de-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 20
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/decoracion-con-globos-para-hombre/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 6
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/decoracion-con-globos/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 44
+        }
+      ]
+    }
+  ],
+  "interpretation": "Sparse secondary impressions do not establish harmful editorial cannibalization. Commercial country/city overlaps require continued segmented review; no automatic removals."
+}
