@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-03T09:51:37.887912+00:00",
+  "rows": [
+    {
+      "url": "https://cursodeglobosonline.com/_emdash/admin",
+      "status": 401,
+      "location": null,
+      "xRobots": "noindex, nofollow, noarchive",
+      "contentType": "text/plain;charset=UTF-8"
+    },
+    {
+      "url": "https://dev.cursodeglobosonline.com/",
+      "status": 401,
+      "location": null,
+      "xRobots": "noindex, nofollow, noarchive",
+      "contentType": "text/plain;charset=UTF-8"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/blog/rss.xml",
+      "status": 200,
+      "location": null,
+      "xRobots": "noindex",
+      "contentType": "application/rss+xml; charset=utf-8"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/robots.txt",
+      "status": 200,
+      "location": null,
+      "xRobots": null,
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cali/curso-de-globoflexia/?PageSpeed=noscript&utm_source=gsc&gclid=verification&promo=octubre",
+      "status": 301,
+      "location": "https://cursodeglobosonline.com/co/cali/curso-de-globoflexia/?utm_source=gsc&gclid=verification&promo=octubre",
+      "xRobots": null,
+      "contentType": null
+    }
+  ]
+}

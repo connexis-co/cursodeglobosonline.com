@@ -1,0 +1,31 @@
+{
+  "verifiedAt": "2026-10-03T09:55:09.219651+00:00",
+  "productionVersion": "74ebba0c-3e85-4197-b036-162f8d360462",
+  "developmentVersion": "1956bc98-90e2-49a9-b366-84438c2565de",
+  "migrationTests": {
+    "passed": 33,
+    "failed": 0
+  },
+  "astroCheck": {
+    "files": 155,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 99
+  },
+  "builds": {
+    "development": "passed",
+    "production": "passed"
+  },
+  "developmentHttpCases": 11,
+  "coverageUrls": 143,
+  "coverageFinalStatuses": {
+    "200": 136,
+    "404": 7
+  },
+  "sitemapUrls": 122,
+  "cmsImages": 35,
+  "sitemapIssues": 0,
+  "imageRetry": "One ConnectionError recovered on targeted retry; both attempts retained in coverage-public-regression.json.",
+  "gscValidation": "Already started by owner. Not restarted or guaranteed to pass.",
+  "omitted": "Two robots.txt URLs absent from exports; GSC UI required sign-in. Owner authorized omission."
+}

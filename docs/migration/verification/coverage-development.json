@@ -1,0 +1,57 @@
+[
+  {
+    "path": "/cali/curso-de-globoflexia/?PageSpeed=noscript?PageSpeed%3Dnoscript&utm_source=gsc",
+    "status": 301,
+    "location": "https://dev.cursodeglobosonline.com/co/cali/curso-de-globoflexia/?utm_source=gsc"
+  },
+  {
+    "path": "/?s=%7Bsearch_term_string%7D",
+    "status": 301,
+    "location": "https://dev.cursodeglobosonline.com/"
+  },
+  {
+    "path": "/wp-content/plugins/*",
+    "status": 404,
+    "location": null
+  },
+  {
+    "path": "/wp-content/themes/Impreza-child/*",
+    "status": 404,
+    "location": null
+  },
+  {
+    "path": "/wp-admin/*",
+    "status": 404,
+    "location": null
+  },
+  {
+    "path": "/*",
+    "status": 404,
+    "location": null
+  },
+  {
+    "path": "/wp-admin/admin-ajax.php",
+    "status": 404,
+    "location": null
+  },
+  {
+    "path": "/co/cursos/eventos/",
+    "status": 301,
+    "location": "https://dev.cursodeglobosonline.com/blog/#ideas-por-ocasion"
+  },
+  {
+    "path": "/feed/",
+    "status": 301,
+    "location": "https://dev.cursodeglobosonline.com/blog/rss.xml"
+  },
+  {
+    "path": "/blog/rss.xml",
+    "status": 200,
+    "location": null
+  },
+  {
+    "path": "/co/curso-de-globoflexia/",
+    "status": 200,
+    "location": null
+  }
+]

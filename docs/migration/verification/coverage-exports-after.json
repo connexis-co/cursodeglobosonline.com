@@ -1,0 +1,4675 @@
+{
+  "checkedAt": "2026-10-03T09:51:20.444855+00:00",
+  "rows": [
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 2,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/wp-content/plugins/*",
+      "lastCrawl": "2026-09-21 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/wp-content/plugins/*",
+          "status": 404,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/wp-content/plugins/*",
+      "status": 404,
+      "canonical": [],
+      "title": "Página no encontrada — Curso de Globos Online",
+      "robots": [
+        "noindex, follow"
+      ],
+      "xRobots": null,
+      "h1": [
+        "¡Se nos reventó este globo!"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 3,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/medellin/",
+      "lastCrawl": "2026-09-21 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/medellin/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/medellin/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/medellin/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/medellin/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/medellin/"
+      ],
+      "title": "Curso de Decoración con Globos en Medellín: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Medellín"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 4,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/barranquilla/",
+      "lastCrawl": "2026-09-20 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/barranquilla/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/barranquilla/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/barranquilla/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/barranquilla/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/barranquilla/"
+      ],
+      "title": "Curso de Decoración con Globos en Barranquilla: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Barranquilla"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 5,
+      "issue": "Página con redirección",
+      "url": "http://www.cursodeglobosonline.com/",
+      "lastCrawl": "2026-09-20 00:00:00",
+      "chain": [
+        {
+          "url": "http://www.cursodeglobosonline.com/",
+          "status": 301,
+          "location": "https://www.cursodeglobosonline.com/"
+        },
+        {
+          "url": "https://www.cursodeglobosonline.com/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/"
+      ],
+      "title": "Curso de Decoración con Globos Online con Certificado",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos para vivir de las fiestas"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 6,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/",
+      "lastCrawl": "2026-09-20 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/"
+      ],
+      "title": "Curso de Decoración con Globos Online con Certificado",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos para vivir de las fiestas"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 7,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/mexico/",
+      "lastCrawl": "2026-09-19 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/mexico/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/"
+      ],
+      "title": "Curso de Decoración con Globos Online en México",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en México"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 8,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/bucaramanga/",
+      "lastCrawl": "2026-09-19 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/bucaramanga/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/bucaramanga/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/bucaramanga/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/bucaramanga/"
+      ],
+      "title": "Curso de Decoración con Globos en Bucaramanga: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Bucaramanga"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 9,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/us/",
+      "lastCrawl": "2026-09-18 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/"
+      ],
+      "title": "Curso de Decoración con Globos Online en Estados Unidos",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Estados Unidos"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 10,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/curso-flores-con-globos/",
+      "lastCrawl": "2026-09-18 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/curso-flores-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/"
+      ],
+      "title": "Curso de Flores con Globos Online en Colombia | 31 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Flores con Globos en Colombia — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 11,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/medellin/curso-de-globoflexia/",
+      "lastCrawl": "2026-09-16 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/medellin/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/medellin/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/medellin/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/medellin/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Medellín: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Medellín — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 12,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/mexico/curso-globos-burbuja/",
+      "lastCrawl": "2026-09-16 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/mexico/curso-globos-burbuja/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/curso-de-globos-burbuja/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/curso-de-globos-burbuja/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/curso-de-globos-burbuja/"
+      ],
+      "title": "Curso de Globos Burbuja Online en México | 18 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globos Burbuja en México — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 13,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/es/",
+      "lastCrawl": "2026-09-14 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/es/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/es/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/es/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/es/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/es/"
+      ],
+      "title": "Curso de Decoración con Globos Online en España",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en España"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 14,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/bogota/",
+      "lastCrawl": "2026-09-13 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/bogota/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/bogota/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/bogota/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/bogota/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/bogota/"
+      ],
+      "title": "Curso de Decoración con Globos en Bogotá: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Bogotá"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 15,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/wp-content/*",
+      "lastCrawl": "2026-09-13 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/wp-content/*",
+          "status": 404,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/wp-content/*",
+      "status": 404,
+      "canonical": [],
+      "title": "Página no encontrada — Curso de Globos Online",
+      "robots": [
+        "noindex, follow"
+      ],
+      "xRobots": null,
+      "h1": [
+        "¡Se nos reventó este globo!"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 16,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/curso-bouquets-globos/",
+      "lastCrawl": "2026-09-10 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/curso-bouquets-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos Online en Colombia | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en Colombia — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 17,
+      "issue": "Página con redirección",
+      "url": "http://cursodeglobosonline.com/",
+      "lastCrawl": "2026-09-08 00:00:00",
+      "chain": [
+        {
+          "url": "http://cursodeglobosonline.com/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/"
+      ],
+      "title": "Curso de Decoración con Globos Online con Certificado",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos para vivir de las fiestas"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 18,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/curso-globoflexia/",
+      "lastCrawl": "2026-09-07 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/curso-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Colombia: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Colombia — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 19,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/cali/",
+      "lastCrawl": "2026-09-07 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/cali/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/cali/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/cali/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/cali/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/cali/"
+      ],
+      "title": "Curso de Decoración con Globos en Cali: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Cali"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 20,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/curso-globos-burbuja/",
+      "lastCrawl": "2026-09-07 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/curso-globos-burbuja/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/curso-de-globos-burbuja/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/curso-de-globos-burbuja/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globos-burbuja/"
+      ],
+      "title": "Curso de Globos Burbuja Online en Colombia | 18 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globos Burbuja en Colombia — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 21,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/mexico/curso-de-globoflexia/",
+      "lastCrawl": "2026-09-06 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/mexico/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en México: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en México — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 22,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/peru/curso-globos-burbuja/",
+      "lastCrawl": "2026-09-05 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/peru/curso-globos-burbuja/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/curso-de-globos-burbuja/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/curso-de-globos-burbuja/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/curso-de-globos-burbuja/"
+      ],
+      "title": "Curso de Globos Burbuja Online en Perú | 18 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globos Burbuja en Perú — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 23,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/barranquilla/curso-de-globoflexia/",
+      "lastCrawl": "2026-08-29 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/barranquilla/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/barranquilla/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/barranquilla/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/barranquilla/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Barranquilla: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Barranquilla — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 24,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/es/bilbao/curso-de-bouquets-de-globos/",
+      "lastCrawl": "2026-08-26 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/es/bilbao/curso-de-bouquets-de-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/es/bilbao/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/es/bilbao/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/es/bilbao/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/es/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos Online en Bilbao | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en Bilbao — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 25,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/peru/curso-de-globoflexia/",
+      "lastCrawl": "2026-08-26 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/peru/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Perú: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Perú — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 26,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/nosotros/",
+      "lastCrawl": "2026-08-22 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/nosotros/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/nosotros/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/nosotros/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/nosotros/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/nosotros/"
+      ],
+      "title": "Quiénes somos | Curso de Globos Online (Sably)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "La escuela de los que viven de las fiestas"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 27,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/us/curso-de-globoflexia/",
+      "lastCrawl": "2026-08-22 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia en Estados Unidos: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Estados Unidos — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 28,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/cl/",
+      "lastCrawl": "2026-08-22 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/cl/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/cl/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/cl/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/cl/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/cl/"
+      ],
+      "title": "Curso de Decoración con Globos Online en Chile",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Chile"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 29,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/ar/",
+      "lastCrawl": "2026-08-22 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ar/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ar/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ar/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ar/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ar/"
+      ],
+      "title": "Curso de Decoración con Globos Online en Argentina",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Argentina"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 30,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/pe/",
+      "lastCrawl": "2026-08-21 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/pe/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/"
+      ],
+      "title": "Curso de Decoración con Globos Online en Perú",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Perú"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 31,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/us/curso-de-bouquets-de-globos/",
+      "lastCrawl": "2026-08-21 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/curso-de-bouquets-de-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos en Estados Unidos | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en Estados Unidos — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 32,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/es/curso-de-bouquets-de-globos/",
+      "lastCrawl": "2026-08-20 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/es/curso-de-bouquets-de-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/es/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/es/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/es/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/es/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos Online en España | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en España — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 33,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/mx/curso-de-globos-burbuja/",
+      "lastCrawl": "2026-08-17 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/mx/curso-de-globos-burbuja/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/curso-de-globos-burbuja/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/curso-de-globos-burbuja/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/curso-de-globos-burbuja/"
+      ],
+      "title": "Curso de Globos Burbuja Online en México | 18 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globos Burbuja en México — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 34,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/us/cursos/decoracion-con-globos/",
+      "lastCrawl": "2026-08-17 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/cursos/decoracion-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/cursos/decoracion-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/cursos/decoracion-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/cursos/decoracion-con-globos/",
+      "status": 200,
+      "canonical": [],
+      "title": "Cursos de Decoración con Globos en Estados Unidos 🎈 Online",
+      "robots": [
+        "noindex, follow"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 35,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/blog/",
+      "lastCrawl": "2026-08-17 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/blog/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 36,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/us/cursos/",
+      "lastCrawl": "2026-08-15 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/cursos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/cursos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/cursos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/cursos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/cursos/"
+      ],
+      "title": "Cursos de Globos Online en Estados Unidos: Catálogo y Precios",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Catálogo de cursos de globos en Estados Unidos: precios y temarios"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 37,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/es/curso-de-globos-burbuja/",
+      "lastCrawl": "2026-08-15 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/es/curso-de-globos-burbuja/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/es/curso-de-globos-burbuja/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/es/curso-de-globos-burbuja/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/es/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/es/curso-de-globos-burbuja/"
+      ],
+      "title": "Curso de Globos Burbuja Online en España | 18 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globos Burbuja en España — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 38,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/es/curso-de-globoflexia/",
+      "lastCrawl": "2026-08-15 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/es/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/es/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/es/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/es/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/es/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en España: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en España — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 39,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/legal/terminos/",
+      "lastCrawl": "2026-08-15 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/legal/terminos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/legal/terminos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/legal/terminos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/legal/terminos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/legal/terminos/"
+      ],
+      "title": "Términos y Condiciones — Curso de Globos Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Términos y condiciones"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 40,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/mx/",
+      "lastCrawl": "2026-08-14 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/mx/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/"
+      ],
+      "title": "Curso de Decoración con Globos Online en México",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en México"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 41,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/mx/curso-de-globoflexia/",
+      "lastCrawl": "2026-08-14 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/mx/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en México: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en México — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 42,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/co/cursos/",
+      "lastCrawl": "2026-08-14 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/co/cursos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/cursos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/cursos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/cursos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/cursos/"
+      ],
+      "title": "Cursos de Globos Online en Colombia: Catálogo y Precios",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Catálogo de cursos de globos en Colombia: precios y temarios"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 43,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/co/bogota/",
+      "lastCrawl": "2026-08-14 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/co/bogota/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/bogota/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/bogota/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/bogota/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/bogota/"
+      ],
+      "title": "Curso de Decoración con Globos en Bogotá: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Bogotá"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 44,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/co/bucaramanga/",
+      "lastCrawl": "2026-08-14 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/co/bucaramanga/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/bucaramanga/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/bucaramanga/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/bucaramanga/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/bucaramanga/"
+      ],
+      "title": "Curso de Decoración con Globos en Bucaramanga: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Bucaramanga"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 45,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/co/curso-de-globoflexia/",
+      "lastCrawl": "2026-08-14 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/co/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Colombia: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Colombia — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 46,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/co/barranquilla/",
+      "lastCrawl": "2026-08-14 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/co/barranquilla/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/barranquilla/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/barranquilla/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/barranquilla/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/barranquilla/"
+      ],
+      "title": "Curso de Decoración con Globos en Barranquilla: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Barranquilla"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 47,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/us/miami/curso-de-globos-burbuja/",
+      "lastCrawl": "2026-08-14 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/miami/curso-de-globos-burbuja/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/miami/curso-de-globos-burbuja/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/miami/curso-de-globos-burbuja/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/miami/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/curso-de-globos-burbuja/"
+      ],
+      "title": "Curso de Globos Burbuja Online en Miami | 18 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globos Burbuja en Miami — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 48,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/co/curso-de-flores-con-globos/",
+      "lastCrawl": "2026-08-14 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/co/curso-de-flores-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-flores-con-globos/"
+      ],
+      "title": "Curso de Flores con Globos Online en Colombia | 31 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Flores con Globos en Colombia — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 49,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/ec/",
+      "lastCrawl": "2026-08-13 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ec/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ec/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ec/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ec/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ec/"
+      ],
+      "title": "Curso de Decoración con Globos Online en Ecuador",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Ecuador"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 50,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/mexico/curso-bouquets-globos/",
+      "lastCrawl": "2026-08-13 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/mexico/curso-bouquets-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos Online en México | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en México — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 51,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/pe/cusco/curso-de-flores-con-globos/",
+      "lastCrawl": "2026-08-11 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/pe/cusco/curso-de-flores-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/cusco/curso-de-flores-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/cusco/curso-de-flores-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/cusco/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/curso-de-flores-con-globos/"
+      ],
+      "title": "Curso de Flores con Globos Online en Cusco | 31 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Flores con Globos en Cusco — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 52,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/us/losangeles/curso-de-bouquets-de-globos/",
+      "lastCrawl": "2026-08-11 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/losangeles/curso-de-bouquets-de-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/losangeles/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/losangeles/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/losangeles/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos en Los Ángeles | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en Los Ángeles — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 53,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/ar/rosario/curso-de-bouquets-de-globos/",
+      "lastCrawl": "2026-08-11 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ar/rosario/curso-de-bouquets-de-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ar/rosario/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ar/rosario/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ar/rosario/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ar/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos Online en Rosario | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en Rosario — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 54,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/mx/cursos/",
+      "lastCrawl": "2026-08-11 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/mx/cursos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/cursos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/cursos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/cursos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/cursos/"
+      ],
+      "title": "Cursos de Globos Online en México: Catálogo y Precios",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Catálogo de cursos de globos en México: precios y temarios"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 55,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/us/chicago/curso-de-globoflexia/",
+      "lastCrawl": "2026-08-11 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/chicago/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/chicago/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/chicago/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/chicago/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Chicago: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Chicago — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 56,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/co/barranquilla/curso-de-globos-burbuja/",
+      "lastCrawl": "2026-08-11 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/co/barranquilla/curso-de-globos-burbuja/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/barranquilla/curso-de-globos-burbuja/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/barranquilla/curso-de-globos-burbuja/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/barranquilla/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globos-burbuja/"
+      ],
+      "title": "Curso de Globos Burbuja Online en Barranquilla | 18 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globos Burbuja en Barranquilla — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 57,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/es/barcelona/curso-de-flores-con-globos/",
+      "lastCrawl": "2026-08-11 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/es/barcelona/curso-de-flores-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/es/barcelona/curso-de-flores-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/es/barcelona/curso-de-flores-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/es/barcelona/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/es/curso-de-flores-con-globos/"
+      ],
+      "title": "Curso de Flores con Globos Online en Barcelona | 31 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Flores con Globos en Barcelona — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 58,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/us/chicago/curso-de-bouquets-de-globos/",
+      "lastCrawl": "2026-08-11 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/chicago/curso-de-bouquets-de-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/chicago/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/chicago/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/chicago/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos Online en Chicago | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en Chicago — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 59,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/wp-content/themes/Impreza/*",
+      "lastCrawl": "2026-08-11 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/wp-content/themes/Impreza/*",
+          "status": 404,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/wp-content/themes/Impreza/*",
+      "status": 404,
+      "canonical": [],
+      "title": "Página no encontrada — Curso de Globos Online",
+      "robots": [
+        "noindex, follow"
+      ],
+      "xRobots": null,
+      "h1": [
+        "¡Se nos reventó este globo!"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 60,
+      "issue": "Página con redirección",
+      "url": "https://www.cursodeglobosonline.com/us/chicago/curso-de-globos-burbuja/",
+      "lastCrawl": "2026-08-11 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/chicago/curso-de-globos-burbuja/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/chicago/curso-de-globos-burbuja/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/chicago/curso-de-globos-burbuja/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/chicago/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/curso-de-globos-burbuja/"
+      ],
+      "title": "Curso de Globos Burbuja Online en Chicago | 18 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globos Burbuja en Chicago — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 61,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/peru/curso-flores-con-globos/",
+      "lastCrawl": "2026-08-11 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/peru/curso-flores-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/curso-de-flores-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/curso-de-flores-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/curso-de-flores-con-globos/"
+      ],
+      "title": "Curso de Flores con Globos Online en Perú | 31 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Flores con Globos en Perú — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 62,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/bucaramanga/curso-de-globoflexia/",
+      "lastCrawl": "2026-08-07 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/bucaramanga/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/bucaramanga/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/bucaramanga/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/bucaramanga/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Bucaramanga: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Bucaramanga — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 63,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/mexico/curso-flores-con-globos/",
+      "lastCrawl": "2026-08-07 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/mexico/curso-flores-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/curso-de-flores-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/curso-de-flores-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/curso-de-flores-con-globos/"
+      ],
+      "title": "Curso de Flores con Globos Online en México | 31 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Flores con Globos en México — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (1).xlsx",
+      "sourceRow": 64,
+      "issue": "Página con redirección",
+      "url": "https://cursodeglobosonline.com/peru/curso-bouquets-globos/",
+      "lastCrawl": "2026-08-06 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/peru/curso-bouquets-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos Online en Perú | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en Perú — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (2).xlsx",
+      "sourceRow": 2,
+      "issue": "Rastreada: actualmente sin indexar",
+      "url": "https://cursodeglobosonline.com/zd7n/",
+      "lastCrawl": "2026-08-17 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/zd7n/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/zd7n/",
+      "status": 200,
+      "canonical": [],
+      "title": "",
+      "robots": [],
+      "xRobots": null,
+      "h1": [],
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (2).xlsx",
+      "sourceRow": 3,
+      "issue": "Rastreada: actualmente sin indexar",
+      "url": "https://cursodeglobosonline.com/cali/curso-de-globoflexia/",
+      "lastCrawl": "2026-05-22 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/cali/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/cali/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/cali/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/cali/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Cali: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Cali — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (2).xlsx",
+      "sourceRow": 4,
+      "issue": "Rastreada: actualmente sin indexar",
+      "url": "https://cursodeglobosonline.com/feed/",
+      "lastCrawl": "2026-05-10 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/feed/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/rss.xml"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/rss.xml",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/rss.xml",
+      "status": 200,
+      "canonical": [],
+      "title": "Blog de Curso de Globos Online",
+      "robots": [],
+      "xRobots": "noindex",
+      "h1": [],
+      "contentType": "application/rss+xml; charset=utf-8"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (2).xlsx",
+      "sourceRow": 5,
+      "issue": "Rastreada: actualmente sin indexar",
+      "url": "http://cursodeglobosonline.com/barranquilla/curso-de-globoflexia/?PageSpeed=noscript",
+      "lastCrawl": "2026-03-29 00:00:00",
+      "chain": [
+        {
+          "url": "http://cursodeglobosonline.com/barranquilla/curso-de-globoflexia/?PageSpeed=noscript",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/barranquilla/curso-de-globoflexia/?PageSpeed=noscript"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/barranquilla/curso-de-globoflexia/?PageSpeed=noscript",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/barranquilla/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/barranquilla/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/barranquilla/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Barranquilla: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Barranquilla — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (2).xlsx",
+      "sourceRow": 6,
+      "issue": "Rastreada: actualmente sin indexar",
+      "url": "http://cursodeglobosonline.com/cali/curso-de-globoflexia/?PageSpeed=noscript",
+      "lastCrawl": "2025-05-22 00:00:00",
+      "chain": [
+        {
+          "url": "http://cursodeglobosonline.com/cali/curso-de-globoflexia/?PageSpeed=noscript",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/cali/curso-de-globoflexia/?PageSpeed=noscript"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/cali/curso-de-globoflexia/?PageSpeed=noscript",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/cali/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/cali/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/cali/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Cali: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Cali — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (2).xlsx",
+      "sourceRow": 7,
+      "issue": "Rastreada: actualmente sin indexar",
+      "url": "https://cursodeglobosonline.com/cali/curso-de-globoflexia/?PageSpeed=noscript?PageSpeed%3Dnoscript",
+      "lastCrawl": "2025-05-22 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/cali/curso-de-globoflexia/?PageSpeed=noscript?PageSpeed%3Dnoscript",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/cali/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/cali/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/cali/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Cali: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Cali — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 2,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://cursodeglobosonline.com/pe/cursos/eventos/",
+      "lastCrawl": "2026-09-20 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/pe/cursos/eventos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 3,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://cursodeglobosonline.com/*",
+      "lastCrawl": "2026-08-14 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/*",
+          "status": 404,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/*",
+      "status": 404,
+      "canonical": [],
+      "title": "Página no encontrada — Curso de Globos Online",
+      "robots": [
+        "noindex, follow"
+      ],
+      "xRobots": null,
+      "h1": [
+        "¡Se nos reventó este globo!"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 4,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://cursodeglobosonline.com/us/cursos/eventos/",
+      "lastCrawl": "2026-08-13 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/us/cursos/eventos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 5,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://cursodeglobosonline.com/wp-admin/*",
+      "lastCrawl": "2026-08-13 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/wp-admin/*",
+          "status": 404,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/wp-admin/*",
+      "status": 404,
+      "canonical": [],
+      "title": "Página no encontrada — Curso de Globos Online",
+      "robots": [
+        "noindex, follow"
+      ],
+      "xRobots": null,
+      "h1": [
+        "¡Se nos reventó este globo!"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 6,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://cursodeglobosonline.com/cl/cursos/eventos/",
+      "lastCrawl": "2026-08-13 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/cl/cursos/eventos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 7,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://cursodeglobosonline.com/mx/cursos/emprendimiento/",
+      "lastCrawl": "2026-08-13 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/mx/cursos/emprendimiento/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/#negocio"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/#negocio",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/#negocio",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 8,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://cursodeglobosonline.com/co/cursos/eventos/",
+      "lastCrawl": "2026-08-13 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/co/cursos/eventos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 9,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://cursodeglobosonline.com/us/cursos/emprendimiento/",
+      "lastCrawl": "2026-08-13 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/us/cursos/emprendimiento/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/#negocio"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/#negocio",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/#negocio",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 10,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://cursodeglobosonline.com/es/cursos/eventos/",
+      "lastCrawl": "2026-08-13 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/es/cursos/eventos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 11,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://cursodeglobosonline.com/ec/cursos/emprendimiento/",
+      "lastCrawl": "2026-08-13 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/ec/cursos/emprendimiento/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/#negocio"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/#negocio",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/#negocio",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 12,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://www.cursodeglobosonline.com/pe/cursos/emprendimiento/",
+      "lastCrawl": "2026-08-10 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/pe/cursos/emprendimiento/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/#negocio"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/#negocio",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/#negocio",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 13,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://cursodeglobosonline.com/wp-admin/admin-ajax.php",
+      "lastCrawl": "2026-08-10 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/wp-admin/admin-ajax.php",
+          "status": 404,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/wp-admin/admin-ajax.php",
+      "status": 404,
+      "canonical": [],
+      "title": "Página no encontrada — Curso de Globos Online",
+      "robots": [
+        "noindex, follow"
+      ],
+      "xRobots": null,
+      "h1": [
+        "¡Se nos reventó este globo!"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 14,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://www.cursodeglobosonline.com/pe/cursos/eventos/",
+      "lastCrawl": "2026-08-09 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/pe/cursos/eventos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 15,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://cursodeglobosonline.com/mx/cursos/eventos/",
+      "lastCrawl": "2026-08-09 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/mx/cursos/eventos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 16,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://www.cursodeglobosonline.com/es/cursos/eventos/",
+      "lastCrawl": "2026-08-09 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/es/cursos/eventos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 17,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://www.cursodeglobosonline.com/us/cursos/eventos/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/cursos/eventos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/blog/#ideas-por-ocasion",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "title": "Blog de decoración con globos: guías e ideas paso a paso",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Decoración con globos, explicada por quienes la enseñan"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03 (3).xlsx",
+      "sourceRow": 18,
+      "issue": "No se ha encontrado (404)",
+      "url": "https://cursodeglobosonline.com/wp-content/themes/Impreza-child/*",
+      "lastCrawl": "2026-07-23 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/wp-content/themes/Impreza-child/*",
+          "status": 404,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/wp-content/themes/Impreza-child/*",
+      "status": 404,
+      "canonical": [],
+      "title": "Página no encontrada — Curso de Globos Online",
+      "robots": [
+        "noindex, follow"
+      ],
+      "xRobots": null,
+      "h1": [
+        "¡Se nos reventó este globo!"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 2,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://cursodeglobosonline.com/?s=%7Bsearch_term_string%7D",
+      "lastCrawl": "2026-09-20 00:00:00",
+      "chain": [
+        {
+          "url": "https://cursodeglobosonline.com/?s=%7Bsearch_term_string%7D",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/"
+      ],
+      "title": "Curso de Decoración con Globos Online con Certificado",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos para vivir de las fiestas"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 3,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/us/chicago/",
+      "lastCrawl": "2026-08-10 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/chicago/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/chicago/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/chicago/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/chicago/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/chicago/"
+      ],
+      "title": "Curso de Decoración con Globos en Chicago: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Chicago"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 4,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/mx/cdmx/",
+      "lastCrawl": "2026-08-10 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/mx/cdmx/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/cdmx/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/cdmx/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/cdmx/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/cdmx/"
+      ],
+      "title": "Curso de Decoración con Globos en Ciudad de México: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Ciudad de México"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 5,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/es/sevilla/",
+      "lastCrawl": "2026-08-10 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/es/sevilla/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/es/sevilla/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/es/sevilla/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/es/sevilla/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/es/sevilla/"
+      ],
+      "title": "Curso de Decoración con Globos en Sevilla: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Sevilla"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 6,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/ar/rosario/",
+      "lastCrawl": "2026-08-10 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ar/rosario/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ar/rosario/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ar/rosario/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ar/rosario/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ar/rosario/"
+      ],
+      "title": "Curso de Decoración con Globos en Rosario: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Rosario"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 7,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/us/losangeles/",
+      "lastCrawl": "2026-08-10 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/losangeles/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/losangeles/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/losangeles/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/losangeles/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/losangeles/"
+      ],
+      "title": "Curso de Decoración con Globos en Los Ángeles: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Los Ángeles"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 8,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/ec/cuenca/",
+      "lastCrawl": "2026-08-10 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ec/cuenca/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ec/cuenca/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ec/cuenca/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ec/cuenca/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ec/cuenca/"
+      ],
+      "title": "Curso de Decoración con Globos en Cuenca: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Cuenca"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 9,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/mx/puebla/",
+      "lastCrawl": "2026-08-10 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/mx/puebla/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/puebla/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/puebla/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/puebla/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/puebla/"
+      ],
+      "title": "Curso de Decoración con Globos en Puebla: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Puebla"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 10,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/es/barcelona/",
+      "lastCrawl": "2026-08-09 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/es/barcelona/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/es/barcelona/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/es/barcelona/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/es/barcelona/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/es/barcelona/"
+      ],
+      "title": "Curso de Decoración con Globos en Barcelona: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Barcelona"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 11,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/ec/quito/",
+      "lastCrawl": "2026-08-09 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ec/quito/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ec/quito/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ec/quito/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ec/quito/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ec/quito/"
+      ],
+      "title": "Curso de Decoración con Globos en Quito: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Quito"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 12,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/mx/monterrey/",
+      "lastCrawl": "2026-08-09 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/mx/monterrey/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/monterrey/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/monterrey/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/monterrey/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/monterrey/"
+      ],
+      "title": "Curso de Decoración con Globos en Monterrey: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Monterrey"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 13,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/co/cali/curso-de-bouquets-de-globos/",
+      "lastCrawl": "2026-08-09 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/co/cali/curso-de-bouquets-de-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/cali/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/cali/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/cali/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos Online en Cali | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en Cali — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 14,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/co/cali/",
+      "lastCrawl": "2026-08-09 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/co/cali/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/cali/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/cali/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/cali/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/cali/"
+      ],
+      "title": "Curso de Decoración con Globos en Cali: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Cali"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 15,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/pe/cusco/",
+      "lastCrawl": "2026-08-09 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/pe/cusco/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/cusco/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/cusco/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/cusco/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/cusco/"
+      ],
+      "title": "Curso de Decoración con Globos en Cusco: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Cusco"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 16,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/cl/concepcion/curso-de-globoflexia/",
+      "lastCrawl": "2026-08-09 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/cl/concepcion/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/cl/concepcion/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/cl/concepcion/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/cl/concepcion/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/cl/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Concepción: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Concepción — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 17,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/ec/curso-de-globos-burbuja/",
+      "lastCrawl": "2026-08-09 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ec/curso-de-globos-burbuja/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ec/curso-de-globos-burbuja/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ec/curso-de-globos-burbuja/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ec/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ec/curso-de-globos-burbuja/"
+      ],
+      "title": "Curso de Globos Burbuja Online en Ecuador | 18 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globos Burbuja en Ecuador — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 18,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/ec/cursos/",
+      "lastCrawl": "2026-08-09 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ec/cursos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ec/cursos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ec/cursos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ec/cursos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ec/cursos/"
+      ],
+      "title": "Cursos de Globos Online en Ecuador: Catálogo y Precios",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Catálogo de cursos de globos en Ecuador: precios y temarios"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 19,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/ec/guayaquil/",
+      "lastCrawl": "2026-08-09 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ec/guayaquil/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ec/guayaquil/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ec/guayaquil/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ec/guayaquil/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ec/guayaquil/"
+      ],
+      "title": "Curso de Decoración con Globos en Guayaquil: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Guayaquil"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 20,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/cl/cursos/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/cl/cursos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/cl/cursos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/cl/cursos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/cl/cursos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/cl/cursos/"
+      ],
+      "title": "Cursos de Globos Online en Chile: Catálogo y Precios",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Catálogo de cursos de globos en Chile: precios y temarios"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 21,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/cl/concepcion/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/cl/concepcion/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/cl/concepcion/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/cl/concepcion/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/cl/concepcion/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/cl/concepcion/"
+      ],
+      "title": "Curso de Decoración con Globos en Concepción: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Concepción"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 22,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/cl/curso-de-globoflexia/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/cl/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/cl/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/cl/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/cl/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/cl/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Chile: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Chile — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 23,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/pe/arequipa/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/pe/arequipa/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/arequipa/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/arequipa/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/arequipa/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/arequipa/"
+      ],
+      "title": "Curso de Decoración con Globos en Arequipa: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Arequipa"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 24,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/ar/buenosaires/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ar/buenosaires/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ar/buenosaires/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ar/buenosaires/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ar/buenosaires/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ar/buenosaires/"
+      ],
+      "title": "Curso de Decoración con Globos en Buenos Aires: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Buenos Aires"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 25,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/us/houston/curso-de-flores-con-globos/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/houston/curso-de-flores-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/houston/curso-de-flores-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/houston/curso-de-flores-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/houston/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/curso-de-flores-con-globos/"
+      ],
+      "title": "Curso de Flores con Globos Online en Houston | 31 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Flores con Globos en Houston — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 26,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/es/madrid/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/es/madrid/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/es/madrid/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/es/madrid/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/es/madrid/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/es/madrid/"
+      ],
+      "title": "Curso de Decoración con Globos en Madrid: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Madrid"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 27,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/us/houston/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/houston/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/houston/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/houston/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/houston/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/houston/"
+      ],
+      "title": "Curso de Decoración con Globos en Houston: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Houston"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 28,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/ar/mendoza/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ar/mendoza/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ar/mendoza/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ar/mendoza/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ar/mendoza/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ar/mendoza/"
+      ],
+      "title": "Curso de Decoración con Globos en Mendoza: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Mendoza"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 29,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/co/cartagena/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/co/cartagena/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/cartagena/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/cartagena/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/cartagena/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/cartagena/"
+      ],
+      "title": "Curso de Decoración con Globos en Cartagena: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Cartagena"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 30,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/us/miami/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/miami/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/miami/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/miami/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/miami/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/miami/"
+      ],
+      "title": "Curso de Decoración con Globos en Miami: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Miami"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 31,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/us/newyork/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/us/newyork/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/us/newyork/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/us/newyork/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/us/newyork/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/us/newyork/"
+      ],
+      "title": "Curso de Decoración con Globos en Nueva York: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Nueva York"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 32,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/es/valencia/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/es/valencia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/es/valencia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/es/valencia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/es/valencia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/es/valencia/"
+      ],
+      "title": "Curso de Decoración con Globos en Valencia: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Valencia"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 33,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/es/bilbao/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/es/bilbao/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/es/bilbao/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/es/bilbao/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/es/bilbao/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/es/bilbao/"
+      ],
+      "title": "Curso de Decoración con Globos en Bilbao: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Bilbao"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 34,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/mx/guadalajara/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/mx/guadalajara/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/guadalajara/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/guadalajara/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/guadalajara/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/guadalajara/"
+      ],
+      "title": "Curso de Decoración con Globos en Guadalajara: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Guadalajara"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 35,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/pe/trujillo/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/pe/trujillo/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/trujillo/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/trujillo/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/trujillo/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/trujillo/"
+      ],
+      "title": "Curso de Decoración con Globos en Trujillo: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Trujillo"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 36,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/ec/curso-de-bouquets-de-globos/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ec/curso-de-bouquets-de-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ec/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ec/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ec/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ec/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos Online en Ecuador | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en Ecuador — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 37,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/ec/curso-de-globoflexia/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ec/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ec/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ec/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ec/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ec/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Ecuador: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Ecuador — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 38,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/cl/curso-de-bouquets-de-globos/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/cl/curso-de-bouquets-de-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/cl/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/cl/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/cl/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/cl/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos Online en Chile | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en Chile — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 39,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/cl/curso-de-globos-burbuja/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/cl/curso-de-globos-burbuja/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/cl/curso-de-globos-burbuja/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/cl/curso-de-globos-burbuja/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/cl/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/cl/curso-de-globos-burbuja/"
+      ],
+      "title": "Curso de Globos Burbuja Online en Chile | 18 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globos Burbuja en Chile — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 40,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/es/malaga/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/es/malaga/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/es/malaga/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/es/malaga/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/es/malaga/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/es/malaga/"
+      ],
+      "title": "Curso de Decoración con Globos en Málaga: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Málaga"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 41,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/cl/santiago/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/cl/santiago/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/cl/santiago/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/cl/santiago/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/cl/santiago/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/cl/santiago/"
+      ],
+      "title": "Curso de Decoración con Globos en Santiago: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Santiago"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 42,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/co/curso-de-globos-burbuja/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/co/curso-de-globos-burbuja/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/co/curso-de-globos-burbuja/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/co/curso-de-globos-burbuja/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/co/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globos-burbuja/"
+      ],
+      "title": "Curso de Globos Burbuja Online en Colombia | 18 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globos Burbuja en Colombia — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 43,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/mx/curso-de-bouquets-de-globos/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/mx/curso-de-bouquets-de-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos Online en México | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en México — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 44,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/pe/curso-de-globos-burbuja/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/pe/curso-de-globos-burbuja/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/curso-de-globos-burbuja/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/curso-de-globos-burbuja/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/curso-de-globos-burbuja/"
+      ],
+      "title": "Curso de Globos Burbuja Online en Perú | 18 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globos Burbuja en Perú — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 45,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/pe/curso-de-globoflexia/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/pe/curso-de-globoflexia/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/curso-de-globoflexia/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/curso-de-globoflexia/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/curso-de-globoflexia/"
+      ],
+      "title": "Curso de Globoflexia Online en Perú: 50% OFF (US$25)",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globoflexia en Perú — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 46,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/ec/curso-de-flores-con-globos/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ec/curso-de-flores-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ec/curso-de-flores-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ec/curso-de-flores-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ec/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ec/curso-de-flores-con-globos/"
+      ],
+      "title": "Curso de Flores con Globos Online en Ecuador | 31 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Flores con Globos en Ecuador — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 47,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/contacto/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/contacto/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/contacto/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/contacto/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/contacto/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/contacto/"
+      ],
+      "title": "Contacto | Curso de Globos Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Hablemos de tu próximo curso"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 48,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/ar/curso-de-flores-con-globos/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/ar/curso-de-flores-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/ar/curso-de-flores-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/ar/curso-de-flores-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/ar/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/ar/curso-de-flores-con-globos/"
+      ],
+      "title": "Curso de Flores con Globos Online en Argentina | 31 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Flores con Globos en Argentina — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 49,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/cl/curso-de-flores-con-globos/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/cl/curso-de-flores-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/cl/curso-de-flores-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/cl/curso-de-flores-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/cl/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/cl/curso-de-flores-con-globos/"
+      ],
+      "title": "Curso de Flores con Globos Online en Chile | 31 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Flores con Globos en Chile — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 50,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/mx/cancun/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/mx/cancun/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/cancun/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/cancun/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/cancun/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/cancun/"
+      ],
+      "title": "Curso de Decoración con Globos en Cancún: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Cancún"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 51,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/pe/curso-de-bouquets-de-globos/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/pe/curso-de-bouquets-de-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/curso-de-bouquets-de-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/curso-de-bouquets-de-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/curso-de-bouquets-de-globos/"
+      ],
+      "title": "Curso de Bouquets de Globos Online en Perú | 17 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Bouquets de Globos en Perú — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 52,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/sitemap/",
+      "lastCrawl": "2026-08-08 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/sitemap/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/sitemap/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/sitemap/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/sitemap/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/sitemap/"
+      ],
+      "title": "Mapa del sitio | Curso de Globos Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Todo el sitio, en una página"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 53,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/pe/curso-de-flores-con-globos/",
+      "lastCrawl": "2026-08-07 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/pe/curso-de-flores-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/curso-de-flores-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/curso-de-flores-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/curso-de-flores-con-globos/"
+      ],
+      "title": "Curso de Flores con Globos Online en Perú | 31 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Flores con Globos en Perú — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 54,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/mx/monterrey/curso-de-flores-con-globos/",
+      "lastCrawl": "2026-08-07 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/mx/monterrey/curso-de-flores-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/monterrey/curso-de-flores-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/monterrey/curso-de-flores-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/monterrey/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/curso-de-flores-con-globos/"
+      ],
+      "title": "Curso de Flores con Globos Online en Monterrey | 31 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Flores con Globos en Monterrey — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 55,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/mx/curso-de-flores-con-globos/",
+      "lastCrawl": "2026-08-07 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/mx/curso-de-flores-con-globos/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/mx/curso-de-flores-con-globos/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/mx/curso-de-flores-con-globos/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/mx/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/mx/curso-de-flores-con-globos/"
+      ],
+      "title": "Curso de Flores con Globos Online en México | 31 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Flores con Globos en México — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 56,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/pe/lima/curso-de-globos-burbuja/",
+      "lastCrawl": "2026-08-07 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/pe/lima/curso-de-globos-burbuja/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/lima/curso-de-globos-burbuja/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/lima/curso-de-globos-burbuja/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/lima/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/curso-de-globos-burbuja/"
+      ],
+      "title": "Curso de Globos Burbuja Online en Lima | 18 Clases",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Curso de Globos Burbuja en Lima — 100% online con certificado"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 57,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/pe/lima/",
+      "lastCrawl": "2026-08-07 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/pe/lima/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/pe/lima/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/pe/lima/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/pe/lima/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/pe/lima/"
+      ],
+      "title": "Curso de Decoración con Globos en Lima: 100% Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Cursos de decoración con globos en Lima"
+      ],
+      "contentType": "text/html"
+    },
+    {
+      "source": "cursodeglobosonline.com-Coverage-Drilldown-2026-10-03.xlsx",
+      "sourceRow": 58,
+      "issue": "Página alternativa con etiqueta canónica adecuada",
+      "url": "https://www.cursodeglobosonline.com/legal/privacidad/",
+      "lastCrawl": "2026-08-07 00:00:00",
+      "chain": [
+        {
+          "url": "https://www.cursodeglobosonline.com/legal/privacidad/",
+          "status": 301,
+          "location": "https://cursodeglobosonline.com/legal/privacidad/"
+        },
+        {
+          "url": "https://cursodeglobosonline.com/legal/privacidad/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://cursodeglobosonline.com/legal/privacidad/",
+      "status": 200,
+      "canonical": [
+        "https://cursodeglobosonline.com/legal/privacidad/"
+      ],
+      "title": "Política de Privacidad — Curso de Globos Online",
+      "robots": [
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      ],
+      "xRobots": null,
+      "h1": [
+        "Política de privacidad"
+      ],
+      "contentType": "text/html"
+    }
+  ],
+  "robots": {
+    "status": 200,
+    "body": "User-agent: *\nAllow: /\nAllow: /_emdash/api/media/file/\nDisallow: /_emdash/\nDisallow: /api/\nDisallow: /landing/\nSitemap: https://cursodeglobosonline.com/sitemap-index.xml\n"
+  }
+}

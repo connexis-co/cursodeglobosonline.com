@@ -46,5 +46,5 @@ export const GET: APIRoute = async () => {
 ${items.join('\n')}
 </channel>
 </rss>`;
-  return new Response(xml, { headers: { 'Content-Type': 'application/rss+xml; charset=utf-8' } });
+  return new Response(xml, { headers: { 'Content-Type': 'application/rss+xml; charset=utf-8', 'X-Robots-Tag': 'noindex' } });
 };

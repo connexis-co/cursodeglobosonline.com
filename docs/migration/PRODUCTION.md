@@ -61,3 +61,9 @@ El despliegue Pages anterior `83b5b6e2-8995-4164-bcf6-0f0719f19247` permanece di
 ## Revisión SEO posterior del 3 de octubre
 
 Producción `3035ccd3-3b4e-4100-82f6-d7fb9fe9cf2d`; desarrollo `552b86f5-cb2d-47e6-97e6-6006c89991ad`. Se añadieron dos artículos nativos (30 publicados en total), controles de intención editorial y la caché KV descrita arriba; se repararon las tablas de 25 artículos sin reseed. Rastreo posterior: 122 URLs de sitemap, 35 imágenes y 130 páginas del grafo; 28 pruebas aprobadas. El rendimiento visual móvil sigue pendiente. Ver [informe de seguimiento](../seo/2026-10-03-followup.md) y sus recibos antes de utilizar las cifras históricas del lanzamiento como estado actual.
+
+## Comprobación de los Excel de cobertura del 3 de octubre
+
+Producción `74ebba0c-3e85-4197-b036-162f8d360462`; desarrollo `1956bc98-90e2-49a9-b366-84438c2565de`. Se normalizaron variantes PageSpeed y el marcador de búsqueda roto, se acortaron redirecciones y se retiraron destinos incorrectos a portada para restos de WordPress. RSS conserva su servicio con noindex HTTP.
+
+Se comprobaron las 143 URLs exportadas antes y después: 136 terminan en 200 y siete son 404 intencionales sin reemplazo. Las 122 URLs del sitemap y 35 imágenes pasan las comprobaciones implementadas; una imagen tuvo un error de conexión transitorio y pasó la repetición dirigida, documentada. 33 pruebas aprobadas; Astro: 155 archivos, cero errores y warnings, 99 hints. Ambos builds y despliegues correctos. Administrador y desarrollo siguen protegidos. No se promete aprobación de todos los grupos GSC: redirects, alternativas y archivos retirados pueden seguir excluidos correctamente. Ver [informe por URL](../seo/2026-10-03-coverage-validation.md) y [recibo](verification/coverage-release.json).

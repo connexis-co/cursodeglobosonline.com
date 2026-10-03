@@ -1,13 +1,13 @@
 import handler,{createScheduledHandler,PluginBridge} from '@emdash-cms/cloudflare/worker';
 import {productionGate,productionHost,isPrivateCmsRequest,type ProductionAccessEnv} from './lib/production-access';
 import {protectResponse} from './lib/staging-access';
-import {parseLegacyRedirects,resolveLegacyRedirect,publicCanonicalRedirect} from './lib/legacy-redirects';
+import {parseLegacyRedirects,resolvePublicRedirect} from './lib/legacy-redirects';
 import redirects from '../public/_redirects?raw';
 export {PluginBridge};
 const rules=parseLegacyRedirects(redirects);
 export default {...handler,async fetch(request,env,ctx){
   const url=new URL(request.url);
-  if(url.hostname===`www.${productionHost}`){url.hostname=productionHost;return Response.redirect(url.href,301);}
+  if(url.hostname===`www.${productionHost}`){const redirect=resolvePublicRedirect(request,rules,productionHost);if(redirect)return redirect;url.hostname=productionHost;url.protocol='https:';return Response.redirect(url.href,301);}
   const denial=await productionGate(request,env);if(denial)return denial;
   const privateResponse=url.hostname!==productionHost||isPrivateCmsRequest(request)||request.headers.has('Authorization');
   const finish=(response:Response)=>{
@@ -19,7 +19,7 @@ export default {...handler,async fetch(request,env,ctx){
     const secured=new Response(response.body,{status:response.status,statusText:response.statusText,headers});
     return privateResponse?protectResponse(secured):secured;
   };
-  const redirect=resolveLegacyRedirect(request,rules)||publicCanonicalRedirect(request);if(redirect)return finish(redirect);
+  const redirect=resolvePublicRedirect(request,rules);if(redirect)return finish(redirect);
   if(url.pathname==='/robots.txt')return finish(new Response(`User-agent: *\nAllow: /\nAllow: /_emdash/api/media/file/\nDisallow: /_emdash/\nDisallow: /api/\nDisallow: /landing/\nSitemap: https://${productionHost}/sitemap-index.xml\n`,{headers:{'Content-Type':'text/plain; charset=utf-8'}}));
   if(!handler.fetch)return finish(new Response('Application unavailable',{status:503}));
   return finish(await handler.fetch(request,env,ctx));

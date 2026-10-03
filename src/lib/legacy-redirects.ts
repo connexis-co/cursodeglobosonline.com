@@ -72,8 +72,45 @@ export function publicCanonicalRedirect(request: Request): Response | null {
   if (request.method !== 'GET' && request.method !== 'HEAD') return null;
   const url = new URL(request.url);
   if (url.pathname === '/' || url.pathname.endsWith('/')) return null;
+  // Literal wildcard URLs from old robots exports are not document slugs.
+  if (/\*|%2a/i.test(url.pathname)) return null;
   if (/^\/(?:_emdash|api|_astro|internal|_server-islands|_image)(?:\/|$)/.test(url.pathname)) return null;
   if (/\/[^/]*\.[^/]*$/.test(url.pathname)) return null;
   url.pathname += '/';
   return Response.redirect(url.href, 301);
+}
+
+/** Resolve permanent legacy hops and obsolete query variants in one response.
+ * Marketing attribution is retained. CMS/API requests and non-read methods are untouched.
+ */
+export function resolvePublicRedirect(
+  request: Request,
+  rules: readonly LegacyRedirectRule[],
+  canonicalHost?: 'cursodeglobosonline.com',
+): Response | null {
+  if (!['GET','HEAD'].includes(request.method)) return null;
+  const original = new URL(request.url);
+  let current = new URL(original);
+  if (canonicalHost) { current.hostname = canonicalHost; current.protocol = 'https:'; }
+  if (!/^\/(?:_emdash|api|_astro|internal|_server-islands|_image)(?:\/|$)/.test(current.pathname)) {
+    for (const name of [...current.searchParams.keys()]) {
+      if (name.toLowerCase() === 'pagespeed') current.searchParams.delete(name);
+    }
+    if (current.pathname === '/' && current.searchParams.get('s') === '{search_term_string}') {
+      current.searchParams.delete('s');
+    }
+    const seen = new Set<string>();
+    for (let hop = 0; hop < 8; hop++) {
+      if (seen.has(current.href)) return null;
+      seen.add(current.href);
+      const next = resolveLegacyRedirect(new Request(current, {method:request.method}), rules)
+        ?? publicCanonicalRedirect(new Request(current, {method:request.method}));
+      if (!next) return current.href !== original.href ? Response.redirect(current.href, 301) : null;
+      current = new URL(next.headers.get('location')!);
+      // Do not turn a future temporary redirect into a permanent one.
+      if (next.status === 302) return Response.redirect(current.href, 302);
+    }
+    return null;
+  }
+  return current.href !== original.href ? Response.redirect(current.href, 301) : null;
 }
