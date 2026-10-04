@@ -67,3 +67,9 @@ Producción `3035ccd3-3b4e-4100-82f6-d7fb9fe9cf2d`; desarrollo `552b86f5-cb2d-47
 Producción `74ebba0c-3e85-4197-b036-162f8d360462`; desarrollo `1956bc98-90e2-49a9-b366-84438c2565de`. Se normalizaron variantes PageSpeed y el marcador de búsqueda roto, se acortaron redirecciones y se retiraron destinos incorrectos a portada para restos de WordPress. RSS conserva su servicio con noindex HTTP.
 
 Se comprobaron las 143 URLs exportadas antes y después: 136 terminan en 200 y siete son 404 intencionales sin reemplazo. Las 122 URLs del sitemap y 35 imágenes pasan las comprobaciones implementadas; una imagen tuvo un error de conexión transitorio y pasó la repetición dirigida, documentada. 33 pruebas aprobadas; Astro: 155 archivos, cero errores y warnings, 99 hints. Ambos builds y despliegues correctos. Administrador y desarrollo siguen protegidos. No se promete aprobación de todos los grupos GSC: redirects, alternativas y archivos retirados pueden seguir excluidos correctamente. Ver [informe por URL](../seo/2026-10-03-coverage-validation.md) y [recibo](verification/coverage-release.json).
+
+## Transformaciones de imagen del 4 de octubre
+
+Producción `873bd1ed-d5e7-4b3c-be2b-f5fdade26509`; desarrollo `867bb61f-8eda-4141-83ac-af7359a6039d`. El tema utiliza variantes responsivas Cloudflare para imágenes públicas y posters; desarrollo conserva originales por su autenticación. El adaptador Astro habilita el servicio nativo de Cloudflare en producción para los medios de EmDash. No se alteran los originales, la publicación editorial ni la medición.
+
+36 pruebas aprobadas, Astro sin errores/warnings, ambos builds correctos. 122 URLs del sitemap y 43 recursos CMS sin incidencias; cinco páginas y 45 variantes comprobadas. El LCP móvil de laboratorio sigue alto (11,9 s); requiere investigar JavaScript y el elemento LCP. Ver [informe](../seo/2026-10-04-image-optimization.md).

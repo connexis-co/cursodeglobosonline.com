@@ -1,4 +1,5 @@
 ---
+import ResponsiveImage from '@/components/ResponsiveImage.astro';
 import { getCountries } from '@/lib/emdash-content';
 const COUNTRIES = await getCountries();
 /**
@@ -184,7 +185,7 @@ const faqs = [
         <div class="overflow-hidden rounded-3xl border-4 border-crema-50/15 shadow-globo sm:rotate-2">
           {
             d.cover ? (
-              <img
+              <ResponsiveImage sizes="(min-width: 384px) 384px, calc(100vw - 48px)" maxWidth={960}
                 src={d.cover}
                 alt={`Imagen del ${d.title}`}
                 class="aspect-[16/10] w-full object-cover sm:aspect-[4/3]"

@@ -1,4 +1,5 @@
 ---
+import ResponsiveImage from '@/components/ResponsiveImage.astro';
 import { getEntry } from '@/lib/emdash-content';
 import RichBody from '@/themes/globos-classic/components/RichBody.astro';
 import { richHeadings } from '@/lib/rich-text';
@@ -41,7 +42,7 @@ const minutes = readingMinutes(post);
 const pillar = d.pillar ? all.find((p) => p.id === d.pillar) : undefined;
 const related = relatedPosts(post, all, 3);
 
-// El CMS sirve el original: las variantes requieren un servicio de imágenes configurado.
+// Los metadatos SEO conservan el original; el HTML usa variantes responsivas.
 const abs = (src: string) => new URL(src, SITE.url).href;
 
 const wordCount = (post.body ?? '').split(/\s+/).filter(Boolean).length;
@@ -139,7 +140,7 @@ const trackParams = JSON.stringify({
     </header>
 
     <figure class="mt-8 overflow-hidden rounded-3xl bg-crema-200 shadow-tarjeta">
-      <img
+      <ResponsiveImage sizes="(min-width: 1200px) 1120px, calc(100vw - 48px)" maxWidth={d.hero.width}
         src={d.hero.src}
         width={d.hero.width}
         height={d.hero.height}

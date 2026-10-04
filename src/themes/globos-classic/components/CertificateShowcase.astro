@@ -1,4 +1,5 @@
 ---
+import ResponsiveImage from '@/components/ResponsiveImage.astro';
 /**
  * Muestra del certificado con globo flotante de acento.
  * Hoy la imagen es un mockup fotográfico (papel en blanco con borde y sello dorados, sin texto
@@ -23,7 +24,7 @@ const alt = illustrative
 
 <div class="cert-wrap relative mx-auto w-full max-w-md">
   <div class="cert scroll-reveal-late relative rotate-[-2deg] overflow-hidden rounded-2xl border-4 border-white shadow-globo">
-    <img
+    <ResponsiveImage sizes="(min-width: 448px) 448px, calc(100vw - 48px)" maxWidth={960}
       {src}
       {alt}
       class="block aspect-[4/3] w-full object-cover"

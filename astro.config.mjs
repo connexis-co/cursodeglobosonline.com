@@ -11,7 +11,7 @@ const production=process.env.GLOBOS_BUILD_ENV==='production';
 // Preserve the existing production measurement container; development stays separate.
 if(production)process.env.PUBLIC_GTM_ID??='GTM-KKP7WL8Q';
 const site=production?'https://cursodeglobosonline.com':process.env.SITE_URL || 'https://dev.cursodeglobosonline.com';
-export default defineConfig({site,i18n:{defaultLocale:'es',locales:['es'],routing:'manual'},output:'server',trailingSlash:'ignore',adapter:cloudflare({imageService:'passthrough',configPath:production?'wrangler.production.jsonc':'wrangler.jsonc'}),
+export default defineConfig({site,image:{domains:['cursodeglobosonline.com']},i18n:{defaultLocale:'es',locales:['es'],routing:'manual'},output:'server',trailingSlash:'ignore',adapter:cloudflare({imageService:production?'cloudflare':'passthrough',configPath:production?'wrangler.production.jsonc':'wrangler.jsonc'}),
  integrations:[react(),mdx(),emdash({database:d1({binding:'DB'}),storage:r2({binding:'MEDIA'}),objectCache:kvCache({binding:'CACHE',defaultTtl:60,revalidate:1000,keyPrefix:'globos-v1'}),siteUrl:site,auth:{type:production?'globos-production':'globos-development',entrypoint:fileURLToPath(new URL(production?'./src/auth/production.ts':'./src/auth/development.ts',import.meta.url)),config:{autoProvision:true,syncRoles:true}},plugins:[
  emdashSmtp(),
  {id:'globos-seo',version:'1.0.0',entrypoint:fileURLToPath(new URL('./src/plugins/globos-seo/index.ts',import.meta.url))},

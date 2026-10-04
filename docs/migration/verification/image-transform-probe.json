@@ -1,0 +1,38 @@
+[
+  {
+    "url": "https://cursodeglobosonline.com/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp",
+    "status": 200,
+    "type": "image/webp",
+    "bytes": 41206,
+    "cfResized": null,
+    "cache": null,
+    "error": null
+  },
+  {
+    "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp",
+    "status": 200,
+    "type": "image/avif",
+    "bytes": 14943,
+    "cfResized": "internal=ok/- q=0 n=1185+22 c=17+70 v=2026.9.13 l=14943 f=false c2=0 wv=2026.9.1",
+    "cache": "MISS",
+    "error": null
+  },
+  {
+    "url": "https://cursodeglobosonline.com/images/decoracion-guirnalda.jpg",
+    "status": 200,
+    "type": "image/jpeg",
+    "bytes": 120368,
+    "cfResized": null,
+    "cache": "HIT",
+    "error": null
+  },
+  {
+    "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down/images/decoracion-guirnalda.jpg",
+    "status": 200,
+    "type": "image/avif",
+    "bytes": 14813,
+    "cfResized": "internal=ok/h q=0 n=476+12 c=4+181 v=2026.9.13 l=14813 f=false c2=0 wv=2026.9.1",
+    "cache": "MISS",
+    "error": null
+  }
+]

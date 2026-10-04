@@ -1,4 +1,5 @@
 ---
+import ResponsiveImage from '@/components/ResponsiveImage.astro';
 import {listDocuments,imageSource} from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 const entries=await listDocuments('graphics');
@@ -7,7 +8,7 @@ const entries=await listDocuments('graphics');
  <section class="contenedor py-14"><h1 class="text-4xl font-semibold">Recursos visuales</h1>
  <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
  {entries.map(e=><a href={`/recursos/${e.id}/`} class="rounded-2xl border border-crema-200 p-5 shadow-tarjeta">
- {imageSource(e.data.poster??e.data.image)&&<img src={imageSource(e.data.poster??e.data.image)} alt={e.data.alt??e.data.title} loading="lazy" class="aspect-video w-full rounded-xl object-cover"/>}
+ {imageSource(e.data.poster??e.data.image)&&<ResponsiveImage sizes="(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)" maxWidth={960} src={imageSource(e.data.poster??e.data.image)} alt={e.data.alt??e.data.title} loading="lazy" class="aspect-video w-full rounded-xl object-cover"/>}
  <h2 class="mt-4 text-xl font-semibold">{e.data.title}</h2><p class="mt-3">{e.data.description}</p></a>)}
  </div>{!entries.length&&<p class="mt-6">Pronto publicaremos nuevos contenidos.</p>}
  </section>

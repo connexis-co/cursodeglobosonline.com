@@ -1,4 +1,6 @@
 ---
+import {responsiveImage} from '@/lib/image-transforms';
+import ResponsiveImage from '@/components/ResponsiveImage.astro';
 import RichBody from '@/themes/globos-classic/components/RichBody.astro';
 import { getCollection, type CollectionEntry } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
@@ -235,8 +237,8 @@ const sealEdge = (() => {
         <div class="relative mx-auto w-full max-w-md lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center">
           <div class="overflow-hidden rounded-3xl border-4 border-white shadow-globo sm:rotate-2">
             {
-              d.video ? (<video controls preload="metadata" poster={d.cover} class="aspect-video w-full"><source src={d.video}/></video>) : d.cover ? (
-                <img
+              d.video ? (<video controls preload="metadata" poster={d.cover ? responsiveImage(d.cover,{siteUrl:SITE.url,sizes:'448px',maxWidth:960}).src : undefined} class="aspect-video w-full"><source src={d.video}/></video>) : d.cover ? (
+                <ResponsiveImage sizes="(min-width: 448px) 448px, calc(100vw - 48px)" maxWidth={960}
                   src={d.cover}
                   alt={`Imagen del ${d.title}`}
                   class="aspect-[16/10] w-full object-cover sm:aspect-[4/3]"
@@ -540,7 +542,7 @@ const sealEdge = (() => {
       <section class="bg-ciruela-900 py-14 text-crema-50">
         <div class="contenedor grid items-center gap-8 lg:grid-cols-[auto_1fr]">
           {d.instructor.photo ? (
-            <img
+            <ResponsiveImage sizes="160px" maxWidth={320}
               src={d.instructor.photo}
               alt={`Foto de ${d.instructor.name}, instructor del curso`}
               class="mx-auto h-40 w-40 rotate-[-2deg] rounded-3xl border-4 border-crema-50/15 object-cover shadow-globo"

@@ -1,4 +1,5 @@
 ---
+import ResponsiveImage from '@/components/ResponsiveImage.astro';
 import RichBody from '@/components/RichBody.astro';
 import { getDocument } from '@/lib/emdash-content';
 const page=await getDocument('pages','inicio');if(!page)return Astro.rewrite('/404');Astro.locals.cmsContent=page;
@@ -218,7 +219,7 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
       </div>
       <div class="scroll-reveal-late relative mx-auto w-full max-w-md lg:max-w-none">
         <div class="rotate-2 overflow-hidden rounded-3xl border-4 border-crema-50/15 shadow-globo">
-          <img
+          <ResponsiveImage sizes="(min-width: 1200px) 560px, (min-width: 1024px) 50vw, (min-width: 448px) 448px, calc(100vw - 48px)" maxWidth={1280}
             src="/images/decoracion-guirnalda.jpg"
             alt="Guirnalda orgánica de globos en tonos coral, crema y dorado decorando un salón de eventos"
             class="aspect-[4/3] w-full object-cover"
