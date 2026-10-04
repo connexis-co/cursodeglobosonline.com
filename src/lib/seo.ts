@@ -1,4 +1,4 @@
-import { COUNTRIES } from './countries';
+import { getCountrySummaries as getCountries } from './emdash-content';
 import { MIN_VOTES_FOR_SCHEMA, type CourseRating } from './ratings-config';
 import { SITE } from './site';
 import type { Author } from './authors';
@@ -18,9 +18,9 @@ export interface HreflangAlternate {
  * (home país, categoría, curso). `pathAfterCountry` NO incluye el código de país.
  * x-default apunta al home global `/` cuando la ruta es raíz, o al default country.
  */
-export function countryAlternates(pathAfterCountry: string): HreflangAlternate[] {
+export async function countryAlternates(pathAfterCountry: string): Promise<HreflangAlternate[]> {
   const clean = pathAfterCountry.startsWith('/') ? pathAfterCountry : `/${pathAfterCountry}`;
-  const alternates: HreflangAlternate[] = COUNTRIES.map((c) => ({
+  const alternates: HreflangAlternate[] = (await getCountries()).map((c) => ({
     hreflang: c.hreflang,
     href: `${SITE.url}/${c.code}${clean}`,
   }));

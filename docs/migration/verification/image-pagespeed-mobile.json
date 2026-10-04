@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-10-04T13:59:14.751717+00:00",
+  "source": "Ubersuggest PageSpeed audit",
+  "domain": "cursodeglobosonline.com",
+  "devices": "MOBILE",
+  "forceUpdate": true,
+  "done": true,
+  "report": {
+    "MOBILE": {
+      "status": "ok",
+      "field_data": {
+        "Cumulative Layout Shift": "FAST",
+        "First Contentful Paint": "FAST",
+        "Largest Contentful Paint": "FAST"
+      },
+      "lab_metrics": {
+        "Total Blocking Time": "981 ms",
+        "Speed Index": "6.9 s",
+        "Time to Interactive": "11.9 s",
+        "Largest Contentful Paint": "11.9 s",
+        "First Contentful Paint": "2.7 s",
+        "Cumulative Layout Shift": "0.008"
+      },
+      "opportunities": [
+        {
+          "opportunity": "Redirects",
+          "estimated_savings": "630 ms",
+          "size_reduction_kb": null
+        },
+        {
+          "opportunity": "Unused Javascript",
+          "estimated_savings": "2.3 s",
+          "size_reduction_kb": 391
+        }
+      ]
+    }
+  },
+  "limitation": "Provider does not include a full trace or the LCP element. Field categories lack window/sample/INP here. Not a claim of passing Core Web Vitals."
+}

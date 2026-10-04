@@ -1,0 +1,14 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import {responsiveImage} from '@/lib/image-transforms';
+import {SITE} from '@/lib/site';
+
+type Props = Omit<HTMLAttributes<'img'>, 'src' | 'srcset' | 'sizes'> & {
+  src: string;
+  sizes: string;
+  maxWidth?: number;
+};
+const {src, sizes, maxWidth, loading = 'lazy', decoding = 'async', ...attributes} = Astro.props;
+const image = responsiveImage(src, {siteUrl: SITE.url, sizes, maxWidth});
+---
+<img {...attributes} {...image} {loading} {decoding} />

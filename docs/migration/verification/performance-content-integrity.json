@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-10-04T15:22:53.120788+00:00",
+  "productionVersion": "328dcae7-67dd-4119-8e39-7de4e8bde104",
+  "checks": [
+    {
+      "path": "/",
+      "headingsUnchanged": true,
+      "linksUnchanged": true,
+      "headings": 21,
+      "links": 22
+    },
+    {
+      "path": "/blog/",
+      "headingsUnchanged": true,
+      "linksUnchanged": true,
+      "headings": 39,
+      "links": 38
+    },
+    {
+      "path": "/blog/globos-con-confeti/",
+      "headingsUnchanged": true,
+      "linksUnchanged": true,
+      "headings": 16,
+      "links": 35
+    },
+    {
+      "path": "/co/curso-de-globoflexia/",
+      "headingsUnchanged": true,
+      "linksUnchanged": true,
+      "headings": 19,
+      "links": 18
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+---
+/**
+ * Logo «Curso de Globos Online by Sably» — v2 «La G retorcida».
+ *
+ * Lockup horizontal inline, 100 % en trazos (no depende de fuentes cargadas) y accesible
+ * (role="img" + aria-label). Mantiene la API anterior: `size` sigue siendo el alto en px
+ * (antes era el alto del icono; ahora el isotipo ocupa todo el alto del lockup, así que
+ * `size={38}` ocupa lo mismo en vertical).
+ *
+ * Color: el wordmark y las letras de Sably usan currentColor (igual que antes: en el header
+ * heredan ciruela-800 del body). El resto sale de custom properties, que se pueden
+ * sobrescribir desde fuera (p. ej. style="--logo-globo: …").
+ *
+ * tone="dark" → para fondos ciruela-900 (footer). Cambio necesario en Footer.astro:
+ *   <Logo />  →  <Logo tone="dark" />
+ */
+interface Props {
+  /** Alto del logo en px (el isotipo ocupa todo el alto). */
+  size?: number;
+  /** Fondo sobre el que va: 'light' (header, por defecto) u 'dark' (footer ciruela-900). */
+  tone?: 'light' | 'dark';
+}
+const { size = 38, tone = 'light' } = Astro.props;
+const width = Math.round(((size * 293.8) / 60.0) * 10) / 10;
+---
+
+<svg
+  class="logo"
+  data-tone={tone}
+  width={width}
+  height={size}
+  viewBox="0 0 293.8 60.0"
+  role="img"
+  aria-label="Curso de Globos Online by Sably"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <use href="#globos-brand-logo" />
+</svg>
+
+<style>
+  .logo {
+    display: block;
+    flex-shrink: 0;
+    /* claro (header blanco / crema) */
+    --logo-globo: var(--color-coral-600, #cb234a); /* 5,41:1 sobre blanco; coral-500 queda solo para CTAs */
+    --logo-brillo: var(--color-crema-50, #fbfaf7);
+    --logo-online: var(--color-coral-600, #cb234a); /* 5,41:1 sobre blanco */
+    --logo-sep: var(--color-ciruela-300, #938fa3);
+    --logo-by: var(--color-ciruela-500, #59546c); /* 7,22:1 sobre blanco */
+  }
+  .logo[data-tone='dark'] {
+    /* oscuro (footer ciruela-900) */
+    --logo-globo: var(--color-coral-400, #f06f82); /* 6,06:1 */
+    --logo-online: var(--color-sol-300, #fcda86); /* 12,88:1 */
+    --logo-sep: var(--color-ciruela-400, #736e84);
+    --logo-by: var(--color-ciruela-300, #938fa3); /* 5,56:1 */
+  }
+  .lg-globo { fill: var(--logo-globo); }
+  .lg-brillo { fill: var(--logo-brillo); }
+  .lg-online { fill: var(--logo-online); }
+  .lg-sep { fill: var(--logo-sep); }
+  .lg-by { fill: var(--logo-by); }
+</style>

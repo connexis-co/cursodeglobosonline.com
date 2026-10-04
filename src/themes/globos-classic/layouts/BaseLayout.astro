@@ -1,0 +1,164 @@
+---
+import { EmDashBodyStart, EmDashBodyEnd } from 'emdash/ui';
+import type { PublicPageContext } from 'emdash';
+import '@/styles/global.css';
+import FontPreloads from '@/components/FontPreloads.astro';
+import TrackingHead from '@/components/TrackingHead.astro';
+import BrandSymbol from '@/components/BrandSymbol.astro';
+import Seo from '@/components/Seo.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import GeoToast from '@/components/GeoToast.astro';
+import type { Country } from '@/lib/countries';
+import type { ArticleMeta } from '@/components/Seo.astro';
+import type { HreflangAlternate } from '@/lib/seo';
+import { organizationSchema, websiteSchema } from '@/lib/seo';
+import { GTM_ID } from '@/lib/site';
+
+interface Props {
+  title: string;
+  description: string;
+  country?: Country;
+  /** Ruta después del código de país, para hreflang/switcher. */
+  pathAfterCountry?: string;
+  alternates?: HreflangAlternate[];
+  schemas?: object[];
+  pageType?: string;
+  whatsappContext?: string;
+  noindex?: boolean;
+  /** Header transparente sobre hero con imagen/video (se vuelve sólido al scroll). */
+  transparentHeader?: boolean;
+  ogImage?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  ogImageAlt?: string;
+  ogTitle?: string;
+  ogType?: 'website' | 'article';
+  article?: ArticleMeta;
+  canonicalPath?: string;
+}
+
+const {
+  title,
+  description,
+  country,
+  pathAfterCountry = '/',
+  alternates = [],
+  schemas = [],
+  pageType = 'page',
+  whatsappContext,
+  noindex = false,
+  transparentHeader = false,
+  ogImage,
+  ogImageWidth,
+  ogImageHeight,
+  ogImageAlt,
+  ogTitle,
+  ogType,
+  article,
+  canonicalPath,
+} = Astro.props;
+
+const allSchemas = [organizationSchema(), websiteSchema(), ...schemas];
+const emdashPage:PublicPageContext={url:Astro.url.href,path:Astro.url.pathname,locale:'es',kind:'custom',pageType,title,description,canonical:null,image:null,content:Astro.locals.cmsContent?.contentRef};
+
+---
+
+<!doctype html>
+<html lang={country?.hreflang ?? 'es'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#fdf9f4" />
+    <Seo
+      {title}
+      {description}
+      {alternates}
+      schemas={allSchemas}
+      {noindex}
+      {ogImage}
+      {ogImageWidth}
+      {ogImageHeight}
+      {ogImageAlt}
+      {ogTitle}
+      {ogType}
+      {article}
+      {canonicalPath}
+      hreflang={country?.hreflang}
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <FontPreloads />
+    <TrackingHead />
+  </head>
+  <body data-page-type={pageType} data-country={country?.code}>
+<BrandSymbol />
+<EmDashBodyStart page={emdashPage} />
+    {
+      GTM_ID && (
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style="display:none;visibility:hidden"
+            title="Google Tag Manager"
+          />
+        </noscript>
+      )
+    }
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-100 focus:bg-crema-50 focus:px-4 focus:py-2 focus:text-coral-700"
+    >
+      Saltar al contenido
+    </a>
+    <Header {country} {pathAfterCountry} transparent={transparentHeader} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer {country} />
+    <GeoToast {pathAfterCountry} currentCode={country?.code} />
+
+    <script>
+      import { trackEvent } from '@/lib/analytics';
+
+      // Tracking declarativo: cualquier elemento con data-track dispara su evento.
+      document.addEventListener('click', (e) => {
+        const el = (e.target as HTMLElement).closest<HTMLElement>('[data-track]');
+        if (!el?.dataset.track) return;
+        let params: Record<string, string | number | boolean> = {};
+        try {
+          params = JSON.parse(el.dataset.trackParams ?? '{}');
+        } catch {
+          /* params opcionales malformados: se ignoran */
+        }
+        trackEvent(el.dataset.track, params);
+      });
+
+      // scroll_depth 25/50/75/100 (plan de medición §10)
+      const marks = [25, 50, 75, 100];
+      const seen = new Set<number>();
+      const onScroll = () => {
+        const doc = document.documentElement;
+        const percent = Math.round(((window.scrollY + window.innerHeight) / doc.scrollHeight) * 100);
+        for (const m of marks) {
+          if (percent >= m && !seen.has(m)) {
+            seen.add(m);
+            trackEvent('scroll_depth', {
+              percent: m,
+              page_type: document.body.dataset.pageType ?? 'page',
+            });
+          }
+        }
+        if (seen.size === marks.length) removeEventListener('scroll', onScroll);
+      };
+      addEventListener('scroll', onScroll, { passive: true });
+    </script>
+  <EmDashBodyEnd page={emdashPage} />
+</body>
+</html>

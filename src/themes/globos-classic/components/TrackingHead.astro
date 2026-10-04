@@ -1,0 +1,5 @@
+---
+import {GTM_ID,GA4_ID,META_PIXEL_ID} from '@/lib/site';
+import {trackingScript} from '@/lib/tracking-script';
+---
+{(GTM_ID||GA4_ID||META_PIXEL_ID)&&<script is:inline set:html={trackingScript({gtm:GTM_ID,ga4:GA4_ID,meta:META_PIXEL_ID})} />}

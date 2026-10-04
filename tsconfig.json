@@ -6,6 +6,7 @@
   ],
   "exclude": [
     "dist",
+    ".data",
     "node_modules",
     "node_modules.nosync",
     "**/*.nosync",
@@ -15,6 +16,15 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@/components/*": [
+        "src/themes/globos-classic/components/*"
+      ],
+      "@/layouts/*": [
+        "src/themes/globos-classic/layouts/*"
+      ],
+      "@/styles/*": [
+        "src/themes/globos-classic/styles/*"
+      ],
       "@/*": [
         "src/*"
       ]

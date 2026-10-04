@@ -1,0 +1,1447 @@
+{
+  "checkedAt": "2026-10-04T14:01:36.188565+00:00",
+  "accept": "image/avif,image/webp,image/*,*/*;q=0.8",
+  "pages": [
+    {
+      "url": "https://cursodeglobosonline.com/",
+      "status": 200,
+      "images": [
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 1280w",
+          "sizes": "(min-width: 1200px) 560px, (min-width: 768px) 45vw, calc(100vw - 48px)",
+          "width": "600",
+          "height": "600",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 1280w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "600",
+          "height": "600",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 1280w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "600",
+          "height": "600",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 1280w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "600",
+          "height": "600",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/images/decoracion-guirnalda.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/images/decoracion-guirnalda.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/images/decoracion-guirnalda.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/images/decoracion-guirnalda.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/images/decoracion-guirnalda.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/images/decoracion-guirnalda.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/images/decoracion-guirnalda.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/images/decoracion-guirnalda.jpg 1280w",
+          "sizes": "(min-width: 1200px) 560px, (min-width: 1024px) 50vw, (min-width: 448px) 448px, calc(100vw - 48px)",
+          "width": "1100",
+          "height": "825",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg 960w",
+          "sizes": "(min-width: 448px) 448px, calc(100vw - 48px)",
+          "width": "1100",
+          "height": "825",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        }
+      ]
+    },
+    {
+      "url": "https://cursodeglobosonline.com/blog/",
+      "status": 200,
+      "images": [
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 1600w",
+          "sizes": "(min-width: 1200px) 626px, (min-width: 768px) 56vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "eager",
+          "fetchpriority": "high"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7RS6CBNT5DET2MRCJ0YD7S6VTK.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7RS6CBNT5DET2MRCJ0YD7S6VTK.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7RS6CBNT5DET2MRCJ0YD7S6VTK.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7RS6CBNT5DET2MRCJ0YD7S6VTK.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7RS6CBNT5DET2MRCJ0YD7S6VTK.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7RS6CBNT5DET2MRCJ0YD7S6VTK.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7RS6CBNT5DET2MRCJ0YD7S6VTK.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7RS6CBNT5DET2MRCJ0YD7S6VTK.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7RS6CBNT5DET2MRCJ0YD7S6VTK.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7Z79T3DKH8XASXAVER7SV4M986.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7Z79T3DKH8XASXAVER7SV4M986.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7Z79T3DKH8XASXAVER7SV4M986.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7Z79T3DKH8XASXAVER7SV4M986.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7Z79T3DKH8XASXAVER7SV4M986.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7Z79T3DKH8XASXAVER7SV4M986.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7Z79T3DKH8XASXAVER7SV4M986.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7Z79T3DKH8XASXAVER7SV4M986.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7Z79T3DKH8XASXAVER7SV4M986.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "1600",
+          "height": "900",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/72R638FREXNXHW4W9F29PNY9QX.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/72R638FREXNXHW4W9F29PNY9QX.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/72R638FREXNXHW4W9F29PNY9QX.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/72R638FREXNXHW4W9F29PNY9QX.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/72R638FREXNXHW4W9F29PNY9QX.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/72R638FREXNXHW4W9F29PNY9QX.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/72R638FREXNXHW4W9F29PNY9QX.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/72R638FREXNXHW4W9F29PNY9QX.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/72R638FREXNXHW4W9F29PNY9QX.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5NNNF8AK7P6WM1Z0YKKXPT9EYS.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5NNNF8AK7P6WM1Z0YKKXPT9EYS.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5NNNF8AK7P6WM1Z0YKKXPT9EYS.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5NNNF8AK7P6WM1Z0YKKXPT9EYS.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5NNNF8AK7P6WM1Z0YKKXPT9EYS.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5NNNF8AK7P6WM1Z0YKKXPT9EYS.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5NNNF8AK7P6WM1Z0YKKXPT9EYS.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5NNNF8AK7P6WM1Z0YKKXPT9EYS.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5NNNF8AK7P6WM1Z0YKKXPT9EYS.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPC044VFYF1GPHNNS1QWS.webp",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPC044VFYF1GPHNNS1QWS.webp 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPC044VFYF1GPHNNS1QWS.webp 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPC044VFYF1GPHNNS1QWS.webp 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPC044VFYF1GPHNNS1QWS.webp 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPC044VFYF1GPHNNS1QWS.webp 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPC044VFYF1GPHNNS1QWS.webp 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPC044VFYF1GPHNNS1QWS.webp 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPC044VFYF1GPHNNS1QWS.webp 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "1600",
+          "height": "900",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/515N6F7KRZ0KXW1K2R2KEZW5FQ.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/515N6F7KRZ0KXW1K2R2KEZW5FQ.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/515N6F7KRZ0KXW1K2R2KEZW5FQ.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/515N6F7KRZ0KXW1K2R2KEZW5FQ.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/515N6F7KRZ0KXW1K2R2KEZW5FQ.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/515N6F7KRZ0KXW1K2R2KEZW5FQ.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/515N6F7KRZ0KXW1K2R2KEZW5FQ.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/515N6F7KRZ0KXW1K2R2KEZW5FQ.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/515N6F7KRZ0KXW1K2R2KEZW5FQ.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MBBFDAVNP7JDM1VXTZ2PDWMD9.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MBBFDAVNP7JDM1VXTZ2PDWMD9.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MBBFDAVNP7JDM1VXTZ2PDWMD9.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MBBFDAVNP7JDM1VXTZ2PDWMD9.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MBBFDAVNP7JDM1VXTZ2PDWMD9.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MBBFDAVNP7JDM1VXTZ2PDWMD9.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MBBFDAVNP7JDM1VXTZ2PDWMD9.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MBBFDAVNP7JDM1VXTZ2PDWMD9.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MBBFDAVNP7JDM1VXTZ2PDWMD9.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3PZZK8SFW32K6BZGW8F4652NKF.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3PZZK8SFW32K6BZGW8F4652NKF.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3PZZK8SFW32K6BZGW8F4652NKF.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3PZZK8SFW32K6BZGW8F4652NKF.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3PZZK8SFW32K6BZGW8F4652NKF.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3PZZK8SFW32K6BZGW8F4652NKF.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3PZZK8SFW32K6BZGW8F4652NKF.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3PZZK8SFW32K6BZGW8F4652NKF.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3PZZK8SFW32K6BZGW8F4652NKF.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MH1HN563JWH92NYPFRTVKRBZ2.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MH1HN563JWH92NYPFRTVKRBZ2.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MH1HN563JWH92NYPFRTVKRBZ2.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MH1HN563JWH92NYPFRTVKRBZ2.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MH1HN563JWH92NYPFRTVKRBZ2.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MH1HN563JWH92NYPFRTVKRBZ2.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MH1HN563JWH92NYPFRTVKRBZ2.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MH1HN563JWH92NYPFRTVKRBZ2.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MH1HN563JWH92NYPFRTVKRBZ2.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4W6W4GVDKM7BZTHCYWCENATR2S.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4W6W4GVDKM7BZTHCYWCENATR2S.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4W6W4GVDKM7BZTHCYWCENATR2S.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4W6W4GVDKM7BZTHCYWCENATR2S.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4W6W4GVDKM7BZTHCYWCENATR2S.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4W6W4GVDKM7BZTHCYWCENATR2S.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4W6W4GVDKM7BZTHCYWCENATR2S.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4W6W4GVDKM7BZTHCYWCENATR2S.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4W6W4GVDKM7BZTHCYWCENATR2S.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7480907WVMWNYXDZBQ6HB9CMAM.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7480907WVMWNYXDZBQ6HB9CMAM.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7480907WVMWNYXDZBQ6HB9CMAM.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7480907WVMWNYXDZBQ6HB9CMAM.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7480907WVMWNYXDZBQ6HB9CMAM.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7480907WVMWNYXDZBQ6HB9CMAM.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7480907WVMWNYXDZBQ6HB9CMAM.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7480907WVMWNYXDZBQ6HB9CMAM.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7480907WVMWNYXDZBQ6HB9CMAM.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5W75M2QJYE71NMW29WY8P691RP.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5W75M2QJYE71NMW29WY8P691RP.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5W75M2QJYE71NMW29WY8P691RP.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5W75M2QJYE71NMW29WY8P691RP.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5W75M2QJYE71NMW29WY8P691RP.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5W75M2QJYE71NMW29WY8P691RP.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5W75M2QJYE71NMW29WY8P691RP.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5W75M2QJYE71NMW29WY8P691RP.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5W75M2QJYE71NMW29WY8P691RP.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2JNWZ1ESY4Z1MT1X3CGA19QV9S.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2JNWZ1ESY4Z1MT1X3CGA19QV9S.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2JNWZ1ESY4Z1MT1X3CGA19QV9S.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2JNWZ1ESY4Z1MT1X3CGA19QV9S.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2JNWZ1ESY4Z1MT1X3CGA19QV9S.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2JNWZ1ESY4Z1MT1X3CGA19QV9S.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2JNWZ1ESY4Z1MT1X3CGA19QV9S.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2JNWZ1ESY4Z1MT1X3CGA19QV9S.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2JNWZ1ESY4Z1MT1X3CGA19QV9S.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4XJ2Y24C69YR66ZBXA1FANQMG7.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4XJ2Y24C69YR66ZBXA1FANQMG7.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4XJ2Y24C69YR66ZBXA1FANQMG7.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4XJ2Y24C69YR66ZBXA1FANQMG7.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4XJ2Y24C69YR66ZBXA1FANQMG7.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4XJ2Y24C69YR66ZBXA1FANQMG7.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4XJ2Y24C69YR66ZBXA1FANQMG7.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4XJ2Y24C69YR66ZBXA1FANQMG7.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4XJ2Y24C69YR66ZBXA1FANQMG7.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/06R7ZDBXYZ7R3FTBHSZ61DVD3W.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/06R7ZDBXYZ7R3FTBHSZ61DVD3W.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/06R7ZDBXYZ7R3FTBHSZ61DVD3W.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/06R7ZDBXYZ7R3FTBHSZ61DVD3W.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/06R7ZDBXYZ7R3FTBHSZ61DVD3W.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/06R7ZDBXYZ7R3FTBHSZ61DVD3W.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/06R7ZDBXYZ7R3FTBHSZ61DVD3W.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/06R7ZDBXYZ7R3FTBHSZ61DVD3W.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/06R7ZDBXYZ7R3FTBHSZ61DVD3W.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/07CX60V4ES9NFQBETWE96SRQD7.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/07CX60V4ES9NFQBETWE96SRQD7.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/07CX60V4ES9NFQBETWE96SRQD7.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/07CX60V4ES9NFQBETWE96SRQD7.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/07CX60V4ES9NFQBETWE96SRQD7.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/07CX60V4ES9NFQBETWE96SRQD7.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/07CX60V4ES9NFQBETWE96SRQD7.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/07CX60V4ES9NFQBETWE96SRQD7.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/07CX60V4ES9NFQBETWE96SRQD7.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0S3QQ27V58H6HQKSSXZSDW0GE3.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0S3QQ27V58H6HQKSSXZSDW0GE3.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0S3QQ27V58H6HQKSSXZSDW0GE3.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0S3QQ27V58H6HQKSSXZSDW0GE3.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0S3QQ27V58H6HQKSSXZSDW0GE3.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0S3QQ27V58H6HQKSSXZSDW0GE3.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0S3QQ27V58H6HQKSSXZSDW0GE3.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0S3QQ27V58H6HQKSSXZSDW0GE3.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0S3QQ27V58H6HQKSSXZSDW0GE3.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5X0KF42SN2SE9M014CR6HFSCVW.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5X0KF42SN2SE9M014CR6HFSCVW.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5X0KF42SN2SE9M014CR6HFSCVW.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5X0KF42SN2SE9M014CR6HFSCVW.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5X0KF42SN2SE9M014CR6HFSCVW.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5X0KF42SN2SE9M014CR6HFSCVW.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5X0KF42SN2SE9M014CR6HFSCVW.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5X0KF42SN2SE9M014CR6HFSCVW.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5X0KF42SN2SE9M014CR6HFSCVW.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2VYKSAGNS9A338NDGVTXJE5FQE.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2VYKSAGNS9A338NDGVTXJE5FQE.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2VYKSAGNS9A338NDGVTXJE5FQE.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2VYKSAGNS9A338NDGVTXJE5FQE.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2VYKSAGNS9A338NDGVTXJE5FQE.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2VYKSAGNS9A338NDGVTXJE5FQE.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2VYKSAGNS9A338NDGVTXJE5FQE.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2VYKSAGNS9A338NDGVTXJE5FQE.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2VYKSAGNS9A338NDGVTXJE5FQE.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5GR8ZNXNYSQVGY0RTH0061TK25.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5GR8ZNXNYSQVGY0RTH0061TK25.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5GR8ZNXNYSQVGY0RTH0061TK25.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5GR8ZNXNYSQVGY0RTH0061TK25.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5GR8ZNXNYSQVGY0RTH0061TK25.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5GR8ZNXNYSQVGY0RTH0061TK25.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5GR8ZNXNYSQVGY0RTH0061TK25.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5GR8ZNXNYSQVGY0RTH0061TK25.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5GR8ZNXNYSQVGY0RTH0061TK25.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        }
+      ]
+    },
+    {
+      "url": "https://cursodeglobosonline.com/blog/globos-con-confeti/",
+      "status": 200,
+      "images": [
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp 1600w",
+          "sizes": "(min-width: 1200px) 1120px, calc(100vw - 48px)",
+          "width": "1600",
+          "height": "900",
+          "loading": "eager",
+          "fetchpriority": "high"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 960w",
+          "sizes": "(min-width: 640px) 224px, calc(100vw - 48px)",
+          "width": "600",
+          "height": "600",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        }
+      ]
+    },
+    {
+      "url": "https://cursodeglobosonline.com/blog/arco-de-globos/",
+      "status": 200,
+      "images": [
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg 1600w",
+          "sizes": "(min-width: 1200px) 1120px, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "eager",
+          "fetchpriority": "high"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 1280w, /cdn-cgi/image/width=1600,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg 1600w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "2400",
+          "height": "1350",
+          "loading": "lazy",
+          "fetchpriority": "auto"
+        }
+      ]
+    },
+    {
+      "url": "https://cursodeglobosonline.com/co/curso-de-globoflexia/",
+      "status": 200,
+      "images": [
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 160w",
+          "sizes": "56px",
+          "width": "56",
+          "height": "56",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 96w",
+          "sizes": "48px",
+          "width": "48",
+          "height": "48",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg 960w",
+          "sizes": "(min-width: 448px) 448px, calc(100vw - 48px)",
+          "width": "600",
+          "height": "450",
+          "loading": "lazy",
+          "fetchpriority": "high"
+        },
+        {
+          "src": "/cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4FBPD66TWPTJ77PSMG6HFA78XC.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4FBPD66TWPTJ77PSMG6HFA78XC.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4FBPD66TWPTJ77PSMG6HFA78XC.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4FBPD66TWPTJ77PSMG6HFA78XC.jpg 320w",
+          "sizes": "160px",
+          "width": "160",
+          "height": "160",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg 960w",
+          "sizes": "(min-width: 448px) 448px, calc(100vw - 48px)",
+          "width": "1100",
+          "height": "825",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg 1280w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "600",
+          "height": "600",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg 1280w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "600",
+          "height": "600",
+          "loading": "lazy",
+          "fetchpriority": null
+        },
+        {
+          "src": "/cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+          "srcset": "/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 96w, /cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 160w, /cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 320w, /cdn-cgi/image/width=480,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 480w, /cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 640w, /cdn-cgi/image/width=960,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 960w, /cdn-cgi/image/width=1280,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg 1280w",
+          "sizes": "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)",
+          "width": "600",
+          "height": "600",
+          "loading": "lazy",
+          "fetchpriority": null
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 4883,
+      "originalBytes": 201072,
+      "savingPercent": 97.6,
+      "cfResized": "internal=ram/- q=0 n=0+0 c=5+30 v=2026.9.13 l=4883 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 2416,
+      "originalBytes": 90420,
+      "savingPercent": 97.3,
+      "cfResized": "internal=ram/- q=0 n=0+0 c=3+45 v=2026.9.13 l=2416 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 2804,
+      "originalBytes": 81300,
+      "savingPercent": 96.6,
+      "cfResized": "internal=ram/- q=0 n=0+0 c=2+26 v=2026.9.13 l=2804 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=160,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 2615,
+      "originalBytes": 79601,
+      "savingPercent": 96.7,
+      "cfResized": "internal=ram/- q=0 n=0+0 c=2+52 v=2026.9.13 l=2615 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=320,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4FBPD66TWPTJ77PSMG6HFA78XC.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/4FBPD66TWPTJ77PSMG6HFA78XC.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 4299,
+      "originalBytes": 217622,
+      "savingPercent": 98.0,
+      "cfResized": "internal=ok/- q=0 n=56+17 c=6+70 v=2026.9.13 l=4299 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPC044VFYF1GPHNNS1QWS.webp",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/01M40GPC044VFYF1GPHNNS1QWS.webp",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/webp",
+      "bytes": 15639,
+      "originalBytes": 44156,
+      "savingPercent": 64.6,
+      "cfResized": "internal=ok/- q=0 n=92+17 c=18+70 v=2026.9.13 l=15639 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/01M40GPJBEKE0P87ZS7W8XPZHR.webp",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/webp",
+      "bytes": 14943,
+      "originalBytes": 41206,
+      "savingPercent": 63.7,
+      "cfResized": "internal=ok/- q=0 n=94+75 c=22+85 v=2026.9.13 l=14943 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/06R7ZDBXYZ7R3FTBHSZ61DVD3W.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/06R7ZDBXYZ7R3FTBHSZ61DVD3W.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 36437,
+      "originalBytes": 545018,
+      "savingPercent": 93.3,
+      "cfResized": "internal=ok/- q=0 n=89+58 c=20+137 v=2026.9.13 l=36437 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/07CX60V4ES9NFQBETWE96SRQD7.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/07CX60V4ES9NFQBETWE96SRQD7.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 27276,
+      "originalBytes": 572392,
+      "savingPercent": 95.2,
+      "cfResized": "internal=ok/- q=0 n=88+19 c=26+139 v=2026.9.13 l=27276 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/0C6DKXRD7A1WGEVJEPHKRZ3AT1.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 19922,
+      "originalBytes": 571951,
+      "savingPercent": 96.5,
+      "cfResized": "internal=ram/- q=0 n=0+12 c=17+85 v=2026.9.13 l=19922 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 28687,
+      "originalBytes": 201072,
+      "savingPercent": 85.7,
+      "cfResized": "internal=ok/- q=0 n=821+15 c=4+126 v=2026.9.13 l=28687 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0S3QQ27V58H6HQKSSXZSDW0GE3.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/0S3QQ27V58H6HQKSSXZSDW0GE3.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 18845,
+      "originalBytes": 389867,
+      "savingPercent": 95.2,
+      "cfResized": "internal=ok/- q=0 n=62+13 c=19+81 v=2026.9.13 l=18845 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/10QHBN23V1D5JRS8G5SFATD6KM.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 17402,
+      "originalBytes": 320391,
+      "savingPercent": 94.6,
+      "cfResized": "internal=ok/- q=0 n=62+20 c=22+129 v=2026.9.13 l=17402 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/1FJS0W0XJ0BV97S2VRFAQN75Y2.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 30820,
+      "originalBytes": 524638,
+      "savingPercent": 94.1,
+      "cfResized": "internal=ok/- q=0 n=1107+21 c=33+102 v=2026.9.13 l=30820 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/216JNW4S1X9EXZH9YBKJRMJQ49.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 22046,
+      "originalBytes": 451897,
+      "savingPercent": 95.1,
+      "cfResized": "internal=ram/- q=0 n=0+18 c=30+114 v=2026.9.13 l=22046 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2JNWZ1ESY4Z1MT1X3CGA19QV9S.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/2JNWZ1ESY4Z1MT1X3CGA19QV9S.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 22621,
+      "originalBytes": 520833,
+      "savingPercent": 95.7,
+      "cfResized": "internal=ok/- q=0 n=65+17 c=22+87 v=2026.9.13 l=22621 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/2M55A2HTRWEJKMP8DXBG1EKY07.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 34293,
+      "originalBytes": 561067,
+      "savingPercent": 93.9,
+      "cfResized": "internal=ok/- q=0 n=1053+15 c=23+116 v=2026.9.13 l=34293 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2VYKSAGNS9A338NDGVTXJE5FQE.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/2VYKSAGNS9A338NDGVTXJE5FQE.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 21884,
+      "originalBytes": 476190,
+      "savingPercent": 95.4,
+      "cfResized": "internal=ok/- q=0 n=1042+12 c=20+95 v=2026.9.13 l=21884 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 12445,
+      "originalBytes": 90420,
+      "savingPercent": 86.2,
+      "cfResized": "internal=ok/- q=0 n=766+60 c=2+251 v=2026.9.13 l=12445 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/3HQMBMZPRVMWVVWDY5KPHKRPEC.jpg",
+      "status": 200,
+      "format": "image/webp",
+      "originalFormat": "image/jpeg",
+      "bytes": 34332,
+      "originalBytes": 610788,
+      "savingPercent": 94.4,
+      "cfResized": "internal=ok/- q=0 n=58+15 c=21+26 v=2026.9.13 l=34332 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 12708,
+      "originalBytes": 81300,
+      "savingPercent": 84.4,
+      "cfResized": "internal=ok/- q=0 n=827+13 c=3+120 v=2026.9.13 l=12708 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/3K55M20FBWH9BXA20PZES798K1.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 26838,
+      "originalBytes": 443600,
+      "savingPercent": 93.9,
+      "cfResized": "internal=ok/- q=0 n=100+28 c=32+89 v=2026.9.13 l=26838 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3PZZK8SFW32K6BZGW8F4652NKF.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/3PZZK8SFW32K6BZGW8F4652NKF.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 17988,
+      "originalBytes": 368846,
+      "savingPercent": 95.1,
+      "cfResized": "internal=ok/- q=0 n=76+94 c=47+122 v=2026.9.13 l=17988 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/40MWR8KEXY46CE8T6DGCA0GYZH.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 23813,
+      "originalBytes": 422317,
+      "savingPercent": 94.4,
+      "cfResized": "internal=ok/- q=0 n=64+11 c=14+86 v=2026.9.13 l=23813 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MBBFDAVNP7JDM1VXTZ2PDWMD9.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/4MBBFDAVNP7JDM1VXTZ2PDWMD9.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 22764,
+      "originalBytes": 419889,
+      "savingPercent": 94.6,
+      "cfResized": "internal=ram/- q=0 n=0+27 c=21+150 v=2026.9.13 l=22764 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4MH1HN563JWH92NYPFRTVKRBZ2.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/4MH1HN563JWH92NYPFRTVKRBZ2.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 19041,
+      "originalBytes": 345566,
+      "savingPercent": 94.5,
+      "cfResized": "internal=ok/- q=0 n=54+90 c=46+115 v=2026.9.13 l=19041 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4W6W4GVDKM7BZTHCYWCENATR2S.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/4W6W4GVDKM7BZTHCYWCENATR2S.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 43246,
+      "originalBytes": 556942,
+      "savingPercent": 92.2,
+      "cfResized": "internal=ok/- q=0 n=59+23 c=18+106 v=2026.9.13 l=43246 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/4XJ2Y24C69YR66ZBXA1FANQMG7.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/4XJ2Y24C69YR66ZBXA1FANQMG7.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 21004,
+      "originalBytes": 356092,
+      "savingPercent": 94.1,
+      "cfResized": "internal=ram/- q=0 n=0+12 c=15+83 v=2026.9.13 l=21004 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/515N6F7KRZ0KXW1K2R2KEZW5FQ.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/515N6F7KRZ0KXW1K2R2KEZW5FQ.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 27499,
+      "originalBytes": 510743,
+      "savingPercent": 94.6,
+      "cfResized": "internal=ram/- q=0 n=0+62 c=25+107 v=2026.9.13 l=27499 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 12942,
+      "originalBytes": 79601,
+      "savingPercent": 83.7,
+      "cfResized": "internal=ok/- q=0 n=939+16 c=4+125 v=2026.9.13 l=12942 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5GR8ZNXNYSQVGY0RTH0061TK25.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/5GR8ZNXNYSQVGY0RTH0061TK25.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 16485,
+      "originalBytes": 309461,
+      "savingPercent": 94.7,
+      "cfResized": "internal=ram/- q=0 n=0+34 c=47+130 v=2026.9.13 l=16485 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5NNNF8AK7P6WM1Z0YKKXPT9EYS.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/5NNNF8AK7P6WM1Z0YKKXPT9EYS.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 29963,
+      "originalBytes": 514494,
+      "savingPercent": 94.2,
+      "cfResized": "internal=ram/- q=0 n=0+14 c=18+102 v=2026.9.13 l=29963 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5W75M2QJYE71NMW29WY8P691RP.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/5W75M2QJYE71NMW29WY8P691RP.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 33366,
+      "originalBytes": 580776,
+      "savingPercent": 94.3,
+      "cfResized": "internal=ram/- q=0 n=0+14 c=15+100 v=2026.9.13 l=33366 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/5X0KF42SN2SE9M014CR6HFSCVW.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/5X0KF42SN2SE9M014CR6HFSCVW.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 36297,
+      "originalBytes": 600920,
+      "savingPercent": 94.0,
+      "cfResized": "internal=ram/- q=0 n=0+13 c=20+109 v=2026.9.13 l=36297 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/6XCBEMX45NCP43S5PPQ483GK8Y.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 23372,
+      "originalBytes": 498954,
+      "savingPercent": 95.3,
+      "cfResized": "internal=ram/- q=0 n=0+15 c=25+118 v=2026.9.13 l=23372 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/72R638FREXNXHW4W9F29PNY9QX.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/72R638FREXNXHW4W9F29PNY9QX.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 26503,
+      "originalBytes": 461677,
+      "savingPercent": 94.3,
+      "cfResized": "internal=ram/- q=0 n=0+14 c=34+108 v=2026.9.13 l=26503 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7480907WVMWNYXDZBQ6HB9CMAM.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/7480907WVMWNYXDZBQ6HB9CMAM.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 29683,
+      "originalBytes": 485241,
+      "savingPercent": 93.9,
+      "cfResized": "internal=ram/- q=0 n=0+22 c=60+120 v=2026.9.13 l=29683 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7RS6CBNT5DET2MRCJ0YD7S6VTK.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/7RS6CBNT5DET2MRCJ0YD7S6VTK.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 31042,
+      "originalBytes": 538740,
+      "savingPercent": 94.2,
+      "cfResized": "internal=ram/- q=0 n=0+17 c=26+130 v=2026.9.13 l=31042 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/7Z79T3DKH8XASXAVER7SV4M986.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/7Z79T3DKH8XASXAVER7SV4M986.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 28107,
+      "originalBytes": 502800,
+      "savingPercent": 94.4,
+      "cfResized": "internal=ram/- q=0 n=0+19 c=20+86 v=2026.9.13 l=28107 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "MISS"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/images/certificado-mockup.jpg",
+      "original": "https://cursodeglobosonline.com/images/certificado-mockup.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 9655,
+      "originalBytes": 87024,
+      "savingPercent": 88.9,
+      "cfResized": "internal=ok/h q=0 n=417+56 c=3+132 v=2026.9.13 l=9655 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=640,quality=80,format=auto,fit=scale-down,onerror=redirect/images/decoracion-guirnalda.jpg",
+      "original": "https://cursodeglobosonline.com/images/decoracion-guirnalda.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 14813,
+      "originalBytes": 120368,
+      "savingPercent": 87.7,
+      "cfResized": "internal=ok/h q=0 n=479+57 c=3+205 v=2026.9.13 l=14813 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/0H3VDFK44KW5CYKBZFFM50N9DF.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 2116,
+      "originalBytes": 201072,
+      "savingPercent": 98.9,
+      "cfResized": "internal=ram/- q=0 n=0+0 c=3+24 v=2026.9.13 l=2116 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/2XB3RP0995EEAQ9GGT5N178478.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 1492,
+      "originalBytes": 90420,
+      "savingPercent": 98.3,
+      "cfResized": "internal=ram/- q=0 n=0+0 c=1+11 v=2026.9.13 l=1492 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 1590,
+      "originalBytes": 81300,
+      "savingPercent": 98.0,
+      "cfResized": "internal=ram/- q=0 n=0+0 c=1+22 v=2026.9.13 l=1590 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    },
+    {
+      "url": "https://cursodeglobosonline.com/cdn-cgi/image/width=96,quality=80,format=auto,fit=scale-down,onerror=redirect/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+      "original": "https://cursodeglobosonline.com/_emdash/api/media/file/532J5ZB3KKFQZ7G2M0T6KZAW8C.jpg",
+      "status": 200,
+      "format": "image/avif",
+      "originalFormat": "image/jpeg",
+      "bytes": 1421,
+      "originalBytes": 79601,
+      "savingPercent": 98.2,
+      "cfResized": "internal=ram/- q=0 n=0+0 c=1+13 v=2026.9.13 l=1421 f=false c2=0 wv=2026.9.1",
+      "cacheStatus": "HIT"
+    }
+  ],
+  "privateAccess": [
+    {
+      "url": "https://cursodeglobosonline.com/_emdash/admin",
+      "status": 401,
+      "robots": "noindex, nofollow, noarchive"
+    },
+    {
+      "url": "https://dev.cursodeglobosonline.com/",
+      "status": 401,
+      "robots": "noindex, nofollow, noarchive"
+    }
+  ],
+  "issues": [],
+  "note": "Transferred bytes compare original and selected variant. This is not a browser LCP measurement."
+}

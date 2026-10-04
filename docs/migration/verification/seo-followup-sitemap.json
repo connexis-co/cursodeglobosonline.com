@@ -1,0 +1,28 @@
+{
+  "submittedAt": "2026-10-03T09:23:34.660865+00:00",
+  "property": "sc-domain:cursodeglobosonline.com",
+  "sitemap": "https://cursodeglobosonline.com/sitemap-index.xml",
+  "submitStatus": 204,
+  "googleStatus": {
+    "path": "https://cursodeglobosonline.com/sitemap-index.xml",
+    "lastSubmitted": "2026-10-03T09:23:34.366Z",
+    "isPending": true,
+    "isSitemapsIndex": true,
+    "lastDownloaded": "2026-10-02T22:02:54.041Z",
+    "warnings": "0",
+    "errors": "0",
+    "contents": [
+      {
+        "type": "web",
+        "submitted": "119",
+        "indexed": "0"
+      },
+      {
+        "type": "image",
+        "submitted": "28",
+        "indexed": "0"
+      }
+    ]
+  },
+  "publicUrlsVerified": 122
+}

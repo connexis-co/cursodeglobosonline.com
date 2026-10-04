@@ -1,0 +1,11 @@
+---
+import { PortableText, type PortableTextProps } from 'emdash/ui';
+import GithubSlugger from 'github-slugger';
+import {plainText} from '@/lib/emdash-content';
+import RichHeading from './RichHeading.astro';
+interface Props {value:PortableTextProps['value']}
+const slugger=new GithubSlugger();
+const values=Array.isArray(Astro.props.value)?Astro.props.value:[Astro.props.value];
+const value=values.map(b=>b._type==='block'&&/^h[1-6]$/.test(String(b.style))?{...b,anchor:slugger.slug(plainText(b.children))}:b);
+---
+<PortableText {value} components={{block:{h1:RichHeading,h2:RichHeading,h3:RichHeading,h4:RichHeading,h5:RichHeading,h6:RichHeading}}} tablePlaceholder="Tabla de referencia" />

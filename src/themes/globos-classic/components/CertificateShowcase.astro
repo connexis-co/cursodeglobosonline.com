@@ -1,0 +1,73 @@
+---
+import ResponsiveImage from '@/components/ResponsiveImage.astro';
+/**
+ * Muestra del certificado con globo flotante de acento.
+ * Hoy la imagen es un mockup fotográfico (papel en blanco con borde y sello dorados, sin texto
+ * falso), así que se rotula «Ejemplo ilustrativo» (auditoría P1-10). Cuando exista un
+ * certificado real de muestra (nombre de demo o de un alumno que lo autorice), pasar su ruta en
+ * `src` con `illustrative={false}`.
+ */
+import Icon from '@/components/Icon.astro';
+
+interface Props {
+  courseName?: string;
+  /** Imagen del certificado (por defecto, el mockup en blanco). */
+  src?: string;
+  /** Rotula la imagen como ejemplo; obligatorio mientras sea un mockup. */
+  illustrative?: boolean;
+}
+const { courseName = 'el curso', src = '/images/certificado-mockup.jpg', illustrative = true } = Astro.props;
+const alt = illustrative
+  ? `Ejemplo ilustrativo del certificado de estudios que recibes al completar ${courseName}`
+  : `Certificado de estudios de muestra de ${courseName}`;
+---
+
+<div class="cert-wrap relative mx-auto w-full max-w-md">
+  <div class="cert scroll-reveal-late relative rotate-[-2deg] overflow-hidden rounded-2xl border-4 border-white shadow-globo">
+    <ResponsiveImage sizes="(min-width: 448px) 448px, calc(100vw - 48px)" maxWidth={960}
+      {src}
+      {alt}
+      class="block aspect-[4/3] w-full object-cover"
+      loading="lazy"
+      decoding="async"
+      width="1100"
+      height="825"
+    />
+    {
+      illustrative && (
+        <span class="absolute top-3 right-3 rounded-full bg-ciruela-900/80 px-3 py-1 text-[0.7rem] font-bold tracking-wide text-crema-50 backdrop-blur-sm">
+          Ejemplo ilustrativo
+        </span>
+      )
+    }
+    <span
+      class="absolute bottom-4 left-4 inline-flex items-center gap-1.5 rounded-xl bg-white/92 px-4 py-2 text-xs font-bold text-ciruela-700 backdrop-blur-sm"
+    >
+      <Icon name="birrete" class="text-coral-600" />
+      Certificado de estudios · verificable en línea
+    </span>
+  </div>
+  <!-- globo que asoma detrás del certificado -->
+  <svg
+    class="animate-floating absolute -top-9 -right-3 -z-10 h-24 w-16 sm:-right-7"
+    style="animation-duration: 3.4s; animation-delay: -0.6s"
+    viewBox="0 0 40 62"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <ellipse cx="20" cy="19" rx="17" ry="19" fill="oklch(0.84 0.145 85)"></ellipse>
+    <ellipse cx="14" cy="11" rx="5" ry="7" fill="white" opacity="0.32" transform="rotate(-16 14 11)"></ellipse>
+    <path d="M20 38 l-2.6 4 h5.2 Z" fill="oklch(0.84 0.145 85)"></path>
+    <path d="M20 42.5 q-4 7 0.5 13" stroke="oklch(0.62 0.12 70)" stroke-opacity="0.5" stroke-width="1.3" fill="none" stroke-linecap="round"></path>
+  </svg>
+</div>
+
+<style>
+  .cert {
+    transition: transform 0.5s var(--ease-fiesta);
+  }
+  .cert-wrap:hover .cert {
+    transform: rotate(-0.3deg) scale(1.02);
+  }
+</style>

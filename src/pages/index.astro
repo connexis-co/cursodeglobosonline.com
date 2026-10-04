@@ -1,5 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+import ResponsiveImage from '@/components/ResponsiveImage.astro';
+import RichBody from '@/components/RichBody.astro';
+import { getDocument } from '@/lib/emdash-content';
+const [page,COUNTRIES,courseEntries,testimonialEntries,posts]=await Promise.all([getDocument('pages','inicio'),getCountries(),getCollection('courses'),getCollection('testimonials'),getRecentBlogPosts(3)]);if(!page)return Astro.rewrite('/404');Astro.locals.cmsContent=page;
+const copy=page.data;
+import { getCountrySummaries as getCountries } from '@/lib/emdash-content';
+
+import { getCollection } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Balloons from '@/components/Balloons.astro';
 import Wave from '@/components/Wave.astro';
@@ -12,23 +19,23 @@ import LeadForm from '@/components/LeadForm.astro';
 import FaqAccordion from '@/components/FaqAccordion.astro';
 import Icon from '@/components/Icon.astro';
 import PostCard from '@/components/blog/PostCard.astro';
-import { getPublishedPosts } from '@/lib/blog';
-import { COUNTRIES, DEFAULT_COUNTRY } from '@/lib/countries';
+import { getRecentBlogPosts } from '@/lib/emdash-content';
+import { DEFAULT_COUNTRY } from '@/lib/countries';
 import { buildWhatsAppUrl } from '@/lib/hotmart';
 import type { IconName } from '@/lib/icons';
 import { countryAlternates, faqSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
-const courses = (await getCollection('courses')).sort(
+const courses = courseEntries.sort(
   (a, b) => Number(b.data.featured) - Number(a.data.featured),
 );
 const featured = courses.find((c) => c.data.featured) ?? courses[0];
-const others = courses.filter((c) => c.id !== featured.id);
+const others = courses.filter((c) => c.id !== featured?.id);
 // Reseñas reales de Hotmart (sustituyen a los testimonios placeholder del lanzamiento).
-const testimonials = (await getCollection('testimonials')).slice(0, 6);
+const testimonials = testimonialEntries.slice(0, 6);
 // Las 3 guías más recientes del blog: enlazado interno home → blog (clusters informacionales).
 // La sección solo se pinta si hay artículos publicados.
-const guias = (await getPublishedPosts()).slice(0, 3);
+const guias = posts.slice(0, 3);
 
 // Tarjeta de asesoría que llena la celda libre del grid de cursos (fila 2, col. 3 en lg).
 const defaultCountry = COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
@@ -37,53 +44,14 @@ const waAsesoria = buildWhatsAppUrl(
   'Hola 🎈 No sé qué curso de globos elegir. ¿Me ayudan a escoger?',
 );
 
-const metodo: { icon: IconName; title: string; text: string }[] = [
-  { icon: 'play', title: 'La técnica en cámara, sin relleno', text: 'Ves las manos del instructor en cada amarre y cada retorcido, y lo repites a tu ritmo.' },
-  { icon: 'dispositivo', title: 'Desde el celular o el computador', text: 'Acceso inmediato al pagar, sin horarios y para siempre. Repasa antes de cada pedido.' },
-  { icon: 'tareas', title: 'Tareas calificadas y asistencia académica', text: 'No estudias en solitario: entregas prácticas y recibes correcciones mientras avanzas.' },
-  { icon: 'regalo', title: 'Bonos que se venden solos', text: 'Presupuestos, porta globos, bouquets de desayuno sorpresa: productos listos para cobrar.' },
-];
-
-const faqs = [
-  {
-    q: '¿Los cursos son en vivo o grabados?',
-    a: 'Son grabados y ese es su punto fuerte: recibes acceso inmediato al pagar, avanzas a tu ritmo y repites cada técnica las veces que necesites antes de un pedido o un evento.',
-  },
-  {
-    q: '¿Cómo pago desde mi país?',
-    a: 'El pago se procesa en Hotmart, la plataforma de cursos más usada de Latinoamérica. Acepta tarjetas y métodos locales según tu país, y muestra el precio en tu moneda antes de confirmar.',
-  },
-  {
-    q: '¿El certificado tiene validez?',
-    a: 'Al completar cada curso recibes un certificado de estudios con validez internacional, con tareas calificadas durante el curso. Sirve para tu portafolio y para generar confianza con clientes.',
-  },
-  {
-    q: '¿Necesito materiales costosos para empezar?',
-    a: 'No. Con globos de buena calidad y un inflador manual haces tus primeras prácticas. Cada curso indica sus materiales y recomienda marcas; los equipos eléctricos son opcionales.',
-  },
-  {
-    q: '¿Cuánto tiempo tengo para terminar un curso?',
-    a: 'No hay límite. El acceso es permanente: puedes terminarlo en una semana o repasarlo dentro de un año antes de un evento importante.',
-  },
-  {
-    q: '¿Hay garantía si no me gusta?',
-    a: 'Sí. Hotmart ofrece 7 días de garantía: si el curso no era lo que esperabas, pides el reembolso y recuperas el 100% de tu dinero.',
-  },
-  {
-    q: '¿Estos cursos sirven para montar un negocio?',
-    a: 'Sí, están pensados para eso. Además de la técnica, incluyen presupuesto y cotización, bonos de productos vendibles (bouquets, desayuno sorpresa, porta globos) y consejos para conseguir clientes.',
-  },
-  {
-    q: '¿Desde qué países puedo tomarlos?',
-    a: 'Desde cualquiera. Tenemos estudiantes en Colombia, México, Perú, Ecuador, Chile, Argentina, España y Estados Unidos, y el checkout ajusta moneda y métodos de pago a tu país.',
-  },
-];
+const metodo=(copy.method??[]) as {icon:IconName;title:string;text:string}[];
+const faqs=(copy.faqs??[]) as {q:string;a:string}[];
 ---
 
 <BaseLayout
-  title="Curso de Decoración con Globos Online con Certificado"
-  description="4 cursos online de decoración con globos: globoflexia, bouquets, flores y globos burbuja. Certificado, acceso de por vida y garantía de 7 días."
-  alternates={countryAlternates('/')}
+  title={copy.title}
+  description={copy.description}
+  alternates={await countryAlternates('/')}
   schemas={[faqSchema(faqs)]}
   pageType="home"
   transparentHeader
@@ -95,44 +63,40 @@ const faqs = [
 
     <div class="contenedor relative pt-14 pb-20 text-center sm:pt-16 lg:pt-20 lg:pb-28">
       <p
-        class="animate-pop-in mx-auto inline-flex items-center gap-2 rounded-full border border-crema-50/20 bg-crema-50/10 px-4 py-1.5 text-xs font-bold tracking-wide backdrop-blur-sm"
+        class="mx-auto inline-flex items-center gap-2 rounded-full border border-crema-50/20 bg-crema-50/10 px-4 py-1.5 text-xs font-bold tracking-wide backdrop-blur-sm"
       >
-        4 cursos · {SITE.stats.students} estudiantes certificados · {SITE.stats.ventures} emprendimientos
+        {courses.length} cursos · {SITE.stats.students} estudiantes certificados · {SITE.stats.ventures} emprendimientos
       </p>
       <h1
-        class="animate-fade-slide-up mx-auto mt-6 max-w-3xl text-4xl font-semibold text-balance sm:text-5xl lg:text-6xl"
-        style="animation-delay: 0.1s"
+        class="mx-auto mt-6 max-w-3xl text-4xl font-semibold text-balance sm:text-5xl lg:text-6xl"
       >
-        Cursos de decoración con globos para <span class="text-coral-300">vivir de las fiestas</span>
+        {copy.heading} <span class="text-coral-300">{copy.highlight}</span>
       </h1>
       <p
-        class="animate-fade-slide-up mx-auto mt-5 max-w-xl text-base text-crema-100/85 sm:text-lg"
-        style="animation-delay: 0.22s"
+        class="mx-auto mt-5 max-w-xl text-base text-crema-100/85 sm:text-lg"
       >
-        Globoflexia, bouquets, flores y globos burbuja: técnica paso a paso, 100% online, con certificado de
-        estudios y acceso para siempre.
+        {copy.lead}
       </p>
       <div
-        class="animate-fade-slide-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
-        style="animation-delay: 0.34s"
+        class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
       >
         <a
           href="/co/cursos/"
           class="rounded-xl bg-coral-600 px-8 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-700"
         >
-          Explorar los cursos
+          {copy.ctaLabel}
         </a>
         <a
-          href={`/co/${featured.id}/`}
+          href={featured?`/co/${featured.id}/`:'/co/cursos/'}
           class="inline-flex items-center justify-center gap-2.5 rounded-xl border-2 border-crema-50/30 px-5 py-4 text-sm font-bold whitespace-nowrap backdrop-blur-sm transition-all duration-300 hover:border-sol-300 hover:text-sol-300 min-[360px]:px-8"
         >
           <span class="flex h-6 w-6 items-center justify-center rounded-full bg-sol-300 text-ciruela-900">
             <Icon name="etiqueta" size={14} />
           </span>
-          Globoflexia con 50% OFF
+          {featured?.data.title??'Ver los cursos'}
         </a>
       </div>
-      <p class="animate-fade-slide-up mt-7 text-xs text-crema-100/60" style="animation-delay: 0.45s">
+      <p class="mt-7 text-xs text-crema-100/60">
         Garantía de 7 días · Pago seguro con Hotmart · Aprende desde tu celular
       </p>
     </div>
@@ -147,8 +111,8 @@ const faqs = [
     <div class="flex flex-wrap items-end justify-between gap-6">
       <SectionHeading
         eyebrow="Catálogo"
-        title="Cuatro cursos, un oficio que se paga solo"
-        lead="Empieza por el que más te llame: todos incluyen certificado, acceso permanente y bonos pensados para vender desde la primera semana."
+        title={copy.catalogTitle}
+        lead={copy.catalogLead}
       />
       <a
         href="/co/cursos/"
@@ -161,7 +125,7 @@ const faqs = [
          y en sm (2 col.). Todas las tarjetas llevan h-full para igualar alturas por fila. -->
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <div class="scroll-reveal sm:col-span-2 lg:col-span-1 lg:row-span-2">
-        <CourseCard course={featured} large class="h-full" />
+        {featured&&<CourseCard course={featured} large class="h-full" />}
       </div>
       {
         others.map((course, i) => (
@@ -244,7 +208,7 @@ const faqs = [
           }
         </ul>
         <a
-          href={`/co/${featured.id}/`}
+          href={featured?`/co/${featured.id}/`:'/co/cursos/'}
           class="mt-9 inline-block rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-ciruela-900 transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-sol-300"
         >
           Ver el curso de globoflexia
@@ -252,7 +216,7 @@ const faqs = [
       </div>
       <div class="scroll-reveal-late relative mx-auto w-full max-w-md lg:max-w-none">
         <div class="rotate-2 overflow-hidden rounded-3xl border-4 border-crema-50/15 shadow-globo">
-          <img
+          <ResponsiveImage sizes="(min-width: 1200px) 560px, (min-width: 1024px) 50vw, (min-width: 448px) 448px, calc(100vw - 48px)" maxWidth={1280}
             src="/images/decoracion-guirnalda.jpg"
             alt="Guirnalda orgánica de globos en tonos coral, crema y dorado decorando un salón de eventos"
             class="aspect-[4/3] w-full object-cover"
@@ -341,7 +305,7 @@ const faqs = [
 
   <!-- 7 · CERTIFICADO -->
   <section class="contenedor grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
-    <CertificateShowcase courseName={featured.data.title} />
+    <CertificateShowcase courseName={featured?.data.title??'Decoración con globos'} />
     <div class="scroll-reveal">
       <SectionHeading
         eyebrow="Certificado"
@@ -446,7 +410,7 @@ const faqs = [
       </p>
       <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <a
-          href={`/co/${featured.id}/`}
+          href={featured?`/co/${featured.id}/`:'/co/cursos/'}
           class="rounded-xl bg-coral-600 px-8 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-700"
         >
           Empezar con Globoflexia (50% OFF)
@@ -461,4 +425,5 @@ const faqs = [
     </div>
     <Wave color="var(--color-ciruela-900)" />
   </section>
+{page.richBody.length>0&&<section class="contenedor articulo py-12"><RichBody value={page.richBody}/></section>}
 </BaseLayout>

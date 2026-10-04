@@ -1,4 +1,4 @@
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, getBlogCards, type CollectionEntry } from '@/lib/emdash-content';
 
 export type Post = CollectionEntry<'blog'>;
 
@@ -7,6 +7,9 @@ export async function getPublishedPosts(): Promise<Post[]> {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
   return posts.sort((a, b) => lastModified(b).getTime() - lastModified(a).getTime());
 }
+
+/** Lightweight published cards; full entries remain available for authors and editorial pages. */
+export async function getPublishedPostCards():Promise<Post[]>{return(await getBlogCards()).sort((a,b)=>lastModified(b).getTime()-lastModified(a).getTime());}
 
 export function lastModified(post: Post): Date {
   return post.data.updatedAt ?? post.data.publishedAt;
@@ -44,7 +47,7 @@ export function relatedPosts(post: Post, all: Post[], limit = 3): Post[] {
 
 /** Artículos que empujan a un curso (para el bloque "Guías gratis" de la money page). */
 export async function postsForCourse(courseSlug: string, limit = 3): Promise<Post[]> {
-  const all = await getPublishedPosts();
+  const all = await getPublishedPostCards();
   const direct = all.filter((p) => p.data.moneyPage === courseSlug);
   return [...direct.filter((p) => p.data.isPillar), ...direct.filter((p) => !p.data.isPillar)].slice(0, limit);
 }

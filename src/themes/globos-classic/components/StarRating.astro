@@ -1,0 +1,389 @@
+---
+/**
+ * Calificar un curso o artículo con estrellas (1-5), estilo kk Star Ratings. El HTML se renderiza en servidor con
+ * los agregados de ese momento; solo cursos elegibles usan aggregateRating en JSON-LD.
+ * El script refresca desde la API correspondiente y registra el voto. Sin JS queda de solo lectura. Si hay varias
+ * instancias del mismo curso en la página, se mantienen sincronizadas.
+ */
+import { STAR_LABELS, formatAverage, starFill, votesLabel, type CourseRating } from '@/lib/ratings-config';
+
+interface Props {
+  contentId: string;
+  contentTitle: string;
+  kind?: 'courses' | 'blog';
+  rating: CourseRating;
+  size?: 'md' | 'lg';
+  /** Invitación bajo las estrellas; al pasar el cursor se reemplaza por el nombre de la nota. */
+  prompt?: string;
+  /** Centra estrellas y textos (bloque de la sección de reseñas). */
+  center?: boolean;
+  class?: string;
+}
+
+const {
+  contentId,
+  contentTitle,
+  kind = 'courses',
+  rating,
+  size = 'md',
+  prompt = 'Califícalo: elige de 1 a 5 estrellas',
+  center = false,
+  class: className,
+} = Astro.props;
+const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9Z';
+---
+
+<div
+  class:list={['star-rating flex flex-col gap-1', `star-rating--${size}`, center && 'items-center text-center', className]}
+  data-star-rating
+  data-content-id={contentId}
+  data-rating-kind={kind}
+  data-count={rating.count}
+  data-prompt={prompt}
+>
+  <div class:list={['flex flex-wrap items-center gap-x-2 gap-y-1', center && 'justify-center']}>
+    <div class="sr-stars" role="group" aria-label={`Califica: ${contentTitle}`}>
+      {
+        STAR_LABELS.map((label, i) => (
+          <button
+            type="button"
+            class="sr-star"
+            data-value={i + 1}
+            style={`--fill:${starFill(rating.average, i + 1)}`}
+            aria-label={`${i + 1} de 5 estrellas: ${label}`}
+            disabled
+          >
+            <svg class="sr-empty" viewBox="0 0 24 24" aria-hidden="true">
+              <path d={STAR} />
+            </svg>
+            <span class="sr-full" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d={STAR} />
+              </svg>
+            </span>
+          </button>
+        ))
+      }
+    </div>
+    <p class="text-sm text-ciruela-600" data-summary>
+      {
+        rating.count > 0 ? (
+          <>
+            <strong class="font-extrabold text-ciruela-900">{formatAverage(rating.average)}</strong> de 5 ·{' '}
+            {votesLabel(rating.count)}
+          </>
+        ) : (
+          'Aún sin votos'
+        )
+      }
+    </p>
+  </div>
+  <p class="min-h-4 text-xs font-bold text-coral-700" data-hint hidden>{prompt}</p>
+  <p class="sr-only" data-status aria-live="polite"></p>
+</div>
+
+<style>
+  .star-rating {
+    --star: 1.5rem;
+  }
+  .star-rating--lg {
+    --star: 2.25rem;
+  }
+  .sr-stars {
+    display: inline-flex;
+  }
+  .sr-star {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: calc(var(--star) + 0.5rem);
+    height: calc(var(--star) + 0.5rem);
+    border-radius: 0.625rem;
+    cursor: pointer;
+    transition: transform 0.25s var(--ease-fiesta);
+  }
+  .sr-star:disabled {
+    cursor: default;
+  }
+  .sr-star svg {
+    width: var(--star);
+    height: var(--star);
+    max-width: none;
+  }
+  .sr-empty path,
+  .sr-full path {
+    stroke: oklch(0.62 0.12 70);
+    stroke-width: 1;
+  }
+  .sr-empty path {
+    fill: oklch(0.9 0.022 78);
+  }
+  .sr-full {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    width: calc(var(--fill) * var(--star));
+    height: var(--star);
+    overflow: hidden;
+    transition: width 0.3s ease;
+  }
+  .sr-full path {
+    fill: oklch(0.84 0.145 85);
+  }
+  /* Vista previa al pasar el cursor o enfocar: se rellenan hasta la estrella señalada. */
+  .star-rating[data-preview] .sr-full {
+    width: 0;
+  }
+  .star-rating[data-preview] .is-on .sr-full {
+    width: var(--star);
+  }
+  .star-rating[data-preview] .is-on .sr-full path {
+    fill: oklch(0.8 0.16 62);
+  }
+  .sr-star:not(:disabled):hover {
+    transform: translateY(-2px) scale(1.12);
+  }
+  .sr-star:focus-visible {
+    outline: 3px solid var(--color-coral-400);
+    outline-offset: 0;
+  }
+  /* Tu voto: punto coral bajo la estrella elegida. */
+  .sr-star[aria-pressed='true']::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: 9999px;
+    background: var(--color-coral-600);
+    transform: translateX(-50%);
+  }
+  .star-rating[aria-busy='true'] .sr-star {
+    cursor: progress;
+    opacity: 0.6;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sr-star,
+    .sr-full {
+      transition: none;
+    }
+    .sr-star:not(:disabled):hover {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  import { trackEvent } from '@/lib/analytics';
+  import {
+    STAR_LABELS,
+    ratingApiPath,
+    ratingStorageKey,
+    type RatingKind,
+    formatAverage,
+    parseCourseRating,
+    starFill,
+    votesLabel,
+    type CourseRating,
+  } from '@/lib/ratings-config';
+
+  const VOTER_KEY = 'cgo:rating-voter';
+  const VOTES_KEY = 'cgo:rating-votes';
+
+  // localStorage puede fallar (modo privado, datos bloqueados): votar funciona igual.
+  const storage = (() => {
+    try {
+      const s = window.localStorage;
+      s.setItem('cgo:probe', '1');
+      s.removeItem('cgo:probe');
+      return s;
+    } catch {
+      return null;
+    }
+  })();
+
+  let voter: string | undefined;
+  /** UUID aleatorio por navegador: un voto por curso, que se puede cambiar. */
+  function voterId(): string {
+    voter ??= storage?.getItem(VOTER_KEY) ?? undefined;
+    if (!voter) {
+      voter = crypto.randomUUID();
+      storage?.setItem(VOTER_KEY, voter);
+    }
+    return voter;
+  }
+
+  function myVotes(): Record<string, number> {
+    try {
+      return JSON.parse(storage?.getItem(VOTES_KEY) ?? '{}') as Record<string, number>;
+    } catch {
+      return {};
+    }
+  }
+
+  function saveVote(course: string, value: number) {
+    try {
+      storage?.setItem(VOTES_KEY, JSON.stringify({ ...myVotes(), [course]: value }));
+    } catch {
+      /* sin almacenamiento: el voto ya quedó en el servidor */
+    }
+  }
+
+  const widgets = [...document.querySelectorAll<HTMLElement>('[data-star-rating]')];
+  /** Cursos votados en esta visita: la respuesta del POST manda sobre el GET de refresco. */
+  const votedNow = new Set<string>();
+  const kindOf = (w: HTMLElement): RatingKind => w.dataset.ratingKind === 'blog' ? 'blog' : 'courses';
+  const keyOf = (w: HTMLElement) => ratingStorageKey(kindOf(w), w.dataset.contentId ?? '');
+  const forContent = (key: string) => widgets.filter((w) => keyOf(w) === key);
+  const starOf = (target: EventTarget | null) =>
+    target instanceof Element ? target.closest<HTMLButtonElement>('.sr-star') : null;
+
+  function setHint(w: HTMLElement, text: string) {
+    const hint = w.querySelector<HTMLElement>('[data-hint]');
+    if (hint) hint.textContent = text;
+  }
+
+  function defaultHint(w: HTMLElement, count: number, mine?: number) {
+    if (mine) return `Tu voto: ${mine} ★ · puedes cambiarlo`;
+    return count > 0 ? (w.dataset.prompt ?? '') : 'Sé la primera persona en calificarlo';
+  }
+
+  function markMine(w: HTMLElement, mine?: number) {
+    for (const b of w.querySelectorAll<HTMLButtonElement>('.sr-star')) {
+      if (mine) b.setAttribute('aria-pressed', String(Number(b.dataset.value) === mine));
+      else b.removeAttribute('aria-pressed');
+    }
+  }
+
+  function paint(w: HTMLElement, r: CourseRating, mine?: number) {
+    w.dataset.count = String(r.count);
+    for (const b of w.querySelectorAll<HTMLButtonElement>('.sr-star')) {
+      b.style.setProperty('--fill', String(starFill(r.average, Number(b.dataset.value))));
+    }
+    markMine(w, mine);
+    const summary = w.querySelector('[data-summary]');
+    if (summary && r.count > 0) {
+      const strong = document.createElement('strong');
+      strong.className = 'font-extrabold text-ciruela-900';
+      strong.textContent = formatAverage(r.average);
+      summary.replaceChildren(strong, ` de 5 · ${votesLabel(r.count)}`);
+    } else if(summary) summary.textContent='Aún sin votos';
+    if(kindOf(w)==='blog'){
+      for(const item of document.querySelectorAll<HTMLElement>('[data-blog-rating]')){
+        if(item.dataset.blogRating!==w.dataset.contentId)continue;
+        item.dataset.count=String(r.count);
+        const image=item.querySelector<HTMLElement>('[data-rating-image]');
+        const fill=item.querySelector<HTMLElement>('[data-rating-fill]');
+        const value=item.querySelector<HTMLElement>('[data-rating-value]');
+        const count=item.querySelector<HTMLElement>('[data-rating-count]');
+        image?.setAttribute('aria-label',r.count?`Calificación ${formatAverage(r.average)} de 5`:'Aún sin votos');
+        const size=Number(image?.dataset.starSize??15),whole=Math.floor(r.average);
+        if(fill)fill.style.width=`${Math.min(size*5+8,whole*(size+2)+(r.average-whole)*size)}px`;
+        if(value)value.textContent=r.count?formatAverage(r.average):'Aún sin votos';
+        if(count){count.textContent=`(${r.count})`;count.hidden=r.count===0;}
+      }
+    }
+    w.dataset.hintDefault = defaultHint(w, r.count, mine);
+    if (w.dataset.preview === undefined) setHint(w, w.dataset.hintDefault);
+  }
+
+  function preview(w: HTMLElement, n?: number) {
+    if (n) w.dataset.preview = String(n);
+    else delete w.dataset.preview;
+    for (const b of w.querySelectorAll<HTMLElement>('.sr-star')) {
+      b.classList.toggle('is-on', !!n && Number(b.dataset.value) <= n);
+    }
+    setHint(w, n ? STAR_LABELS[n - 1] : (w.dataset.hintDefault ?? ''));
+  }
+
+  function announce(w: HTMLElement, message: string) {
+    w.dataset.hintDefault = message;
+    setHint(w, message);
+    const status = w.querySelector('[data-status]');
+    if (status) status.textContent = message;
+  }
+
+  async function vote(widget: HTMLElement, value: number) {
+    const contentId = widget.dataset.contentId ?? '';
+    const kind = kindOf(widget);
+    const course = keyOf(widget);
+    const group = forContent(course);
+    if (group.some((w) => w.getAttribute('aria-busy') === 'true')) return;
+    const previous = myVotes()[course];
+    group.forEach((w) => w.setAttribute('aria-busy', 'true'));
+    let message: string;
+    try {
+      const res = await fetch(ratingApiPath(kind), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ [kind === 'blog' ? 'post' : 'course']: contentId, rating: value, voter: voterId() }),
+        signal: AbortSignal.timeout(15000),
+      });
+      if (res.status === 429) {
+        message = 'Desde tu conexión ya votaron varias personas por este contenido.';
+      } else {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = parseCourseRating(await res.json());
+        if (!data) throw new Error('respuesta inválida');
+        saveVote(course, value);
+        votedNow.add(course);
+        group.forEach((w) => paint(w, data, value));
+        message = previous ? `Actualizamos tu voto a ${value} ★. ¡Gracias!` : `¡Gracias! Guardamos tu voto de ${value} ★.`;
+        trackEvent(kind === 'blog' ? 'rate_blog_post' : 'rate_course', { [kind === 'blog' ? 'post_id' : 'course_slug']: contentId, rating: value, previous_rating: previous ?? 0 });
+      }
+    } catch {
+      message = 'No pudimos guardar tu voto. Intenta de nuevo en un momento.';
+    }
+    group.forEach((w) => {
+      w.removeAttribute('aria-busy');
+      announce(w, message);
+    });
+  }
+
+  const stored = myVotes();
+  for (const w of widgets) {
+    const course = keyOf(w);
+    const stars = w.querySelector<HTMLElement>('.sr-stars');
+    if (!stars) continue;
+    for (const b of stars.querySelectorAll<HTMLButtonElement>('.sr-star')) b.disabled = false;
+    markMine(w, stored[course]);
+    w.dataset.hintDefault = defaultHint(w, Number(w.dataset.count ?? 0), stored[course]);
+    setHint(w, w.dataset.hintDefault);
+    w.querySelector<HTMLElement>('[data-hint]')?.removeAttribute('hidden');
+
+    stars.addEventListener('pointerover', (e) => {
+      const b = starOf(e.target);
+      if (b) preview(w, Number(b.dataset.value));
+    });
+    stars.addEventListener('pointerleave', () => preview(w));
+    stars.addEventListener('focusin', (e) => {
+      const b = starOf(e.target);
+      if (b) preview(w, Number(b.dataset.value));
+    });
+    stars.addEventListener('focusout', (e) => {
+      if (!stars.contains(e.relatedTarget as Node | null)) preview(w);
+    });
+    stars.addEventListener('click', (e) => {
+      const b = starOf(e.target);
+      if (b && !b.disabled) void vote(w, Number(b.dataset.value));
+    });
+  }
+
+  // One refresh per content type; course and article votes never share keys.
+  for (const kind of new Set(widgets.map(kindOf))) {
+    fetch(ratingApiPath(kind), { headers: { accept: 'application/json' }, signal: AbortSignal.timeout(15000) })
+      .then((r) => r.ok ? r.json() as Promise<{ courses?: Record<string, unknown>; posts?: Record<string, unknown> }> : null)
+      .then((payload) => {
+        const ratings = kind === 'blog' ? payload?.posts : payload?.courses;
+        if (!ratings) return;
+        const votes = myVotes();
+        for (const w of widgets.filter(w => kindOf(w) === kind)) {
+          const key = keyOf(w);
+          if (votedNow.has(key)) continue;
+          const rating = parseCourseRating(ratings[w.dataset.contentId ?? '']);
+          if (rating) paint(w, rating, votes[key]);
+        }
+      }).catch(() => { /* Preserve the server-rendered values if the refresh fails. */ });
+  }
+</script>

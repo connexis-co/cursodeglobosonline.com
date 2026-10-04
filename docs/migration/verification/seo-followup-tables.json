@@ -1,0 +1,265 @@
+{
+  "development": {
+    "environment": "development",
+    "checkedAt": "2026-10-03T09:19:23.579Z",
+    "repaired": [
+      {
+        "collection": "blog",
+        "slug": "globos-con-confeti",
+        "cells": 12
+      },
+      {
+        "collection": "blog",
+        "slug": "perrito-con-globo",
+        "cells": 36
+      },
+      {
+        "collection": "blog",
+        "slug": "flores-con-globos",
+        "cells": 64
+      },
+      {
+        "collection": "blog",
+        "slug": "columnas-de-globos",
+        "cells": 84
+      },
+      {
+        "collection": "blog",
+        "slug": "figuras-con-globos",
+        "cells": 63
+      },
+      {
+        "collection": "blog",
+        "slug": "cuanto-dura-un-globo-con-helio",
+        "cells": 62
+      },
+      {
+        "collection": "blog",
+        "slug": "bouquet-de-globos",
+        "cells": 45
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-para-boda",
+        "cells": 38
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-navidena-con-globos",
+        "cells": 30
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-virgen-de-guadalupe",
+        "cells": 72
+      },
+      {
+        "collection": "blog",
+        "slug": "como-inflar-globos",
+        "cells": 61
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-para-graduacion",
+        "cells": 24
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-para-primera-comunion",
+        "cells": 51
+      },
+      {
+        "collection": "blog",
+        "slug": "como-decorar-con-globos-en-la-pared",
+        "cells": 62
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos",
+        "cells": 84
+      },
+      {
+        "collection": "blog",
+        "slug": "tipos-y-tamanos-de-globos",
+        "cells": 170
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-halloween",
+        "cells": 28
+      },
+      {
+        "collection": "blog",
+        "slug": "arco-de-globos",
+        "cells": 68
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-para-mujer",
+        "cells": 54
+      },
+      {
+        "collection": "blog",
+        "slug": "como-inflar-un-globo-burbuja",
+        "cells": 67
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-rosa-y-dorado",
+        "cells": 127
+      },
+      {
+        "collection": "blog",
+        "slug": "centros-de-mesa-con-globos",
+        "cells": 40
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-cortinas-y-globos",
+        "cells": 97
+      },
+      {
+        "collection": "blog",
+        "slug": "globoflexia",
+        "cells": 92
+      },
+      {
+        "collection": "blog",
+        "slug": "guirnalda-de-globos",
+        "cells": 45
+      }
+    ]
+  },
+  "production": {
+    "environment": "production",
+    "checkedAt": "2026-10-03T09:22:03.706Z",
+    "repaired": [
+      {
+        "collection": "blog",
+        "slug": "globos-con-confeti",
+        "cells": 12
+      },
+      {
+        "collection": "blog",
+        "slug": "perrito-con-globo",
+        "cells": 36
+      },
+      {
+        "collection": "blog",
+        "slug": "flores-con-globos",
+        "cells": 64
+      },
+      {
+        "collection": "blog",
+        "slug": "columnas-de-globos",
+        "cells": 84
+      },
+      {
+        "collection": "blog",
+        "slug": "figuras-con-globos",
+        "cells": 63
+      },
+      {
+        "collection": "blog",
+        "slug": "cuanto-dura-un-globo-con-helio",
+        "cells": 62
+      },
+      {
+        "collection": "blog",
+        "slug": "bouquet-de-globos",
+        "cells": 45
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-para-boda",
+        "cells": 38
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-navidena-con-globos",
+        "cells": 30
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-virgen-de-guadalupe",
+        "cells": 72
+      },
+      {
+        "collection": "blog",
+        "slug": "como-inflar-globos",
+        "cells": 61
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-para-graduacion",
+        "cells": 24
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-para-primera-comunion",
+        "cells": 51
+      },
+      {
+        "collection": "blog",
+        "slug": "como-decorar-con-globos-en-la-pared",
+        "cells": 62
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos",
+        "cells": 84
+      },
+      {
+        "collection": "blog",
+        "slug": "tipos-y-tamanos-de-globos",
+        "cells": 170
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-halloween",
+        "cells": 28
+      },
+      {
+        "collection": "blog",
+        "slug": "arco-de-globos",
+        "cells": 68
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-para-mujer",
+        "cells": 54
+      },
+      {
+        "collection": "blog",
+        "slug": "como-inflar-un-globo-burbuja",
+        "cells": 67
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-globos-rosa-y-dorado",
+        "cells": 127
+      },
+      {
+        "collection": "blog",
+        "slug": "centros-de-mesa-con-globos",
+        "cells": 40
+      },
+      {
+        "collection": "blog",
+        "slug": "decoracion-con-cortinas-y-globos",
+        "cells": 97
+      },
+      {
+        "collection": "blog",
+        "slug": "globoflexia",
+        "cells": 92
+      },
+      {
+        "collection": "blog",
+        "slug": "guirnalda-de-globos",
+        "cells": 45
+      }
+    ]
+  },
+  "cellsRepairedProduction": 1576
+}

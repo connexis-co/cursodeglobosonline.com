@@ -1,0 +1,6 @@
+---
+import {getDocument} from '@/lib/emdash-content';
+import LibraryDetail from '@/themes/globos-classic/components/LibraryDetail.astro';
+const entry=await getDocument('videos',Astro.params.slug!);if(!entry)return Astro.rewrite('/404');
+---
+<LibraryDetail {entry} kind="videos"/>

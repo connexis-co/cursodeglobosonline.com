@@ -1,0 +1,8 @@
+{
+  "submittedOn": "2026-10-03",
+  "host": "cursodeglobosonline.com",
+  "urls": 120,
+  "httpStatus": 200,
+  "command": "node scripts/indexnow.mjs --all",
+  "note": "Accepted submission; not evidence of indexing."
+}

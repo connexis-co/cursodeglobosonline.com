@@ -6,8 +6,8 @@
 //   node scripts/indexnow.mjs            → URLs del sitemap con lastmod de los últimos 2 días
 //   node scripts/indexnow.mjs --all      → todas las URLs de los sitemaps (tras migración/rediseño)
 //   node scripts/indexnow.mjs URL [URL…] → URLs concretas
-// Lee dist/ (ejecutar después de `npm run build`).
-import { readdir, readFile } from 'node:fs/promises';
+// Lee los sitemaps públicos: en EmDash se generan al consultar el CMS, no en dist/.
+import { readdir } from 'node:fs/promises';
 
 const HOST = 'cursodeglobosonline.com';
 const keyFile = (await readdir('public')).find((f) => /^[a-f0-9]{32}\.txt$/.test(f));
@@ -19,12 +19,19 @@ const all = args.includes('--all');
 const explicit = args.filter((a) => a.startsWith('https://'));
 
 async function sitemapUrls() {
-  const index = await readFile('dist/sitemap-index.xml', 'utf8');
+  async function readPublic(path) {
+    const url=new URL(path,`https://${HOST}`);
+    if(url.origin!==`https://${HOST}`)throw Error('Unexpected sitemap host');
+    const response=await fetch(url,{signal:AbortSignal.timeout(60000)});
+    if(!response.ok)throw Error(`Sitemap HTTP ${response.status}: ${path}`);
+    return response.text();
+  }
+  const index = await readPublic('/sitemap-index.xml');
   const files = [...index.matchAll(/<loc>https:\/\/[^/]+\/(sitemaps\/[^<]+)<\/loc>/g)].map((m) => m[1]);
   const since = Date.now() - 2 * 86_400_000;
   const urls = [];
   for (const file of files) {
-    const xml = await readFile(`dist/${file}`, 'utf8');
+    const xml = await readPublic(`/${file}`);
     for (const [, block] of xml.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
       const loc = block.match(/<loc>([^<]+)<\/loc>/)?.[1];
       const lastmod = block.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1];
@@ -36,6 +43,7 @@ async function sitemapUrls() {
 }
 
 const urlList = [...new Set(explicit.length ? explicit : await sitemapUrls())].slice(0, 10_000);
+if(urlList.some(value=>new URL(value).origin!==`https://${HOST}`))throw Error('Only public production URLs may be submitted');
 if (urlList.length === 0) {
   console.log('IndexNow: nada que enviar');
   process.exit(0);

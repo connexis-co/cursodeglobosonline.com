@@ -1,9 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+Astro.response.status=404;
+import { getCountrySummaries as getCountries } from '@/lib/emdash-content';
+const COUNTRIES = await getCountries();
+import { getCollection } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import CourseCard from '@/components/CourseCard.astro';
 import Icon from '@/components/Icon.astro';
-import { COUNTRIES, DEFAULT_COUNTRY } from '@/lib/countries';
+import { DEFAULT_COUNTRY } from '@/lib/countries';
 
 // La 404 es estática y no sabe el país del visitante: se genera con el país por defecto y un
 // script la ajusta al país que la persona ya eligió (localStorage `cdgo-country`, lo guarda el Header).

@@ -1,0 +1,7 @@
+{
+  "id": "globos-classic",
+  "name": "Globos Classic",
+  "version": "1.0.0",
+  "contentSchema": "emdash.seed.json",
+  "description": "Presentaci\u00f3n Astro del sitio actual. Contenido, plugins y credenciales independientes."
+}

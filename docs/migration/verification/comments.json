@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-03T04:26:51.603Z",
+  "checks": [
+    "New comments require moderation, including CMS users",
+    "Pending comments are hidden in the public API and article",
+    "Approved comments are public without email or IP",
+    "Article renders approved text safely, with reply controls",
+    "Approved replies stay attached to their article and parent",
+    "Replies cannot reference a comment from another article",
+    "Honeypot returns without storing a bot submission",
+    "Missing articles and disabled collections reject comments",
+    "Moderation removes comments from the article"
+  ],
+  "emailSent": false
+}

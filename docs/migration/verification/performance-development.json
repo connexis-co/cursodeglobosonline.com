@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-04T15:16:15.843097+00:00",
+  "pages": [
+    {
+      "path": "/",
+      "status": 200,
+      "seconds": 2.354,
+      "cache": "BYPASS",
+      "cacheControl": "private, no-store",
+      "noindex": "noindex, nofollow, noarchive",
+      "h1": 1,
+      "fonts": 2,
+      "homeBlogLinks": [
+        "/blog/",
+        "/blog/como-inflar-globos/",
+        "/blog/como-inflar-un-globo-burbuja/",
+        "/blog/globoflexia/"
+      ]
+    },
+    {
+      "path": "/blog/",
+      "status": 200,
+      "seconds": 4.148,
+      "cache": "BYPASS",
+      "cacheControl": "private, no-store",
+      "noindex": "noindex, nofollow, noarchive",
+      "h1": 1,
+      "fonts": 2,
+      "homeBlogLinks": []
+    },
+    {
+      "path": "/blog/globos-con-confeti/",
+      "status": 200,
+      "seconds": 3.746,
+      "cache": "BYPASS",
+      "cacheControl": "private, no-store",
+      "noindex": "noindex, nofollow, noarchive",
+      "h1": 1,
+      "fonts": 2,
+      "homeBlogLinks": []
+    },
+    {
+      "path": "/co/curso-de-globoflexia/",
+      "status": 200,
+      "seconds": 5.537,
+      "cache": "BYPASS",
+      "cacheControl": "private, no-store",
+      "noindex": "noindex, nofollow, noarchive",
+      "h1": 1,
+      "fonts": 2,
+      "homeBlogLinks": []
+    }
+  ],
+  "fontDisplay": "optional",
+  "contentVerificationVersion": "a38533d5-557b-435b-b898-a4c87c4a2786",
+  "developmentVersion": "7ee099da-ec23-444f-ab7c-a241d1c0c71a"
+}

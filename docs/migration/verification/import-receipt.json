@@ -1,0 +1,32 @@
+{
+  "operationId": "01M40C6RWCD644M93YNH8HYWSQ",
+  "state": "complete",
+  "receipt": {
+    "operationId": "01M40C6RWCD644M93YNH8HYWSQ",
+    "packageDigest": "sha256:2df1cda72180f8edc70737b91de7f92f4b219270f798d46eee9bab9f77105787",
+    "planDigest": "sha256:7e3308166584074327bce58e8260eb29a283bc0ea8a3b371597ba845a345a613",
+    "targetSiteId": "01M40BYA5359TRN7XC436BK233",
+    "originSiteId": "01M40BCZ8PZRV6BCQMT0FGJ44Y",
+    "formatVersion": "1",
+    "importerEmDashVersion": "1.1.0",
+    "completedAt": "2026-10-03T07:58:50.980Z",
+    "logicalDigest": "sha256:eecd5e0c4fb473ac8ca2687da433af8326662320bff695f9901a20c20ead1933",
+    "counts": {
+      "collection": 14,
+      "field": 179,
+      "relation": 14,
+      "media": 33,
+      "revision": 228,
+      "entry": 128,
+      "content_reference": 323,
+      "seo": 2,
+      "menu": 2,
+      "menu_item": 10,
+      "setting": 4
+    },
+    "warnings": [],
+    "verification": "verified",
+    "receiptDigest": "sha256:0748fed473864ccbe127f06a4fbd7780cb1621485600325633b303502b5395bf"
+  },
+  "receiptDigestValid": true
+}

@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-03T06:38:29.035Z",
+  "results": [
+    "A draft has no public page",
+    "New content defaults to Spanish",
+    "Publishing makes the page visible without a build",
+    "Published page enters sitemap",
+    "Unpublished edits do not replace published content",
+    "Published edits appear immediately",
+    "Native SEO panel controls title and description",
+    "SEO noindex excludes page from sitemap",
+    "Different canonical excludes duplicate from sitemap",
+    "Clearing SEO exclusions restores sitemap entry"
+  ]
+}

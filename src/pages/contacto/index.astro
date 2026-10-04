@@ -1,10 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
+import RichBody from '@/components/RichBody.astro';
+import { getDocument } from '@/lib/emdash-content';
+const page=await getDocument('pages','contacto');if(!page)return Astro.rewrite('/404');Astro.locals.cmsContent=page;
+const copy=page.data;
+import { getCountrySummaries as getCountries } from '@/lib/emdash-content';
+const COUNTRIES = await getCountries();
+import { getCollection } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import LeadForm from '@/components/LeadForm.astro';
 import Icon from '@/components/Icon.astro';
-import { COUNTRIES, DEFAULT_COUNTRY } from '@/lib/countries';
+import { DEFAULT_COUNTRY } from '@/lib/countries';
 import { buildWhatsAppUrl } from '@/lib/hotmart';
 import { SITE } from '@/lib/site';
 
@@ -14,17 +20,18 @@ const waUrl = buildWhatsAppUrl(country.whatsapp, 'Hola 🎈 Tengo una pregunta s
 ---
 
 <BaseLayout
-  title="Contacto | Curso de Globos Online"
-  description="¿Dudas sobre los cursos de decoración con globos? Escríbenos por WhatsApp o correo y te respondemos con toda la información."
+  title={copy.title}
+  description={copy.description}
   pageType="contact"
 >
   <div class="contenedor grid items-start gap-10 pt-10 pb-20 lg:grid-cols-[1fr_1.2fr] lg:pt-12">
     <div>
       <SectionHeading as="h1"
-        eyebrow="Contacto"
-        title="Hablemos de tu próximo curso"
-        lead="Respondemos dudas sobre temarios, precios en tu moneda, formas de pago y certificados."
+        eyebrow={copy.eyebrow}
+        title={copy.heading}
+        lead={copy.lead}
       />
+      {page.richBody.length>0&&<div class="articulo mt-6"><RichBody value={page.richBody}/></div>}
       <div class="mt-8 space-y-4">
         <a
           href={waUrl}

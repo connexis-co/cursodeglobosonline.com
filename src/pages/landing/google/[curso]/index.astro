@@ -1,14 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCourse } from '@/lib/emdash-content';
 import LandingLayout from '@/layouts/LandingLayout.astro';
 import AdsLanding from '@/components/AdsLanding.astro';
 
-export async function getStaticPaths() {
-  const courses = await getCollection('courses');
-  return courses.map((course) => ({ params: { curso: course.id }, props: { course } }));
-}
 
-const { course } = Astro.props;
+
+const course=await getCourse(Astro.params.curso!);
+if(!course)return Astro.rewrite('/404');
 ---
 
 <LandingLayout

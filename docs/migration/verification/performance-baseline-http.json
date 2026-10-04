@@ -1,0 +1,29 @@
+{
+  "source": "production HTTP before this change, e151424",
+  "pages": [
+    {
+      "path": "/",
+      "status": 200,
+      "seconds": 6.893,
+      "bytes": 239333
+    },
+    {
+      "path": "/blog/",
+      "status": 200,
+      "seconds": 1.565,
+      "bytes": 292882
+    },
+    {
+      "path": "/blog/globos-con-confeti/",
+      "status": 200,
+      "seconds": 1.89,
+      "bytes": 146630
+    },
+    {
+      "path": "/co/curso-de-globoflexia/",
+      "status": 200,
+      "seconds": 1.052,
+      "bytes": 217775
+    }
+  ]
+}

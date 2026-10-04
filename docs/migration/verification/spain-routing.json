@@ -1,0 +1,89 @@
+{
+  "checkedAt": "2026-10-03T08:08:40.525Z",
+  "results": [
+    {
+      "url": "https://cursodeglobosonline.com/es/bilbao/",
+      "status": 200,
+      "canonical": "https://cursodeglobosonline.com/es/bilbao/",
+      "h1": 1,
+      "seconds": 2.802
+    },
+    {
+      "url": "https://cursodeglobosonline.com/es/barcelona/",
+      "status": 200,
+      "canonical": "https://cursodeglobosonline.com/es/barcelona/",
+      "h1": 1,
+      "seconds": 2.807
+    },
+    {
+      "url": "https://cursodeglobosonline.com/es/",
+      "status": 200,
+      "canonical": "https://cursodeglobosonline.com/es/",
+      "h1": 1,
+      "seconds": 3.922
+    },
+    {
+      "url": "https://cursodeglobosonline.com/es/curso-de-globoflexia/",
+      "status": 200,
+      "canonical": "https://cursodeglobosonline.com/es/curso-de-globoflexia/",
+      "h1": 1,
+      "seconds": 3.962
+    },
+    {
+      "url": "https://cursodeglobosonline.com/es/curso-de-flores-con-globos/",
+      "status": 200,
+      "canonical": "https://cursodeglobosonline.com/es/curso-de-flores-con-globos/",
+      "h1": 1,
+      "seconds": 3.968
+    },
+    {
+      "url": "https://cursodeglobosonline.com/es/curso-de-bouquets-de-globos/",
+      "status": 200,
+      "canonical": "https://cursodeglobosonline.com/es/curso-de-bouquets-de-globos/",
+      "h1": 1,
+      "seconds": 4.021
+    },
+    {
+      "url": "https://cursodeglobosonline.com/es/cursos/",
+      "status": 200,
+      "canonical": "https://cursodeglobosonline.com/es/cursos/",
+      "h1": 1,
+      "seconds": 1.514
+    },
+    {
+      "url": "https://cursodeglobosonline.com/es/madrid/",
+      "status": 200,
+      "canonical": "https://cursodeglobosonline.com/es/madrid/",
+      "h1": 1,
+      "seconds": 1.68
+    },
+    {
+      "url": "https://cursodeglobosonline.com/es/curso-de-globos-burbuja/",
+      "status": 200,
+      "canonical": "https://cursodeglobosonline.com/es/curso-de-globos-burbuja/",
+      "h1": 1,
+      "seconds": 2.898
+    },
+    {
+      "url": "https://cursodeglobosonline.com/es/valencia/",
+      "status": 200,
+      "canonical": "https://cursodeglobosonline.com/es/valencia/",
+      "h1": 1,
+      "seconds": 1.855
+    },
+    {
+      "url": "https://cursodeglobosonline.com/es/malaga/",
+      "status": 200,
+      "canonical": "https://cursodeglobosonline.com/es/malaga/",
+      "h1": 1,
+      "seconds": 1.86
+    },
+    {
+      "url": "https://cursodeglobosonline.com/es/sevilla/",
+      "status": 200,
+      "canonical": "https://cursodeglobosonline.com/es/sevilla/",
+      "h1": 1,
+      "seconds": 1.9
+    }
+  ]
+}

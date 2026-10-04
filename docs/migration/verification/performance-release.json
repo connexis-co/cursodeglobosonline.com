@@ -1,0 +1,22 @@
+{
+  "releasedAt": "2026-10-04T15:28:44.990900+00:00",
+  "productionVersion": "328dcae7-67dd-4119-8e39-7de4e8bde104",
+  "developmentVersion": "7ee099da-ec23-444f-ab7c-a241d1c0c71a",
+  "verification": {
+    "tests": 41,
+    "astroCheck": {
+      "files": 165,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 99
+    },
+    "sitemap": {
+      "urls": 122,
+      "images": 43,
+      "issues": 0
+    },
+    "nativeCacheInvalidation": "unchanged WhatsApp save: HIT -> MISS -> HIT; authenticated BYPASS; workers.dev 401",
+    "contentIntegrity": "same headings and main links on 4 reference pages"
+  },
+  "report": "docs/seo/2026-10-04-performance-optimization.md"
+}

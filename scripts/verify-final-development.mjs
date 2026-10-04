@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {writeFile} from 'node:fs/promises';
+import {api,json,origin,headers} from './dev-api.mjs';
+const sitemap=await fetch(origin+'/sitemaps/blog.xml',{headers,signal:AbortSignal.timeout(20000)});
+const xml=await sitemap.text();assert.equal(sitemap.status,200);assert.ok(!xml.includes('/_image'));
+const images=[...xml.matchAll(/<image:loc>(.*?)<\/image:loc>/g)].map(x=>x[1].replaceAll('&amp;','&'));assert.ok(images.length>0);
+const image=await fetch(images[0],{headers,signal:AbortSignal.timeout(20000)});assert.equal(image.status,200);assert.ok(image.headers.get('content-type')?.startsWith('image/'));await image.arrayBuffer();
+const smtp=JSON.stringify(await api('/_emdash/api/plugins/emdash-smtp/admin',json('POST',{type:'page_load',page:'/providers'})));assert.ok(smtp.includes('Brevo')&&smtp.includes('contacto@sably.co'));
+const anonymous=await fetch(origin+'/',{signal:AbortSignal.timeout(15000)});assert.equal(anonymous.status,401);
+const campaigns=(await api('/_emdash/api/plugins/globos-promotions/calendar')).items;assert.equal(campaigns.filter(x=>x.status==='published').length,0);
+const settings=await api('/_emdash/api/schema/collections/blog');const comments=settings.item;assert.equal(comments.commentsModeration,'all');assert.equal(comments.commentsAutoApproveUsers,false);
+const results={checkedAt:new Date().toISOString(),sitemapImageEntries:images.length,firstImageStatus:image.status,noImageTransformUrls:true,smtpPanelConfigured:true,anonymousStatus:anonymous.status,publishedPromotions:0,commentModeration:'all'};
+await writeFile('docs/migration/verification/final.json',JSON.stringify(results,null,2)+'\n');console.log(results);

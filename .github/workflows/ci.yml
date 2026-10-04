@@ -1,9 +1,10 @@
-name: CI Pipeline
-
+name: EmDash migration checks
 on:
   pull_request:
     branches: [develop, main]
-
+  workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   quality:
     runs-on: ubuntu-latest
@@ -11,19 +12,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
+          node-version-file: .nvmrc
+          cache: npm
       - run: npm ci
-      - run: npm run lint
+      - run: npm run content:seed
+      - run: git diff --exit-code -- emdash.seed.json
+      - run: npm run test:migration
+      - run: npm run check
       - run: npm run build
-      # API de estrellas (functions/api/ratings.ts) contra una D1 local: validación,
-      # voto, cambio de voto, tope por IP e invalidación de caché. No usa credenciales.
-      - name: Prueba de la API de estrellas
-        env:
-          WRANGLER_SEND_METRICS: 'false'
-        run: |
-          npm run db:migrate:local
-          echo "RATING_SALT=ci-$GITHUB_RUN_ID" > .dev.vars
-          npx wrangler pages dev dist --port 8788 --ip 127.0.0.1 > wrangler-dev.log 2>&1 &
-          for i in $(seq 1 60); do curl -fsS -o /dev/null http://127.0.0.1:8788/api/ratings && break; sleep 1; done
-          npm run test:ratings -- http://127.0.0.1:8788 || { cat wrangler-dev.log; exit 1; }

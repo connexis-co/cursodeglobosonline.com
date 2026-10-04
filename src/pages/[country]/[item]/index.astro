@@ -1,29 +1,17 @@
 ---
+import { getCountries, getCountrySummaries } from '@/lib/emdash-content';
+const COUNTRIES = await getCountrySummaries();
 /**
  * Ruta dual /{cc}/{item}/ — `item` puede ser un slug de curso
  * (/co/curso-de-globoflexia/) o una ciudad (/co/bogota/). Patrón [item] del
  * ecosistema Sably para evitar colisión de rutas dinámicas al mismo nivel.
  */
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCourse, getCollection, type CollectionEntry } from '@/lib/emdash-content';
 import CourseLanding from '@/components/CourseLanding.astro';
 import CityLanding from '@/components/CityLanding.astro';
-import { COUNTRIES, CITIES_ENABLED, type Country, type City } from '@/lib/countries';
+import { CITIES_ENABLED, type Country, type City } from '@/lib/countries';
 
-export async function getStaticPaths() {
-  const courses = await getCollection('courses');
-  return COUNTRIES.flatMap((country) => [
-    ...courses.map((course) => ({
-      params: { country: country.code, item: course.id },
-      props: { country, course, city: undefined },
-    })),
-    ...(CITIES_ENABLED
-      ? country.cities.map((city) => ({
-          params: { country: country.code, item: city.slug },
-          props: { country, course: undefined, city },
-        }))
-      : []),
-  ]);
-}
+
 
 interface Props {
   country: Country;
@@ -31,7 +19,13 @@ interface Props {
   city?: City;
 }
 
-const { country, course, city } = Astro.props;
+let country=COUNTRIES.find(c=>c.code===Astro.params.country);
+if(!country)return Astro.rewrite('/404');
+const course=await getCourse(Astro.params.item!);
+// Course pages do not render city links; geographic pages still resolve the complete city graph.
+if(!course)country=(await getCountries()).find(c=>c.code===Astro.params.country)!;
+const city=country.cities.find(c=>c.slug===Astro.params.item);
+if(!course&&!city)return Astro.rewrite('/404');
 ---
 
 {course ? <CourseLanding {country} {course} /> : <CityLanding {country} city={city!} />}

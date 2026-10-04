@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import {
-  SITEMAP_NAMES,
+  sitemapNames,
   pagesUrls,
   categoriasUrls,
   cursosUrls,
@@ -9,14 +9,13 @@ import {
   type UrlEntry,
 } from '@/lib/sitemap';
 
-export function getStaticPaths() {
-  return SITEMAP_NAMES.map((name) => ({ params: { name: `sitemap-${name}` } }));
-}
+
 
 export const GET: APIRoute = async ({ params }) => {
   const name = params.name?.replace(/^sitemap-/, '') ?? '';
+  if (!(await sitemapNames()).includes(name)) return new Response('Sitemap not found', { status: 404 });
   let urls: UrlEntry[];
-  if (name === 'pages') urls = pagesUrls();
+  if (name === 'pages') urls = await pagesUrls();
   else if (name === 'categorias') urls = await categoriasUrls();
   else if (name === 'blog') urls = await blogUrls();
   else if (name.startsWith('cursos-')) urls = await cursosUrls(name.replace('cursos-', ''));

@@ -1,0 +1,124 @@
+---
+import { getCollectionInfo, getComments, type GetCommentsResult } from 'emdash';
+interface Props { contentId: string }
+const { contentId } = Astro.props;
+const settings = await getCollectionInfo('blog');
+const enabled = settings?.commentsEnabled ?? false;
+const { items, total } = enabled
+  ? await getComments({ collection: 'blog', contentId, threaded: true })
+  : { items: [], total: 0 };
+const user = Astro.locals.user;
+const endpoint = `/_emdash/api/comments/blog/${encodeURIComponent(contentId)}`;
+const date = (value: string) => new Intl.DateTimeFormat('es-CO', { dateStyle: 'long', timeZone: 'America/Bogota' }).format(new Date(value));
+// Render only the public projection supplied by EmDash (never email or IP).
+const thread = (comment: GetCommentsResult['items'][number]) => [comment, ...(comment.replies ?? [])];
+---
+{enabled && (
+  <section id="comentarios" class="blog-comments mt-14" aria-labelledby="comentarios-titulo" data-blog-comments>
+    <header class="mb-7 border-t border-crema-300 pt-10">
+      <h2 id="comentarios-titulo" class="text-2xl font-semibold text-ciruela-900 sm:text-3xl">Conversemos sobre esta guía</h2>
+      <p class="mt-3 text-ciruela-600">Comparte tu experiencia con los globos o deja una pregunta sobre lo que acabas de leer.</p>
+    </header>
+    {total > 0 ? (
+      <div class="mb-8">
+        <p class="mb-5 text-sm font-bold text-ciruela-600">{total === 1 ? '1 comentario' : `${total} comentarios`}</p>
+        <ol class="space-y-6">
+          {items.map(comment => (
+            <li>
+              {thread(comment).map((entry, index) => (
+                <article id={`comentario-${entry.id}`} class:list={['border-b border-crema-200 py-5', { 'ml-4 border-l-2 border-l-coral-200 pl-4 sm:ml-8': index > 0 }]}>
+                  <header class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span class="font-extrabold text-ciruela-900">{entry.authorName}</span>
+                    <time datetime={entry.createdAt} class="text-xs text-ciruela-500">{date(entry.createdAt)}</time>
+                  </header>
+                  <p class="mt-3 whitespace-pre-wrap break-words text-ciruela-700">{entry.body}</p>
+                  <button type="button" class="mt-3 text-sm font-bold text-coral-700 underline-offset-4 hover:underline" data-comment-reply={comment.id} data-comment-author={entry.authorName}>Responder<span class="sr-only"> a {entry.authorName}</span></button>
+                </article>
+              ))}
+            </li>
+          ))}
+        </ol>
+      </div>
+    ) : <p class="mb-7 border-l-2 border-coral-300 pl-4 text-sm leading-relaxed text-ciruela-600">Todavía no hay comentarios. Tu pregunta puede ayudar a otras personas que están empezando.</p>}
+    <form class="rounded-3xl border border-crema-200 bg-white p-5 sm:p-8" data-blog-comment-form data-endpoint={endpoint}>
+      <h3 class="text-xl font-semibold text-ciruela-900">Deja tu comentario</h3>
+      <p class="mt-2 text-sm text-ciruela-500">{settings?.commentsModeration === 'all' ? 'Revisaremos tu comentario antes de publicarlo. ' : ''}Tu correo no se mostrará en el blog.</p>
+      <div data-reply-context hidden class="mt-5 rounded-xl bg-coral-50 p-3 text-sm text-ciruela-700">
+        <span data-reply-label></span>
+        <button type="button" data-cancel-reply class="ml-3 font-bold text-coral-700 underline">Cancelar respuesta</button>
+      </div>
+      <input type="hidden" name="parentId" value="" />
+      <div class="mt-6 grid gap-5 sm:grid-cols-2">
+        <label class="comment-field">Tu nombre
+          <input name="authorName" type="text" autocomplete="name" maxlength="100" required value={user?.name ?? ''} readonly={!!user?.name} />
+        </label>
+        <label class="comment-field">Correo electrónico
+          <input name="authorEmail" type="email" autocomplete="email" maxlength="254" required value={user?.email ?? ''} readonly={!!user?.email} />
+        </label>
+      </div>
+      <div aria-hidden="true" class="comment-trap">
+        <label>No completes este campo<input name="website_url" type="text" tabindex="-1" autocomplete="off" /></label>
+      </div>
+      <label class="comment-field mt-5">Tu comentario
+        <textarea name="body" rows="5" maxlength="5000" required placeholder="¿Qué te gustaría compartir o preguntar?" aria-describedby="comment-guidance" />
+      </label>
+      <p id="comment-guidance" class="mt-2 text-xs leading-relaxed text-ciruela-500">Hasta 5.000 caracteres. Evita compartir teléfonos, direcciones u otros datos personales.</p>
+      <p class="mt-5 text-sm leading-relaxed text-ciruela-600">Usaremos tu nombre, correo y comentario para gestionar tu participación, según nuestra <a href="/legal/privacidad/" class="font-bold text-coral-700 underline underline-offset-4">política de privacidad</a>. El nombre y el comentario serán públicos cuando se aprueben.</p>
+      <button type="submit" class="mt-6 rounded-full bg-coral-600 px-6 py-3 font-extrabold text-white shadow-boton transition-colors hover:bg-coral-700 disabled:cursor-wait disabled:opacity-60">Enviar comentario</button>
+      <p data-comment-status role="status" aria-live="polite" aria-atomic="true" class="mt-4 text-sm font-bold"></p>
+      <noscript><p class="mt-4 text-sm">Activa JavaScript para enviar un comentario. Puedes leer los comentarios publicados sin activarlo.</p></noscript>
+    </form>
+  </section>
+)}
+<style>
+  .comment-field { display:flex; flex-direction:column; gap:.5rem; color:var(--color-ciruela-700); font-size:.875rem; font-weight:800; }
+  .comment-field input, .comment-field textarea { width:100%; min-width:0; padding:.8rem 1rem; border:1px solid var(--color-crema-300); border-radius:.875rem; background:var(--color-crema-50); color:var(--color-ciruela-900); font:inherit; font-weight:400; }
+  .comment-field textarea { resize:vertical; min-height:9rem; }
+  .comment-field input:read-only { color:var(--color-ciruela-500); }
+  .blog-comments :is(input,textarea,button,a):focus-visible { outline:2px solid var(--color-coral-600); outline-offset:3px; }
+  .comment-trap { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+  [data-comment-status] { color:var(--color-ciruela-700); }
+  [data-comment-status][data-error] { color:var(--color-coral-800); }
+</style>
+<script>
+  const root = document.querySelector<HTMLElement>('[data-blog-comments]');
+  const form = root?.querySelector<HTMLFormElement>('[data-blog-comment-form]');
+  if (root && form) {
+    const parent = form.elements.namedItem('parentId') as HTMLInputElement;
+    const body = form.elements.namedItem('body') as HTMLTextAreaElement;
+    const context = form.querySelector<HTMLElement>('[data-reply-context]')!;
+    const replyLabel = form.querySelector<HTMLElement>('[data-reply-label]')!;
+    const status = form.querySelector<HTMLElement>('[data-comment-status]')!;
+    const submit = form.querySelector<HTMLButtonElement>('[type=submit]')!;
+    const clearReply = () => { parent.value = ''; context.hidden = true; };
+    root.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element)) return;
+      const reply = event.target.closest<HTMLButtonElement>('[data-comment-reply]');
+      if (reply) { parent.value = reply.dataset.commentReply!; replyLabel.textContent = `Respondiendo a ${reply.dataset.commentAuthor}`; context.hidden = false; body.focus(); }
+      if (event.target.closest('[data-cancel-reply]')) { clearReply(); body.focus(); }
+    });
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (submit.disabled || !form.reportValidity()) return;
+      const values = Object.fromEntries(new FormData(form).entries());
+      if (!String(values.body ?? '').trim()) { body.setCustomValidity('Escribe un comentario antes de enviarlo.'); body.reportValidity(); return; }
+      if (!values.parentId) delete values.parentId;
+      submit.disabled = true; submit.textContent = 'Enviando…'; status.textContent = ''; delete status.dataset.error;
+      try {
+        const response = await fetch(form.dataset.endpoint!, { method:'POST', headers:{'Content-Type':'application/json','X-EmDash-Request':'1'}, body:JSON.stringify(values), signal:AbortSignal.timeout(20000) });
+        const result = await response.json() as { data?: { status?: string }; error?: { code?: string }; code?: string };
+        if (!response.ok) {
+          const code = result.error?.code ?? result.code;
+          const message = response.status === 429 ? 'Has enviado varios comentarios. Espera 10 minutos antes de intentarlo de nuevo.' : code === 'COMMENTS_CLOSED' || code === 'COMMENTS_DISABLED' ? 'Los comentarios están cerrados para este artículo.' : response.status === 400 ? 'Revisa el nombre, el correo y el comentario e inténtalo de nuevo.' : 'No pudimos enviar el comentario. Conservamos tu texto para que puedas intentarlo de nuevo.';
+          throw new Error(message);
+        }
+        status.textContent = result.data?.status === 'approved' ? 'Tu comentario se publicó. Actualiza la página para verlo.' : 'Recibimos tu comentario. Aparecerá aquí cuando lo revisemos.';
+        body.value = ''; clearReply();
+      } catch (error) {
+        status.dataset.error = 'true';
+        status.textContent = error instanceof Error && error.name === 'Error' ? error.message : 'No pudimos confirmar el envío. Conservamos tu texto; comprueba la conexión antes de volver a intentarlo.';
+      } finally { submit.disabled = false; submit.textContent = 'Enviar comentario'; }
+    });
+    body.addEventListener('input', () => body.setCustomValidity(''));
+  }
+</script>

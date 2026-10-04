@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-10-03T06:30:13.234Z",
+  "checks": [
+    "Draft courses cannot receive votes",
+    "Cross-origin voting denied",
+    "Rating range validated",
+    "Published new CMS course accepts votes",
+    "Changing a vote does not increment count",
+    "Fourth distinct voter at one IP is rate limited"
+  ]
+}

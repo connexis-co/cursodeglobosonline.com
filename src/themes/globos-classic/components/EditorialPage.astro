@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import RichBody from './RichBody.astro';
+import Balloons from '@/components/Balloons.astro';
+import type { Document } from '@/lib/emdash-content';
+interface Props { page:Document }
+const {page}=Astro.props;const d=page.data;Astro.locals.cmsContent=page;
+---
+<BaseLayout title={d.title} description={d.description??''} pageType="page">
+ <div class="contenedor max-w-3xl pt-10 pb-20 lg:pt-12">
+  <SectionHeading as="h1" eyebrow={d.eyebrow} title={d.heading||d.title} lead={d.lead} />
+  {d.updatedLabel&&<p class="mt-2 text-xs text-ciruela-400">{d.updatedLabel}</p>}
+  <div class="articulo mt-8"><RichBody value={page.richBody}/></div>
+ </div>
+ {d.ctaUrl&&<section class="relative isolate overflow-hidden bg-crema-100 py-14">
+  <Balloons variant="rise" />
+  <div class="contenedor relative z-10 text-center">
+   <h2 class="font-display text-3xl font-semibold text-ciruela-900">¿Empezamos?</h2>
+   <a href={d.ctaUrl} class="mt-6 inline-flex rounded-xl bg-coral-600 px-8 py-4 font-bold text-white transition hover:bg-coral-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-coral-600">{d.ctaLabel}</a>
+  </div>
+ </section>}
+</BaseLayout>

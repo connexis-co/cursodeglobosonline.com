@@ -1,0 +1,85 @@
+---
+import { EmDashHead } from 'emdash/ui';
+import { getSeoMeta } from 'emdash/seo';
+import type { PublicPageContext } from 'emdash';
+import { SITE } from '@/lib/site';
+import type { HreflangAlternate } from '@/lib/seo';
+
+export interface ArticleMeta {
+  publishedTime: Date;
+  modifiedTime: Date;
+  author: string;
+  section: string;
+  tags: string[];
+}
+
+interface Props {
+  title: string;
+  description: string;
+  alternates?: HreflangAlternate[];
+  schemas?: object[];
+  noindex?: boolean;
+  ogImage?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  ogImageAlt?: string;
+  /** og:title distinto del <title> (p. ej. titular pensado para Discover/redes). */
+  ogTitle?: string;
+  ogType?: 'website' | 'article';
+  article?: ArticleMeta;
+  /** Canonical distinto de la URL actual (consolidación de duplicados, p. ej. curso-ciudad → curso-país). */
+  canonicalPath?: string;
+  /** hreflang del país (es-MX → og:locale es_MX). */
+  hreflang?: string;
+}
+
+const {
+  title,
+  description,
+  alternates = [],
+  schemas = [],
+  noindex = false,
+  ogImage = '/og-default.jpg',
+  ogImageWidth,
+  ogImageHeight,
+  ogImageAlt,
+  ogTitle = title,
+  ogType = 'website',
+  article,
+  canonicalPath,
+  hreflang = 'es-CO',
+} = Astro.props;
+
+const canonical = new URL(canonicalPath ?? Astro.url.pathname, SITE.url).href;
+const ogImageUrl = new URL(ogImage, SITE.url).href;
+// Google Discover exige permitir vistas previas grandes de imagen (>= 1200px).
+// noindex excluye la página; follow no garantiza que Google siga todos sus enlaces.
+const robots = noindex
+  ? 'noindex, follow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+const cms=Astro.locals.cmsContent;
+const meta=cms?getSeoMeta(cms,{siteUrl:SITE.url,path:canonicalPath??Astro.url.pathname,defaultTitle:title,defaultDescription:description,defaultOgImage:ogImageUrl}):null;
+const page:PublicPageContext={url:Astro.url.href,path:Astro.url.pathname,locale:'es',kind:cms?'content':'custom',pageType:ogType==='article'?'article':'page',title:meta?.title??title,pageTitle:ogTitle,description,canonical:noindex?null:canonical,image:ogImageUrl,content:cms?.contentRef,siteName:SITE.name,siteUrl:SITE.url,seo:{robots,ogTitle},articleMeta:article?{publishedTime:article.publishedTime.toISOString(),modifiedTime:article.modifiedTime.toISOString(),author:article.author}:undefined};
+const extraSchemas=schemas.filter(schema=>!['BlogPosting','WebSite'].includes((schema as Record<string,unknown>)['@type'] as string));
+---
+
+<title>{meta?.title??title}</title>
+<EmDashHead {page} />
+{!noindex&&!meta?.robots&&(!meta?.canonical||meta.canonical===canonical)&&alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
+<link rel="alternate" type="application/rss+xml" title={`Blog de ${SITE.name}`} href={`${SITE.url}/blog/rss.xml`} />
+
+{ogImageWidth && <meta property="og:image:width" content={String(ogImageWidth)} />}
+{ogImageHeight && <meta property="og:image:height" content={String(ogImageHeight)} />}
+{ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
+<meta property="og:locale" content={hreflang.replace('-', '_')} />
+{
+  article && (
+    <>
+
+
+      <meta property="article:section" content={article.section} />
+      {article.tags.map((tag) => <meta property="article:tag" content={tag} />)}
+    </>
+  )
+}
+{extraSchemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\\u003c')} />)}

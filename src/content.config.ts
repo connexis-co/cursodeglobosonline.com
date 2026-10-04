@@ -1,5 +1,5 @@
 import { defineCollection, z } from 'astro:content';
-import { glob, file } from 'astro/loaders';
+
 import { CATEGORIES } from './lib/categories';
 import { BLOG_CLUSTERS } from './lib/blog-clusters';
 
@@ -19,7 +19,7 @@ const courseSlugsForBlog = [
  * (auditoría del sitio anterior o Hotmart). Nada de números inventados.
  */
 const courses = defineCollection({
-  loader: glob({ pattern: '**/*.mdx', base: './src/content/courses' }),
+  loader: async () => [],
   schema: z.object({
     title: z.string(),
     metaTitle: z.string().optional(),
@@ -98,7 +98,7 @@ const courses = defineCollection({
  * placeholder del lanzamiento. Se muestran como cita visible; no van al JSON-LD.
  */
 const testimonials = defineCollection({
-  loader: file('./src/content/testimonials.json'),
+  loader: async () => [],
   schema: z.object({
     id: z.string(),
     name: z.string(),
@@ -121,7 +121,7 @@ const testimonials = defineCollection({
 const blog = defineCollection({
   // Los archivos con prefijo `_` (pruebas, plantillas) no se publican: el loader `glob`
   // de Astro 7 no los ignora por defecto, así que se excluyen de forma explícita.
-  loader: glob({ pattern: ['**/*.mdx', '!**/_*.mdx'], base: './src/content/blog' }),
+  loader: async () => [],
   schema: ({ image }) =>
     z.object({
       /** H1 visible. */

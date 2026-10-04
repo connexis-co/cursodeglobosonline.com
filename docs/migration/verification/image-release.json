@@ -1,0 +1,30 @@
+{
+  "verifiedAt": "2026-10-04T14:04:13.607035+00:00",
+  "productionVersion": "873bd1ed-d5e7-4b3c-be2b-f5fdade26509",
+  "developmentVersion": "867bb61f-8eda-4141-83ac-af7359a6039d",
+  "tests": {
+    "passed": 36,
+    "failed": 0
+  },
+  "astroCheck": {
+    "files": 158,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 99
+  },
+  "builds": {
+    "development": "passed",
+    "production": "passed"
+  },
+  "developmentPages": 4,
+  "publicSamplePages": 5,
+  "publicTransformedVariants": 45,
+  "publicSitemapUrls": 122,
+  "publicSitemapMediaResources": 43,
+  "issues": 0,
+  "limitations": [
+    "Lab LCP remains 11.9 seconds; image byte savings do not imply improved LCP.",
+    "No new native media block was published for testing. Native image service verified via configuration/build; five samples contain template images.",
+    "No visual browser check completed in this session."
+  ]
+}

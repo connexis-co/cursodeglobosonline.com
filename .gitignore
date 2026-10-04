@@ -31,3 +31,11 @@ graphify-out/cache/
 
 # iCloud: carpetas .nosync no se sincronizan (evita node_modules "dataless")
 *.nosync
+
+# EmDash development resources
+.data/
+.uploads/
+.dev.vars
+.env.local
+
+.emdash/
