@@ -1,4 +1,4 @@
-import { getCountries } from './emdash-content';
+import { getCountrySummaries as getCountries } from './emdash-content';
 import { MIN_VOTES_FOR_SCHEMA, type CourseRating } from './ratings-config';
 import { SITE } from './site';
 import type { Author } from './authors';

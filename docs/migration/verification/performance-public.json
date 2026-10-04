@@ -1,0 +1,428 @@
+{
+  "checkedAt": "2026-10-04T15:21:58.926591+00:00",
+  "pages": [
+    {
+      "path": "/",
+      "visit": 1,
+      "status": 200,
+      "ttfbSeconds": 2.654,
+      "htmlBytes": 217378,
+      "cache": "MISS",
+      "age": null,
+      "serverTiming": "setup;dur=220;desc=\"Setup probe\", rt;dur=114;desc=\"Runtime init\", rt.db;dur=36;desc=\"DB init + migration policy\", rt.secrets;dur=0;desc=\"Validate encryption key\", rt.plugins;dur=39;desc=\"Plugin states\", rt.seedcheck;dur=39;desc=\"Auto-seed gate\", rt.site;dur=39;desc=\"Site info options\", rt.sandbox;dur=0;desc=\"Sandboxed plugins\", rt.hooks;dur=39;desc=\"Exclusive hook resolution\", rt.cron;dur=0;desc=\"Cron init (recovery deferred post-response)\", render;dur=879;desc=\"Page render\", mw;dur=1213;desc=\"Total middleware\", db.total;dur=7966;desc=\"DB total\", db.count;dur=97;desc=\"Query count\", db.first;dur=0;desc=\"First query at\", db.last;dur=1213;desc=\"Last query at\", cache.hit;dur=38;desc=\"Cache hits\", cache.miss;dur=13;desc=\"Cache misses\"",
+      "cacheControl": "no-cache",
+      "vary": "Cookie, Host, Authorization, X-Globos-Preview-Token",
+      "fonts": [
+        "/_astro/fraunces-latin-headings.JhPh7eX4.woff2",
+        "/_astro/nunito-sans-latin-wght-normal.BWQ3gi2K.woff2"
+      ],
+      "styles": [
+        "/_astro/hotmart.ByImEKzz.css"
+      ],
+      "scripts": [
+        "/_astro/Header.astro_astro_type_script_index_0_lang.DEDjFKTQ.js",
+        "/_astro/LeadForm.astro_astro_type_script_index_0_lang.Cre8ilfH.js",
+        "/_astro/FaqAccordion.astro_astro_type_script_index_0_lang.yCT0h8X8.js",
+        "/_astro/GeoToast.astro_astro_type_script_index_0_lang.CxGGJrzL.js",
+        "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.DaMo6DB5.js"
+      ],
+      "h1": 1,
+      "canonical": [
+        "https://cursodeglobosonline.com/"
+      ],
+      "noindex": false,
+      "brandSymbols": 1,
+      "brandReferences": 3,
+      "starWidgets": 0,
+      "forms": 2,
+      "whatsapp": true,
+      "heroHidden": false,
+      "schemasValid": true
+    },
+    {
+      "path": "/",
+      "visit": 2,
+      "status": 200,
+      "ttfbSeconds": 0.084,
+      "htmlBytes": 217378,
+      "cache": "HIT",
+      "age": "0",
+      "serverTiming": "setup;dur=220;desc=\"Setup probe\", rt;dur=114;desc=\"Runtime init\", rt.db;dur=36;desc=\"DB init + migration policy\", rt.secrets;dur=0;desc=\"Validate encryption key\", rt.plugins;dur=39;desc=\"Plugin states\", rt.seedcheck;dur=39;desc=\"Auto-seed gate\", rt.site;dur=39;desc=\"Site info options\", rt.sandbox;dur=0;desc=\"Sandboxed plugins\", rt.hooks;dur=39;desc=\"Exclusive hook resolution\", rt.cron;dur=0;desc=\"Cron init (recovery deferred post-response)\", render;dur=879;desc=\"Page render\", mw;dur=1213;desc=\"Total middleware\", db.total;dur=7966;desc=\"DB total\", db.count;dur=97;desc=\"Query count\", db.first;dur=0;desc=\"First query at\", db.last;dur=1213;desc=\"Last query at\", cache.hit;dur=38;desc=\"Cache hits\", cache.miss;dur=13;desc=\"Cache misses\"",
+      "cacheControl": "no-cache",
+      "vary": "Cookie, Host, Authorization, X-Globos-Preview-Token",
+      "fonts": [
+        "/_astro/fraunces-latin-headings.JhPh7eX4.woff2",
+        "/_astro/nunito-sans-latin-wght-normal.BWQ3gi2K.woff2"
+      ],
+      "styles": [
+        "/_astro/hotmart.ByImEKzz.css"
+      ],
+      "scripts": [
+        "/_astro/Header.astro_astro_type_script_index_0_lang.DEDjFKTQ.js",
+        "/_astro/LeadForm.astro_astro_type_script_index_0_lang.Cre8ilfH.js",
+        "/_astro/FaqAccordion.astro_astro_type_script_index_0_lang.yCT0h8X8.js",
+        "/_astro/GeoToast.astro_astro_type_script_index_0_lang.CxGGJrzL.js",
+        "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.DaMo6DB5.js"
+      ],
+      "h1": 1,
+      "canonical": [
+        "https://cursodeglobosonline.com/"
+      ],
+      "noindex": false,
+      "brandSymbols": 1,
+      "brandReferences": 3,
+      "starWidgets": 0,
+      "forms": 2,
+      "whatsapp": true,
+      "heroHidden": false,
+      "schemasValid": true
+    },
+    {
+      "path": "/blog/",
+      "visit": 1,
+      "status": 200,
+      "ttfbSeconds": 3.249,
+      "htmlBytes": 271153,
+      "cache": "MISS",
+      "age": null,
+      "serverTiming": "setup;dur=203;desc=\"Setup probe\", rt;dur=116;desc=\"Runtime init\", rt.db;dur=36;desc=\"DB init + migration policy\", rt.secrets;dur=0;desc=\"Validate encryption key\", rt.plugins;dur=38;desc=\"Plugin states\", rt.seedcheck;dur=38;desc=\"Auto-seed gate\", rt.site;dur=38;desc=\"Site info options\", rt.sandbox;dur=0;desc=\"Sandboxed plugins\", rt.hooks;dur=42;desc=\"Exclusive hook resolution\", rt.cron;dur=0;desc=\"Cron init (recovery deferred post-response)\", render;dur=1963;desc=\"Page render\", mw;dur=2282;desc=\"Total middleware\", db.total;dur=9575;desc=\"DB total\", db.count;dur=156;desc=\"Query count\", db.first;dur=0;desc=\"First query at\", db.last;dur=2282;desc=\"Last query at\", cache.hit;dur=59;desc=\"Cache hits\", cache.miss;dur=7;desc=\"Cache misses\"",
+      "cacheControl": "no-cache",
+      "vary": "Cookie, Host, Authorization, X-Globos-Preview-Token",
+      "fonts": [
+        "/_astro/fraunces-latin-headings.JhPh7eX4.woff2",
+        "/_astro/nunito-sans-latin-wght-normal.BWQ3gi2K.woff2"
+      ],
+      "styles": [
+        "/_astro/hotmart.ByImEKzz.css"
+      ],
+      "scripts": [
+        "/_astro/Header.astro_astro_type_script_index_0_lang.DEDjFKTQ.js",
+        "/_astro/GeoToast.astro_astro_type_script_index_0_lang.CxGGJrzL.js",
+        "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.DaMo6DB5.js"
+      ],
+      "h1": 1,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "noindex": false,
+      "brandSymbols": 1,
+      "brandReferences": 3,
+      "starWidgets": 0,
+      "forms": 1,
+      "whatsapp": true,
+      "heroHidden": false,
+      "schemasValid": true
+    },
+    {
+      "path": "/blog/",
+      "visit": 2,
+      "status": 200,
+      "ttfbSeconds": 0.081,
+      "htmlBytes": 271153,
+      "cache": "HIT",
+      "age": "1",
+      "serverTiming": "setup;dur=203;desc=\"Setup probe\", rt;dur=116;desc=\"Runtime init\", rt.db;dur=36;desc=\"DB init + migration policy\", rt.secrets;dur=0;desc=\"Validate encryption key\", rt.plugins;dur=38;desc=\"Plugin states\", rt.seedcheck;dur=38;desc=\"Auto-seed gate\", rt.site;dur=38;desc=\"Site info options\", rt.sandbox;dur=0;desc=\"Sandboxed plugins\", rt.hooks;dur=42;desc=\"Exclusive hook resolution\", rt.cron;dur=0;desc=\"Cron init (recovery deferred post-response)\", render;dur=1963;desc=\"Page render\", mw;dur=2282;desc=\"Total middleware\", db.total;dur=9575;desc=\"DB total\", db.count;dur=156;desc=\"Query count\", db.first;dur=0;desc=\"First query at\", db.last;dur=2282;desc=\"Last query at\", cache.hit;dur=59;desc=\"Cache hits\", cache.miss;dur=7;desc=\"Cache misses\"",
+      "cacheControl": "no-cache",
+      "vary": "Cookie, Host, Authorization, X-Globos-Preview-Token",
+      "fonts": [
+        "/_astro/fraunces-latin-headings.JhPh7eX4.woff2",
+        "/_astro/nunito-sans-latin-wght-normal.BWQ3gi2K.woff2"
+      ],
+      "styles": [
+        "/_astro/hotmart.ByImEKzz.css"
+      ],
+      "scripts": [
+        "/_astro/Header.astro_astro_type_script_index_0_lang.DEDjFKTQ.js",
+        "/_astro/GeoToast.astro_astro_type_script_index_0_lang.CxGGJrzL.js",
+        "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.DaMo6DB5.js"
+      ],
+      "h1": 1,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/"
+      ],
+      "noindex": false,
+      "brandSymbols": 1,
+      "brandReferences": 3,
+      "starWidgets": 0,
+      "forms": 1,
+      "whatsapp": true,
+      "heroHidden": false,
+      "schemasValid": true
+    },
+    {
+      "path": "/blog/globos-con-confeti/",
+      "visit": 1,
+      "status": 200,
+      "ttfbSeconds": 4.326,
+      "htmlBytes": 124901,
+      "cache": "MISS",
+      "age": null,
+      "serverTiming": "setup;dur=290;desc=\"Setup probe\", rt;dur=128;desc=\"Runtime init\", rt.db;dur=42;desc=\"DB init + migration policy\", rt.secrets;dur=0;desc=\"Validate encryption key\", rt.plugins;dur=44;desc=\"Plugin states\", rt.seedcheck;dur=44;desc=\"Auto-seed gate\", rt.site;dur=44;desc=\"Site info options\", rt.sandbox;dur=0;desc=\"Sandboxed plugins\", rt.hooks;dur=42;desc=\"Exclusive hook resolution\", rt.cron;dur=0;desc=\"Cron init (recovery deferred post-response)\", render;dur=2578;desc=\"Page render\", mw;dur=2996;desc=\"Total middleware\", db.total;dur=10994;desc=\"DB total\", db.count;dur=168;desc=\"Query count\", db.first;dur=0;desc=\"First query at\", db.last;dur=2996;desc=\"Last query at\", cache.hit;dur=61;desc=\"Cache hits\", cache.miss;dur=9;desc=\"Cache misses\"",
+      "cacheControl": "no-cache",
+      "vary": "Cookie, Host, Authorization, X-Globos-Preview-Token",
+      "fonts": [
+        "/_astro/fraunces-latin-headings.JhPh7eX4.woff2",
+        "/_astro/nunito-sans-latin-wght-normal.BWQ3gi2K.woff2"
+      ],
+      "styles": [
+        "/_astro/hotmart.ByImEKzz.css"
+      ],
+      "scripts": [
+        "/_astro/Header.astro_astro_type_script_index_0_lang.DEDjFKTQ.js",
+        "/_astro/FaqAccordion.astro_astro_type_script_index_0_lang.yCT0h8X8.js",
+        "/_astro/StarRating.astro_astro_type_script_index_0_lang.CZ8qJxvL.js",
+        "/_astro/GeoToast.astro_astro_type_script_index_0_lang.CxGGJrzL.js",
+        "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.DaMo6DB5.js"
+      ],
+      "h1": 1,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/globos-con-confeti/"
+      ],
+      "noindex": false,
+      "brandSymbols": 1,
+      "brandReferences": 3,
+      "starWidgets": 1,
+      "forms": 2,
+      "whatsapp": true,
+      "heroHidden": false,
+      "schemasValid": true
+    },
+    {
+      "path": "/blog/globos-con-confeti/",
+      "visit": 2,
+      "status": 200,
+      "ttfbSeconds": 0.09,
+      "htmlBytes": 124901,
+      "cache": "HIT",
+      "age": "1",
+      "serverTiming": "setup;dur=290;desc=\"Setup probe\", rt;dur=128;desc=\"Runtime init\", rt.db;dur=42;desc=\"DB init + migration policy\", rt.secrets;dur=0;desc=\"Validate encryption key\", rt.plugins;dur=44;desc=\"Plugin states\", rt.seedcheck;dur=44;desc=\"Auto-seed gate\", rt.site;dur=44;desc=\"Site info options\", rt.sandbox;dur=0;desc=\"Sandboxed plugins\", rt.hooks;dur=42;desc=\"Exclusive hook resolution\", rt.cron;dur=0;desc=\"Cron init (recovery deferred post-response)\", render;dur=2578;desc=\"Page render\", mw;dur=2996;desc=\"Total middleware\", db.total;dur=10994;desc=\"DB total\", db.count;dur=168;desc=\"Query count\", db.first;dur=0;desc=\"First query at\", db.last;dur=2996;desc=\"Last query at\", cache.hit;dur=61;desc=\"Cache hits\", cache.miss;dur=9;desc=\"Cache misses\"",
+      "cacheControl": "no-cache",
+      "vary": "Cookie, Host, Authorization, X-Globos-Preview-Token",
+      "fonts": [
+        "/_astro/fraunces-latin-headings.JhPh7eX4.woff2",
+        "/_astro/nunito-sans-latin-wght-normal.BWQ3gi2K.woff2"
+      ],
+      "styles": [
+        "/_astro/hotmart.ByImEKzz.css"
+      ],
+      "scripts": [
+        "/_astro/Header.astro_astro_type_script_index_0_lang.DEDjFKTQ.js",
+        "/_astro/FaqAccordion.astro_astro_type_script_index_0_lang.yCT0h8X8.js",
+        "/_astro/StarRating.astro_astro_type_script_index_0_lang.CZ8qJxvL.js",
+        "/_astro/GeoToast.astro_astro_type_script_index_0_lang.CxGGJrzL.js",
+        "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.DaMo6DB5.js"
+      ],
+      "h1": 1,
+      "canonical": [
+        "https://cursodeglobosonline.com/blog/globos-con-confeti/"
+      ],
+      "noindex": false,
+      "brandSymbols": 1,
+      "brandReferences": 3,
+      "starWidgets": 1,
+      "forms": 2,
+      "whatsapp": true,
+      "heroHidden": false,
+      "schemasValid": true
+    },
+    {
+      "path": "/co/curso-de-globoflexia/",
+      "visit": 1,
+      "status": 200,
+      "ttfbSeconds": 5.793,
+      "htmlBytes": 196046,
+      "cache": "MISS",
+      "age": null,
+      "serverTiming": "setup;dur=216;desc=\"Setup probe\", rt;dur=114;desc=\"Runtime init\", rt.db;dur=37;desc=\"DB init + migration policy\", rt.secrets;dur=0;desc=\"Validate encryption key\", rt.plugins;dur=39;desc=\"Plugin states\", rt.seedcheck;dur=39;desc=\"Auto-seed gate\", rt.site;dur=39;desc=\"Site info options\", rt.sandbox;dur=0;desc=\"Sandboxed plugins\", rt.hooks;dur=38;desc=\"Exclusive hook resolution\", rt.cron;dur=0;desc=\"Cron init (recovery deferred post-response)\", render;dur=519;desc=\"Page render\", mw;dur=849;desc=\"Total middleware\", db.total;dur=1132;desc=\"DB total\", db.count;dur=23;desc=\"Query count\", db.first;dur=0;desc=\"First query at\", db.last;dur=849;desc=\"Last query at\", cache.hit;dur=6;desc=\"Cache hits\", cache.miss;dur=6;desc=\"Cache misses\"",
+      "cacheControl": "no-cache",
+      "vary": "Cookie, Host, Authorization, X-Globos-Preview-Token",
+      "fonts": [
+        "/_astro/fraunces-latin-headings.JhPh7eX4.woff2",
+        "/_astro/nunito-sans-latin-wght-normal.BWQ3gi2K.woff2"
+      ],
+      "styles": [
+        "/_astro/hotmart.ByImEKzz.css"
+      ],
+      "scripts": [
+        "/_astro/Header.astro_astro_type_script_index_0_lang.DEDjFKTQ.js",
+        "/_astro/StarRating.astro_astro_type_script_index_0_lang.CZ8qJxvL.js",
+        "/_astro/FaqAccordion.astro_astro_type_script_index_0_lang.yCT0h8X8.js",
+        "/_astro/GeoToast.astro_astro_type_script_index_0_lang.CxGGJrzL.js",
+        "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.DaMo6DB5.js"
+      ],
+      "h1": 1,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+      ],
+      "noindex": false,
+      "brandSymbols": 1,
+      "brandReferences": 3,
+      "starWidgets": 2,
+      "forms": 1,
+      "whatsapp": true,
+      "heroHidden": false,
+      "schemasValid": true
+    },
+    {
+      "path": "/co/curso-de-globoflexia/",
+      "visit": 2,
+      "status": 200,
+      "ttfbSeconds": 0.087,
+      "htmlBytes": 196046,
+      "cache": "HIT",
+      "age": "4",
+      "serverTiming": "setup;dur=216;desc=\"Setup probe\", rt;dur=114;desc=\"Runtime init\", rt.db;dur=37;desc=\"DB init + migration policy\", rt.secrets;dur=0;desc=\"Validate encryption key\", rt.plugins;dur=39;desc=\"Plugin states\", rt.seedcheck;dur=39;desc=\"Auto-seed gate\", rt.site;dur=39;desc=\"Site info options\", rt.sandbox;dur=0;desc=\"Sandboxed plugins\", rt.hooks;dur=38;desc=\"Exclusive hook resolution\", rt.cron;dur=0;desc=\"Cron init (recovery deferred post-response)\", render;dur=519;desc=\"Page render\", mw;dur=849;desc=\"Total middleware\", db.total;dur=1132;desc=\"DB total\", db.count;dur=23;desc=\"Query count\", db.first;dur=0;desc=\"First query at\", db.last;dur=849;desc=\"Last query at\", cache.hit;dur=6;desc=\"Cache hits\", cache.miss;dur=6;desc=\"Cache misses\"",
+      "cacheControl": "no-cache",
+      "vary": "Cookie, Host, Authorization, X-Globos-Preview-Token",
+      "fonts": [
+        "/_astro/fraunces-latin-headings.JhPh7eX4.woff2",
+        "/_astro/nunito-sans-latin-wght-normal.BWQ3gi2K.woff2"
+      ],
+      "styles": [
+        "/_astro/hotmart.ByImEKzz.css"
+      ],
+      "scripts": [
+        "/_astro/Header.astro_astro_type_script_index_0_lang.DEDjFKTQ.js",
+        "/_astro/StarRating.astro_astro_type_script_index_0_lang.CZ8qJxvL.js",
+        "/_astro/FaqAccordion.astro_astro_type_script_index_0_lang.yCT0h8X8.js",
+        "/_astro/GeoToast.astro_astro_type_script_index_0_lang.CxGGJrzL.js",
+        "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.DaMo6DB5.js"
+      ],
+      "h1": 1,
+      "canonical": [
+        "https://cursodeglobosonline.com/co/curso-de-globoflexia/"
+      ],
+      "noindex": false,
+      "brandSymbols": 1,
+      "brandReferences": 3,
+      "starWidgets": 2,
+      "forms": 1,
+      "whatsapp": true,
+      "heroHidden": false,
+      "schemasValid": true
+    }
+  ],
+  "assets": [
+    {
+      "path": "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.DaMo6DB5.js",
+      "status": 200,
+      "bytes": 640,
+      "type": "text/javascript",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/_astro/FaqAccordion.astro_astro_type_script_index_0_lang.yCT0h8X8.js",
+      "status": 200,
+      "bytes": 277,
+      "type": "text/javascript",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/_astro/GeoToast.astro_astro_type_script_index_0_lang.CxGGJrzL.js",
+      "status": 200,
+      "bytes": 2026,
+      "type": "text/javascript",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/_astro/Header.astro_astro_type_script_index_0_lang.DEDjFKTQ.js",
+      "status": 200,
+      "bytes": 2000,
+      "type": "text/javascript",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/_astro/LeadForm.astro_astro_type_script_index_0_lang.Cre8ilfH.js",
+      "status": 200,
+      "bytes": 617,
+      "type": "text/javascript",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/_astro/StarRating.astro_astro_type_script_index_0_lang.CZ8qJxvL.js",
+      "status": 200,
+      "bytes": 5271,
+      "type": "text/javascript",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/_astro/fraunces-latin-headings.JhPh7eX4.woff2",
+      "status": 200,
+      "bytes": 66336,
+      "type": "font/woff2",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/_astro/hotmart.ByImEKzz.css",
+      "status": 200,
+      "bytes": 82526,
+      "type": "text/css",
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "/_astro/nunito-sans-latin-wght-normal.BWQ3gi2K.woff2",
+      "status": 200,
+      "bytes": 31076,
+      "type": "font/woff2",
+      "cacheControl": "public, max-age=31536000, immutable"
+    }
+  ],
+  "checks": [
+    {
+      "path": "/",
+      "cookie": true,
+      "status": 200,
+      "cache": "BYPASS",
+      "cacheControl": "private, no-store",
+      "noindex": null
+    },
+    {
+      "path": "/?preview=true",
+      "cookie": false,
+      "status": 200,
+      "cache": "BYPASS",
+      "cacheControl": null,
+      "noindex": null
+    },
+    {
+      "path": "/?utm_source=performance-audit",
+      "cookie": false,
+      "status": 200,
+      "cache": "BYPASS",
+      "cacheControl": null,
+      "noindex": null
+    },
+    {
+      "path": "/_emdash/admin",
+      "cookie": false,
+      "status": 401,
+      "cache": "BYPASS",
+      "cacheControl": "private, no-store",
+      "noindex": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "/_emdash/api/settings",
+      "cookie": false,
+      "status": 401,
+      "cache": "BYPASS",
+      "cacheControl": "private, no-store",
+      "noindex": "noindex, nofollow, noarchive"
+    },
+    {
+      "path": "/invalid-performance-check",
+      "cookie": false,
+      "status": 404,
+      "cache": "BYPASS",
+      "cacheControl": null,
+      "noindex": null
+    },
+    {
+      "path": "/api/blog-ratings",
+      "cookie": false,
+      "status": 200,
+      "cache": "BYPASS",
+      "cacheControl": "public, max-age=60",
+      "noindex": "noindex"
+    }
+  ]
+}

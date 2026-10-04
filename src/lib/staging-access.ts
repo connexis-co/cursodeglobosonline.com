@@ -36,6 +36,7 @@ export function protectResponse(response: Response): Response {
   const headers = new Headers(response.headers);
   headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
   headers.set('Cache-Control', 'private, no-store');
+  headers.set('Cloudflare-CDN-Cache-Control', 'no-store');
 
   const vary = (headers.get('Vary') ?? '').split(',').map((value) => value.trim()).filter(Boolean);
   // A wildcard already varies on every request header; do not weaken it.

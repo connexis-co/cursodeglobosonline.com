@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { getCountries } from '@/lib/emdash-content';
+import { getCountrySummaries as getCountries } from '@/lib/emdash-content';
 import { SITE } from '@/lib/site';
 import { CHOOSER, siteFacts, coursePriceLine, courseRatingLine, loadLlmsData, postLine } from '@/lib/llms';
 

@@ -29,7 +29,7 @@ export function createPlugin() {
         if (!config.enabled) return null;
         const url = new URL(page.url);
         if (url.pathname.startsWith('/_emdash') || url.pathname.startsWith('/admin')) return null;
-        const {getCountry,getCourse}=await import('@/lib/emdash-content');
+        const {getCountrySummary:getCountry,getCourse}=await import('@/lib/emdash-content');
         const segments=url.pathname.split('/').filter(Boolean);
         const country=await getCountry(segments[0] ?? '') ?? await getCountry('co');
         if (!country) return null;

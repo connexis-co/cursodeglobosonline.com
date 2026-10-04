@@ -2,6 +2,9 @@
 import { EmDashBodyStart, EmDashBodyEnd } from 'emdash/ui';
 import type { PublicPageContext } from 'emdash';
 import '@/styles/global.css';
+import FontPreloads from '@/components/FontPreloads.astro';
+import TrackingHead from '@/components/TrackingHead.astro';
+import BrandSymbol from '@/components/BrandSymbol.astro';
 import Seo from '@/components/Seo.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
@@ -10,7 +13,7 @@ import type { Country } from '@/lib/countries';
 import type { ArticleMeta } from '@/components/Seo.astro';
 import type { HreflangAlternate } from '@/lib/seo';
 import { organizationSchema, websiteSchema } from '@/lib/seo';
-import { GTM_ID, GA4_ID, META_PIXEL_ID } from '@/lib/site';
+import { GTM_ID } from '@/lib/site';
 
 interface Props {
   title: string;
@@ -89,33 +92,11 @@ const emdashPage:PublicPageContext={url:Astro.url.href,path:Astro.url.pathname,l
       hreflang={country?.hreflang}
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    {
-      GTM_ID && (
-        <script
-          is:inline
-          set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`}
-        />
-      )
-    }
-    {GA4_ID && <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`} />}
-    {
-      GA4_ID && (
-        <script
-          is:inline
-          set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','${GA4_ID}');`}
-        />
-      )
-    }
-    {
-      META_PIXEL_ID && (
-        <script
-          is:inline
-          set:html={`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${META_PIXEL_ID}');fbq('track','PageView');`}
-        />
-      )
-    }
+    <FontPreloads />
+    <TrackingHead />
   </head>
   <body data-page-type={pageType} data-country={country?.code}>
+<BrandSymbol />
 <EmDashBodyStart page={emdashPage} />
     {
       GTM_ID && (

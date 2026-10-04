@@ -15,7 +15,11 @@ export default {...handler,async fetch(request,env,ctx){
     headers.set('X-Content-Type-Options','nosniff');
     headers.set('Referrer-Policy','strict-origin-when-cross-origin');
     headers.set('X-Frame-Options','SAMEORIGIN');
-    if(request.headers.has('Cookie'))headers.set('Cache-Control','private, no-store');
+    if(request.headers.has('Cookie')||privateResponse){headers.set('Cache-Control','private, no-store');headers.set('Cloudflare-CDN-Cache-Control','no-store');}
+    if(headers.get('Content-Type')?.includes('text/html')){
+      const vary=new Set((headers.get('Vary')??'').split(',').map(v=>v.trim()).filter(Boolean));
+      for(const name of ['Cookie','Host','Authorization','X-Globos-Preview-Token'])vary.add(name);headers.set('Vary',[...vary].join(', '));
+    }
     const secured=new Response(response.body,{status:response.status,statusText:response.statusText,headers});
     return privateResponse?protectResponse(secured):secured;
   };

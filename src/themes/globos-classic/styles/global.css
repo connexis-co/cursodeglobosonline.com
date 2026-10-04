@@ -5,8 +5,7 @@
  * easings custom y animaciones de globos propias.
  */
 @import 'tailwindcss';
-@import '@fontsource-variable/fraunces/full.css';
-@import '@fontsource-variable/nunito-sans';
+@import './fonts.css';
 
 /* Transiciones suaves entre páginas (cross-document View Transitions, sin JS) */
 @view-transition {

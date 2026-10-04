@@ -1,7 +1,7 @@
 ---
 import { getCategories } from '@/lib/emdash-content';
 const CATEGORIES = await getCategories();
-import { getCountries } from '@/lib/emdash-content';
+import { getCountrySummaries as getCountries } from '@/lib/emdash-content';
 const COUNTRIES = await getCountries();
 import { getCollection } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';

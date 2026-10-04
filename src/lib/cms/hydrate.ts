@@ -3,10 +3,11 @@ import {getRequestContext} from 'emdash/request-context';
 import {RELATIONS} from './relations';
 interface Row{id:string;data:unknown}
 const caches=new WeakMap<object,Map<string,Promise<Row>>>();
-export function hydrateRelations(collection:string,row:Row):Promise<Row>{
- const definitions=RELATIONS[collection];if(!definitions)return Promise.resolve(row);
+export function hydrateRelations(collection:string,row:Row,fields?:string[]):Promise<Row>{
+ const all=RELATIONS[collection];if(!all)return Promise.resolve(row);
+ const definitions=fields?Object.fromEntries(Object.entries(all).filter(([field])=>fields.includes(field))):all;
  const ctx=getRequestContext();let cache=ctx?caches.get(ctx):undefined;if(ctx&&!cache){cache=new Map();caches.set(ctx,cache);}
- const key=collection+':'+row.id;const hit=cache?.get(key);if(hit)return hit;
+ const key=collection+':'+row.id+':'+(fields?fields.slice().sort().join(','):'all');const hit=cache?.get(key);if(hit)return hit;
  const task=(async()=>{
   const references=Object.fromEntries(Object.keys(definitions).map(k=>[k,{limit:100}]));
   const result=await getEmDashEntry(collection,row.id,{locale:'es',references});if(result.error)throw result.error;if(!result.entry)return row;

@@ -6,8 +6,11 @@ import type { PublicPageContext } from 'emdash';
  * sin enlaces externos salvo el CTA a Hotmart. Siempre noindex.
  */
 import '@/styles/global.css';
+import FontPreloads from '@/components/FontPreloads.astro';
+import TrackingHead from '@/components/TrackingHead.astro';
+import BrandSymbol from '@/components/BrandSymbol.astro';
 import Seo from '@/components/Seo.astro';
-import { GTM_ID, META_PIXEL_ID } from '@/lib/site';
+import { GTM_ID } from '@/lib/site';
 
 interface Props {
   title: string;
@@ -28,24 +31,11 @@ const emdashPage:PublicPageContext={url:Astro.url.href,path:Astro.url.pathname,l
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#fdf9f4" />
     <Seo {title} {description} noindex />
-    {
-      GTM_ID && (
-        <script
-          is:inline
-          set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`}
-        />
-      )
-    }
-    {
-      META_PIXEL_ID && (
-        <script
-          is:inline
-          set:html={`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${META_PIXEL_ID}');fbq('track','PageView');`}
-        />
-      )
-    }
+    <FontPreloads />
+    <TrackingHead />
   </head>
   <body data-page-type={pageType}>
+<BrandSymbol />
 <EmDashBodyStart page={emdashPage} />
     {
       GTM_ID && (

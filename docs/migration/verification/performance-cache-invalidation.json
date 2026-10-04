@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-04T15:23:17.438Z",
+  "operation": "save unchanged WhatsApp configuration",
+  "settingsUnchanged": true,
+  "warm": "HIT",
+  "afterSave": "MISS",
+  "nextVisit": "HIT",
+  "authenticated": {
+    "status": 200,
+    "cache": "BYPASS",
+    "cacheControl": "private, no-store"
+  },
+  "workersDev": {
+    "status": 401,
+    "cache": "BYPASS"
+  }
+}

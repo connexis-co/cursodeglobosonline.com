@@ -1,6 +1,6 @@
 ---
-import { getCountries } from '@/lib/emdash-content';
-const COUNTRIES = await getCountries();
+import { getCountries, getCountrySummaries } from '@/lib/emdash-content';
+const COUNTRIES = await getCountrySummaries();
 /**
  * Ruta dual /{cc}/{item}/ — `item` puede ser un slug de curso
  * (/co/curso-de-globoflexia/) o una ciudad (/co/bogota/). Patrón [item] del
@@ -19,9 +19,11 @@ interface Props {
   city?: City;
 }
 
-const country=COUNTRIES.find(c=>c.code===Astro.params.country);
+let country=COUNTRIES.find(c=>c.code===Astro.params.country);
 if(!country)return Astro.rewrite('/404');
 const course=await getCourse(Astro.params.item!);
+// Course pages do not render city links; geographic pages still resolve the complete city graph.
+if(!course)country=(await getCountries()).find(c=>c.code===Astro.params.country)!;
 const city=country.cities.find(c=>c.slug===Astro.params.item);
 if(!course&&!city)return Astro.rewrite('/404');
 ---

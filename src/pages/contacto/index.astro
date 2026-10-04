@@ -3,7 +3,7 @@ import RichBody from '@/components/RichBody.astro';
 import { getDocument } from '@/lib/emdash-content';
 const page=await getDocument('pages','contacto');if(!page)return Astro.rewrite('/404');Astro.locals.cmsContent=page;
 const copy=page.data;
-import { getCountries } from '@/lib/emdash-content';
+import { getCountrySummaries as getCountries } from '@/lib/emdash-content';
 const COUNTRIES = await getCountries();
 import { getCollection } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';

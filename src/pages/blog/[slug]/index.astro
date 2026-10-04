@@ -14,7 +14,7 @@ import BlogRating from '@/themes/globos-classic/components/blog/BlogRating.astro
 import { getBlogRating } from '@/lib/ratings';
 import BlogComments from '@/themes/globos-classic/components/blog/BlogComments.astro';
 import PostCard from '@/components/blog/PostCard.astro';
-import { getPublishedPosts, relatedPosts, readingMinutes, formatDate, lastModified, type Post } from '@/lib/blog';
+import { getPublishedPostCards, relatedPosts, readingMinutes, formatDate, lastModified, type Post } from '@/lib/blog';
 import { getBlogCluster } from '@/lib/emdash-content';
 import { getAuthor } from '@/lib/emdash-content';
 import { blogPostingSchema, breadcrumbSchema, faqSchema } from '@/lib/seo';
@@ -29,7 +29,7 @@ interface Props {
 
 const post=await getEntry('blog',Astro.params.slug!);
 if(!post)return Astro.rewrite('/404');
-const all=await getPublishedPosts();
+const all=await getPublishedPostCards();
 Astro.locals.cmsContent=post as unknown as App.Locals["cmsContent"];
 const d = post.data;
 const postRating = await getBlogRating(post.contentRef.id);

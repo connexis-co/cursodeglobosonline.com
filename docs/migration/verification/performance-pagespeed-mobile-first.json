@@ -1,0 +1,33 @@
+{
+  "done": true,
+  "report": {
+    "MOBILE": {
+      "status": "ok",
+      "field_data": {
+        "Cumulative Layout Shift": "FAST",
+        "First Contentful Paint": "FAST",
+        "Largest Contentful Paint": "FAST"
+      },
+      "lab_metrics": {
+        "Time to Interactive": "9.5 s",
+        "Speed Index": "10.9 s",
+        "Cumulative Layout Shift": "1.164",
+        "Largest Contentful Paint": "8.9 s",
+        "Total Blocking Time": "227 ms",
+        "First Contentful Paint": "4.0 s"
+      },
+      "opportunities": [
+        {
+          "opportunity": "Redirects",
+          "estimated_savings": "630 ms",
+          "size_reduction_kb": null
+        },
+        {
+          "opportunity": "Unused Javascript",
+          "estimated_savings": "1.5 s",
+          "size_reduction_kb": 391
+        }
+      ]
+    }
+  }
+}

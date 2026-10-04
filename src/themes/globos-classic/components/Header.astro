@@ -4,7 +4,7 @@ import {navigation} from "@/lib/cms/navigation";
 import MenuLinks from "./MenuLinks.astro";
 import { getCategories } from '@/lib/emdash-content';
 const CATEGORIES = await getCategories();
-import { getCountries } from '@/lib/emdash-content';
+import { getCountrySummaries as getCountries } from '@/lib/emdash-content';
 const COUNTRIES = await getCountries();
 import { getCollection } from '@/lib/emdash-content';
 import Logo from './Logo.astro';

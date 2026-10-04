@@ -2,10 +2,10 @@
 import ResponsiveImage from '@/components/ResponsiveImage.astro';
 import RichBody from '@/components/RichBody.astro';
 import { getDocument } from '@/lib/emdash-content';
-const page=await getDocument('pages','inicio');if(!page)return Astro.rewrite('/404');Astro.locals.cmsContent=page;
+const [page,COUNTRIES,courseEntries,testimonialEntries,posts]=await Promise.all([getDocument('pages','inicio'),getCountries(),getCollection('courses'),getCollection('testimonials'),getRecentBlogPosts(3)]);if(!page)return Astro.rewrite('/404');Astro.locals.cmsContent=page;
 const copy=page.data;
-import { getCountries } from '@/lib/emdash-content';
-const COUNTRIES = await getCountries();
+import { getCountrySummaries as getCountries } from '@/lib/emdash-content';
+
 import { getCollection } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Balloons from '@/components/Balloons.astro';
@@ -19,23 +19,23 @@ import LeadForm from '@/components/LeadForm.astro';
 import FaqAccordion from '@/components/FaqAccordion.astro';
 import Icon from '@/components/Icon.astro';
 import PostCard from '@/components/blog/PostCard.astro';
-import { getPublishedPosts } from '@/lib/blog';
+import { getRecentBlogPosts } from '@/lib/emdash-content';
 import { DEFAULT_COUNTRY } from '@/lib/countries';
 import { buildWhatsAppUrl } from '@/lib/hotmart';
 import type { IconName } from '@/lib/icons';
 import { countryAlternates, faqSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
 
-const courses = (await getCollection('courses')).sort(
+const courses = courseEntries.sort(
   (a, b) => Number(b.data.featured) - Number(a.data.featured),
 );
 const featured = courses.find((c) => c.data.featured) ?? courses[0];
 const others = courses.filter((c) => c.id !== featured?.id);
 // Reseñas reales de Hotmart (sustituyen a los testimonios placeholder del lanzamiento).
-const testimonials = (await getCollection('testimonials')).slice(0, 6);
+const testimonials = testimonialEntries.slice(0, 6);
 // Las 3 guías más recientes del blog: enlazado interno home → blog (clusters informacionales).
 // La sección solo se pinta si hay artículos publicados.
-const guias = (await getPublishedPosts()).slice(0, 3);
+const guias = posts.slice(0, 3);
 
 // Tarjeta de asesoría que llena la celda libre del grid de cursos (fila 2, col. 3 en lg).
 const defaultCountry = COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
@@ -63,25 +63,22 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
 
     <div class="contenedor relative pt-14 pb-20 text-center sm:pt-16 lg:pt-20 lg:pb-28">
       <p
-        class="animate-pop-in mx-auto inline-flex items-center gap-2 rounded-full border border-crema-50/20 bg-crema-50/10 px-4 py-1.5 text-xs font-bold tracking-wide backdrop-blur-sm"
+        class="mx-auto inline-flex items-center gap-2 rounded-full border border-crema-50/20 bg-crema-50/10 px-4 py-1.5 text-xs font-bold tracking-wide backdrop-blur-sm"
       >
         {courses.length} cursos · {SITE.stats.students} estudiantes certificados · {SITE.stats.ventures} emprendimientos
       </p>
       <h1
-        class="animate-fade-slide-up mx-auto mt-6 max-w-3xl text-4xl font-semibold text-balance sm:text-5xl lg:text-6xl"
-        style="animation-delay: 0.1s"
+        class="mx-auto mt-6 max-w-3xl text-4xl font-semibold text-balance sm:text-5xl lg:text-6xl"
       >
         {copy.heading} <span class="text-coral-300">{copy.highlight}</span>
       </h1>
       <p
-        class="animate-fade-slide-up mx-auto mt-5 max-w-xl text-base text-crema-100/85 sm:text-lg"
-        style="animation-delay: 0.22s"
+        class="mx-auto mt-5 max-w-xl text-base text-crema-100/85 sm:text-lg"
       >
         {copy.lead}
       </p>
       <div
-        class="animate-fade-slide-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
-        style="animation-delay: 0.34s"
+        class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
       >
         <a
           href="/co/cursos/"
@@ -99,7 +96,7 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
           {featured?.data.title??'Ver los cursos'}
         </a>
       </div>
-      <p class="animate-fade-slide-up mt-7 text-xs text-crema-100/60" style="animation-delay: 0.45s">
+      <p class="mt-7 text-xs text-crema-100/60">
         Garantía de 7 días · Pago seguro con Hotmart · Aprende desde tu celular
       </p>
     </div>
