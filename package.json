@@ -22,14 +22,14 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@astrojs/mdx": "^7.0.5",
-    "@astrojs/react": "^6.0.2",
+    "@astrojs/mdx": "^8.1.1",
+    "@astrojs/react": "^7.1.1",
     "@fontsource-variable/fraunces": "^5.2.0",
     "@fontsource-variable/nunito-sans": "^5.2.0",
     "@nanostores/persistent": "^1.0.0",
     "@nanostores/react": "^1.1.0",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.3.4",
+    "astro": "^7.4.2",
     "lucide-react": "^0.545.0",
     "nanostores": "^1.4.2",
     "react": "^19.2.8",
@@ -37,7 +37,7 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.12",
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
     "@types/react": "^19.2.0",
