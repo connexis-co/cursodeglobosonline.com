@@ -41,7 +41,7 @@ ${
 }
 
 ## Páginas principales
-- [Inicio](${SITE.url}/): los 4 cursos y cómo funciona
+- [Inicio](${SITE.url}/): los cursos de globos y cómo funcionan
 - [Catálogo con precios](${SITE.url}/co/cursos/)
 - [Blog de decoración con globos](${SITE.url}/blog/)
 - [Quiénes somos](${SITE.url}/nosotros/)

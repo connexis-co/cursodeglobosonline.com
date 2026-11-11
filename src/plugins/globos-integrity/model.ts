@@ -4,7 +4,7 @@ export const pagePath=(slug:string)=>FIXED_PAGE_PATHS[slug]??`/paginas/${slug}/`
 export function editorialError(collection:string,slug:string,d:Record<string,unknown>):string|undefined{
  if(collection==='blog'){const error=blogSeoError(d);if(error)return error;}
  if(collection==='pages'&&d.path!==pagePath(slug))return `La ruta de esta página debe ser ${pagePath(slug)}. Cambia el slug para crear otra página.`;
- for(const key of ['cta_url','hotmart_url','checkout_url'])if(d[key]){try{const u=new URL(String(d[key]),'https://example.com');if(!['https:','http:'].includes(u.protocol))return 'El enlace no es seguro.';if(key!=='cta_url'&&(u.protocol!=='https:'||!['hotm.art','go.hotmart.com','pay.hotmart.com','hotmart.com'].includes(u.hostname)))return 'El checkout debe ser HTTPS de Hotmart.';}catch{return 'El enlace no es válido.';}}
+ for(const key of ['cta_url','hotmart_url','checkout_url'])if(d[key]){try{const u=new URL(String(d[key]),'https://example.com');if(!['https:','http:'].includes(u.protocol))return 'El enlace no es seguro.';if(key!=='cta_url'&&(u.protocol!=='https:'||!['hotm.art','hotm.io','go.hotmart.com','pay.hotmart.com','hotmart.com'].includes(u.hostname)))return 'El checkout debe ser HTTPS de Hotmart.';}catch{return 'El enlace no es válido.';}}
  if(collection==='courses'){
   const price=Number(d.price_usd),original=Number(d.original_price_usd);if(!Number.isFinite(price)||price<=0)return 'El precio debe ser mayor que cero.';
   if(d.original_price_usd&&original<price)return 'El precio anterior no puede ser menor al precio vigente.';

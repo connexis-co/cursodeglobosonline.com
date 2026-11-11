@@ -1,8 +1,8 @@
 ---
+import { sortCourses } from '@/lib/course-order';
 import { getCollection } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Balloons from '@/components/Balloons.astro';
-import Wave from '@/components/Wave.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import CourseCard from '@/components/CourseCard.astro';
 import TestimonialCard from '@/components/TestimonialCard.astro';
@@ -12,6 +12,7 @@ import type { Country, City } from '@/lib/countries';
 import { getCityLocal } from '@/lib/emdash-content';
 import { breadcrumbSchema, faqSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
+import { GENERAL_COURSE } from '@/lib/course-order';
 
 interface Props {
   country: Country;
@@ -21,9 +22,7 @@ interface Props {
 const { country, city } = Astro.props;
 const cityLocal = await getCityLocal(city.slug);
 
-const courses = (await getCollection('courses')).sort(
-  (a, b) => Number(b.data.featured) - Number(a.data.featured),
-);
+const courses = sortCourses(await getCollection('courses'));
 // Reseñas reales de Hotmart (no existen reseñas por ciudad: no se inventan).
 const testimonials = (await getCollection('testimonials')).slice(0, 3);
 
@@ -39,10 +38,13 @@ const faqs = [
   },
 ];
 
-// Intención de la URL: "curso de decoración con globos en {ciudad}". No nombra los 4
-// cursos en title/meta para no competir con las money pages por "curso de X".
-const title = `Curso de Decoración con Globos en ${city.name}: 100% Online`;
-const description = `¿Buscas curso de decoración con globos en ${city.name}? Estudia online, sin traslados: 4 cursos con certificado y pago en ${country.currency}. Garantía de 7 días.`;
+// Intención de la URL: «cursos de globos en {ciudad}» (plural, entrada local). El singular
+// «curso de decoración con globos» es de la ficha del curso general y «curso de globoflexia» de
+// la suya: esta página las enlaza con ese texto exacto en lugar de competir por ellas.
+const generalCourse = courses.find((c) => c.id === GENERAL_COURSE);
+let title = `Cursos de Globos en ${city.name}: Online y con Certificado`;
+if (title.length > 60) title = `Cursos de Globos en ${city.name}: 100% Online`;
+const description = `Cursos de globos para estudiar desde ${city.name}, sin traslados: decoración, globoflexia, bouquets, flores y burbuja. Certificado y pago en ${country.currency}.`;
 ---
 
 <BaseLayout
@@ -75,16 +77,22 @@ const description = `¿Buscas curso de decoración con globos en ${city.name}? E
           Cursos de decoración con globos en {city.name}
         </h1>
         {cityLocal && <p class="mt-5 max-w-2xl leading-relaxed text-ciruela-600">{cityLocal.hook}</p>}
-        <!-- Enlace contextual a la página país (anti-canibalización: la ciudad es una entrada
-             local; "curso de decoración con globos online en {país}" vive en /{cc}/). -->
+        <!-- Enlaces contextuales a las fichas (anti-canibalización): el texto ancla exacto apunta
+             a la URL que debe posicionar por esa búsqueda, no a la home del país. -->
         <p class="mt-3 max-w-2xl text-sm leading-relaxed text-ciruela-600">
           Desde {city.name} tomas el mismo{' '}
           <a
-            href={`/${country.code}/`}
+            href={`/${country.code}/${GENERAL_COURSE}/`}
             class="font-bold text-coral-700 underline decoration-coral-200 decoration-2 underline-offset-[3px] transition-colors hover:decoration-coral-500"
-            >curso de decoración con globos online en {country.name}</a
+            >curso de decoración con globos</a
           >{' '}
-          que en cualquier otra ciudad: las mismas especialidades, certificado y pago en {country.currency}.
+          y el mismo{' '}
+          <a
+            href={`/${country.code}/curso-de-globoflexia/`}
+            class="font-bold text-coral-700 underline decoration-coral-200 decoration-2 underline-offset-[3px] transition-colors hover:decoration-coral-500"
+            >curso de globoflexia</a
+          >{' '}
+          que en el resto de {country.name}: mismas clases, certificado y pago en {country.currency}.
         </p>
         <div class="mt-7 flex flex-wrap items-center gap-3">
           <a
@@ -107,16 +115,15 @@ const description = `¿Buscas curso de decoración con globos en ${city.name}? E
         </div>
       </div>
     </div>
-    <Wave color="var(--color-crema-50)" />
   </section>
 
   <section id="cursos-ciudad" class="contenedor scroll-mt-24 py-14 lg:py-16">
     <SectionHeading
       eyebrow={`Disponibles en ${city.name}`}
-      title="Elige tu especialidad"
-      lead={`Los cuatro cursos se estudian 100% online desde ${city.name}, con checkout en ${country.currency} y métodos de pago de ${country.name}.`}
+      title={`Cursos de globos disponibles en ${city.name}`}
+      lead={`Los ${courses.length} cursos se estudian 100% online desde ${city.name}, con pago en ${country.currency}${generalCourse ? '. Si empiezas de cero, el de decoración con globos es la base' : ''}.`}
     />
-    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {
         courses.map((course, i) => (
           <div class="scroll-reveal" style={`animation-delay:${i * 60}ms`}>

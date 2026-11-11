@@ -1,14 +1,20 @@
 import {hydrateRelations} from './cms/hydrate';
+import {snapshotEnabled,snapshotRows} from './cms/snapshot';
+import {RELATIONS} from './cms/relations';
 import type { CollectionEntry as LegacyEntry } from 'astro:content';
 import { getEmDashCollection, getEmDashEntry } from 'emdash';
 import {getRequestContext} from 'emdash/request-context';
+import {currentScope,promoteCourse,verifiedPromotions} from './promotions';
+import type {AppliedPromotion} from '../plugins/globos-promotions/model';
 import type { Country, City } from './countries';
 import type { Category } from './categories';
 import type { CityLocal } from './cities';
 import type { Author } from './authors';
 import type { BlogCluster } from './blog-clusters';
+/** Portada de respaldo: una foto real del sitio. Un curso sin portada en el CMS nunca muestra una ilustración. */
+const COVER_FALLBACK='/images/decoracion-guirnalda.jpg';
 export type RichBlock=Record<string,unknown> & {_type:string};
-export type CollectionEntry<C extends 'courses'|'blog'|'testimonials'>=LegacyEntry<C>&{richBody:RichBlock[];data:LegacyEntry<C>['data']&{video?:string};contentRef:{collection:string;id:string;slug:string}};
+export type CollectionEntry<C extends 'courses'|'blog'|'testimonials'>=LegacyEntry<C>&{richBody:RichBlock[];data:LegacyEntry<C>['data']&{video?:string;coverAlt?:string;promo?:AppliedPromotion};contentRef:{collection:string;id:string;slug:string}};
 export interface Row {id:string;data:unknown}
 // Deduplicate within this request; EmDash also handles the configured native KV object cache.
 const collectionReads=new WeakMap<object,Map<string,Promise<Row[]>>>();
@@ -29,10 +35,17 @@ async function queryRows(collection:string):Promise<Row[]> {
  return rows;
 }
 function publishedRows(collection:string):Promise<Row[]>{return requestValue('rows:'+collection,()=>queryRows(collection));}
-async function queryAll(collection:string):Promise<Row[]> {
+function queryAll(collection:string):Promise<Row[]> {return snapshotRows(collection,()=>hydrateAll(collection));}
+/** List queries omit entry-only fields such as the SEO panel; shared rows must match getEmDashEntry. */
+async function entryRow(collection:string,row:Row):Promise<Row>{
+ if(RELATIONS[collection])return hydrateRelations(collection,row);
+ const result=await getEmDashEntry(collection,row.id,{locale:'es'});if(result.error)throw result.error;
+ return result.entry?{...row,data:result.entry.data}:row;
+}
+async function hydrateAll(collection:string):Promise<Row[]> {
  const rows=await publishedRows(collection);
- // Bound D1 relation reads: a blog index can contain hundreds of entries.
- const hydrated:Row[]=[];for(let i=0;i<rows.length;i+=4)hydrated.push(...await Promise.all(rows.slice(i,i+4).map(row=>hydrateRelations(collection,row))));return hydrated;
+ // Bound D1 entry reads: a blog index can contain hundreds of entries.
+ const hydrated:Row[]=[];for(let i=0;i<rows.length;i+=4)hydrated.push(...await Promise.all(rows.slice(i,i+4).map(row=>entryRow(collection,row))));return hydrated;
 }
 function decode(value:unknown):unknown {if(Array.isArray(value))return value.map(decode);if(value&&typeof value==='object'&&'_type' in value)return value;if(value&&typeof value==='object'&&!(value instanceof Date))return Object.fromEntries(Object.entries(value).map(([k,v])=>[k.startsWith('_')?k:k==='original_published_at'?'publishedAt':k==='editorial_updated_at'?'updatedAt':k.replace(/_([a-z])/g,(_,c:string)=>c.toUpperCase()),decode(v)]));return value;}
 export const rowData=(r:Row)=>decode(r.data) as Record<string,unknown>;
@@ -54,7 +67,7 @@ function adapt<C extends 'courses'|'blog'|'testimonials'>(collection:C,row:Row):
   d.modules=Array.isArray(d.modules)?d.modules.map(v=>{const m=v as Record<string,unknown>;return{title:text(m.title),lessons:text(m.lessonsText).split('\n').filter(Boolean)}}):[];
   d.instructor=d.instructorName?{name:d.instructorName,title:d.instructorTitle??'',bio:d.instructorBio??'',photo:imageSource(d.instructorPhoto)||undefined}:undefined;
   d.hotmartRating=d.hotmartRatingValue?{value:d.hotmartRatingValue,count:d.hotmartRatingCount,checkedAt:date(d.hotmartRatingCheckedAt)}:undefined;
-  d.video=imageSource(d.video)||undefined;d.cover=imageSource(d.cover)||undefined;d.faqs??=[];
+  d.video=imageSource(d.video)||undefined;d.coverAlt=text((d.cover as Record<string,unknown>|undefined)?.alt)||undefined;d.cover=imageSource(d.cover)||COVER_FALLBACK;d.faqs??=[];
  }
  if(collection==='blog'){
   const image=d.hero as Record<string,unknown>|undefined;const src=imageSource(image);
@@ -63,8 +76,27 @@ function adapt<C extends 'courses'|'blog'|'testimonials'>(collection:C,row:Row):
  return {id:slug,collection,data:d,body:plainText(d.body),richBody:Array.isArray(d.body)?d.body:[],contentRef:{collection,id:text(d.id)||row.id,slug}} as CollectionEntry<C>;
 }
 export function plainText(v:unknown):string {if(typeof v==='string')return v;if(Array.isArray(v))return v.map(plainText).join(' ');if(v&&typeof v==='object'){const r=v as Record<string,unknown>;return typeof r.text==='string'?r.text:plainText(r.children??r.content??[]);}return '';}
-export async function getCollection<C extends 'courses'|'blog'|'testimonials'>(collection:C,filter?:(entry:CollectionEntry<C>)=>boolean):Promise<CollectionEntry<C>[]> {const entries=await requestValue('adapted:'+collection,async()=>(await readAll(collection)).map(r=>adapt(collection,r)));return filter?entries.filter(filter):entries;}
-export async function getEntry<C extends 'courses'|'blog'|'testimonials'>(collection:C,slug:string):Promise<CollectionEntry<C>|undefined>{const result=await getEmDashEntry(collection,slug,{locale:'es'});if(result.error)throw result.error;return result.entry?adapt(collection,await hydrateRelations(collection,result.entry)):undefined;}
+export async function getCollection<C extends 'courses'|'blog'|'testimonials'>(collection:C,filter?:(entry:CollectionEntry<C>)=>boolean):Promise<CollectionEntry<C>[]> {const entries=await requestValue('adapted:'+collection,async()=>{const adapted=(await readAll(collection)).map(r=>adapt(collection,r));if(collection==='courses')await promote(adapted);return adapted;});return filter?entries.filter(filter):entries;}
+/** Published rows already carry every relation; drafts and unknown slugs keep EmDash's own lookup. */
+async function snapshotEntry(collection:string,slug:string):Promise<Row|undefined>{
+ if(!snapshotEnabled(collection))return;
+ return(await readAll(collection)).find(row=>row.id===slug||text((row.data as Record<string,unknown>).slug)===slug);
+}
+/** Campañas publicadas y verificadas; una lectura por petición. */
+export function getVerifiedPromotions(){return requestValue('verifiedPromotions',async()=>verifiedPromotions((await readAll('promotions')).map(r=>({id:r.id,data:rowData(r)}))));}
+/** La campaña vigente manda sobre precio, tachado, porcentaje y enlace de pago (ver lib/promotions.ts). */
+async function promote(entries:{id:string;collection:string;data:unknown}[]):Promise<void>{
+ const promos=await getVerifiedPromotions();if(!promos.length)return;
+ const scope=currentScope();
+ for(const entry of entries)if(entry.collection==='courses')promoteCourse(entry.data as Parameters<typeof promoteCourse>[0],entry.id,promos,scope);
+}
+export async function getEntry<C extends 'courses'|'blog'|'testimonials'>(collection:C,slug:string):Promise<CollectionEntry<C>|undefined>{
+ const cached=await snapshotEntry(collection,slug);let entry:CollectionEntry<C>|undefined;
+ if(cached)entry=adapt(collection,cached);
+ else{const result=await getEmDashEntry(collection,slug,{locale:'es'});if(result.error)throw result.error;entry=result.entry?adapt(collection,await hydrateRelations(collection,result.entry)):undefined;}
+ if(entry&&collection==='courses')await promote([entry]);
+ return entry;
+}
 export const getCourses=()=>getCollection('courses');
 export const getCourse=(slug:string)=>getEntry('courses',slug);
 /** Layout chrome needs country labels/prices, not every city's relations. */
@@ -72,13 +104,14 @@ export async function getCountrySummaries():Promise<Country[]>{return requestVal
 export async function getCountrySummary(code:string):Promise<Country|undefined>{return(await getCountrySummaries()).find(c=>c.code===code);}
 /** Select the home widget before hydrating relations; a 3-card widget must not hydrate the whole archive. */
 export async function getRecentBlogPosts(limit=3):Promise<CollectionEntry<'blog'>[]>{
- const rows=(await publishedRows('blog')).slice();
+ const rows=(snapshotEnabled('blog')?await readAll('blog'):await publishedRows('blog')).slice();
  const timestamp=(row:Row)=>{const d=rowData(row);return Date.parse(String(d.updatedAt||d.publishedAt));};
  rows.sort((a,b)=>timestamp(b)-timestamp(a));
- return Promise.all(rows.slice(0,limit).map(async r=>adapt('blog',await hydrateRelations('blog',r,['cluster_link','course_link']))));
+ return Promise.all(rows.slice(0,limit).map(async r=>adapt('blog',snapshotEnabled('blog')?r:await hydrateRelations('blog',r,['cluster_link','course_link']))));
 }
 /** Cards and recommendation matching need cluster/course links, not every article's author/pillar/related graph. */
 export async function getBlogCards():Promise<CollectionEntry<'blog'>[]>{return requestValue('blogCards',async()=>{
+ if(snapshotEnabled('blog'))return(await readAll('blog')).map(r=>adapt('blog',r));
  const rows=await publishedRows('blog');const cards:CollectionEntry<'blog'>[]=[];
  for(let i=0;i<rows.length;i+=4)cards.push(...await Promise.all(rows.slice(i,i+4).map(async r=>adapt('blog',await hydrateRelations('blog',r,['cluster_link','course_link'])))));
  return cards;
@@ -94,5 +127,5 @@ export async function getClusters():Promise<BlogCluster[]>{return requestValue('
 export async function getBlogCluster(slug:string):Promise<BlogCluster>{return(await getClusters()).find(c=>c.slug===slug)??{slug,name:slug,short:''};}
 
 export interface Document {id:string;data:Record<string,any>;contentRef:{collection:string;id:string;slug:string};richBody:RichBlock[]}
-export async function getDocument(collection:string,slug:string):Promise<Document|undefined>{const result=await getEmDashEntry(collection,slug,{locale:'es'});if(result.error)throw result.error;if(!result.entry)return;const d=rowData(await hydrateRelations(collection,result.entry));return{id:slug,data:d,contentRef:{collection,id:String(d.id??result.entry.id),slug},richBody:Array.isArray(d.body)?d.body:[]};}
+export async function getDocument(collection:string,slug:string):Promise<Document|undefined>{const cached=await snapshotEntry(collection,slug);if(cached){const d=rowData(cached);return{id:slug,data:d,contentRef:{collection,id:String(d.id??cached.id),slug},richBody:Array.isArray(d.body)?d.body:[]};}const result=await getEmDashEntry(collection,slug,{locale:'es'});if(result.error)throw result.error;if(!result.entry)return;const d=rowData(await hydrateRelations(collection,result.entry));return{id:slug,data:d,contentRef:{collection,id:String(d.id??result.entry.id),slug},richBody:Array.isArray(d.body)?d.body:[]};}
 export async function listDocuments(collection:string):Promise<Document[]>{return(await readAll(collection)).map(r=>{const d=rowData(r),slug=String(d.slug??r.id);return{id:slug,data:d,contentRef:{collection,id:String(d.id??r.id),slug},richBody:Array.isArray(d.body)?d.body:[]};});}

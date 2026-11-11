@@ -37,6 +37,7 @@ npm run deploy:prod
 
 - [Operación y mapa de contenido](docs/migration/README.md)
 - [Lanzamiento, recursos y reversión](docs/migration/PRODUCTION.md)
+- [Rendimiento: caché compartida y snapshot de contenido](docs/seo/2026-10-05-rendimiento-cache-y-snapshot.md)
 - [Auditoría SEO y limitación de Ahrefs](docs/seo/2026-10-03-launch.md)
 - [Datos de Search Console](docs/seo/2026-10-03-search-console.md)
 - [Plugins y pendientes](docs/migration/PLUGINS.md)

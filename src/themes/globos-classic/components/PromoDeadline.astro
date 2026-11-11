@@ -1,0 +1,38 @@
+---
+/**
+ * Plazo de la campaña junto al precio: «Black Friday termina en 18 d 04 h 12 min 09 s».
+ *
+ * El servidor escribe la fecha («hasta el 30 de noviembre») y el reloj de PromoBar la cambia por
+ * la cuenta atrás. Solo se pinta si el precio de este curso sube cuando la campaña termina.
+ */
+import type { AppliedPromotion } from '@/plugins/globos-promotions/model';
+import { promotionLastDay } from '@/plugins/globos-promotions/model';
+
+interface Props {
+  promo?: AppliedPromotion;
+  /** `oscuro` para fondos ciruela. */
+  tone?: 'claro' | 'oscuro';
+  class?: string;
+}
+const { promo, tone = 'claro', class: className } = Astro.props;
+---
+
+{
+  promo?.deadline && (
+    <p
+      class:list={[
+        'text-[0.8125rem] font-semibold',
+        tone === 'oscuro' ? 'text-sol-300' : 'text-coral-700',
+        className,
+      ]}
+      data-promo-ends={promo.endsAt}
+    >
+      <span data-promo-fecha>
+        Precio de {promo.label}, hasta el {promotionLastDay(promo.endsAt)}
+      </span>
+      <span class="tabular-nums" data-promo-reloj hidden aria-hidden="true">
+        {promo.label} termina en <b data-u="d">0</b> d <b data-u="h">00</b> h <b data-u="m">00</b> min <b data-u="s">00</b> s
+      </span>
+    </p>
+  )
+}

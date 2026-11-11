@@ -15,7 +15,6 @@ interface Props {
   class?: string;
 }
 const { rating, count, size = 14, tone = 'light', class: className } = Astro.props;
-const STAR = 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9Z';
 const GAP = 2;
 const width = size * 5 + GAP * 4;
 const whole = Math.floor(rating);
@@ -31,27 +30,10 @@ const filled = Math.min(width, whole * (size + GAP) + (rating - whole) * size);
     data-star-size={size}
     aria-label={count === 0 ? 'Aún sin votos' : `Calificación ${formatAverage(rating)} de 5`}
   >
-    {
-      [false, true].map((full) => (
-        <span
-          class="absolute inset-y-0 left-0 flex overflow-hidden"
-          style={`gap:${GAP}px;width:${full ? filled.toFixed(1) : width}px`}
-          aria-hidden="true"
-          data-rating-fill={full||undefined}
-        >
-          {[1, 2, 3, 4, 5].map(() => (
-            <svg class="shrink-0" style="max-width:none" width={size} height={size} viewBox="0 0 24 24">
-              <path
-                d={STAR}
-                fill={full ? 'oklch(0.84 0.145 85)' : 'oklch(0.9 0.022 78)'}
-                stroke="oklch(0.62 0.12 70)"
-                stroke-width="1"
-              />
-            </svg>
-          ))}
-        </span>
-      ))
-    }
+    <span class="rating-stars rating-stars--empty absolute inset-0" aria-hidden="true"></span>
+    <span class="absolute inset-y-0 left-0 overflow-hidden" style={`width:${filled.toFixed(1)}px`} aria-hidden="true" data-rating-fill>
+      <span class="rating-stars rating-stars--full block h-full" style={`width:${width}px`}></span>
+    </span>
   </span>
   <span class="text-sm font-bold" data-rating-value>{count === 0 ? 'Aún sin votos' : formatAverage(rating)}</span>
   {/* ciruela-500: AA también sobre crema-100 (ciruela-400 da 4.45:1 ahí). `count > 0` evita pintar un «0». */}
@@ -61,3 +43,19 @@ const filled = Math.min(width, whole * (size + GAP) + (rating - whole) * size);
     )
   }
 </span>
+
+<style>
+  /* Una imagen repetida por capa en lugar de diez SVG en línea por calificación (130 en la portada).
+     `space` reparte las cinco estrellas con 2 px entre ellas, igual que el flex anterior. */
+  .rating-stars {
+    background-repeat: space no-repeat;
+    background-size: auto 100%;
+    background-position: left center;
+  }
+  .rating-stars--empty {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9Z' fill='oklch(0.9 0.022 78)' stroke='oklch(0.62 0.12 70)' stroke-width='1'/%3E%3C/svg%3E");
+  }
+  .rating-stars--full {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9Z' fill='oklch(0.84 0.145 85)' stroke='oklch(0.62 0.12 70)' stroke-width='1'/%3E%3C/svg%3E");
+  }
+</style>

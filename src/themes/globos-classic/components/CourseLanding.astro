@@ -6,7 +6,6 @@ import { getCollection, type CollectionEntry } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Wave from '@/components/Wave.astro';
 import Balloons from '@/components/Balloons.astro';
-import CourseCover from '@/components/CourseCover.astro';
 import Rating from '@/components/Rating.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import CourseCard from '@/components/CourseCard.astro';
@@ -14,13 +13,15 @@ import TestimonialCard from '@/components/TestimonialCard.astro';
 import CertificateShowcase from '@/components/CertificateShowcase.astro';
 import FaqAccordion from '@/components/FaqAccordion.astro';
 import HotmartBadge from '@/components/HotmartBadge.astro';
+import GuaranteeSeal from '@/components/GuaranteeSeal.astro';
+import PromoDeadline from '@/components/PromoDeadline.astro';
 import Icon from '@/components/Icon.astro';
 import StickyCta from '@/components/StickyCta.astro';
 import StarRating from '@/components/StarRating.astro';
 import { formatPrice, type Country, type City } from '@/lib/countries';
 import { getCategory } from '@/lib/emdash-content';
 import { getCityLocal } from '@/lib/emdash-content';
-import { buildHotmartUrl } from '@/lib/hotmart';
+import { buildHotmartUrl, buildHotmartProductUrl } from '@/lib/hotmart';
 import { coursePricing, usd } from '@/lib/pricing';
 import { postsForCourse, postUrl } from '@/lib/blog';
 import { getCourseRating } from '@/lib/ratings';
@@ -49,13 +50,18 @@ const priceDate = d.priceCheckedAt
     )
   : undefined;
 
-const checkoutUrl = buildHotmartUrl({
-  baseUrl: d.hotmartUrl,
-  coupon: d.coupon,
-  courseSlug: course.id,
-  countryCode: country.code,
-  citySlug: city?.slug,
-});
+/** Un enlace por botón: `sck` lleva país, curso y ubicación al informe de ventas de Hotmart. */
+const checkout = (placement: string) =>
+  buildHotmartUrl({
+    baseUrl: d.hotmartUrl,
+    coupon: d.coupon,
+    courseSlug: course.id,
+    countryCode: country.code,
+    citySlug: city?.slug,
+    placement,
+  });
+// Ficha pública con reseñas, por el enlace de afiliado (la URL directa del marketplace no lleva `ref`).
+const reviewsUrl = buildHotmartProductUrl(d.hotmartUrl, country.code, course.id);
 
 const geoFaqs = [
   {
@@ -90,6 +96,7 @@ const schemas = [
     category: category.name,
     learnings: d.learnings,
     price: d.priceUSD,
+    priceEndsAt: d.promo?.deadline ? d.promo.endsAt : undefined,
     producer: d.producer,
     instructor: d.instructor,
     rating: siteRating,
@@ -116,10 +123,20 @@ const testimonials = [
 
 const guides = await postsForCourse(course.id, 3);
 
-// Title ≤ 60 car. (auditoría 2026-09-22): keyword al inicio + gancho real (descuento o nº de clases).
-const offerTag = hasDiscount && discountPct ? `: ${discountPct}% OFF (${usd(d.priceUSD!)})` : ` | ${d.lessonsCount} Clases`;
-let metaTitle = d.metaTitle ?? `${d.title} Online en ${placeName}${offerTag}`;
-if (!d.metaTitle && metaTitle.length > 60) metaTitle = `${d.title} en ${placeName}${offerTag}`;
+// Title ≤ 60 car.: «curso de X online» al inicio (la búsqueda principal de la ficha) + país +
+// un gancho verificable: el descuento real o, si no hay, el certificado.
+// Con descuento se prueba primero con el precio; si no cabe, solo el porcentaje; y si tampoco, se
+// quita «Online» antes que el descuento (está en el H1 y en la descripción).
+const hasOffer = hasDiscount && Boolean(discountPct);
+const titleOptions = hasOffer
+  ? [
+      `${d.title} Online en ${placeName}: ${discountPct}% OFF (${usd(d.priceUSD!)})`,
+      `${d.title} Online en ${placeName}: ${discountPct}% OFF`,
+      `${d.title} en ${placeName}: ${discountPct}% OFF`,
+    ]
+  : [`${d.title} Online en ${placeName} con Certificado`];
+titleOptions.push(`${d.title} Online en ${placeName}`, `${d.title} en ${placeName}`);
+const metaTitle = d.metaTitle ?? titleOptions.find((option) => option.length <= 60) ?? titleOptions.at(-1)!;
 const description = (d.metaDescription ?? d.shortDescription).replaceAll('{lugar}', placeName);
 const trackBase = {
   course_name: d.title,
@@ -134,23 +151,14 @@ const trackParams = JSON.stringify(trackBase);
 /** begin_checkout con la posición del botón (auditoría P2-8: comparar clics por ubicación). */
 const ctaTrack = (placement: 'hero' | 'aside_desktop' | 'certificate' | 'closing') =>
   JSON.stringify({ ...trackBase, placement });
+// Texto alternativo descriptivo: el del archivo en el CMS si existe; si no, qué se aprende.
+const coverAlt = d.coverAlt ?? `${d.title}: ${d.learnings[0] ?? d.shortDescription}`;
 const ctaLabel = discountPct ? `Inscribirme con ${discountPct}% OFF` : 'Inscribirme ahora';
 
 // Viñetas de "¿Este curso es para ti?": mini globo (anatomía de Balloons.astro) en colores
 // y giros alternos, para que la lista no parezca de plantilla.
 const BULLET_TONES = ['text-coral-500', 'text-aqua-500', 'text-sol-500', 'text-lila-500'];
-const BULLET_TILT = [-8, 6, -3, 9];
 
-// Sello de garantía: roseta festoneada (22 ondas) generada, no dibujada a ojo.
-const SEAL_WAVES = 22;
-const sealEdge = (() => {
-  const [cx, cy, r, crest] = [60, 58, 44, 50.5];
-  const pt = (a: number, rad: number) => `${(cx + rad * Math.cos(a)).toFixed(2)} ${(cy + rad * Math.sin(a)).toFixed(2)}`;
-  const step = (Math.PI * 2) / SEAL_WAVES;
-  let path = `M${pt(0, r)}`;
-  for (let i = 0; i < SEAL_WAVES; i++) path += ` Q${pt((i + 0.5) * step, crest)} ${pt((i + 1) * step, r)}`;
-  return `${path}Z`;
-})();
 ---
 
 <BaseLayout
@@ -201,7 +209,7 @@ const sealEdge = (() => {
             {category.name} · {d.level}
           </span>
           <h1 class="mt-4 text-3xl font-semibold text-balance text-ciruela-900 sm:text-4xl lg:text-[2.75rem]">
-            {d.title} en {placeName} — 100% online con certificado
+            {d.title} online en {placeName}
           </h1>
           <p class="mt-4 max-w-xl text-base leading-relaxed text-ciruela-500">{d.shortDescription}</p>
 
@@ -209,11 +217,11 @@ const sealEdge = (() => {
 
           <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm font-semibold text-ciruela-600">
             {
-              d.hotmartRating && d.hotmartProductUrl && (
+              d.hotmartRating && (
                 <a
-                  href={d.hotmartProductUrl}
+                  href={reviewsUrl}
                   target="_blank"
-                  rel="noopener nofollow"
+                  rel="noopener nofollow sponsored"
                   class="inline-flex items-center gap-1.5 hover:text-coral-600"
                   title="Valoración pública del curso en Hotmart"
                 >
@@ -235,36 +243,34 @@ const sealEdge = (() => {
 
         <!-- Móvil: 16/10 y sin giro para que la caja de compra suba en el primer viewport (P1-1). -->
         <div class="relative mx-auto w-full max-w-md lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center">
-          <div class="overflow-hidden rounded-3xl border-4 border-white shadow-globo sm:rotate-2">
+          <div class="overflow-hidden rounded-2xl shadow-globo">
             {
               d.video ? (<video controls preload="metadata" poster={d.cover ? responsiveImage(d.cover,{siteUrl:SITE.url,sizes:'448px',maxWidth:960}).src : undefined} class="aspect-video w-full"><source src={d.video}/></video>) : d.cover ? (
                 <ResponsiveImage sizes="(min-width: 448px) 448px, calc(100vw - 48px)" maxWidth={960}
                   src={d.cover}
-                  alt={`Imagen del ${d.title}`}
+                  alt={coverAlt}
                   class="aspect-[16/10] w-full object-cover sm:aspect-[4/3]"
                   width="600"
                   height="450"
                   fetchpriority="high"
                 />
-              ) : (
-                <div class="aspect-[16/10] w-full sm:aspect-[4/3]">
-                  <CourseCover slug={course.id} category={d.category} title={d.title} />
-                </div>
-              )
+              ) : null
             }
           </div>
-          <svg
-            class="animate-balloon-float absolute -top-8 -left-6 hidden h-24 w-16 sm:block"
+          <!-- Globo fotográfico que asoma tras la portada (mismo material que Balloons.astro). -->
+          <img
+            class="animate-balloon-float absolute -top-10 -left-7 hidden w-[4.5rem] sm:block"
             style="animation-duration: 5.5s"
-            viewBox="0 0 40 62"
-            fill="none"
+            src="/images/globos/aqua-160.webp"
+            srcset="/images/globos/aqua-160.webp 160w, /images/globos/aqua-320.webp 320w"
+            sizes="72px"
+            width="72"
+            height="95"
+            alt=""
             aria-hidden="true"
-          >
-            <ellipse cx="20" cy="19" rx="17" ry="19" fill="oklch(0.78 0.1 193)"></ellipse>
-            <ellipse cx="14" cy="11" rx="5" ry="7" fill="white" opacity="0.32" transform="rotate(-16 14 11)"></ellipse>
-            <path d="M20 38 l-2.6 4 h5.2 Z" fill="oklch(0.78 0.1 193)"></path>
-            <path d="M20 42.5 q-4 7 0.5 13" stroke="oklch(0.55 0.09 210)" stroke-opacity="0.5" stroke-width="1.3" fill="none" stroke-linecap="round"></path>
-          </svg>
+            loading="lazy"
+            decoding="async"
+          />
         </div>
 
         <div class="lg:col-start-1">
@@ -285,9 +291,10 @@ const sealEdge = (() => {
                   </div>
                   {hasDiscount && discountPct && (
                     <span class="rounded-full bg-coral-600 px-4 py-2 text-sm font-extrabold text-white">
-                      {discountPct}% OFF aplicado en el enlace
+                      {d.promo ? `${d.promo.label}: ${discountPct}% OFF` : `${discountPct}% OFF aplicado en el enlace`}
                     </span>
                   )}
+                  <PromoDeadline promo={d.promo} class="basis-full" />
                   {priceDate && (
                     <span class="basis-full text-[0.7rem] text-ciruela-400">
                       Precio verificado en el checkout de Hotmart el {priceDate}. Pago único, sin mensualidades.
@@ -306,7 +313,7 @@ const sealEdge = (() => {
             }
             <div class="mt-5 flex flex-col gap-3 sm:flex-row">
               <a
-                href={checkoutUrl}
+                href={checkout('hero')}
                 target="_blank"
                 rel="noopener"
                 data-track="begin_checkout"
@@ -337,31 +344,24 @@ const sealEdge = (() => {
   </section>
 
   <!-- 3 · BARRA DE DATOS -->
-  <section class="contenedor -mt-2 py-8">
-    <div class="grid grid-cols-2 gap-4 rounded-3xl border border-crema-200 bg-white p-6 text-center shadow-tarjeta sm:grid-cols-3 lg:grid-cols-6">
+  <section class="contenedor py-8">
+    <dl class="grid grid-cols-2 gap-x-6 gap-y-5 border-y border-crema-200 py-6 text-sm sm:grid-cols-3 lg:grid-cols-6">
       {
         [
-          ['M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-2 5.5 6 3.5-6 3.5v-7Z', `${d.lessonsCount} videos`],
-          ['M4 5.5h16v11H4v-11Zm-2 13h20M9 21h6', 'Cualquier dispositivo'],
-          ['M7 9c-4 0-4 6 0 6 2.5 0 3.5-2 5-3 1.5 1 2.5 3 5 3 4 0 4-6 0-6-2.5 0-3.5 2-5 3-1.5-1-2.5-3-5-3Z', 'Acceso de por vida'],
-          ['M12 4 2.5 9 12 14l9.5-5L12 4Zm-6 7.5V16c0 1.6 2.7 3 6 3s6-1.4 6-3v-4.5', 'Certificado incluido'],
-          ['M5 4.5h14v15H5v-15Zm3.5 7 2.5 2.5 5-5', 'Tareas calificadas'],
-          ['M4 5h16v11H10l-5 4.5V5Z', 'Asistencia académica'],
-        ].map(([icon, label], i) => (
-          <div
-            class="flex flex-col items-center gap-2"
-            style={`transform: rotate(${((i % 3) - 1) * 0.7}deg)`}
-          >
-            <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-coral-50 text-coral-600">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d={icon} />
-              </svg>
-            </span>
-            <span class="text-xs font-bold text-ciruela-600">{label}</span>
+          ['Contenido', `${d.lessonsCount} videos`],
+          ['Nivel', d.level],
+          ['Modalidad', '100% online'],
+          ['Acceso', 'De por vida'],
+          ['Certificado', 'Incluido'],
+          ['Garantía', '7 días'],
+        ].map(([term, value]) => (
+          <div>
+            <dt class="text-xs text-ciruela-500">{term}</dt>
+            <dd class="mt-0.5 font-bold text-ciruela-900">{value}</dd>
           </div>
         ))
       }
-    </div>
+    </dl>
   </section>
 
   <!-- 4-6 · DESCRIPCIÓN + RESULTADOS + TEMARIO en un solo carril (P1-2). En desktop el aside
@@ -370,6 +370,7 @@ const sealEdge = (() => {
   <div class="contenedor grid gap-12 pt-10 pb-14 lg:grid-cols-[1.5fr_1fr] lg:gap-y-14">
     <!-- 4 · DESCRIPCIÓN (cuerpo MDX) -->
     <article class="prosa scroll-reveal lg:col-start-1 lg:row-start-1">
+      <h2 class="text-2xl font-semibold text-ciruela-900 sm:text-3xl">Qué vas a aprender en el {d.title}</h2>
       <RichBody value={course.richBody} />
     </article>
 
@@ -383,7 +384,6 @@ const sealEdge = (() => {
               <li class="flex items-start gap-2.5">
                 <svg
                   class:list={['mt-0.5 h-[1.15rem] w-3 shrink-0', BULLET_TONES[i % BULLET_TONES.length]]}
-                  style={`rotate: ${BULLET_TILT[i % BULLET_TILT.length]}deg`}
                   viewBox="0 0 40 62"
                   fill="none"
                   aria-hidden="true"
@@ -438,6 +438,7 @@ const sealEdge = (() => {
               <p class="mt-1 text-xs text-ciruela-500">
                 ≈ {formatPrice(d.priceUSD!, country)} · Hotmart confirma el valor exacto
               </p>
+              <PromoDeadline promo={d.promo} class="mt-2" />
             </div>
           ) : (
             <p class="mt-3 flex items-start gap-2 text-sm font-bold text-ciruela-600">
@@ -447,7 +448,7 @@ const sealEdge = (() => {
           )
         }
         <a
-          href={checkoutUrl}
+          href={checkout('aside')}
           target="_blank"
           rel="noopener"
           data-track="begin_checkout"
@@ -475,7 +476,7 @@ const sealEdge = (() => {
     <section
       class="-mx-5 bg-crema-100 px-5 py-14 sm:-mx-8 sm:px-8 lg:col-start-1 lg:row-start-2 lg:mx-0 lg:rounded-3xl lg:px-10 lg:py-10"
     >
-      <SectionHeading eyebrow="Resultados" title="Lo que sabrás hacer al terminar" />
+      <SectionHeading eyebrow="Resultados" title={`Lo que sabrás hacer al terminar el ${d.title}`} />
       <div class="mt-8 grid gap-4 sm:grid-cols-2">
         {
           d.learnings.map((item, i) => (
@@ -495,7 +496,7 @@ const sealEdge = (() => {
     <section id="temario" class="scroll-mt-24 lg:col-start-1 lg:row-start-3">
       <SectionHeading
         eyebrow="Temario"
-        title={`${d.lessonsCount} lecciones, módulo por módulo`}
+        title={`Temario del ${d.title}: ${d.modules.length} módulos`}
         lead="Los primeros módulos aparecen abiertos para que veas exactamente qué contiene el curso."
       />
       <div class="mt-8 space-y-4">
@@ -545,7 +546,7 @@ const sealEdge = (() => {
             <ResponsiveImage sizes="160px" maxWidth={320}
               src={d.instructor.photo}
               alt={`Foto de ${d.instructor.name}, instructor del curso`}
-              class="mx-auto h-40 w-40 rotate-[-2deg] rounded-3xl border-4 border-crema-50/15 object-cover shadow-globo"
+              class="mx-auto h-40 w-40 rounded-2xl object-cover"
               loading="lazy"
               decoding="async"
               width="160"
@@ -557,8 +558,10 @@ const sealEdge = (() => {
             </span>
           )}
           <div class="text-center lg:text-left">
-            <p class="text-xs font-extrabold tracking-[0.22em] text-sol-300 uppercase">Tu instructor</p>
-            <h2 class="mt-2 text-2xl font-semibold sm:text-3xl">{d.instructor.name}</h2>
+            <p class="text-sm font-bold text-sol-300">Tu instructor</p>
+            <h2 class="mt-2 text-2xl font-semibold sm:text-3xl">
+              <span class="sr-only">Instructor del {d.title}: </span>{d.instructor.name}
+            </h2>
             <p class="mt-1 text-sm font-bold text-crema-100/70">{d.instructor.title}</p>
             <p class="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-crema-100/80 lg:mx-0">
               {d.instructor.bio}
@@ -574,7 +577,7 @@ const sealEdge = (() => {
     <div class="scroll-reveal order-2 lg:order-1">
       <SectionHeading
         eyebrow="Certificado"
-        title="Termina con un certificado que abre puertas"
+        title={`Certificado del ${d.title}`}
         lead="Completa el 100% de las lecciones y descarga tu certificado de estudios con validez internacional."
       />
       <ul class="mt-6 space-y-3 text-sm text-ciruela-600">
@@ -585,12 +588,12 @@ const sealEdge = (() => {
           <Icon name="check" class="mt-0.5 text-coral-600" />Con tareas calificadas durante el curso
         </li>
         <li class="flex items-start gap-2">
-          <Icon name="check" class="mt-0.5 text-coral-600" />Respaldado por la plataforma Hotmart
+          <Icon name="check" class="mt-0.5 text-coral-600" />Emitido a través de Hotmart
         </li>
       </ul>
       <div class="mt-6" data-track="view_certificate" data-track-params={JSON.stringify({ course_name: d.title })}>
         <a
-          href={checkoutUrl}
+          href={checkout('certificado')}
           target="_blank"
           rel="noopener"
           data-track="begin_checkout"
@@ -646,11 +649,17 @@ const sealEdge = (() => {
 
   <!-- 12 · GARANTÍA + PRICING FINAL -->
   <section class="contenedor py-16">
-    <div class="rounded-[2.5rem] bg-ciruela-900 p-8 text-crema-50 sm:p-12">
-      <div class="grid items-center gap-10 lg:grid-cols-[minmax(0,34rem)_15rem] lg:justify-center lg:gap-20">
+    <div class="rounded-2xl bg-ciruela-900 p-8 text-crema-50 sm:p-12">
+      <div class="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)] lg:gap-14">
         <div class="text-center lg:text-left">
           <h2 class="mx-auto max-w-xl text-3xl font-semibold text-balance lg:mx-0">
-            {discountPct ? `Inscríbete hoy con el ${discountPct}% de descuento` : 'Inscríbete hoy y empieza en minutos'}
+            {
+              d.promo
+                ? `${d.promo.label}: inscríbete con el ${discountPct}% de descuento`
+                : discountPct
+                  ? `Inscríbete hoy con el ${discountPct}% de descuento`
+                  : 'Inscríbete hoy y empieza en minutos'
+            }
           </h2>
           {
             hasPrice && (
@@ -665,12 +674,12 @@ const sealEdge = (() => {
               </p>
             )
           }
+          <PromoDeadline promo={d.promo} tone="oscuro" class="mt-3" />
           <p class="mx-auto mt-4 max-w-md text-sm text-crema-100/75 lg:mx-0">
-            <Icon name="escudo" class="mr-1 inline-block align-[-3px] text-sol-300" />
-            7 días de garantía sin preguntas · Pago seguro con Hotmart · Acceso inmediato tras el pago
+            Pago único. El acceso llega a tu correo en cuanto se confirma el pago.
           </p>
           <a
-            href={checkoutUrl}
+            href={checkout('cierre')}
             target="_blank"
             rel="noopener"
             data-track="begin_checkout"
@@ -679,41 +688,20 @@ const sealEdge = (() => {
           >
             {ctaLabel}
           </a>
+          <p class="mt-5"><HotmartBadge tone="dark" /></p>
         </div>
 
-        <!-- Sello de garantía propio: roseta dorada + cintas coral (misma lógica del sello del
-             certificado), con el brillo satinado de los globos. -->
-        <figure class="mx-auto flex max-w-[15rem] flex-col items-center text-center">
-          <svg
-            class="h-auto w-32 -rotate-6 transition-[rotate] duration-500 ease-fiesta hover:-rotate-1 sm:w-36 lg:w-40"
-            viewBox="0 0 120 150"
-            role="img"
-            aria-label="Sello: 7 días de garantía con devolución del 100%"
-          >
-            <path d="M44 84 58 90 48 146 41 137 32 142Z" class="fill-coral-600" />
-            <path d="M76 84 62 90 72 146 79 137 88 142Z" class="fill-coral-700" />
-            <path d={sealEdge} class="fill-dorado-500 stroke-dorado-700" stroke-width="0.8" />
-            <circle cx="60" cy="58" r="37" class="fill-dorado-300 stroke-dorado-700" stroke-width="0.8" />
-            <circle
-              cx="60"
-              cy="58"
-              r="33"
-              fill="none"
-              class="stroke-dorado-700"
-              stroke-width="1"
-              stroke-dasharray="1.6 2.6"
-              stroke-linecap="round"
-            />
-            <ellipse cx="45" cy="40" rx="8" ry="14" fill="white" opacity="0.28" transform="rotate(-35 45 40)" />
-            <text x="60" y="42" text-anchor="middle" class="fill-ciruela-900 font-sans" font-size="8" font-weight="800" letter-spacing="1">GARANTÍA</text>
-            <text x="60" y="71" text-anchor="middle" class="fill-ciruela-900 font-display" font-size="31" font-weight="700">7</text>
-            <text x="60" y="82" text-anchor="middle" class="fill-ciruela-900 font-sans" font-size="8" font-weight="800" letter-spacing="1">DÍAS</text>
-          </svg>
-          <figcaption class="mt-4 text-sm leading-relaxed text-crema-100/80">
-            Entra al curso, mira las lecciones y decide. Si no es para ti, Hotmart te devuelve el 100% de tu
-            dinero dentro de los primeros 7 días.
-          </figcaption>
-        </figure>
+        <!-- Garantía: sello estampado (lámina dorada en SVG) y, al lado, qué cubre y quién devuelve
+             el dinero. -->
+        <div class="mx-auto flex w-full max-w-sm flex-col items-center gap-5 border-t border-crema-50/25 pt-8 text-center sm:flex-row sm:text-left lg:mx-0 lg:max-w-none lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
+          <GuaranteeSeal class="h-auto w-36 shrink-0 sm:w-40" />
+          <div>
+            <p class="font-display text-xl font-bold">Garantía de 7 días</p>
+            <p class="mt-2 text-sm leading-relaxed text-crema-100/80">
+              Entra, mira las lecciones y decide. Si el curso no es para ti, pides el reembolso y recuperas el 100 % de tu dinero.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -728,9 +716,7 @@ const sealEdge = (() => {
             title={`Aprender decoración con globos en ${city.name}`}
           />
           <p class="mt-5 max-w-3xl leading-relaxed text-ciruela-600">{cityLocal.hook}</p>
-          <p class="mt-6 text-xs font-bold tracking-[0.18em] text-ciruela-500 uppercase">
-            Cursos de decoración con globos en otras ciudades
-          </p>
+          <p class="mt-6 text-sm font-bold text-ciruela-600">Cursos de globos en otras ciudades</p>
           <div class="mt-3 flex flex-wrap gap-2">
             {country.cities
               .filter((c) => c.slug !== city.slug)
@@ -759,9 +745,8 @@ const sealEdge = (() => {
     guides.length > 0 && (
       <section class="contenedor pb-16" aria-labelledby="guias-titulo">
         <div class="rounded-[2rem] border border-crema-200 bg-white p-8 shadow-tarjeta sm:p-10">
-          <p class="text-xs font-extrabold tracking-[0.22em] text-coral-600 uppercase">Guías gratis</p>
-          <h2 id="guias-titulo" class="mt-2 text-2xl font-semibold text-ciruela-900 sm:text-3xl">
-            Practica antes de inscribirte
+          <h2 id="guias-titulo" class="text-2xl font-semibold text-ciruela-900 sm:text-3xl">
+            Guías gratis para practicar antes de inscribirte
           </h2>
           <!-- Columnas según el número de guías: con 1 o 2 no quedan huecos vacíos en desktop. -->
           <ul
@@ -823,7 +808,7 @@ const sealEdge = (() => {
     priceUSD={d.priceUSD}
     originalPriceUSD={hasDiscount ? d.originalPriceUSD : undefined}
     discountPct={discountPct}
-    hotmartUrl={checkoutUrl}
+    hotmartUrl={checkout('barra-movil')}
     courseName={d.title}
     coupon={d.coupon ?? (discountPct ? `offDiscount-${discountPct}` : '')}
   />

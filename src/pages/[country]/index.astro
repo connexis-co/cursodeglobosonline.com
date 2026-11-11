@@ -1,10 +1,10 @@
 ---
+import { sortCourses } from '@/lib/course-order';
 import { getCountries } from '@/lib/emdash-content';
 const COUNTRIES = await getCountries();
 import { getCollection } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Balloons from '@/components/Balloons.astro';
-import Wave from '@/components/Wave.astro';
 import TrustBar from '@/components/TrustBar.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import CourseCard from '@/components/CourseCard.astro';
@@ -17,15 +17,15 @@ import { getPublishedPosts } from '@/lib/blog';
 import { buildWhatsAppUrl } from '@/lib/hotmart';
 import { countryAlternates, faqSchema, breadcrumbSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
+import { GENERAL_COURSE } from '@/lib/course-order';
+import { coursePricing } from '@/lib/pricing';
 
 
 
 const country=COUNTRIES.find(c=>c.code===Astro.params.country);
 if(!country)return Astro.rewrite('/404');
 
-const courses = (await getCollection('courses')).sort(
-  (a, b) => Number(b.data.featured) - Number(a.data.featured),
-);
+const courses = sortCourses(await getCollection('courses'));
 const featured = courses.find((c) => c.data.featured) ?? courses[0];
 const others = courses.filter((c) => c.id !== featured?.id);
 // Reseñas reales de Hotmart (las más recientes; ya no hay testimonios por país).
@@ -53,7 +53,7 @@ const faqs = [
   },
   {
     q: '¿Cuál curso me conviene para empezar?',
-    a: 'Si buscas animación de fiestas, empieza por Globoflexia (además tiene 50% OFF). Si lo tuyo son los arreglos y detalles, Bouquets. Para decoración de eventos con acabado premium, Flores con Globos o Globos Burbuja.',
+    a: 'Para montar arcos y guirnaldas en eventos, el curso de decoración con globos. Para animar fiestas con figuras, Globoflexia. Para arreglos de regalo, Bouquets. Y para acabados de más precio, Flores con Globos o Globos Burbuja.',
   },
   {
     q: '¿Hay garantía?',
@@ -61,9 +61,16 @@ const faqs = [
   },
 ];
 
-// ≤ 60 car. con "Estados Unidos" (el nombre de país más largo).
-const title = `Curso de Decoración con Globos Online en ${country.name}`;
-const description = `Aprende decoración con globos desde cualquier ciudad de ${country.name}: 4 cursos online con certificado, pago en ${country.currency} y garantía de 7 días.`;
+// Intención: «cursos de globos online en {país}» (el catálogo del país). «Curso de decoración
+// con globos» y «curso de globoflexia», en singular, son de sus fichas; aquí se enlazan.
+let title = `Cursos de Globos Online en ${country.name}: Precios y Certificado`;
+if (title.length > 60) title = `Cursos de Globos Online en ${country.name} con Certificado`;
+if (title.length > 60) title = `Cursos de Globos Online en ${country.name}`;
+const description = `Cursos de globos online para ${country.name}: decoración con globos, globoflexia, bouquets, flores y burbuja. Certificado, pago en ${country.currency} y garantía de 7 días.`;
+const generalCourse = courses.find((c) => c.id === GENERAL_COURSE);
+// Botón del curso destacado: nombra su descuento solo si lo tiene publicado.
+const featuredPct = featured ? coursePricing(featured.data).discountPct : undefined;
+const featuredLabel = featured ? `${featured.data.title}${featuredPct ? ` con ${featuredPct}% OFF` : ''}` : 'Ver los cursos';
 ---
 
 <BaseLayout
@@ -92,11 +99,11 @@ const description = `Aprende decoración con globos desde cualquier ciudad de ${
         {country.flag} Estudiantes activos en {country.name} · precios en {country.currency}
       </p>
       <h1 class="mx-auto mt-6 max-w-3xl text-4xl font-semibold text-balance sm:text-5xl">
-        Cursos de decoración con globos en {country.name}
+        Cursos de globos online en {country.name}
       </h1>
       <p class="mx-auto mt-5 max-w-xl text-base text-crema-100/85 sm:text-lg">
-        Aprende globoflexia, bouquets, flores y globos burbuja con certificado de estudios, desde cualquier
-        ciudad de {country.name} y a tu ritmo.
+        {generalCourse ? 'Decoración con globos, globoflexia' : 'Globoflexia'}, bouquets, flores y globos burbuja, en video y
+        con certificado de estudios. Desde cualquier ciudad de {country.name}, a tu ritmo.
       </p>
       <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <a
@@ -109,11 +116,10 @@ const description = `Aprende decoración con globos desde cualquier ciudad de ${
           href={featured?`/${country.code}/${featured.id}/`:`/${country.code}/cursos/`}
           class="rounded-xl border-2 border-crema-50/30 px-8 py-4 text-sm font-bold backdrop-blur-sm transition-all duration-300 hover:border-sol-300 hover:text-sol-300"
         >
-          Globoflexia con 50% OFF
+          {featuredLabel}
         </a>
       </div>
     </div>
-    <Wave color="var(--color-crema-50)" />
   </section>
 
   <TrustBar />
@@ -121,7 +127,7 @@ const description = `Aprende decoración con globos desde cualquier ciudad de ${
   <section class="contenedor py-16 lg:py-20">
     <SectionHeading
       eyebrow={`Cursos disponibles en ${country.name}`}
-      title="Elige tu especialidad"
+      title={`Los ${courses.length} cursos de globos disponibles en ${country.name}`}
       lead={`Todos los cursos incluyen certificado, acceso permanente y checkout en ${country.currency} con métodos de pago de ${country.name}.`}
     />
     <!-- Con 4 cursos: destacada (2 filas) + 3 tarjetas + asesoría = grid lleno en lg (3 col.)
@@ -147,6 +153,10 @@ const description = `Aprende decoración con globos desde cualquier ciudad de ${
             Te asesoramos por WhatsApp, con el precio en {country.currency}, según lo que quieras hacer:
           </p>
           <ul class="mt-3 space-y-2 text-sm text-ciruela-700">
+            <li class="flex gap-2">
+              <Icon name="globo" size={15} class="mt-0.5 text-coral-600" />
+              <span>Arcos y guirnaldas: <strong class="font-extrabold">Decoración con globos</strong></span>
+            </li>
             <li class="flex gap-2">
               <Icon name="globo" size={15} class="mt-0.5 text-coral-600" />
               <span>Animación de fiestas: <strong class="font-extrabold">Globoflexia</strong></span>
@@ -235,7 +245,7 @@ const description = `Aprende decoración con globos desde cualquier ciudad de ${
           <div class="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
               eyebrow="Guías gratis del blog"
-              title="Practica gratis mientras eliges tu curso"
+              title="Guías gratis de decoración con globos"
               lead="Artículos paso a paso con medidas, cantidades y costos de referencia. Cada guía te dice qué curso lo enseña completo, en video y con certificado."
             />
             <a

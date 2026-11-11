@@ -18,20 +18,14 @@ const items: { icon: IconName; label: string; value: string }[] = [
 ---
 
 <div class="border-y border-crema-200 bg-white">
-  <div class="contenedor flex flex-col gap-6 py-8 lg:flex-row lg:items-center lg:gap-12">
-    <!-- Plataforma de pago: mención factual en texto neutro. Los Términos de Hotmart (§5.2)
-         prohíben usar su logo/marca para publicitar o sugerir asociación ("partner oficial"). -->
-    <div
-      class="scroll-reveal flex shrink-0 rotate-[-0.6deg] items-center gap-3 self-start rounded-2xl border border-dashed border-crema-300 bg-crema-50 py-2.5 pr-5 pl-3.5 lg:self-auto"
-    >
-      <Icon name="candado" size={24} class="text-ciruela-600" />
-      <span class="leading-tight">
-        <span class="block text-[0.65rem] font-extrabold tracking-[0.18em] text-ciruela-500 uppercase">
-          Pago y acceso
-        </span>
-        <span class="block text-base font-extrabold tracking-tight text-ciruela-800">Checkout seguro en Hotmart</span>
-      </span>
-    </div>
+  <div class="contenedor flex flex-col gap-5 py-6 lg:flex-row lg:items-center lg:gap-12">
+    <!-- Plataforma de pago, con el logo oficial de Hotmart (decisión de JP, 11-11-2026: el logo
+         se usa donde se informa del pago). No dice «partner oficial» ni sugiere respaldo. -->
+    <p class="flex shrink-0 items-center gap-2.5 text-sm font-bold text-ciruela-800">
+      <Icon name="candado" size={20} class="text-ciruela-600" />
+      Pago seguro procesado por
+      <img src="/brand/hotmart.svg" alt="Hotmart" width="75" height="24" class="h-6 w-auto" decoding="async" />
+    </p>
 
     <ul class="scroll-reveal grid grid-cols-2 gap-x-4 gap-y-5 sm:flex sm:flex-wrap sm:gap-x-9 lg:flex-1 lg:justify-between lg:gap-x-6">
       {

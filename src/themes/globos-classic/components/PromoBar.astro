@@ -1,0 +1,305 @@
+---
+/**
+ * Barra de campaña (Black Friday, Navidad…) con cuenta atrás.
+ *
+ * Solo aparece cuando hay una campaña publicada, verificada y dentro de fechas que toca algún
+ * curso de esta página (ver plugins/globos-promotions/model.ts). Va en el HTML que pinta el
+ * servidor, así que ocupa su sitio desde el primer pintado y no empuja la página.
+ *
+ * La cuenta atrás solo se pinta si el precio sube al terminar la campaña (`promo.deadline`). Con
+ * un descuento fijo en la ficha, la barra anuncia la campaña sin reloj ni fecha.
+ *
+ * El HTML se guarda en caché como mucho hasta el final de la campaña (lib/public-cache.ts), y si
+ * el reloj llega a cero con la pestaña abierta la página se recarga: ya trae el precio normal.
+ *
+ * Toda la barra es un único enlace. En una ficha lleva al pago de ese curso con el cupón; en el
+ * resto, a la tabla de precios del país.
+ */
+import { getCollection } from '@/lib/emdash-content';
+import { announcedPromotion, scopeFromUrl } from '@/lib/promotions';
+import { buildHotmartUrl } from '@/lib/hotmart';
+import { promotionLastDay } from '@/plugins/globos-promotions/model';
+
+const scope = scopeFromUrl(Astro.url);
+const announced = announcedPromotion(await getCollection('courses'), scope);
+const promo = announced?.promo;
+const course = scope.course ? announced?.courses[0] : undefined;
+
+const parts = Astro.url.pathname.split('/').filter(Boolean);
+const country = scope.country ?? 'co';
+const href = !promo
+  ? ''
+  : course
+    ? buildHotmartUrl({
+        baseUrl: course.data.hotmartUrl,
+        coupon: course.data.coupon,
+        courseSlug: course.id,
+        countryCode: country,
+        // /co/bogota/curso-de-x/: el tramo del medio es la ciudad.
+        citySlug: parts.length === 3 ? parts[1] : undefined,
+        placement: 'barra-promo',
+      })
+    : `/${country}/cursos/`;
+const track = !promo
+  ? ''
+  : JSON.stringify(
+      course
+        ? {
+            course_name: course.data.title,
+            price: course.data.priceUSD ?? '',
+            currency: 'USD',
+            country,
+            discount_pct: promo.discountPct,
+            placement: 'promo_bar',
+            promotion_id: promo.id,
+          }
+        : { promotion_id: promo.id, promotion_name: promo.label, creative_slot: 'barra' },
+    );
+const lastDay = promo ? promotionLastDay(promo.endsAt) : '';
+const UNITS = [
+  ['d', 'd'],
+  ['h', 'h'],
+  ['m', 'min'],
+  ['s', 's'],
+] as const;
+---
+
+{
+  promo && (
+    <a
+      class="promo-barra"
+      data-promo-barra
+      data-tema={promo.theme}
+      href={href}
+      target={course ? '_blank' : undefined}
+      rel={course ? 'noopener' : undefined}
+      data-track={course ? 'begin_checkout' : 'select_promotion'}
+      data-track-params={track}
+    >
+      <span class="promo-barra__texto">
+        <strong class="promo-barra__nombre">{promo.label}</strong>
+        <span>{promo.headline}</span>
+      </span>
+      {promo.deadline && (
+        <span class="promo-barra__plazo" data-promo-ends={promo.endsAt}>
+          <span data-promo-fecha>Hasta el {lastDay}</span>
+          <span class="promo-barra__reloj" data-promo-reloj hidden aria-hidden="true">
+            <span class="promo-barra__termina">Termina en</span>
+            {UNITS.map(([unit, label]) => (
+              <span class="promo-barra__celda">
+                <b data-u={unit}>00</b>
+                <i>{label}</i>
+              </span>
+            ))}
+          </span>
+        </span>
+      )}
+      <span class="promo-barra__boton">
+        {course ? (
+          <>
+            Inscribirme<span class="promo-barra__extra"> con {promo.discountPct}% OFF</span>
+          </>
+        ) : (
+          promo.buttonLabel
+        )}
+      </span>
+    </a>
+  )
+}
+
+<style>
+  /* Un solo tono de fondo, oscuro; el color saturado se guarda para el nombre y el botón. */
+  .promo-barra {
+    --fondo: oklch(0.27 0.06 345);
+    --texto: oklch(0.97 0.012 80);
+    --acento: oklch(0.86 0.13 85);
+    --sobre-acento: oklch(0.24 0.05 345);
+    --celda: oklch(1 0 0 / 0.11);
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem 1.15rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 1rem;
+    background: var(--fondo);
+    box-shadow: inset 0 2px 0 var(--acento);
+    color: var(--texto);
+    font-size: 0.875rem;
+    line-height: 1.25;
+    text-align: center;
+    text-decoration: none;
+  }
+  .promo-barra[data-tema='dark'] {
+    --fondo: oklch(0.17 0.008 300);
+    --texto: oklch(0.95 0.014 85);
+    --acento: oklch(0.8 0.125 82);
+    --sobre-acento: oklch(0.2 0.03 80);
+    --celda: oklch(0.25 0.012 300);
+  }
+  .promo-barra[data-tema='festive'] {
+    --fondo: oklch(0.36 0.12 8);
+    --texto: oklch(0.97 0.015 20);
+    --acento: oklch(0.89 0.1 85);
+    --sobre-acento: oklch(0.28 0.09 8);
+    --celda: oklch(1 0 0 / 0.13);
+  }
+  .promo-barra__texto {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.1rem 0.55rem;
+  }
+  .promo-barra__nombre {
+    color: var(--acento);
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+  }
+  .promo-barra__plazo {
+    display: inline-flex;
+    align-items: center;
+    opacity: 0.92;
+  }
+  .promo-barra__reloj {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .promo-barra__reloj[hidden] {
+    display: none;
+  }
+  .promo-barra__termina {
+    margin-right: 0.15rem;
+  }
+  .promo-barra__celda {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.18em;
+    padding: 0.18rem 0.42rem;
+    border-radius: 0.375rem;
+    background: var(--celda);
+    font-variant-numeric: tabular-nums;
+  }
+  .promo-barra__celda b {
+    min-width: 1.25em;
+    font-weight: 700;
+    text-align: right;
+  }
+  .promo-barra__celda i {
+    font-size: 0.75rem;
+    font-style: normal;
+    opacity: 0.72;
+  }
+  .promo-barra__boton {
+    padding: 0.36rem 0.95rem;
+    border-radius: 999px;
+    background: var(--acento);
+    color: var(--sobre-acento);
+    font-weight: 800;
+    white-space: nowrap;
+    transition: filter 0.15s ease;
+  }
+  .promo-barra:hover .promo-barra__boton {
+    filter: brightness(1.08);
+  }
+  .promo-barra:focus-visible {
+    outline: 3px solid var(--acento);
+    outline-offset: -3px;
+  }
+  /* En el celular son dos renglones: qué es, y debajo el reloj con el botón. */
+  @media (max-width: 40rem) {
+    .promo-barra {
+      gap: 0.35rem 0.6rem;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.8125rem;
+    }
+    .promo-barra__texto {
+      flex-basis: 100%;
+    }
+    .promo-barra__nombre {
+      font-size: 1rem;
+    }
+    .promo-barra__termina,
+    .promo-barra__extra {
+      display: none;
+    }
+    .promo-barra__reloj {
+      gap: 0.22rem;
+    }
+    .promo-barra__celda {
+      padding: 0.14rem 0.32rem;
+    }
+    .promo-barra__boton {
+      padding: 0.3rem 0.8rem;
+    }
+  }
+  @media print {
+    .promo-barra {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { countdownParts } from '@/plugins/globos-promotions/model';
+
+  // Un único reloj para la barra y para los avisos de plazo que hay junto a los precios.
+  const clocks = [...document.querySelectorAll<HTMLElement>('[data-promo-ends]')]
+    .map((el) => ({
+      el,
+      end: Date.parse(el.dataset.promoEnds ?? ''),
+      date: el.querySelector<HTMLElement>('[data-promo-fecha]'),
+      clock: el.querySelector<HTMLElement>('[data-promo-reloj]'),
+      units: [...el.querySelectorAll<HTMLElement>('[data-u]')],
+    }))
+    .filter((item) => Number.isFinite(item.end));
+
+  if (clocks.length) {
+    const pad = (value: number): string => String(value).padStart(2, '0');
+    let timer: number | undefined;
+
+    /** La campaña venció con la página abierta: el servidor ya sirve el precio normal. */
+    const finish = (): void => {
+      if (timer !== undefined) clearInterval(timer);
+      const end = String(Math.min(...clocks.map((item) => item.end)));
+      const hide = (): void => {
+        for (const { el } of clocks) (el.closest<HTMLElement>('[data-promo-barra]') ?? el).hidden = true;
+      };
+      // Se recarga una sola vez por campaña. Sin almacenamiento no se puede recordar: solo se oculta.
+      try {
+        if (sessionStorage.getItem('cdgo-promo-fin') === end) return hide();
+        sessionStorage.setItem('cdgo-promo-fin', end);
+      } catch {
+        return hide();
+      }
+      if (document.visibilityState === 'visible') location.reload();
+      else document.addEventListener('visibilitychange', () => location.reload(), { once: true });
+    };
+
+    const tick = (): void => {
+      const now = Date.now();
+      for (const item of clocks) {
+        const left = item.end - now;
+        if (left <= 0) return finish();
+        const parts = countdownParts(left);
+        for (const node of item.units) {
+          const unit = node.dataset.u as keyof typeof parts;
+          node.textContent = unit === 'd' ? String(parts.d) : pad(parts[unit]);
+        }
+        if (item.clock?.hidden) {
+          item.clock.hidden = false;
+          // La fecha sigue en el HTML para lectores de pantalla; el reloj no se anuncia cada segundo.
+          item.date?.classList.add('sr-only');
+        }
+      }
+    };
+
+    tick();
+    timer = window.setInterval(tick, 1000);
+  }
+</script>

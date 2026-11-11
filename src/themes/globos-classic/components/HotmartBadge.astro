@@ -1,10 +1,12 @@
 ---
 /**
- * Mención factual de la plataforma de pago, junto a los CTA de compra.
- * Términos de uso de Hotmart §5.2: no se puede usar su marca, logotipo o nombre comercial
- * para publicitar un producto ni sugerir que Hotmart lo asocia, aprueba o certifica.
- * Por eso NO se usa su logo ni su color de marca: solo texto neutro que informa dónde
- * se procesa el pago, con un icono propio de candado.
+ * Plataforma de pago, junto a los botones de compra: «Pago seguro procesado por» + logo de Hotmart.
+ *
+ * Decisión de JP (11-11-2026): el logo de Hotmart se usa donde se informa del pago y de la emisión
+ * del certificado. Sustituye a la regla del 22-09-2026 de no usarlo en ningún sitio. Sigue sin
+ * usarse para sugerir que Hotmart recomienda o respalda los cursos: solo dice quién cobra.
+ * El SVG es el oficial, sin modificar (`public/brand/hotmart.svg`; versión en blanco para fondos
+ * oscuros).
  */
 import Icon from './Icon.astro';
 
@@ -18,11 +20,19 @@ const { tone = 'light', class: className } = Astro.props;
 
 <span
   class:list={[
-    'inline-flex items-center gap-1.5 text-xs font-semibold',
+    'inline-flex items-center gap-1.5 text-xs font-semibold whitespace-nowrap',
     tone === 'dark' ? 'text-crema-100/80' : 'text-ciruela-600',
     className,
   ]}
 >
   <Icon name="candado" size={14} class={tone === 'dark' ? 'text-crema-100/80' : 'text-ciruela-500'} />
-  <span>Pago seguro procesado por Hotmart</span>
+  <span>Pago seguro procesado por</span>
+  <img
+    src={tone === 'dark' ? '/brand/hotmart-blanco.svg' : '/brand/hotmart.svg'}
+    alt="Hotmart"
+    width="62"
+    height="20"
+    class="h-5 w-auto"
+    decoding="async"
+  />
 </span>

@@ -8,7 +8,6 @@ const COUNTRIES = await getCountries();
  */
 import { getCollection, type CollectionEntry } from '@/lib/emdash-content';
 import Balloons from './Balloons.astro';
-import CourseCover from './CourseCover.astro';
 import HotmartBadge from './HotmartBadge.astro';
 import Icon from './Icon.astro';
 import Logo from './Logo.astro';
@@ -193,11 +192,7 @@ const faqs = [
                 height="450"
                 fetchpriority="high"
               />
-            ) : (
-              <div class="aspect-[16/10] w-full sm:aspect-[4/3]">
-                <CourseCover slug={course.id} category={d.category} title={d.title} />
-              </div>
-            )
+            ) : null
           }
         </div>
       </div>

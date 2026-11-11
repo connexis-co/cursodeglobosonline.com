@@ -1,3 +1,4 @@
+import { sortCourses } from '@/lib/course-order';
 import { getCollection, type CollectionEntry } from '@/lib/emdash-content';
 import { getCountries, getClusters } from './emdash-content';
 
@@ -34,7 +35,7 @@ export async function courseRatingLine(c: Course): Promise<string> {
 }
 
 export async function loadLlmsData() {
-  const courses = (await getCollection('courses')).sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
+  const courses = sortCourses(await getCollection('courses'));
   const posts = await getPublishedPosts();
   const clusters = (await getClusters()).map((c) => ({
     ...c,

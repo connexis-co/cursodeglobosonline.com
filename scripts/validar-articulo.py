@@ -5,7 +5,7 @@ import sys, os, re, json, yaml
 HERE = os.path.dirname(os.path.abspath(__file__))
 MAP = json.load(open(os.path.join(HERE, '..', 'docs', 'seo', '2026-09-22', 'mapa-tematico.json')))
 SLUGS = {a['slug'] for a in MAP['articles']}
-COURSES = ['curso-de-globoflexia', 'curso-de-bouquets-de-globos', 'curso-de-flores-con-globos', 'curso-de-globos-burbuja']
+COURSES = ['curso-de-decoracion-con-globos', 'curso-de-globoflexia', 'curso-de-bouquets-de-globos', 'curso-de-flores-con-globos', 'curso-de-globos-burbuja']
 CLUSTERS = ['arcos-y-guirnaldas', 'ideas-por-ocasion', 'arreglos-y-flores', 'globoflexia', 'tecnicas-y-materiales', 'negocio']
 BANNED = ['sumérgete', 'fascinante mundo', 'en el mundo de', 'siguiente nivel', 'no es solo', 'manos a la obra', 'sin más preámbulos',
           'vibrante', 'desbloquea', 'potenciar', 'elevar tu', 'mágico', 'increíble', 'en conclusión', 'en definitiva', 'descubre cómo', 'adéntrate']

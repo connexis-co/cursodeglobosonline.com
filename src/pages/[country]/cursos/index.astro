@@ -1,6 +1,5 @@
 ---
-import { getCategories } from '@/lib/emdash-content';
-const CATEGORIES = await getCategories();
+import { sortCourses } from '@/lib/course-order';
 import { getCountrySummaries as getCountries } from '@/lib/emdash-content';
 const COUNTRIES = await getCountries();
 import { getCollection } from '@/lib/emdash-content';
@@ -10,20 +9,34 @@ import CourseCard from '@/components/CourseCard.astro';
 import Icon from '@/components/Icon.astro';
 import { countryAlternates, breadcrumbSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
+import { coursePricing, usd } from '@/lib/pricing';
+import { formatPrice } from '@/lib/countries';
 
 
 
 const country=COUNTRIES.find(c=>c.code===Astro.params.country);
 if(!country)return Astro.rewrite('/404');
-const courses = (await getCollection('courses')).sort(
-  (a, b) => Number(b.data.featured) - Number(a.data.featured),
-);
-const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.category === cat.slug));
+const courses = sortCourses(await getCollection('courses'));
+/** Para qué sirve cada curso, en una línea (la tabla compara; la ficha explica). */
+const FOCUS: Record<string, string> = {
+  'curso-de-decoracion-con-globos': 'Arcos, guirnaldas, cálculo de materiales y precios. El curso general.',
+  'curso-de-globoflexia': 'Figuras con globos largos para animar fiestas.',
+  'curso-de-bouquets-de-globos': 'Arreglos de globos para regalar y vender.',
+  'curso-de-flores-con-globos': 'Flores y centros de mesa con técnica de distorsión.',
+  'curso-de-globos-burbuja': 'Globos burbuja decorados, con confeti y personalizados.',
+};
+const rows = courses.map((course) => ({ course, pricing: coursePricing(course.data) }));
+const lastCheck = courses.map((c) => c.data.priceCheckedAt).filter(Boolean).sort((a, b) => a!.getTime() - b!.getTime())[0];
+const priceDate = lastCheck
+  ? new Intl.DateTimeFormat('es', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(lastCheck)
+  : undefined;
+let title = `Precios de los Cursos de Globos en ${country.name}: Comparativa`;
+if (title.length > 60) title = `Precios de los Cursos de Globos en ${country.name}`;
 ---
 
 <BaseLayout
-  title={`Cursos de Globos Online en ${country.name}: Catálogo y Precios`}
-  description={`Compara los 4 cursos de globos: globoflexia (50% OFF), bouquets, flores y globos burbuja. Temario, número de clases, precio y certificado de cada uno.`}
+  title={title}
+  description={`Compara los ${courses.length} cursos de globos en ${country.name}: qué enseña cada uno, cuántos videos trae, nivel y precio en USD y en ${country.currency}. Todos con certificado.`}
   {country}
   pathAfterCountry="/cursos/"
   alternates={await countryAlternates('/cursos/')}
@@ -42,31 +55,65 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
       <span class="font-bold text-ciruela-600">Cursos</span>
     </nav>
 
-    <!-- Anti-canibalización: el H1 sigue la intención del <title> (catálogo y precios por país)
-         y no repite el de la home ni el de /{cc}/ («Cursos de decoración con globos…»). -->
+    <!-- Anti-canibalización: esta URL responde a «precios / comparar cursos de globos». La home del
+         país lleva «cursos de globos online en {país}» y cada ficha, su «curso de X». -->
     <SectionHeading as="h1"
-      eyebrow="Catálogo completo"
-      title={`Catálogo de cursos de globos en ${country.name}: precios y temarios`}
-      lead={`Técnicas paso a paso con certificado de estudios y acceso permanente. Los precios se muestran en ${country.currency} y el pago es seguro con Hotmart.`}
+      title={`Precios y comparativa de los cursos de globos en ${country.name}`}
+      lead={`Los ${courses.length} cursos, lado a lado: qué enseña cada uno, cuánto contenido trae y cuánto cuesta. El precio base es en dólares y Hotmart lo cobra en ${country.currency}.`}
     />
 
-    <div class="mt-8 flex flex-wrap gap-2">
-      <span class="rounded-full bg-coral-600 px-4 py-2 text-xs font-extrabold text-white">Todos</span>
-      {
-        activeCategories.map((cat) => (
-          <a
-            href={`/${country.code}/cursos/${cat.slug}/`}
-            class="inline-flex items-center gap-1.5 rounded-full border border-crema-300 bg-white py-2 pr-4 pl-3 text-xs font-bold text-ciruela-600 transition-colors hover:border-coral-300 hover:text-coral-600"
-          >
-            <Icon name={cat.icon} size={15} class="text-coral-600" />
-            {cat.name}
-          </a>
-        ))
-      }
+    <!-- Tabla comparativa: contenido propio de esta página (antes solo repetía las tarjetas).
+         En el celular cada curso es una ficha con el precio a la vista (ver el estilo al final):
+         con cinco columnas, el precio quedaba fuera de pantalla. Los `role` conservan la tabla
+         para lectores de pantalla aunque las filas pasen a ser rejillas. -->
+    <div class="mt-10 overflow-x-auto rounded-2xl border border-crema-200 bg-white">
+      <table role="table" class="tabla-precios w-full text-left text-sm sm:min-w-[42rem]">
+        <caption class="sr-only">Comparativa de los cursos de globos: enfoque, contenido, nivel y precio</caption>
+        <thead class="border-b border-crema-200 bg-crema-100 text-xs text-ciruela-600">
+          <tr role="row">
+            <th role="columnheader" scope="col" class="px-5 py-3 font-bold">Curso</th>
+            <th role="columnheader" scope="col" class="px-5 py-3 font-bold">Para qué sirve</th>
+            <th role="columnheader" scope="col" class="px-5 py-3 font-bold">Contenido</th>
+            <th role="columnheader" scope="col" class="px-5 py-3 font-bold">Nivel</th>
+            <th role="columnheader" scope="col" class="px-5 py-3 font-bold">Precio</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-crema-200">
+          {
+            rows.map(({ course, pricing }) => (
+              <tr role="row">
+                <th role="rowheader" scope="row" data-col="curso" class="px-5 py-4 align-top font-bold text-ciruela-900">
+                  <a href={`/${country.code}/${course.id}/`} class="underline decoration-coral-200 decoration-2 underline-offset-[3px] hover:decoration-coral-500">
+                    {course.data.title}
+                  </a>
+                </th>
+                <td role="cell" data-col="sirve" class="px-5 py-4 align-top text-ciruela-600">{FOCUS[course.id] ?? course.data.shortDescription}</td>
+                <td role="cell" data-col="contenido" class="px-5 py-4 align-top whitespace-nowrap text-ciruela-600">{course.data.lessonsCount} videos</td>
+                <td role="cell" data-col="nivel" class="px-5 py-4 align-top whitespace-nowrap text-ciruela-600">{course.data.level}</td>
+                <td role="cell" data-col="precio" class="px-5 py-4 align-top whitespace-nowrap">
+                  {pricing.hasPrice ? (
+                    <>
+                      <span class="font-bold text-ciruela-900">{usd(course.data.priceUSD!)}</span>
+                      {pricing.hasDiscount && <s class="ml-1.5 text-xs text-ciruela-500">{usd(course.data.originalPriceUSD!)}</s>}
+                      <span class="block text-xs text-ciruela-500">≈ {formatPrice(course.data.priceUSD!, country)}</span>
+                    </>
+                  ) : (
+                    <span class="text-ciruela-600">En el checkout</span>
+                  )}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
     </div>
+    <p class="mt-3 text-xs text-ciruela-500">
+      Precios en dólares verificados en el checkout de Hotmart{priceDate ? ` el ${priceDate}` : ''}. El valor en {country.currency} es
+      aproximado; Hotmart muestra el exacto antes de pagar. Pago único, con 7 días de garantía.
+    </p>
 
-    <!-- 2 columnas con tarjetas horizontales en lg: con 4 cursos, a 3 columnas quedaba una huérfana. -->
-    <div id="catalogo" class="mt-10 grid gap-6 sm:grid-cols-2">
+    <h2 class="mt-14 text-2xl font-semibold text-ciruela-900 sm:text-3xl">Temario y detalles de cada curso</h2>
+    <div id="catalogo" class="mt-8 grid gap-6 sm:grid-cols-2">
       {
         courses.map((course, i) => (
           <div class="scroll-reveal curso-item" data-title={course.data.title.toLowerCase()} style={`animation-delay:${i * 60}ms`}>
@@ -79,6 +126,14 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
       <Icon name="globo" class="text-coral-600" />
       No encontramos cursos con ese nombre. Escríbenos por WhatsApp y te ayudamos a elegir.
     </p>
+
+    <h2 class="mt-14 text-2xl font-semibold text-ciruela-900 sm:text-3xl">¿Qué curso de globos elegir?</h2>
+    <ul class="mt-5 max-w-3xl space-y-3 text-sm leading-relaxed text-ciruela-600">
+      <li><strong class="text-ciruela-900">Si empiezas de cero y quieres decorar eventos:</strong> el curso de decoración con globos enseña arcos, guirnaldas y a calcular materiales y precios.</li>
+      <li><strong class="text-ciruela-900">Si quieres animar fiestas infantiles:</strong> globoflexia, que son las figuras con globos largos.</li>
+      <li><strong class="text-ciruela-900">Si vendes regalos y detalles:</strong> bouquets de globos, con el bono de desayuno sorpresa.</li>
+      <li><strong class="text-ciruela-900">Si ya decoras y quieres cobrar más por montaje:</strong> flores con globos o globos burbuja.</li>
+    </ul>
   </div>
 
   <script>
@@ -96,3 +151,51 @@ const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.c
     }
   </script>
 </BaseLayout>
+
+<style>
+  /* Celular: cada fila es una ficha. Nombre y precio arriba, para qué sirve debajo, y al pie el
+     contenido y el nivel. La cabecera de columnas sigue ahí para lectores de pantalla. */
+  @media (width < 40rem) {
+    .tabla-precios,
+    .tabla-precios tbody {
+      display: block;
+    }
+    .tabla-precios thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .tabla-precios tbody tr {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.3rem 1rem;
+      padding: 1rem 1.25rem;
+    }
+    .tabla-precios tbody :is(th, td) {
+      padding: 0;
+    }
+    .tabla-precios [data-col='curso'] {
+      grid-area: 1 / 1;
+      font-size: 1rem;
+    }
+    .tabla-precios [data-col='precio'] {
+      grid-area: 1 / 2 / span 2;
+      text-align: right;
+    }
+    .tabla-precios [data-col='sirve'] {
+      grid-area: 2 / 1;
+    }
+    .tabla-precios [data-col='contenido'] {
+      grid-area: 3 / 1;
+      font-size: 0.8125rem;
+    }
+    .tabla-precios [data-col='nivel'] {
+      grid-area: 3 / 2;
+      font-size: 0.8125rem;
+      text-align: right;
+    }
+  }
+</style>

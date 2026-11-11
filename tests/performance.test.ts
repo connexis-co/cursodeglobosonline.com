@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
-import {publicCacheEligible,publicCacheTtl,publicMutationRequiresPurge} from '../src/lib/public-cache';
+import {publicCacheEligible,publicCacheTtl,publicCachePolicy,publicMutationRequiresPurge,mediaMutationRequiresPurge,publicMediaRequest,hasPrivateCookies} from '../src/lib/public-cache';
 import {trackingScript} from '../src/lib/tracking-script';
 
 test('HTML cache cannot share authenticated, preview, campaign or non-production visits',()=>{
@@ -11,18 +11,47 @@ test('HTML cache cannot share authenticated, preview, campaign or non-production
   assert.equal(publicCacheEligible(new Request(base+path)),false,path);
  for(const header of ['Cookie','Authorization','X-Globos-Preview-Token'])
   assert.equal(publicCacheEligible(new Request(base,{headers:{[header]:'test'}})),false,header);
+ for(const cookie of ['emdash-edit-mode=true','astro-session=abc','_ga=GA1.1.1.1; emdash_session=x','unknown=1'])
+  assert.equal(publicCacheEligible(new Request(base,{headers:{Cookie:cookie}})),false,cookie);
  for(const host of ['dev.cursodeglobosonline.com','globos-emdash-production.workers.dev','www.cursodeglobosonline.com'])
   assert.equal(publicCacheEligible(new Request('https://'+host)),false,host);
  assert.equal(publicCacheEligible(new Request(base,{method:'POST'})),false);
 });
 
-test('HTML freshness ends before any verified promotion transition',()=>{
+test('measurement and edge cookies keep visitors on the shared HTML cache',()=>{
+ const base='https://cursodeglobosonline.com/blog/';
+ for(const cookie of ['_ga=GA1.1.123.456','_ga_PHN6J5MTX6=GS1.1.1; _gcl_au=1.1.2','_fbp=fb.1.1; _fbc=fb.1.2','__cf_bm=x; _cfuvid=y','_clck=a; _clsk=b'])
+  {assert.equal(hasPrivateCookies(new Request(base,{headers:{Cookie:cookie}})),false,cookie);
+   assert.equal(publicCacheEligible(new Request(base,{headers:{Cookie:cookie}})),true,cookie);}
+ assert.equal(hasPrivateCookies(new Request(base)),false);
+ assert.equal(hasPrivateCookies(new Request(base,{headers:{Cookie:'_ga=1; emdash-edit-mode=true'}})),true);
+});
+
+test('HTML freshness and stale serving end before any verified promotion transition',()=>{
  const now=Date.parse('2026-10-04T12:00:00Z');
  const offer={offerVerified:true,startsAt:new Date(now+22500).toISOString(),endsAt:new Date(now+90000).toISOString()};
+ assert.deepEqual(publicCachePolicy([offer],200,now),{maxAge:22,swr:0});
  assert.equal(publicCacheTtl([offer],now),22);
- assert.equal(publicCacheTtl([{...offer,startsAt:new Date(now-1000).toISOString(),endsAt:new Date(now+900).toISOString()}],now),0);
- assert.equal(publicCacheTtl([{...offer,offerVerified:false}],now),300);
- assert.equal(publicCacheTtl([],now),300);
+ assert.deepEqual(publicCachePolicy([{...offer,startsAt:new Date(now-1000).toISOString(),endsAt:new Date(now+900).toISOString()}],200,now),{maxAge:0,swr:0});
+ const later={...offer,startsAt:new Date(now+7200_000).toISOString(),endsAt:new Date(now+9000_000).toISOString()};
+ assert.deepEqual(publicCachePolicy([later],200,now),{maxAge:3600,swr:3600});
+ assert.deepEqual(publicCachePolicy([{...offer,offerVerified:false}],200,now),{maxAge:3600,swr:86400});
+ assert.deepEqual(publicCachePolicy([],200,now),{maxAge:3600,swr:86400});
+ assert.deepEqual(publicCachePolicy([],404,now),{maxAge:600,swr:3600});
+});
+
+test('media originals are edge-cached and purged when replaced or deleted',()=>{
+ const origin='https://cursodeglobosonline.com';
+ assert.equal(publicMediaRequest(new Request(origin+'/_emdash/api/media/file/3JHMNHBKJNK6Y9DHJ97JH4D8TD.jpg')),true);
+ for(const path of ['/_emdash/api/media/file/a.jpg?x=1','/_emdash/api/media/abc','/_emdash/api/media/file/a/b.jpg'])
+  assert.equal(publicMediaRequest(new Request(origin+path)),false,path);
+ assert.equal(publicMediaRequest(new Request('https://dev.cursodeglobosonline.com/_emdash/api/media/file/a.jpg')),false);
+ assert.equal(publicMediaRequest(new Request(origin+'/_emdash/api/media/file/a.jpg',{method:'POST'})),false);
+ for(const [path,method] of [['/_emdash/api/media/01ABC/replace','PUT'],['/_emdash/api/media/01ABC','DELETE'],['/_emdash/api/media/01ABC','PUT']])
+  {assert.equal(mediaMutationRequiresPurge(new Request(origin+path,{method}),new Response(null,{status:200})),true,path);
+   assert.equal(mediaMutationRequiresPurge(new Request(origin+path,{method}),new Response(null,{status:409})),false,path);}
+ assert.equal(mediaMutationRequiresPurge(new Request(origin+'/_emdash/api/media/01ABC/usage',{method:'PUT'}),new Response()),false);
+ assert.equal(mediaMutationRequiresPurge(new Request(origin+'/_emdash/api/media/01ABC'),new Response()),false);
 });
 
 test('vendor loading is deferred, events survive in queues, and interaction loads each script once',()=>{

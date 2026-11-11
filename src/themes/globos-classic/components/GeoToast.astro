@@ -102,7 +102,21 @@ const { pathAfterCountry = '/', currentCode = '' } = Astro.props;
       if (current) localStorage.setItem('cdgo-country', current);
       el.classList.add('hidden');
     });
-    setTimeout(() => el.classList.remove('hidden'), 2200);
+    setTimeout(() => {
+      el.classList.remove('hidden');
+      place();
+    }, 2200);
+
+    // En el celular va justo debajo de la cabecera. La cabecera no siempre empieza arriba del
+    // todo (encima puede ir la barra de campaña, que se va con la página), así que se mide.
+    const header = document.getElementById('site-header');
+    const narrow = matchMedia('(width < 40rem)');
+    function place() {
+      if (el.classList.contains('hidden')) return;
+      el.style.top = narrow.matches && header ? `${Math.max(0, Math.round(header.getBoundingClientRect().bottom))}px` : '';
+    }
+    addEventListener('scroll', place, { passive: true });
+    addEventListener('resize', place);
   }
 
   if (toast) init(toast);
@@ -110,8 +124,9 @@ const { pathAfterCountry = '/', currentCode = '' } = Astro.props;
 
 <style>
   /* Con la barra de compra móvil visible, el aviso sube para no taparla. */
-  /* En móvil es una franja bajo el header (no tapa el hero ni el botón de WhatsApp);
-     desde sm flota abajo a la derecha y sube si hay barra de compra. */
+  /* En móvil es una franja bajo el header (no tapa el hero ni el botón de WhatsApp); su `top`
+     lo pone el script con la posición real de la cabecera. Desde sm flota abajo a la derecha y
+     sube si hay barra de compra. */
   @media (width >= 40rem) {
     :global(html.has-sticky-cta) .geo-toast {
       bottom: 10rem;
