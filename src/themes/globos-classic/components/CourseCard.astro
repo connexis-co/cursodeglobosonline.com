@@ -89,7 +89,7 @@ const imgClass = [
             horizontal && 'lg:top-auto lg:bottom-3',
           ]}
         >
-          −{discountPct}%
+          {d.promo ? `${d.promo.label} −${discountPct}%` : `−${discountPct}%`}
         </span>
       )
     }

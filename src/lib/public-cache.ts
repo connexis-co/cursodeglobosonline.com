@@ -38,7 +38,8 @@ export function publicCachePolicy(promotions:Record<string,unknown>[],status=200
  const base=status===404?NOT_FOUND_POLICY:HTML_POLICY;
  let boundary=Infinity;
  for(const promotion of promotions){
-  if(promotion.offerVerified!==true)continue;
+  // D1 guarda los booleanos como 0/1.
+  if(promotion.offerVerified!==true&&promotion.offerVerified!==1)continue;
   for(const key of ['startsAt','endsAt']){
    const time=Date.parse(String(promotion[key]??''));
    if(time>now)boundary=Math.min(boundary,Math.floor((time-now)/1000));

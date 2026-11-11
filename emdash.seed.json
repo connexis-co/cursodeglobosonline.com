@@ -1277,6 +1277,11 @@
           "required": true
         },
         {
+          "slug": "label",
+          "label": "Nombre visible (ej. Black Friday)",
+          "type": "string"
+        },
+        {
           "slug": "headline",
           "label": "Mensaje del banner",
           "type": "string",

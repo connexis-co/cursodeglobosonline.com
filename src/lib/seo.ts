@@ -103,6 +103,8 @@ interface CourseSchemaInput {
   instructor?: { name: string; title: string; photo?: string };
   /** Votos propios del sitio (D1, widget de estrellas), visibles en la página. */
   rating?: CourseRating;
+  /** Fin (exclusivo) de la campaña que fija este precio. Sin campaña, el precio no caduca. */
+  priceEndsAt?: string;
 }
 
 const slug = (s: string) =>
@@ -167,6 +169,15 @@ export function courseSchema(c: CourseSchemaInput) {
       availability: 'https://schema.org/InStock',
       category: 'Paid',
       url: c.url,
+      // Último día en que se cobra este precio, en hora de Colombia como el texto visible
+      // (el fin de la campaña es exclusivo). `en-CA` da el formato AAAA-MM-DD.
+      ...(c.priceEndsAt && Number.isFinite(Date.parse(c.priceEndsAt))
+        ? {
+            priceValidUntil: new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Bogota' }).format(
+              new Date(Date.parse(c.priceEndsAt) - 1),
+            ),
+          }
+        : {}),
       ...(c.producer ? { seller: producerNode } : {}),
     };
   }

@@ -4,6 +4,25 @@
 
 ---
 
+# Sesión 2026-11-11 (tercera tanda) — Black Friday: la campaña es dueña del descuento
+
+JP pidió lanzar ya la promoción de Black Friday tomando la idea del sistema de promociones de Sably, mejorándolo. En Sably hay un «Black November» al 50 % con cuenta atrás; fuera de campaña no hay descuento.
+
+- **Qué cambió de fondo.** El 50 % ya no está escrito en la ficha de cada curso: lo pone la campaña `bf-2026` (colección Promociones). Las fichas guardan el precio de lista y el enlace sin cupón. Mientras la campaña está activa, la capa de datos (`src/lib/promotions.ts`, llamada desde `emdash-content.ts`) cambia precio, tachado, porcentaje y enlace con `offDiscount` para todo el sitio a la vez: tarjetas, fichas, menú, tabla de precios, título, datos estructurados (`priceValidUntil`) y `llms.txt`.
+- **Fechas:** del 11 de noviembre al **1 de diciembre de 2026 a las 00:00, hora de Colombia** (fin del Cyber Monday). Ese día el sitio vuelve solo al precio de lista (US$59,99 / 49,99 / 49,99 / 79,99 / 49,99) y los títulos dejan de decir «50% OFF». La siguiente campaña del calendario es Navidad (15–26 dic), en borrador.
+- **Por qué así:** una cuenta atrás solo es verdad si al llegar a cero el precio sube. Una campaña que no baja el precio de ningún curso no pinta barra ni reloj (`promotedPrice` devuelve `undefined` si la ficha ya cobra eso de base).
+- **Barra y reloj:** `PromoBar.astro` (antes de la cabecera, en todas las páginas) y `PromoDeadline.astro` (junto al precio de la ficha). Van en el HTML del servidor; el reloj lo arranca un único script. Si llega a cero con la pestaña abierta, la página se recarga una vez. La caché del HTML nunca cruza el inicio ni el fin de una campaña (`public-cache.ts`, que ahora acepta el `1` con que D1 guarda el booleano).
+- **País y `?promo=`:** el middleware guarda la URL de la petición en un `AsyncLocalStorage`; de ahí salen el país y la clave. Sin país (portada, blog) solo cuentan las campañas globales.
+- **Plugin `globos-promotions`:** ya no inyecta HTML. El calendario del panel muestra el estado de cada campaña (activa, programada, borrador, sin verificar, terminada) y tiene un botón **«Comprobar en Hotmart»** que abre el checkout de cada curso con el cupón y compara lo que cobra con lo que publicaría el sitio. Campo nuevo «Nombre visible» (`label`).
+- **Verificado en Hotmart el 11-11-2026:** sin cupón cobran el precio de lista; con `031016`, US$30 / 25 / 25 / 40 / 25 (50 %); con `010775`, US$44,99 / 37,49 / 37,49 / 59,99 / 37,49 (25 %). No hay una oferta mayor del productor para Black Friday.
+- **Estado: en producción.** Worker `7c99460d` (dev `61ae5786`); después se ejecutó `release-2026-11-11-black-friday.ts --publish` en dev y en producción (respaldos en `.data/release-2026-11-11/<entorno>/`). `verify-promocion.ts production`: 132 de 132 páginas con la barra, 240 botones de pago con el cupón, 40 fichas con el precio de campaña en título y datos estructurados, y el checkout de los cinco cursos cobrando lo publicado, con `ref` y `sck`.
+- **Cursos enlazados:** el borrador `bf-2026` venía del calendario de Sably con cuatro cursos; el de Decoración (creado hoy) quedaba fuera y salía a precio de lista. El script enlaza los cinco comprobados. Las demás campañas en borrador siguen con cuatro: al activarlas hay que añadir el quinto.
+- **Scripts:** `scripts/cms/release-2026-11-11-black-friday.ts --environment=… [--publish]` (campo, comprobación del checkout, campaña y fichas a precio de lista; idempotente) y `scripts/verify-promocion.ts <entorno>` (recorre el sitemap: barra, cupón en cada botón, precio en título y datos estructurados, y un botón por curso hasta el checkout). **Orden: primero el código, después el script del CMS.**
+- **Para volver al 50 % sin fecha de fin:** despublicar `bf-2026` en el panel y ejecutar `release-2026-11-11-descuento.ts --publish`. Para alargar la campaña basta cambiar su fecha de fin.
+- **Sigue sin haber vigilancia automática del cupón:** si Hotmart lo retira antes del 1 de diciembre, hay que despublicar la campaña ese día. El botón del panel y `verify-promocion.ts` lo detectan, pero hay que ejecutarlos.
+
+---
+
 # Sesión 2026-11-11 — Auditoría SEO/atribución, curso general y pase de diseño
 
 JP pidió revisar por qué el sitio posiciona en Colombia y no en otros países, el solapamiento entre páginas, el diseño «de IA», el SEO on-page y si los enlaces le atribuyen las ventas. A mitad de sesión pidió que los enlaces a Hotmart fueran como los de Sably y añadir los cursos de globos de Sably que faltaran. Informe: `docs/seo/2026-11-11-auditoria-seo-atribucion.md`.

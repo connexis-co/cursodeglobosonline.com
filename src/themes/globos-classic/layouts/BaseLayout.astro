@@ -10,6 +10,7 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import GeoToast from '@/components/GeoToast.astro';
 import BalloonFlock from '@/components/BalloonFlock.astro';
+import PromoBar from '@/components/PromoBar.astro';
 import type { Country } from '@/lib/countries';
 import type { ArticleMeta } from '@/components/Seo.astro';
 import type { HreflangAlternate } from '@/lib/seo';
@@ -121,6 +122,8 @@ const emdashPage:PublicPageContext={url:Astro.url.href,path:Astro.url.pathname,l
     {/* Globos que acompañan el recorrido. Cuántos y dónde se decide en el panel (plugin
         globos-balloons); en los artículos, por defecto, no salen. */}
     {pageType !== 'sitemap' && <BalloonFlock />}
+    {/* Campaña vigente (Black Friday, Navidad…): se configura en Promociones, en el panel. */}
+    <PromoBar />
     <Header {country} {pathAfterCountry} transparent={transparentHeader} />
     <main id="main">
       <slot />

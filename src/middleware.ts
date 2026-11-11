@@ -2,6 +2,7 @@ import {defineMiddleware} from 'astro:middleware';
 import {publicCacheEligible,publicCachePolicy,publicMutationRequiresPurge,mediaMutationRequiresPurge,
  publicMediaRequest,PUBLIC_CONTENT_TAGS,MEDIA_TAG,MEDIA_POLICY} from './lib/public-cache';
 import {readAll,rowData} from './lib/emdash-content';
+import {withRequestUrl} from './lib/promotions';
 
 // Pages plus the sitemaps, RSS and llms.txt that crawlers request repeatedly; all derive from published content.
 const SHAREABLE_TYPE=/^(?:text\/html|application\/(?:rss\+)?xml|text\/xml|text\/plain)\b/;
@@ -9,7 +10,8 @@ const SHAREABLE_TYPE=/^(?:text\/html|application\/(?:rss\+)?xml|text\/xml|text\/
 // All editorial content is Spanish. /es/ is the Spain market route, not an
 // optional language prefix. The [cc] pages validate markets against the CMS;
 // Astro's automatic locale redirects would incorrectly reject Spain's URLs.
-export const onRequest=defineMiddleware(async (context,next)=>{
+// La URL queda disponible para la capa de datos: la campaña vigente depende del país y de ?promo=.
+export const onRequest=defineMiddleware((context,next)=>withRequestUrl(context.url,async()=>{
  const response=await next();
  if(!context.cache.enabled)return response;
  // Comment moderation and plugin KV writes do not purge native content collection tags.
@@ -33,4 +35,4 @@ export const onRequest=defineMiddleware(async (context,next)=>{
   else context.cache.set(false);
  }else context.cache.set(false);
  return response;
-});
+}));
