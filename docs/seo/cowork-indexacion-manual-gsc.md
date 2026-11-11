@@ -46,6 +46,48 @@ TANDA DE HOY: <pega aquí la tanda del día>
 
 ## Tandas (orden de prioridad)
 
+### Pendiente desde el 11-11-2026 — páginas nuevas que Google aún no conoce
+
+El 11-11-2026 se intentó pedir la indexación desde Search Console y respondió «Cuota superada»
+con la primera URL: la cuenta ya había gastado ese día su cupo. No se insistió. La API de
+inspección confirmó ese mismo día que estas diez URLs figuran como «Google no reconoce esta URL»
+(son de hoy: la ficha nueva de Decoración en los ocho países y los dos artículos nuevos). El
+sitemap sí fue leído (11-11, 0 errores), así que Google las descubrirá igualmente; pedirlas a mano
+solo lo acelera.
+
+```
+https://cursodeglobosonline.com/co/curso-de-decoracion-con-globos/
+https://cursodeglobosonline.com/mx/curso-de-decoracion-con-globos/
+https://cursodeglobosonline.com/es/curso-de-decoracion-con-globos/
+https://cursodeglobosonline.com/pe/curso-de-decoracion-con-globos/
+https://cursodeglobosonline.com/ar/curso-de-decoracion-con-globos/
+https://cursodeglobosonline.com/cl/curso-de-decoracion-con-globos/
+https://cursodeglobosonline.com/ec/curso-de-decoracion-con-globos/
+https://cursodeglobosonline.com/us/curso-de-decoracion-con-globos/
+https://cursodeglobosonline.com/blog/decoracion-con-globos-para-bautizo/
+https://cursodeglobosonline.com/blog/decoracion-revelacion-de-genero-con-globos/
+```
+
+Segunda tanda (ya indexadas, rastreadas entre el 24-10 y el 8-11; pedirlas hace que Google lea
+antes los títulos y precios nuevos):
+
+```
+https://cursodeglobosonline.com/
+https://cursodeglobosonline.com/co/
+https://cursodeglobosonline.com/mx/
+https://cursodeglobosonline.com/co/cursos/
+https://cursodeglobosonline.com/co/curso-de-globoflexia/
+https://cursodeglobosonline.com/mx/curso-de-globoflexia/
+https://cursodeglobosonline.com/co/curso-de-globos-burbuja/
+https://cursodeglobosonline.com/co/curso-de-flores-con-globos/
+https://cursodeglobosonline.com/co/curso-de-bouquets-de-globos/
+https://cursodeglobosonline.com/blog/
+```
+
+Cómo se hace desde el navegador de Claude Code: barra «Inspeccionar cualquier URL», Enter,
+«Solicitar indexación», esperar la prueba en vivo y cerrar el aviso; una URL cada vez, con pausa.
+El enlace directo `…/search-console/inspect?…&id=<URL>` da 404: hay que usar la barra.
+
 ### Día 1 — money pages de Colombia + home (lo más urgente)
 ```
 https://cursodeglobosonline.com/co/curso-de-globos-burbuja/

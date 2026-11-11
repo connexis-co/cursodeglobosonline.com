@@ -46,7 +46,7 @@ const LIST:Record<string,number>={
 const CAMPAIGN={
  title:'Black Friday',
  label:'Black Friday',
- headline:'50 % de descuento en los cinco cursos',
+ headline:'50 % de descuento en todos los cursos',
  button_label:'Ver los cursos',
  starts_at:'2026-11-11T05:00:00.000Z',
  ends_at:'2026-12-01T05:00:00.000Z',
