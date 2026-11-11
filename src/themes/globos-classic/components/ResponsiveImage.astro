@@ -8,7 +8,8 @@ type Props = Omit<HTMLAttributes<'img'>, 'src' | 'srcset' | 'sizes'> & {
   sizes: string;
   maxWidth?: number;
 };
-const {src, sizes, maxWidth, loading = 'lazy', decoding = 'async', ...attributes} = Astro.props;
+// A high-priority image is the LCP candidate: lazy loading would hold it until layout (8 s on slow mobile).
+const {src, sizes, maxWidth, fetchpriority, loading = fetchpriority === 'high' ? 'eager' : 'lazy', decoding = 'async', ...attributes} = Astro.props;
 const image = responsiveImage(src, {siteUrl: SITE.url, sizes, maxWidth});
 ---
-<img {...attributes} {...image} {loading} {decoding} />
+<img {...attributes} {...image} {fetchpriority} {loading} {decoding} />

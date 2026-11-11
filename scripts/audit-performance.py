@@ -43,7 +43,8 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
     assets = list(pool.map(resource,sorted(resources)))
 checks = []
 for path,headers in [('/',{'Cookie':'globos_cache_test=1'}),('/?preview=true',{}),('/?utm_source=performance-audit',{}),
-        ('/_emdash/admin',{}),('/_emdash/api/settings',{}),('/invalid-performance-check',{}),('/api/blog-ratings',{})]:
+        ('/_emdash/admin',{}),('/_emdash/api/settings',{}),('/invalid-performance-check',{}),('/api/blog-ratings',{}),
+        ('/',{'Cookie':'_ga=GA1.1.1.1; _fbp=fb.1.1'})]:
     r = requests.get(ORIGIN+path,headers=headers,timeout=60,allow_redirects=path=='/invalid-performance-check')
     checks.append({'path':path,'cookie':bool(headers),'status':r.status_code,'cache':r.headers.get('cf-cache-status'),
         'cacheControl':r.headers.get('cache-control'),'noindex':r.headers.get('x-robots-tag')})
@@ -58,3 +59,5 @@ assert all(r['status']==200 and r['h1']==1 and not r['noindex'] and len(r['fonts
 assert all(r['status']==200 for r in assets)
 assert checks[0]['cacheControl']=='private, no-store' and checks[0]['cache']!='HIT'
 assert checks[3]['status']==401 and checks[4]['status']==401 and checks[5]['status']==404
+# Measurement cookies must not take visitors off the shared HTML cache.
+assert checks[7]['cacheControl']=='no-cache' and checks[7]['cache'] in ('HIT','MISS','EXPIRED','UPDATING')
