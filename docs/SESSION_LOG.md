@@ -4,6 +4,55 @@
 
 ---
 
+# Sesión 2026-11-11 — Auditoría SEO/atribución, curso general y pase de diseño
+
+JP pidió revisar por qué el sitio posiciona en Colombia y no en otros países, el solapamiento entre páginas, el diseño «de IA», el SEO on-page y si los enlaces le atribuyen las ventas. A mitad de sesión pidió que los enlaces a Hotmart fueran como los de Sably y añadir los cursos de globos de Sably que faltaran. Informe: `docs/seo/2026-11-11-auditoria-seo-atribucion.md`.
+
+- **Estado: en producción.** JP habilitó el permiso y se desplegó el Worker `2460b8d1` (dev: `be7f4cf0`); con el descuento a los cinco cursos, producción quedó en `b86fe55a` y dev en `685db8d8`. Después se ejecutaron en producción `release-2026-11-11-catalogo.ts` y `release-2026-11-11-contenido.ts` con `--publish` (respaldos en `.data/release-2026-11-11/production/`). No hay commit: el árbol de trabajo lleva estos cambios y los de rendimiento del 05-10.
+- **Verificación en producción:** `scripts/verify-release-2026-11-11.mjs production` sin fallos. Rastreo de las 132 URLs del sitemap (antes 122): todas 200, un H1 cada una, 0 títulos duplicados o de más de 60 caracteres (antes 6), 0 descripciones duplicadas (antes 8), 0 saltos de encabezado (antes 40 páginas), 0 enlaces al marketplace sin `ref` (antes 258), 0 `alt` «Imagen del…» (antes 340). El botón del curso nuevo llega a `pay.hotmart.com/J42873379B?ref=N76953277L` con su `sck`.
+- **Buscadores:** IndexNow con 132 URLs (HTTP 200) y sitemap reenviado a Search Console (204, pendiente de lectura). El rastreo dejó la caché caliente.
+- **Para revertir el código:** volver a desplegar la versión anterior del Worker desde el panel de Cloudflare (Deployments). El contenido se restaura desde los respaldos JSON de cada entrada.
+- **Diagnóstico de ventas:** unos 60 clics al checkout en tres meses sobre 3.321 sesiones; el blog trae el tráfico y no deriva a fichas; las búsquedas de compra están en posición 24–38. `begin_checkout` nunca llegó a GA4 (falta la etiqueta en GTM).
+- **Atribución:** los botones conservan el `ref`. Había 258 enlaces al marketplace sin `ref` en las reseñas: retirados. `sck` nuevo por país, curso y ubicación del botón.
+- **Enlaces como Sably:** `hotm.io/…-curso-crashing`. Los plugins `globos-integrity` y `globos-promotions` aceptan ahora `hotm.io`: **el código debe desplegarse antes de ejecutar el script del CMS**, o la publicación se rechaza.
+- **Curso nuevo:** `curso-de-decoracion-con-globos` (J42873379B, hotlink N76953277L), con datos de su ficha pública de Hotmart. No se copió el temario de Sably: allí es de relleno.
+- **Reparto de intenciones:** portada y países → «cursos de globos online»; ficha nueva → «curso de decoración con globos»; catálogo → precios y comparativa; ciudades → «cursos de globos en {ciudad}» con enlaces de texto exacto a las fichas.
+- **Diseño:** fuera etiquetas en versalitas, ondas, inclinaciones y pegatinas; ficha con lista de datos.
+- **Script editorial:** `node --import tsx scripts/cms/release-2026-11-11-catalogo.ts --environment=local|development|production [--publish]`. Idempotente; sin `--publish` solo informa.
+- **Entorno local:** `astro dev` ya funciona en este equipo. `src/worker.ts` omite el Basic y sirve `public/` solo cuando `import.meta.env.DEV`. La base local se inicializa con `POST /_emdash/api/setup` y `wrangler d1 migrations apply globos-ratings-dev --local`. `node_modules` es un enlace a `node_modules.nosync` (iCloud).
+- **50 % en los cinco cursos (decisión de JP, el mismo día):** `offDiscount=031016` da la mitad en todos. JP pidió aplicarlo «si realmente aplica»; se comprobó dos veces en el checkout y, ya publicado, siguiendo el botón de cada ficha hasta `pay.hotmart.com`: cobra US$30 (Decoración), 25 (Globoflexia), 25 (Bouquets), 40 (Flores) y 25 (Burbuja), con su `ref` y su `sck`. Script: `scripts/cms/release-2026-11-11-descuento.ts`. Producción quedó en el Worker `b86fe55a` (dev `685db8d8`): el título de la ficha prueba «…: 50% OFF (US$25)», luego «…: 50% OFF» y, si no cabe en 60 caracteres, quita «Online» antes que el descuento. Si Hotmart retira el cupón, hay que revertir precios y enlaces el mismo día: el sitio publicaría un precio que el checkout no cobra.
+
+**Segunda tanda del mismo día (pedidos de JP durante la sesión):**
+
+- **Imágenes hiperrealistas.** Las portadas de curso (dos parecían de juguete) y dos esquemas ilustrados del blog se sustituyen por fotos documentales generadas con el proceso de la skill `imagenes-ultrarrealistas` (2 candidatas, juez aparte, un retoque localizado). Finales en `docs/editorial/2026-11-11/fotos/`. `CourseCover.astro` (portadas SVG de respaldo) se eliminó: sin portada en el CMS se usa una foto real.
+- **Globos.** Estudiado lbdballoons.com: usa fotos recortadas de globos, flotación CSS de 3 s y un parallax `(scrollY − inicio) × velocidad` suavizado con `transition: all 2s`. Se reimplementó con material propio (no se copió ningún archivo): `BalloonFlock.astro` es una bandada fija a la ventana, entre el fondo y el contenido (`.contenedor` lleva `z-index: 2`), con resorte amortiguado, cuerda de Verlet, empuje del cursor, arrastre y lanzamiento, y doble clic para reventar (reaparece a los 2,4 s). `Balloons.astro` solo conserva la variante `rise`.
+- **Certificado.** `CertificateShowcase.astro` es ahora un certificado compuesto en HTML/CSS con nombre de demostración y el logo de Hotmart. Se quitó el rótulo «Ejemplo ilustrativo».
+- **Logo de Hotmart.** JP decidió usarlo en información de pagos y en el certificado (cambia la regla del 22-09). SVG oficial en `public/brand/hotmart.svg`.
+- **Garantía.** `GuaranteeSeal.astro`: sello SVG de lámina dorada, en lugar del rosetón.
+- **Tipografía.** Titulares en Gabarito (`@fontsource-variable/gabarito`) en vez de Fraunces SOFT/WONK.
+- **Script editorial 2:** `scripts/cms/release-2026-11-11-contenido.ts` (fotos, parche SEO de fichas y artículos del blog; `--solo=fotos,cursos,blog`).
+- **Servidor local:** `src/worker.ts` deja pasar a Vite los módulos y los 304 solo en `astro dev`; antes ningún script de página corría en local.
+- **Opciones de los globos en el panel:** plugin `globos-balloons` (Plugins → «Globos de la página»): mostrar o no, cantidad en computador y en celular, tamaño, con cuerda o sin ella, cuerda fina o serpentina rizada, si se pueden tocar y si revientan con doble clic, y si salen en los artículos. La configuración llega a la página como `window.__globosBandada`; `BalloonFlock.astro` crea los globos desde el script.
+- **Física revisada:** la cuerda sale del nudo real de cada foto (medido por imagen), tiene rigidez a la flexión y tres pasos por cuadro; dos globos que se tocan se apartan. La serpentina es más ligera y elástica y se dibuja rizada alrededor de la cadena.
+- **Auditoría SEO del contenido de las fichas:** `docs/seo/2026-11-11-auditoria-contenido-cursos.md` y su parche (`…-parche-contenido-cursos.json`), aplicado en local y en dev.
+- **Blog:** 5 artículos nuevos en `docs/editorial/2026-11-11/`, con foto principal revisada por un juez aparte (`hoja-fotos-blog.jpg`). En dev: bautizo y revelación de género publicados; dinosaurios (19-nov), San Valentín (3-dic) y baby shower (17-dic) programados. En producción los crea el mismo script `release-2026-11-11-contenido.ts`; si se ejecuta después de una fecha programada, ese artículo sale de inmediato.
+- **Ojo:** no ejecutar `astro check` con `astro dev` encendido: deja el servidor local en error 500 hasta reiniciarlo.
+
+---
+
+# Sesión 2026-10-05 — Rendimiento: caché compartida real y snapshot de contenido
+
+JP pidió analizar por qué el sitio en EmDash (Workers) no cargaba tan rápido como debía. Informe completo: `docs/seo/2026-10-05-rendimiento-cache-y-snapshot.md`. Evidencia: `docs/migration/verification/performance-2026-10-05.json`.
+
+- **Causa principal:** `Vary: Cookie` y «cualquier cookie = privado». Desde la segunda página, todo visitante con `_ga` se renderizaba completo, con 80–474 consultas D1 y 1–22 s según el país.
+- **Cambios en producción** (`94cc037e`; revertir a `328dcae7`): las cookies de medición no sacan de la caché; `toolbar: 'client'`; HTML 1 h + SWR 24 h, acotado por promociones; snapshot de colecciones en memoria + KV, validado por una firma de D1 en cada render (`src/lib/cms/snapshot.ts`); caché de originales de imagen con purga al reemplazarlos; 404, sitemaps, RSS y `llms.txt` cacheados; Smart Placement; hero de los cursos `eager`; estrellas sin 130 SVG.
+- **Resultado:** sin caché, p50 0,37 s y 5 consultas (antes 1–10 s); las visitas con cookies ahora son HIT de 0,22 s. Lighthouse móvil con throttling real: 89–94 y LCP 1,9–2,0 s.
+- **Pendiente de JP (panel de Cloudflare):** la inyección automática del Google tag gateway carga GTM, dos GA4, Ads, Clarity, Meta y Hotmart antes del primer pintado. Por eso PageSpeed simulado da LCP de 9–10 s; sin terceros, la portada da 99.
+- **Incidente corregido:** un 301 de `www` cacheado bajo la ruta `/blog/` (Workers Cache no usa el host en la clave) provocó un bucle de redirección durante unos 30 minutos. Ahora `www` responde `no-store` y todo lleva `Vary: Host` (`6da52ad9`).
+- **Ojo al desplegar:** cada versión del Worker vacía la caché HTML. Conviene recorrer el sitemap después. Si cambia la forma de las filas del snapshot, hay que subir `KV_PREFIX`.
+
+---
+
 # Sesión 2026-09-23 — Estrellas propias (estilo kk Star Ratings) y `aggregateRating`
 
 JP pidió estrellas obligatorias con su dato estructurado y un mecanismo para que la gente
