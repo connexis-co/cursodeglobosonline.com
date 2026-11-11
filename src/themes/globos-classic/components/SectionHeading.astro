@@ -8,15 +8,12 @@ interface Props {
   /** Nivel del titular: `h1` en páginas cuyo encabezado principal es este bloque. */
   as?: 'h1' | 'h2';
 }
-const { eyebrow, title, lead, align = 'left', class: className, as: Tag = 'h2' } = Astro.props;
+// `eyebrow` se acepta por compatibilidad pero ya no se pinta: la etiqueta en versalitas espaciadas
+// encima de cada título era el tic más reconocible de plantilla (auditoría de diseño 11-11-2026).
+const { title, lead, align = 'left', class: className, as: Tag = 'h2' } = Astro.props;
 ---
 
 <div class:list={['scroll-reveal max-w-2xl', align === 'center' && 'mx-auto text-center', className]}>
-  {
-    eyebrow && (
-      <p class="mb-2 text-xs font-extrabold tracking-[0.22em] text-coral-600">{eyebrow}</p>
-    )
-  }
-  <Tag class="text-3xl font-semibold text-ciruela-900 sm:text-4xl">{title}</Tag>
+  <Tag class="text-[1.7rem] leading-tight font-semibold text-balance text-ciruela-900 sm:text-4xl">{title}</Tag>
   {lead && <p class="mt-4 text-base leading-relaxed text-ciruela-500 sm:text-lg">{lead}</p>}
 </div>

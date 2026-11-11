@@ -14,7 +14,7 @@
 
 @theme {
   /* ── Tipografía ─────────────────────────────────────────── */
-  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --font-display: 'Gabarito Variable', 'Nunito Sans Variable', 'Segoe UI', system-ui, sans-serif;
   --font-sans: 'Nunito Sans Variable', 'Segoe UI', system-ui, sans-serif;
 
   /* ── Paleta: crema (fondo casi-blanco, apenas cálido — sobrio como sably) ── */
@@ -170,11 +170,8 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    font-variation-settings:
-      'SOFT' 55,
-      'WONK' 1;
-    letter-spacing: -0.015em;
-    line-height: 1.12;
+    letter-spacing: -0.022em;
+    line-height: 1.1;
     text-wrap: balance;
   }
   ::selection {
@@ -185,6 +182,10 @@
 
 /* ── Utilidades propias ───────────────────────────────────── */
 @utility contenedor {
+  /* El contenido va por encima de la bandada de globos (capa fija con z-index 1 en
+     BalloonFlock.astro): los globos pasan entre el fondo de la sección y el contenido. */
+  position: relative;
+  z-index: 2;
   margin-inline: auto;
   width: 100%;
   max-width: 74rem;
@@ -205,21 +206,6 @@
   background-clip: text;
   color: transparent;
   animation: shimmer 6s linear infinite;
-}
-
-/* Parallax sutil de globos al hacer scroll (compone `translate` con el
-   `transform` del floating — dos propiedades distintas, sin conflicto). */
-@keyframes globo-plx {
-  to {
-    translate: 0 var(--plx, 80px);
-  }
-}
-@supports (animation-timeline: scroll()) {
-  .globo-plx {
-    animation: globo-plx linear both;
-    animation-timeline: scroll();
-    animation-range: 0 130vh;
-  }
 }
 
 @layer utilities {

@@ -13,10 +13,13 @@ const production=process.env.GLOBOS_BUILD_ENV==='production';
 if(production)process.env.PUBLIC_GTM_ID??='GTM-KKP7WL8Q';
 const site=production?'https://cursodeglobosonline.com':process.env.SITE_URL || 'https://dev.cursodeglobosonline.com';
 export default defineConfig({cache:{provider:cacheCloudflare()},site,image:{domains:['cursodeglobosonline.com']},i18n:{defaultLocale:'es',locales:['es'],routing:'manual'},output:'server',trailingSlash:'ignore',adapter:cloudflare({imageService:production?'cloudflare':'passthrough',configPath:production?'wrangler.production.jsonc':'wrangler.jsonc'}),
- integrations:[react(),mdx(),emdash({database:d1({binding:'DB'}),storage:r2({binding:'MEDIA'}),objectCache:kvCache({binding:'CACHE',defaultTtl:3600,revalidate:1000,keyPrefix:'globos-v1'}),siteUrl:site,auth:{type:production?'globos-production':'globos-development',entrypoint:fileURLToPath(new URL(production?'./src/auth/production.ts':'./src/auth/development.ts',import.meta.url)),config:{autoProvision:true,syncRoles:true}},plugins:[
+ integrations:[react(),mdx(),emdash({database:d1({binding:'DB'}),storage:r2({binding:'MEDIA'}),objectCache:kvCache({binding:'CACHE',defaultTtl:3600,revalidate:1000,keyPrefix:'globos-v1'}),siteUrl:site,
+ // Shared HTML must be identical for editors and visitors; editing opens a fresh `_edit` render.
+ toolbar:'client',auth:{type:production?'globos-production':'globos-development',entrypoint:fileURLToPath(new URL(production?'./src/auth/production.ts':'./src/auth/development.ts',import.meta.url)),config:{autoProvision:true,syncRoles:true}},plugins:[
  emdashSmtp(),
  {id:'globos-seo',version:'1.0.0',entrypoint:fileURLToPath(new URL('./src/plugins/globos-seo/index.ts',import.meta.url))},
  {id:'globos-integrity',version:'1.0.0',entrypoint:fileURLToPath(new URL('./src/plugins/globos-integrity/index.ts',import.meta.url))},
  {id:'globos-whatsapp',version:'1.0.0',entrypoint:fileURLToPath(new URL('./src/plugins/globos-whatsapp/index.ts',import.meta.url)),adminEntry:fileURLToPath(new URL('./src/plugins/globos-whatsapp/admin.tsx',import.meta.url)),adminPages:[{path:'/whatsapp',label:'WhatsApp',icon:'message-circle'}]},
+ {id:'globos-balloons',version:'1.0.0',entrypoint:fileURLToPath(new URL('./src/plugins/globos-balloons/index.ts',import.meta.url)),adminEntry:fileURLToPath(new URL('./src/plugins/globos-balloons/admin.tsx',import.meta.url)),adminPages:[{path:'/globos',label:'Globos de la página',icon:'party-popper'}]},
  {id:'globos-promotions',version:'1.0.0',entrypoint:fileURLToPath(new URL('./src/plugins/globos-promotions/index.ts',import.meta.url)),adminEntry:fileURLToPath(new URL('./src/plugins/globos-promotions/admin.tsx',import.meta.url)),adminPages:[{path:'/calendar',label:'Calendario de promociones',icon:'calendar'}]},
  ]})],server:{port:Number(process.env.PORT)||4338},vite:{plugins:[tailwindcss()]},build:{inlineStylesheets:'auto'}});

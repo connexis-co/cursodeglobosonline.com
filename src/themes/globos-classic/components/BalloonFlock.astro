@@ -1,0 +1,807 @@
+---
+/**
+ * Bandada de globos de la página: fotos de globos de látex con cuerda y física, fijas a la ventana,
+ * que acompañan todo el recorrido.
+ *
+ * Mecánica de partida estudiada en lbdballoons.com (11-11-2026) —globos fotográficos que flotan y
+ * siguen al scroll con retardo— y reimplementada aquí con material propio. No se copió ningún
+ * archivo suyo: las fotos de `public/images/globos/` se generaron para este sitio.
+ *
+ * Por qué a nivel de página y no dentro de cada sección: dentro del hero quedaban recortados por
+ * su borde y no bajaban (JP, 11-11-2026). Ahora viven en una capa fija entre el fondo de las
+ * secciones y el contenido (`.contenedor` va por encima, ver global.css), así que nunca tapan
+ * texto ni tarjetas: se ven en los márgenes y por los huecos. En el hero se asoman más; al entrar
+ * en las secciones de información se repliegan hacia los bordes.
+ *
+ * Cuántos hay, su tamaño y qué hacen se configura en el panel (Plugins → «Globos de la página»,
+ * plugin `globos-balloons`), que deja las opciones en `window.__globosBandada`. Por eso los
+ * globos los crea el script y no el HTML: con la opción apagada no se descarga ni una foto.
+ * Sin JavaScript no hay bandada (es decorativa). Con «reducir movimiento» quedan quietos.
+ */
+---
+
+<div class="bandada" aria-hidden="true" data-bandada>
+  <svg class="bandada-cuerdas" focusable="false"></svg>
+</div>
+
+<style is:global>
+  .bandada {
+    position: fixed;
+    inset: 0;
+    /* Por encima del fondo de las secciones y por debajo del contenido (`.contenedor`, z-index 2). */
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+    /* Hasta que el script los coloca no se ven. */
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    contain: layout style;
+  }
+  .bandada[data-vivo] {
+    opacity: 1;
+  }
+  .bandada-globo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 50% 40%;
+    will-change: transform;
+  }
+  .bandada-globo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    user-select: none;
+  }
+  .bandada-cuerdas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .bandada-cuerdas path {
+    fill: none;
+    /* Gris cálido: se lee igual sobre el hero oscuro que sobre las secciones claras. */
+    stroke: #b3aab8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.4;
+    opacity: 0.8;
+  }
+  /* Trozos de látex y destello del reventón. */
+  .bandada-trozo,
+  .bandada-destello {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+  .bandada-destello {
+    border-radius: 9999px;
+    border: 2px solid currentColor;
+  }
+  /* El cursor avisa de que el globo se puede agarrar (los globos no capturan el puntero). */
+  html.globo-a-mano,
+  html.globo-a-mano * {
+    cursor: grab !important;
+  }
+  html.globo-agarrado,
+  html.globo-agarrado * {
+    cursor: grabbing !important;
+    user-select: none !important;
+  }
+  @media print {
+    .bandada {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  /**
+   * Física de la bandada. Unidades: px y segundos; coordenadas de ventana (la capa es fija).
+   *
+   * Cada globo es una masa unida a «su sitio» por un resorte amortiguado. Su sitio se mueve:
+   *   sitio = posición en la ventana (se repliega al borde al bajar del hero)
+   *         + retraso respecto al scroll (la página tira de él y él la alcanza)
+   *         + vaivén de flotación
+   * El retraso es de primer orden: es la cola perezosa del efecto original (allí, `transition:
+   * all 2s ease`). El resorte encima le da rebote cuando lo empujan, lo sueltan o lo lanzan.
+   * Dos globos que se tocan se apartan como dos cuerpos blandos.
+   *
+   * La cuerda es una cadena de Verlet: puntos unidos por tramos de largo fijo, con gravedad,
+   * rozamiento con el aire y algo de rigidez a la flexión (un tramo no se dobla en seco sobre el
+   * siguiente). El primer punto va atado al nudo de la foto —que no está en el centro: cada globo
+   * se fotografió ladeado— y gira con él. No hay animación escrita: el balanceo sale de mover el
+   * nudo.
+   *
+   * Los globos no capturan el puntero (no deben tapar enlaces ni texto): los gestos se escuchan
+   * en la ventana y se comprueba a mano si caen sobre un globo que esté a la vista.
+   */
+  interface Settings {
+    enabled: boolean;
+    count: number;
+    countMobile: number;
+    size: number;
+    strings: boolean;
+    stringStyle: 'cuerda' | 'serpentina';
+    interactive: boolean;
+    pop: boolean;
+    articles: boolean;
+  }
+  interface Spec {
+    tone: string;
+    side: number;
+    /** Altura de su centro, en fracción de la ventana. */
+    fy: number;
+    /** Ancho en px con ventana ancha y estrecha (0 = no sale en estrecha). */
+    wide: number;
+    narrow: number;
+    /** Alto / ancho de la foto y posición horizontal del nudo dentro de ella. */
+    ratio: number;
+    knotX: number;
+    /** Fracción del ancho que asoma en el hero, y px que asoma sobre el contenido. */
+    show: number;
+    peek: number;
+    /** Cuánto se retrasa al acompañar el scroll, y deriva vertical a lo largo de la página. */
+    drag: number;
+    drift: number;
+    tilt: number;
+    period: number;
+    phase: number;
+    /** Largo de la cuerda, en veces el alto del globo. */
+    string: number;
+    blur: number;
+    latex: string;
+  }
+  interface Globo extends Spec {
+    el: HTMLElement;
+    img: HTMLImageElement;
+    path: SVGPathElement;
+    active: boolean;
+    w: number;
+    h: number;
+    inHero: number;
+    inPage: number;
+    // Posición de la esquina superior izquierda, en px de ventana.
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    ang: number;
+    angV: number;
+    lagScroll: number;
+    popped: boolean;
+    lastTap: number;
+    rope: Float32Array;
+    prev: Float32Array;
+    seg: number;
+    loose: boolean;
+  }
+
+  // Orden = prioridad: con «3 globos» salen los tres primeros. Los dos primeros son los grandes.
+  const SPECS: Spec[] = [
+    { tone: 'frambuesa', side: -1, fy: 0.2, wide: 270, narrow: 78, ratio: 1.306, knotX: 0.632, show: 0.7, peek: 46, drag: 0.5, drift: 0.1, tilt: -7, period: 3, phase: 0, string: 0.72, blur: 0, latex: '#d2203c' },
+    { tone: 'sol', side: 1, fy: 0.44, wide: 214, narrow: 66, ratio: 1.343, knotX: 0.51, show: 0.7, peek: 40, drag: 0.72, drift: 0.14, tilt: 9, period: 3.6, phase: -1, string: 0.8, blur: 0, latex: '#f5c518' },
+    { tone: 'aqua', side: -1, fy: 0.74, wide: 132, narrow: 0, ratio: 1.325, knotX: 0.597, show: 0.9, peek: 34, drag: 0.4, drift: -0.08, tilt: 7, period: 3.3, phase: -0.3, string: 0.95, blur: 0, latex: '#27c4c7' },
+    { tone: 'lila', side: 1, fy: 0.86, wide: 96, narrow: 54, ratio: 1.266, knotX: 0.628, show: 0.95, peek: 30, drag: 0.6, drift: -0.12, tilt: -11, period: 3.8, phase: -0.6, string: 1.05, blur: 0, latex: '#a88be0' },
+    { tone: 'dorado', side: 1, fy: 0.11, wide: 64, narrow: 0, ratio: 1.35, knotX: 0.642, show: 1.5, peek: 22, drag: 0.28, drift: 0.06, tilt: 12, period: 4.1, phase: -1.4, string: 1.1, blur: 1.1, latex: '#c79f45' },
+  ];
+  const DEFAULTS: Settings = { enabled: true, count: 5, countMobile: 3, size: 100, strings: true, stringStyle: 'cuerda', interactive: true, pop: true, articles: false };
+
+  const CONTAINER = 74 * 16; // ancho máximo de `.contenedor`, en px
+  const KNOT_Y = 0.989; // el nudo, en fracción del alto de la foto
+  const PIVOT_Y = 0.4; // eje de giro (transform-origin: 50% 40%)
+  const K = 30; // rigidez del resorte que lo devuelve a su sitio
+  const C = 4.6; // amortiguación (subamortiguado: rebota un poco)
+  const K_DRAG = 170;
+  const C_DRAG = 20;
+  const K_ANG = 46;
+  const C_ANG = 7.5;
+  const BOB = 12; // amplitud del vaivén: 24 px de pico a pico
+  const LAG = 0.55; // s: retraso con que alcanza al scroll
+  const ROPE_POINTS = 14;
+  const GRAVITY = 1500;
+  const BEND = 0.12; // rigidez a la flexión de la cuerda (0 = hilo flojo)
+  const BUMP = 260; // fuerza con que dos globos que se tocan se apartan
+  const DOUBLE_TAP = 380; // ms entre dos toques para reventarlo
+  const RESPAWN = 2400; // ms hasta que sube uno nuevo
+  /** Sobre estos elementos el gesto es del contenido, no del globo. */
+  const CONTENT =
+    'a,button,input,select,textarea,summary,label,h1,h2,h3,h4,p,li,span,strong,em,small,b,i,blockquote,figcaption,dt,dd,td,th,img,picture,video,svg,canvas,iframe,[role="button"]';
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+
+  const layer = document.querySelector<HTMLElement>('[data-bandada]');
+  const settings: Settings = { ...DEFAULTS, ...((window as unknown as { __globosBandada?: Partial<Settings> }).__globosBandada ?? {}) };
+  // Serpentina: una cinta rizada del color del globo. Pesa menos, el aire la frena más y sus
+  // tramos ceden como un muelle; la cuerda, en cambio, es un hilo que cae a plomo.
+  const curly = settings.stringStyle === 'serpentina';
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const globos: Globo[] = [];
+  const root = document.documentElement;
+  let frame = 0;
+  let last = 0;
+  let clock = 0;
+  let vw = window.innerWidth;
+  let vh = window.innerHeight;
+  let grabbed: Globo | null = null;
+  let grabX = 0;
+  let grabY = 0;
+  let grabMoved = 0;
+  let pressX = 0;
+  let pressY = 0;
+  // Últimas posiciones del puntero, para saber con qué velocidad empuja o lanza.
+  let lastPX = 0;
+  let lastPY = 0;
+  let lastPT = 0;
+  let pvx = 0;
+  let pvy = 0;
+
+  const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
+
+  function build(host: HTMLElement) {
+    const cords = host.querySelector('svg');
+    if (!cords) return;
+    for (const spec of SPECS) {
+      const el = document.createElement('div');
+      el.className = 'bandada-globo';
+      el.style.display = 'none';
+      const img = document.createElement('img');
+      img.alt = '';
+      img.decoding = 'async';
+      img.draggable = false;
+      if (spec.blur) img.style.filter = `blur(${spec.blur}px)`;
+      el.appendChild(img);
+      host.appendChild(el);
+      const path = document.createElementNS(SVG_NS, 'path');
+      if (curly) {
+        path.style.stroke = spec.latex;
+        path.style.opacity = '0.95';
+      }
+      cords.appendChild(path);
+      globos.push({
+        ...spec,
+        el,
+        img,
+        path,
+        active: false,
+        w: 0,
+        h: 0,
+        inHero: 0,
+        inPage: 0,
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+        ang: spec.tilt,
+        angV: 0,
+        lagScroll: window.scrollY,
+        popped: false,
+        lastTap: 0,
+        rope: new Float32Array(ROPE_POINTS * 2),
+        prev: new Float32Array(ROPE_POINTS * 2),
+        seg: 10,
+        loose: false,
+      });
+    }
+  }
+
+  /** Nudo del globo: su punto en la foto, girado con el globo alrededor del eje. */
+  function knot(g: Globo): [number, number] {
+    const a = (g.ang * Math.PI) / 180;
+    const dx = (g.knotX - 0.5) * g.w;
+    const dy = (KNOT_Y - PIVOT_Y) * g.h;
+    return [
+      g.x + g.w / 2 + dx * Math.cos(a) - dy * Math.sin(a),
+      g.y + g.h * PIVOT_Y + dx * Math.sin(a) + dy * Math.cos(a),
+    ];
+  }
+
+  function hangRope(g: Globo) {
+    const [kx, ky] = knot(g);
+    for (let i = 0; i < ROPE_POINTS; i++) {
+      g.rope[i * 2] = g.prev[i * 2] = kx;
+      g.rope[i * 2 + 1] = g.prev[i * 2 + 1] = ky + i * g.seg;
+    }
+    g.loose = false;
+  }
+
+  /** Dónde debería estar ahora (esquina superior izquierda), sin vaivén. */
+  function home(g: Globo, scroll: number): [number, number] {
+    // Del hero al contenido: en el primer 60 % de pantalla se repliega hacia el borde.
+    const t = clamp(scroll / (vh * 0.6), 0, 1);
+    const ease = t * t * (3 - 2 * t);
+    const visible = g.inHero + (g.inPage - g.inHero) * ease;
+    const x = g.side < 0 ? visible - g.w : vw - visible;
+    const pageSpan = Math.max(1, document.documentElement.scrollHeight - vh);
+    const progress = clamp(scroll / pageSpan, 0, 1);
+    const y = vh * g.fy - g.h / 2 + (progress - 0.5) * vh * g.drift;
+    return [x, y];
+  }
+
+  /** Qué globos salen, con qué tamaño y márgenes. Se repite al cambiar el tamaño de la ventana. */
+  function layout(snap: boolean) {
+    vw = window.innerWidth;
+    vh = window.innerHeight;
+    const wide = vw >= 1024;
+    const gutter = Math.max(0, (vw - CONTAINER) / 2);
+    // En pantallas grandes crecen un poco; en portátiles, encogen. Encima, el tamaño del panel.
+    const scale = (wide ? clamp(vw / 1440, 0.78, 1.18) : 1) * (settings.size / 100);
+    let shown = 0;
+    for (const g of globos) {
+      const base = wide ? g.wide : g.narrow;
+      const wasActive = g.active;
+      g.active = base > 0 && shown < (wide ? settings.count : settings.countMobile);
+      if (g.active) shown++;
+      g.el.style.display = g.active ? '' : 'none';
+      if (!g.active) {
+        g.path.setAttribute('d', '');
+        continue;
+      }
+      g.w = Math.round(base * scale);
+      g.h = Math.round(g.w * g.ratio);
+      g.el.style.width = `${g.w}px`;
+      g.el.style.height = `${g.h}px`;
+      // La foto se pide al activarse el globo, con el tamaño justo para su ancho y la pantalla.
+      const need = g.w * Math.min(window.devicePixelRatio || 1, 2);
+      const file = `/images/globos/${g.tone}-${need > 320 ? 640 : need > 160 ? 320 : 160}.webp`;
+      if (!g.img.src.endsWith(file)) g.img.src = file;
+      g.seg = (g.h * g.string * (curly ? 0.8 : 1)) / (ROPE_POINTS - 1);
+      if (curly) g.path.style.strokeWidth = String(clamp(g.w / 70, 1.6, 3.2));
+      g.inHero = Math.min(g.w * g.show, wide ? g.w * 1.6 : g.w * 0.62);
+      // Sobre el contenido: lo que quepa en el margen de la página más un poco, nunca todo el globo.
+      g.inPage = Math.min(gutter + g.peek, g.w * (wide ? 0.72 : 0.5));
+      if (snap || !wasActive) {
+        [g.x, g.y] = home(g, window.scrollY);
+        g.vx = g.vy = 0;
+        g.lagScroll = window.scrollY;
+        hangRope(g);
+      }
+    }
+  }
+
+  function stepRope(g: Globo, dt: number) {
+    const { rope, prev } = g;
+    const damp = Math.pow(curly ? 0.962 : 0.985, dt * 60);
+    const gravity = curly ? 640 : GRAVITY;
+    // La cuerda no cede; la serpentina se estira y se encoge como un muelle blando.
+    const stiff = curly ? 0.4 : 1;
+    const bend = curly ? 0.3 : BEND;
+    for (let i = g.loose ? 0 : 1; i < ROPE_POINTS; i++) {
+      const xi = i * 2;
+      const yi = xi + 1;
+      const vx = (rope[xi]! - prev[xi]!) * damp;
+      const vy = (rope[yi]! - prev[yi]!) * damp;
+      prev[xi] = rope[xi]!;
+      prev[yi] = rope[yi]!;
+      rope[xi] = rope[xi]! + vx;
+      rope[yi] = rope[yi]! + vy + gravity * dt * dt;
+    }
+    const pin = () => {
+      if (g.loose) return;
+      const [kx, ky] = knot(g);
+      rope[0] = kx;
+      rope[1] = ky;
+    };
+    pin();
+    for (let pass = 0; pass < 6; pass++) {
+      // Largo de cada tramo.
+      for (let i = 0; i < ROPE_POINTS - 1; i++) {
+        const a = i * 2;
+        const b = a + 2;
+        const dx = rope[b]! - rope[a]!;
+        const dy = rope[b + 1]! - rope[a + 1]!;
+        const dist = Math.hypot(dx, dy) || 1;
+        const diff = ((dist - g.seg) / dist) * stiff;
+        const pinned = i === 0 && !g.loose;
+        if (!pinned) {
+          rope[a] = rope[a]! + dx * diff * 0.5;
+          rope[a + 1] = rope[a + 1]! + dy * diff * 0.5;
+        }
+        const share = pinned ? 1 : 0.5;
+        rope[b] = rope[b]! - dx * diff * share;
+        rope[b + 1] = rope[b + 1]! - dy * diff * share;
+      }
+      // Flexión: cada punto tiende a estar a dos tramos del subsiguiente (la cuerda no se quiebra).
+      for (let i = 0; i < ROPE_POINTS - 2; i++) {
+        const a = i * 2;
+        const b = a + 4;
+        const dx = rope[b]! - rope[a]!;
+        const dy = rope[b + 1]! - rope[a + 1]!;
+        const dist = Math.hypot(dx, dy) || 1;
+        const diff = ((dist - g.seg * 2) / dist) * bend;
+        const pinned = i === 0 && !g.loose;
+        if (!pinned) {
+          rope[a] = rope[a]! + dx * diff * 0.5;
+          rope[a + 1] = rope[a + 1]! + dy * diff * 0.5;
+        }
+        const share = pinned ? 1 : 0.5;
+        rope[b] = rope[b]! - dx * diff * share;
+        rope[b + 1] = rope[b + 1]! - dy * diff * share;
+      }
+      pin();
+    }
+  }
+
+  /**
+   * Serpentina: la cadena es el eje y el rizo se dibuja alrededor. Cada vuelta combina un vaivén
+   * de lado con otro a lo largo, así que se ven bucles y no una onda plana. Nace recta en el nudo
+   * y, donde un tramo se estira, el rizo se abre, como una cinta rizada de la que se tira.
+   */
+  function drawCurl(g: Globo) {
+    const r = g.rope;
+    const spans = ROPE_POINTS - 1;
+    const STEPS = 8;
+    const turns = 7.5;
+    const amp = clamp(g.w * 0.06, 3.5, 11);
+    let d = '';
+    for (let i = 0; i < spans; i++) {
+      const ax = r[i * 2]!;
+      const ay = r[i * 2 + 1]!;
+      const dx = r[i * 2 + 2]! - ax;
+      const dy = r[i * 2 + 3]! - ay;
+      const len = Math.hypot(dx, dy) || 1;
+      const tx = dx / len;
+      const ty = dy / len;
+      const open = clamp(g.seg / len, 0.35, 1.3);
+      for (let s = 0; s < STEPS; s++) {
+        const t = (i + s / STEPS) / spans;
+        const grow = Math.min(1, t * 5);
+        const turn = t * turns * Math.PI * 2 + g.phase * 2;
+        const side = Math.sin(turn) * amp * grow * open;
+        const along = Math.cos(turn) * amp * 0.5 * grow * open;
+        const x = ax + dx * (s / STEPS) - ty * side + tx * along;
+        const y = ay + dy * (s / STEPS) + tx * side + ty * along;
+        d += `${d ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`;
+      }
+    }
+    g.path.setAttribute('d', d);
+  }
+
+  function drawRope(g: Globo) {
+    if (curly) return drawCurl(g);
+    const r = g.rope;
+    let d = `M${r[0]!.toFixed(1)} ${r[1]!.toFixed(1)}`;
+    for (let i = 1; i < ROPE_POINTS - 1; i++) {
+      const mx = (r[i * 2]! + r[i * 2 + 2]!) / 2;
+      const my = (r[i * 2 + 1]! + r[i * 2 + 3]!) / 2;
+      d += `Q${r[i * 2]!.toFixed(1)} ${r[i * 2 + 1]!.toFixed(1)} ${mx.toFixed(1)} ${my.toFixed(1)}`;
+    }
+    d += `L${r[ROPE_POINTS * 2 - 2]!.toFixed(1)} ${r[ROPE_POINTS * 2 - 1]!.toFixed(1)}`;
+    g.path.setAttribute('d', d);
+  }
+
+  function place(g: Globo) {
+    g.el.style.transform = `translate3d(${g.x.toFixed(2)}px, ${g.y.toFixed(2)}px, 0) rotate(${g.ang.toFixed(2)}deg)`;
+  }
+
+  /** Dos globos que se solapan se empujan en sentidos opuestos, como cuerpos blandos. */
+  function bump(dt: number) {
+    for (let i = 0; i < globos.length; i++) {
+      const a = globos[i]!;
+      if (!a.active || a.popped) continue;
+      for (let j = i + 1; j < globos.length; j++) {
+        const b = globos[j]!;
+        if (!b.active || b.popped) continue;
+        const dx = b.x + b.w / 2 - (a.x + a.w / 2);
+        const dy = b.y + b.h * 0.42 - (a.y + a.h * 0.42);
+        const reach = a.w * 0.46 + b.w * 0.46;
+        const dist = Math.hypot(dx, dy) || 1;
+        if (dist >= reach) continue;
+        const push = ((reach - dist) / reach) * BUMP * dt * 60;
+        const nx = dx / dist;
+        const ny = dy / dist;
+        // El pequeño se aparta más que el grande; al que se tiene agarrado no se le quita de la mano.
+        const total = a.w + b.w;
+        if (grabbed !== a) {
+          a.vx -= nx * push * (b.w / total);
+          a.vy -= ny * push * (b.w / total);
+        }
+        if (grabbed !== b) {
+          b.vx += nx * push * (a.w / total);
+          b.vy += ny * push * (a.w / total);
+        }
+      }
+    }
+  }
+
+  function tick(now: number) {
+    const dt = Math.min((now - last) / 1000 || 1 / 60, 1 / 24);
+    last = now;
+    clock += dt;
+    const scroll = window.scrollY;
+    const lag = 1 - Math.exp(-dt / LAG);
+    bump(dt);
+
+    for (const g of globos) {
+      if (!g.active) continue;
+      g.lagScroll += (scroll - g.lagScroll) * lag;
+      // Cuánto le falta para alcanzar a la página: eso lo desplaza y lo ladea.
+      const behind = clamp((g.lagScroll - scroll) * g.drag, -vh * 0.45, vh * 0.45);
+
+      if (!g.popped) {
+        const [hx, hy] = home(g, scroll);
+        const wave = ((clock + g.phase) / g.period) * Math.PI * 2;
+        let tx = hx + Math.sin(wave * 0.5) * 3;
+        let ty = hy + behind + Math.sin(wave) * BOB;
+        let k = K;
+        let c = C;
+        if (grabbed === g) {
+          tx = grabX;
+          ty = grabY;
+          k = K_DRAG;
+          c = C_DRAG;
+        }
+        g.vx += ((tx - g.x) * k - g.vx * c) * dt;
+        g.vy += ((ty - g.y) * k - g.vy * c) * dt;
+        g.x += g.vx * dt;
+        g.y += g.vy * dt;
+
+        // Se ladea hacia donde se mueve y mientras la página tira de él; luego se endereza.
+        const lean = clamp(g.vx * 0.045, -18, 18) + clamp(behind * 0.05, -8, 8) * g.side;
+        g.angV += ((g.tilt + lean - g.ang) * K_ANG - g.angV * C_ANG) * dt;
+        g.ang += g.angV * dt;
+        place(g);
+      }
+      if (settings.strings) {
+        // Tres pasos por cuadro: la cuerda aguanta tirones sin estirarse.
+        stepRope(g, dt / 3);
+        stepRope(g, dt / 3);
+        stepRope(g, dt / 3);
+        drawRope(g);
+      }
+    }
+    frame = document.hidden ? 0 : requestAnimationFrame(tick);
+  }
+
+  function wake() {
+    if (frame || document.hidden) return;
+    last = performance.now();
+    frame = requestAnimationFrame(tick);
+  }
+
+  /** ¿Se ve el globo en este punto, o lo tapa contenido? Los globos van bajo `.contenedor`. */
+  function exposed(target: Element | null): boolean {
+    if (!target || target.closest(CONTENT)) return false;
+    let opaque = false;
+    let inContainer = false;
+    for (let el: Element | null = target; el && el !== document.body; el = el.parentElement) {
+      const style = getComputedStyle(el);
+      // Encabezado fijo, avisos y barras flotantes van por encima de la bandada.
+      if (style.position === 'fixed' || style.position === 'sticky') return false;
+      if (inContainer) continue;
+      if (style.backgroundImage !== 'none' || !/rgba\(\d+, \d+, \d+, 0\)|transparent/.test(style.backgroundColor)) opaque = true;
+      if (el.classList.contains('contenedor')) inContainer = true;
+    }
+    // Fuera de un contenedor, lo que hay bajo el puntero es el fondo de la sección: el globo va encima.
+    return !(inContainer && opaque);
+  }
+
+  /** ¿Qué globo hay bajo este punto de la ventana? El de más encima (último del DOM) gana. */
+  function hit(clientX: number, clientY: number): Globo | null {
+    for (let i = globos.length - 1; i >= 0; i--) {
+      const g = globos[i]!;
+      if (!g.active || g.popped) continue;
+      const nx = (clientX - (g.x + g.w / 2)) / (g.w * 0.5);
+      const ny = (clientY - (g.y + g.h * 0.44)) / (g.h * 0.46);
+      if (nx * nx + ny * ny <= 1) return g;
+    }
+    return null;
+  }
+
+  function burst(g: Globo, host: HTMLElement) {
+    const cx = g.x + g.w / 2;
+    const cy = g.y + g.h * 0.44;
+    const scale = Math.max(0.5, g.w / 160);
+    const ring = g.w * 0.5;
+
+    const flash = document.createElement('span');
+    flash.className = 'bandada-destello';
+    flash.style.cssText = `width:${ring}px;height:${ring}px;color:${g.latex};`;
+    host.appendChild(flash);
+    const at = `translate(${cx - ring / 2}px, ${cy - ring / 2}px)`;
+    flash
+      .animate(
+        [
+          { transform: `${at} scale(0.6)`, opacity: 0.9 },
+          { transform: `${at} scale(2.3)`, opacity: 0 },
+        ],
+        { duration: 260, easing: 'cubic-bezier(0.2, 0.8, 0.3, 1)' },
+      )
+      .finished.then(() => flash.remove());
+
+    // Trozos de látex: salen disparados, giran y caen.
+    const pieces = Math.round(12 + Math.min(10, g.w / 30));
+    for (let i = 0; i < pieces; i++) {
+      const piece = document.createElement('span');
+      piece.className = 'bandada-trozo';
+      const angle = (i / pieces) * Math.PI * 2 + Math.random() * 0.6;
+      const reach = (70 + Math.random() * 150) * scale;
+      const dx = Math.cos(angle) * reach;
+      const dy = Math.sin(angle) * reach;
+      const fall = (60 + Math.random() * 140) * scale;
+      const spin = (Math.random() - 0.5) * 900;
+      const radius = [30 + Math.random() * 50, 20 + Math.random() * 40, 40 + Math.random() * 50, 15 + Math.random() * 40]
+        .map((r) => `${r.toFixed(0)}%`)
+        .join(' ');
+      piece.style.cssText = `width:${((7 + Math.random() * 13) * scale).toFixed(1)}px;height:${((4 + Math.random() * 8) * scale).toFixed(1)}px;background:${g.latex};border-radius:${radius};`;
+      host.appendChild(piece);
+      piece
+        .animate(
+          [
+            { transform: `translate(${cx}px, ${cy}px) rotate(0deg) scale(1)`, opacity: 1 },
+            { transform: `translate(${cx + dx}px, ${cy + dy}px) rotate(${spin * 0.6}deg) scale(1)`, opacity: 1, offset: 0.45 },
+            { transform: `translate(${cx + dx * 1.15}px, ${cy + dy + fall}px) rotate(${spin}deg) scale(0.6)`, opacity: 0 },
+          ],
+          { duration: 620 + Math.random() * 380, easing: 'cubic-bezier(0.15, 0.7, 0.3, 1)' },
+        )
+        .finished.then(() => piece.remove());
+    }
+  }
+
+  function pop(g: Globo, host: HTMLElement) {
+    if (g.popped) return;
+    g.popped = true;
+    if (grabbed === g) release(0, 0);
+    burst(g, host);
+    g.img.animate(
+      [
+        { transform: 'scale(1)', opacity: 1 },
+        { transform: 'scale(1.16)', opacity: 1, offset: 0.4 },
+        { transform: 'scale(0.3)', opacity: 0 },
+      ],
+      { duration: 130, easing: 'ease-out', fill: 'forwards' },
+    );
+    // La cuerda se suelta y cae; luego se desvanece.
+    g.loose = true;
+    g.path.animate([{ opacity: 0.8 }, { opacity: 0.8, offset: 0.6 }, { opacity: 0 }], { duration: 1300, fill: 'forwards' });
+    window.setTimeout(() => respawn(g), RESPAWN);
+  }
+
+  /** Sube un globo nuevo desde debajo de la ventana hasta su sitio. */
+  function respawn(g: Globo) {
+    for (const animation of [...g.img.getAnimations(), ...g.path.getAnimations()]) animation.cancel();
+    const [hx] = home(g, window.scrollY);
+    g.x = hx;
+    g.y = vh + 40;
+    g.vx = 0;
+    g.vy = 0;
+    g.ang = g.tilt;
+    g.angV = 0;
+    g.popped = false;
+    g.lastTap = 0;
+    place(g);
+    hangRope(g);
+    wake();
+  }
+
+  function release(vx: number, vy: number) {
+    if (!grabbed) return;
+    grabbed.vx = vx;
+    grabbed.vy = vy;
+    grabbed = null;
+    root.classList.remove('globo-agarrado');
+  }
+
+  function trackPointer(event: PointerEvent) {
+    const now = performance.now();
+    const dt = Math.max((now - lastPT) / 1000, 1 / 240);
+    if (lastPT && dt < 0.2) {
+      // Media móvil: un solo evento brusco no decide el lanzamiento.
+      pvx = pvx * 0.6 + ((event.clientX - lastPX) / dt) * 0.4;
+      pvy = pvy * 0.6 + ((event.clientY - lastPY) / dt) * 0.4;
+    } else {
+      pvx = pvy = 0;
+    }
+    lastPX = event.clientX;
+    lastPY = event.clientY;
+    lastPT = now;
+  }
+
+  /** Un toque lo golpea desde donde se tocó; dos seguidos lo revientan (si está permitido). */
+  function tap(g: Globo, clientX: number, clientY: number, host: HTMLElement) {
+    const now = performance.now();
+    if (settings.pop && now - g.lastTap < DOUBLE_TAP) {
+      pop(g, host);
+      return;
+    }
+    g.lastTap = now;
+    const dx = g.x + g.w / 2 - clientX;
+    const dy = g.y + g.h * 0.44 - clientY;
+    const dist = Math.hypot(dx, dy) || 1;
+    g.vx += (dx / dist) * 380 + (Math.random() - 0.5) * 60;
+    g.vy += (dy / dist) * 380 - 120;
+    g.angV += (dx >= 0 ? 1 : -1) * 160;
+  }
+
+  function listen(host: HTMLElement) {
+    addEventListener(
+      'pointermove',
+      (event) => {
+        trackPointer(event);
+        if (grabbed) {
+          grabX = event.clientX - pressX;
+          grabY = event.clientY - pressY;
+          grabMoved += Math.abs(event.movementX) + Math.abs(event.movementY);
+          return;
+        }
+        if (event.pointerType === 'touch') return;
+        const over = hit(event.clientX, event.clientY);
+        const reachable = over && exposed(event.target as Element | null) ? over : null;
+        root.classList.toggle('globo-a-mano', Boolean(reachable));
+        if (reachable) {
+          // El cursor empuja al pasar: tanto más cuanto más rápido va.
+          const push = Math.min(Math.hypot(pvx, pvy) / 400, 1) * 0.07;
+          reachable.vx += clamp(pvx, -1800, 1800) * push;
+          reachable.vy += clamp(pvy, -1800, 1800) * push;
+          reachable.angV += clamp(pvx, -1800, 1800) * 0.05;
+        }
+      },
+      { passive: true },
+    );
+
+    addEventListener('pointerdown', (event) => {
+      if (event.button !== 0) return;
+      const g = hit(event.clientX, event.clientY);
+      if (!g || !exposed(event.target as Element | null)) return;
+      trackPointer(event);
+      if (event.pointerType === 'touch') {
+        // En táctil no se arrastra (el dedo desplaza la página): un toque lo golpea, dos lo revientan.
+        tap(g, event.clientX, event.clientY, host);
+        return;
+      }
+      event.preventDefault(); // sin selección de texto mientras se arrastra
+      // Punto del globo que se agarró, para que no salte al centro del cursor.
+      pressX = event.clientX - g.x;
+      pressY = event.clientY - g.y;
+      grabbed = g;
+      grabX = g.x;
+      grabY = g.y;
+      grabMoved = 0;
+      pvx = pvy = 0;
+      root.classList.add('globo-agarrado');
+    });
+
+    addEventListener('pointerup', (event) => {
+      const g = grabbed;
+      if (!g) return;
+      if (grabMoved < 6) {
+        release(0, 0);
+        tap(g, event.clientX, event.clientY, host);
+      } else {
+        // Lo lanza con la velocidad que llevaba la mano.
+        release(clamp(pvx, -2600, 2600), clamp(pvy, -2600, 2600));
+        g.lastTap = 0;
+      }
+    });
+    addEventListener('pointercancel', () => release(0, 0));
+    root.addEventListener('pointerleave', () => root.classList.remove('globo-a-mano'));
+  }
+
+  const reading = document.body.dataset.pageType === 'blog_post';
+  if (layer && settings.enabled && (!reading || settings.articles)) {
+    const host = layer;
+    build(host);
+    layout(true);
+    for (const g of globos) {
+      if (!g.active) continue;
+      place(g);
+      if (settings.strings) drawRope(g);
+    }
+    host.dataset.vivo = '';
+
+    if (!reduce.matches) {
+      addEventListener('scroll', wake, { passive: true });
+      addEventListener('resize', () => {
+        layout(true);
+        wake();
+      });
+      addEventListener('load', () => layout(false));
+      document.addEventListener('visibilitychange', wake);
+      if (settings.interactive) listen(host);
+      wake();
+    }
+  }
+</script>

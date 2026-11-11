@@ -9,6 +9,7 @@ import Seo from '@/components/Seo.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import GeoToast from '@/components/GeoToast.astro';
+import BalloonFlock from '@/components/BalloonFlock.astro';
 import type { Country } from '@/lib/countries';
 import type { ArticleMeta } from '@/components/Seo.astro';
 import type { HreflangAlternate } from '@/lib/seo';
@@ -117,6 +118,9 @@ const emdashPage:PublicPageContext={url:Astro.url.href,path:Astro.url.pathname,l
     >
       Saltar al contenido
     </a>
+    {/* Globos que acompañan el recorrido. Cuántos y dónde se decide en el panel (plugin
+        globos-balloons); en los artículos, por defecto, no salen. */}
+    {pageType !== 'sitemap' && <BalloonFlock />}
     <Header {country} {pathAfterCountry} transparent={transparentHeader} />
     <main id="main">
       <slot />
@@ -139,6 +143,49 @@ const emdashPage:PublicPageContext={url:Astro.url.href,path:Astro.url.pathname,l
         }
         trackEvent(el.dataset.track, params);
       });
+
+      // Portada y blog no tienen país: enlazan las fichas de /co/ (la versión x-default). Quien
+      // lee desde otro país debe llegar a la suya, con su moneda. El cambio se hace al pulsar y no
+      // en el HTML, para que los buscadores sigan viendo los enlaces canónicos de siempre.
+      if (!document.body.dataset.country) {
+        const SUPPORTED = ['co', 'mx', 'pe', 'ec', 'cl', 'ar', 'es', 'us'];
+        const read = (store: Storage, key: string) => {
+          try {
+            return store.getItem(key) ?? '';
+          } catch {
+            return '';
+          }
+        };
+        let visitor = read(localStorage, 'cdgo-country') || read(sessionStorage, 'cdgo-geo');
+        if (!visitor) {
+          fetch('/cdn-cgi/trace', { cache: 'no-store' })
+            .then((res) => res.text())
+            .then((trace) => {
+              const loc = trace.match(/^loc=([A-Z]{2})$/m)?.[1]?.toLowerCase() ?? '';
+              if (!SUPPORTED.includes(loc)) return;
+              visitor = loc;
+              try {
+                sessionStorage.setItem('cdgo-geo', loc);
+              } catch {
+                /* almacenamiento bloqueado: vale para esta página */
+              }
+            })
+            .catch(() => {
+              /* sin Cloudflare (dev): se quedan los enlaces de /co/ */
+            });
+        }
+        document.addEventListener(
+          'click',
+          (e) => {
+            if (!SUPPORTED.includes(visitor) || visitor === 'co') return;
+            const link = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="/co/"]');
+            const href = link?.getAttribute('href') ?? '';
+            // Solo home de país, catálogo y fichas: las ciudades no existen en otros países.
+            if (link && /^\/co\/(?:$|cursos?(?:-|\/))/.test(href)) link.setAttribute('href', `/${visitor}/${href.slice(4)}`);
+          },
+          true,
+        );
+      }
 
       // scroll_depth 25/50/75/100 (plan de medición §10)
       const marks = [25, 50, 75, 100];

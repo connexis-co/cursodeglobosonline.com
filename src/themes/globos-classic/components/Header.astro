@@ -1,4 +1,5 @@
 ---
+import { sortCourses } from '@/lib/course-order';
 import ResponsiveImage from '@/components/ResponsiveImage.astro';
 import {navigation} from "@/lib/cms/navigation";
 import MenuLinks from "./MenuLinks.astro";
@@ -27,9 +28,7 @@ const primaryMenu=await navigation("primary",cc);
 const current = country ?? COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
 const waUrl = buildWhatsAppUrl(current.whatsapp, 'Hola 🎈 Quiero información sobre los cursos de decoración con globos.');
 
-const courses = (await getCollection('courses')).sort(
-  (a, b) => Number(b.data.featured) - Number(a.data.featured),
-);
+const courses = sortCourses(await getCollection('courses'));
 const activeCategories = CATEGORIES.filter((cat) => courses.some((c) => c.data.category === cat.slug));
 ---
 

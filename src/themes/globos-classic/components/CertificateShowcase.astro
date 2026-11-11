@@ -1,73 +1,199 @@
 ---
-import ResponsiveImage from '@/components/ResponsiveImage.astro';
 /**
- * Muestra del certificado con globo flotante de acento.
- * Hoy la imagen es un mockup fotográfico (papel en blanco con borde y sello dorados, sin texto
- * falso), así que se rotula «Ejemplo ilustrativo» (auditoría P1-10). Cuando exista un
- * certificado real de muestra (nombre de demo o de un alumno que lo autorice), pasar su ruta en
- * `src` con `illustrative={false}`.
+ * Certificado de muestra, compuesto en HTML y CSS (texto nítido a cualquier tamaño; nada de
+ * imágenes generadas ni letreros de «ejemplo ilustrativo»). Lleva un nombre de demostración, el
+ * curso de la página, la productora y el logo de Hotmart, que es quien emite el certificado.
+ *
+ * Decisión de JP (11-11-2026): el logo de Hotmart sí se usa donde se informa del pago y de la
+ * emisión del certificado. Sustituye a la regla anterior de no usarlo en ningún sitio.
  */
-import Icon from '@/components/Icon.astro';
-
 interface Props {
   courseName?: string;
-  /** Imagen del certificado (por defecto, el mockup en blanco). */
-  src?: string;
-  /** Rotula la imagen como ejemplo; obligatorio mientras sea un mockup. */
-  illustrative?: boolean;
+  /** Productora que firma el certificado. */
+  producer?: string;
+  /** Nombre de demostración. */
+  student?: string;
 }
-const { courseName = 'el curso', src = '/images/certificado-mockup.jpg', illustrative = true } = Astro.props;
-const alt = illustrative
-  ? `Ejemplo ilustrativo del certificado de estudios que recibes al completar ${courseName}`
-  : `Certificado de estudios de muestra de ${courseName}`;
+const { courseName = 'Curso de Decoración con Globos', producer = 'MasterClasses.La', student = 'Laura Marcela Rojas' } = Astro.props;
 ---
 
-<div class="cert-wrap relative mx-auto w-full max-w-md">
-  <div class="cert scroll-reveal-late relative rotate-[-2deg] overflow-hidden rounded-2xl border-4 border-white shadow-globo">
-    <ResponsiveImage sizes="(min-width: 448px) 448px, calc(100vw - 48px)" maxWidth={960}
-      {src}
-      {alt}
-      class="block aspect-[4/3] w-full object-cover"
-      loading="lazy"
-      decoding="async"
-      width="1100"
-      height="825"
-    />
-    {
-      illustrative && (
-        <span class="absolute top-3 right-3 rounded-full bg-ciruela-900/80 px-3 py-1 text-[0.7rem] font-bold tracking-wide text-crema-50 backdrop-blur-sm">
-          Ejemplo ilustrativo
-        </span>
-      )
-    }
-    <span
-      class="absolute bottom-4 left-4 inline-flex items-center gap-1.5 rounded-xl bg-white/92 px-4 py-2 text-xs font-bold text-ciruela-700 backdrop-blur-sm"
-    >
-      <Icon name="birrete" class="text-coral-600" />
-      Certificado de estudios · verificable en línea
-    </span>
+<figure class="cert-wrap relative mx-auto w-full max-w-lg">
+  <div class="cert" role="img" aria-label={`Certificado de estudios del ${courseName} a nombre de ${student}, emitido a través de Hotmart`}>
+    <div class="cert-hoja" aria-hidden="true">
+      <div class="cert-cabeza">
+        <img src="/brand/hotmart.svg" alt="" width="96" height="31" loading="lazy" decoding="async" />
+        <span>Certificado n.º 2026-0417-GLB</span>
+      </div>
+      <p class="cert-titulo">Certificado de estudios</p>
+      <p class="cert-linea">Se certifica que</p>
+      <p class="cert-nombre">{student}</p>
+      <p class="cert-linea">completó satisfactoriamente el</p>
+      <p class="cert-curso">{courseName}</p>
+      <p class="cert-linea">curso en línea impartido por {producer}</p>
+      <div class="cert-pie">
+        <div>
+          <svg viewBox="0 0 120 34" focusable="false">
+            <path d="M4 24c8-14 13-18 16-14 3 5-9 15-5 17 5 2 12-16 18-15 4 1-3 12 1 13 5 1 9-12 14-11 3 1-1 9 3 10 6 1 10-8 16-8 5 0 3 7 9 7 7 0 12-6 20-7 6 0 11 3 20 2" />
+          </svg>
+          <span>{producer}</span>
+          <small>Productora del curso</small>
+        </div>
+        <div class="cert-sello">
+          <span>100 %</span>
+          <small>completado</small>
+        </div>
+        <div>
+          <b>14 de octubre de 2026</b>
+          <span>Fecha de emisión</span>
+          <small>Verificable en línea</small>
+        </div>
+      </div>
+    </div>
   </div>
+  <figcaption class="mt-4 text-center text-sm text-ciruela-500">
+    Tu certificado llega con tu nombre, el curso y la fecha en que lo terminaste.
+  </figcaption>
   <!-- globo que asoma detrás del certificado -->
-  <svg
-    class="animate-floating absolute -top-9 -right-3 -z-10 h-24 w-16 sm:-right-7"
+  <img
+    class="animate-floating absolute -top-10 -right-3 -z-10 w-[4.5rem] sm:-right-8"
     style="animation-duration: 3.4s; animation-delay: -0.6s"
-    viewBox="0 0 40 62"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
+    src="/images/globos/sol-160.webp"
+    srcset="/images/globos/sol-160.webp 160w, /images/globos/sol-320.webp 320w"
+    sizes="72px"
+    width="72"
+    height="97"
+    alt=""
     aria-hidden="true"
-  >
-    <ellipse cx="20" cy="19" rx="17" ry="19" fill="oklch(0.84 0.145 85)"></ellipse>
-    <ellipse cx="14" cy="11" rx="5" ry="7" fill="white" opacity="0.32" transform="rotate(-16 14 11)"></ellipse>
-    <path d="M20 38 l-2.6 4 h5.2 Z" fill="oklch(0.84 0.145 85)"></path>
-    <path d="M20 42.5 q-4 7 0.5 13" stroke="oklch(0.62 0.12 70)" stroke-opacity="0.5" stroke-width="1.3" fill="none" stroke-linecap="round"></path>
-  </svg>
-</div>
+    loading="lazy"
+    decoding="async"
+  />
+</figure>
 
 <style>
   .cert {
-    transition: transform 0.5s var(--ease-fiesta);
+    container-type: inline-size;
   }
-  .cert-wrap:hover .cert {
-    transform: rotate(-0.3deg) scale(1.02);
+  /* Todas las medidas van en cqw: el certificado escala entero con su ancho. */
+  .cert-hoja {
+    aspect-ratio: 1.414 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5.2cqw 6cqw 4.6cqw;
+    background: #fffdf8;
+    color: #1f1b2e;
+    border-radius: 0.6cqw;
+    outline: 0.35cqw solid #c9a45c;
+    outline-offset: -2.4cqw;
+    box-shadow:
+      0 0 0 1px oklch(0.9 0.02 85),
+      0 1.2cqw 2.4cqw -0.8cqw oklch(0.3 0.05 290 / 0.18),
+      0 4cqw 7cqw -3cqw oklch(0.3 0.05 290 / 0.28);
+    text-align: center;
+    line-height: 1.2;
+  }
+  .cert-cabeza {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.9cqw;
+    letter-spacing: 0.04em;
+    color: #6b6577;
+  }
+  .cert-cabeza img {
+    width: 19cqw;
+    height: auto;
+  }
+  .cert-titulo {
+    margin-top: 3.6cqw;
+    font-family: var(--font-display);
+    font-size: 6.4cqw;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .cert-linea {
+    margin-top: 1.9cqw;
+    font-size: 2.5cqw;
+    color: #5a5468;
+  }
+  .cert-nombre {
+    margin-top: 1.2cqw;
+    padding: 0 4cqw 1cqw;
+    border-bottom: 0.2cqw solid #c9a45c;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 6cqw;
+    font-style: italic;
+  }
+  .cert-curso {
+    margin-top: 1.2cqw;
+    font-family: var(--font-display);
+    font-size: 4.2cqw;
+    font-weight: 700;
+    color: var(--color-coral-700);
+  }
+  .cert-pie {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+    gap: 3cqw;
+    margin-top: auto;
+    font-size: 2.2cqw;
+  }
+  .cert-pie > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cert-pie svg {
+    width: 20cqw;
+    height: auto;
+    overflow: visible;
+  }
+  .cert-pie path {
+    fill: none;
+    stroke: #1f1b2e;
+    stroke-width: 1.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .cert-pie span,
+  .cert-pie b {
+    width: 100%;
+    padding-top: 0.6cqw;
+    border-top: 0.15cqw solid #b9b3c2;
+    font-weight: 700;
+  }
+  .cert-pie b {
+    border-top: 0;
+    padding: 0 0 0.6cqw;
+    font-weight: 600;
+  }
+  .cert-pie small {
+    font-size: 1.8cqw;
+    color: #6b6577;
+  }
+  .cert-sello {
+    width: 13cqw;
+    height: 13cqw;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 0.35cqw solid #c9a45c;
+    box-shadow: inset 0 0 0 0.9cqw #fffdf8, inset 0 0 0 1.1cqw #c9a45c;
+    color: #8a6a26;
+  }
+  .cert-sello span {
+    width: auto;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-display);
+    font-size: 3.4cqw;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .cert-sello small {
+    font-size: 1.5cqw;
+    color: inherit;
   }
 </style>

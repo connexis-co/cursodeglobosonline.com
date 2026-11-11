@@ -7,7 +7,6 @@ import { getCategory } from '@/lib/emdash-content';
 import { coursePricing, usd } from '@/lib/pricing';
 import { getCourseRating } from '@/lib/ratings';
 import { MIN_VOTES_FOR_SCHEMA } from '@/lib/ratings-config';
-import CourseCover from './CourseCover.astro';
 import Icon from './Icon.astro';
 import Rating from './Rating.astro';
 
@@ -66,16 +65,14 @@ const imgClass = [
       d.cover ? (
         <ResponsiveImage sizes={large || horizontal ? "(min-width: 1200px) 560px, (min-width: 768px) 45vw, calc(100vw - 48px)" : "(min-width: 1200px) 360px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 48px)"} maxWidth={1280}
           src={d.cover}
-          alt={`Imagen del ${d.title}`}
+          alt={d.coverAlt ?? `${d.title}: ${d.learnings[0] ?? d.shortDescription}`}
           class={imgClass}
           loading="lazy"
           decoding="async"
           width="600"
           height="600"
         />
-      ) : (
-        <CourseCover slug={course.id} category={d.category} title={d.title} class={imgClass} />
-      )
+      ) : null
     }
     <span
       class="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 py-1 pr-3 pl-2.5 text-xs font-extrabold text-ciruela-700 backdrop-blur-sm"

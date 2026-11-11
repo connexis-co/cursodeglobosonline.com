@@ -23,3 +23,15 @@ test('promotion checkout keeps affiliate attribution and rejects unsafe destinat
  const url=new URL(checkoutFor(promo,''));assert.equal(url.searchParams.get('ref'),'affiliate');assert.equal(url.searchParams.get('offDiscount'),'ABC');
  assert.throws(()=>checkoutFor({...promo,checkoutUrl:'javascript:alert(1)'},''));assert.throws(()=>checkoutFor({...promo,checkoutUrl:'https://evil.example/'},''));
 });
+
+test('opciones de los globos: límites del panel y valores por defecto',async()=>{
+ const {DEFAULT_SETTINGS:defaults,validateSettings:validate,LIMITS}=await import('../src/plugins/globos-balloons/model.ts');
+ assert.deepEqual(validate(defaults),defaults);
+ assert.equal(validate({...defaults,stringStyle:'serpentina'}).stringStyle,'serpentina');
+ assert.equal(validate({...defaults,stringStyle:undefined}).stringStyle,'cuerda');
+ assert.throws(()=>validate({...defaults,count:LIMITS.count+1}),/Cantidad en escritorio/);
+ assert.throws(()=>validate({...defaults,countMobile:-1}),/Cantidad en móvil/);
+ assert.throws(()=>validate({...defaults,size:10}),/Tamaño/);
+ assert.throws(()=>validate({...defaults,stringStyle:'cadena'}),/Tipo de cuerda/);
+ assert.throws(()=>validate({...defaults,enabled:'sí'}),/Mostrar globos/);
+});

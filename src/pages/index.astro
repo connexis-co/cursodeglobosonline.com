@@ -1,4 +1,5 @@
 ---
+import { sortCourses } from '@/lib/course-order';
 import ResponsiveImage from '@/components/ResponsiveImage.astro';
 import RichBody from '@/components/RichBody.astro';
 import { getDocument } from '@/lib/emdash-content';
@@ -9,7 +10,6 @@ import { getCountrySummaries as getCountries } from '@/lib/emdash-content';
 import { getCollection } from '@/lib/emdash-content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Balloons from '@/components/Balloons.astro';
-import Wave from '@/components/Wave.astro';
 import TrustBar from '@/components/TrustBar.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import CourseCard from '@/components/CourseCard.astro';
@@ -25,12 +25,17 @@ import { buildWhatsAppUrl } from '@/lib/hotmart';
 import type { IconName } from '@/lib/icons';
 import { countryAlternates, faqSchema } from '@/lib/seo';
 import { SITE } from '@/lib/site';
+import { GENERAL_COURSE } from '@/lib/course-order';
+import { coursePricing } from '@/lib/pricing';
 
-const courses = courseEntries.sort(
-  (a, b) => Number(b.data.featured) - Number(a.data.featured),
-);
+const courses = sortCourses(courseEntries);
 const featured = courses.find((c) => c.data.featured) ?? courses[0];
 const others = courses.filter((c) => c.id !== featured?.id);
+// Curso general: destino del texto ancla «curso de decoración con globos» desde la portada.
+const general = courses.find((c) => c.id === GENERAL_COURSE);
+// Botón del curso destacado: nombra su descuento solo si lo tiene publicado.
+const featuredPct = featured ? coursePricing(featured.data).discountPct : undefined;
+const featuredLabel = featured ? `${featured.data.title}${featuredPct ? ` con ${featuredPct}% OFF` : ''}` : 'Ver los cursos';
 // Reseñas reales de Hotmart (sustituyen a los testimonios placeholder del lanzamiento).
 const testimonials = testimonialEntries.slice(0, 6);
 // Las 3 guías más recientes del blog: enlazado interno home → blog (clusters informacionales).
@@ -62,13 +67,8 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
     <Balloons variant="hero" />
 
     <div class="contenedor relative pt-14 pb-20 text-center sm:pt-16 lg:pt-20 lg:pb-28">
-      <p
-        class="mx-auto inline-flex items-center gap-2 rounded-full border border-crema-50/20 bg-crema-50/10 px-4 py-1.5 text-xs font-bold tracking-wide backdrop-blur-sm"
-      >
-        {courses.length} cursos · {SITE.stats.students} estudiantes certificados · {SITE.stats.ventures} emprendimientos
-      </p>
       <h1
-        class="mx-auto mt-6 max-w-3xl text-4xl font-semibold text-balance sm:text-5xl lg:text-6xl"
+        class="mx-auto max-w-3xl text-4xl font-semibold text-balance sm:text-5xl lg:text-6xl"
       >
         {copy.heading} <span class="text-coral-300">{copy.highlight}</span>
       </h1>
@@ -87,20 +87,16 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
           {copy.ctaLabel}
         </a>
         <a
-          href={featured?`/co/${featured.id}/`:'/co/cursos/'}
-          class="inline-flex items-center justify-center gap-2.5 rounded-xl border-2 border-crema-50/30 px-5 py-4 text-sm font-bold whitespace-nowrap backdrop-blur-sm transition-all duration-300 hover:border-sol-300 hover:text-sol-300 min-[360px]:px-8"
+          href={`/co/${(general ?? featured)?.id ?? 'cursos'}/`}
+          class="rounded-xl border-2 border-crema-50/30 px-8 py-4 text-center text-sm font-bold transition-colors duration-300 hover:border-sol-300 hover:text-sol-300"
         >
-          <span class="flex h-6 w-6 items-center justify-center rounded-full bg-sol-300 text-ciruela-900">
-            <Icon name="etiqueta" size={14} />
-          </span>
-          {featured?.data.title??'Ver los cursos'}
+          {(general ?? featured)?.data.title ?? 'Ver los cursos'}
         </a>
       </div>
-      <p class="mt-7 text-xs text-crema-100/60">
-        Garantía de 7 días · Pago seguro con Hotmart · Aprende desde tu celular
+      <p class="mt-7 text-sm text-crema-100/70">
+        {courses.length} cursos · {SITE.stats.students} estudiantes certificados · garantía de 7 días
       </p>
     </div>
-    <Wave color="var(--color-crema-50)" />
   </section>
 
   <!-- 2 · BARRA DE CONFIANZA -->
@@ -110,7 +106,6 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
   <section class="contenedor py-16 lg:py-24" id="cursos">
     <div class="flex flex-wrap items-end justify-between gap-6">
       <SectionHeading
-        eyebrow="Catálogo"
         title={copy.catalogTitle}
         lead={copy.catalogLead}
       />
@@ -121,8 +116,8 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
         Ver todos <Icon name="flecha" size={14} />
       </a>
     </div>
-    <!-- Con 4 cursos: destacada (2 filas) + 3 tarjetas + asesoría = grid lleno en lg (3 col.)
-         y en sm (2 col.). Todas las tarjetas llevan h-full para igualar alturas por fila. -->
+    <!-- Con 5 cursos: destacada (2 filas) + 4 tarjetas llenan el grid de 3 columnas; la asesoría
+         va debajo, a lo ancho. Todas las tarjetas llevan h-full para igualar alturas por fila. -->
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <div class="scroll-reveal sm:col-span-2 lg:col-span-1 lg:row-span-2">
         {featured&&<CourseCard course={featured} large class="h-full" />}
@@ -134,16 +129,17 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
           </div>
         ))
       }
-      <div class="scroll-reveal" style={`animation-delay:${others.length * 70}ms`}>
-        <div
-          class="flex h-full flex-col rounded-3xl border-2 border-dashed border-coral-200 bg-coral-50 p-6 transition-transform duration-300 ease-suave hover:rotate-0 sm:rotate-[-0.6deg]"
-        >
-          <p class="text-[0.7rem] font-extrabold tracking-[0.18em] text-coral-700 uppercase">Asesoría gratis</p>
-          <h3 class="mt-2 font-display text-xl font-semibold text-ciruela-900">¿No sabes cuál elegir?</h3>
+      <div class="scroll-reveal sm:col-span-2 lg:col-span-3">
+        <div class="flex h-full flex-col rounded-2xl bg-coral-50 p-6 sm:p-8">
+          <h3 class="font-display text-xl font-semibold text-ciruela-900">¿No sabes cuál elegir?</h3>
           <p class="mt-2 text-sm leading-relaxed text-ciruela-600">
             Te asesoramos por WhatsApp según lo que quieras hacer:
           </p>
-          <ul class="mt-3 space-y-2 text-sm text-ciruela-700">
+          <ul class="mt-3 grid gap-2 text-sm text-ciruela-700 sm:grid-cols-2 lg:grid-cols-4">
+            <li class="flex gap-2">
+              <Icon name="globo" size={15} class="mt-0.5 text-coral-600" />
+              <span>Arcos y guirnaldas: <strong class="font-extrabold">Decoración con globos</strong></span>
+            </li>
             <li class="flex gap-2">
               <Icon name="globo" size={15} class="mt-0.5 text-coral-600" />
               <span>Animación de fiestas: <strong class="font-extrabold">Globoflexia</strong></span>
@@ -181,10 +177,8 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
 
   <!-- 4 · MÉTODO / SHOWCASE -->
   <section class="relative overflow-hidden bg-ciruela-900 text-crema-50">
-    <Wave color="var(--color-crema-50)" flip class="rotate-180" />
     <div class="contenedor grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
       <div class="scroll-reveal">
-        <p class="mb-2 text-xs font-extrabold tracking-[0.22em] text-sol-300 uppercase">El método</p>
         <h2 class="text-3xl font-semibold text-balance sm:text-4xl">
           De tu primera figura a tu primer evento cobrado
         </h2>
@@ -208,14 +202,14 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
           }
         </ul>
         <a
-          href={featured?`/co/${featured.id}/`:'/co/cursos/'}
-          class="mt-9 inline-block rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-ciruela-900 transition-all duration-300 ease-fiesta hover:-translate-y-0.5 hover:bg-sol-300"
+          href="/co/curso-de-globoflexia/"
+          class="mt-9 inline-block rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-ciruela-900 transition-colors duration-300 hover:bg-sol-300"
         >
           Ver el curso de globoflexia
         </a>
       </div>
       <div class="scroll-reveal-late relative mx-auto w-full max-w-md lg:max-w-none">
-        <div class="rotate-2 overflow-hidden rounded-3xl border-4 border-crema-50/15 shadow-globo">
+        <div class="overflow-hidden rounded-2xl">
           <ResponsiveImage sizes="(min-width: 1200px) 560px, (min-width: 1024px) 50vw, (min-width: 448px) 448px, calc(100vw - 48px)" maxWidth={1280}
             src="/images/decoracion-guirnalda.jpg"
             alt="Guirnalda orgánica de globos en tonos coral, crema y dorado decorando un salón de eventos"
@@ -226,55 +220,28 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
             height="825"
           />
         </div>
-        <div
-          class="absolute -bottom-5 -left-4 rotate-[-3deg] rounded-2xl bg-crema-50 px-5 py-3 text-ciruela-800 shadow-globo"
-        >
-          <span class="block font-display text-2xl font-semibold text-coral-600">{SITE.stats.supportVideos}</span>
-          <span class="block text-xs font-bold">videos de apoyo</span>
-        </div>
-        <div
-          class="absolute -top-5 -right-3 rotate-3 rounded-2xl bg-sol-300 px-5 py-3 text-ciruela-900 shadow-globo"
-        >
-          <span class="block font-display text-2xl font-semibold">50%</span>
-          <span class="block text-xs font-bold">OFF globoflexia</span>
-        </div>
       </div>
     </div>
-    <Wave color="var(--color-crema-50)" />
   </section>
 
   <!-- 5 · CÓMO FUNCIONA -->
   <section class="contenedor py-16 lg:py-24">
-    <SectionHeading
-      eyebrow="Cómo funciona"
-      title="Tres pasos y estás practicando hoy mismo"
-      align="center"
-    />
-    <div class="mt-12 grid gap-6 sm:grid-cols-3">
+    <SectionHeading title="Cómo funcionan los cursos: tres pasos" />
+    <ol class="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-3">
       {
         [
-          ['1', 'Inscríbete en Hotmart', 'Pago seguro con tarjeta o métodos locales de tu país, en tu moneda. El acceso llega a tu correo al instante.'],
-          ['2', 'Aprende a tu ritmo', 'Videos paso a paso desde tu celular o computador, con tareas calificadas y asistencia académica.'],
-          ['3', 'Certifícate y cobra', 'Descarga tu certificado de estudios, arma tu portafolio y empieza a cotizar tus primeros pedidos.'],
-        ].map(([num, title, text], i) => (
-          <div
-            class:list={[
-              'scroll-reveal relative rounded-3xl border border-crema-200 bg-white p-7 shadow-tarjeta',
-              i === 1 && 'sm:translate-y-5 sm:rotate-[0.5deg]',
-              i === 0 && 'sm:rotate-[-0.6deg]',
-              i === 2 && 'sm:rotate-[-0.4deg] sm:translate-y-2',
-            ]}
-            style={`animation-delay:${i * 90}ms`}
-          >
-            <span class="font-display absolute -top-6 left-6 text-6xl font-bold text-coral-200" aria-hidden="true">
-              {num}
-            </span>
-            <h3 class="relative mt-4 text-lg font-extrabold text-ciruela-900">{title}</h3>
-            <p class="relative mt-2 text-sm leading-relaxed text-ciruela-500">{text}</p>
-          </div>
+          ['Inscríbete en Hotmart', 'Pago seguro con tarjeta o métodos locales de tu país, en tu moneda. El acceso llega a tu correo al instante.'],
+          ['Aprende a tu ritmo', 'Videos paso a paso desde tu celular o computador, con tareas calificadas y asistencia académica.'],
+          ['Certifícate y cobra', 'Descarga tu certificado de estudios, arma tu portafolio y empieza a cotizar tus primeros pedidos.'],
+        ].map(([title, text], i) => (
+          <li class="border-t-2 border-ciruela-900 pt-5">
+            <span class="font-display text-sm font-semibold text-coral-600">Paso {i + 1}</span>
+            <h3 class="mt-1 text-lg font-extrabold text-ciruela-900">{title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ciruela-500">{text}</p>
+          </li>
         ))
       }
-    </div>
+    </ol>
   </section>
 
   <!-- 6 · TESTIMONIOS -->
@@ -309,7 +276,7 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
     <div class="scroll-reveal">
       <SectionHeading
         eyebrow="Certificado"
-        title="Un certificado que respalda tu trabajo"
+        title="Certificado de estudios al terminar cada curso"
         lead="Al completar el 100% de las lecciones recibes un certificado de estudios digital con validez internacional."
       />
       <ul class="mt-7 space-y-3.5 text-sm text-ciruela-600">
@@ -348,7 +315,7 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
 
   <!-- 9 · FAQ -->
   <section class="contenedor max-w-4xl py-16 lg:py-24">
-    <SectionHeading eyebrow="Preguntas frecuentes" title="Lo que todos preguntan antes de empezar" align="center" />
+    <SectionHeading eyebrow="Preguntas frecuentes" title="Preguntas frecuentes sobre los cursos de globos" align="center" />
     <div class="mt-10">
       <FaqAccordion faqs={faqs} />
     </div>
@@ -363,7 +330,7 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
           <div class="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
               eyebrow="Guías gratis del blog"
-              title="Practica gratis mientras eliges tu curso"
+              title="Guías gratis de decoración con globos"
               lead="Artículos paso a paso con medidas, cantidades y costos de referencia. Cada guía te dice qué curso lo enseña completo, en video y con certificado."
             />
             <a
@@ -399,21 +366,20 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
   <!-- 11 · CTA FINAL: fondo tinta sólido (antes degradado coral→lila, 2.4:1 en el extremo lila).
        Un paso más claro que el footer (ciruela-900) y con onda hacia él, para que no se fundan. -->
   <section class="relative overflow-hidden bg-ciruela-800 text-crema-50">
-    <Wave color={guias.length > 0 ? 'var(--color-crema-100)' : 'var(--color-crema-50)'} flip />
     <Balloons variant="rise" />
     <div class="contenedor relative py-14 text-center lg:py-20">
       <h2 class="mx-auto max-w-2xl text-3xl font-semibold text-balance sm:text-4xl">
-        Tu primer montaje cobrado está a un curso de distancia
+        Empieza hoy tu curso de globos
       </h2>
       <p class="mx-auto mt-4 max-w-xl text-sm text-crema-100/80 sm:text-base">
         Únete a los {SITE.stats.students} estudiantes certificados que ya convirtieron los globos en ingresos.
       </p>
       <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <a
-          href={featured?`/co/${featured.id}/`:'/co/cursos/'}
-          class="rounded-xl bg-coral-600 px-8 py-4 text-sm font-bold text-white shadow-boton transition-all duration-300 ease-fiesta hover:-translate-y-1 hover:bg-coral-700"
+          href="/co/curso-de-globoflexia/"
+          class="rounded-xl bg-coral-600 px-8 py-4 text-sm font-bold text-white shadow-boton transition-colors duration-300 hover:bg-coral-700"
         >
-          Empezar con Globoflexia (50% OFF)
+          {featuredLabel}
         </a>
         <a
           href="/co/cursos/"
@@ -423,7 +389,6 @@ const faqs=(copy.faqs??[]) as {q:string;a:string}[];
         </a>
       </div>
     </div>
-    <Wave color="var(--color-ciruela-900)" />
   </section>
 {page.richBody.length>0&&<section class="contenedor articulo py-12"><RichBody value={page.richBody}/></section>}
 </BaseLayout>

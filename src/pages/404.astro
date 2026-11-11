@@ -1,4 +1,5 @@
 ---
+import { sortCourses } from '@/lib/course-order';
 Astro.response.status=404;
 import { getCountrySummaries as getCountries } from '@/lib/emdash-content';
 const COUNTRIES = await getCountries();
@@ -11,9 +12,7 @@ import { DEFAULT_COUNTRY } from '@/lib/countries';
 // La 404 es estática y no sabe el país del visitante: se genera con el país por defecto y un
 // script la ajusta al país que la persona ya eligió (localStorage `cdgo-country`, lo guarda el Header).
 const country = COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY)!;
-const courses = (await getCollection('courses')).sort(
-  (a, b) => Number(b.data.featured) - Number(a.data.featured),
-);
+const courses = sortCourses(await getCollection('courses'));
 /** Rotaciones orgánicas deterministas (sistema: ±0.4–0.9°), se enderezan al hover. */
 const TILTS = ['rotate-[-0.6deg]', 'rotate-[0.5deg]', 'rotate-[-0.4deg]', 'rotate-[0.8deg]'];
 ---

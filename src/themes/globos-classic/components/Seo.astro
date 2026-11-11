@@ -47,7 +47,8 @@ const {
   ogType = 'website',
   article,
   canonicalPath,
-  hreflang = 'es-CO',
+  // Páginas sin país (portada, blog): español de Latinoamérica, no «es_CO» para todo el mundo.
+  hreflang = 'es-LA',
 } = Astro.props;
 
 const canonical = new URL(canonicalPath ?? Astro.url.pathname, SITE.url).href;

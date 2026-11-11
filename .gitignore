@@ -39,3 +39,5 @@ graphify-out/cache/
 .env.local
 
 .emdash/
+# Tipos que EmDash genera al arrancar el servidor de desarrollo
+emdash-env.d.ts
