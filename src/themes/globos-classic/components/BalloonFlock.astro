@@ -40,6 +40,11 @@
   .bandada[data-vivo] {
     opacity: 1;
   }
+  /* Mientras se tiene un globo en la mano la capa pasa por delante del contenido (y por debajo de
+     la cabecera): lo que se agarra se ve entero. Al soltarlo y volver a su sitio, baja otra vez. */
+  .bandada[data-arriba] {
+    z-index: 45;
+  }
   .bandada-globo {
     position: absolute;
     top: 0;
@@ -91,6 +96,8 @@
   html.globo-agarrado * {
     cursor: grabbing !important;
     user-select: none !important;
+    -webkit-user-select: none !important;
+    -webkit-touch-callout: none !important;
   }
   @media print {
     .bandada {
@@ -118,7 +125,12 @@
    * nudo.
    *
    * Los globos no capturan el puntero (no deben tapar enlaces ni texto): los gestos se escuchan
-   * en la ventana y se comprueba a mano si caen sobre un globo que esté a la vista.
+   * en la ventana y se comprueba a mano si caen sobre un globo que esté a la vista. «A la vista»
+   * es literal: cuenta cualquier punto donde el globo se ve, también junto a un párrafo, mientras
+   * debajo del dedo no haya una letra, una imagen, un botón o un fondo opaco.
+   *
+   * Con ratón y con el dedo se puede agarrar, arrastrar y lanzar. Dos toques seguidos lo
+   * revientan, y también moverlo muy fuerte con él en la mano.
    */
   interface Settings {
     enabled: boolean;
@@ -139,6 +151,9 @@
     /** Ancho en px con ventana ancha y estrecha (0 = no sale en estrecha). */
     wide: number;
     narrow: number;
+    /** En estrecha: lado y altura dentro de la franja libre entre la cabecera y la barra de compra. */
+    nside?: number;
+    nfy?: number;
     /** Alto / ancho de la foto y posición horizontal del nudo dentro de ella. */
     ratio: number;
     knotX: number;
@@ -174,7 +189,8 @@
     angV: number;
     lagScroll: number;
     popped: boolean;
-    lastTap: number;
+    /** Lado en uso (cambia entre ventana ancha y estrecha). */
+    at: number;
     rope: Float32Array;
     prev: Float32Array;
     seg: number;
@@ -182,11 +198,12 @@
   }
 
   // Orden = prioridad: con «3 globos» salen los tres primeros. Los dos primeros son los grandes.
+  // En el celular el lila pasa a la izquierda: abajo a la derecha está el botón de WhatsApp.
   const SPECS: Spec[] = [
-    { tone: 'frambuesa', side: -1, fy: 0.2, wide: 270, narrow: 78, ratio: 1.306, knotX: 0.632, show: 0.7, peek: 46, drag: 0.5, drift: 0.1, tilt: -7, period: 3, phase: 0, string: 0.72, blur: 0, latex: '#d2203c' },
-    { tone: 'sol', side: 1, fy: 0.44, wide: 214, narrow: 66, ratio: 1.343, knotX: 0.51, show: 0.7, peek: 40, drag: 0.72, drift: 0.14, tilt: 9, period: 3.6, phase: -1, string: 0.8, blur: 0, latex: '#f5c518' },
+    { tone: 'frambuesa', side: -1, fy: 0.2, wide: 270, narrow: 78, nfy: 0.16, ratio: 1.306, knotX: 0.632, show: 0.7, peek: 46, drag: 0.5, drift: 0.1, tilt: -7, period: 3, phase: 0, string: 0.72, blur: 0, latex: '#d2203c' },
+    { tone: 'sol', side: 1, fy: 0.44, wide: 214, narrow: 66, nfy: 0.46, ratio: 1.343, knotX: 0.51, show: 0.7, peek: 40, drag: 0.72, drift: 0.14, tilt: 9, period: 3.6, phase: -1, string: 0.8, blur: 0, latex: '#f5c518' },
     { tone: 'aqua', side: -1, fy: 0.74, wide: 132, narrow: 0, ratio: 1.325, knotX: 0.597, show: 0.9, peek: 34, drag: 0.4, drift: -0.08, tilt: 7, period: 3.3, phase: -0.3, string: 0.95, blur: 0, latex: '#27c4c7' },
-    { tone: 'lila', side: 1, fy: 0.86, wide: 96, narrow: 54, ratio: 1.266, knotX: 0.628, show: 0.95, peek: 30, drag: 0.6, drift: -0.12, tilt: -11, period: 3.8, phase: -0.6, string: 1.05, blur: 0, latex: '#a88be0' },
+    { tone: 'lila', side: 1, fy: 0.86, wide: 96, narrow: 54, nside: -1, nfy: 0.8, ratio: 1.266, knotX: 0.628, show: 0.95, peek: 30, drag: 0.6, drift: -0.12, tilt: -11, period: 3.8, phase: -0.6, string: 1.05, blur: 0, latex: '#a88be0' },
     { tone: 'dorado', side: 1, fy: 0.11, wide: 64, narrow: 0, ratio: 1.35, knotX: 0.642, show: 1.5, peek: 22, drag: 0.28, drift: 0.06, tilt: 12, period: 4.1, phase: -1.4, string: 1.1, blur: 1.1, latex: '#c79f45' },
   ];
   const DEFAULTS: Settings = { enabled: true, count: 5, countMobile: 3, size: 100, strings: true, stringStyle: 'cuerda', interactive: true, pop: true, articles: false };
@@ -206,11 +223,15 @@
   const GRAVITY = 1500;
   const BEND = 0.12; // rigidez a la flexión de la cuerda (0 = hilo flojo)
   const BUMP = 260; // fuerza con que dos globos que se tocan se apartan
-  const DOUBLE_TAP = 380; // ms entre dos toques para reventarlo
+  const DOUBLE_TAP = 420; // ms entre dos toques para reventarlo
   const RESPAWN = 2400; // ms hasta que sube uno nuevo
+  const TAP_SLOP = 8; // px que puede moverse el puntero y seguir siendo un toque
+  // Velocidad de la mano (px/s) a partir de la cual el globo que se lleva agarrado revienta.
+  const POP_SPEED = { mouse: 3400, touch: 2300 };
   /** Sobre estos elementos el gesto es del contenido, no del globo. */
-  const CONTENT =
-    'a,button,input,select,textarea,summary,label,h1,h2,h3,h4,p,li,span,strong,em,small,b,i,blockquote,figcaption,dt,dd,td,th,img,picture,video,svg,canvas,iframe,[role="button"]';
+  const INTERACTIVE = 'a,button,input,select,textarea,summary,label,[role="button"],[contenteditable="true"]';
+  /** Estos tapan el globo aunque no tengan fondo. */
+  const SOLID = 'img,picture,video,canvas,iframe,svg,table';
   const SVG_NS = 'http://www.w3.org/2000/svg';
 
   const layer = document.querySelector<HTMLElement>('[data-bandada]');
@@ -226,12 +247,30 @@
   let clock = 0;
   let vw = window.innerWidth;
   let vh = window.innerHeight;
+  let wideMode = vw >= 1024;
+  // Lo que ocupan arriba la cabecera (y la barra de campaña mientras no se ha desplazado) y abajo
+  // la barra de compra del celular: los globos se colocan en la franja que queda libre.
+  let chromeTop = 0;
+  let chromeBottom = 0;
+  const header = document.getElementById('site-header');
+  const buyBar = document.getElementById('sticky-cta');
   let grabbed: Globo | null = null;
+  let grabPointer = -1;
+  let grabTouch = false;
   let grabX = 0;
   let grabY = 0;
   let grabMoved = 0;
   let pressX = 0;
   let pressY = 0;
+  // Último globo tocado y cuándo: el segundo toque vale aunque el primero lo haya apartado.
+  let tapped: Globo | null = null;
+  let tappedAt = 0;
+  // Globo recién soltado: la capa sigue por delante hasta que vuelve a su sitio.
+  let settling: Globo | null = null;
+  let settleUntil = 0;
+  // El `pointerdown` que agarra un globo anula el `mousedown` que le sigue (selección de texto).
+  let skipMouse = false;
+  let lastPop = 0;
   // Últimas posiciones del puntero, para saber con qué velocidad empuja o lanza.
   let lastPX = 0;
   let lastPY = 0;
@@ -279,7 +318,7 @@
         angV: 0,
         lagScroll: window.scrollY,
         popped: false,
-        lastTap: 0,
+        at: spec.side,
         rope: new Float32Array(ROPE_POINTS * 2),
         prev: new Float32Array(ROPE_POINTS * 2),
         seg: 10,
@@ -314,11 +353,25 @@
     const t = clamp(scroll / (vh * 0.6), 0, 1);
     const ease = t * t * (3 - 2 * t);
     const visible = g.inHero + (g.inPage - g.inHero) * ease;
-    const x = g.side < 0 ? visible - g.w : vw - visible;
+    const x = g.at < 0 ? visible - g.w : vw - visible;
     const pageSpan = Math.max(1, document.documentElement.scrollHeight - vh);
     const progress = clamp(scroll / pageSpan, 0, 1);
-    const y = vh * g.fy - g.h / 2 + (progress - 0.5) * vh * g.drift;
-    return [x, y];
+    const drift = (progress - 0.5) * vh * g.drift;
+    if (wideMode) {
+      // Puede asomar por detrás de la cabecera, pero no quedarse escondido con la cuerda colgando.
+      return [x, Math.max(vh * g.fy - g.h / 2 + drift, chromeTop - g.h * 0.3)];
+    }
+    // En el celular va entero dentro de la franja libre: ni bajo la cabecera ni bajo la barra de compra.
+    const top = chromeTop + 10;
+    const bottom = vh - chromeBottom - g.h - 10;
+    const y = top + (bottom - top) * (g.nfy ?? g.fy) + drift * 0.5;
+    return [x, clamp(y, top, Math.max(top, bottom))];
+  }
+
+  /** Mide la cabecera y la barra de compra. Se repite al desplazar: la barra de campaña se va con la página. */
+  function measureChrome() {
+    chromeTop = header ? clamp(header.getBoundingClientRect().bottom, 0, vh * 0.45) : 0;
+    chromeBottom = buyBar && root.classList.contains('has-sticky-cta') ? buyBar.offsetHeight : 0;
   }
 
   /** Qué globos salen, con qué tamaño y márgenes. Se repite al cambiar el tamaño de la ventana. */
@@ -326,9 +379,12 @@
     vw = window.innerWidth;
     vh = window.innerHeight;
     const wide = vw >= 1024;
+    wideMode = wide;
+    measureChrome();
     const gutter = Math.max(0, (vw - CONTAINER) / 2);
-    // En pantallas grandes crecen un poco; en portátiles, encogen. Encima, el tamaño del panel.
-    const scale = (wide ? clamp(vw / 1440, 0.78, 1.18) : 1) * (settings.size / 100);
+    // En pantallas grandes crecen un poco; en portátiles, encogen; en tableta son mayores que en
+    // el celular. Encima, el tamaño del panel.
+    const scale = (wide ? clamp(vw / 1440, 0.78, 1.18) : clamp(vw / 430, 1, 1.5)) * (settings.size / 100);
     let shown = 0;
     for (const g of globos) {
       const base = wide ? g.wide : g.narrow;
@@ -340,6 +396,7 @@
         g.path.setAttribute('d', '');
         continue;
       }
+      g.at = wide ? g.side : (g.nside ?? g.side);
       g.w = Math.round(base * scale);
       g.h = Math.round(g.w * g.ratio);
       g.el.style.width = `${g.w}px`;
@@ -350,9 +407,11 @@
       if (!g.img.src.endsWith(file)) g.img.src = file;
       g.seg = (g.h * g.string * (curly ? 0.8 : 1)) / (ROPE_POINTS - 1);
       if (curly) g.path.style.strokeWidth = String(clamp(g.w / 70, 1.6, 3.2));
-      g.inHero = Math.min(g.w * g.show, wide ? g.w * 1.6 : g.w * 0.62);
+      g.inHero = Math.min(g.w * g.show, wide ? g.w * 1.6 : g.w * 0.46);
       // Sobre el contenido: lo que quepa en el margen de la página más un poco, nunca todo el globo.
-      g.inPage = Math.min(gutter + g.peek, g.w * (wide ? 0.72 : 0.5));
+      // En el celular no hay margen (el texto empieza a 20 px del borde): asoma poco más que eso,
+      // para no quedar debajo de las primeras letras de cada renglón.
+      g.inPage = wide ? Math.min(gutter + g.peek, g.w * 0.72) : clamp(g.w * 0.36, 24, 36);
       if (snap || !wasActive) {
         [g.x, g.y] = home(g, window.scrollY);
         g.vx = g.vy = 0;
@@ -540,7 +599,7 @@
         g.y += g.vy * dt;
 
         // Se ladea hacia donde se mueve y mientras la página tira de él; luego se endereza.
-        const lean = clamp(g.vx * 0.045, -18, 18) + clamp(behind * 0.05, -8, 8) * g.side;
+        const lean = clamp(g.vx * 0.045, -18, 18) + clamp(behind * 0.05, -8, 8) * g.at;
         g.angV += ((g.tilt + lean - g.ang) * K_ANG - g.angV * C_ANG) * dt;
         g.ang += g.angV * dt;
         place(g);
@@ -553,18 +612,49 @@
         drawRope(g);
       }
     }
+    if (settling && !grabbed) {
+      // Ya está de vuelta y casi quieto (o tardó demasiado): la capa vuelve detrás del contenido.
+      const [hx, hy] = home(settling, scroll);
+      const calm = Math.hypot(settling.x - hx, settling.y - hy) < 34 && Math.hypot(settling.vx, settling.vy) < 70;
+      if ((calm && !settling.popped) || now > settleUntil) {
+        settling = null;
+        layer?.removeAttribute('data-arriba');
+      }
+    }
     frame = document.hidden ? 0 : requestAnimationFrame(tick);
   }
 
   function wake() {
+    measureChrome();
     if (frame || document.hidden) return;
     last = performance.now();
     frame = requestAnimationFrame(tick);
   }
 
-  /** ¿Se ve el globo en este punto, o lo tapa contenido? Los globos van bajo `.contenedor`. */
-  function exposed(target: Element | null): boolean {
-    if (!target || target.closest(CONTENT)) return false;
+  /** ¿Hay una letra justo bajo este punto? (Un párrafo ocupa todo el renglón; su texto, no.) */
+  function overText(x: number, y: number): boolean {
+    const doc = document as Document & {
+      caretPositionFromPoint?: (x: number, y: number) => { offsetNode: Node } | null;
+      caretRangeFromPoint?: (x: number, y: number) => Range | null;
+    };
+    const node = doc.caretPositionFromPoint
+      ? doc.caretPositionFromPoint(x, y)?.offsetNode
+      : doc.caretRangeFromPoint?.(x, y)?.startContainer;
+    if (!node || node.nodeType !== Node.TEXT_NODE) return false;
+    const range = document.createRange();
+    range.selectNodeContents(node);
+    for (const rect of range.getClientRects()) {
+      if (x >= rect.left - 3 && x <= rect.right + 3 && y >= rect.top && y <= rect.bottom) return true;
+    }
+    return false;
+  }
+
+  /**
+   * ¿Se ve el globo en este punto, o lo tapa contenido? Los globos van bajo `.contenedor`: los
+   * tapa un fondo opaco, una imagen o una letra; y un enlace o un botón siempre mandan.
+   */
+  function exposed(target: Element | null, x: number, y: number): boolean {
+    if (!target || target.closest(INTERACTIVE) || target.closest(SOLID)) return false;
     let opaque = false;
     let inContainer = false;
     for (let el: Element | null = target; el && el !== document.body; el = el.parentElement) {
@@ -576,17 +666,22 @@
       if (el.classList.contains('contenedor')) inContainer = true;
     }
     // Fuera de un contenedor, lo que hay bajo el puntero es el fondo de la sección: el globo va encima.
-    return !(inContainer && opaque);
+    if (inContainer && opaque) return false;
+    return !overText(x, y);
+  }
+
+  /** ¿Está este punto dentro del globo? `reach` agranda el óvalo (1 = su tamaño real). */
+  function inside(g: Globo, clientX: number, clientY: number, reach = 1): boolean {
+    const nx = (clientX - (g.x + g.w / 2)) / (g.w * 0.5 * reach);
+    const ny = (clientY - (g.y + g.h * 0.44)) / (g.h * 0.46 * reach);
+    return nx * nx + ny * ny <= 1;
   }
 
   /** ¿Qué globo hay bajo este punto de la ventana? El de más encima (último del DOM) gana. */
   function hit(clientX: number, clientY: number): Globo | null {
     for (let i = globos.length - 1; i >= 0; i--) {
       const g = globos[i]!;
-      if (!g.active || g.popped) continue;
-      const nx = (clientX - (g.x + g.w / 2)) / (g.w * 0.5);
-      const ny = (clientY - (g.y + g.h * 0.44)) / (g.h * 0.46);
-      if (nx * nx + ny * ny <= 1) return g;
+      if (g.active && !g.popped && inside(g, clientX, clientY)) return g;
     }
     return null;
   }
@@ -645,6 +740,12 @@
     if (g.popped) return;
     g.popped = true;
     if (grabbed === g) release(0, 0);
+    if (tapped === g) tapped = null;
+    lastPop = performance.now();
+    // La capa pasa por delante un momento: los trozos se ven enteros, no por detrás de las tarjetas.
+    host.dataset.arriba = '';
+    settling = g;
+    settleUntil = lastPop + 900;
     burst(g, host);
     g.img.animate(
       [
@@ -671,18 +772,23 @@
     g.ang = g.tilt;
     g.angV = 0;
     g.popped = false;
-    g.lastTap = 0;
     place(g);
     hangRope(g);
     wake();
   }
 
+  /** Suelta el globo con la velocidad dada. La capa sigue por delante hasta que vuelve a su sitio. */
   function release(vx: number, vy: number) {
-    if (!grabbed) return;
-    grabbed.vx = vx;
-    grabbed.vy = vy;
+    const g = grabbed;
+    if (!g) return;
+    g.vx = vx;
+    g.vy = vy;
     grabbed = null;
+    if (grabPointer >= 0 && root.hasPointerCapture?.(grabPointer)) root.releasePointerCapture(grabPointer);
+    grabPointer = -1;
     root.classList.remove('globo-agarrado');
+    settling = g;
+    settleUntil = performance.now() + 3200;
   }
 
   function trackPointer(event: PointerEvent) {
@@ -700,36 +806,49 @@
     lastPT = now;
   }
 
-  /** Un toque lo golpea desde donde se tocó; dos seguidos lo revientan (si está permitido). */
-  function tap(g: Globo, clientX: number, clientY: number, host: HTMLElement) {
-    const now = performance.now();
-    if (settings.pop && now - g.lastTap < DOUBLE_TAP) {
-      pop(g, host);
-      return;
-    }
-    g.lastTap = now;
+  /** Un toque lo golpea desde donde se tocó. El segundo, si llega a tiempo, lo revienta. */
+  function tap(g: Globo, clientX: number, clientY: number) {
+    tapped = g;
+    tappedAt = performance.now();
     const dx = g.x + g.w / 2 - clientX;
     const dy = g.y + g.h * 0.44 - clientY;
     const dist = Math.hypot(dx, dy) || 1;
-    g.vx += (dx / dist) * 380 + (Math.random() - 0.5) * 60;
-    g.vy += (dy / dist) * 380 - 120;
-    g.angV += (dx >= 0 ? 1 : -1) * 160;
+    g.vx += (dx / dist) * 240 + (Math.random() - 0.5) * 40;
+    g.vy += (dy / dist) * 240 - 80;
+    g.angV += (dx >= 0 ? 1 : -1) * 130;
+  }
+
+  /**
+   * ¿Es este el segundo toque sobre el mismo globo? El primero lo apartó un poco, así que el
+   * segundo vale en un óvalo algo mayor que el globo.
+   */
+  function secondTap(clientX: number, clientY: number): Globo | null {
+    const g = tapped;
+    if (!settings.pop || !g || g.popped || !g.active) return null;
+    if (performance.now() - tappedAt > DOUBLE_TAP) return null;
+    return inside(g, clientX, clientY, 1.55) ? g : null;
   }
 
   function listen(host: HTMLElement) {
     addEventListener(
       'pointermove',
       (event) => {
+        const stepX = event.clientX - lastPX;
+        const stepY = event.clientY - lastPY;
         trackPointer(event);
         if (grabbed) {
+          if (event.pointerId !== grabPointer) return;
           grabX = event.clientX - pressX;
           grabY = event.clientY - pressY;
-          grabMoved += Math.abs(event.movementX) + Math.abs(event.movementY);
+          grabMoved += Math.abs(stepX) + Math.abs(stepY);
+          // Sacudirlo muy fuerte con él en la mano lo revienta.
+          const limit = grabTouch ? POP_SPEED.touch : POP_SPEED.mouse;
+          if (settings.pop && grabMoved > 90 && Math.hypot(pvx, pvy) > limit) pop(grabbed, host);
           return;
         }
         if (event.pointerType === 'touch') return;
         const over = hit(event.clientX, event.clientY);
-        const reachable = over && exposed(event.target as Element | null) ? over : null;
+        const reachable = over && exposed(event.target as Element | null, event.clientX, event.clientY) ? over : null;
         root.classList.toggle('globo-a-mano', Boolean(reachable));
         if (reachable) {
           // El cursor empuja al pasar: tanto más cuanto más rápido va.
@@ -743,40 +862,94 @@
     );
 
     addEventListener('pointerdown', (event) => {
-      if (event.button !== 0) return;
-      const g = hit(event.clientX, event.clientY);
-      if (!g || !exposed(event.target as Element | null)) return;
-      trackPointer(event);
-      if (event.pointerType === 'touch') {
-        // En táctil no se arrastra (el dedo desplaza la página): un toque lo golpea, dos lo revientan.
-        tap(g, event.clientX, event.clientY, host);
+      if (event.button !== 0 || grabbed || !event.isPrimary) return;
+      const target = event.target as Element | null;
+      // Segundo toque a tiempo: revienta, aunque el primero lo haya movido de debajo del dedo.
+      const again = secondTap(event.clientX, event.clientY);
+      if (again && exposed(target, event.clientX, event.clientY)) {
+        event.preventDefault();
+        skipMouse = event.pointerType === 'mouse';
+        tapped = null;
+        pop(again, host);
         return;
       }
+      const g = hit(event.clientX, event.clientY);
+      if (!g || !exposed(target, event.clientX, event.clientY)) return;
       event.preventDefault(); // sin selección de texto mientras se arrastra
+      skipMouse = event.pointerType === 'mouse';
+      lastPX = event.clientX;
+      lastPY = event.clientY;
+      lastPT = performance.now();
+      pvx = pvy = 0;
       // Punto del globo que se agarró, para que no salte al centro del cursor.
       pressX = event.clientX - g.x;
       pressY = event.clientY - g.y;
       grabbed = g;
+      grabPointer = event.pointerId;
+      grabTouch = event.pointerType !== 'mouse';
       grabX = g.x;
       grabY = g.y;
       grabMoved = 0;
-      pvx = pvy = 0;
+      settling = null;
+      // Con el puntero capturado, soltar fuera de la ventana también llega.
+      try {
+        root.setPointerCapture(event.pointerId);
+      } catch {
+        /* puntero ya liberado: se sigue con los eventos de la ventana */
+      }
+      root.classList.remove('globo-a-mano');
       root.classList.add('globo-agarrado');
+      host.dataset.arriba = '';
+      wake();
     });
 
-    addEventListener('pointerup', (event) => {
+    const drop = (event: PointerEvent) => {
       const g = grabbed;
-      if (!g) return;
-      if (grabMoved < 6) {
+      if (!g || event.pointerId !== grabPointer) return;
+      if (grabMoved < TAP_SLOP) {
         release(0, 0);
-        tap(g, event.clientX, event.clientY, host);
+        tap(g, event.clientX, event.clientY);
       } else {
         // Lo lanza con la velocidad que llevaba la mano.
         release(clamp(pvx, -2600, 2600), clamp(pvy, -2600, 2600));
-        g.lastTap = 0;
+        tapped = null;
       }
+    };
+    addEventListener('pointerup', drop);
+    addEventListener('pointercancel', (event) => {
+      if (event.pointerId === grabPointer) release(0, 0);
     });
-    addEventListener('pointercancel', () => release(0, 0));
+    addEventListener('blur', () => release(0, 0));
+
+    // Con el dedo sobre un globo, el gesto es del globo: la página no se desplaza. El aviso llega
+    // después de `pointerdown`, así que aquí ya se sabe si se agarró uno.
+    addEventListener(
+      'touchstart',
+      (event) => {
+        if (grabbed && grabTouch && event.cancelable) event.preventDefault();
+      },
+      { passive: false },
+    );
+    // Ni selección de texto ni arrastre nativo mientras se lleva un globo o al pulsarlo.
+    addEventListener(
+      'mousedown',
+      (event) => {
+        if (skipMouse) event.preventDefault();
+        skipMouse = false;
+      },
+      true,
+    );
+    for (const type of ['dragstart', 'selectstart'] as const) {
+      addEventListener(type, (event) => {
+        if (grabbed) event.preventDefault();
+      });
+    }
+    // Doble clic del sistema: por si el segundo `pointerdown` llegó fuera de plazo.
+    addEventListener('dblclick', (event) => {
+      if (!settings.pop || performance.now() - lastPop < 600) return;
+      const g = tapped && !tapped.popped && inside(tapped, event.clientX, event.clientY, 1.55) ? tapped : hit(event.clientX, event.clientY);
+      if (g && exposed(event.target as Element | null, event.clientX, event.clientY)) pop(g, host);
+    });
     root.addEventListener('pointerleave', () => root.classList.remove('globo-a-mano'));
   }
 

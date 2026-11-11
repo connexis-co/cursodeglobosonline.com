@@ -32,8 +32,8 @@ function BalloonsAdmin() {
       <h2>Comportamiento</h2>
       {check('strings', 'Con cuerda', 'Cuelga del nudo y se balancea con el globo.')}
       <label className="campo"><span><b>Tipo de cuerda</b></span><select value={config.stringStyle} onChange={e => update('stringStyle', e.target.value === 'serpentina' ? 'serpentina' : 'cuerda')}><option value="cuerda">Cuerda fina (cae recta)</option><option value="serpentina">Serpentina rizada (del color del globo, más elástica)</option></select><small>La serpentina se enrosca y rebota como una cinta rizada; la cuerda cae a plomo.</small></label>
-      {check('interactive', 'Se pueden tocar', 'El cursor los empuja y se pueden agarrar, arrastrar y lanzar.')}
-      {check('pop', 'Se revientan con doble clic', 'Al rato sube uno nuevo. Necesita «Se pueden tocar».')}
+      {check('interactive', 'Se pueden tocar', 'El cursor los empuja y se pueden agarrar, arrastrar y lanzar, con el ratón o con el dedo.')}
+      {check('pop', 'Se pueden reventar', 'Con doble clic o doble toque, o al sacudirlos muy fuerte con ellos en la mano. Al rato sube uno nuevo. Necesita «Se pueden tocar».')}
       <button disabled={busy} onClick={save}>{busy ? 'Guardando…' : 'Guardar'}</button>
       {message && <p className="aviso" role="status">{message}</p>}
     </>}

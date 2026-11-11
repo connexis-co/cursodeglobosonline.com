@@ -4,6 +4,21 @@
 
 ---
 
+# Sesión 2026-11-11 (cuarta tanda) — Globos: agarrar y reventar, y repaso en celular
+
+JP pidió corregir en celular la posición de los globos y el aviso de ubicación («Parece que estás en…»), que salía cortado; y que los globos se puedan agarrar y reventar bien en escritorio y en celular (doble clic o doble toque, o moviéndolos muy fuerte).
+
+- **Estado: en producción.** Worker `b9e79aae` (dev `69c7afdf`).
+- **Causa del aviso cortado y del globo escondido:** la barra de campaña (nueva ese mismo día) empuja la cabecera hacia abajo. El aviso estaba fijo a 72 px del borde y quedaba debajo de la cabecera; un globo quedaba detrás de ella con la cuerda colgando. Ahora `GeoToast.astro` se coloca con la posición real de la cabecera, y `BalloonFlock.astro` mide la cabecera y la barra de compra (`measureChrome`) y coloca los globos en la franja libre.
+- **Globos en celular:** van enteros entre la cabecera y la barra de compra; el lila pasa a la izquierda (abajo a la derecha está WhatsApp); asoman 24–36 px para no quedar bajo las primeras letras de cada renglón. En tableta son hasta un 50 % mayores que en celular.
+- **Por qué fallaba agarrar:** el gesto solo valía si debajo no había *ningún* bloque de texto, y un párrafo ocupa todo el renglón aunque sus letras no. Ahora `exposed()` mira si hay una letra justo bajo el punto (`caretPositionFromPoint` + rectángulos del texto): vale cualquier sitio donde el globo se ve, salvo sobre letras, imágenes, enlaces, botones o fondos opacos.
+- **Agarrar y lanzar:** con ratón y con el dedo (antes, en táctil solo se podía golpear). Con el dedo sobre un globo se anula `touchstart`, así que la página no se desplaza durante ese gesto; fuera de un globo no se toca nada. El puntero se captura para que soltar fuera de la ventana también llegue. Mientras se tiene uno en la mano la capa pasa por delante del contenido (`data-arriba`, `z-index: 45`) y vuelve detrás cuando el globo regresa a su sitio.
+- **Reventar:** doble clic o doble toque (el segundo vale en un óvalo algo mayor, porque el primero aparta el globo; antes fallaba en los pequeños), o sacudirlo muy fuerte con él en la mano (más de 3.400 px/s con ratón, 2.300 con el dedo). Durante el reventón la capa sube para que los trozos se vean enteros.
+- **Tabla de precios en celular** (`/{cc}/cursos/`): con cinco columnas, el precio quedaba fuera de pantalla. Ahora cada curso es una ficha con nombre y precio arriba; en escritorio sigue siendo tabla. Se añadieron `role` para que siga siendo una tabla para lectores de pantalla.
+- **Probado:** en escritorio con ratón real (arrastre, doble clic y sacudida, en local y en producción). En celular, con eventos táctiles simulados a 375 px (agarrar, anular el desplazamiento, doble toque, sacudida). **No se probó en un teléfono físico.** Repaso de desbordes a 375 px en portada, país, ficha, precios, ciudad y artículo: sin desbordes de página.
+
+---
+
 # Sesión 2026-11-11 (tercera tanda) — Black Friday y sistema de campañas
 
 JP pidió lanzar ya la promoción de Black Friday tomando la idea del sistema de promociones de Sably, mejorándolo.

@@ -62,32 +62,35 @@ if (title.length > 60) title = `Precios de los Cursos de Globos en ${country.nam
       lead={`Los ${courses.length} cursos, lado a lado: qué enseña cada uno, cuánto contenido trae y cuánto cuesta. El precio base es en dólares y Hotmart lo cobra en ${country.currency}.`}
     />
 
-    <!-- Tabla comparativa: contenido propio de esta página (antes solo repetía las tarjetas). -->
+    <!-- Tabla comparativa: contenido propio de esta página (antes solo repetía las tarjetas).
+         En el celular cada curso es una ficha con el precio a la vista (ver el estilo al final):
+         con cinco columnas, el precio quedaba fuera de pantalla. Los `role` conservan la tabla
+         para lectores de pantalla aunque las filas pasen a ser rejillas. -->
     <div class="mt-10 overflow-x-auto rounded-2xl border border-crema-200 bg-white">
-      <table class="w-full min-w-[42rem] text-left text-sm">
+      <table role="table" class="tabla-precios w-full text-left text-sm sm:min-w-[42rem]">
         <caption class="sr-only">Comparativa de los cursos de globos: enfoque, contenido, nivel y precio</caption>
         <thead class="border-b border-crema-200 bg-crema-100 text-xs text-ciruela-600">
-          <tr>
-            <th scope="col" class="px-5 py-3 font-bold">Curso</th>
-            <th scope="col" class="px-5 py-3 font-bold">Para qué sirve</th>
-            <th scope="col" class="px-5 py-3 font-bold">Contenido</th>
-            <th scope="col" class="px-5 py-3 font-bold">Nivel</th>
-            <th scope="col" class="px-5 py-3 font-bold">Precio</th>
+          <tr role="row">
+            <th role="columnheader" scope="col" class="px-5 py-3 font-bold">Curso</th>
+            <th role="columnheader" scope="col" class="px-5 py-3 font-bold">Para qué sirve</th>
+            <th role="columnheader" scope="col" class="px-5 py-3 font-bold">Contenido</th>
+            <th role="columnheader" scope="col" class="px-5 py-3 font-bold">Nivel</th>
+            <th role="columnheader" scope="col" class="px-5 py-3 font-bold">Precio</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-crema-200">
           {
             rows.map(({ course, pricing }) => (
-              <tr>
-                <th scope="row" class="px-5 py-4 align-top font-bold text-ciruela-900">
+              <tr role="row">
+                <th role="rowheader" scope="row" data-col="curso" class="px-5 py-4 align-top font-bold text-ciruela-900">
                   <a href={`/${country.code}/${course.id}/`} class="underline decoration-coral-200 decoration-2 underline-offset-[3px] hover:decoration-coral-500">
                     {course.data.title}
                   </a>
                 </th>
-                <td class="px-5 py-4 align-top text-ciruela-600">{FOCUS[course.id] ?? course.data.shortDescription}</td>
-                <td class="px-5 py-4 align-top whitespace-nowrap text-ciruela-600">{course.data.lessonsCount} videos</td>
-                <td class="px-5 py-4 align-top whitespace-nowrap text-ciruela-600">{course.data.level}</td>
-                <td class="px-5 py-4 align-top whitespace-nowrap">
+                <td role="cell" data-col="sirve" class="px-5 py-4 align-top text-ciruela-600">{FOCUS[course.id] ?? course.data.shortDescription}</td>
+                <td role="cell" data-col="contenido" class="px-5 py-4 align-top whitespace-nowrap text-ciruela-600">{course.data.lessonsCount} videos</td>
+                <td role="cell" data-col="nivel" class="px-5 py-4 align-top whitespace-nowrap text-ciruela-600">{course.data.level}</td>
+                <td role="cell" data-col="precio" class="px-5 py-4 align-top whitespace-nowrap">
                   {pricing.hasPrice ? (
                     <>
                       <span class="font-bold text-ciruela-900">{usd(course.data.priceUSD!)}</span>
@@ -148,3 +151,51 @@ if (title.length > 60) title = `Precios de los Cursos de Globos en ${country.nam
     }
   </script>
 </BaseLayout>
+
+<style>
+  /* Celular: cada fila es una ficha. Nombre y precio arriba, para qué sirve debajo, y al pie el
+     contenido y el nivel. La cabecera de columnas sigue ahí para lectores de pantalla. */
+  @media (width < 40rem) {
+    .tabla-precios,
+    .tabla-precios tbody {
+      display: block;
+    }
+    .tabla-precios thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .tabla-precios tbody tr {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.3rem 1rem;
+      padding: 1rem 1.25rem;
+    }
+    .tabla-precios tbody :is(th, td) {
+      padding: 0;
+    }
+    .tabla-precios [data-col='curso'] {
+      grid-area: 1 / 1;
+      font-size: 1rem;
+    }
+    .tabla-precios [data-col='precio'] {
+      grid-area: 1 / 2 / span 2;
+      text-align: right;
+    }
+    .tabla-precios [data-col='sirve'] {
+      grid-area: 2 / 1;
+    }
+    .tabla-precios [data-col='contenido'] {
+      grid-area: 3 / 1;
+      font-size: 0.8125rem;
+    }
+    .tabla-precios [data-col='nivel'] {
+      grid-area: 3 / 2;
+      font-size: 0.8125rem;
+      text-align: right;
+    }
+  }
+</style>
