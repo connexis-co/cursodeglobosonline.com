@@ -3,7 +3,7 @@
  * Plazo de la campaña junto al precio: «Black Friday termina en 18 d 04 h 12 min 09 s».
  *
  * El servidor escribe la fecha («hasta el 30 de noviembre») y el reloj de PromoBar la cambia por
- * la cuenta atrás. Solo se pinta si la campaña bajó el precio de este curso.
+ * la cuenta atrás. Solo se pinta si el precio de este curso sube cuando la campaña termina.
  */
 import type { AppliedPromotion } from '@/plugins/globos-promotions/model';
 import { promotionLastDay } from '@/plugins/globos-promotions/model';
@@ -18,7 +18,7 @@ const { promo, tone = 'claro', class: className } = Astro.props;
 ---
 
 {
-  promo && (
+  promo?.deadline && (
     <p
       class:list={[
         'text-[0.8125rem] font-semibold',

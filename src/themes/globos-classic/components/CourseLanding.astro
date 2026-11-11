@@ -96,7 +96,7 @@ const schemas = [
     category: category.name,
     learnings: d.learnings,
     price: d.priceUSD,
-    priceEndsAt: d.promo?.endsAt,
+    priceEndsAt: d.promo?.deadline ? d.promo.endsAt : undefined,
     producer: d.producer,
     instructor: d.instructor,
     rating: siteRating,

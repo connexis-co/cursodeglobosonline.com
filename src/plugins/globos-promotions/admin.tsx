@@ -40,7 +40,7 @@ async function api<T>(path: string, body?: unknown): Promise<T> {
 }
 
 const STATES: Record<PromotionState, { label: string; help: string; tone: string }> = {
-  live: { label: 'Activa ahora', help: 'Pone el precio, el cupón y la cuenta atrás en el sitio.', tone: 'ok' },
+  live: { label: 'Activa ahora', help: 'Se anuncia en el sitio.', tone: 'ok' },
   scheduled: { label: 'Programada', help: 'Publicada y verificada. Empieza sola en su fecha.', tone: 'info' },
   draft: { label: 'Borrador', help: 'No se muestra en el sitio.', tone: 'muted' },
   unverified: { label: 'Sin verificar', help: 'Publicada, pero no se muestra hasta marcar la oferta como verificada.', tone: 'warn' },
@@ -127,9 +127,10 @@ function Calendar() {
       <style>{CSS}</style>
       <h1>Calendario de promociones</h1>
       <p>
-        La campaña activa pone en el sitio el precio rebajado, el cupón en los botones de pago, la barra superior y la
-        cuenta atrás. Cuando llega su fecha de fin, el sitio vuelve solo al precio de lista de cada curso. Las fechas
-        están en hora de Colombia.
+        La campaña activa pone la barra superior y su nombre junto al precio. Si baja el precio de un curso, también
+        pone el precio rebajado, el cupón en los botones de pago y la cuenta atrás, y al llegar su fecha de fin el
+        curso vuelve solo a su precio. Si la ficha del curso ya tiene ese descuento fijo, no hay cuenta atrás: el
+        precio no cambia cuando la campaña termina. Las fechas están en hora de Colombia.
       </p>
       <p>
         Para lanzar una campaña: escribe el cupón y el porcentaje, pulsa «Comprobar en Hotmart» y, si el checkout cobra

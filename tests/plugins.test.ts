@@ -47,9 +47,15 @@ test('la campaña pone el precio: céntimos exactos, cupón en el enlace y nada 
  const applied=promotedPrice(list,bf)!;
  assert.equal(applied.priceUSD,25);assert.equal(applied.originalPriceUSD,49.99);assert.equal(applied.discountPct,50);
  assert.equal(new URL(applied.hotmartUrl).searchParams.get('offDiscount'),'031016');
- assert.equal(applied.promo.label,'Black Friday');assert.equal(applied.promo.endsAt,bf.endsAt);
- // Si la ficha ya cobra eso de base, la campaña no cambia nada al terminar: ni etiqueta ni reloj.
- assert.equal(promotedPrice({priceUSD:25,originalPriceUSD:49.99,discountPct:50,hotmartUrl:list.hotmartUrl+'?offDiscount=031016'},bf),undefined);
+ assert.equal(applied.promo.label,'Black Friday');assert.equal(applied.promo.endsAt,bf.endsAt);assert.equal(applied.promo.deadline,true);
+ // Si la ficha ya cobra eso de base (descuento fijo), la campaña solo pone su nombre: sin plazo,
+ // porque al terminar el precio no cambia. Precio y enlace de la ficha quedan intactos.
+ const fixed={priceUSD:25,originalPriceUSD:49.99,discountPct:50,hotmartUrl:list.hotmartUrl+'?offDiscount=031016'};
+ const branded=promotedPrice(fixed,bf)!;
+ assert.equal(branded.promo.deadline,false);assert.equal(branded.promo.label,'Black Friday');
+ assert.deepEqual({priceUSD:branded.priceUSD,originalPriceUSD:branded.originalPriceUSD,discountPct:branded.discountPct,hotmartUrl:branded.hotmartUrl},fixed);
+ // Una ficha que cobra menos que la campaña no se toca: se anunciaría un descuento menor que el real.
+ assert.equal(promotedPrice({...fixed,priceUSD:20},bf),undefined);
  assert.equal(promotedPrice(list,{...bf,coupon:''}),undefined);
  assert.equal(promotedPrice({...list,hotmartUrl:'https://evil.example/'},bf),undefined);
  const during=Date.parse('2026-11-20T00:00:00Z');

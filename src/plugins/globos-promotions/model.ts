@@ -5,11 +5,12 @@
  *
  * 1. Una campaña solo existe dentro de su ventana [startsAt, endsAt) y solo si está publicada
  *    y marcada como verificada en Hotmart. Fuera de la ventana el sitio no promete nada.
- * 2. La campaña es la dueña del descuento. El precio rebajado, el cupón del enlace y la cuenta
- *    atrás salen de ella; la ficha del curso guarda el precio de lista. Al terminar la ventana
- *    el precio sube de verdad, y por eso el reloj es verdad.
- * 3. Una campaña que no baja el precio de ningún curso no se anuncia: un reloj que al llegar a
- *    cero no cambia nada es lo que hace que nadie crea el siguiente.
+ * 2. Si la campaña baja el precio de un curso, es la dueña de ese descuento: el precio rebajado,
+ *    el cupón del enlace y la cuenta atrás salen de ella, y al terminar la ventana el precio sube
+ *    de verdad. Por eso el reloj es verdad.
+ * 3. Si la ficha ya cobra ese precio sin la campaña (descuento fijo), la campaña solo pone su
+ *    nombre: barra y etiqueta, sin reloj ni fecha de fin, porque al terminar el precio no cambia.
+ *    Un reloj que al llegar a cero no cambia nada es lo que hace que nadie crea el siguiente.
  */
 
 export const HOTMART_HOSTS = ['hotm.art', 'hotm.io', 'go.hotmart.com', 'pay.hotmart.com', 'hotmart.com'];
@@ -151,13 +152,16 @@ export interface AppliedPromotion {
   discountPct: number;
   /** Texto del botón de la barra en páginas que no son una ficha. */
   buttonLabel: string;
+  /** El precio sube cuando la campaña termina. Solo entonces se enseña la cuenta atrás. */
+  deadline: boolean;
 }
 
 /**
- * Precio y enlace de un curso con la campaña aplicada, o `undefined` si la campaña no lo mejora.
+ * Precio y enlace de un curso con la campaña aplicada, o `undefined` si la campaña no le toca.
  *
- * No mejorarlo incluye el caso en que la ficha ya tiene ese mismo descuento de base: ahí la
- * campaña no cambia nada al terminar, así que no se le cuelga ni etiqueta ni reloj.
+ * Si la ficha ya cobra exactamente ese precio de base, se devuelve tal cual con el nombre de la
+ * campaña y `deadline: false`: se anuncia, pero sin plazo. Si la ficha cobra menos, la campaña
+ * anunciaría un descuento menor que el real y no se aplica.
  */
 export function promotedPrice(
   course: CoursePrice,
@@ -167,7 +171,27 @@ export function promotedPrice(
   const listPrice = course.originalPriceUSD ?? course.priceUSD;
   if (listPrice === undefined) return undefined;
   const price = discountedPrice(listPrice, p.discountPct);
-  if (course.priceUSD !== undefined && course.priceUSD <= price) return undefined;
+  const promo = (deadline: boolean): AppliedPromotion => ({
+    id: p.id,
+    label: p.label || 'Oferta',
+    headline: p.headline,
+    endsAt: p.endsAt,
+    theme: p.theme || 'brand',
+    discountPct: p.discountPct!,
+    buttonLabel: p.buttonLabel || 'Ver los cursos',
+    deadline,
+  });
+  if (course.priceUSD !== undefined && course.priceUSD <= price) {
+    if (course.priceUSD < price) return undefined;
+    // Precio y enlace de base se dejan como están: se verificaron juntos en el checkout.
+    return {
+      priceUSD: course.priceUSD,
+      originalPriceUSD: listPrice,
+      discountPct: course.discountPct ?? p.discountPct,
+      hotmartUrl: course.hotmartUrl,
+      promo: promo(false),
+    };
+  }
   let hotmartUrl: string;
   try {
     // Un checkout propio solo tiene sentido si la campaña es de un único curso.
@@ -180,15 +204,7 @@ export function promotedPrice(
     originalPriceUSD: listPrice,
     discountPct: p.discountPct,
     hotmartUrl,
-    promo: {
-      id: p.id,
-      label: p.label || 'Oferta',
-      headline: p.headline,
-      endsAt: p.endsAt,
-      theme: p.theme || 'brand',
-      discountPct: p.discountPct,
-      buttonLabel: p.buttonLabel || 'Ver los cursos',
-    },
+    promo: promo(true),
   };
 }
 

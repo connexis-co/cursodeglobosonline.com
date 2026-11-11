@@ -2,9 +2,12 @@
 /**
  * Barra de campaña (Black Friday, Navidad…) con cuenta atrás.
  *
- * Solo aparece cuando hay una campaña publicada, verificada y dentro de fechas que de verdad baja
- * el precio de algún curso de esta página (ver plugins/globos-promotions/model.ts). Va en el HTML
- * que pinta el servidor, así que ocupa su sitio desde el primer pintado y no empuja la página.
+ * Solo aparece cuando hay una campaña publicada, verificada y dentro de fechas que toca algún
+ * curso de esta página (ver plugins/globos-promotions/model.ts). Va en el HTML que pinta el
+ * servidor, así que ocupa su sitio desde el primer pintado y no empuja la página.
+ *
+ * La cuenta atrás solo se pinta si el precio sube al terminar la campaña (`promo.deadline`). Con
+ * un descuento fijo en la ficha, la barra anuncia la campaña sin reloj ni fecha.
  *
  * El HTML se guarda en caché como mucho hasta el final de la campaña (lib/public-cache.ts), y si
  * el reloj llega a cero con la pestaña abierta la página se recarga: ya trae el precio normal.
@@ -77,18 +80,20 @@ const UNITS = [
         <strong class="promo-barra__nombre">{promo.label}</strong>
         <span>{promo.headline}</span>
       </span>
-      <span class="promo-barra__plazo" data-promo-ends={promo.endsAt}>
-        <span data-promo-fecha>Hasta el {lastDay}</span>
-        <span class="promo-barra__reloj" data-promo-reloj hidden aria-hidden="true">
-          <span class="promo-barra__termina">Termina en</span>
-          {UNITS.map(([unit, label]) => (
-            <span class="promo-barra__celda">
-              <b data-u={unit}>00</b>
-              <i>{label}</i>
-            </span>
-          ))}
+      {promo.deadline && (
+        <span class="promo-barra__plazo" data-promo-ends={promo.endsAt}>
+          <span data-promo-fecha>Hasta el {lastDay}</span>
+          <span class="promo-barra__reloj" data-promo-reloj hidden aria-hidden="true">
+            <span class="promo-barra__termina">Termina en</span>
+            {UNITS.map(([unit, label]) => (
+              <span class="promo-barra__celda">
+                <b data-u={unit}>00</b>
+                <i>{label}</i>
+              </span>
+            ))}
+          </span>
         </span>
-      </span>
+      )}
       <span class="promo-barra__boton">
         {course ? (
           <>

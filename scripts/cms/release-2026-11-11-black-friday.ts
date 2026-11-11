@@ -1,8 +1,5 @@
 /**
- * Black Friday 2026: la campaña pasa a ser la dueña del descuento (petición de JP, 11-11-2026).
- *
- * Hasta hoy el 50 % estaba escrito en la ficha de cada curso, sin fecha de fin. Para que la
- * cuenta atrás sea verdad, el descuento se muda a la campaña `bf-2026`:
+ * Black Friday 2026: publica la campaña `bf-2026` (petición de JP, 11-11-2026).
  *
  *   1. La colección de promociones gana el campo «Nombre visible» (`label`).
  *   2. Se comprueba en el checkout de Hotmart, en ese momento, que cada curso cobra el precio de
@@ -10,15 +7,18 @@
  *   3. Se publica la campaña: del 11 de noviembre al 1 de diciembre a las 00:00 (hora de
  *      Colombia), es decir, hasta el final del Cyber Monday. Se enlazan los cinco cursos
  *      comprobados: el borrador que vino del calendario de Sably solo traía cuatro, porque el de
- *      Decoración aún no existía, y un curso sin enlazar se quedaría a precio de lista.
- *   4. Las cinco fichas vuelven a su precio de lista y a su enlace sin cupón. Mientras la campaña
- *      está activa el sitio sigue cobrando lo mismo que antes; al terminar, vuelve el de lista.
+ *      Decoración aún no existía.
  *
- * El orden importa: primero la campaña y después las fichas, para que nunca se vea el precio de
- * lista en medio. Y el código nuevo tiene que estar desplegado antes de ejecutar esto.
+ * Este script NO toca el precio de las fichas. JP decidió el mismo día mantener el 50 % después
+ * de Black Friday, así que el descuento sigue fijo en cada ficha (lo pone
+ * `release-2026-11-11-descuento.ts`). Con el descuento fijo, la campaña solo pone la barra y su
+ * nombre junto al precio, sin cuenta atrás: el precio no cambia cuando termina.
  *
- * Para volver al 50 % permanente: despublicar la campaña en el panel y ejecutar
- * `release-2026-11-11-descuento.ts --publish`.
+ * Si algún día se quiere que una campaña sea la que baja el precio (con cuenta atrás de verdad),
+ * basta dejar las fichas a precio de lista y sin cupón: el sitio aplica entonces el precio y el
+ * cupón de la campaña, y vuelve al de lista cuando termina.
+ *
+ * El código tiene que estar desplegado antes de ejecutar esto.
  *
  * Uso: node --import tsx scripts/cms/release-2026-11-11-black-friday.ts --environment=local|development|production [--publish]
  * Sin --publish solo informa de lo que cambiaría.
@@ -26,7 +26,7 @@
 import {writeFile,mkdir} from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import {adminApi,environmentFromArgs} from './_admin-api.mjs';
-import {checkoutPrice,compareOffer,discountedPrice} from '../../src/plugins/globos-promotions/model.ts';
+import {checkoutPrice,compareOffer} from '../../src/plugins/globos-promotions/model.ts';
 
 const environment=environmentFromArgs();
 const publish=process.argv.includes('--publish');
@@ -124,22 +124,6 @@ if(!campaign){
 // `draftRevisionId` es null cuando no hay cambios pendientes.
 if(publish&&campaign&&(campaign.item.status!=='published'||(campaign.item.draftRevisionId&&campaign.item.draftRevisionId!==campaign.item.liveRevisionId))){
  await api(`/_emdash/api/content/promotions/${campaign.item.id}/publish?locale=es`,json('POST',{_rev:campaign._rev}));
-}
-
-// 4 · Fichas a precio de lista -------------------------------------------------------------
-for(const [slug,list] of Object.entries(LIST)){
- const current=courses[slug],d=current.item.data;
- const url=new URL(d.hotmart_url);url.searchParams.delete('offDiscount');
- assert.equal(discountedPrice(list,PCT),{59.99:30,49.99:25,79.99:40}[list],`${slug}: el precio de campaña no es el verificado`);
- const changes:Record<string,unknown>={hotmart_url:url.toString(),price_usd:list,original_price_usd:null,discount_pct:null};
- const diff=Object.keys(changes).filter(key=>(d[key]??null)!==changes[key]);
- if(!diff.length){log.push(`= ${slug} ya está a precio de lista`);continue;}
- log.push(`~ ${slug}: ${diff.join(', ')} → base US$${list} sin cupón (la campaña cobra US$${discountedPrice(list,PCT)})`);
- if(!publish)continue;
- await backup(`courses-${slug}-antes-black-friday`,current);
- await api(`/_emdash/api/content/courses/${current.item.id}?locale=es`,json('PUT',{_rev:current._rev,data:{...d,...changes,price_checked_at:checkedAt.toISOString()}}));
- const fresh=await api(`/_emdash/api/content/courses/${slug}?locale=es`);
- await api(`/_emdash/api/content/courses/${fresh.item.id}/publish?locale=es`,json('POST',{_rev:fresh._rev}));
 }
 
 console.log(log.join('\n'));
