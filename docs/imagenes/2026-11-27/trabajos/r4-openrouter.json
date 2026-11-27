@@ -1,0 +1,24 @@
+[
+ {
+  "out": "cand/cover-bouquets/r4_ed.png",
+  "prompt": "Zoom out: shrink the whole scene to about 78% of its size, keep it centered, and extend the picture on all sides with the same room (more plain wall above, more white table surface at the bottom, more shelf on the right, more window on the left) so that her face, both hands, the gold foil star and the whole magenta balloon weight lie between 25% and 75% of the image height. Keep her face, hands, balloons, jars and spools identical. No labels, no text anywhere.",
+  "aspecto": "1:1",
+  "modelo": "gemini-3-pro-image",
+  "tam": "2K",
+  "refs": [
+   "cand/cover-bouquets/r3_b.png"
+  ],
+  "via": "openrouter"
+ },
+ {
+  "out": "cand/arco-de-globos/r4_ed.png",
+  "prompt": "Edit this photo. Keep everything else exactly identical: the person, face, hands, clothes, lighting, colors and framing. Change only this: remove only the orange balloon at the top-back of the cluster she holds (the one between the pink and the yellow balloons), filling that area with plain wall and the white arch pole, so the cluster is exactly four balloons (pink, yellow, orange, teal) joined at one center knot touching the arch pole. Do not touch her hands, arms, face or any other balloon. No text anywhere.",
+  "aspecto": "16:9",
+  "modelo": "gemini-3-pro-image",
+  "tam": "2K",
+  "refs": [
+   "cand/arco-de-globos/r2_b.png"
+  ],
+  "via": "openrouter"
+ }
+]

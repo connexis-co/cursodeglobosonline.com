@@ -1,0 +1,205 @@
+fecha,modelo,usd,archivo,nota
+2026-11-27T16:59:52,gemini-3-pro-image,0.14400,cand/cover-globoflexia/r1_a.png,reserva
+2026-11-27T17:00:13,gemini-3-pro-image,-0.00529,cand/cover-globoflexia/r1_a.png,ajuste
+2026-11-27T17:01:21,gemini-3-pro-image,0.14400,cand/cover-bouquets/r1_b.png,reserva
+2026-11-27T17:01:21,gemini-3-pro-image,0.14400,cand/cover-globoflexia/r1_b.png,reserva
+2026-11-27T17:01:21,gemini-3-pro-image,0.14400,cand/cover-bouquets/r1_a.png,reserva
+2026-11-27T17:01:21,gemini-3-pro-image,0.14400,cand/cover-burbuja/r1_a.png,reserva
+2026-11-27T17:01:43,gemini-3-pro-image,-0.00473,cand/cover-bouquets/r1_b.png,ajuste
+2026-11-27T17:01:43,gemini-3-pro-image,0.14400,cand/cover-burbuja/r1_b.png,reserva
+2026-11-27T17:01:44,gemini-3-pro-image,-0.00370,cand/cover-bouquets/r1_a.png,ajuste
+2026-11-27T17:01:44,gemini-3-pro-image,0.14400,cand/decoracion-guirnalda/r1_a.png,reserva
+2026-11-27T17:01:44,gemini-3-pro-image,-0.00539,cand/cover-globoflexia/r1_b.png,ajuste
+2026-11-27T17:01:45,gemini-3-pro-image,0.14400,cand/decoracion-guirnalda/r1_b.png,reserva
+2026-11-27T17:01:49,gemini-3-pro-image,-0.00247,cand/cover-burbuja/r1_a.png,ajuste
+2026-11-27T17:01:49,gemini-3-pro-image,0.14400,cand/og-default/r1_a.png,reserva
+2026-11-27T17:02:04,gemini-3-pro-image,-0.00334,cand/cover-burbuja/r1_b.png,ajuste
+2026-11-27T17:02:04,gemini-3-pro-image,0.14400,cand/og-default/r1_b.png,reserva
+2026-11-27T17:02:06,gemini-3-pro-image,-0.00649,cand/decoracion-guirnalda/r1_a.png,ajuste
+2026-11-27T17:02:06,gemini-3-pro-image,0.14400,cand/como-inflar-globos/r1_a.png,reserva
+2026-11-27T17:02:06,gemini-3-pro-image,-0.00649,cand/decoracion-guirnalda/r1_b.png,ajuste
+2026-11-27T17:02:07,gemini-3-pro-image,0.14400,cand/como-inflar-globos/r1_b.png,reserva
+2026-11-27T17:02:12,gemini-3-pro-image,-0.00440,cand/og-default/r1_a.png,ajuste
+2026-11-27T17:02:12,gemini-3-pro-image,0.14400,cand/como-inflar-globos-largos/r1_a.png,reserva
+2026-11-27T17:02:26,gemini-3-pro-image,-0.00462,cand/og-default/r1_b.png,ajuste
+2026-11-27T17:02:26,gemini-3-pro-image,0.14400,cand/como-inflar-globos-largos/r1_b.png,reserva
+2026-11-27T17:02:29,gemini-3-pro-image,-0.00491,cand/como-inflar-globos/r1_a.png,ajuste
+2026-11-27T17:02:29,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r1_a.png,reserva
+2026-11-27T17:02:30,gemini-3-pro-image,-0.00473,cand/como-inflar-globos/r1_b.png,ajuste
+2026-11-27T17:02:30,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r1_b.png,reserva
+2026-11-27T17:02:34,gemini-3-pro-image,-0.00413,cand/como-inflar-globos-largos/r1_a.png,ajuste
+2026-11-27T17:02:34,gemini-3-pro-image,0.14400,cand/cuanto-cobrar-por-decoracion-con-globos/r1_a.png,reserva
+2026-11-27T17:02:48,gemini-3-pro-image,-0.00489,cand/como-inflar-globos-largos/r1_b.png,ajuste
+2026-11-27T17:02:49,gemini-3-pro-image,0.14400,cand/cuanto-cobrar-por-decoracion-con-globos/r1_b.png,reserva
+2026-11-27T17:02:50,gemini-3-pro-image,-0.00388,cand/como-inflar-un-globo-burbuja/r1_a.png,ajuste
+2026-11-27T17:02:50,gemini-3-pro-image,0.14400,cand/tipos-y-tamanos-de-globos/r1_a.png,reserva
+2026-11-27T17:02:51,gemini-3-pro-image,-0.00336,cand/como-inflar-un-globo-burbuja/r1_b.png,ajuste
+2026-11-27T17:02:51,gemini-3-pro-image,0.14400,cand/tipos-y-tamanos-de-globos/r1_b.png,reserva
+2026-11-27T17:02:56,gemini-3-pro-image,-0.00468,cand/cuanto-cobrar-por-decoracion-con-globos/r1_a.png,ajuste
+2026-11-27T17:02:56,gemini-3-pro-image,0.14400,cand/decoracion-con-globos/r1_a.png,reserva
+2026-11-27T17:03:10,gemini-3-pro-image,-0.00549,cand/tipos-y-tamanos-de-globos/r1_a.png,ajuste
+2026-11-27T17:03:10,gemini-3-pro-image,-0.00610,cand/tipos-y-tamanos-de-globos/r1_b.png,ajuste
+2026-11-27T17:03:11,gemini-3-pro-image,0.14400,cand/decoracion-con-globos/r1_b.png,reserva
+2026-11-27T17:03:11,gemini-3-pro-image,0.14400,cand/arco-de-globos/r1_a.png,reserva
+2026-11-27T17:03:12,gemini-3-pro-image,-0.00529,cand/cuanto-cobrar-por-decoracion-con-globos/r1_b.png,ajuste
+2026-11-27T17:03:12,gemini-3-pro-image,0.14400,cand/arco-de-globos/r1_b.png,reserva
+2026-11-27T17:03:19,gemini-3-pro-image,-0.00473,cand/decoracion-con-globos/r1_a.png,ajuste
+2026-11-27T17:03:19,gemini-3-pro-image,0.14400,cand/centros-de-mesa-con-globos/r1_a.png,reserva
+2026-11-27T17:03:34,gemini-3-pro-image,-0.00473,cand/arco-de-globos/r1_b.png,ajuste
+2026-11-27T17:03:34,gemini-3-pro-image,0.14400,cand/centros-de-mesa-con-globos/r1_b.png,reserva
+2026-11-27T17:03:36,gemini-3-pro-image,-0.00447,cand/decoracion-con-globos/r1_b.png,ajuste
+2026-11-27T17:03:36,gemini-3-pro-image,-0.00474,cand/arco-de-globos/r1_a.png,ajuste
+2026-11-27T17:03:36,gemini-3-pro-image,0.14400,cand/bouquet-de-globos/r1_a.png,reserva
+2026-11-27T17:03:36,gemini-3-pro-image,0.14400,cand/bouquet-de-globos/r1_b.png,reserva
+2026-11-27T17:03:47,gemini-3-pro-image,-0.00422,cand/centros-de-mesa-con-globos/r1_a.png,ajuste
+2026-11-27T17:03:47,gemini-3-pro-image,0.14400,cand/globoflexia/r1_a.png,reserva
+2026-11-27T17:03:57,gemini-3-pro-image,-0.00367,cand/bouquet-de-globos/r1_a.png,ajuste
+2026-11-27T17:03:57,gemini-3-pro-image,0.14400,cand/globoflexia/r1_b.png,reserva
+2026-11-27T17:03:58,gemini-3-pro-image,-0.00444,cand/centros-de-mesa-con-globos/r1_b.png,ajuste
+2026-11-27T17:03:58,gemini-3-pro-image,0.14400,cand/certificado-mockup/r1_a.png,reserva
+2026-11-27T17:03:59,gemini-3-pro-image,-0.00377,cand/bouquet-de-globos/r1_b.png,ajuste
+2026-11-27T17:03:59,gemini-3-pro-image,0.14400,cand/certificado-mockup/r1_b.png,reserva
+2026-11-27T17:04:10,gemini-3-pro-image,-0.00341,cand/globoflexia/r1_a.png,ajuste
+2026-11-27T17:04:18,gemini-3-pro-image,-0.00451,cand/certificado-mockup/r1_a.png,ajuste
+2026-11-27T17:04:20,gemini-3-pro-image,-0.00461,cand/certificado-mockup/r1_b.png,ajuste
+2026-11-27T17:04:23,gemini-3-pro-image,-0.00455,cand/globoflexia/r1_b.png,ajuste
+2026-11-27T17:11:39,gemini-3-pro-image,0.14400,cand/cover-globoflexia/r2_a.png,reserva
+2026-11-27T17:11:39,gemini-3-pro-image,0.14400,cand/cover-globoflexia/r2_b.png,reserva
+2026-11-27T17:11:39,gemini-3-pro-image,0.14400,cand/cover-bouquets/r2_a.png,reserva
+2026-11-27T17:11:39,gemini-3-pro-image,0.14400,cand/cover-bouquets/r2_b.png,reserva
+2026-11-27T17:11:40,gemini-3-pro-image,-0.14400,cand/cover-globoflexia/r2_b.png,"error, se libera"
+2026-11-27T17:11:40,gemini-3-pro-image,0.14400,cand/cover-burbuja/r2_a.png,reserva
+2026-11-27T17:11:40,gemini-3-pro-image,-0.14400,cand/cover-bouquets/r2_a.png,"error, se libera"
+2026-11-27T17:11:40,gemini-3-pro-image,0.14400,cand/cover-burbuja/r2_b.png,reserva
+2026-11-27T17:11:40,gemini-3-pro-image,-0.14400,cand/cover-globoflexia/r2_a.png,"error, se libera"
+2026-11-27T17:11:40,gemini-3-pro-image,-0.14400,cand/cover-bouquets/r2_b.png,"error, se libera"
+2026-11-27T17:11:40,gemini-3-pro-image,0.14400,cand/decoracion-guirnalda/r2_a.png,reserva
+2026-11-27T17:11:40,gemini-3-pro-image,0.14400,cand/decoracion-guirnalda/r2_b.png,reserva
+2026-11-27T17:11:41,gemini-3-pro-image,-0.14400,cand/cover-burbuja/r2_a.png,"error, se libera"
+2026-11-27T17:11:41,gemini-3-pro-image,0.14400,cand/og-default/r2_a.png,reserva
+2026-11-27T17:11:41,gemini-3-pro-image,-0.14400,cand/decoracion-guirnalda/r2_a.png,"error, se libera"
+2026-11-27T17:11:41,gemini-3-pro-image,0.14400,cand/og-default/r2_b.png,reserva
+2026-11-27T17:11:42,gemini-3-pro-image,-0.14400,cand/og-default/r2_a.png,"error, se libera"
+2026-11-27T17:11:42,gemini-3-pro-image,0.14400,cand/certificado-mockup/r2_a.png,reserva
+2026-11-27T17:11:42,gemini-3-pro-image,-0.14400,cand/og-default/r2_b.png,"error, se libera"
+2026-11-27T17:11:42,gemini-3-pro-image,0.14400,cand/certificado-mockup/r2_b.png,reserva
+2026-11-27T17:11:42,gemini-3-pro-image,-0.14400,cand/certificado-mockup/r2_a.png,"error, se libera"
+2026-11-27T17:11:42,gemini-3-pro-image,0.14400,cand/arco-de-globos/r2_a.png,reserva
+2026-11-27T17:11:43,gemini-3-pro-image,-0.14400,cand/cover-burbuja/r2_b.png,"error, se libera"
+2026-11-27T17:11:43,gemini-3-pro-image,0.14400,cand/arco-de-globos/r2_b.png,reserva
+2026-11-27T17:11:43,gemini-3-pro-image,-0.14400,cand/certificado-mockup/r2_b.png,"error, se libera"
+2026-11-27T17:11:43,gemini-3-pro-image,0.14400,cand/como-inflar-globos/r2_a.png,reserva
+2026-11-27T17:11:43,gemini-3-pro-image,-0.14400,cand/arco-de-globos/r2_a.png,"error, se libera"
+2026-11-27T17:11:43,gemini-3-pro-image,0.14400,cand/como-inflar-globos/r2_b.png,reserva
+2026-11-27T17:11:44,gemini-3-pro-image,-0.14400,cand/arco-de-globos/r2_b.png,"error, se libera"
+2026-11-27T17:11:44,gemini-3-pro-image,0.14400,cand/como-inflar-globos-largos/r2_a.png,reserva
+2026-11-27T17:11:44,gemini-3-pro-image,-0.14400,cand/como-inflar-globos/r2_a.png,"error, se libera"
+2026-11-27T17:11:44,gemini-3-pro-image,0.14400,cand/como-inflar-globos-largos/r2_b.png,reserva
+2026-11-27T17:11:45,gemini-3-pro-image,-0.14400,cand/como-inflar-globos-largos/r2_a.png,"error, se libera"
+2026-11-27T17:11:45,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r2_a.png,reserva
+2026-11-27T17:11:45,gemini-3-pro-image,-0.14400,cand/como-inflar-globos-largos/r2_b.png,"error, se libera"
+2026-11-27T17:11:45,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r2_b.png,reserva
+2026-11-27T17:11:45,gemini-3-pro-image,-0.14400,cand/como-inflar-globos/r2_b.png,"error, se libera"
+2026-11-27T17:11:45,gemini-3-pro-image,0.14400,cand/globoflexia/r2_ed.png,reserva
+2026-11-27T17:11:45,gemini-3-pro-image,-0.14400,cand/decoracion-guirnalda/r2_b.png,"error, se libera"
+2026-11-27T17:11:45,gemini-3-pro-image,0.14400,cand/bouquet-de-globos/r2_ed.png,reserva
+2026-11-27T17:11:46,gemini-3-pro-image,-0.14400,cand/globoflexia/r2_ed.png,"error, se libera"
+2026-11-27T17:11:46,gemini-3-pro-image,0.14400,cand/cuanto-cobrar-por-decoracion-con-globos/r2_ed.png,reserva
+2026-11-27T17:11:46,gemini-3-pro-image,-0.14400,cand/como-inflar-un-globo-burbuja/r2_b.png,"error, se libera"
+2026-11-27T17:11:46,gemini-3-pro-image,0.14400,cand/tipos-y-tamanos-de-globos/r2_ed.png,reserva
+2026-11-27T17:11:46,gemini-3-pro-image,-0.14400,cand/como-inflar-un-globo-burbuja/r2_a.png,"error, se libera"
+2026-11-27T17:11:46,gemini-3-pro-image,-0.14400,cand/bouquet-de-globos/r2_ed.png,"error, se libera"
+2026-11-27T17:11:47,gemini-3-pro-image,-0.14400,cand/cuanto-cobrar-por-decoracion-con-globos/r2_ed.png,"error, se libera"
+2026-11-27T17:11:47,gemini-3-pro-image,-0.14400,cand/tipos-y-tamanos-de-globos/r2_ed.png,"error, se libera"
+2026-11-27T17:12:55,gemini-3-pro-image,0.14400,cand/tipos-y-tamanos-de-globos/r2_ed.png,reserva
+2026-11-27T17:13:22,gemini-3-pro-image (openrouter),-0.00569,cand/tipos-y-tamanos-de-globos/r2_ed.png,ajuste
+2026-11-27T17:13:25,gemini-3-pro-image,0.14400,cand/cover-globoflexia/r2_b.png,reserva
+2026-11-27T17:13:25,gemini-3-pro-image,0.14400,cand/cover-globoflexia/r2_a.png,reserva
+2026-11-27T17:13:25,gemini-3-pro-image,0.14400,cand/cover-bouquets/r2_a.png,reserva
+2026-11-27T17:13:25,gemini-3-pro-image,0.14400,cand/cover-bouquets/r2_b.png,reserva
+2026-11-27T17:13:51,gemini-3-pro-image (openrouter),-0.00379,cand/cover-globoflexia/r2_a.png,ajuste
+2026-11-27T17:13:51,gemini-3-pro-image,0.14400,cand/og-default/r2_a.png,reserva
+2026-11-27T17:13:53,gemini-3-pro-image (openrouter),-0.00285,cand/cover-globoflexia/r2_b.png,ajuste
+2026-11-27T17:13:53,gemini-3-pro-image,0.14400,cand/og-default/r2_b.png,reserva
+2026-11-27T17:13:53,gemini-3-pro-image (openrouter),-0.00366,cand/cover-bouquets/r2_b.png,ajuste
+2026-11-27T17:13:53,gemini-3-pro-image,0.14400,cand/certificado-mockup/r2_a.png,reserva
+2026-11-27T17:13:55,gemini-3-pro-image (openrouter),-0.00242,cand/cover-bouquets/r2_a.png,ajuste
+2026-11-27T17:13:55,gemini-3-pro-image,0.14400,cand/certificado-mockup/r2_b.png,reserva
+2026-11-27T17:14:17,gemini-3-pro-image (openrouter),-0.00389,cand/certificado-mockup/r2_a.png,ajuste
+2026-11-27T17:14:17,gemini-3-pro-image,0.14400,cand/arco-de-globos/r2_a.png,reserva
+2026-11-27T17:14:19,gemini-3-pro-image (openrouter),-0.00435,cand/certificado-mockup/r2_b.png,ajuste
+2026-11-27T17:14:19,gemini-3-pro-image,0.14400,cand/arco-de-globos/r2_b.png,reserva
+2026-11-27T17:14:21,gemini-3-pro-image (openrouter),-0.00326,cand/og-default/r2_a.png,ajuste
+2026-11-27T17:14:21,gemini-3-pro-image,0.14400,cand/como-inflar-globos/r2_a.png,reserva
+2026-11-27T17:14:26,gemini-3-pro-image (openrouter),-0.00261,cand/og-default/r2_b.png,ajuste
+2026-11-27T17:14:26,gemini-3-pro-image,0.14400,cand/como-inflar-globos/r2_b.png,reserva
+2026-11-27T17:14:44,gemini-3-pro-image (openrouter),-0.00307,cand/arco-de-globos/r2_a.png,ajuste
+2026-11-27T17:14:45,gemini-3-pro-image,0.14400,cand/como-inflar-globos-largos/r2_a.png,reserva
+2026-11-27T17:14:46,gemini-3-pro-image (openrouter),-0.00234,cand/arco-de-globos/r2_b.png,ajuste
+2026-11-27T17:14:46,gemini-3-pro-image,0.14400,cand/como-inflar-globos-largos/r2_b.png,reserva
+2026-11-27T17:14:49,gemini-3-pro-image (openrouter),-0.00403,cand/como-inflar-globos/r2_a.png,ajuste
+2026-11-27T17:14:49,gemini-3-pro-image,0.14400,cand/globoflexia/r2_ed.png,reserva
+2026-11-27T17:14:53,gemini-3-pro-image (openrouter),-0.00257,cand/como-inflar-globos/r2_b.png,ajuste
+2026-11-27T17:14:53,gemini-3-pro-image,0.14400,cand/cuanto-cobrar-por-decoracion-con-globos/r2_ed.png,reserva
+2026-11-27T17:15:11,gemini-3-pro-image (openrouter),-0.00248,cand/como-inflar-globos-largos/r2_a.png,ajuste
+2026-11-27T17:15:15,gemini-3-pro-image (openrouter),-0.00453,cand/globoflexia/r2_ed.png,ajuste
+2026-11-27T17:15:15,gemini-3-pro-image (openrouter),-0.00306,cand/como-inflar-globos-largos/r2_b.png,ajuste
+2026-11-27T17:15:17,gemini-3-pro-image (openrouter),-0.00528,cand/cuanto-cobrar-por-decoracion-con-globos/r2_ed.png,ajuste
+2026-11-27T17:22:18,gemini-3-pro-image,0.14400,cand/bouquet-de-globos/r2_ed.png,reserva
+2026-11-27T17:22:39,gemini-3-pro-image,-0.00647,cand/bouquet-de-globos/r2_ed.png,ajuste
+2026-11-27T17:23:03,gemini-3-pro-image,0.14400,cand/cover-burbuja/r2_a.png,reserva
+2026-11-27T17:23:03,gemini-3-pro-image,0.14400,cand/cover-burbuja/r2_b.png,reserva
+2026-11-27T17:23:03,gemini-3-pro-image,0.14400,cand/decoracion-guirnalda/r2_b.png,reserva
+2026-11-27T17:23:03,gemini-3-pro-image,0.14400,cand/decoracion-guirnalda/r2_a.png,reserva
+2026-11-27T17:23:26,gemini-3-pro-image,-0.00283,cand/decoracion-guirnalda/r2_a.png,ajuste
+2026-11-27T17:23:26,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r2_a.png,reserva
+2026-11-27T17:23:26,gemini-3-pro-image,-0.00627,cand/cover-burbuja/r2_a.png,ajuste
+2026-11-27T17:23:26,gemini-3-pro-image,-0.00413,cand/decoracion-guirnalda/r2_b.png,ajuste
+2026-11-27T17:23:26,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r2_b.png,reserva
+2026-11-27T17:23:27,gemini-3-pro-image,0.14400,cand/como-inflar-globos-largos/r3_ed.png,reserva
+2026-11-27T17:23:32,gemini-3-pro-image,-0.00627,cand/cover-burbuja/r2_b.png,ajuste
+2026-11-27T17:23:32,gemini-3-pro-image,0.14400,cand/arco-de-globos/r3_ed.png,reserva
+2026-11-27T17:23:47,gemini-3-pro-image,-0.00744,cand/como-inflar-globos-largos/r3_ed.png,ajuste
+2026-11-27T17:23:47,gemini-3-pro-image,0.14400,cand/og-default/r3_ed.png,reserva
+2026-11-27T17:23:49,gemini-3-pro-image,-0.00636,cand/como-inflar-un-globo-burbuja/r2_a.png,ajuste
+2026-11-27T17:23:49,gemini-3-pro-image,0.14400,cand/cover-globoflexia/r3_ed.png,reserva
+2026-11-27T17:23:49,gemini-3-pro-image,-0.00636,cand/como-inflar-un-globo-burbuja/r2_b.png,ajuste
+2026-11-27T17:23:49,gemini-3-pro-image,0.14400,cand/cover-bouquets/r3_a.png,reserva
+2026-11-27T17:23:56,gemini-3-pro-image,-0.00662,cand/arco-de-globos/r3_ed.png,ajuste
+2026-11-27T17:23:56,gemini-3-pro-image,0.14400,cand/cover-bouquets/r3_b.png,reserva
+2026-11-27T17:24:11,gemini-3-pro-image,-0.00663,cand/cover-globoflexia/r3_ed.png,ajuste
+2026-11-27T17:24:11,gemini-3-pro-image,-0.00461,cand/cover-bouquets/r3_a.png,ajuste
+2026-11-27T17:24:11,gemini-3-pro-image,-0.00613,cand/og-default/r3_ed.png,ajuste
+2026-11-27T17:24:18,gemini-3-pro-image,-0.00457,cand/cover-bouquets/r3_b.png,ajuste
+2026-11-27T17:33:12,gemini-3-pro-image,0.14400,cand/cover-burbuja/r4_ed.png,reserva
+2026-11-27T17:33:12,gemini-3-pro-image,0.14400,cand/cover-bouquets/r4_ed.png,reserva
+2026-11-27T17:33:12,gemini-3-pro-image,0.14400,cand/decoracion-guirnalda/r4_ed.png,reserva
+2026-11-27T17:33:12,gemini-3-pro-image,0.14400,cand/arco-de-globos/r4_ed.png,reserva
+2026-11-27T17:33:13,gemini-3-pro-image,-0.14400,cand/arco-de-globos/r4_ed.png,"error, se libera"
+2026-11-27T17:33:13,gemini-3-pro-image,-0.14400,cand/cover-burbuja/r4_ed.png,"error, se libera"
+2026-11-27T17:33:13,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r4_a.png,reserva
+2026-11-27T17:33:13,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r4_b.png,reserva
+2026-11-27T17:33:14,gemini-3-pro-image,-0.14400,cand/como-inflar-un-globo-burbuja/r4_b.png,"error, se libera"
+2026-11-27T17:33:14,gemini-3-pro-image,-0.14400,cand/como-inflar-un-globo-burbuja/r4_a.png,"error, se libera"
+2026-11-27T17:33:17,gemini-3-pro-image,-0.14400,cand/decoracion-guirnalda/r4_ed.png,"error, se libera"
+2026-11-27T17:33:18,gemini-3-pro-image,-0.14400,cand/cover-bouquets/r4_ed.png,"error, se libera"
+2026-11-27T17:33:30,gemini-3-pro-image,0.14400,cand/arco-de-globos/r4_ed.png,reserva
+2026-11-27T17:33:30,gemini-3-pro-image,0.14400,cand/cover-bouquets/r4_ed.png,reserva
+2026-11-27T17:33:57,gemini-3-pro-image (openrouter),-0.00445,cand/cover-bouquets/r4_ed.png,ajuste
+2026-11-27T17:34:00,gemini-3-pro-image (openrouter),-0.00532,cand/arco-de-globos/r4_ed.png,ajuste
+2026-11-27T17:34:06,gemini-3-pro-image,0.14400,cand/decoracion-guirnalda/r4_ed.png,reserva
+2026-11-27T17:34:06,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r4_b.png,reserva
+2026-11-27T17:34:06,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r4_a.png,reserva
+2026-11-27T17:34:06,gemini-3-pro-image,0.14400,cand/cover-burbuja/r4_ed.png,reserva
+2026-11-27T17:34:07,gemini-3-pro-image,-0.14400,cand/cover-burbuja/r4_ed.png,"error, se libera"
+2026-11-27T17:34:08,gemini-3-pro-image,-0.14400,cand/decoracion-guirnalda/r4_ed.png,"error, se libera"
+2026-11-27T17:34:09,gemini-3-pro-image,-0.14400,cand/como-inflar-un-globo-burbuja/r4_b.png,"error, se libera"
+2026-11-27T17:34:16,gemini-3-pro-image,-0.14400,cand/como-inflar-un-globo-burbuja/r4_a.png,"error, se libera"
+2026-11-27T17:40:14,gemini-3-pro-image,0.14400,cand/cover-burbuja/r4_ed.png,reserva
+2026-11-27T17:40:14,gemini-3-pro-image,0.14400,cand/decoracion-guirnalda/r4_ed.png,reserva
+2026-11-27T17:40:14,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r4_a.png,reserva
+2026-11-27T17:40:14,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r4_b.png,reserva
+2026-11-27T17:40:15,gemini-3-pro-image,-0.14400,cand/decoracion-guirnalda/r4_ed.png,"error, se libera"
+2026-11-27T17:40:15,gemini-3-pro-image,-0.14400,cand/cover-burbuja/r4_ed.png,"error, se libera"
+2026-11-27T17:40:15,gemini-3-pro-image,-0.14400,cand/como-inflar-un-globo-burbuja/r4_a.png,"error, se libera"
+2026-11-27T17:40:24,gemini-3-pro-image,-0.14400,cand/como-inflar-un-globo-burbuja/r4_b.png,"error, se libera"
