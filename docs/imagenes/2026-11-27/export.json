@@ -141,5 +141,16 @@
   ],
   "caja": null,
   "q": 82
+ },
+ {
+  "hueco": "decoracion-guirnalda",
+  "src": "cand/decoracion-guirnalda/r5_edb.png",
+  "dest": "public/images/decoracion-guirnalda.jpg",
+  "tam": [
+   1100,
+   825
+  ],
+  "caja": null,
+  "q": 84
  }
 ]

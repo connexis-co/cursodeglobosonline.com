@@ -46,3 +46,56 @@ mano con el rollo, mesa de postres y ventana (solo r2_a).
 
 ### Recomendado
 **r2_b**.
+
+## Tanda r6
+
+Candidato `r4_ed`, retoque de `r2_b` con el globo de relleno más pequeño y un rollo de puntos de pegamento. Recorte 4:3 (1100×825).
+Las vistas están en `insp/re6_*`: entera, `sitio_4x3`, mapa de cambios contra r2_b y, al 200 %, la cara, la mano del rollo y la mano del globo (las dos últimas también de r2_b).
+
+| Candidato | realismo | arte | parecido | manos | Defectos duros | Veredicto |
+|---|---|---|---|---|---|---|
+| r4_ed | 8 | 8 | 8 | 8 | ninguno | **aprobada** |
+
+### Conteo
+- 1 persona, 2 brazos y 2 manos.
+- Mano izquierda: el pulgar aprieta la cara superior del rollo, el índice pasa por debajo y medio, anular y meñique quedan doblados bajo la palma. Son 5 dedos y se sigue la muñeca hasta el antebrazo.
+- Mano derecha: es igual que en r2_b. Pulgar e índice pinzan el nudo del globo amarillo y el resto queda detrás del globo.
+
+### Cambios frente a r2_b
+- El mapa de diferencias marca casi solo bordes, lo que indica que se volvió a renderizar la imagen entera y no un parche. Hubo cambios en tres sitios: la mano izquierda con el rollo, el contorno del globo amarillo y algunos detalles finos de la cara.
+- Cara: la identidad se mantiene (cara delgada, pómulos altos, sonrisa, pelo liso). Hay dos cambios pequeños: el arete pasó de un brillante a dos perlitas en fila, y los dientes y la piel salen un poco más suaves. El parecido sigue en 8.
+- El globo amarillo apenas se encogió, un 6 % (170 → 160 px a 1400 de ancho). Sigue pareciendo de unas 9", no de 5". Eso le toca evaluarlo al juez de oficio.
+- Rollo de puntos de pegamento: tira con círculos rosados, creíble y sin letras. El extremo libre de la tira queda un poco rígido, pero no llega a defecto.
+
+### Hallazgos
+- La luz de ventana, la piel con poros y la guirnalda variada son las mismas que se aprobaron en r2_b. No hay letras ni números en ninguna superficie.
+
+### Recomendado
+**r4_ed** (o r2_b si el juez de oficio no acepta el tamaño del globo).
+
+## Tanda r7
+
+Candidatos `r5_eda` y `r5_edb`. Los dos son retoques de `r4_ed` y solo tenían que achicar el globo amarillo de relleno. Recorte 4:3 (1100×825).
+Las vistas están en `insp/re7_*`: entera, `sitio_4x3` y mapa de diferencias contra r4_ed (`*_dif`). Al 200 % hay recortes de la cara, de la mano derecha, de la mano izquierda (`mano_izq` y `mano_izq_dedos`), del globo amarillo con sus vecinos y de la mesa de postres, también de r4_ed para comparar. Se cotejó la cara con `P8_jenny_ANCLA_sonrisa.png`.
+
+| Candidato | realismo | arte | parecido | manos | Defectos duros | Veredicto |
+|---|---|---|---|---|---|---|
+| r5_eda | 8 | 8 | 8 | 7 | ninguno | rechazo (el globo casi no se achica y se rehízo la mano derecha) |
+| r5_edb | 8 | 8 | 8 | 8 | ninguno | **aprobada** |
+
+### Conteo
+- Las dos tienen 1 persona, 2 brazos y 2 manos.
+- Mano izquierda con el rollo, en las dos: es igual que en r4_ed. El pulgar aprieta la cara superior del rollo, el índice pasa por debajo y medio, anular y meñique quedan doblados bajo la palma. Son 5 dedos y se sigue la muñeca hasta el antebrazo.
+- Mano derecha de r5_eda: se hizo nueva. Antes pinzaba el nudo por abajo y ahora la palma se apoya encima del globo. Se ven el pulgar, el índice, el medio y el anular, con el meñique oculto tras el globo. La anatomía es plausible y el antebrazo llega limpio al hombro.
+- Mano derecha de r5_edb: es igual píxel a píxel que en r4_ed (dorso, nudillos y pulgar). El resto de los dedos queda detrás del globo.
+
+### Cambios frente a r4_ed
+- r5_eda: el mapa de diferencias marca el brazo derecho entero, la mano, el globo amarillo y, más flojo, el borde de los dientes y del rollo. Por eso la mano y el brazo cambiaron, aunque no debían. El globo apenas se achica: unos 266 px de diámetro frente a 280 en el original, un 5 %. Sigue pareciendo de unas 9". La cara queda un poco más suave, pero se reconoce igual.
+- r5_edb: el cambio se limita a un disco alrededor del globo amarillo. En el resto de la imagen solo hay ruido de bordes de un nuevo renderizado. El globo pasa de unos 280 px a unos 230, un 18 % menos. Ahora mide más o menos la mitad que los coral vecinos, pero sigue sin ser de 5" (el tamaño lo juzga el de oficio).
+- El hueco que dejó el globo en r5_edb se rellenó con el pie rosado del plato de brownies y unas galletas en una bandeja. Encajan con la mesa, no tienen costuras, la sombra es coherente y el desenfoque es el mismo del fondo. Solo la galleta junto a los nudillos sale un poco blanda al 200 %. Con el globo más pequeño, el nudo amarillo que pinzaba el pulgar ya no se ve, y el pulgar queda apoyado en la base del globo. Es creíble.
+- Cara de r5_edb: es la misma de r4_ed, con la misma cara delgada, los mismos pómulos y la misma sonrisa. Coincide con la referencia, así que el parecido sigue en 8.
+- No hay letras ni números en ninguna superficie: rollo, tira de puntos, platos y bandejas.
+
+### Recomendado
+**r5_edb**. Si el juez de oficio no acepta el tamaño del globo, se queda r4_ed. Para achicarlo más, conviene partir de r5_edb y pedirlo en inglés:
+"Keep everything identical; only shrink the yellow balloon under her right hand to about one third of the diameter of the coral balloons beside it, keeping her thumb resting on its base. Do not change her hands, arm or face."

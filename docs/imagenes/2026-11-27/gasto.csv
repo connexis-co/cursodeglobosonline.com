@@ -203,3 +203,15 @@ fecha,modelo,usd,archivo,nota
 2026-11-27T17:40:15,gemini-3-pro-image,-0.14400,cand/cover-burbuja/r4_ed.png,"error, se libera"
 2026-11-27T17:40:15,gemini-3-pro-image,-0.14400,cand/como-inflar-un-globo-burbuja/r4_a.png,"error, se libera"
 2026-11-27T17:40:24,gemini-3-pro-image,-0.14400,cand/como-inflar-un-globo-burbuja/r4_b.png,"error, se libera"
+2026-11-27T18:26:13,gemini-3-pro-image,0.14400,cand/cover-burbuja/r4_ed.png,reserva
+2026-11-27T18:26:13,gemini-3-pro-image,0.14400,cand/decoracion-guirnalda/r4_ed.png,reserva
+2026-11-27T18:26:13,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r4_b.png,reserva
+2026-11-27T18:26:13,gemini-3-pro-image,0.14400,cand/como-inflar-un-globo-burbuja/r4_a.png,reserva
+2026-11-27T18:26:41,gemini-3-pro-image (openrouter),-0.00494,cand/decoracion-guirnalda/r4_ed.png,ajuste
+2026-11-27T18:26:41,gemini-3-pro-image (openrouter),-0.00523,cand/cover-burbuja/r4_ed.png,ajuste
+2026-11-27T18:26:49,gemini-3-pro-image (openrouter),-0.00147,cand/como-inflar-un-globo-burbuja/r4_b.png,ajuste
+2026-11-27T18:26:53,gemini-3-pro-image (openrouter),-0.00112,cand/como-inflar-un-globo-burbuja/r4_a.png,ajuste
+2026-11-27T18:30:44,gemini-3-pro-image,0.14400,cand/decoracion-guirnalda/r5_eda.png,reserva
+2026-11-27T18:30:44,gemini-3-pro-image,0.14400,cand/decoracion-guirnalda/r5_edb.png,reserva
+2026-11-27T18:31:11,gemini-3-pro-image (openrouter),-0.00500,cand/decoracion-guirnalda/r5_eda.png,ajuste
+2026-11-27T18:31:12,gemini-3-pro-image (openrouter),-0.00508,cand/decoracion-guirnalda/r5_edb.png,ajuste

@@ -56,3 +56,55 @@ Vistas en `insp/of3_*` (entera 1400 px, recorte 4:3; al 200 %: cara, mano en el 
 **r2_b**, con este retoque:
 
 > Make the yellow balloon she is placing much smaller: a small 5-inch latex balloon, about half the diameter of the coral balloons around it, held by its knot and pressed into the gap between the pink and coral balloons. Replace the white tape roll in her other hand with a small roll of balloon glue dots (a narrow strip with small round clear adhesive dots on a white backing). Keep her face, hands, apron and the garland exactly as they are. Change nothing else.
+
+## Tanda r6
+
+Vistas en `insp/of6_*`: entera a 1400 px y recorte 4:3 de `r4_ed` y de su original `r2_b`; al 200 %, globo y mano, rollo y cara; mapa de diferencias `of6_r4_ed_diff.jpg`.
+
+| Candidato | Oficio | Deseo | Defectos duros | Veredicto |
+|---|---|---|---|---|
+| r4_ed (retoque de r2_b) | 7 | 8 | El globo amarillo sigue siendo de unos 7–8" (mide el 62 % del coral de 11" que tiene al lado; en r2_b medía el 65 %). No se lee como un 5" de relleno | retoque |
+
+### Conteo
+- 1 persona, 2 brazos y 2 manos. La derecha sujeta el amarillo por el nudo con el pulgar y el índice. La izquierda tiene el rollo con el pulgar encima y los otros 4 dedos debajo. Nada fundido.
+
+### Comparación con r2_b
+- **Resuelto:** el rollo de cinta de papel pasó a ser un rollo de puntos de pegamento creíble (rollo corto blanco con tira y círculos transparentes, sin letras). Es justo lo que usa una decoradora para el relleno.
+- **Sin resolver:** el globo amarillo apenas encogió (un 5 % como mucho). Pegado a los coral de 11" se sigue leyendo como otro globo mediano, así que el gesto «relleno el hueco con un 5"» no se entiende.
+- **No se rompió nada:** cara, pelo, delantal, guirnalda, mesa de postres y conteo de manos siguen iguales. El mapa de diferencias solo marca el rollo, el antebrazo izquierdo y el borde del globo amarillo; en lo demás solo cambian bordes por el remuestreo.
+- La guirnalda sigue siendo buena (18", 11" y 5" mezclados, cromados y confeti, ningún nudo al frente) y la luz y la sala siguen dando ganas de aprender. Para la foto principal del inicio, lo único que falla es el tamaño del amarillo.
+
+### Recomendado
+**r4_ed** como base (es mejor que r2_b), con un retoque más, solo en el globo:
+
+> Shrink the yellow balloon she is holding to a true 5-inch latex balloon: its diameter must be at most HALF the diameter of the coral balloon directly to its right, small enough to fit in her palm, still held by its knot between thumb and index finger and pressed into the gap above the pink and coral balloons. Fill the space it leaves with the existing background (cake table, wall). Do not change her face, hands, the glue-dot roll, her apron or any other balloon.
+
+## Tanda r7
+
+Vistas en `insp/of7_*`: entera a 1400 px y recorte 4:3 (1100×825) de `r5_eda`, `r5_edb` y su base `r4_ed`; al 200 %, globo amarillo con la mano, rollo y cara; vista 1:1 con regla cada 50 px (`*_amarillo_regla.jpg`) y mapas de diferencias contra `r4_ed` (`*_diff.jpg`).
+
+| Candidato | Oficio | Deseo | Defectos duros | Veredicto |
+|---|---|---|---|---|
+| r5_eda (retoque de r4_ed) | 7 | 7 | El amarillo sigue siendo mediano: 0,58 del coral de la derecha y 0,59 del fucsia. No llega a la mitad | rechazo |
+| r5_edb (retoque de r4_ed) | 8 | 8 | ninguno | aprobada |
+
+### Medidas (píxeles del original de 2400 px, diámetro horizontal)
+| | Amarillo | Coral a la derecha (~452) | Coral de abajo (~505) | Fucsia de la izquierda (~437) |
+|---|---|---|---|---|
+| r4_ed | ~290 | 0,64 | 0,57 | 0,66 |
+| r5_eda | ~260 | 0,58 | 0,51 | 0,59 |
+| r5_edb | ~235 | 0,52 | 0,47 | 0,54 |
+
+### Conteo
+- r5_eda: 1 persona, 2 brazos y 2 manos. La derecha va con la palma encima del amarillo: se ven el pulgar y 3 dedos, y el meñique queda tapado. La izquierda sostiene el rollo con el pulgar encima y los dedos debajo. Nada fundido.
+- r5_edb: 1 persona, 2 brazos y 2 manos. La derecha abraza el amarillo por detrás y por debajo: se ven el pulgar, que lo empuja hacia el hueco, y el canto de la mano; los otros dedos quedan detrás del globo. La izquierda tiene el rollo igual que en r4_ed. Nada fundido ni atravesado.
+
+### Comparación con r4_ed
+- **r5_eda**: el globo encogió solo un 10 %, y el retoque volvió a dibujar todo el antebrazo y la mano derecha, que ahora va con la palma encima del globo, como quien lo acaricia y no como quien lo encaja. También cambió la bandeja de brownies (ahora en plato rosa) y movió un poco toda la figura (el mapa de diferencias marca los bordes de la cara, del pelo y del delantal). Cara, rollo y guirnalda siguen bien, pero el encargo (que el amarillo mida como mucho la mitad) no se cumple.
+- **r5_edb**: es un retoque local: el mapa solo marca el globo amarillo y su borde. El amarillo baja de unos 290 a unos 235 px y queda en la mitad de los vecinos (0,47–0,54), apoyado sobre el coral de abajo, entre el fucsia y el coral grande, con el lila detrás. Se lee como un globo chico que rellena el hueco. Cara, pelo, delantal, rollo de puntos de pegamento (sin letras), mesa de postres y guirnalda no cambiaron. El nudo ya no se ve (queda hacia atrás, como debe). Sombras y contactos son coherentes y ningún globo se funde con otro.
+- En las dos versiones, como en r4_ed, la punta de la tira de puntos roza el borde del fucsia. Es menor y no se lee como pegamento a la vista.
+
+### Recomendado
+**r5_edb** como foto principal del inicio. Si se quiere apurar más el tamaño (5" puro ≈ 0,45 del 11"), un último toque opcional:
+
+> Make the yellow balloon about 10% smaller, keeping it seated in the same gap and held the same way by her thumb. Change nothing else.

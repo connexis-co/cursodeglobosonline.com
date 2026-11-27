@@ -57,3 +57,25 @@ Vistas en `insp/of3_*` (entera 1400 px, cuadrado 900, banda 16:9; al 200 %: cara
 **r2_b**, con este retoque:
 
 > Remove the faint, ghostly pastel balloon shapes and the face reflection in the upper half of the clear bubble balloon: the upper half must be clean transparent plastic showing the wall behind, with only soft natural highlights. Keep the small balloons in the lower half, the woman, her hands, the bow and the base exactly as they are. Change nothing else.
+
+## Tanda r6
+
+Vistas en `insp/of6_*`: entera a 1400 px, cuadrado 900 y sus bandas 4:3, 16:10 y 16:9 de `r4_ed` y de su original `r2_b`; al 200 %, mitad alta e interior de la burbuja, mano en el moño y cara; mapa de diferencias `of6_r4_ed_diff.jpg`.
+
+| Candidato | Oficio | Deseo | Defectos duros | Veredicto |
+|---|---|---|---|---|
+| r4_ed (retoque de r2_b) | 8 | 8 | ninguno de la lista de oficio; queda un resto del fantasma (ver hallazgos) | retoque |
+
+### Conteo
+- 1 persona y 2 brazos. La mano derecha pellizca el moño con el pulgar, el índice y el medio, y los otros dos dedos quedan doblados. El brazo izquierdo baja detrás de la burbuja y la mano no se ve, igual que en r2_b. No hay manos de más.
+
+### Comparación con r2_b
+- **Resuelto en parte:** desaparecieron las dos siluetas grandes, la lila y la verde menta, de la mitad alta. La burbuja se ve mucho más limpia.
+- **Sin resolver:** en el centro de la mitad alta sigue una mancha durazno/naranja desvaída del tamaño de un globo pequeño, flotando sola. A su izquierda hay restos más tenues de un amarillo y un turquesa. El reflejo de la cara, a la derecha junto a la planta, sigue igual. En el cuadrado 900 y en la banda 16:9 la mancha naranja **se ve**: parece un globo fantasma suspendido encima de los demás, y eso no pasa dentro de una burbuja (los globos se asientan abajo).
+- **No se rompió nada:** cara, coleta, delantal, mano, moño, base y los 15 globos de abajo están idénticos. El mapa de diferencias solo marca bordes por el remuestreo.
+- Lo demás sigue bien: burbuja lisa sin nudo de látex, relleno variado (mate, cromado, pastel), base sombrerera con moño fucsia, y ella sonríe mirando la pieza. Como antes, en la banda 16:9 se cortan el moño y la mano; la portada cuadrada vale.
+
+### Recomendado
+**r4_ed** como base, con un último retoque localizado:
+
+> Inside the clear bubble balloon, remove the remaining faint peach/orange balloon shape in the center of the upper half, the faint yellow and turquoise ghost shapes left of it, and the faint reflection of a face on the right side near the plant. The upper half of the bubble must show only the white wall, window frame and plant behind it through clean clear plastic, with soft natural highlights. Do not change the small balloons in the lower half, the woman, her hand, the bow or the base.

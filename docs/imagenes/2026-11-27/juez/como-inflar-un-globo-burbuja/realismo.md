@@ -46,3 +46,31 @@ Ninguno.
 
 ### Crítica para regenerar (inglés)
 "Jenny (slim oval face, defined jaw, straight brows, long straight black hair worn loose, three-quarter view toward camera) stands at a white table. A black electric balloon inflator with two nozzles and no label sits on the table; the neck of a clear bubble balloon is fitted over ONE nozzle and held there by her right hand (thumb and four fingers clearly wrapped around the neck). Her left hand rests flat on the OUTSIDE of the bubble, in front of it. Inside the bubble: 6–8 small matte latex balloons, each with a small clean knot, no fused shapes, no confetti blobs. Both hands fully visible, five fingers each, no interlocking. Natural window light, no text anywhere."
+
+## Tanda r6
+
+Candidatos nuevos `r4_a` y `r4_b`. Recorte 16:9 (los originales, 2752×1536, ya son 16:9: el recorte es la imagen entera).
+Las vistas están en `insp/re6_*`: entera, `sitio_16x9` y, al 200 %, la cara, cada mano, el interior de la burbuja, el inflador, el bol y la cinta. En r4_a, además, el brazo a través de la burbuja; en r4_b, el cuadro de la pared.
+
+| Candidato | realismo | arte | parecido | manos | Defectos duros | Veredicto |
+|---|---|---|---|---|---|---|
+| r4_a | 5 | 7 | 7 | 4 | El **brazo izquierdo pasa por detrás o por dentro de la burbuja** y se ve entero a través del plástico, con una mancha marrón en el codo. La mano agarra el borde superior de la esfera como si fuera un bol abierto, con los dedos por encima del borde, algo imposible en una burbuja cerrada. El inflador tiene una etiqueta con seudotexto en la tapa y una tercera boquilla rara. No se ve el cuello de la burbuja: la mano derecha pinza el costado | rechazo |
+| r4_b | 6 | 8 | 7 | 6 | El **antebrazo izquierdo pasa por detrás de la parte baja de la burbuja** (la piel se ve a través del plástico) y la mano la sostiene por debajo. El **cuadro de la pared lleva seudotexto**: un título tipo «DOREIANS» y renglones al pie. El globo fucsia de dentro tiene «pintada» una escena de habitación con un bol rojo, como un collage. El turquesa y el amarillo tienen una costura recta de dos tonos y el naranja un anillo de ventosa. Tampoco se ve el cuello: pinza la pared lateral | rechazo |
+
+### Conteo
+- r4_a: 1 persona, 2 brazos y 2 manos.
+  - Derecha, sobre el costado de la burbuja: 4 dedos doblados, el pulgar oculto y la muñeca visible. Es plausible.
+  - Izquierda, arriba: 4 dedos sobre el borde y la palma vista a través del plástico, con el antebrazo dentro o detrás de la burbuja. Defecto duro.
+- r4_b: 1 persona, 2 brazos y 2 manos.
+  - Derecha: pinza de pulgar e índice en la pared de la burbuja, con 3 dedos doblados debajo. Es correcta.
+  - Izquierda, debajo de la burbuja: 4 yemas visibles y el pulgar oculto, pero el antebrazo llega cruzando por detrás de la burbuja. Defecto duro según el encargo.
+
+### Hallazgos
+- r4_a: la cara es natural (poros, hebras sueltas, dientes creíbles), con coleta y perfil de tres cuartos. Se parece a Jenny, pero no es inequívoca: 7. La sala es limpia y luminosa.
+- r4_b: es la mejor toma de color y composición del hueco: ventana con edificios, bol de confeti, globos sin inflar e inflador de dos boquillas sin texto legible (solo un adhesivo liso en la tapa). La cara tiene pecas, poros y aretes dobles. Es cercana a Jenny, pero la coleta y la mirada baja la dejan en 7. Los globos internos tienen artefactos (escena dentro del fucsia, costuras de dos tonos, el anillo naranja) que al 100 % se notan como IA.
+
+### Recomendado
+Ninguno. Si hay que elegir base, **r4_b** por composición y luz.
+
+### Crítica para regenerar (inglés)
+"Same room and table as r4_b (window, confetti bowl, two-nozzle white inflator with blue handle, no label). Jenny (slim oval face, defined jaw, straight brows, long straight black hair worn LOOSE, three-quarter view) holds a freshly inflated clear bubble balloon IN FRONT of her body: her right hand pinches the narrow neck at the BOTTOM of the bubble between thumb and index; her left hand rests flat on the FRONT surface of the bubble. No arm, wrist or hand behind, under or inside the bubble. Inside: 7–9 small matte latex balloons in solid colours, each with a tiny clean knot, no seams, no reflections of rooms, no ring shapes. Wall art must be purely abstract shapes, no text, no letters, no captions."

@@ -50,3 +50,29 @@ mano del moño, mano de la base/brazos, centro y mitad superior de la burbuja. R
 Retoque para r2_b (inglés): "Erase the faint ghost face and the washed-out duplicate balloons in the upper half of the clear bubble; the upper half must be clean transparent plastic showing only the soft room and window behind it. Do not change the woman, her face, hands or the bow."
 
 Crítica para regenerar, si se descarta r2_b (inglés): "Same set-up as r2_b (window light, clear bubble on a white box with a fuchsia bow, table). Jenny turned more toward camera in three-quarter view so her slim oval face, defined jaw and straight brows read clearly; hair loose. The upper half of the bubble must be clean, with only true reflections of the window; no ghost faces, no duplicate balloons."
+
+## Tanda r6
+
+Candidato `r4_ed`, retoque de `r2_b`: había que borrar el reflejo fantasma y los globos duplicados pálidos de la mitad alta de la burbuja.
+Las vistas están en `insp/re6_*`: entera, `sitio_cuadrado`, `sitio_4x3`, `sitio_16x10`, `sitio_16x9`, mapa de cambios y, al 200 %, la mitad alta de la burbuja (r4_ed y r2_b), la cara, la mano del moño y los brazos. La zona del fantasma está al 300 %.
+
+| Candidato | realismo | arte | parecido | manos | Defectos duros | Veredicto |
+|---|---|---|---|---|---|---|
+| r4_ed | 6 | 7 | 7 | 8 | **La cara fantasma sigue en la mitad derecha de la burbuja**: al 300 % se ven ojos, nariz y el óvalo de la cara, y queda dentro de la banda 16:9. También siguen un globo naranja pálido «fantasma» en el centro y una mancha amarilla pálida a la izquierda | rechazo |
+
+### Conteo
+- 1 persona y 2 brazos. El izquierdo cruza por delante del delantal y pinza el moño: el pulgar arriba, el índice debajo de la cinta y medio, anular y meñique doblados. Es correcto.
+- El brazo derecho baja hacia la caja y la mano queda tapada por el moño y la burbuja. Es igual que en r2_b.
+
+### Cambios frente a r2_b
+- El retoque solo apagó los duplicados lila y turquesa. La cara fantasma, el globo naranja y la mancha amarilla no se tocaron.
+- La cara, las manos y el conteo no cambiaron, aparte de un ruido de bordes en el pelo y la planta. El parecido sigue en 7: la mirada baja y el perfil de tres cuartos no bastan para reconocerla con seguridad, y sigue por debajo del umbral de 8.
+
+### Hallazgos
+- En la banda 16:9 el moño queda casi fuera y la frente se corta en el borde superior. La lectura de producto se debilita.
+- No hay letras: el cuadro es abstracto y la caja y el moño están limpios.
+
+### Recomendado
+Ninguno. El retoque falló, y aunque se borrara el fantasma, el parecido (7) no llega a 8.
+
+Si se vuelve a retocar (inglés), mejor con una máscara manual sobre la mitad alta de la burbuja: "Inside the clear bubble, above the small balloons, replace everything with clean transparent plastic showing only the blurred white wall, the window frame and a soft specular highlight. Remove the ghost face on the right side, the pale orange ball in the centre and the pale yellow patch on the left. Do not touch the woman, her face, hands, the bow or the small balloons."

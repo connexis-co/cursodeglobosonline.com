@@ -1,0 +1,24 @@
+[
+ {
+  "out": "cand/decoracion-guirnalda/r5_eda.png",
+  "prompt": "Edit this photo. Keep everything else exactly identical: the woman, her face, hair, earrings, both hands, apron, the roll in her hand, the garland, the table, lighting, colors and framing. Change only this: replace the yellow balloon under her right hand with a much smaller one. It must be a tiny round yellow 5-inch latex balloon, about the size of her fist and clearly less than half the diameter of the coral and pink balloons next to it, tucked into the gap between them with her fingertips resting on it. The coral and pink balloons around it close in to fill the freed space. No text anywhere.",
+  "aspecto": "4:3",
+  "modelo": "gemini-3-pro-image",
+  "tam": "2K",
+  "refs": [
+   "cand/decoracion-guirnalda/r4_ed.png"
+  ],
+  "via": "openrouter"
+ },
+ {
+  "out": "cand/decoracion-guirnalda/r5_edb.png",
+  "prompt": "Edit this photo. Keep everything else exactly identical: the woman, her face, hair, earrings, both hands, apron, the roll in her hand, the garland, the table, lighting, colors and framing. Change only this: replace the yellow balloon under her right hand with a much smaller one. It must be a tiny round yellow 5-inch latex balloon, about the size of her fist and clearly less than half the diameter of the coral and pink balloons next to it, tucked into the gap between them with her fingertips resting on it. The coral and pink balloons around it close in to fill the freed space. No text anywhere.",
+  "aspecto": "4:3",
+  "modelo": "gemini-3-pro-image",
+  "tam": "2K",
+  "refs": [
+   "cand/decoracion-guirnalda/r4_ed.png"
+  ],
+  "via": "openrouter"
+ }
+]
