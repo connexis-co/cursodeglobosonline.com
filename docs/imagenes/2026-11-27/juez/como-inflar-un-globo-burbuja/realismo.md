@@ -74,3 +74,81 @@ Ninguno. Si hay que elegir base, **r4_b** por composición y luz.
 
 ### Crítica para regenerar (inglés)
 "Same room and table as r4_b (window, confetti bowl, two-nozzle white inflator with blue handle, no label). Jenny (slim oval face, defined jaw, straight brows, long straight black hair worn LOOSE, three-quarter view) holds a freshly inflated clear bubble balloon IN FRONT of her body: her right hand pinches the narrow neck at the BOTTOM of the bubble between thumb and index; her left hand rests flat on the FRONT surface of the bubble. No arm, wrist or hand behind, under or inside the bubble. Inside: 7–9 small matte latex balloons in solid colours, each with a tiny clean knot, no seams, no reflections of rooms, no ring shapes. Wall art must be purely abstract shapes, no text, no letters, no captions."
+
+## Tanda r8
+
+Candidato `cand/como-inflar-un-globo-burbuja/r6_b.png` (2752×1536, 16:9: el recorte es la imagen entera). Personaje: Vale.
+Vistas en `insp/re8_*`: `r6_b_entera` y, al 200 %, mitad alta y mitad baja de la burbuja, cara, mano en la mesa, mano de la cinta, inflador y etiqueta del delantal.
+
+| Candidato | realismo | arte | parecido | manos | Defectos duros | Veredicto |
+|---|---|---|---|---|---|---|
+| r6_b | 3 | 6 | 8 | 9 | **Un árbol entero dentro de la burbuja**: tronco y copa con hojas teñidas de naranja y turquesa, que no es el reflejo del olivo de detrás. **Globos fantasma** pálidos (rosa, amarillo, turquesa) en la mitad alta. **Cara reflejada** abajo, en el centro del plástico. El globo amarillo de la izquierda lleva **una rodaja de limón** dentro. El globo fucsia tiene una costura recta de dos tonos. En el bolsillo del delantal hay una **etiqueta con glifo tipo logo**. El inflador tiene en la boquilla un objeto fucsia y verde sin sentido | rechazo |
+
+### Conteo
+1 persona, 2 brazos y 2 manos, que siguen el antebrazo hasta hombros plausibles.
+- Mano en la mesa: 4 dedos con nudillos y uñas, y el pulgar oculto bajo la palma. Correcta.
+- Mano de la cinta: el pulgar pinza la cinta contra el índice; medio, anular (con anillo) y meñique doblados debajo. Correcta.
+- Ella no toca la burbuja: cumple.
+
+### Hallazgos
+- Cara: se reconoce a Vale (pelo con mechas, lunar en la barbilla, piel con poros, mirada a la burbuja): 8.
+- La burbuja descansa sobre una base blanca redonda, lo que cumple «aro sobre la mesa». El inflador eléctrico blanco de dos boquillas no tiene letras, pero lleva algo fucsia insertado en una boquilla.
+- La sala está bien (ventana, olivo, cuadro abstracto sin letras, bol de globos y confeti), pero el interior de la burbuja es el fallo clásico de este hueco, peor que nunca: una escena completa dentro.
+
+### Recomendado
+Ninguno.
+
+### Crítica para regenerar (inglés)
+"Same room as r6_b. A freshly inflated crystal-clear bubble balloon rests on a plain white ring stand on the table; Vale stands beside it, hands away from the bubble. Inside the bubble ONLY 10–14 small solid matte latex balloons (pink, teal, yellow, orange, gold chrome) packed in the lower two-thirds, each with a tiny knot; the upper third is clean empty transparent plastic showing only the blurred wall behind and one soft window highlight. No trees, plants, faces, rooms, fruit or patterns inside the bubble or inside any balloon; no two-tone seams. Black or white two-nozzle electric inflator with nothing attached to the nozzles. Plain navy apron with no tags, no labels, no text anywhere."
+
+## Tanda r9
+
+Candidatos `cand/como-inflar-un-globo-burbuja/r7_a.png` y `r7_b.png` (2752×1536, 16:9; el recorte es la imagen entera). Personaje: Vale.
+Vistas en `insp/re9_*`: `r7_a_entera`, `r7_b_entera` y la referencia `ref_vale`. Al 200 %: `burbuja_alta`, `burbuja_baja` y `cara` de cada uno, `r7_a_mano_izq`, `r7_a_mano_der`, `r7_a_inflador_soporte` y `r7_b_manos_inflador`.
+
+| Candidato | realismo | arte | parecido | manos | Defectos duros | Veredicto |
+|---|---|---|---|---|---|---|
+| r7_a | 5 | 7 | 8 | 9 | **Silueta de una persona** (perfil con pelo) reflejada en el borde izquierdo del plástico. **Globos fantasma** pálidos (rosa, melocotón y amarillo) en la mitad alta. Ventana con árboles reflejada. En el globo fucsia de la izquierda se ve **una figura con el brazo levantado** reflejada. La burbuja no está sobre un aro en la mesa, sino sobre una mesita auxiliar detrás | rechazo |
+| r7_b | 6 | 8 | 8 | 8 | **Globos fantasma** pálidos (amarillo, verde agua y lila) en el cuarto superior derecho del plástico. Ventana con árbol reflejada a la izquierda. El globo fucsia de la izquierda tiene **una escena reflejada** (forma de inflador o asa). En el lila de atrás se ve un marco de ventana. De una boquilla del inflador sale **un tubito blanco delgado** sin función clara | rechazo |
+
+### Conteo
+- r7_a: 1 persona, 2 brazos y 2 manos estirando una cinta. La izquierda tiene el pulgar encima de la cinta y 4 dedos doblados con nudillos. La derecha tiene el pulgar arriba y 4 dedos doblados. Las dos son correctas. No toca la burbuja: cumple.
+- r7_b: 1 persona, 2 brazos y 2 manos. La izquierda pinza la cinta con pulgar e índice, con los demás dedos doblados. La derecha sujeta la punta de la cinta junto al inflador: se ven el pulgar y 4 dedos. Es plausible, pero el tubito blanco que sale de la boquilla queda pegado a sus dedos y confunde la lectura. No toca la burbuja: cumple.
+
+### Hallazgos
+- Cara: en las dos es Vale (pelo ondulado con mechas caramelo, aros dorados, lunar en la barbilla). Piel algo pulida pero con textura: **8**.
+- r7_b cumple mejor el encargo: la burbuja está sobre un aro blanco en la misma mesa y el inflador blanco de dos boquillas está al lado, sin letras. El lazo coral del delantal es creíble. r7_a pone la burbuja en otra mesa al fondo. Su inflador es el más creíble (asa gris, cable, sin letras), pero sigue sin ser «aro en la mesa».
+- En las dos el plástico vuelve a fallar: globos fantasma en la mitad alta y reflejos de escena dentro de los globos de látex mate.
+
+### Recomendado
+Ninguno aprobado. Mejor base: **r7_b**. Retoque con máscara manual (en inglés): "Inside the clear bubble only: make the upper half clean empty transparent plastic showing just the blurred white wall and one soft window highlight—remove the pale ghost balloons in the upper right and the reflected window with tree. Make every small balloon plain solid matte latex with one soft highlight—remove the reflected scene inside the left pink balloon and the window frame inside the lilac one. Also remove the thin white tube sticking out of the inflator's left nozzle so both nozzles are short plain cones. Do not touch the woman, her face, hands, the ribbon or the ring stand."
+
+## Tanda r10
+
+Candidato `cand/como-inflar-un-globo-burbuja/r8_b.png` (2752×1536, 16:9; el recorte es la imagen entera). Personaje: Vale.
+Vistas en `insp/re10_*`: `r8_b_entera`, y al 200 %: `cara`, `mano_izq`, `mano_der`, `delantal`, `burbuja_q1`–`q4`, `aro_base`, `inflador`, `boquilla`, `interruptor`, `borde_izq`, más `burbuja_alta_contraste` (mitad alta con contraste forzado para buscar fantasmas). Referencia: `re9_ref_vale`.
+
+| Candidato | realismo | arte | parecido | manos | Defectos duros | Veredicto |
+|---|---|---|---|---|---|---|
+| r8_b | 6 | 7 | 8 | 9 | **Aleta de plástico imposible** en el borde izquierdo de la burbuja: un segundo contorno gris y una lámina semitransparente con tinte rosa sobresalen fuera de la esfera, junto al hombro. **La boquilla negra del inflador se funde con la pared lateral** de la burbuja (como si la inflara por el costado). **Globos fantasma tenues** en la mitad alta: uno beige a la izquierda y uno gris azulado con su nudo a la derecha (casi invisibles al 100 %, claros con contraste). En el globo turquesa grande, una silueta vertical oscura reflejada | rechazo |
+
+### Conteo
+1 persona, 2 brazos y 2 manos, cada una por su antebrazo hasta hombros plausibles.
+- Mano izquierda de ella (a la izquierda de la imagen): índice, medio, anular y meñique escalonados con uñas y nudillos; el pulgar queda detrás de la cinta, pinzándola. Correcta.
+- Mano derecha (se ve a través del borde de la burbuja): pulgar sobre la cinta e índice, medio, anular y meñique con uñas debajo. Correcta. Queda detrás del borde del plástico y no lo toca: cumple.
+- La cinta es continua: de una mano a la otra, una punta cae a la mesa por la derecha y otra hace un bucle hacia la izquierda.
+
+### Parecido con Vale
+Pelo oscuro ondulado con mechas caramelo, aros dorados, lunar junto a la barbilla, cejas pobladas y sonrisa con dientes naturales. Más corto que en la hoja (a los hombros), pero es ella: **8**. Piel algo pulida, con textura suficiente.
+
+### Hallazgos
+- La burbuja llena sí redujo los fantasmas, pero no los eliminó: siguen tenues en la mitad alta. La ventana con persianas reflejada a la izquierda es un brillo físicamente creíble, aunque nítido.
+- Inflador: cuerpo blanco redondo, rejilla y conector de corriente sin letras (dos puntitos de enchufe, sin texto). Pero su boquilla lateral está pegada a la pared de la burbuja; una burbuja se infla por el cuello de abajo, no por el costado.
+- Aro blanco sobre la mesa: cumple. Delantal azul noche con tiras coral, sin letras: cumple.
+- El arte baja: fondo de estudio blanco vacío, sin ventana ni decoración, con media imagen de pared desnuda. Se ve como foto de catálogo y no como un taller; la foto r7_b tenía mejor ambiente.
+
+### Recomendado
+Ninguno. Aunque se borraran la aleta y la boquilla, el arte (7) no llega a 8.
+
+### Crítica para regenerar (inglés)
+"Same framing and same Vale as r8_b, but in the decorated room of r7_b (window with soft daylight, plant, abstract wall art, bowl of small balloons). The clear bubble rests on its white ring stand; the electric inflator sits 15 cm away with its nozzle pointing up and NOT touching the bubble. The bubble is a single clean sphere with one smooth outline—no doubled rim, no plastic flaps outside its edge. Inside: small solid matte latex balloons packed to the top, each with one soft highlight and no reflections of people, rooms or windows; no pale ghost balloons anywhere. No text, labels or symbols."

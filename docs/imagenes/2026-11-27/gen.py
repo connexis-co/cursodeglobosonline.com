@@ -9,7 +9,7 @@ Registro y tope propios: gasto.csv de esta carpeta, tope duro USD 10.
 import base64, concurrent.futures as cf, csv, datetime, fcntl, json, os, sys, time, urllib.error, urllib.request
 B = os.path.dirname(os.path.abspath(__file__))
 G = 'https://generativelanguage.googleapis.com/v1beta/'
-CSV, TOPE = os.path.join(B, 'gasto.csv'), 10.0
+CSV, TOPE = os.path.join(B, 'gasto.csv'), 15.0  # JP amplió el tope de 10 a 15 el 27-nov para rehacer tres fotos
 TAR = {'gemini-nano-banana-2.1': (1.5e-6, 30e-6, 7.5e-6, {'1K': .0336, '2K': .0504, '4K': .113}),
        'gemini-3-pro-image': (2e-6, 120e-6, 12e-6, {'1K': .134, '2K': .134, '4K': .24})}
 

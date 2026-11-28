@@ -152,5 +152,16 @@
   ],
   "caja": null,
   "q": 84
+ },
+ {
+  "hueco": "cover-bouquets",
+  "src": "cand/cover-bouquets/r7_cuad_c.png",
+  "dest": "public/images/cursos/cover-bouquets.jpg",
+  "tam": [
+   900,
+   900
+  ],
+  "caja": null,
+  "q": 84
  }
 ]

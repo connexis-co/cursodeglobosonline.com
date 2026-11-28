@@ -158,3 +158,60 @@ Vistas en `insp/of5_*`: cuadrado 1400 y 900, bandas centradas 4:3 (y 112–787 d
 ### Recomendado
 Sustituir la portada actual por **r5_recorte**: mejora el sitio desde ya y no tiene defectos duros. Queda en `retoque` y no en `aprobada` porque la banda 16:9 centrada corta la estrella y media pesa. Para cumplir del todo, ampliar el lienzo de r3_a por abajo y luego recortar el cuadrado:
 `Extend the canvas downward by about 25% (outpaint more of the same white table and the floor/apron below it), keeping the image content identical; do not change her face, hands, the bouquet, the star, the wrapped weight, the spools or the scissors. No text anywhere.` Después, cuadrado que vaya de unos 120 px por encima de la punta de la estrella hasta ~150 px por debajo del pie de la pesa.
+
+## Tanda r8
+
+Encargo: portada en 16:9 tal cual (2752×1536); después se ampliará el lienzo para sacar el cuadrado. Aquí se juzga solo el 16:9: cara, las dos manos, el bouquet entero y la pesa tienen que estar dentro.
+Vistas en `insp/of8_*`: entera a 1400 px y, al 200 %, cara, mano de las cintas, mano de la mesa, pesa, estrella y nudos, frascos, carretes y tijera (más `mesa_fondo` en r6_a y `cuadro` en r6_b).
+
+| Candidato | Oficio | Deseo | Defectos duros | Veredicto |
+|---|---|---|---|---|
+| r6_a | 8 | 8 | ninguno | aprobada |
+| r6_b | 8 | 8 | **marca real en relieve**: los frascos de las tres baldas llevan el logotipo «Ball» en cursiva y renglones grabados en el vidrio | retoque |
+
+### Conteo
+- r6_a: 1 persona, 2 brazos, 2 manos. La derecha (alzada) cierra 4 dedos sobre el haz de cintas y el pulgar queda detrás; las cintas pasan entre los dedos sin fundirse. La izquierda está apoyada plana en la mesa con 4 dedos y el pulgar oculto. Uñas cortas, sin anillos.
+- r6_b: 1 persona, 2 brazos, 2 manos. La izquierda sostiene el haz de cintas bajo los nudos con 4 dedos y el pulgar arriba. La derecha descansa en la mesa con los dedos doblados y el pulgar oculto. Uñas cortas y lisas, sin anillos.
+
+### Hallazgos
+**r6_a**
+- Se cumple el encargo en 16:9: entran la punta de la estrella, la cara, las dos manos, el bouquet entero y la pesa completa apoyada en la mesa. Se entiende en un segundo: una decoradora asentando un bouquet de helio en su pesa.
+- Oficio correcto: 9 látex (mates fucsia, turquesa, amarillo y lila, más un cromado rosa oro) y una estrella foil dorada. Cada globo lleva su nudo pequeño y su cinta rizada. Las cintas bajan por la mano y entran en la pesa de papel de seda fucsia atada con hilo dorado, y los rizos sobrantes quedan sobre la mesa. El bouquet es compacto, con forma de huevo, y no flota nada suelto.
+- Delantal azul noche con tiras coral, sin letras. Mira el bouquet con media sonrisa, no a cámara. El cuadro es abstracto. Los frascos tienen globos por color, sin etiquetas ni relieves, y hay un bol de cromados.
+- Menores (no bloquean): en el cromado rosa oro hay un reflejo borroso gris y rojo que parece una mancha; dos recortes de cinta fucsia sobre el mueble del fondo; los carretes de la mesa son de cinta de satén (melocotón y lila) en vez de cinta rizada del color de las cintas del bouquet. Detrás de la estrella asoman un rojo y un verde que no se repiten en el resto.
+
+**r6_b**
+- Mejor composición para la mesa: tres carretes de cinta rizada fucsia, turquesa y dorado, del mismo color que las cintas del bouquet, tijera y la pesa entera con los rizos. Bouquet de 7 látex más la estrella, en forma de huevo, con nudos pequeños y rizos bajo cada globo. En 16:9 entran el cromado de arriba, la estrella, la cara, las dos manos y la pesa.
+- El fallo son los frascos: al 200 % todos llevan grabado el logo «Ball» en cursiva y renglones debajo. Es una marca real y en la vista de 1400 px ya se adivina como relieve en el vidrio. Defecto duro, pero localizado.
+- Menor: la mano del bouquet queda a la izquierda, separada de la cara, y la figura se ve más de lado que en r6_a.
+
+### Recomendado
+**r6_a**, aprobada tal cual para el 16:9. Si se prefiere r6_b por los carretes, este es el retoque:
+
+> Replace all the glass jars on the shelves with plain smooth glass jars with no embossed lettering, logos or raised marks on the glass; keep the same lids, sizes and the same colored balloons inside each jar. Change nothing else.
+
+## Tanda r9
+
+Candidato `r7_cuad_c` (2048×2048): es `r6_a`, aprobada en r8, con el lienzo ampliado a cuadrado (techo y pared arriba; frente de la mesa, patas y piso abajo).
+Vistas en `insp/of9_r7_cuad_c_*`: entera a 1400 px, cuadrado 900 y bandas centradas 4:3, 16:10 y 16:9; banda añadida de arriba y de abajo a tamaño original; al 200 %, pata izquierda de la mesa y piernas.
+
+| Candidato | Oficio | Deseo | Defectos duros | Veredicto |
+|---|---|---|---|---|
+| r7_cuad_c | 8 | 8 | ninguno | aprobada |
+
+### Conteo
+- 1 persona, 2 brazos, 2 manos, como en r6_a: la derecha cierra 4 dedos sobre el haz de cintas y la izquierda está plana en la mesa con 4 dedos a la vista. Por debajo de la mesa salen dos piernas en vaqueros, sin nada duplicado.
+
+### Recortes (centrados)
+- **Cuadrado 900**: se lee al instante. Vale asienta un bouquet de helio en su pesa, en un taller luminoso. Arriba la estrella respira y abajo se ven la mesa con patas y el piso con alfombra.
+- **4:3**: es el mejor. Entran la estrella entera, la cara, las dos manos, el bouquet, la pesa completa, los carretes y la tijera.
+- **16:10**: igual que el 4:3, con un poco menos de pared y de piso. No se pierde nada importante.
+- **16:9**: cumple, por fin. Entran la punta de la estrella, la cara, las dos manos, el bouquet entero y la pesa completa apoyada en la mesa con sus rizos. Es justo lo que pedía el encargo desde r1.
+
+### Lo añadido
+- Arriba: techo liso, esquina de pared coherente con la ventana, persiana enrollable con su cordón. Sin manchas ni costuras.
+- Abajo: frente de mesa blanca lisa y dos patas de madera cónicas a la izquierda (la delantera con casquillo blanco y la trasera toda de madera; parece cosa de diseño y no se nota a 900 px). Detrás, piso de madera, una alfombra crema, el zócalo y una rejilla de ventilación. Los módulos del mueble bajan hasta el piso. Sin costuras visibles, con la luz de ventana coherente.
+- Menor: a la derecha la mesa se sale del cuadro, así que no se ven sus patas de ese lado. Es normal en un encuadre.
+
+### Recomendado
+**r7_cuad_c**, aprobada como portada cuadrada del curso de bouquets.

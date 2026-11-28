@@ -125,3 +125,57 @@ La portada actual (`main:public/images/cursos/cover-bouquets.jpg`) es un bodegó
 
 ### Recomendado
 r5_recorte puede servir provisionalmente si se acepta la banda 16:9 tal como está. Para aprobarla hace falta este retoque (en inglés): "Outpaint r3_a: extend the canvas by about 40% at the top and 25% at the bottom (plain wall above, more white table below) and then re-square, so the full gold star including its top point, her face, both hands and the entire magenta weighted base fall between 22% and 78% of the height. Keep all existing pixels identical; add no objects, labels or text."
+
+## Tanda r8
+
+Candidatos `cand/cover-bouquets/r6_a.png` y `r6_b.png`, generados ya en 16:9 (2752×1536). Se juzga el 16:9 entero; el cuadrado saldrá ampliando el lienzo (pared arriba, mesa abajo).
+Vistas en `insp/re8_*`: `r6_a_entera`, `r6_b_entera`, referencia `re8_ref_P1_vale_hoja_v2c` y, al 200 %, cara, cada mano, pesa, carretes, frascos (dos tiras), estrella y cuadro de cada candidato (`re8_r6_b_mano_der_b_200` es la mano de las cintas con más margen).
+
+| Candidato | realismo | arte | parecido | manos | Defectos duros | Veredicto |
+|---|---|---|---|---|---|---|
+| r6_a | 8 | 8 | 8 | 9 | Ninguno. Frascos de vidrio liso sin relieve, carretes con tapas blancas lisas, tijeras y cuadro abstracto sin marcas | **aprobada** |
+| r6_b | 8 | 8 | 8 | 9 | **Marca real en relieve**: los frascos de la estantería llevan el logotipo en cursiva «Ball» y renglones de seudotexto en relieve, legibles al 200 % en al menos seis frascos | **retoque** |
+
+### Conteo
+- r6_a: 1 persona, 2 brazos y 2 manos que siguen el antebrazo hasta hombros plausibles. La mano izquierda (de la foto, la que sujeta las cintas) tiene el pulgar encima y 4 dedos curvados debajo, cada uno con su uña; las cintas pasan por dentro del puño sin fundirse. La otra mano descansa plana en la mesa: 4 dedos con nudillos y uñas, y el pulgar oculto bajo la palma.
+- r6_b: 1 persona, 2 brazos y 2 manos. La que sujeta las cintas tiene el pulgar arriba y 4 dedos escalonados (índice, medio, anular y meñique). La que descansa en la mesa tiene 4 dedos doblados y el pulgar oculto. Las dos son correctas.
+
+### Encuadre 16:9
+- r6_a: entran la cara, las dos manos, el bouquet entero y la pesa con su base. La punta de la estrella queda a ~1,5 % del borde superior: entra, pero justa, y la ampliación a cuadrado le dará aire.
+- r6_b: entran también la cara, las dos manos, el bouquet (el globo cromado rosa casi toca el borde superior) y la pesa entera.
+
+### Hallazgos
+- Cara: en las dos se reconoce a Vale. Tiene pelo ondulado con mechas caramelo, aros dorados, lunar en la barbilla y en la mejilla, y piel con poros. r6_b tiene el pelo largo, como en la hoja, y r6_a lo lleva a media melena. Las dos miran el bouquet con una sonrisa leve. Parecido 8 en ambas.
+- Luz de ventana coherente, con sombras de contacto bajo la pesa, los carretes y las manos. La estrella foil tiene costuras y pliegues creíbles y refleja la habitación. La pesa es papel de seda fucsia atado con cordón dorado, creíble.
+- r6_a: estantería con frascos de globos sin inflar, un bol de cromados y un frasco grande lila; nada lleva letras. Encima de la encimera, un carrete fucsia con tapa negra lisa y un frasquito transparente. El delantal tiene un remache rosa pequeño, que no es un logo.
+- r6_b: la composición es más limpia (bouquet a la izquierda, Vale a la derecha, carretes rizados en primer plano), pero los frascos con «Ball» en relieve son un defecto duro de marca.
+
+### Recomendado: **r6_a**
+Retoque para r6_b, si se prefiere esa composición (inglés): "On every glass jar on the wooden shelves, remove all embossed lettering, script logos and raised text so the glass is completely smooth and plain; keep the jars, lids, balloons inside, the woman, her hands, the bouquet and everything else pixel-identical. No new text anywhere."
+
+## Tanda r9
+
+Candidato `cand/cover-bouquets/r7_cuad_c.png` (2048×2048). Es `r6_a` (aprobada en r8) con el lienzo ampliado a cuadrado y la foto original pegada otra vez en la banda central (y ≈ 452–1595).
+Vistas en `insp/re9_*`: `r7_cuad_c_1400`, `r7_cuad_c_900` y las bandas `banda43`, `banda1610` y `banda169` sacadas del 900. Al 200 %: `union_sup_0..3` (y 370–540) y `union_inf_0..3` (y 1510–1690), `cara`, `mano_cintas`, `mano_mesa`. Al 100 %: `techo_100`, `mesa_izq_100`, `mesa_der_100` y `franja_estirada_100` (y 1700–2048).
+
+| Candidato | realismo | arte | parecido | manos | Defectos duros | Veredicto |
+|---|---|---|---|---|---|---|
+| r7_cuad_c | 8 | 8 | 8 | 9 | Ninguno | **aprobada** |
+
+### Conteo
+1 persona, 2 brazos y 2 manos, sin cambios frente a r6_a. La mano de las cintas tiene el pulgar arriba y 4 dedos con uña debajo, y las cintas pasan por dentro del puño. La mano plana en la mesa tiene 4 dedos con nudillos y el pulgar oculto. Debajo de la mesa se ven 2 piernas con vaqueros, coherentes con la cadera y el delantal.
+
+### Uniones y lienzo añadido
+- **Unión superior (y ≈ 452)**: no se ve costura, ni salto de tono, ni cambio de grano en la pared, el estor o la esquina del techo. La punta de la estrella foil queda entera, justo debajo de la unión. El techo inclinado y la arista pared-techo están en perspectiva correcta, y el estor enrollable sigue con su cordón.
+- **Unión inferior (y ≈ 1595)**: el canto delantero de la mesa es continuo, con el mismo blanco y la misma sombra. La pesa, la cinta suelta y los carretes no se repiten ni se cortan. Al 200 % hay un ligero desenfoque blando en el canto bajo de la mesa, a la derecha (x > 1536); a tamaño de uso no se nota.
+- **Franja estirada (últimos ~160 px)**: piso de madera, alfombra, rejilla de ventilación, zócalo y cajoneras siguen rectos. No hay vetas alargadas ni texturas corridas visibles. Los vaqueros no parecen estirados.
+- **Patas de mesa**: a la izquierda hay dos, la delantera y la trasera vista por debajo del tablero, en posición geométricamente plausible. Hay una incoherencia menor: la delantera lleva un casquillo blanco arriba y la trasera no. Queda fuera de la banda 16:9 y en el cuadrado apenas se nota. No es defecto duro.
+- No hay texto en lo añadido: pared, techo, piso, rejilla y cajoneras están limpios.
+
+### Recortes del sitio
+- **Cuadrado 900**: se lee entero. Hay aire arriba (techo) y la escena respira, aunque el tercio inferior es mesa y piso con poco interés.
+- **4:3 y 16:10**: entran la cara, las dos manos, la estrella entera y la pesa con su base.
+- **16:9**: entran la cara, las dos manos, el bouquet con la punta de la estrella (al ras del borde, pero entera) y la pesa entera. Cumple por fin lo que pedía el encargo.
+
+### Recomendado: **r7_cuad_c**
+Si se quiere pulir (opcional, en inglés): "Add the same white sleeve cap to the top of the rear-left table leg so both visible legs match; change nothing else."

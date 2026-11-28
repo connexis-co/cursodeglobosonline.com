@@ -9,8 +9,8 @@ un retoque, [`pendientes/hoja-pendientes.jpg`](pendientes/hoja-pendientes.jpg).
 
 ## Resultado
 
-De 36 fotos del sitio (sin contar logos ni iconos): **14 sustituidas**, **22 se quedan** (19 porque ya son buenas o no
-se tocan, 3 porque lo generado no pasó a los dos jueces).
+De 36 fotos del sitio (sin contar logos ni iconos): **15 sustituidas**, **21 se quedan** (19 porque ya son buenas o no
+se tocan, 2 porque lo generado no pasó a los dos jueces).
 
 ### Sustituidas (aprobadas por juez de oficio y juez de realismo)
 
@@ -20,6 +20,7 @@ Notas: oficio / deseo · realismo / arte / parecido con la hoja del personaje. V
 |---|---|---|---|---|
 | `public/images/cursos/cover-flores.jpg` | mujer inventada (foto ya aprobada en sably.co, sin coste) | sably r1_b | 8 / 9 | 8 / 8 / – |
 | `public/images/cursos/cover-globoflexia.jpg` | Caro | r3_ed | 8 / 8 | 8 / 8 / 7 |
+| `public/images/cursos/cover-bouquets.jpg` | Vale | r7_cuad_c (r6_a ampliada a cuadrado) | 8 / 8 | 8 / 8 / 8 |
 | `public/images/certificado-mockup.jpg` | sin personas | r2_b | 9 / 8 | 9 / 9 / – |
 | `public/images/decoracion-guirnalda.jpg` (inicio) | Jenny | r5_edb | 8 / 8 | 8 / 8 / 8 |
 | `public/og-default.jpg` | Caro | r2_a | 8 / 8 | 8 / 8 / 7 |
@@ -42,9 +43,8 @@ nadie como alumna o instructora.
 
 | Hueco | Mejor candidata | Qué falta |
 |---|---|---|
-| `public/images/cursos/cover-bouquets.jpg` | Vale, `pendientes/cover-bouquets.jpg` (oficio 8 / 7, realismo 8 / 7 / 7, sin defectos duros; los dos jueces la ven mejor que la actual) | En el recorte 16:9 de las tarjetas la pesa sale cortada y la estrella toca el borde. Hay que ampliar el lienzo por arriba y por abajo sin rehacer la cara. |
-| `public/images/cursos/cover-burbuja.jpg` | Jenny, `pendientes/cover-burbuja.jpg` (oficio 8 / 8; realismo 6 / 7 / 7) | Tras dos retoques sigue un reflejo fantasma de cara dentro de la burbuja y el parecido con Jenny no llega a 8. Conviene regenerarla. |
-| `src/assets/blog/como-inflar-un-globo-burbuja.jpg` | ninguna | Seis candidatos rechazados por la mecánica del inflado (inflador imposible, cuello sin boquilla, brazo detrás o dentro de la burbuja). |
+| `public/images/cursos/cover-burbuja.jpg` | Jenny, `pendientes/cover-burbuja-r8b-16x9.jpg` (burbuja llena, sin globos fantasma; oficio 8 / 8, a un retoque) | Sobre los globos pequeños quedan reflejos nítidos de una ventana con edificios y la silueta de un fotógrafo. Además está en 16:9: habría que ampliarla a cuadrado con `cuadrar.py`. Antes, diez candidatos y dos retoques rechazados por globos fantasma en el plástico. |
+| `src/assets/blog/como-inflar-un-globo-burbuja.jpg` | ninguna | Doce candidatos rechazados: primero por la mecánica del inflado, después por globos fantasma y reflejos en el plástico, y el último (burbuja llena, limpia) por un inflador imposible pegado a la burbuja. |
 
 Los últimos trabajos de Jenny se lanzaron por OpenRouter, con el visto bueno de JP en la sesión, porque el crédito
 prepago de Gemini directo se agotó (error 402).
@@ -62,15 +62,19 @@ Guiones en esta carpeta, adaptados de `sably.co/docs/equipo/2026-11-27/` (`pauta
 jueces → `exportar.py export.json` → `antes_despues.py`. Modelo: `gemini-3-pro-image` a 2K con la hoja del personaje como
 referencia. Reglas del oficio: [`OFICIO-globos.md`](OFICIO-globos.md). Rúbrica: [`JUEZ.md`](JUEZ.md).
 
-Cada candidato pasó por dos subagentes Opus que no lo generaron, con manos y caras ampliadas al 200 %: 24 lecturas en
-siete rondas. De 70 imágenes generadas se publican 13 (más la reutilizada). Lo que más falló: herramientas (bombas e
+Cada candidato pasó por dos subagentes Opus que no lo generaron, con manos y caras ampliadas al 200 %: 30 lecturas en
+diez rondas. De 85 imágenes generadas se publican 14 (más la reutilizada). Lo que más falló: herramientas (bombas e
 infladores mal construidos), globos 260 sin inflar que salían como pajitas, seudotexto en etiquetas y racimos con 5 o 6
 globos. Lo que lo arregló: luz de ventana y cámara de celular en vez de «estudio», cara tres cuartos para que se
 reconozca el personaje, quitar del encargo lo que el generador rompe y retoques puntuales sobre el candidato casi bueno.
+Para las portadas cuadradas funcionó componer en 16:9 (todo cabe en el recorte de las tarjetas), pedir al modelo que
+amplíe el lienzo y volver a pegar encima la foto aprobada (`cuadrar.py`). Lo que no se resolvió: el globo burbuja
+transparente, donde el generador inventa globos fantasma y reflejos.
 
 ## Gasto
 
-USD **9,77** de un tope de 10 (`gasto.csv`): 70 imágenes a ≈ 0,14. Unos 6,28 por Gemini directo y unos 3,49 por
+USD **11,89** de un tope de 15 (`gasto.csv`; JP lo amplió de 10 a 15 para rehacer tres fotos): 85 imágenes a ≈ 0,14.
+Unos 6,28 por Gemini directo y unos 5,61 por
 OpenRouter con el mismo modelo, usado mientras Gemini directo estuvo sin crédito (las de Jenny, solo tras el visto
 bueno de JP).
 

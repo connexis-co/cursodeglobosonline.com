@@ -79,3 +79,73 @@ Vistas en `insp/of6_*`: entera a 1400 px, recorte 16:9 (casi la imagen entera); 
 Ninguno. Si hay que elegir base, **r4_b** (mesa, inflador y sala correctos). Pero el gesto hay que rehacerlo, no retocarlo:
 
 > Regenerate. Jenny (same face as reference) seated at a white table, holding a freshly inflated 24-inch clear bubble balloon with about ten small 5-inch latex balloons resting in its lower half. The bubble's short clear NECK points toward the camera at the bottom-left of the bubble, a clear plastic tube about 3 cm wide and 8 cm long, and she pinches that neck shut between the thumb and index finger of her right hand, twisting it once. Her left hand is open UNDER the bubble, palm up, supporting it from below from the FRONT side; no arm, wrist or hand is ever behind or inside the bubble. On the table, out of reach of her hands: a white dual-nozzle electric balloon inflator with exactly two short conical nozzles and a plain blank label, a glass bowl of uninflated small balloons in the same colors, a glass bowl of confetti and a ribbon spool. Clean, plain wall with no framed pictures, posters or any text. The small balloons inside are smooth and matte with small knots, no stains or reflections of boxes. Absolutely no letters, numbers or logos anywhere.
+
+## Tanda r8
+
+Encargo nuevo y más simple: burbuja RECIÉN INFLADA con globos pequeños dentro, apoyada en un aro sobre la mesa y con el cuello cerrado con un clip. Al lado, un inflador eléctrico de dos boquillas sin etiqueta. Ella no toca la burbuja: sostiene una cinta. Recorte 16:9.
+Vistas en `insp/of8_r6_b_*`: entera a 1400 px y, al 200 %, inflador, mitad alta e interior de la burbuja, aro, cara, mano de la cinta, mano de la mesa, bol y confeti, cuadro y delantal.
+
+| Candidato | Oficio | Deseo | Defectos duros | Veredicto |
+|---|---|---|---|---|
+| r6_b | 4 | 6 | **Cosas imposibles dentro de la burbuja**: la mitad alta muestra las ramas del olivo de detrás como si estuvieran dentro, mezcladas con 6–7 globos fantasma desvaídos (rosa, amarillo, turquesa) que flotan entre ellas. **No hay cuello ni clip**: la burbuja descansa en el aro sin cuello visible, y es justo el paso que la foto debe enseñar. Un globo amarillo lleva dentro una rodaja como de limón | rechazo |
+
+### Conteo
+- 1 persona, 2 brazos, 2 manos. La izquierda está apoyada en la mesa con 4 dedos extendidos y el pulgar oculto. La derecha pellizca la cinta fucsia de satén entre el pulgar y el índice, con los otros dedos doblados. Lleva un anillo en el anular (menor, porque no está anudando). No toca la burbuja, como pedía el encargo.
+
+### Hallazgos
+- Lo que sí se cumple: el inflador es una caja blanca de dos boquillas (una gris libre y otra fucsia, en parte tapada por la burbuja), sin letras visibles y apartado en la mesa. La burbuja está tensa y sin arrugas, asentada en un aro blanco. Los globos de 5" son mates y cromados oro, con nudos pequeños. En la mesa, un bol de globos de los mismos colores y un platito de confeti ordenado. Ella sonríe mirando la pieza, con delantal azul noche y tiras coral. La sala está limpia y el cuadro es abstracto, sin letras.
+- Lo que la tumba: en la miniatura la mitad alta de la burbuja parece contener un arbolito con globos colgados. Al 200 % son el reflejo y la transparencia de la planta, fundidos con globos desvaídos que no existen, más un reflejo de ventana con árboles a la izquierda. Ningún globo de dentro de una burbuja flota a media altura entre ramas. Además, en una portada de «Cómo inflar un globo burbuja» el cuello con su clip es el dato de oficio, y no está.
+- Menores: el globo amarillo de la izquierda tiene dentro una textura de rodaja de cítrico. El bolsillo del delantal lleva una etiqueta coral diminuta con un signo (no se lee a tamaño de publicación). El anillo.
+
+### Recomendado
+Ninguno. Hay que regenerar, no retocar:
+
+> Regenerate. Jenny seated at a white table next to a freshly inflated 24-inch clear bubble balloon resting on a white plastic ring stand. About twelve small 5-inch matte and chrome-gold latex balloons rest piled in the LOWER half of the bubble; the upper half is empty, clean transparent plastic with soft highlights only. The bubble's short clear neck sticks out at the bottom-front, twisted and closed with a small white plastic clip, clearly visible. Place the bubble in front of a plain empty white wall: no plants, frames or windows behind it, and no reflections of windows, trees, rooms or people on the plastic or on the small balloons. Next to it, a compact white dual-nozzle electric balloon inflator with exactly two short nozzles, both fully visible and not touching the bubble, plain with no label. She does not touch the bubble; she holds a length of pink satin ribbon in both hands and smiles at the bubble. No rings. Absolutely no letters, numbers or logos anywhere.
+
+## Tanda r9
+
+Encargo: Vale, portada de «Cómo inflar un globo burbuja». Burbuja recién inflada con globos pequeños dentro, sobre un aro en la mesa, con el cuello cerrado con un clip a la vista. Al lado, un inflador eléctrico de dos boquillas sin etiqueta. Ella no toca la burbuja y sostiene una cinta. El plástico tiene que estar limpio.
+Vistas en `insp/of9_*`: entera a 1400 px (el recorte es 16:9, la imagen entera), mitad alta de la burbuja a tamaño original, manos (r7_a) y, al 200 %, base y zona del cuello, inflador e inflador con manos (r7_b).
+
+| Candidato | Oficio | Deseo | Defectos duros | Veredicto |
+|---|---|---|---|---|
+| r7_a | 4 | 6 | **No hay cuello ni clip**. **Globos fantasma** desvaídos en la mitad alta y reflejo de una ventana con árboles a la izquierda, con una silueta de persona en el borde. La burbuja está sobre un taburete aparte y no sobre un aro en la mesa | rechazo |
+| r7_b | 5 | 7 | **No hay cuello ni clip**: la burbuja se hunde en un aro ancho, como una tina, y no se ve por dónde se infló. **Globos fantasma** en la mitad alta y reflejo de una ventana con árboles. De la boquilla izquierda del inflador sale una pajita fina que no existe | rechazo |
+
+### Conteo
+- r7_a: 1 persona, 2 brazos, 2 manos. Las dos sostienen la cinta fucsia de satén tensa, pellizcada con el pulgar y el índice, con los otros dedos doblados. No toca la burbuja. Uñas cortas.
+- r7_b: 1 persona, 2 brazos, 2 manos. La izquierda pellizca la punta de la cinta sobre la mesa. La derecha sostiene la otra punta pegada a la boquilla del inflador, casi tocándolo. No toca la burbuja.
+
+### Hallazgos
+- Lo que mejora: el inflador es por fin creíble, blanco, con exactamente dos boquillas cónicas, sin etiqueta ni letras. En r7_a lleva asa gris y cable. Vale sonríe mirando la cinta, con delantal azul noche y tiras coral, en una sala clara. Los globos de 5" se asientan abajo, con nudos pequeños.
+- Lo que tumba las dos: **el dato de oficio no está**. En una portada de «cómo inflar» hay que ver el cuello corto torcido y el clip, y en ninguna aparece. Otra vez se ven globos pálidos en la mitad alta y una ventana con árboles reflejada en el plástico.
+- r7_a: la burbuja va sobre un taburete detrás de la mesa, con una base mínima, y no sobre el aro que pedía el encargo. r7_b: el aro es grueso, como un cubo, y la burbuja parece metida en él. Además, la cinta en la mano derecha queda junto a la boquilla, y eso confunde (parece que va a inflar la cinta).
+- Tras cuatro tandas sin cuello visible, la generación no lo va a resolver sola. Propongo pedir el cuello como protagonista, en primer plano, de frente a cámara.
+
+### Recomendado
+Ninguno. Regenerar:
+
+> Regenerate. Vale seated at a white table; in front of her, a freshly inflated 24-inch clear bubble balloon sits on a thin white plastic ring stand on the table, with about twelve small 5-inch matte latex balloons resting in its lower half. The bubble's short clear neck (a clear plastic tube about 3 cm wide and 6 cm long) points toward the camera at the lower front of the bubble, twisted once and closed with a small white plastic clip, sharp and clearly visible in the foreground. The upper half of the bubble is empty, clean transparent plastic showing only the plain white wall behind, with one soft highlight; no windows, trees, rooms, people or pale ghost balloons reflected or visible in it. To the right, a compact white dual-nozzle electric balloon inflator with exactly two short nozzles, no label, not touching anything. She does not touch the bubble or the inflator; she holds a length of pink satin ribbon in both hands above the table and smiles at the bubble. Absolutely no letters, numbers or logos anywhere.
+
+## Tanda r10
+
+Encargo: Vale, portada de «Cómo inflar un globo burbuja», 16:9 (2752×1536). Burbuja recién rellenada e inflada, LLENA de globos pequeños, sobre un aro en la mesa; inflador eléctrico al lado; ella no toca la burbuja y sostiene una cinta.
+Vistas en `insp/of10_r8_b_*`: entera a 1400 px (es el recorte del sitio), mitad alta e interior de la burbuja a tamaño original; al 200 %, cara, manos con la cinta, interior izquierdo, aro, inflador, boquilla contra la burbuja e interruptor.
+
+| Candidato | Oficio | Deseo | Defectos duros | Veredicto |
+|---|---|---|---|---|
+| r8_b | 5 | 7 | **Inflador imposible**: es un aparato redondo blanco con una tapa hundida arriba (parece un humidificador o una panificadora) y un tubo negro corto que sale de lado y está **pegado a la pared de la burbuja**, como si la inflara por el costado. Una burbuja no tiene válvula ahí: se infla por el cuello. Es el único defecto y está localizado | retoque |
+
+### Conteo
+- 1 persona, 2 brazos, 2 manos, 5 dedos en cada una. La izquierda pellizca la cinta fucsia con el pulgar y el índice, con los otros dedos doblados. La derecha sostiene la otra punta junto al borde izquierdo de la burbuja: dos dedos y el pulgar se ven un poco a través del plástico del borde, pero no la toca. Uñas cortas, sin anillos (lleva aros en las orejas).
+
+### Hallazgos
+- Lo que se resolvió: la burbuja está llena, con unos 18 globos de 5" mates (fucsia, turquesa, amarillo, lila, naranja) asentados hasta algo más de la mitad, con nudos pequeños. La parte alta queda limpia, con una bruma lila muy tenue que a tamaño de publicación no se lee como globo. **No hay globos fantasma, caras, personas ni texto.** A la izquierda se refleja una ventana con persianas: es un brillo de ventana verosímil y lo acepto. La burbuja está tensa, sin pliegues ni nudo de látex, y descansa en un aro blanco bajo sobre la mesa (el cuello queda oculto abajo, cosa normal en una pieza asentada).
+- Persona y ambiente: Vale sonríe mirando la cinta, con delantal azul noche y tiras coral, en una pared blanca lisa y mesa limpia. La escena se entiende en un segundo.
+- Lo que la frena: el inflador. No se parece al de dos boquillas que reconoce un alumno, y el tubo negro tocando el costado de la burbuja cuenta un procedimiento falso en la foto que ilustra justo cómo se infla. El interruptor lleva los signos «I/O» diminutos: no se leen a tamaño de publicación, pero el retoque los elimina.
+- Menor: en la mesa solo hay la cinta y el aparato. Un bol de globos pequeños sumaría contexto, pero no hace falta.
+
+### Recomendado
+**r8_b**, con este retoque:
+
+> Replace the round white appliance on the right with a compact white electric balloon inflator standing on the table about 15 cm away from the bubble, with exactly two short conical nozzles pointing up, a plain blank body with no label, no switch markings, no letters or numbers, and a power cord. Nothing touches the bubble: remove the black tube that presses against the side of the bubble. Keep the bubble, the small balloons inside, the ring stand, the woman, her hands, the ribbon and the rest of the table exactly as they are.
