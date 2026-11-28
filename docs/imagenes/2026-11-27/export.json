@@ -1,0 +1,167 @@
+[
+ {
+  "hueco": "cover-flores",
+  "src": "cand/cover-flores/sably_r1b.png",
+  "dest": "public/images/cursos/cover-flores.jpg",
+  "tam": [
+   900,
+   900
+  ],
+  "caja": null,
+  "q": 84
+ },
+ {
+  "hueco": "decoracion-con-globos",
+  "src": "cand/decoracion-con-globos/r1_b.png",
+  "dest": "src/assets/blog/decoracion-con-globos.jpg",
+  "tam": [
+   2400,
+   1350
+  ],
+  "caja": null,
+  "q": 82
+ },
+ {
+  "hueco": "centros-de-mesa-con-globos",
+  "src": "cand/centros-de-mesa-con-globos/r1_b.png",
+  "dest": "src/assets/blog/centros-de-mesa-con-globos.jpg",
+  "tam": [
+   2400,
+   1350
+  ],
+  "caja": null,
+  "q": 82
+ },
+ {
+  "hueco": "certificado-mockup",
+  "src": "cand/certificado-mockup/r2_b.png",
+  "dest": "public/images/certificado-mockup.jpg",
+  "tam": [
+   1100,
+   825
+  ],
+  "caja": null,
+  "q": 84
+ },
+ {
+  "hueco": "como-inflar-globos",
+  "src": "cand/como-inflar-globos/r2_a.png",
+  "dest": "src/assets/blog/como-inflar-globos.jpg",
+  "tam": [
+   2400,
+   1350
+  ],
+  "caja": null,
+  "q": 82
+ },
+ {
+  "hueco": "globoflexia",
+  "src": "cand/globoflexia/r2_ed.png",
+  "dest": "src/assets/blog/globoflexia.jpg",
+  "tam": [
+   2400,
+   1350
+  ],
+  "caja": null,
+  "q": 82
+ },
+ {
+  "hueco": "cuanto-cobrar-por-decoracion-con-globos",
+  "src": "cand/cuanto-cobrar-por-decoracion-con-globos/r2_ed.png",
+  "dest": "src/assets/blog/cuanto-cobrar-por-decoracion-con-globos.jpg",
+  "tam": [
+   2400,
+   1350
+  ],
+  "caja": null,
+  "q": 82
+ },
+ {
+  "hueco": "tipos-y-tamanos-de-globos",
+  "src": "cand/tipos-y-tamanos-de-globos/r2_ed.png",
+  "dest": "src/assets/blog/tipos-y-tamanos-de-globos.jpg",
+  "tam": [
+   2400,
+   1350
+  ],
+  "caja": null,
+  "q": 82
+ },
+ {
+  "hueco": "bouquet-de-globos",
+  "src": "cand/bouquet-de-globos/r2_ed.png",
+  "dest": "src/assets/blog/bouquet-de-globos.jpg",
+  "tam": [
+   2400,
+   1350
+  ],
+  "caja": null,
+  "q": 82
+ },
+ {
+  "hueco": "como-inflar-globos-largos",
+  "src": "cand/como-inflar-globos-largos/r3_ed.png",
+  "dest": "src/assets/blog/como-inflar-globos-largos.jpg",
+  "tam": [
+   2400,
+   1350
+  ],
+  "caja": null,
+  "q": 82
+ },
+ {
+  "hueco": "cover-globoflexia",
+  "src": "cand/cover-globoflexia/r3_ed.png",
+  "dest": "public/images/cursos/cover-globoflexia.jpg",
+  "tam": [
+   900,
+   900
+  ],
+  "caja": null,
+  "q": 84
+ },
+ {
+  "hueco": "og-default",
+  "src": "cand/og-default/r2_a.png",
+  "dest": "public/og-default.jpg",
+  "tam": [
+   1200,
+   685
+  ],
+  "caja": null,
+  "q": 84
+ },
+ {
+  "hueco": "arco-de-globos",
+  "src": "cand/arco-de-globos/r4_ed.png",
+  "dest": "src/assets/blog/arco-de-globos.jpg",
+  "tam": [
+   2400,
+   1350
+  ],
+  "caja": null,
+  "q": 82
+ },
+ {
+  "hueco": "decoracion-guirnalda",
+  "src": "cand/decoracion-guirnalda/r5_edb.png",
+  "dest": "public/images/decoracion-guirnalda.jpg",
+  "tam": [
+   1100,
+   825
+  ],
+  "caja": null,
+  "q": 84
+ },
+ {
+  "hueco": "cover-bouquets",
+  "src": "cand/cover-bouquets/r7_cuad_c.png",
+  "dest": "public/images/cursos/cover-bouquets.jpg",
+  "tam": [
+   900,
+   900
+  ],
+  "caja": null,
+  "q": 84
+ }
+]

@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+"""prompts.py → trabajos/r1.json. Un prompt por hueco, dos candidatos (a, b). Personajes inventados de Sably (Vale, Caro,
+Andrés); Jenny no se usa (su autorización es como voz de la marca de Sably)."""
+import json, os
+U = '/Users/jpmisat/Documents/JP Projects/sably.co/docs/equipo/2026-11-27/pauta/ugc/muestras/personajes/'
+_J = json.load(open('/Users/jpmisat/Documents/JP Projects/sably.co/docs/equipo/2026-11-27/pauta/ugc/trabajo/j_img18.json'))
+_J = (_J if isinstance(_J, list) else [_J])[0]['prompt']
+IDJ = _J[_J.find('Identity'):_J.find('slightly slimmer.') + len('slightly slimmer.')]
+REFJ = [U + 'P8_jenny_ANCLA_sonrisa.png', U + 'P8_jenny_ANCLA_selfi.png', U + 'P8_jenny_r4_03_tres_cuartos_der.png']
+REF = {'vale': U + 'P1_vale_hoja_v2c.png', 'caro': U + 'P2_caro_hoja_OK.png', 'andres': U + 'P5_andres_hoja_OK.png'}
+
+CAM = ("Candid editorial photograph taken with a full-frame mirrorless camera, 35mm lens at f/2.8, sharp focus on the hands and "
+       "the balloons, true-to-life color with vivid saturated balloon colors, soft daylight from a large window on the left "
+       "and a warm lamp as fill, slight sensor grain, mild highlight bloom at the window. Real skin with visible pores, fine "
+       "flyaway hairs, natural asymmetry. ")
+LUGAR = ("Bright, clean, well-kept contemporary middle-class Latin American interior, tidy and nicely decorated (a potted "
+         "plant, a framed abstract print, light wood shelves). ")
+NO = (" Absolutely no text, letters, numbers, logos, watermarks, signs or screens anywhere; any package, bag, spool, pump or "
+      "tool is plain, with at most a small blank colored label shape. No balloon debris on the floor. Latex balloons are "
+      "round, never pear-shaped, with small tight knots hidden from view. Rich, complete mix of balloon types and vivid "
+      "colors: matte latex in saturated fuchsia, coral, orange, sunny yellow, turquoise and lilac, several chrome metallic "
+      "latex balloons (gold, rose gold, silver, metallic blue), and where it fits a foil star or heart and a clear balloon "
+      "with confetti inside. Abundant, finished, professional-looking work.")
+MANOS = (" Exactly two hands in the picture, both hers, each with five natural fingers, the two hands clearly apart from "
+         "each other; short clean natural nails, no rings, no bracelets.")
+
+
+def mujer(quien, camiseta):
+    return (f"The woman is the same person as in the reference sheet (same face, same hair color and wavy texture), a Latina in "
+            f"her early thirties, hair tied back in a low ponytail, wearing a plain {camiseta} t-shirt under a deep navy-indigo "
+            f"bib apron with raspberry-coral neck strap and ties, no logo or print on it. She looks at what her hands are doing "
+            f"with a relaxed, pleasant half-smile, never at the camera. ")
+
+JENNY = ("The woman is exactly the person in the three reference photos (same face, same features, same body). " + IDJ +
+         " Her long straight jet-black hair is tied back in a low ponytail with the face-framing front strands loose. She wears "
+         "a plain white t-shirt under a deep navy-indigo bib apron with raspberry-coral neck strap and ties, no logo or print. "
+         "She looks at what her hands are doing with a relaxed, pleasant closed half-smile, never at the camera. ")
+MARU = ("The woman is a Latina in her late thirties with warm brown skin, dark curly hair gathered in a loose bun, soft round "
+        "face, minimal makeup, wearing a plain mustard-yellow t-shirt under a deep navy-indigo bib apron with raspberry-coral "
+        "neck strap and ties, no logo or print on it. She looks at what her hands are doing with a relaxed, pleasant "
+        "half-smile, never at the camera. ")
+ANDRES = ("The man is the same person as in the reference sheet (same face and hair), a Colombian man in his thirties, wearing "
+          "a plain teal t-shirt under a deep navy-indigo bib apron with raspberry-coral neck strap and ties, no logo. He looks "
+          "at the balloon in his hands with a relaxed, pleasant half-smile, never at the camera. Exactly two hands in the "
+          "picture, both his, each with five natural fingers, short clean nails, no rings, no watch.")
+BANDA = (" Square composition: her face, both hands and the main balloon piece all sit inside the central horizontal band "
+         "(the middle 55% of the height), spread across the width. The camera is far enough back that the top of her head is a "
+         "full quarter of the image height below the top edge; the top quarter is only wall and the bottom fifth is only "
+         "table surface, so the picture can be cropped to 16:9 from the center without cutting her head or the piece.")
+CENTRO = (" Wide 16:9 composition with the face, hands and main piece in the central two thirds of the frame, with breathing "
+          "room on both sides.")
+
+J = {
+ 'cover-globoflexia': ('1:1', 'caro', CAM + LUGAR + mujer('caro', 'white') +
+    "Waist-up, she sits at a light wood table in a sunny living room. Her right hand holds up a just-finished classic "
+    "balloon dog twisted from one long turquoise modelling balloon (four legs, short body, long neck, two ears, snout with "
+    "the knot at the nose, small tail bubble). Her left hand rests on the table holding three uninflated long thin balloons. "
+    "On the table, an abundant colorful spread of finished balloon twisting figures: a pink balloon flower with green stem, "
+    "an orange balloon dog, a yellow balloon sword, a lilac balloon heart, plus a neat fan of uninflated long thin 260 "
+    "modelling balloons sorted by color and one two-way hand pump lying on its side." + MANOS + BANDA + NO),
+ 'cover-bouquets': ('1:1', 'vale', CAM + LUGAR + mujer('vale', 'white') +
+    "Waist-up, she stands behind a white worktable in a bright home studio, finishing a tabletop helium balloon bouquet: "
+    "six round latex balloons in fuchsia, turquoise, sunny yellow and lilac plus one chrome gold foil star, floating at "
+    "staggered heights on thin curled ribbons that all come down to one small balloon weight wrapped in fuchsia tissue with "
+    "a ribbon bow, standing on the table. The whole bouquet is compact, about as tall as her torso, and stands beside her "
+    "at the same height as her face. Her right hand gathers the ribbons together a hand-width below the balloons; her left "
+    "hand rests on the table steadying the weight. On the table: three plain ribbon spools in matching colors, small "
+    "scissors, a wrapped gift box. Behind her, shelves with clear bags of balloons sorted by color." + MANOS + BANDA + NO),
+ 'cover-burbuja': ('1:1', 'jenny', CAM + LUGAR + JENNY +
+    "Waist-up, she stands at a white worktable in a bright home studio finishing a stuffed bubble balloon: one large "
+    "crystal-clear 24-inch round bubble balloon, perfectly smooth and wrinkle-free, filled with many small 5-inch latex "
+    "balloons in fuchsia, turquoise, yellow, orange and lilac and a little metallic confetti, sitting on a short white "
+    "cylindrical gift-box base decorated with a big fuchsia satin bow and a tail of paper tassels in the same colors. The "
+    "bubble is at the same height as her face, beside her. Her right hand rests lightly on the side of the bubble; her left "
+    "hand fluffs one loop of the satin bow at the base. On the table: a few loose small balloons in a white bowl, a ribbon "
+    "spool, scissors, a compact electric balloon inflator with two nozzles." + MANOS + BANDA + NO),
+ 'decoracion-guirnalda': ('4:3', 'jenny', CAM + JENNY +
+    "A simple, pretty event room with a smooth light wall, wood floor and a tall window on the left. A lush finished organic "
+    "balloon garland in mixed sizes (large 18-inch, medium 11-inch and small 5-inch balloons) sweeps in a wide asymmetric "
+    "arc across the wall and down to the floor on the right, framing a dessert table with a white cloth, a cake on a stand "
+    "and a small vase of flowers. She stands at the right of center, seen in three-quarter view from mid-thigh up, pressing "
+    "one small yellow 5-inch balloon into a gap of the garland at shoulder height with her right hand; her left hand hangs "
+    "relaxed holding a small plain roll of glue dots. No strip, line or frame visible; the garland fills most of the frame "
+    "and stays fully inside it." + MANOS + " Horizontal 4:3 composition, the action near the center." + NO),
+ 'og-default': ('16:9', 'caro', CAM + mujer('caro', 'white') +
+    "A simple, pretty event room with a smooth cream wall, pale wood floor and tall windows on the left. A full, finished "
+    "organic balloon arch in mixed sizes (18-inch, 11-inch and 5-inch balloons) rises from the floor on the left, curves "
+    "over a dessert table with a white cloth and a cake on a stand, and comes down on the right. She stands at the right "
+    "third, seen from the knees up in three-quarter view, reaching with her right hand to settle one turquoise balloon of "
+    "the arch at shoulder height; her left hand rests on her hip. The arch is complete and abundant, no frame, strip or line "
+    "visible." + MANOS + " Wide 16:9 composition; the arch and the woman stay inside the central 85% of the height." + NO),
+ 'como-inflar-globos': ('16:9', 'vale', CAM + LUGAR + mujer('vale', 'coral-pink') +
+    "Waist-up, she stands at a light wood table inflating one round fuchsia 11-inch latex balloon with a two-way hand pump: "
+    "the balloon's neck is stretched over the pump nozzle and pinched there by the thumb and index finger of her left hand, "
+    "while her right hand grips the pump's handle at the other end, pulled halfway out. The balloon is two-thirds inflated "
+    "and round. On the table: five inflated round latex balloons in turquoise, yellow, orange, lilac and coral, a small "
+    "pile of flat uninflated balloons sorted by color, one chrome gold foil star balloon lying flat with a drinking straw "
+    "inserted in its valve, and a compact electric balloon inflator with two nozzles." + MANOS + CENTRO + NO),
+ 'como-inflar-globos-largos': ('16:9', 'caro', CAM + LUGAR + mujer('caro', 'sunny yellow') +
+    "Waist-up, she stands at a light wood table inflating one long thin orange 260 modelling balloon with a two-way hand "
+    "pump: her left hand pinches the balloon's lip on the pump nozzle with thumb and index finger, her right hand grips the "
+    "pump handle. The balloon is inflated to about 80 cm, straight and even, leaving a soft uninflated tail of four fingers "
+    "at the far end. On the table: a neat colorful fan of uninflated long thin balloons, three already inflated long "
+    "balloons in turquoise, fuchsia and yellow lying side by side, and one finished small balloon dog." + MANOS + CENTRO + NO),
+ 'como-inflar-un-globo-burbuja': ('16:9', 'jenny', CAM + LUGAR + JENNY +
+    "Waist-up, she stands at a white worktable inflating a crystal-clear 24-inch bubble balloon with a compact electric "
+    "balloon inflator that sits on the table: the bubble's long narrow neck is fitted over the inflator nozzle and held "
+    "there by the thumb and index finger of her left hand; her right hand supports the side of the bubble. The bubble is "
+    "almost full, smooth, with only faint creases near the neck, and inside it are seven small 5-inch latex balloons in "
+    "fuchsia, turquoise, yellow and orange. On the table: a white bowl with more small inflated balloons, a wide-mouth "
+    "balloon stuffing funnel, a small dish of metallic confetti, a ribbon spool, a small handheld heat sealer." + MANOS + CENTRO + NO),
+ 'cuanto-cobrar-por-decoracion-con-globos': ('16:9', 'vale', CAM + LUGAR + mujer('vale', 'white') +
+    "Waist-up, she sits at a tidy white desk in her home studio working out a quote: her right hand writes with a pencil in "
+    "an open spiral notebook (the page shows only loose illegible pencil strokes and a small balloon sketch), her left hand "
+    "rests on a simple pocket calculator whose display is turned away from the camera. On the desk: color swatch cards "
+    "fanned out, a few flat uninflated balloons in fuchsia, turquoise and yellow, a coffee mug. Behind her, a finished "
+    "colorful organic balloon garland on the wall and light wood shelves with clear bags of balloons sorted by color and "
+    "ribbon spools." + MANOS + CENTRO + NO),
+ 'tipos-y-tamanos-de-globos': ('16:9', None, CAM + LUGAR +
+    "Tabletop scene on a light wood table, seen from a slightly raised angle. Lined up from left to right, by growing size: "
+    "one round latex balloon of 5 inches (yellow), one of 9 inches (orange), one of 11 inches (fuchsia), one of 18 inches "
+    "(turquoise) and one of 24 inches (lilac), each resting in a low white ring so it does not roll. In front of them: two "
+    "inflated long thin 260 modelling balloons, one chrome gold foil star, one small crystal-clear bubble balloon with "
+    "confetti inside. At the right edge, one woman's hand (five natural fingers, short clean nails, no rings, sleeve of a "
+    "navy-indigo apron over a white t-shirt) holds an unmarked plain cardboard balloon sizer template with five round "
+    "holes of growing size next to the 11-inch balloon. Only one hand in the picture. Background softly out of focus: "
+    "shelves with clear bags of balloons." + CENTRO + NO),
+ 'decoracion-con-globos': ('16:9', 'caro', CAM + LUGAR + mujer('caro', 'white') +
+    "A sunny living room being decorated for a birthday at home. On the smooth light wall, a generous organic balloon "
+    "garland in mixed sizes runs diagonally above a table with a white cloth, a birthday cake on a stand and paper plates. "
+    "She stands at the right of center, mid-thigh up, three-quarter view, adding one medium orange balloon to the garland "
+    "with her right hand at shoulder height; her left hand holds one more inflated turquoise balloon by its knot down at "
+    "her side. On the table edge: a two-way hand pump, a coiled clear perforated balloon decorating strip and a few flat "
+    "balloons." + MANOS + CENTRO + NO),
+ 'arco-de-globos': ('16:9', 'vale', CAM + mujer('vale', 'white') +
+    "A simple, pretty event room with light walls and wood floor. A freestanding balloon arch about two meters tall on a "
+    "thin curved frame set in two round weighted bases: the left two thirds of the arch are already covered with tight "
+    "four-balloon clusters in fuchsia, orange, yellow and turquoise, the right third still shows the bare thin white rod. "
+    "She stands at the right of center, mid-thigh up, three-quarter view, holding one four-balloon cluster (four round "
+    "11-inch balloons joined at their knots like a clover) against the bare rod with both hands, one hand on each side of "
+    "the cluster. On the floor beside her, a low open cardboard box with more ready clusters and a compact electric "
+    "inflator." + MANOS + CENTRO + NO),
+ 'centros-de-mesa-con-globos': ('16:9', 'caro', CAM + mujer('caro', 'coral-pink') +
+    "A simple, pretty event room with round tables dressed in white cloths, light walls, daylight from tall windows. Waist "
+    "up, she leans slightly over the nearest table placing a balloon centerpiece at its center: a clear glass jar filled "
+    "with colorful wrapped sweets, from which rise three round latex balloons on thin white sticks in fuchsia, yellow and "
+    "turquoise, with a collar of four small 5-inch balloons around the jar's mouth. Her right hand holds the jar by its "
+    "side, her left hand straightens one balloon stick. Two tables behind her already have the same finished centerpiece. "
+    "On her table: folded napkins and plates, nothing else." + MANOS + CENTRO + NO),
+ 'bouquet-de-globos': ('16:9', 'jenny', CAM + LUGAR + JENNY +
+    "Waist-up, she stands at a white worktable in a bright home studio with a finished helium balloon bouquet beside her: "
+    "five round latex balloons in fuchsia, lilac, turquoise and yellow, one crystal-clear balloon with confetti and one "
+    "chrome gold foil heart, floating at staggered heights on thin curled ribbons tied to one small balloon weight wrapped "
+    "in lilac tissue on the table. Her right hand holds the ribbons together just above the weight, her left hand lifts one "
+    "curled ribbon end. On the table: a wrapped gift box with a bow, a blank white card, ribbon spools, small scissors." +
+    MANOS + CENTRO + " The whole bouquet, top balloons included, stays inside the frame." + NO),
+ 'globoflexia': ('16:9', 'andres', CAM + LUGAR + ANDRES +
+    " Waist-up, he stands at a light wood table twisting a balloon dog from one long lime-green 260 modelling balloon: the "
+    "head, ears and front legs are already formed, his left hand holds the front legs' twist, his right hand twists the next "
+    "bubble of the body; the rest of the balloon extends straight to the right with a soft uninflated tail. On the table: "
+    "finished figures in vivid colors (an orange balloon dog, a pink balloon flower with green stem, a blue balloon sword), "
+    "a neat fan of uninflated long thin balloons sorted by color and a two-way hand pump." + CENTRO + NO),
+ 'certificado-mockup': ('4:3', None, CAM + LUGAR +
+    "Still life, no people. On a white table, a small light-wood tabletop easel holds one certificate in landscape format: a "
+    "sheet of heavy cream cotton paper with a fine double gold-foil border, delicate corner ornaments and an embossed gold "
+    "seal with a short raspberry-red ribbon at the lower right; the sheet is otherwise completely blank, with no writing, "
+    "no lines and no signature. The certificate is large, centered, facing the camera almost straight on, sharp. Around and "
+    "behind it, a festive arrangement: a cluster of chrome gold and rose gold metallic balloons with fuchsia, turquoise and "
+    "sunny yellow latex balloons on the left, a clear balloon with gold confetti and a gold foil star on the right, a soft "
+    "out-of-focus organic balloon garland on the wall behind, a few gold confetti dots on the table. The upper right "
+    "corner and the lower left corner of the frame stay simple and uncluttered. Horizontal 4:3 composition." + NO),
+}
+T = []
+for k, (asp, quien, p) in J.items():
+    for v in 'ab':
+        T.append({'out': f'cand/{k}/r1_{v}.png', 'prompt': p, 'aspecto': asp, 'modelo': 'gemini-3-pro-image', 'tam': '2K',
+                  'refs': (REFJ if quien == 'jenny' else [REF[quien]]) if quien else []})
+if __name__ == '__main__':
+    os.makedirs('trabajos', exist_ok=True)
+    json.dump(T, open('trabajos/r1.json', 'w'), ensure_ascii=False, indent=1)
+    print(len(T), 'trabajos')
